@@ -22,11 +22,11 @@ bot.on("ready", function() {
 
 bot.on('error', console.error);
 
-bot.on("disconnect", function(event) {
+/*bot.on("disconnect", function(event) {
     var d = new Date()
     console.log(event.reason + "\ncode: " + event.code + "\ntime: " + d.getHours() + ":" + d.getMinutes())
     bot.connect()
-})
+})*/
 
 bot.on("message", function(message) {
     let lowmessage = message.content.toLowerCase()
@@ -237,6 +237,12 @@ bot.on("message", function(message) {
         }
     }
 
+    if (lowmessage.indexOf(",calc") == 0) { message.channel.send("https://pokemonurpg.com/calcs/battlev3.html"); }
+    if (lowmessage.indexOf(",info") == 0) { message.channel.send("https://pokemonurpg.com/info/"); }
+    if (lowmessage.indexOf(",forum") == 0) { message.channel.send("https://forum.pokemonurpg.com/"); }
+    if (lowmessage.indexOf(",mart") == 0) { message.channel.send("http://forum.pokemonurpg.com/showthread.php?tid=1682"); }
+    if (lowmessage.indexOf(",berry") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1686"); }
+
     if (message.guild === null) {
     	if (lowmessage.indexOf("noreply:") == 0 || lowmessage.indexOf("no reply:") == 0) {
     		var anonReport = "Anonymous Report:```"
@@ -311,7 +317,7 @@ bot.on("message", function(message) {
     				message.channel.send("Send `,help` to get the general help command or send `,help COMMAND` for more info on how to use `COMMAND`.  Please note that all help commands only work in <#409818526313086976> to reduce spam.")
     			}
     			else {
-    				var helpMessage = "**Commands:**\n`,stats NAME`: Get a link to a NAME's stats.\n`,rank POKÉMON`: Figure out how to acquire POKÉMON in URPG (please note it will not be an exhaustive list and will not include how to acquire pre-evolutions)\n`,rank RANK`: I'll tell you all the Pokémon that are RANK in art and stories!\n`,rse MOVE` or `,dppt MOVE` or `,oras MOVE`: Contest move lookups for their respective contest types.\n`,spoiler` or `,rank spoiler`: Give or remove spoilers role from yourself, which gives access to the spoilers chat.\n`,help`: Display this message.\n`,help COMMAND`: Display a quick summary of how to use COMMAND and what it does.\n\n**Additional features:**\nI accept anonymous feedback!  Send me a direct message beginning with `noreply:` or `no reply:` and I will relay your message to staff.\nIf you instead begin an anonymous report with `reply:`, I will relay your message and leave a way for staff to respond.  *I relay only the ID of the DM channel between you and me, not your user ID or other information a human can use to identify you*.\nI keep records of deleted messages, majorly edited messages, and members leaving the server.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI assist in mentioning roles!  See `,help mention` for more info.  Doing so requires specific roles.\nI archive chats as needed!  A moderator can call `,archive` to do so for that chat.\n\n**Note:** All commands are case insensitive.  If you have a suggestion for additional features, feel free to message Ash K. with your idea!";
+    				var helpMessage = "**Commands:**\n`,stats NAME`: Get a link to a NAME's stats.\n`,rank POKÉMON`: Figure out how to acquire POKÉMON in URPG (please note it will not be an exhaustive list and will not include how to acquire pre-evolutions)\n`,rank RANK`: I'll tell you all the Pokémon that are RANK in art and stories!\n`,rse MOVE` or `,dppt MOVE` or `,oras MOVE`: Contest move lookups for their respective contest types.\n`,spoiler` or `,rank spoiler`: Give or remove spoilers role from yourself, which gives access to the spoilers chat.\n`,info`: Get a link to URPG's Infohub.\n`,forum`: Get a link to URPG's forums.\n`,calc`: Get a link to the online reffing calculator.\n`,mart`: Get a link to the Pokémart.\n`,berry`: Get a link to the Berry Store.\n`,help`: Display this message.\n`,help COMMAND`: Display a quick summary of how to use COMMAND and what it does.\n\n**Additional features:**\nI accept anonymous feedback!  Send me a direct message beginning with `noreply:` or `no reply:` and I will relay your message to staff.\nIf you instead begin an anonymous report with `reply:`, I will relay your message and leave a way for staff to respond.  *I relay only the ID of the DM channel between you and me, not your user ID or other information a human can use to identify you*.\nI keep records of deleted messages, majorly edited messages, and members leaving the server.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI assist in mentioning roles!  See `,help mention` for more info.  Doing so requires specific roles.\nI archive chats as needed!  A moderator can call `,archive` to do so for that chat.\n\n**Note:** All commands are case insensitive.  If you have a suggestion for additional features, feel free to message Ash K. with your idea!";
 	    			message.channel.send(helpMessage);
     			}
     		}
@@ -397,6 +403,12 @@ bot.on("message", async function(message){
     if (lowmessage == ",archive" && message.member.hasPermission("MANAGE_CHANNELS")) {
         await message.channel.setParent(bot.guilds.get("135864828240592896").channels.get("432291722492379136"));
         message.channel.lockPermissions();
+    }
+    if (lowmessage.indexOf(",records available") == 0 && message.member.hasPermission("MANAGE_SERVER")) {
+        await message.channel.send("Be right back!");
+        await bot.destroy();
+        await bot.login(auth.token);
+        message.channel.send("I'm back!  Did you miss me?");
     }
 })
 /* var logChannel = bot.channels.get("254207242780409857")
