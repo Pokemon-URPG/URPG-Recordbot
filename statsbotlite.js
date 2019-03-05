@@ -306,7 +306,12 @@ bot.on("message", function(message) {
 
     if(lowmessage.indexOf(",hp ") == 0)
         {
-            lowmessage = lowmessage.split(",hp ")[1];
+            var pokemonName = "";
+            if (message.cleanContent.indexOf(",hp ") == 0) { pokemonName = message.cleanContent.split(",hp ")[1]; }
+            if (message.cleanContent.indexOf(",hP ") == 0) { pokemonName = message.cleanContent.split(",hP ")[1]; }
+            if (message.cleanContent.indexOf(",Hp ") == 0) { pokemonName = message.cleanContent.split(",Hp ")[1]; }
+            if (message.cleanContent.indexOf(",HP ") == 0) { pokemonName = message.cleanContent.split(",HP ")[1]; }
+            lowmessage = pokemonName.toLowerCase();
             var hp = "";
             switch(lowmessage)
             {
@@ -492,8 +497,8 @@ bot.on("message", function(message) {
                 case "octillery": hp = "Flying"; break;
                 case "blastoise": hp = "Grass"; break;              
             }
-            if(hp == "") message.channel.send("Sorry, I don't know what Hidden Power is best for " + message.cleanContent.split(",hp ")[1] + "!");
-            else {message.channel.send("I'd give " + message.cleanContent.split(",hp ")[1] + " Hidden Power " + hp + "!" );}
+            if(hp == "") message.channel.send("Sorry, I don't know what Hidden Power is best for " + pokemonName + "!");
+            else {message.channel.send("I'd give " + pokemonName + " Hidden Power " + hp + "!" );}
         }
 
     if (lowmessage.indexOf(",calc") == 0) { message.channel.send("https://pokemonurpg.com/calcs/battlev3.html"); }
@@ -538,7 +543,7 @@ bot.on("message", function(message) {
     		bot.users.get("138655409018896384").send(anonReport);
     		message.author.send("Thank you for your report!  It has been sent to the Elrond for review.");
     	}*/
-    	if (lowmessage.indexOf("reply:") == 0) {
+    	else if (lowmessage.indexOf("reply:") == 0) {
     		var anonReport = "Anonymous Report from ";
     		anonReport += message.channel.id;
     		anonReport += ":```"
@@ -550,6 +555,15 @@ bot.on("message", function(message) {
             message.author.send("Thank you for your report!  It has been sent to the staff team for review.  When they have a reply, I'll pass it back to you!");
     		//bot.channels.get("254207242780409857").createMessageCollector
     	}
+        /*else if (bot.guilds.get("135864828240592896").members.has(message.author.id)) {
+            var exitReport = "Exit reply from ";
+            exitReport += message.author.username;
+            exitReport += ": ```";
+            exitReport += message.content;
+            exitReport += "```";
+            bot.channels.get("545737721612730368").send(exitReport);
+            message.channel.send("Thank you for your feedback!  It has been passed onto the staff team for consideration.");
+        }*/
     }
     else {
     	if (message.channel.id == 409818526313086976 || message.channel.id == 254207242780409857) {
@@ -625,9 +639,12 @@ bot.on("message", function(message) {
             else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` and `coordinator`.")}
         }
     }
-    if (message.channel.id == 135870064573284352 && lowmessage.indexOf(",anonreply") == 0) {
-    	const anonReply = lowmessage.split("_");
-    	bot.channels.get(anonReply[1]).send(anonReply[2]);
+    if (message.channel.id == 135870064573284352 && message.content.indexOf(",anonreply") == 0) {
+    	/*const anonReply = lowmessage.split("_");
+    	bot.channels.get(anonReply[1]).send(anonReply[2]);*/
+        const anonToReplyTo = message.content.split(" ");
+        bot.channels.get(anonToReplyTo[1]).send(message.content.split(",anonreply " + anonToReplyTo[1])[1]);
+        message.channel.send("Your reply has been sent!");
     }
 })
 
