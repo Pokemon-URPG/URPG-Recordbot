@@ -237,6 +237,265 @@ bot.on("message", function(message) {
         }
     }
 
+    if(lowmessage.indexOf(",rules ") != -1)
+    {
+        lowmessage = lowmessage.split(",rules ")[1];
+        if(lowmessage == "casual") message.channel.send("6v6\nSM Public Open\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
+        if(lowmessage == "ppr") message.channel.send("6v6\nSM Public Preview\nOHKO ACC EVA SLP FRZ Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
+        if(lowmessage == "hidden") message.channel.send("6v6\nSM Private Preview\nOHKO ACC EVA SLP FRZ Clauses On\nHelds Off\nDefault Weather and Terrain");
+        if(lowmessage == "competitive") message.channel.send("6v6\nSM Private Preview\nOHKO ACC EVA SLP FRZ Species Item Legend Clauses On\nHelds On\nDefault Weather and Terrain");
+        if(lowmessage == "e4") message.channel.send("6 vs 6\nSM Private Full or SM Private Preview\nItems Allowed\nSleep Clause\nFreeze Clause\nOHKO Clause\nAccuracy Clause\nEvasion Clause\nOne Legendary Pokemon allowed per team, or No Legendary Pokemon\nDefender’s Choice: Species Clause, Item Clause, Weather, Terrain");
+        if(lowmessage == "ld") message.channel.send("4 VS. 4+\nSM Private Full or Preview\nItems Optional\nSleep, Freeze, OHKO, Accuracy, Evasion and Legend Clauses On\nMega, Z, Item and Species Clauses Optional\nStarting Weather and Terrain Optional");
+        if(lowmessage == "ashrandoms") message.channel.send("6v6\nSM Public Box\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds On\nRandom Weather and Terrain\nRoll for first send\n\nAny changes?");
+        if(lowmessage == "fortree") message.channel.send("6v6\nSM Public Open\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First")
+    }
+
+    if((lowmessage.indexOf(",") == 0) && (lowmessage.indexOf("contestlog") != -1))
+        {
+            var rank = "";
+            var attribute = "";
+            var ribbon = "";
+            var mode = "";
+            if(lowmessage.indexOf("rse") != -1){mode = "rse";}
+            if(lowmessage.indexOf("dppt") != -1){mode = "dppt";}
+            if(lowmessage.indexOf("oras") != -1){mode = "oras";}
+            if(lowmessage.indexOf("normal") != -1) rank = "Normal";
+            if(lowmessage.indexOf("super") != -1) rank = "Super";
+            if(lowmessage.indexOf("hyper") != -1) rank = "Hyper";
+            if(lowmessage.indexOf("master") != -1) rank = "Master";
+            if(lowmessage.indexOf("smart") != -1) attribute = "Smart";
+            if(lowmessage.indexOf("tough") != -1) attribute = "Tough";
+            if(lowmessage.indexOf("cool") != -1) attribute = "Cool";
+            if(lowmessage.indexOf("cute") != -1) attribute = "Cute";
+            if(lowmessage.indexOf("beauty") != -1) attribute = "Beauty";
+            var contestlog = "";
+            switch(rank + attribute)
+            {
+                case "NormalBeauty": ribbon = "http://i.imgur.com/6KkFVdY.png"; break;
+                case "SuperBeauty": ribbon = "http://i.imgur.com/t9svJMx.png"; break;
+                case "HyperBeauty": ribbon = "http://i.imgur.com/i2Gf27Q.jpg"; break;
+                case "MasterBeauty": ribbon = "http://i.imgur.com/QBnd4nb.png"; break;
+                
+                case "NormalCool": ribbon = "http://i.imgur.com/Gog7DM6.png"; break;
+                case "SuperCool": ribbon = "http://i.imgur.com/ZC3EL8p.png"; break;
+                case "HyperCool": ribbon = "http://i.imgur.com/QqO7Xh6.jpg"; break;
+                case "MasterCool": ribbon = "http://i.imgur.com/B1kxk8U.png"; break;
+                
+                case "NormalCute": ribbon = "http://i.imgur.com/26uxwv5.png"; break;
+                case "SuperCute": ribbon = "http://i.imgur.com/zdRuqWx.png"; break;
+                case "HyperCute": ribbon = "http://i.imgur.com/59pcl6V.jpg"; break;
+                case "MasterCute": ribbon = "http://i.imgur.com/x8IwNQc.png"; break;
+                
+                case "NormalSmart": ribbon = "http://i.imgur.com/6qMo1Bb.png"; break;
+                case "SuperSmart": ribbon = "http://i.imgur.com/8DjjwXX.png"; break;
+                case "HyperSmart": ribbon = "http://i.imgur.com/2XlyQLd.jpg"; break;
+                case "MasterSmart": ribbon = "http://i.imgur.com/8YDshKD.png"; break;
+                
+                case "NormalTough": ribbon = "http://i.imgur.com/7DrF3lG.png"; break;
+                case "SuperTough": ribbon = "http://i.imgur.com/MfXCiOP.png"; break;
+                case "HyperTough": ribbon = "http://i.imgur.com/3ZYgy9g.jpg"; break;
+                case "MasterTough": ribbon = "http://i.imgur.com/bKrpIPS.png"; break;
+            }
+            if(mode == "rse") contestlog += ("Contest #\n\nRSE " + rank + " " + attribute + " Contest\nOP Combo Clause On\nNervous Clause On\n\nDESCRIPTION\n\n[b] and () get ");
+            if(mode == "oras") contestlog += ("Contest #\n\nORAS " + rank + " " + attribute + " Contest\nEndure -> Pain Split does not combo\nNervous Clause On\n\nDESCRIPTION\n\n[b] and () get ");
+            if(mode == "dppt") contestlog += ("Contest #\n\nDPPt " + rank + " " + attribute + " Contest\n\nDESCRIPTION\n\n[b] and () get ");
+            if((rank == "Master")||(rank == "Hyper")) contestlog += ("$2,500 + 2,500 CC + " + rank + " " + attribute + " Ribbon [/b][img]" + ribbon + "[/img]\n\n and () get $2,000 + 2,000 CC\n\n and () get $1,500 + 1,500 CC\n\n and () get $1,000 + 1,000 CC\n\n");
+            if((rank == "Super")||(rank == "Normal")) contestlog += ("$2,000 + 2,000 CC + " + rank + " " + attribute + " Ribbon [/b][img]" + ribbon + "[/img]\n\n and () get $1,500 + 1,500 CC\n\n and () get $1,000 + 1,000 CC\n\n and () get $500 + 500 CC\n\n");
+            message.channel.send(contestlog);
+        }
+
+    if(lowmessage.indexOf(",hp ") == 0)
+        {
+            lowmessage = lowmessage.split(",hp ")[1];
+            var hp = "";
+            switch(lowmessage)
+            {
+                case "araquanid": hp = "Electric"; break;
+                case "golduck": hp = "Grass"; break;
+                case "yanmega": hp = "Fire"; break;
+                case "ludicolo": hp = "Ground or Psychic"; break;
+                case "pelipper": hp = "Ground"; break;
+                case "swampert": hp = "Fire, or if it's a Water gym, Grass"; break;
+                case "kabutops": hp = "Fire, or if it's a Water gym, Poison"; break;
+                case "dragalge": hp = "Fire, or if it's a Water gym, Grass"; break;
+                case "ampharos": hp = "Ice"; break;
+                case "cofagrigus": hp = "Ice"; break;
+                case "steelix": hp = "Grass"; break;
+                case "garchomp": hp = "Grass, or if it's a Ground gym, Electric"; break;
+                case "gastrodon": hp = "Fire"; break;
+                case "gardevoir": hp = "Ground"; break;
+                case "dragonite": hp = "Grass"; break;
+                case "exeggutor": hp = "Fire"; break;
+                case "manectric": hp = "Ice"; break;
+                case "magnezone": hp = "Ice"; break;
+                case "shiinotic": hp = "Ground"; break;
+                case "nidoking": hp = "Grass"; break;
+                case "metagross": hp = "Fire"; break;
+                case "rapidash": hp = "Ice"; break;
+                case "infernape": hp = "Ice"; break;
+                case "cloyster": hp = "Grass, or if it's an Ice gym, Fire"; break;
+                case "jynx": hp = "Fire"; break;
+                case "maractus": hp = "Ground"; break;
+                case "alolan ninetales": hp = "Fire"; break;
+                case "ninetales-alola": hp = "Fire"; break;
+                case "ninetales alola": hp = "Fire"; break;
+                case "ninetales-alolan": hp = "Fire"; break;
+                case "gengar": hp = "Fire"; break;
+                case "accelgor": hp = "Ice"; break;
+                case "porygon-z": hp = "Fighting"; break;
+                case "porygon z": hp = "Fighting"; break;
+                case "metagross": hp = "Fire"; break;
+                case "alakzam": hp = "Fire"; break;
+                case "greninja": hp = "Fire"; break;
+                case "lapras": hp = "Fire"; break;
+                case "swampert": hp = "Fire"; break;
+                case "mamoswine": hp = "Fire"; break;
+                case "ambipom": hp = "Ground"; break;
+                case "weavile": hp = "Grass"; break;
+                case "salamence": hp = "Grass"; break;
+                case "ribombee": hp = "Ground"; break;
+                case "electivire": hp = "Grass"; break;
+                case "murkrow": hp = "Grass"; break;
+                case "medicham": hp = "Water"; break;
+                case "marowak-alola": hp = "Grass"; break;
+                case "marowak-alolan": hp = "Grass"; break;
+                case "marowak alola": hp = "Grass"; break;
+                case "alolan marowak": hp = "Grass"; break;
+                case "sharpedo": hp = "Grass"; break;
+                case "mew": hp = "Flying"; break;
+                case "arceus": hp = "Flying"; break;
+                case "xatu": hp = "Fighting"; break;
+                case "rayquaza": hp = "Flying"; break;
+                case "jolteon": hp = "Ice"; break;
+                case "noivern": hp = "Grass"; break;
+                case "alakazam": hp = "Fire"; break;
+                case "walrein": hp = "Fire"; break;
+                case "kingdra": hp = "Electric"; break;
+                case "gyarados": hp = "Grass"; break;
+                case "lucario": hp = "Grass"; break;
+                case "sableye": hp = "Ground"; break;
+                case "beautifly": hp = "Ice"; break;
+                case "masquerain": hp = "Fire"; break;
+                case "ninetales": hp = "Ice"; break;
+                case "spinda": hp = "Grass"; break;
+                case "honchkrow": hp = "Grass"; break;
+                case "glaceon": hp = "Fighting"; break;
+                case "sigilyph": hp = "Fighting"; break;
+                case "chatot": hp = "Fighting"; break;
+                case "gorebyss": hp = "Grass"; break;
+                case "omastar": hp = "Grass"; break;
+                case "vaporeon": hp = "Grass"; break;
+                case "delibird": hp = "Fire"; break;
+                case "sceptile": hp = "Fire"; break;
+                case "tropius": hp = "Fire"; break;
+                case "venusaur": hp = "Ice"; break;
+                case "emolga": hp = "Ice"; break;
+                case "venomoth": hp = "Fire"; break;
+                case "mienshao": hp = "Ice"; break;
+                case "goodra": hp = "Bug"; break;
+                case "porygon2": hp = "Fighting"; break;
+                case "yanmega": hp = "Fire"; break;
+                case "leafeon": hp = "Fire"; break;
+                case "drampa": hp = "Fighting"; break;
+                case "lunatone": hp = "Fire"; break;
+                case "turtonator": hp = "Grass"; break;
+                case "roserade": hp = "Fire"; break;
+                case "serperior": hp = "Fire"; break;
+                case "volcarona": hp = "Ice"; break;
+                case "lanturn": hp = "Grass"; break;
+                case "talonflame": hp = "Ice"; break;
+                case "houndoom": hp = "Ice"; break;
+                case "blissey": hp = "Ground"; break;
+                case "arcanine": hp = "Ice"; break;
+                case "scolipede": hp = "Ice"; break;
+                case "rotom-heat": hp = "Ice"; break;
+                case "rotom-wash": hp = "Ice"; break;
+                case "rotom-frost": hp = "Fire"; break;
+                case "rotom-mow": hp = "Ice"; break;
+                case "bisharp": hp = "Water"; break;
+                case "hitmonlee": hp = "Ice"; break;
+                case "haxorus": hp = "Ice"; break;
+                case "beedrill": hp = "Fire"; break;
+                case "scrafty": hp = "Water, or if it's a Fighting Gym, Bug"; break;
+                case "dugtrio": hp = "Grass"; break;
+                case "snorlax": hp = "Bug"; break;
+                case "azumarill": hp = "Fire, or if it's a Water Gym, Rock"; break;
+                case "machamp": hp = "Grass"; break;
+                case "durant": hp = "Ice"; break;
+                case "hydreigon": hp = "Grass"; break;
+                case "drapion": hp = "Grass"; break;
+                case "krookodile": hp = "Bug"; break;
+                case "heliolisk": hp = "Ice"; break;
+                case "bellossom": hp = "Fire"; break;
+                case "lilligant": hp = "Fire"; break;
+                case "pikachu-belle": hp = "Fire"; break;
+                case "liepard": hp = "Fire"; break;
+                case "lugia": hp = "Fire"; break;
+                case "clawitzer": hp = "Grass"; break;
+                case "vespiquen": hp = "Ground"; break;
+                case "spiritomb": hp = "Fighting"; break;
+                case "shedinja": hp = "Ice"; break;
+                case "tyranitar": hp = "Grass"; break;
+                case "archeops": hp = "Grass or Flying"; break;
+                case "minior": hp = "Fire or Flying"; break;
+                case "castform": hp = "Fighting"; break;
+                case "tsareena": hp = "Ice"; break;
+                case "zoroark": hp = "Ice"; break;
+                case "pidgeot": hp = "Fighting"; break;
+                case "rhyperior": hp = "Grass"; break;
+                case "golurk": hp = "Flying"; break;
+                case "scizor": hp = "Grass or Ice"; break;
+                case "slowbro": hp = "Electric"; break;
+                case "slowking": hp = "Electric"; break;
+                case "incineroar": hp = "Ice"; break;
+                case "charizard": hp = "Ice"; break;
+                case "raichu": hp = "Ice"; break;
+                case "alolan raichu": hp = "Ice"; break;
+                case "raichu-alola": hp = "Ice"; break;
+                case "raichu alola": hp = "Ice"; break;
+                case "raichu-alolan": hp = "Ice"; break;
+                case "wigglytuff": hp = "Ground"; break;
+                case "jumpluff": hp = "Fire"; break;
+                case "kabutops": hp = "Fire"; break;
+                case "mr. mime": hp = "Ground"; break;
+                case "blaziken": hp = "Ice"; break;
+                case "cradily": hp = "Fire"; break;
+                case "whimsicott": hp = "Ground, or if it's Fairy or Grass Gym, Fire"; break;
+                case "altaria": hp = "Grass"; break;
+                case "clefable": hp = "Ground"; break;
+                case "togekiss": hp = "Ground"; break;
+                case "primarina": hp = "Ground"; break;
+                case "sylveon": hp = "Ground"; break;
+                case "phione": hp = "Ground"; break;
+                case "lopunny": hp = "Ground, or if Mega, Poison"; break;
+                case "crobat": hp = "Ground"; break;
+                case "politoed": hp = "Grass"; break;
+                case "aegislash": hp = "Grass"; break;
+                case "probopass": hp = "Grass"; break;
+                case "dusknoir": hp = "Grass"; break;
+                case "gliscor": hp = "Grass"; break;
+                case "druddigon": hp = "Grass"; break;
+                case "tangrowth": hp = "Ice"; break;
+                case "chandelure": hp = "Ice"; break;
+                case "eelektross": hp = "Ice"; break;
+                case "camerupt": hp = "Ice"; break;
+                case "mewtwo": hp = "Poison"; break;
+                case "espeon": hp = "Fire"; break;
+                case "aurorus": hp = "Fire"; break;
+                case "milotic": hp = "Fire"; break;
+                case "starmie": hp = "Fire, or if it's Water Gym, Fighting"; break;
+                case "beheeyem": hp = "Fire"; break;
+                case "salazzle": hp = "Ice"; break;
+                case "sandslash": hp = "Grass"; break;
+                case "giratina": hp = "Fire"; break;
+                case "golisopod": hp = "Grass"; break;
+                case "octillery": hp = "Flying"; break;
+                case "blastoise": hp = "Grass"; break;              
+            }
+            if(hp == "") message.channel.send("Sorry, I don't know what Hidden Power is best for " + message.cleanContent.split(",hp ")[1] + "!");
+            else {message.channel.send("I'd give " + message.cleanContent.split(",hp ")[1] + " Hidden Power " + hp + "!" );}
+        }
+
     if (lowmessage.indexOf(",calc") == 0) { message.channel.send("https://pokemonurpg.com/calcs/battlev3.html"); }
     if (lowmessage.indexOf(",info") == 0) { message.channel.send("https://pokemonurpg.com/info/"); }
     if (lowmessage.indexOf(",forum") == 0) { message.channel.send("https://forum.pokemonurpg.com/"); }
@@ -317,10 +576,14 @@ bot.on("message", function(message) {
     				message.channel.send("Send `,help` to get the general help command or send `,help COMMAND` for more info on how to use `COMMAND`.  Please note that all help commands only work in <#409818526313086976> to reduce spam.")
     			}
     			else {
-    				var helpMessage = "**Commands:**\n`,stats NAME`: Get a link to a NAME's stats.\n`,rank POKÉMON`: Figure out how to acquire POKÉMON in URPG (please note it will not be an exhaustive list and will not include how to acquire pre-evolutions)\n`,rank RANK`: I'll tell you all the Pokémon that are RANK in art and stories!\n`,rse MOVE` or `,dppt MOVE` or `,oras MOVE`: Contest move lookups for their respective contest types.\n`,spoiler` or `,rank spoiler`: Give or remove spoilers role from yourself, which gives access to the spoilers chat.\n`,info`: Get a link to URPG's Infohub.\n`,forum`: Get a link to URPG's forums.\n`,calc`: Get a link to the online reffing calculator.\n`,mart`: Get a link to the Pokémart.\n`,berry`: Get a link to the Berry Store.\n`,help`: Display this message.\n`,help COMMAND`: Display a quick summary of how to use COMMAND and what it does.\n\n**Additional features:**\nI accept anonymous feedback!  Send me a direct message beginning with `noreply:` or `no reply:` and I will relay your message to staff.\nIf you instead begin an anonymous report with `reply:`, I will relay your message and leave a way for staff to respond.  *I relay only the ID of the DM channel between you and me, not your user ID or other information a human can use to identify you*.\nI keep records of deleted messages, majorly edited messages, and members leaving the server.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI assist in mentioning roles!  See `,help mention` for more info.  Doing so requires specific roles.\nI archive chats as needed!  A moderator can call `,archive` to do so for that chat.\n\n**Note:** All commands are case insensitive.  If you have a suggestion for additional features, feel free to message Ash K. with your idea!";
+    				var helpMessage = "**Commands:**\n`,stats NAME`: Get a link to a NAME's stats.\n`,rank POKÉMON`: Figure out how to acquire POKÉMON in URPG.\n`,rank RANK`: I'll tell you all the Pokémon that are RANK in art and stories!\n`,rse MOVE` or `,dppt MOVE` or `,oras MOVE`: Contest move lookups for their respective contest types.\n`,contestlog TYPE RANK ATTRIBUTE`: Generates a blank template for a judge's log. Parameters can be in any order.\n`,rules`: Generates a premade ruleset. If you would like to add to my database, please send your rules to Ash K. with a name (represent line breaks with \\n).\n`,hp POKÉMON`: My suggestion for what Hidden Power type to give POKÉMON.\n`,spoiler` or `,rank spoiler`: Give or remove spoilers role from yourself, which gives access to the spoilers chat.\n`,info`: Get a link to URPG's Infohub.\n`,forum`: Get a link to URPG's forums.\n`,calc`: Get a link to the online reffing calculator.\n`,mart`: Get a link to the Pokémart.\n`,berry`: Get a link to the Berry Store.\n`,help`: Display this message.\n`,help COMMAND`: Display a quick summary of how to use COMMAND and what it does.\n\n**Additional features:**\nI accept anonymous feedback! Send me a direct message beginning with `noreply:` or `no reply:` and I will relay your message to staff.\nIf you instead begin an anonymous report with `reply:`, I will relay your message and leave a way for staff to respond. *I relay only the ID of the DM channel between you and me, not your user ID or other information a human can use to identify you*.\nI keep records of deleted messages, majorly edited messages, and members leaving the server.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI assist in mentioning roles! See `,help mention` for more info. Doing so requires specific roles.\nI archive chats as needed!  A moderator can call `,archive` to do so for that chat.\n\n**Note:** All commands are case insensitive. If you have a suggestion for additional features, feel free to message Ash K.!";
 	    			message.channel.send(helpMessage);
     			}
     		}
+            /*if (message.author.id == "135999597947387904" && lowmessage.indexOf(",roles") == 0) {
+                var rolesList = `message.guild.roles.map(role r => ${r.id} : ${r.name}).join("\n")`;
+                message.channel.send(`${rolesList}`);
+            }*/
     	}
     	/*if (lowmessage.indexOf("hippopotomonstrosesquipedaliophobia") != -1 && !message.author.bot) {
     		message.delete();
@@ -338,15 +601,28 @@ bot.on("message", function(message) {
         if ((message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065") && lowmessage.indexOf("and") != -1 && lowmessage.indexOf("out") != -1 && lowmessage.indexOf("and") < lowmessage.indexOf("out")) {
             message.react(message.guild.emojis.get("246070314163896320"));
         }
-        if (lowmessage.indexOf(",role spoiler") == 0 || lowmessage.indexOf(",spoiler") == 0) {
-            if (message.member.roles.has("440004078219558912")) {
-                message.member.removeRole(message.guild.roles.get("440004078219558912"));
-                message.channel.send("Spoilers role removed!")
+        if (lowmessage.indexOf(",role") == 0) {
+            if (lowmessage.indexOf(",role spoiler") == 0 || lowmessage.indexOf(",spoiler") == 0) {
+                if (message.member.roles.has("440004078219558912")) {
+                    message.member.removeRole(message.guild.roles.get("440004078219558912"));
+                    message.channel.send("Spoilers role removed!")
+                }
+                else {
+                    message.member.addRole(message.guild.roles.get("440004078219558912"));
+                    message.channel.send("Spoilers role added!")
+                }
             }
-            else {
-                message.member.addRole(message.guild.roles.get("440004078219558912"));
-                message.channel.send("Spoilers role added!")
+            else if (lowmessage.indexOf(",role coordinator") == 0) {
+                if (message.member.roles.has("552232839861633046")) {
+                    message.member.removeRole(message.guild.roles.get("552232839861633046"));
+                    message.channel.send("Coordinator role removed!");
+                }
+                else {
+                    message.member.addRole(message.guild.roles.get("552232839861633046"));
+                    message.channel.send("Coordinator role added!");
+                }
             }
+            else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` and `coordinator`.")}
         }
     }
     if (message.channel.id == 135870064573284352 && lowmessage.indexOf(",anonreply") == 0) {
@@ -400,6 +676,11 @@ bot.on("message", async function(message){
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("456993685679243286")}${lowmessage.split(",mentionarbiters")[1]}`);
         bot.guilds.get("135864828240592896").roles.get("456993685679243286").setMentionable(false);
     }
+    if (lowmessage.indexOf(",mentioncoordinators") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("243950906683424768"))) {
+        await bot.guilds.get("135864828240592896").roles.get("552232839861633046").setMentionable(true);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("552232839861633046")}${lowmessage.split(",mentioncoordinators")[1]}`);
+        bot.guilds.get("135864828240592896").roles.get("552232839861633046").setMentionable(false);
+    }
     if (lowmessage == ",archive" && message.member.hasPermission("MANAGE_CHANNELS")) {
         await message.channel.setParent(bot.guilds.get("135864828240592896").channels.get("432291722492379136"));
         message.channel.lockPermissions();
@@ -449,25 +730,28 @@ bot.on("messageDelete", async function(message) {
     if (message.channel.id == 254207242780409857) {channelToNotify = "254207242780409857";}
     const entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
     let user = ""
+    var botDeleterNotFound = false;
     if (entry.extra.channel.id === message.channel.id
       && (entry.target.id === message.author.id)
       && (entry.createdTimestamp > (Date.now() - 5000))
       && (entry.extra.count >= 1)) {
-        user = entry.executor.username
+        user = entry.executor.username;
     } else { 
-        user = message.author.username
+        user = message.author.username;
+        botDeleterNotFound = false;
+
     }
     var deleteLog = "The following message by ";
     deleteLog += message.author.username;
     deleteLog += " was deleted from <#";
     deleteLog += message.channel.id;
-    /*if (message.author.bot) {
+    if (message.author.bot && botDeleterNotFound) {
         deleteLog += ">: ```"
-    } else {*/
+    } else {
         deleteLog += "> by ";
         deleteLog += user;
         deleteLog += ": ```";
-    //}
+    }
     deleteLog += message.cleanContent;
     deleteLog += "```";
     //channelToNotify = "254207242780409857";
