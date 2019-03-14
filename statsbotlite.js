@@ -104,7 +104,7 @@ bot.on("message", function(message) {
         if (oldmessage.indexOf("sou's stats") != -1) { message.channel.send("\nhttp://soucleife.proboards.com/thread/2/pokemon-stats") }
         if (oldmessage.indexOf("trainer17's stats") != -1) { message.channel.send("\nhttp://kingofcybertron.proboards.com/thread/35/pokemon-team?page=1") }
         if ((oldmessage.indexOf("captaindude's stats") != -1) || (oldmessage.indexOf("cd's stats") != -1)) { message.channel.send("\nhttp://captaindudeurpg.proboards.com/board/1") }
-        if ((oldmessage.indexOf("mandl27's stats") != -1) || (oldmessage.indexOf("mandl's stats") != -1) || (oldmessage.indexOf("mand's stats") != -1) || (oldmessage.indexOf("ml's stats") != -1)) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10276") }
+        if ((oldmessage.indexOf("mandl27's stats") != -1) || (oldmessage.indexOf("mandl's stats") != -1) || (oldmessage.indexOf("mand's stats") != -1) || (oldmessage.indexOf("ml's stats") != -1)) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10294") }
     }
     if (message.content.indexOf(",rse ") == 0) {
         let movelist = ""
@@ -501,6 +501,133 @@ bot.on("message", function(message) {
             else {message.channel.send("I'd give " + pokemonName + " Hidden Power " + hp + "!" );}
         }
 
+    if(lowmessage.indexOf(",sr ") == 0)
+    {
+        var pokemon = lowmessage.split(",sr ")[1];
+        var fs = require('fs');
+        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
+        for(var x = 0; x < allpokes.length; x++)
+        {
+            if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
+            {
+                var srdamage = 12.5;
+                switch(allpokes[x].split('/')[1])
+                {
+                    case "FR": srdamage *= 2; break;
+                    case "I": srdamage *= 2; break;
+                    case "FI": srdamage /= 2; break;
+                    case "GD": srdamage /= 2; break;
+                    case "FL": srdamage *= 2; break;
+                    case "B": srdamage *= 2; break;
+                    case "S": srdamage /= 2; break;
+                    
+                }
+                switch(allpokes[x].split('/')[2])
+                {
+                    case "FR": srdamage *= 2; break;
+                    case "I": srdamage *= 2; break;
+                    case "FI": srdamage /= 2; break;
+                    case "GD": srdamage /= 2; break;
+                    case "FL": srdamage *= 2; break;
+                    case "B": srdamage *= 2; break;
+                    case "S": srdamage /= 2; break;
+                    
+                }
+                var srMessage = allpokes[x].split('/')[0];
+                srMessage += " would take ";
+                srMessage += srdamage;
+                srMessage += "% damage!";
+                message.channel.send(srMessage);
+                break;
+            }
+        }
+    }
+
+    if(lowmessage.indexOf(",effective ") == 0)
+    {
+        var pokemon = lowmessage.split(",effective ")[1];
+        var fs = require('fs');
+        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
+        for(var x = 0; x < allpokes.length; x++)
+        {
+            if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
+            {
+                var damage = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+                switch(allpokes[x].split('/')[1])
+                {
+                    //normal0, grass1, fire2, water3, bug4, poison5
+                    //NM, GR, FR, W, B, PO
+                    //flying6, electric7, ground8, fairy9, fighting10, psychic11
+                    //FL, E, GD, FA, FI, PS
+                    //rock12, steel13, ice14, ghost15, dragon16, dark17
+                    //R, S, I, GH, DR, DK
+                    case "NM": damage[10] *= 2; damage[15] *= 0; break;
+                    case "GR": damage[1] /= 2; damage[2] *= 2; damage[3] /= 2; damage[4] *= 2; damage[5] *= 2; damage[6] *= 2; damage[7] /= 2; damage[8] /= 2; damage[14] *= 2; break;
+                    case "FR": damage[1] /= 2; damage[2] /= 2; damage[3] *= 2; damage[4] /= 2; damage[8] *= 2; damage[9] /= 2; damage[12] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+                    case "W": damage[1] *= 2; damage[2] /= 2; damage[3] /= 2; damage[7] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+                    case "B": damage[1] /= 2; damage[2] *= 2; damage[6] *= 2; damage[8] /= 2; damage[10] /= 2; damage[12] *= 2; break;
+                    case "PO": damage[1] /= 2; damage[4] /= 2; damage[5] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] /= 2; damage[11] *= 2; break;
+                    case "FL": damage[1] /= 2; damage[4] /= 2; damage[7] *= 2; damage[8] *= 0; damage[10] /= 2; damage[12] *= 2; damage[14] *= 2; break;
+                    case "E": damage[6] /= 2; damage[7] /= 2; damage[8] *= 2; damage[13] /= 2; break;
+                    case "GD": damage[1] *= 2; damage[3] *= 2; damage[5] /= 2; damage[7] *= 0; damage[12] /= 2; damage[14] *= 2; break;
+                    case "FA": damage[4] /= 2; damage[5] *= 2; damage[10] /= 2; damage[13] *= 2; damage[16] *= 0; damage[17] /= 2; break;
+                    case "FI": damage[4] /= 2; damage[6] *= 2; damage[9] *= 2; damage[11] *= 2; damage[12] /= 2; damage[17] /= 2; break;
+                    case "PS": damage[4] *= 2; damage[10] /= 2; damage[11] /= 2; damage[15] *= 2; damage[17] *= 2; break;
+                    case "R": damage[0] /= 2; damage[1] *= 2; damage[2] /= 2; damage[3] *= 2; damage[5] /= 2; damage[6] /= 2; damage[8] *= 2; damage[10] *= 2; damage[13] *= 2; break;
+                    case "S": damage[0] /= 2; damage[1] /= 2; damage[2] *= 2; damage[4] /= 2; damage[5] *= 0; damage[6] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] *= 2; damage[11] /= 2; damage[12] /= 2; damage[13] /= 2; damage[14] /= 2; damage[16] /= 2; break;
+                    case "I": damage[2] *= 2; damage[10] *= 2; damage[12] *= 2; damage[13] *= 2; damage[14] /= 2; break;
+                    case "GH": damage[0] *= 0; damage[4] /= 2; damage[5] /= 2; damage[10] *= 0; damage[15] *= 2; damage[17] *= 2; break;
+                    case "DR": damage[1] /= 2; damage[2] /= 2; damage[3] /= 2; damage[7] /= 2; damage[9] *= 2; damage[14] *= 2; damage[16] *= 2; break;
+                    case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
+                }
+                switch(allpokes[x].split('/')[2])
+                {
+                    //same as first
+                    case "NM": damage[10] *= 2; damage[15] *= 0; break;
+                    case "GR": damage[1] /= 2; damage[2] *= 2; damage[3] /= 2; damage[4] *= 2; damage[5] *= 2; damage[6] *= 2; damage[7] /= 2; damage[8] /= 2; damage[14] *= 2; break;
+                    case "FR": damage[1] /= 2; damage[2] /= 2; damage[3] *= 2; damage[4] /= 2; damage[8] *= 2; damage[9] /= 2; damage[12] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+                    case "W": damage[1] *= 2; damage[2] /= 2; damage[3] /= 2; damage[7] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+                    case "B": damage[1] /= 2; damage[2] *= 2; damage[6] *= 2; damage[8] /= 2; damage[10] /= 2; damage[12] *= 2; break;
+                    case "PO": damage[1] /= 2; damage[4] /= 2; damage[5] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] /= 2; damage[11] *= 2; break;
+                    case "FL": damage[1] /= 2; damage[4] /= 2; damage[7] *= 2; damage[8] *= 0; damage[10] /= 2; damage[12] *= 2; damage[14] *= 2; break;
+                    case "E": damage[6] /= 2; damage[7] /= 2; damage[8] *= 2; damage[13] /= 2; break;
+                    case "GD": damage[1] *= 2; damage[3] *= 2; damage[5] /= 2; damage[7] *= 0; damage[12] /= 2; damage[14] *= 2; break;
+                    case "FA": damage[4] /= 2; damage[5] *= 2; damage[10] /= 2; damage[13] *= 2; damage[16] *= 0; damage[17] /= 2; break;
+                    case "FI": damage[4] /= 2; damage[6] *= 2; damage[9] *= 2; damage[11] *= 2; damage[12] /= 2; damage[17] /= 2; break;
+                    case "PS": damage[4] *= 2; damage[10] /= 2; damage[11] /= 2; damage[15] *= 2; damage[17] *= 2; break;
+                    case "R": damage[0] /= 2; damage[1] *= 2; damage[2] /= 2; damage[3] *= 2; damage[5] /= 2; damage[6] /= 2; damage[8] *= 2; damage[10] *= 2; damage[13] *= 2; break;
+                    case "S": damage[0] /= 2; damage[1] /= 2; damage[2] *= 2; damage[4] /= 2; damage[5] *= 0; damage[6] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] *= 2; damage[11] /= 2; damage[12] /= 2; damage[13] /= 2; damage[14] /= 2; damage[16] /= 2; break;
+                    case "I": damage[2] *= 2; damage[10] *= 2; damage[12] *= 2; damage[13] *= 2; damage[14] /= 2; break;
+                    case "GH": damage[0] *= 0; damage[4] /= 2; damage[5] /= 2; damage[10] *= 0; damage[15] *= 2; damage[17] *= 2; break;
+                    case "DR": damage[1] /= 2; damage[2] /= 2; damage[3] /= 2; damage[7] /= 2; damage[9] *= 2; damage[14] *= 2; damage[16] *= 2; break;
+                    case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
+                }
+                
+                var effectiveMessage = 'Before abilities, ' + allpokes[x].split('/')[0] + ' would take:\n'
+                + damage[0] + 'x Normal Damage\n'
+                + damage[1] + 'x Grass Damage\n'
+                + damage[2] + 'x Fire Damage\n'
+                + damage[3] + 'x Water Damage\n'
+                + damage[4] + 'x Bug Damage\n'
+                + damage[5] + 'x Poison Damage\n'
+                + damage[6] + 'x Flying Damage\n'
+                + damage[7] + 'x Electric Damage\n'
+                + damage[8] + 'x Ground Damage\n'
+                + damage[9] + 'x Fairy Damage\n'
+                + damage[10] + 'x Fighting Damage\n'
+                + damage[11] + 'x Psychic Damage\n'
+                + damage[12] + 'x Rock Damage\n'
+                + damage[13] + 'x Steel Damage\n'
+                + damage[14] + 'x Ice Damage\n'
+                + damage[15] + 'x Ghost Damage\n'
+                + damage[16] + 'x Dragon Damage\n'
+                + damage[17] + 'x Dark Damage';
+                message.channel.send(effectiveMessage);
+                break;
+            }
+        }
+    }
+
     if (lowmessage.indexOf(",calc") == 0) { message.channel.send("https://pokemonurpg.com/calcs/battlev3.html"); }
     if (lowmessage.indexOf(",info") == 0) { message.channel.send("https://pokemonurpg.com/info/"); }
     if (lowmessage.indexOf(",forum") == 0) { message.channel.send("https://forum.pokemonurpg.com/"); }
@@ -548,25 +675,25 @@ bot.on("message", function(message) {
     		anonReport += message.channel.id;
     		anonReport += ":```"
     		anonReport += message.content;
-    		anonReport += "```Send ,anonreply_"
+    		anonReport += "```Send ,anonreply "
             anonReport += message.channel.id;
-            anonReport += "_MESSAGE in <#135870064573284352> and I'll send MESSAGE back."
+            anonReport += " MESSAGE in <#135870064573284352> and I'll send MESSAGE back."
     		bot.channels.get("545737721612730368").send(anonReport);
             message.author.send("Thank you for your report!  It has been sent to the staff team for review.  When they have a reply, I'll pass it back to you!");
     		//bot.channels.get("254207242780409857").createMessageCollector
     	}
-        /*else if (bot.guilds.get("135864828240592896").members.has(message.author.id)) {
+        /*else if (!bot.guilds.get("135864828240592896").members.has(message.author.id)) {
             var exitReport = "Exit reply from ";
             exitReport += message.author.username;
             exitReport += ": ```";
             exitReport += message.content;
             exitReport += "```";
             bot.channels.get("545737721612730368").send(exitReport);
-            message.channel.send("Thank you for your feedback!  It has been passed onto the staff team for consideration.");
+            //message.channel.send("Thank you for your feedback!  It has been passed onto the staff team for consideration.");
         }*/
     }
     else {
-    	if (message.channel.id == 409818526313086976 || message.channel.id == 254207242780409857) {
+    	if (message.channel.id == "409818526313086976" || message.channel.id == "254207242780409857") {
     		if (lowmessage.indexOf(",help") == 0) {
     			if (lowmessage.indexOf("stat") != -1) {
     				message.channel.send("Send either `,stats NAME` or a message containing `NAME's stats` and either starting with `,` or containing `statsbot` and I will link you to their stats!  I accept some commonly used nicknames.  If you know of stats that I don't, please @ Ash K. with the username and link and they will be added.");
@@ -639,13 +766,23 @@ bot.on("message", function(message) {
             else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` and `coordinator`.")}
         }
     }
-    if (message.channel.id == 135870064573284352 && message.content.indexOf(",anonreply") == 0) {
+    if (message.channel.id == "135870064573284352" && message.content.indexOf(",anonreply") == 0) {
     	/*const anonReply = lowmessage.split("_");
     	bot.channels.get(anonReply[1]).send(anonReply[2]);*/
         const anonToReplyTo = message.content.split(" ");
-        bot.channels.get(anonToReplyTo[1]).send(message.content.split(",anonreply " + anonToReplyTo[1])[1]);
+        bot.channels.get(anonToReplyTo[1]).send(message.content.split(",anonreply " + anonToReplyTo[1])[1] + " ");
         message.channel.send("Your reply has been sent!");
     }
+    if (message.channel.id == "135870064573284352" && message.content.indexOf(",exittest") == 0) {
+        message.channel.send("Hello! I'm an automated message from the URPG's bot. We're sorry to see you leave the server; we want to improve the game/community experience for everyone, so if you'd be so kind as to reply to this DM with a couple quick answers we'd very much appreciate it - it will benefit the whole community! **We will not be sending you any further messages after this.**\n\n:star: Were there any particular reason(s) why you decided to leave?\n:star: Was there anything that you think should have been done differently or that didn't meet your expectations?\n\nThank you for your time!");
+            /*var exitReport = "Exit reply from ";
+            exitReport += message.author.username;
+            exitReport += ": ```";
+            exitReport += message.content;
+            exitReport += "```";
+            bot.channels.get("135870064573284352").send(exitReport);
+            //message.channel.send("Thank you for your feedback!  It has been passed onto the staff team for consideration.");
+    */}
 })
 
 bot.on("message", async function(message){
@@ -737,14 +874,14 @@ bot.on("messageDelete", async function(message) {
     //    bot.channels.get("254207242780409857").send(`Keys: ${testing}`); 
     if (message.guild === null) {return;}
     if (!message.guild.available) {return;}
-    if (message.guild.id != 135864828240592896) {return;}
+    if (message.guild.id != "135864828240592896") {return;}
     if (message.author.id == "461133571034316810") {return;}
     var channelToNotify = "545384090044727296";
-    if (message.channel.id == 261370056246689792) {channelToNotify = "136595690980638720";}
-    if (message.channel.id == 294334136355651584) {channelToNotify = "294333921200701450";}
-    if (message.channel.id == 384871044676190210) {channelToNotify = "384871044676190210";}
-    if (message.channel.id == 253364200955445248) {channelToNotify = "524695540995325971";}
-    if (message.channel.id == 254207242780409857) {channelToNotify = "254207242780409857";}
+    if (message.channel.id == "261370056246689792") {channelToNotify = "136595690980638720";}
+    if (message.channel.id == "294334136355651584") {channelToNotify = "294333921200701450";}
+    if (message.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
+    if (message.channel.id == "253364200955445248") {channelToNotify = "524695540995325971";}
+    if (message.channel.id == "254207242780409857") {channelToNotify = "254207242780409857";}
     const entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
     let user = ""
     var botDeleterNotFound = false;
@@ -753,10 +890,10 @@ bot.on("messageDelete", async function(message) {
       && (entry.createdTimestamp > (Date.now() - 5000))
       && (entry.extra.count >= 1)) {
         user = entry.executor.username;
-    } else { 
+    } else {
+        if (message.channel.id == "552715426979905547") {return;}
         user = message.author.username;
-        botDeleterNotFound = false;
-
+        botDeleterNotFound = true;
     }
     var deleteLog = "The following message by ";
     deleteLog += message.author.username;
@@ -793,16 +930,27 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
         bot.channels.get("545737721612730368").send(editLog);
         return;
     }
+    if (oldMessage.guild === null && !bot.guilds.get("135864828240592896").members.has(oldMessage.author.id)) {
+        var editLog = "An exit reply";
+        editLog += " from "
+        editLog += newMessage.channel.id;
+        editLog += " has been edited to say the following: ```";
+        editLog += newMessage.cleanContent;
+        editLog += "```";
+        bot.channels.get("545737721612730368").send(editLog);
+        return;
+    }
+    if (oldMessage.guild === null) {return;}
     if (!oldMessage.guild.available) {return;}
-    if (oldMessage.guild.id != 135864828240592896) {return;}
+    if (oldMessage.guild.id != "135864828240592896") {return;}
     if (oldMessage.author.bot) {return;}
-    if (diff <= .8 || oldMessage.channel.id == 261370056246689792 || oldMessage.channel.id == 294334136355651584) {
-    	if (newMessage.content.length > 5 || oldMessage.content.length > 5 || oldMessage.channel.id == 261370056246689792 || oldMessage.channel.id == 294334136355651584) {
-    		if (oldMessage.channel.id == 261370056246689792) {channelToNotify = "136595690980638720";}
-    		if (oldMessage.channel.id == 294334136355651584) {channelToNotify = "294333921200701450";}
-    		if (oldMessage.channel.id == 384871044676190210) {channelToNotify = "384871044676190210";}
-    		if (oldMessage.channel.id == 253364200955445248) {channelToNotify = "524695540995325971";}
-    		if (oldMessage.channel.id == 254207242780409857) {channelToNotify = "254207242780409857";}
+    if (diff <= .8 || oldMessage.channel.id == "261370056246689792" || oldMessage.channel.id == "294334136355651584") {
+    	if (newMessage.content.length > 5 || oldMessage.content.length > 5 || oldMessage.channel.id == "261370056246689792" || oldMessage.channel.id == "294334136355651584") {
+    		if (oldMessage.channel.id == "261370056246689792") {channelToNotify = "136595690980638720";}
+    		if (oldMessage.channel.id == "294334136355651584") {channelToNotify = "294333921200701450";}
+    		if (oldMessage.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
+    		if (oldMessage.channel.id == "253364200955445248") {channelToNotify = "524695540995325971";}
+    		if (oldMessage.channel.id == "254207242780409857") {channelToNotify = "254207242780409857";}
     		var deleteLog = newMessage.url;
     		/*deleteLog += " by ";
     		deleteLog += message.author.username;
@@ -849,6 +997,7 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
 bot.on("guildMemberRemove", function(member) {
     var left = bot.users.get(member.id)
     bot.channels.get("545384090044727296").send(`Member ${left.username} has left.`)
+    //member.send("Hello! I'm an automated message from the URPG's bot. We're sorry to see you leave the server; we want to improve the game/community experience for everyone, so if you'd be so kind as to reply to this DM with a couple quick answers we'd very much appreciate it - it will benefit the whole community! And we won't send you any further messages after this.\n*Were there any particular reason(s) why you decided to leave?\n*Was there anything that you think should have been done differently or that didn't meet your expectations?\nThank you for your time!");
 //    if (member.roles.prototype.size != 0) {}
 })
 
