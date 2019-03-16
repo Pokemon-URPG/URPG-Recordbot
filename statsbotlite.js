@@ -504,7 +504,7 @@ bot.on("message", function(message) {
     if(lowmessage.indexOf(",sr ") == 0)
     {
         var pokemon = lowmessage.split(",sr ")[1];
-        var fs = require('fs');
+        //var fs = require('fs');
         var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
         for(var x = 0; x < allpokes.length; x++)
         {
@@ -546,7 +546,7 @@ bot.on("message", function(message) {
     if(lowmessage.indexOf(",effective ") == 0)
     {
         var pokemon = lowmessage.split(",effective ")[1];
-        var fs = require('fs');
+        //var fs = require('fs');
         var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
         for(var x = 0; x < allpokes.length; x++)
         {
@@ -682,7 +682,7 @@ bot.on("message", function(message) {
             message.author.send("Thank you for your report!  It has been sent to the staff team for review.  When they have a reply, I'll pass it back to you!");
     		//bot.channels.get("254207242780409857").createMessageCollector
     	}
-        /*else if (!bot.guilds.get("135864828240592896").members.has(message.author.id)) {
+        else if (!bot.guilds.get("135864828240592896").members.has(message.author.id)) {
             var exitReport = "Exit reply from ";
             exitReport += message.author.username;
             exitReport += ": ```";
@@ -690,7 +690,7 @@ bot.on("message", function(message) {
             exitReport += "```";
             bot.channels.get("545737721612730368").send(exitReport);
             //message.channel.send("Thank you for your feedback!  It has been passed onto the staff team for consideration.");
-        }*/
+        }
     }
     else {
     	if (message.channel.id == "409818526313086976" || message.channel.id == "254207242780409857") {
