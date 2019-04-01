@@ -105,6 +105,8 @@ bot.on("message", function(message) {
         if (oldmessage.indexOf("trainer17's stats") != -1) { message.channel.send("\nhttp://kingofcybertron.proboards.com/thread/35/pokemon-team?page=1") }
         if ((oldmessage.indexOf("captaindude's stats") != -1) || (oldmessage.indexOf("cd's stats") != -1)) { message.channel.send("\nhttp://captaindudeurpg.proboards.com/board/1") }
         if ((oldmessage.indexOf("mandl27's stats") != -1) || (oldmessage.indexOf("mandl's stats") != -1) || (oldmessage.indexOf("mand's stats") != -1) || (oldmessage.indexOf("ml's stats") != -1)) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10294") }
+        if (oldmessage.indexOf("saur's stats") != -1) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=9871&pid=123349#pid123349") }
+        if (oldmessage.indexOf("sapahn's stats") != -1) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10208")}
     }
     if (message.content.indexOf(",rse ") == 0) {
         let movelist = ""
@@ -247,7 +249,92 @@ bot.on("message", function(message) {
         if(lowmessage == "e4") message.channel.send("6 vs 6\nSM Private Full or SM Private Preview\nItems Allowed\nSleep Clause\nFreeze Clause\nOHKO Clause\nAccuracy Clause\nEvasion Clause\nOne Legendary Pokemon allowed per team, or No Legendary Pokemon\nDefender’s Choice: Species Clause, Item Clause, Weather, Terrain");
         if(lowmessage == "ld") message.channel.send("4 VS. 4+\nSM Private Full or Preview\nItems Optional\nSleep, Freeze, OHKO, Accuracy, Evasion and Legend Clauses On\nMega, Z, Item and Species Clauses Optional\nStarting Weather and Terrain Optional");
         if(lowmessage == "ashrandoms") message.channel.send("6v6\nSM Public Box\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds On\nRandom Weather and Terrain\nRoll for first send\n\nAny changes?");
-        if(lowmessage == "fortree") message.channel.send("6v6\nSM Public Open\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First")
+        if(lowmessage == "fortree") message.channel.send("6v6\nSM Public Open\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First");
+        if(lowmessage == "randomize") {
+            var numPok = Math.floor(Math.random() * 5) + 2;
+            var gen = Math.floor(Math.random() * 3);
+            var format = Math.floor(Math.random() * 4);
+            var mode = Math.floor(Math.random() * 5);
+            var launcher = Math.floor(Math.random() * 2);
+            var sky = Math.floor(Math.random() * 2);
+            var inv = Math.floor(Math.random() * 2);
+            var slp = Math.floor(Math.random() * 2);
+            var frz = Math.floor(Math.random() * 2);
+            var ohko = Math.floor(Math.random() * 2);
+            var eva = Math.floor(Math.random() * 2);
+            var acc = Math.floor(Math.random() * 2);
+            var spc = Math.floor(Math.random() * 2);
+            var items = Math.floor(Math.random() * 2);
+            var itemc = Math.floor(Math.random() * 2);
+            var mega = Math.floor(Math.random() * 2);
+            var leg = Math.floor(Math.random() * 2);
+            var zmo = Math.floor(Math.random() * 2);
+            var weather = Math.floor(Math.random() * 6);
+            var terrain = Math.floor(Math.random() * 12);
+            var rules = numPok + "v" + numPok + "\n";
+            switch(gen) {
+                case 0: rules += "GSC\n"; break;
+                case 1: rules += "RSE\n"; break;
+                case 2: rules += "SM\n"; break;
+            }
+            if (mode != 0) {
+                rules += "Private\n";
+            }
+            else {
+                rules += "Public\n";
+            }
+            switch(format) {
+                case 0: rules += "Full\n"; break;
+                case 1: rules += "Open\n"; break;
+                case 2: rules += "Preview\n"; break;
+                case 3: rules += "Box\n"; break;
+            }
+            switch(mode) {
+                case 0: rules += "Single Battle\n"; break;
+                case 1: rules += "Single Battle\n"; break;
+                case 2: rules += "Double Battle\n"; break;
+                case 3: rules += "Triple Battle\n"; break;
+                case 4: rules += "Rotation Battle\n"; break;
+            }
+            if (items == 0) {rules += "Holds On\n";}
+            else {rules += "Holds Off\n";}
+            if (launcher == 0) {rules += "Wonder Launcher\n";}
+            if (sky == 0) {rules += "Sky Battle\n";}
+            if (inv == 0) {rules += "Inverse Battle\n";}
+            if (slp == 0) {rules += "Sleep Clause\n";}
+            if (frz == 0) {rules += "Freeze Clause\n";}
+            if (ohko == 0) {rules += "OHKO Clause\n";}
+            if (acc == 0) {rules += "Accuracy Clause\n";}
+            if (eva == 0) {rules += "Evasion Clause\n";}
+            if (itemc == 0 && items == 0) {rules += "Item Clause\n";}
+            if (spc == 0) {rules += "Species Clause\n";}
+            if ((items == 0 || leg != 0) && mega == 0) {rules += "Mega Clause\n";}
+            if (items == 0 && zmo == 0) {rules += "Z-Moves Clause\n";}
+            if (leg == 0) {rules += "Legends Clause\n";}
+            switch(weather) {
+                case 0: rules += "No Starting Weather\n"; break;
+                case 1: rules += "Sun\n"; break;
+                case 2: rules += "Rain\n"; break;
+                case 3: rules += "Sandstorm\n"; break;
+                case 4: rules += "Hail\n"; break;
+                case 5: rules += "Fog\n"; break;
+            }
+            switch(terrain) {
+                case 0: rules += "Building Terrain"; break;
+                case 1: rules += "Cave Terrain"; break;
+                case 2: rules += "Ice Terrain"; break;
+                case 3: rules += "Puddles Terrain"; break;
+                case 4: rules += "Badlands Terrain"; break;
+                case 5: rules += "Snow Terrain"; break;
+                case 6: rules += "Tall Grass Terrain"; break;
+                case 7: rules += "Water Terrain"; break;
+                case 8: rules += "Volcano Terrain"; break;
+                case 9: rules += "Burial Grounds Terrain"; break;
+                case 10: rules += "Soaring Terrain"; break;
+                case 11: rules += "Space Terrain"; break;
+            }
+            message.channel.send(rules);
+        }
     }
 
     if((lowmessage.indexOf(",") == 0) && (lowmessage.indexOf("contestlog") != -1))
@@ -634,6 +721,30 @@ bot.on("message", function(message) {
     if (lowmessage.indexOf(",mart") == 0) { message.channel.send("http://forum.pokemonurpg.com/showthread.php?tid=1682"); }
     if (lowmessage.indexOf(",berry") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1686"); }
 
+    if (lowmessage.indexOf(",") == 0 && lowmessage.indexOf("fairy") != -1 && message.channel.id == "409818526313086976" && !message.author.bot) {
+        message.channel.send("", {
+            embed: {
+                thumbnail: {
+                    url: 'https://cdn.discordapp.com/attachments/135864828240592896/559960120398839809/Fairy_Pokemon.gif'
+                }
+            }
+        })
+    }
+
+    /*if (lowmessage.indexOf("attachtest") != -1 && message.channel.id == "254207242780409857") {
+        //message.channel.send(message.attachments.map(r => `${r.id} : ${r.name}).join("\n"));
+        var attaches = message.attachments.array();
+        var attachnames = "";
+        for (i = 0; i < attaches.length; i++) {
+            if (i == attaches.length -1 && i != 0) {attachnames += "and ";}
+            attachnames += attaches[i].filename;
+            if (i != attaches.length -1 && attaches.length != 2) {attachnames += ", ";}
+            if (i != attaches.length -1 && attaches.length == 2) {attachnames += " ";}
+        }
+        if (attaches.length > 1) {message.channel.send("This message has attachments named " + attachnames);}
+        if (attaches.length == 1) {message.channel.send("This message has an attachment named " + attachnames);}
+    }*/
+
     if (message.guild === null) {
     	if (lowmessage.indexOf("noreply:") == 0 || lowmessage.indexOf("no reply:") == 0) {
     		var anonReport = "Anonymous Report:```"
@@ -713,6 +824,9 @@ bot.on("message", function(message) {
                 else if (lowmessage.indexOf("mention") != -1) {
                     message.channel.send("`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `mentionarbiters`: Pings the applicable role with a message.  Doing so requires either being a senior of that section or the permission to mention everyone.\n`,mentionffa`: Pings Forum FFA role with a message.  Doing so requires either Forum FFA Host role or mention everyone permission.\n`,mentionmembers`: Pings member role with a message.  Doing so requires mention everyone permission.")
                 }
+                else if (lowmessage.indexOf("staff") != -1 || lowmessage.indexOf("mod") != -1 || lowmessage.indexOf("auth") != -1 || lowmessage.indexOf("restrict") != -1) {
+                    message.channel.send("**Restricted Commands:**\n`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `mentionarbiters`: Pings the applicable role with a message.  Doing so requires either being a senior of that section or the permission to mention everyone.\n`,mentionffa`: Pings Forum FFA role with a message.  Doing so requires either Forum FFA Host role or mention everyone permission.\n`,mentionmembers`: Pings member role with a message.  Doing so requires mention everyone permission.\n`,anonreply # message`: Sends a reply to the `,reply:` anonymous report with the given number.  Must be issued in the staff channel.\n`,archive`: Archives the channel, putting it in the archive category and removes access to all non-moderators.  Requires Manage Channels permission.\n`,records available`: Restarts me!  Requires Manage Server permission (and only works if I'm actually around to see your request).")
+                }
 	    		else if (lowmessage.indexOf(",help help") == 0) {
     				message.channel.send("Send `,help` to get the general help command or send `,help COMMAND` for more info on how to use `COMMAND`.  Please note that all help commands only work in <#409818526313086976> to reduce spam.")
     			}
@@ -722,8 +836,8 @@ bot.on("message", function(message) {
     			}
     		}
             /*if (message.author.id == "135999597947387904" && lowmessage.indexOf(",roles") == 0) {
-                var rolesList = `message.guild.roles.map(role r => ${r.id} : ${r.name}).join("\n")`;
-                message.channel.send(`${rolesList}`);
+                //var rolesList = `message.guild.roles.map(role r => ${r.id} : ${r.name}).join("\n")`;
+                message.channel.send(message.guild.roles.find(r=>r.name === "Death Eater").id);
             }*/
     	}
     	/*if (lowmessage.indexOf("hippopotomonstrosesquipedaliophobia") != -1 && !message.author.bot) {
@@ -765,6 +879,13 @@ bot.on("message", function(message) {
             }
             else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` and `coordinator`.")}
         }
+        if (message.channel.id == "401543302710689793" && lowmessage.indexOf("!!") != lowmessage.lastIndexOf("!!")) {
+            var cardName = message.cleanContent.split("!!")[1];
+            var cardSet = message.cleanContent.split("!!") [2];
+            if (cardSet.length > 4 || cardSet.length < 2) {return;}
+            cardName = cardName.replace(/ /g, "%2B").replace(/,/g, "%252C").replace(/\./g, "%252E").replace(/û/g, "u");
+            message.channel.send("https://cdn1.mtggoldfish.com/images/gf/" + cardName + "%2B%255B" + cardSet + "%255D.jpg");
+        }
     }
     if (message.channel.id == "135870064573284352" && message.content.indexOf(",anonreply") == 0) {
     	/*const anonReply = lowmessage.split("_");
@@ -773,7 +894,7 @@ bot.on("message", function(message) {
         bot.channels.get(anonToReplyTo[1]).send(message.content.split(",anonreply " + anonToReplyTo[1])[1] + " ");
         message.channel.send("Your reply has been sent!");
     }
-    if (message.channel.id == "135870064573284352" && message.content.indexOf(",exittest") == 0) {
+    /*if (message.channel.id == "135870064573284352" && message.content.indexOf(",exittest") == 0) {
         message.channel.send("Hello! I'm an automated message from the URPG's bot. We're sorry to see you leave the server; we want to improve the game/community experience for everyone, so if you'd be so kind as to reply to this DM with a couple quick answers we'd very much appreciate it - it will benefit the whole community! **We will not be sending you any further messages after this.**\n\n:star: Were there any particular reason(s) why you decided to leave?\n:star: Was there anything that you think should have been done differently or that didn't meet your expectations?\n\nThank you for your time!");
             /*var exitReport = "Exit reply from ";
             exitReport += message.author.username;
@@ -782,7 +903,33 @@ bot.on("message", function(message) {
             exitReport += "```";
             bot.channels.get("135870064573284352").send(exitReport);
             //message.channel.send("Thank you for your feedback!  It has been passed onto the staff team for consideration.");
-    */}
+    }*/
+    if (message.content.indexOf("!") == 0 && message.content.indexOf("!!") != 0) {
+        var d = new Date();
+        if (d.getMonth() != 3 || d.getDate() != 1) {
+            if (d.getMonth() != 2 || d.getDate() != 31 || d.getHours() < 19) {return;}
+        }
+        var foolsReply = Math.floor(Math.random() * 7);
+        switch(foolsReply)
+        {
+            case 0: message.channel.send("It's always Dicebot, isn't it?"); break;
+            case 1: message.channel.send("Asking the mechazard *again*?"); break;
+            case 2: message.channel.send("You know I'm right here too!"); break;
+            case 3: message.channel.send("*Another* request for *that* one?"); break;
+            case 4: message.channel.send("Just remember, Dicebot, your days are numbered..."); break;
+            case 5: message.channel.send("I'm watching you, Dicebot..."); break;
+            case 6: message.channel.send("I can randomize things too, you know?  Whole rulesets at a time!"); break;
+        }
+    }
+    /*if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
+        if (message.channel.name.indexOf("war") != 0) {
+            bot.channels.get("386808630709714954").send(message.member.nickname + ": " + message.cleanContent);
+        }
+        if (message.channel.name.indexOf("boss") != 0) {
+            bot.channels.get("386804780615335947").send(message.member.nickname + ": " + message.cleanContent);
+        }
+        if (message.content.indexOf(",end") == 0 && message.member.roles.has("561688333609074730")) {message.channel.delete();}
+    }*/
 })
 
 bot.on("message", async function(message){
@@ -837,13 +984,51 @@ bot.on("message", async function(message){
     }
     if (lowmessage == ",archive" && message.member.hasPermission("MANAGE_CHANNELS")) {
         await message.channel.setParent(bot.guilds.get("135864828240592896").channels.get("432291722492379136"));
-        message.channel.lockPermissions();
+        //message.channel.lockPermissions();
+        await message.channel.permissionOverwrites.deleteAll();
+        message.channel.overwritePermissions("135865553423302657", [{
+            READ_MESSAGES: true
+        }])
     }
     if (lowmessage.indexOf(",records available") == 0 && message.member.hasPermission("MANAGE_SERVER")) {
         await message.channel.send("Be right back!");
         await bot.destroy();
         await bot.login(auth.token);
         message.channel.send("I'm back!  Did you miss me?");
+    }
+    if (lowmessage.indexOf(",contestboss") == 0 && message.member.roles.has("561688333609074730")) {
+        var bossroom = await message.guild.createChannel("contest-boss", 'text', [{
+            id: message.guild.id,
+            deny: ['READ_MESSAGES']
+        }])
+        bossroom.setParent("530600551763673088");
+        bossroom.overwritePermissions(message, {
+            READ_MESSAGES: true,
+            MANAGE_PERMISSIONS: true
+        })
+        var warroom = await message.guild.createChannel("war-room", 'text', [{
+            id: message.guild.id,
+            deny: ['READ_MESSAGES']
+        }])
+        warroom.setParent("530600551763673088");
+        warroom.overwritePermissions(message, {
+            READ_MESSAGES: true,
+            MANAGE_PERMISSIONS: true
+        })
+    }
+    if (message.channel.id == "135870064573284352" && lowmessage.indexOf(",newdiscussion") == 0) {
+        var newChannel = await message.guild.createChannel(message.content.split(" ")[1], 'text', [{
+            id: message.guild.id,
+            deny: ['READ_MESSAGES']
+        }]);
+        newChannel.setParent("553338242401959966");
+        newChannel.overwritePermissions("135865553423302657", {
+            READ_MESSAGES: true
+        })
+        newChannel.overwritePermissions("135868852092403713", {
+            READ_MESSAGES: true
+        })
+        message.channel.send("Channel <#" + newChannel.id + "> successfully created!");
     }
 })
 /* var logChannel = bot.channels.get("254207242780409857")
@@ -882,6 +1067,14 @@ bot.on("messageDelete", async function(message) {
     if (message.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
     if (message.channel.id == "253364200955445248") {channelToNotify = "524695540995325971";}
     if (message.channel.id == "254207242780409857") {channelToNotify = "254207242780409857";}
+    if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
+        if (message.channel.name.indexOf("war") != 0) {
+            channelToNotify = "386808630709714954";
+        }
+        if (message.channel.name.indexOf("boss") != 0) {
+            channelToNotify = "386804780615335947";
+        }
+    }
     const entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
     let user = ""
     var botDeleterNotFound = false;
@@ -895,21 +1088,41 @@ bot.on("messageDelete", async function(message) {
         user = message.author.username;
         botDeleterNotFound = true;
     }
-    var deleteLog = "The following message by ";
+    var deleteLog = ""
+    if (message.cleanContent != "") {
+        deleteLog += "The following";
+    } else {
+        deleteLog += "A textless";
+    }
+    deleteLog += " message by ";
     deleteLog += message.author.username;
+    var attachmessage = "";
+    var attaches = message.attachments.array();
+    var attachnames = "";
+    for (i = 0; i < attaches.length; i++) {
+        if (i == attaches.length -1 && i != 0) {attachnames += "and ";}
+        attachnames += attaches[i].proxyURL
+        if (i != attaches.length -1 && attaches.length != 2) {attachnames += ", ";}
+        if (i != attaches.length -1 && attaches.length == 2) {attachnames += " ";}
+    }
+    if (attaches.length > 1) {attachmessage = " with attachments " + attachnames;}
+    if (attaches.length == 1) {attachmessage = " with an attachment " + attachnames;}
+    deleteLog += attachmessage;
     deleteLog += " was deleted from <#";
     deleteLog += message.channel.id;
     if (message.author.bot && botDeleterNotFound) {
-        deleteLog += ">: ```"
+        deleteLog += ">"
     } else {
         deleteLog += "> by ";
         deleteLog += user;
-        deleteLog += ": ```";
     }
-    deleteLog += message.cleanContent;
-    deleteLog += "```";
+    if (message.cleanContent != "") {
+        deleteLog += ": ```";
+        deleteLog += message.cleanContent;
+        deleteLog += "```";
+    }
     //channelToNotify = "254207242780409857";
-    bot.channels.get(channelToNotify).send (deleteLog);
+    bot.channels.get(channelToNotify).send(deleteLog);
     /*if (channelOfMessage == 261370056246689792) { bot.channels.get("136595690980638720").send("Someone deleted a message from <#261370056246689792>.") } else {
         bot.channels.get("545384090044727296").send(`A <#${channelOfMessage}> message has been deleted.`)
     }*/
@@ -951,7 +1164,21 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
     		if (oldMessage.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
     		if (oldMessage.channel.id == "253364200955445248") {channelToNotify = "524695540995325971";}
     		if (oldMessage.channel.id == "254207242780409857") {channelToNotify = "254207242780409857";}
-    		var deleteLog = newMessage.url;
+            if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
+                if (message.channel.name.indexOf("war") != 0) {
+                    channelToNotify = "386808630709714954";
+                }
+                if (message.channel.name.indexOf("boss") != 0) {
+                    channelToNotify = "386804780615335947";
+                }
+            }
+    		var deleteLog = ""
+            if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
+                deleteLog += newMessage.member.nickname;
+                deleteLog += "'s message saying \"";
+                deleteLog += newMessage.cleanContent;
+            }
+            else {deleteLog += newMessage.url;}
     		/*deleteLog += " by ";
     		deleteLog += message.author.username;
     		deleteLog += " was deleted from <#";
@@ -961,7 +1188,7 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
     		deleteLog += "```";
     		//deleteLog += diff;
     		//channelToNotify = "254207242780409857";
-    		bot.channels.get(channelToNotify).send (deleteLog);
+    		bot.channels.get(channelToNotify).send(deleteLog);
     	}
     }
     /*if (channelOfMessage == 261370056246689792) { bot.channels.get("136595690980638720").send("Someone deleted a message from <#261370056246689792>.") } else {
@@ -997,7 +1224,7 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
 bot.on("guildMemberRemove", function(member) {
     var left = bot.users.get(member.id)
     bot.channels.get("545384090044727296").send(`Member ${left.username} has left.`)
-    //member.send("Hello! I'm an automated message from the URPG's bot. We're sorry to see you leave the server; we want to improve the game/community experience for everyone, so if you'd be so kind as to reply to this DM with a couple quick answers we'd very much appreciate it - it will benefit the whole community! And we won't send you any further messages after this.\n*Were there any particular reason(s) why you decided to leave?\n*Was there anything that you think should have been done differently or that didn't meet your expectations?\nThank you for your time!");
+    member.send("Hello! I'm an automated message from the URPG's bot. We're sorry to see you leave the server; we want to improve the game/community experience for everyone, so if you'd be so kind as to reply to this DM with a couple quick answers we'd very much appreciate it - it will benefit the whole community! **We will not be sending you any further messages after this.**\n\n:star: Were there any particular reason(s) why you decided to leave?\n:star: Was there anything that you think should have been done differently or that didn't meet your expectations?\n\nThank you for your time!");
 //    if (member.roles.prototype.size != 0) {}
 })
 
