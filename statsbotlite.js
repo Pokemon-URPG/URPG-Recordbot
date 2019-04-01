@@ -921,7 +921,7 @@ bot.on("message", function(message) {
             case 6: message.channel.send("I can randomize things too, you know?  Whole rulesets at a time!"); break;
         }
     }
-    /*if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
+    if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
         if (message.channel.name.indexOf("war") != 0) {
             bot.channels.get("386808630709714954").send(message.member.nickname + ": " + message.cleanContent);
         }
@@ -929,7 +929,7 @@ bot.on("message", function(message) {
             bot.channels.get("386804780615335947").send(message.member.nickname + ": " + message.cleanContent);
         }
         if (message.content.indexOf(",end") == 0 && message.member.roles.has("561688333609074730")) {message.channel.delete();}
-    }*/
+    }
 })
 
 bot.on("message", async function(message){
@@ -1001,8 +1001,8 @@ bot.on("message", async function(message){
             id: message.guild.id,
             deny: ['READ_MESSAGES']
         }])
-        bossroom.setParent("530600551763673088");
-        bossroom.overwritePermissions(message, {
+        await bossroom.setParent("530600551763673088");
+        await bossroom.overwritePermissions(message, {
             READ_MESSAGES: true,
             MANAGE_PERMISSIONS: true
         })
@@ -1010,8 +1010,8 @@ bot.on("message", async function(message){
             id: message.guild.id,
             deny: ['READ_MESSAGES']
         }])
-        warroom.setParent("530600551763673088");
-        warroom.overwritePermissions(message, {
+        await warroom.setParent("530600551763673088");
+        await warroom.overwritePermissions(message, {
             READ_MESSAGES: true,
             MANAGE_PERMISSIONS: true
         })
@@ -1021,11 +1021,11 @@ bot.on("message", async function(message){
             id: message.guild.id,
             deny: ['READ_MESSAGES']
         }]);
-        newChannel.setParent("553338242401959966");
-        newChannel.overwritePermissions("135865553423302657", {
+        await newChannel.setParent("553338242401959966");
+        await newChannel.overwritePermissions("135865553423302657", {
             READ_MESSAGES: true
         })
-        newChannel.overwritePermissions("135868852092403713", {
+        await newChannel.overwritePermissions("135868852092403713", {
             READ_MESSAGES: true
         })
         message.channel.send("Channel <#" + newChannel.id + "> successfully created!");
