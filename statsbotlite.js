@@ -12,7 +12,7 @@ logger.add(logger.transports.Console, {
 })
 logger.level = "debug"
 // Initialize Discord Bot
-var bot = new Discord.Client()
+var bot = new Discord.Client({ disableEveryone: true })
 
 bot.on("ready", function() {
     logger.info("Connected")
@@ -877,14 +877,45 @@ bot.on("message", function(message) {
                     message.channel.send("Coordinator role added!");
                 }
             }
-            else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` and `coordinator`.")}
+            else if (lowmessage.indexOf(",role forumffa") == 0) {
+                if (message.member.roles.has("507342482988859402")) {
+                    message.member.removeRole(message.guild.roles.get("507342482988859402"));
+                    message.channel.send("Forum FFA role removed!");
+                }
+                else {
+                    message.member.addRole(message.guild.roles.get("507342482988859402"));
+                    message.channel.send("Forum FFA role added!");
+                }
+            }
+            else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` (access to the chat for Sword/Shield spoilers), `coordinator` (being pinged for contests looking for players), and `forumffa` (being pinged for Forum FFAs starting or turns being posted).")}
         }
         if (message.channel.id == "401543302710689793" && lowmessage.indexOf("!!") != lowmessage.lastIndexOf("!!")) {
             var cardName = message.cleanContent.split("!!")[1];
             var cardSet = message.cleanContent.split("!!") [2];
             if (cardSet.length > 4 || cardSet.length < 2) {return;}
-            cardName = cardName.replace(/ /g, "%2B").replace(/,/g, "%252C").replace(/\./g, "%252E").replace(/û/g, "u");
+            cardName = cardName.replace(/ /g, "%2B").replace(/,/g, "%252C").replace(/\./g, "%252E").replace(/û/g, "u").replace(/\'/g, "%2527").replace(/`/g, "%2527");
             message.channel.send("https://cdn1.mtggoldfish.com/images/gf/" + cardName + "%2B%255B" + cardSet + "%255D.jpg");
+        }
+        if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
+            if (message.channel.name.indexOf("war") != -1) {
+                bot.channels.get("386808630709714954").send(message.member.nickname + ": " + message.cleanContent);
+            }
+            if (message.channel.name.indexOf("boss") != -1) {
+                bot.channels.get("386804780615335947").send(message.member.nickname + ": " + message.cleanContent);
+            }
+            if (message.content.indexOf(",end") == 0 && message.member.roles.has("561688333609074730")) {message.channel.delete();}
+        }
+        if (message.channel.name == "judge-test") {
+            bot.channels.get("294334136355651584").send(message.member.nickname + ": " + message.cleanContent);
+            if (message.content.indexOf(",end") == 0 && message.member.roles.has("358435669372305408")) {message.channel.delete();}
+        }
+        if (message.channel.name == "ref-test") {
+            bot.channels.get("261370056246689792").send(message.member.nickname + ": " + message.cleanContent);
+            if (message.content.indexOf(",end") == 0 && message.member.roles.has("358431855743336448")) {message.channel.delete();}
+        }
+        if (message.channel.name == "ranger-test") {
+            bot.channels.get("253364200955445248").send(message.member.nickname + ": " + message.cleanContent);
+            if (message.content.indexOf(",end") == 0 && message.member.roles.has("419636474825277450")) {message.channel.delete();}
         }
     }
     if (message.channel.id == "135870064573284352" && message.content.indexOf(",anonreply") == 0) {
@@ -909,7 +940,7 @@ bot.on("message", function(message) {
         if (d.getMonth() != 3 || d.getDate() != 1) {
             if (d.getMonth() != 2 || d.getDate() != 31 || d.getHours() < 19) {return;}
         }
-        var foolsReply = Math.floor(Math.random() * 7);
+        var foolsReply = Math.floor(Math.random() * 14);
         switch(foolsReply)
         {
             case 0: message.channel.send("It's always Dicebot, isn't it?"); break;
@@ -921,15 +952,6 @@ bot.on("message", function(message) {
             case 6: message.channel.send("I can randomize things too, you know?  Whole rulesets at a time!"); break;
         }
     }
-    if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
-        if (message.channel.name.indexOf("war") != 0) {
-            bot.channels.get("386808630709714954").send(message.member.nickname + ": " + message.cleanContent);
-        }
-        if (message.channel.name.indexOf("boss") != 0) {
-            bot.channels.get("386804780615335947").send(message.member.nickname + ": " + message.cleanContent);
-        }
-        if (message.content.indexOf(",end") == 0 && message.member.roles.has("561688333609074730")) {message.channel.delete();}
-    }
 })
 
 bot.on("message", async function(message){
@@ -940,53 +962,63 @@ bot.on("message", async function(message){
     if (lowmessage.indexOf(",mentionrefs") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("358431855743336448"))) {
         await bot.guilds.get("135864828240592896").roles.get("243949285438259201").setMentionable(true);
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("243949285438259201")}${lowmessage.split(",mentionrefs")[1]}`);
-        bot.guilds.get("135864828240592896").roles.get("243949285438259201").setMentionable(false);
+        await bot.guilds.get("135864828240592896").roles.get("243949285438259201").setMentionable(false);
     }
     if (lowmessage.indexOf(",mentionjudges") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("358435669372305408"))) {
         await bot.guilds.get("135864828240592896").roles.get("243950906683424768").setMentionable(true);
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("243950906683424768")}${lowmessage.split(",mentionjudges")[1]}`);
-        bot.guilds.get("135864828240592896").roles.get("243950906683424768").setMentionable(false);
+        await bot.guilds.get("135864828240592896").roles.get("243950906683424768").setMentionable(false);
     }
     if (lowmessage.indexOf(",mentioncurators") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("419775555488186369"))) {
         await bot.guilds.get("135864828240592896").roles.get("312119111750647809").setMentionable(true);
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("312119111750647809")}${lowmessage.split(",mentioncurators")[1]}`);
-        bot.guilds.get("135864828240592896").roles.get("312119111750647809").setMentionable(false);
+        await bot.guilds.get("135864828240592896").roles.get("312119111750647809").setMentionable(false);
     }
     if (lowmessage.indexOf(",mentiongraders") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("419636334982987777"))) {
         await bot.guilds.get("135864828240592896").roles.get("312118803616235523").setMentionable(true);
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("312118803616235523")}${lowmessage.split(",mentiongraders")[1]}`);
-        bot.guilds.get("135864828240592896").roles.get("312118803616235523").setMentionable(false);
+        await bot.guilds.get("135864828240592896").roles.get("312118803616235523").setMentionable(false);
     }
     if (lowmessage.indexOf(",mentionrangers") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("419636474825277450"))) {
         await bot.guilds.get("135864828240592896").roles.get("312119050484449280").setMentionable(true);
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("312119050484449280")}${lowmessage.split(",mentionrangers")[1]}`);
-        bot.guilds.get("135864828240592896").roles.get("312119050484449280").setMentionable(false);
+        await bot.guilds.get("135864828240592896").roles.get("312119050484449280").setMentionable(false);
     }
     if (lowmessage.indexOf(",mentionarbiters") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("533356631455694849"))) {
         await bot.guilds.get("135864828240592896").roles.get("533356018005180416").setMentionable(true);
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("533356018005180416")}${lowmessage.split(",mentionarbiters")[1]}`);
-        bot.guilds.get("135864828240592896").roles.get("533356018005180416").setMentionable(false);
+        await bot.guilds.get("135864828240592896").roles.get("533356018005180416").setMentionable(false);
     }
     if (lowmessage.indexOf(",mentionffa") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("507342993028808707"))) {
         await bot.guilds.get("135864828240592896").roles.get("507342482988859402").setMentionable(true);
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("507342482988859402")}${lowmessage.split(",mentionarbiters")[1]}`);
-        bot.guilds.get("135864828240592896").roles.get("507342482988859402").setMentionable(false);
+        await bot.guilds.get("135864828240592896").roles.get("507342482988859402").setMentionable(false);
     }
     if (lowmessage.indexOf(",mentionmembers") == 0 && message.member.hasPermission("MENTION_EVERYONE")) {
         await bot.guilds.get("135864828240592896").roles.get("456993685679243286").setMentionable(true);
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("456993685679243286")}${lowmessage.split(",mentionarbiters")[1]}`);
-        bot.guilds.get("135864828240592896").roles.get("456993685679243286").setMentionable(false);
+        await bot.guilds.get("135864828240592896").roles.get("456993685679243286").setMentionable(false);
     }
     if (lowmessage.indexOf(",mentioncoordinators") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("243950906683424768"))) {
         await bot.guilds.get("135864828240592896").roles.get("552232839861633046").setMentionable(true);
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("552232839861633046")}${lowmessage.split(",mentioncoordinators")[1]}`);
-        bot.guilds.get("135864828240592896").roles.get("552232839861633046").setMentionable(false);
+        await bot.guilds.get("135864828240592896").roles.get("552232839861633046").setMentionable(false);
+    }
+    if (lowmessage.indexOf(",mentionleaders") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("358431855743336448"))) {
+        await bot.guilds.get("135864828240592896").roles.get("444947885893746698").setMentionable(true);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("444947885893746698")}${lowmessage.split(",mentionleaders")[1]}`);
+        await bot.guilds.get("135864828240592896").roles.get("444947885893746698").setMentionable(false);
+    }
+    if (lowmessage.indexOf(",mentionelites") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("358431855743336448"))) {
+        await bot.guilds.get("135864828240592896").roles.get("444947868835381263").setMentionable(true);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("444947868835381263")}${lowmessage.split(",mentionelites")[1]}`);
+        await bot.guilds.get("135864828240592896").roles.get("444947868835381263").setMentionable(false);
     }
     if (lowmessage == ",archive" && message.member.hasPermission("MANAGE_CHANNELS")) {
         await message.channel.setParent(bot.guilds.get("135864828240592896").channels.get("432291722492379136"));
         //message.channel.lockPermissions();
         await message.channel.permissionOverwrites.deleteAll();
-        message.channel.overwritePermissions("135865553423302657", [{
+        await message.channel.overwritePermissions("135865553423302657", [{
             READ_MESSAGES: true
         }])
     }
@@ -994,7 +1026,7 @@ bot.on("message", async function(message){
         await message.channel.send("Be right back!");
         await bot.destroy();
         await bot.login(auth.token);
-        message.channel.send("I'm back!  Did you miss me?");
+        await message.channel.send("I'm back!  Did you miss me?");
     }
     if (lowmessage.indexOf(",contestboss") == 0 && message.member.roles.has("561688333609074730")) {
         var bossroom = await message.guild.createChannel("contest-boss", 'text', [{
@@ -1002,19 +1034,76 @@ bot.on("message", async function(message){
             deny: ['READ_MESSAGES']
         }])
         await bossroom.setParent("530600551763673088");
-        await bossroom.overwritePermissions(message, {
+        await bossroom.overwritePermissions("561688333609074730", {
             READ_MESSAGES: true,
-            MANAGE_PERMISSIONS: true
+            MANAGE_ROLES: true
         })
         var warroom = await message.guild.createChannel("war-room", 'text', [{
             id: message.guild.id,
             deny: ['READ_MESSAGES']
         }])
         await warroom.setParent("530600551763673088");
-        await warroom.overwritePermissions(message, {
+        await warroom.overwritePermissions("561688333609074730", {
             READ_MESSAGES: true,
-            MANAGE_PERMISSIONS: true
+            MANAGE_ROLES: true
         })
+        /*var aurors = message.mentions.members.array();
+        for (i = 0; i < aurors.size; i++) {
+            await warroom.overwritePermissions(aurors[i], {
+                READ_MESSAGES: true
+            })
+            await bossroom.overwritePermissions(aurors[i], {
+                READ_MESSAGES: true
+            })
+        }*/
+    }
+    if (lowmessage.indexOf(",judgetest") == 0 && message.member.roles.has("358435669372305408")) {
+        var testroom = await message.guild.createChannel("judge-test", 'text', [{
+            id: message.guild.id,
+            deny: ['READ_MESSAGES']
+        }])
+        await testroom.setParent("376809774282571779");
+        await testroom.overwritePermissions("358435669372305408", {
+            READ_MESSAGES: true,
+            MANAGE_ROLES: true
+        })
+        if (message.mentions.members.length != 0) {
+            await testroom.overwritePermissions(message.mentions.members.first(), {
+                READ_MESSAGES: true
+            })
+        }
+    }
+    if (lowmessage.indexOf(",reftest") == 0 && message.member.roles.has("358431855743336448")) {
+        var testroom = await message.guild.createChannel("ref-test", 'text', [{
+            id: message.guild.id,
+            deny: ['READ_MESSAGES']
+        }])
+        await testroom.setParent("376809774282571779");
+        await testroom.overwritePermissions("358431855743336448", {
+            READ_MESSAGES: true,
+            MANAGE_ROLES: true
+        })
+        if (message.mentions.members.length != 0) {
+            await testroom.overwritePermissions(message.mentions.members.first(), {
+                READ_MESSAGES: true
+            })
+        }
+    }
+    if (lowmessage.indexOf(",rangertest") == 0 && message.member.roles.has("419636474825277450")) {
+        var testroom = await message.guild.createChannel("ranger-test", 'text', [{
+            id: message.guild.id,
+            deny: ['READ_MESSAGES']
+        }])
+        await testroom.setParent("376809774282571779");
+        await testroom.overwritePermissions("419636474825277450", {
+            READ_MESSAGES: true,
+            MANAGE_ROLES: true
+        })
+        if (message.mentions.members.length != 0) {
+            await testroom.overwritePermissions(message.mentions.members.first(), {
+                READ_MESSAGES: true
+            })
+        }
     }
     if (message.channel.id == "135870064573284352" && lowmessage.indexOf(",newdiscussion") == 0) {
         var newChannel = await message.guild.createChannel(message.content.split(" ")[1], 'text', [{
@@ -1067,11 +1156,13 @@ bot.on("messageDelete", async function(message) {
     if (message.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
     if (message.channel.id == "253364200955445248") {channelToNotify = "524695540995325971";}
     if (message.channel.id == "254207242780409857") {channelToNotify = "254207242780409857";}
+    if (message.channel.name == "judge-test") {channelToNotify = "294334136355651584";}
+    if (message.channel.name == "ref-test") {channelToNotify = "261370056246689792";}
     if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
-        if (message.channel.name.indexOf("war") != 0) {
+        if (message.channel.name.indexOf("war") != -1) {
             channelToNotify = "386808630709714954";
         }
-        if (message.channel.name.indexOf("boss") != 0) {
+        if (message.channel.name.indexOf("boss") != -1) {
             channelToNotify = "386804780615335947";
         }
     }
@@ -1157,35 +1248,41 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
     if (!oldMessage.guild.available) {return;}
     if (oldMessage.guild.id != "135864828240592896") {return;}
     if (oldMessage.author.bot) {return;}
-    if (diff <= .8 || oldMessage.channel.id == "261370056246689792" || oldMessage.channel.id == "294334136355651584") {
-    	if (newMessage.content.length > 5 || oldMessage.content.length > 5 || oldMessage.channel.id == "261370056246689792" || oldMessage.channel.id == "294334136355651584") {
+    if (diff <= .8 || oldMessage.channel.id == "261370056246689792" || oldMessage.channel.id == "294334136355651584" || oldMessage.channel.name == "judge-test" || oldMessage.channel.name == "ref-test") {
+    	if (newMessage.content.length > 5 || oldMessage.content.length > 5 || oldMessage.channel.id == "261370056246689792" || oldMessage.channel.id == "294334136355651584" || oldMessage.channel.name == "judge-test" || oldMessage.channel.name == "ref-test") {
     		if (oldMessage.channel.id == "261370056246689792") {channelToNotify = "136595690980638720";}
     		if (oldMessage.channel.id == "294334136355651584") {channelToNotify = "294333921200701450";}
     		if (oldMessage.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
     		if (oldMessage.channel.id == "253364200955445248") {channelToNotify = "524695540995325971";}
     		if (oldMessage.channel.id == "254207242780409857") {channelToNotify = "254207242780409857";}
-            if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
-                if (message.channel.name.indexOf("war") != 0) {
+            if (oldMessage.channel.name == "judge-test") {channelToNotify = "294334136355651584";}
+            if (oldMessage.channel.name == "ref-test") {channelToNotify = "261370056246689792";}
+            if (newMessage.channel.parentID == "530600551763673088" && newMessage.channel.id != "386804780615335947" && newMessage.channel.id != "386808630709714954") {
+                if (newMessage.channel.name.indexOf("war") != -1) {
                     channelToNotify = "386808630709714954";
                 }
-                if (message.channel.name.indexOf("boss") != 0) {
+                if (newMessage.channel.name.indexOf("boss") != -1) {
                     channelToNotify = "386804780615335947";
                 }
             }
     		var deleteLog = ""
-            if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
+            if ((newMessage.channel.parentID == "530600551763673088" && newMessage.channel.id != "386804780615335947" && newMessage.channel.id != "386808630709714954") || oldMessage.channel.name == "judge-test" || oldMessage.channel.name == "ref-test") {
                 deleteLog += newMessage.member.nickname;
                 deleteLog += "'s message saying \"";
                 deleteLog += newMessage.cleanContent;
+                deleteLog += "\"";
             }
-            else {deleteLog += newMessage.url;}
+            else { deleteLog += newMessage.url; }
     		/*deleteLog += " by ";
     		deleteLog += message.author.username;
     		deleteLog += " was deleted from <#";
     		deleteLog += message.channel.id;*/
-    		deleteLog += " used to say: ```";
-    		deleteLog += oldMessage.cleanContent;
-    		deleteLog += "```";
+    		if (oldMessage.cleanContent != "") {
+                deleteLog += " used to say: ```";
+    		    deleteLog += oldMessage.cleanContent;
+    		    deleteLog += "```";
+            }
+            else { deleteLog += " was previously textless."; }
     		//deleteLog += diff;
     		//channelToNotify = "254207242780409857";
     		bot.channels.get(channelToNotify).send(deleteLog);
@@ -1224,7 +1321,7 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
 bot.on("guildMemberRemove", function(member) {
     var left = bot.users.get(member.id)
     bot.channels.get("545384090044727296").send(`Member ${left.username} has left.`)
-    member.send("Hello! I'm an automated message from the URPG's bot. We're sorry to see you leave the server; we want to improve the game/community experience for everyone, so if you'd be so kind as to reply to this DM with a couple quick answers we'd very much appreciate it - it will benefit the whole community! **We will not be sending you any further messages after this.**\n\n:star: Were there any particular reason(s) why you decided to leave?\n:star: Was there anything that you think should have been done differently or that didn't meet your expectations?\n\nThank you for your time!");
+    //member.send("Hello! I'm an automated message from the URPG's bot. We're sorry to see you leave the server; we want to improve the game/community experience for everyone, so if you'd be so kind as to reply to this DM with a couple quick answers we'd very much appreciate it - it will benefit the whole community! **We will not be sending you any further messages after this.**\n\n:star: Were there any particular reason(s) why you decided to leave?\n:star: Was there anything that you think should have been done differently or that didn't meet your expectations?\n\nThank you for your time!");
 //    if (member.roles.prototype.size != 0) {}
 })
 
