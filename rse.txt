@@ -1,0 +1,1344 @@
+Absorb | Smart | +2 | -3 |
+Startles the Pokemon that appealed directly before the user.
+Acid | Smart | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Acid Armor | Tough | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Acid Spray | Smart | +2 | -2 |
+Startles all Pokemon that appealed before the user.
+Acrobatics | Cool | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Acupressure | Cool | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Aerial Ace | Cool | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Aeroblast | Cool | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+After You | Cute | +3 | 0 |
+User's placement next round is 4 (will appeal after others that used a move of this kind).
+Agility | Cool | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Air Cutter | Cool | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Air Slash | Cool | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Ally Switch | Smart | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Amnesia | Cute | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Ancient Power | Tough | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Aqua Jet | Beauty | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Aqua Ring | Beauty | +1 | 0 |
+Can avoid being startled by others till end of round.
+Aqua Tail | Cute | +4 | 0 |
+No additional effect.
+Arm Thrust | Tough | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Aromatherapy | Smart | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Aromatic Mist | Cute | +4 | 0 |
+No additional effect.
+Assist | Cute | Varies | 0 |
+Appeal score is randomly increased by +1, +2, +4, +6, or +8.
+Assurance | Beauty | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Astonish | Smart | +2 | -3 |
+Startles the Pokemon that appealed directly before the user.
+Attack Order | Smart | +3 | 0 | -> Defend Order, Heal Order |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Attract | Cute | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Aura Sphere | Beauty | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Aurora Beam | Beauty | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Autotomize | Smart | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Avalanche | Cool | +3 | 0 |
+User's placement next round is 4 (will appeal after others that used a move of this kind).
+Baby-Doll Eyes | Cute | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Barrage | Tough | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Barrier | Cool | +1 | 0 |
+Can avoid being startled by others till end of round.
+Baton Pass | Cute | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Beat Up | Smart | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Belch | Smart | +4 | 0 |
+No additional effect.
+Belly Drum | Cute | +1 | 0 | -> Rest |
+Increases the user's condition by +1 Star (maximum 3).
+Bestow | Cute | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Bide | Tough | +1 | 0 |
+Can avoid being startled by others till end of round.
+Bind | Tough | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Bite | Tough | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Blast Burn | Beauty | +4 | -4 |
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Blaze Kick | Beauty | +4 | 0 |
+No additional effect.
+Blizzard | Beauty | +4 | 0 |
+No additional effect.
+Block | Cute | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Blue Flare | Beauty | +4 | 0 |
+No additional effect.
+Body Slam | Tough | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Bolt Strike | Cool | +4 | 0 |
+No additional effect.
+Bone Club | Tough | +2 | -1 | -> Bonemerang, Bone Rush, Shadow Bone |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Bone Rush | Tough | +4 | 0 | -> Bone Club, Bonemerang, Shadow Bone |
+No additional effect.
+Bonemerang | Tough | +4 | 0 | -> Bone Club, Bone Rush, Shadow Bone |
+No additional effect.
+Boomburst | Cool | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Bounce | Cute | +1 | 0 |
+Can avoid being startled by others till end of round.
+Brave Bird | Cute | +6 | 0 | -> Roost |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Brine | Smart | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Brick Break | Cool | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Bubble | Cute | +2 | -2 |
+Startles all Pokemon that appealed before the user.
+Bubble Beam | Beauty | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Bug Bite | Tough | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Bug Buzz | Cute | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Bulk Up | Beauty | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Bulldoze | Tough | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Bullet Punch | Smart | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Bullet Seed | Cool | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Calm Mind | Smart | +2 | 0 | -> Confusion, Dream Eater, Future Sight, Light Screen, Luster Purge, Meditate, Mist Ball, Psybeam, Psychic, ~~Psycho Boost~~, Psywave, Reflect |
+Can avoid being startled by others once till end of round.
+Camouflage | Smart | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Captivate | Beauty | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Celebrate | Cute | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Charge | Smart | +2 | 0 | -> Charge Beam, Discharge, Shock Wave, Spark, Thunder, Thunderbolt, Thunder Punch, Thunder Shock, Thunder Fang, Thunder Wave, Zap Cannon, Zing Zap |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Charge Beam | Beauty | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Charm | Cute | +2 | -1 | -> Captivate, Flatter, Growl, Rest, Sweet Kiss, Tail Whip |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Chatter | Smart | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Chip Away | Tough | +3 | 0 |
+Can be repeatedly used without a penalty.
+Circle Throw | Tough | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Clamp | Tough | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Clear Smog | Beauty | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Close Combat | Smart | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Coil | Smart | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Confide | Smart | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Comet Punch | Tough | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Confuse Ray | Smart | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Confusion | Smart | +2 | -3 | -> Future Sight, Kinesis, Psychic, Teleport |
+Startles the Pokemon that appealed directly before the user.
+Constrict | Tough | +2 | -3 |
+Startles the Pokemon that appealed directly before user.
+Conversion | Beauty | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Conversion 2 | Beauty | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Copycat | Cool | +1 | 0 |
+Appeal score is increased by the appeal score of the Pokemon immediately preceding the user (minimum 0).
+Cosmic Power | Cool | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Cotton Guard | Smart | +1 | 0 |
+Can avoid being startled by others till end of round.
+Cotton Spore | Beauty | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Counter | Tough | +2 | 0 |
+Can avoid being startled by others once till end of round.
+Covet | Cute | +1 | 0 |
+Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
+Crabhammer | Tough | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Crafty Shield | Smart | +1 | 0 |
+Can avoid being startled by others till end of round.
+Cross Chop | Cool | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Cross Poison | Cool | +4 | 0 |
+No additional effect.
+Crunch | Tough | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Crush Claw | Cool | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Crush Grip | Tough | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Curse | Tough | +3 | 0 | -> ~~Destiny Bond~~, ~~Grudge~~, Mean Look, ~~Spite~~ |
+User's placement next round is 4 (will appeal after others that used a move of this kind).
+Cut | Cool | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Dark Pulse | Cool | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Dark Void | Smart | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Dazzling Gleam | Cute | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Defend Order | Smart | +1 | 0 | -> Attack Order, Heal Order |
+Can avoid being startled by others till end of round.
+Defense Curl | Cute | +2 | 0 | -> Rollout, Tackle |
+Can avoid being startled by others once till end of round.
+Defog | Beauty | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Destiny Bond | Smart | +8 | 0 |
+After this appeal, you can no longer participate. You can't be startled in this state.
+Detect | Cool | +2 | 0 |
+Can avoid being startled by others once till end of round.
+Dig | Smart | +1 | 0 |
+Can avoid being startled by others till end of round.
+Disable | Smart | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Disarming Voice | Cute | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Discharge | Cool | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Dive | Beauty | +2 | 0 | -> Surf |
+Can avoid being startled by others once till end of round.
+Dizzy Punch | Cool | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Doom Desire | Cool | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Double Hit | Smart | +3 | 0 |
+Can be repeatedly used without a penalty.
+Double Kick | Cool | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Double Team | Cool | +2 | 0 | -> Agility, Quick Attack, Teleport |
+Can avoid being startled by others once till end of round.
+Double-Edge | Tough | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Double Slap | Tough | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Draco Meteor | Smart | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Dragon Ascent | Beauty | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Dragon Breath | Cool | +1 | -3 | -> Dragon Claw, Dragon Dance, Dragon Hammer, Dragon Rage, Dragon Rush, Dragon Tail |
+Startles all Pokemon that appealed before the user.
+Dragon Claw | Cool | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Dragon Dance | Cool | +1 | 0 | -> Dragon Breath, Dragon Claw, Dragon Hammer, ~~Dragon Rage~~, Dragon Rush, Dragon Tail |
+Increases the user's condition by +1 Star (maximum 3).
+Dragon Pulse | Smart | +2 | -2 |
+Startles all Pokemon that appealed before the user.
+Dragon Rage | Cool | Varies | 0 | Dragon Breath, Dragon Claw, Dragon Hammer, Dragon Dance, Dragon Rush, Dragon Tail |
+Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
+Dragon Rush | Cool | +2 | 0 | -> Dragon Breath, Dragon Claw, Dragon Hammer, Dragon Dance, Dragon Rage, Dragon Tail |
+Appeal score is increased by +4 if user is in position 1.
+Dragon Tail | Cool | +3 | 0 | -> Dragon Breath, Dragon Claw, Dragon Dance, Dragon Hammer, Dragon Rage, Dragon Rush|
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Draining Kiss | Cute | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Drain Punch | Beauty | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Dream Eater | Smart | +2 | -2 |
+Startles all Pokemon that appealed before the User.
+Drill Peck | Cool | +4 | 0 |
+No additional effect.
+Drill Run | Tough | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Dual Chop | Tough | +3 | 0 |
+Can be repeatedly used without a penalty.
+Dynamic Punch | Cool | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Earth Power | Smart | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Earthquake | Tough | +1 | -3 | -> Eruption, Fissure |
+Startles all Pokemon that appealed before the user.
+Echoed Voice | Cute | +3 | 0 |
+Can be repeatedly used without a penalty.
+Eerie Impulse | Cool | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Egg Bomb | Tough | +4 | 0 |
+No additional effect.
+Electro Ball | Cool | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Electrify | Cool | Varies | 0 |
+Appeal score vary with Applause Meter. C0: +1 | C1: +2 | C2: +3 | C3: +5 | C4: +6.
+Electric Terrain | Beauty | Varies | 0 |
+Appeal score vary with Applause Meter. C0: +1 | C1: +2 | C2: +3 | C3: +5 | C4: +6.
+Electroweb | Smart | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Embargo | Cute | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Ember | Beauty | +4 | 0 |
+No additional effect.
+Encore | Cute | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Endeavor | Tough | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Endure | Tough | +2 | 0 | -> ~~Destiny Bond~~, Endeavor, Eruption, Flail, Pain Split, Reversal |
+Can avoid being startled by others once till end of round.
+Energy Ball | Beauty | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Entrainment | Cute | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Eruption | Beauty | Varies | 0 |
+Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
+Explosion | Beauty | +8 | 0 |
+After this appeal, you can no longer participate. You can't be startled in this state.
+Extrasensory | Cool | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Extreme Speed | Cool | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Facade | Cute | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Fairy Lock | Cute | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Fairy Wind | Cute | +4 | 0 |
+No additional effect.
+Fake Out | Cute | +2 | -1 | -> Arm Thrust, Feint Attack, Knock Off, Seismic Toss, Vital Throw |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Fake Tears | Smart | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+False Swipe | Cool | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Feather Dance | Beauty | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Fell Stinger | Tough | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Feint | Beauty | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Feint Attack | Smart | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Fiery Dance | Beauty | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Final Gambit | Tough | +8 | 0 |
+After this appeal, you can no longer participate. You can't be startled in this state.
+Fire Blast | Beauty | +4 | 0 |
+No additional effect.
+Fire Fang | Beauty | +4 | 0 | -> Ice Fang, Thunder Fang |
+No additional effect.
+Fire Pledge | Beauty | +4 | 0 |
+No additional effect.
+Fire Punch | Beauty | +4 | 0 | -> Ice Punch, Thunder Punch |
+No additional effect.
+Fire Spin | Beauty | +3 | 0 | 
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Fissure | Tough | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Flail | Cute | Varies | 0 |
+Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
+Flame Burst | Beauty | +2 | -2 |
+Startles all Pokemon that appealed before the user.
+Flame Charge | Beauty | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Flame Wheel | Beauty | +4 | 0 |
+No additional effect.
+Flamethrower | Beauty | +4 | 0 |
+No additional effect.
+Flare Blitz | Smart | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Flash | Beauty | +3 | 0 |
+If any Pokemon that appealed before the user is in Combo Standby, it is cancelled out.
+Flash Cannon | Smart | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Flatter | Smart | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Fling | Tough | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Flower Shield | Cute | +1 | 0 |
+Can avoid being startled by others till end of round.
+Fly | Smart | +1 | 0 |
+Can avoid being startled by others till end of round.
+Flying Press | Cool | +4 | 0 |
+No additional effect.
+Focus Blast | Cool | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Focus Energy | Cool | +1 | -3 | -> Arm Thrust, Bone Rush, Brick Break, ~~Close Combat~~, Cross Chop, ~~Double-Edge~~, Drain Punch, Dynamic Punch, Focus Blast, Focus Punch, Hammer Arm, Headbutt, Karate Chop, Mega Punch, Mega Kick, Sky Uppercut, ~~Take Down~~, Triple Kick |
+Startles all Pokemon that appealed before the user.
+Focus Punch | Tough | +3 | 0 |
+User's placement next round is 4 (will appeal after others that used a move of this kind).
+Follow Me | Cute | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Force Palm | Cool | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Foresight | Smart | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Forest's Curse | Smart | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Foul Play | Cool | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Freeze-Dry | Beauty | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Freeze Shock | Beauty | +2 | -2 |
+Startles all Pokemon that appealed before the user.
+Frenzy Plant | Cool | +4 | -4 |
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Frost Breath | Beauty | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Frustration | Cute | +1 | 0 |
+An appeal that excites the audience in any Contest.
+Fury Attack | Cool | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Fury Cutter | Cool | +3 | 0 |
+Can be repeatedly used without a penalty.
+Fury Swipes | Tough | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Fusion Bolt | Cool | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Fusion Flare | Beauty | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Future Sight | Smart | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Gastro Acid | Beauty | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Gear Grind | Tough | +3 | 0 |
+Can be repeatedly used without a penalty.
+Geomancy | Cute | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Giga Drain | Smart | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Giga Impact | Beauty | +4 | -4 |
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Glaciate | Beauty | +2 | -2 |
+Startles all Pokemon that appealed before the user.
+Glare | Tough | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Grass Knot | Smart | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Grass Pledge | Smart | +4 | 0 |
+No additional effect.
+Grass Whistle | Smart | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Grassy Terrain | Smart | Varies | 0 |
+Appeal score vary with Applause Meter. C0: +1 | C1: +2 | C2: +3 | C3: +5 | C4: +6.
+Gravity | Beauty | +2 | -2 |
+Startles all Pokemon that appealed before the user.
+Growl | Cute | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Growth | Beauty | +1 | 0 | -> Absorb, Bullet Seed, Energy Ball, Frenzy Plant, Giga Drain, Leafage, Leech Seed, Magical Leaf, Mega Drain, Petal Dance, Power Whip, Razor Leaf, Solar Beam, Vine Whip |
+Increases the user's condition by +1 Star (maximum 3).
+Grudge | Tough | Varies | 0 |
+Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
+Guard Split | Smart | +1 | 0 |
+Can avoid being startled by others till end of round.
+Guard Swap | Cute | +1 | 0 |
+Can avoid being startled by others till end of round.
+Guillotine | Cool | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Gust | Smart | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Gunk Shot | Cool | +2 | -2 |
+Startles all Pokemon that appealed before the user.
+Gyro Ball | Beauty | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Hail | Beauty | +1 | -3 | -> Aurora Beam, Aurora Veil, Blizzard, Haze, Ice Ball, Ice Beam, Ice Hammer, Icy Wind, Powder Snow, Sheer Cold, Weather Ball |
+Startles all Pokemon that appealed before the user.
+Hammer Arm | Cool | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Happy Hour | Cool | Varies | 0 |
+Appeal score vary with Applause Meter. C0: +1 | C1: +2 | C2: +3 | C3: +5 | C4: +6.
+Harden | Tough | +2 | 0 | -> ~~Double-Edge~~, Protect, Rollout, Tackle, ~~Take Down~~ |
+Can avoid being startled by others once till end of round.
+Haze | Beauty | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Head Charge | Tough | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Head Smash | Tough | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Headbutt | Tough | +2 | -3 |
+Startles the Pokemon that appealed directly before user.
+Heal Bell | Beauty | +2 | 0 | -> Lucky Chant |
+Appeal score is increased by +4 if user is in position 4.
+Heal Block | Cute | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Heal Order | Smart | +2 | -1 | -> Attack Order, Defend Order |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Heal Pulse | Smart | +4 | 0 |
+No additional effect.
+Healing Wish | Cute | +8 | 0 |
+After this appeal, you can no longer participate. You can't be startled in this state.
+Heart Stamp | Cute | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Heart Swap | Cool | +1 | 0 |
+Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
+Heat Crash | Beauty | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Heat Wave | Beauty | +4 | 0 |
+No additional effect.
+Heavy Slam | Tough | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Helping Hand | Smart | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Hex | Smart | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+High Jump Kick | Cool | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Hidden Power | Smart | +3 | 0 |
+Can be repeatedly used without a penalty.
+Hold Hands | Cute | +1 | 0 |
+Can avoid being startled by others till end of round.
+Hone Claws | Cool | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Horn Attack | Cool | +4 | 0 | -> Fury Attack, Horn Drill |
+No additional effect.
+Horn Drill | Cool | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Horn Leech | Smart | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Howl | Cool | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Hurricane | Cool | +2 | -2 |
+Startles all Pokemon that appealed before the user.
+Hydro Cannon | Cool | +4 | -4 |
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Hydro Pump | Beauty | +4 | 0 |
+No additional effect.
+Hyper Beam | Cool | +4 | -4 |
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Hyper Fang | Cool | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Hyper Voice | Cool | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Hypnosis | Smart | +1 | -3 | -> Dream Eater |
+Startles all Pokemon that appealed before the user.
+Ice Ball | Beauty | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Ice Beam | Beauty | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Ice Burn | Beauty | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Ice Fang | Cool | +4 | 0 | -> Fire Fang, Thunder Fang |
+No additional effect.
+Ice Punch | Beauty | +4 | 0 | -> Fire Punch, Thunder Punch |
+No additional effect.
+Ice Shard | Beauty | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Icicle Crash | Beauty | +2 | -3 |
+Startles the Pokemon that appealed directly before the user.
+Icicle Spear | Beauty | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Icy Wind | Beauty | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Imprison | Smart | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Incinerate | Beauty | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Inferno | Beauty | +4 | 0 |
+No additional effect.
+Infestation | Smart | +3 | 0 | 
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Ingrain | Smart | +1 | 0 |
+Can avoid being startled by others till end of round.
+Iron Defense | Tough | +1 | 0 |
+Can avoid being startled by others till end of round.
+Ion Deluge | Beauty | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Iron Head | Tough | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Iron Tail | Cool | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Judgment | Smart | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Jump Kick | Cool | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Karate Chop | Tough | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Kinesis | Smart | +3 | 0 | -> Confusion, Future Sight, Psychic, Teleport |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+King's Shield | Tough | +1 | 0 |
+Can avoid being startled by others till end of round.
+Knock Off | Smart | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Land's Wrath | Tough | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Last Resort | Cute | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Lava Plume | Tough | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Leaf Blade | Cool | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Leaf Storm | Cute | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Leaf Tornado | Smart | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Leech Life | Smart | +2 | -3 |
+Startles the Pokemon that appealed directly before the user.
+Leech Seed | Smart | +2 | -2 | -> Worry Seed |
+Startles all Pokemon that appealed before the user.
+Leer | Cool | +3 | 0 | -> Bite, Feint Attack, Glare, Horn Attack, Scary Face, Scratch, Stomp, Tackle |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Lick | Tough | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Light Screen | Beauty | +1 | 0 |
+Can avoid being startled by others till end of round.
+Lock-On | Smart | +3 | 0 | -> Octazooka, ~~Superpower~~, Thunder, Tri Attack, Zap Cannon |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Lovely Kiss | Beauty | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Low Kick | Tough | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Low Sweep | Tough | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Lucky Chant | Cute | +3 | 0 | -> Heal Bell |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Lunar Dance | Beauty | +8 | 0 |
+After this appeal, you can no longer participate. You can't be startled in this state.
+Luster Purge | Smart | +2 | -3 |
+Startles the Pokemon that appealed directly before the user.
+Mach Punch | Cool | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Magic Coat | Beauty | +1 | 0 |
+Can avoid being startled by others till end of round.
+Magic Room | Smart | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Magical Leaf | Beauty | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Magma Storm | Tough | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Magnet Bomb | Cool | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Magnetic Flux | Beauty | +4 | 0 |
+No additional effect.
+Magnet Rise | Cute | +1 | 0 |
+Can avoid being startled by others till end of round.
+Magnitude | Tough | Varies | 0 |
+Appeal score vary with Applause Meter. C0: +1 | C1: +2 | C2: +3 | C3: +5 | C4: +6.
+Mat Block | Cool | +1 | 0 |
+Can avoid being startled by others till end of round.
+Me First | Cute | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Mean Look | Beauty | +2 | 0 | -> ~~Destiny Bond~~, Perish Song |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Meditate | Beauty | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Mega Drain | Smart | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Mega Kick | Cool | +4 | 0 |
+No additional effect.
+Mega Punch | Tough | +4 | 0 |
+No additional effect.
+Megahorn | Cool | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Memento | Tough | +8 | 0 |
+After this appeal, you can no longer participate. You can't be startled in this state.
+Metal Burst | Beauty | +2 | 0 |
+Can avoid being startled by others once till end of round.
+Metal Claw | Cool | +4 | 0 |
+No additional effect.
+Metal Sound | Smart | +1 | -3 | -> Metal Burst, Metal Claw |
+Startles all Pokemon that appealed before the user.
+Meteor Mash | Cool | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Metronome | Cute | +3 | 0 |
+Can be repeatedly used without a penalty.
+Milk Drink | Cute | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Mimic | Cute | +1 | 0 |
+Appeal score is increased by the appeal score of the Pokemon immediately preceding the user (minimum 0).
+Mind Reader | Smart | +3 | 0 | -> ~~Close Combat~~, Dynamic Punch, ~~High Jump Kick~~, ~~Jump Kick~~, Mega Kick, Mega Punch, Sheer Cold, Submission, ~~Superpower~~ |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Minimize | Cute | +2 | 0 |
+Can avoid being startled by others once till end of round.
+Miracle Eye | Cute | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Mirror Coat | Beauty | +2 | 0 |
+Can avoid being startled by others once till end of round.
+Mirror Move | Smart | +1 | 0 |
+Appeal score is increased by the appeal score of the Pokemon immediately preceding the user (minimum 0).
+Mirror Shot | Cute | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Mist | Beauty | +1 | 0 |
+Can avoid being startled by others till end of round.
+Misty Terrain | Cute | Varies | 0 |
+Appeal score vary with Applause Meter. C0: +1 | C1: +2 | C2: +3 | C3: +5 | C4: +6.
+Mist Ball | Smart | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Moonblast | Cute | +4 | 0 |
+No additional effect.
+Moonlight | Beauty | Varies | 0 |
+Appeal score is randomly increased by +1, +2, +4, +6, or +8.
+Morning Sun | Beauty | Varies | 0 |
+Appeal score is randomly increased by +1, +2, +4, +6, or +8.
+Mud Bomb | Smart | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Mud Shot | Tough | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Mud Sport | Cute | +4 | 0 | -> Mud-Slap, Water Gun, Water Sport |
+No additional effect.
+Muddy Water | Tough | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Mud-Slap | Cute | +2 | -1 | -> Mud Sport, Sand Attack |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Mystical Fire | Beauty | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Nasty Plot | Cute | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Natural Gift | Cool | Varies | 0 |
+Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
+Nature Power | Beauty | Vary | 0 |
+Appeal score varies with Applause Meter. C0: +1 | C1: +2 | C2: +3 | C3: +5 | C4: +6.
+Needle Arm | Smart | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Night Daze | Cool | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Night Shade | Smart | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Night Slash | Beauty | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Nightmare | Smart | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Noble Roar | Cool | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Nuzzle | Cute | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Oblivion Wing | Cool | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Octazooka | Tough | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Odor Sleuth | Smart | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Ominous Wind | Smart | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Origin Pulse | Beauty | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Outrage | Cool | +4 | -4 |
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Overheat | Beauty | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Pain Split | Smart | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Parabolic Charge | Beauty | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Parting Shot | Tough | +1 | 0 |
+Can avoid being startled by others till end of round.
+Pay Day | Smart | Varies | 0 |
+Appeal score vary with Applause Meter. C0: +1 | C1: +2 | C2: +3 | C3: +5 | C4: +6.
+Payback | Cool | +2 | Varies | -> Assurance, Revenge |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Peck | Cool | +4 | 0 | -> Drill Peck, Fury Attack |
+No additional effect.
+Perish Song | Beauty | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Petal Blizzard | Beauty | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Petal Dance | Beauty | +4 | -4 |
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Phantom Force | Smart | +2 | 0 |
+Can avoid being startled by others once till end of round.
+Pin Missile | Cool | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Play Nice | Cute | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Play Rough | Tough | +4 | 0 |
+No additional effect.
+Pluck | Cute | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Poison Fang | Smart | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Poison Gas | Smart | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Poison Jab | Smart | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Poison Sting | Smart | +2 | -3 |
+Startles the Pokemon that appealed directly before the user.
+Poison Tail | Smart | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Poison Powder | Smart | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Pound | Tough | +4 | 0 | -> Double Slap, Feint Attack, Slam |
+No additional effect.
+Powder | Smart | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Powder Snow | Beauty | +4 | 0 | -> Blizzard |
+No additional effect.
+Power Gem | Beauty | +4 | 0 |
+No additional effect.
+Power Split | Smart | +1 | 0 |
+Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
+Power Swap | Beauty | +1 | 0 |
+Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
+Power Trick | Cool | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Power-Up Punch | Tough | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Power Whip | Beauty | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Precipice Blades | Cute | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Present | Cute | +3 | 0 |
+Can be repeatedly used without a penalty.
+Protect | Cute | +1 | 0 |
+Can avoid being startled by others till end of round.
+Psybeam | Beauty | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Psych Up | Smart | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Psychic | Smart | +1 | -3 | -> Confusion, Future Sight, Kinesis, Teleport |
+Startles all Pokemon that appealed before the user.
+Psycho Boost | Smart | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Psycho Cut | Cool | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Psycho Shift | Cool | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Psyshock | Smart | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Psystrike | Smart | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Psywave | Smart | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Punishment | Smart | Varies | 0 |
+Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
+Pursuit | Smart | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Quash | Cool | +3 | 0 |
+User's placement next round is 4 (will appeal after others that used a move of this kind).
+Quick Attack | Cool | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Quick Guard | Tough | +2 | 0 |
+Can avoid being startled by others once till end of round.
+Quiver Dance | Smart | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Rage | Cool | +3 | 0 | -> Leer, Scary Face, Thrash |
+Can be repeatedly used without a penalty.
+Rage Powder | Beauty | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Rain Dance | Tough | Varies | 0 | -> Aqua Jet, Aqua Tail, Brine, Bubble, Bubble Beam, Clamp, Crabhammer, Dive, Hydro Cannon, Hydro Pump, Muddy Water, Octazooka, Surf, Thunder, Water Gun, Water Pulse, Water Spout, Water Sport, Waterfall, Weather Ball, Withdraw, Whirlpool |
+Appeal score vary with Applause Meter. C0: +1 | C1: +2 | C2: +3 | C3: +5 | C4: +6.
+Rapid Spin | Cool | +2 | 0 |
+Can avoid being startled by others once till end of round.
+Razor Leaf | Cool | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Razor Shell | Cute | +4 | 0 |
+No additional effect.
+Razor Wind | Cool | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Recover | Smart | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Recycle | Smart | +3 | 0 |
+Can be repeatedly used without a penalty.
+Reflect | Smart | +1 | 0 |
+Can avoid being startled by others till end of round.
+Reflect Type | Smart | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Refresh | Cute | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Relic Song | Smart | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Rest | Cute | +2 | 0 | -> Sleep Talk, Snore |
+Can avoid being startled by others once till end of round.
+Retaliate | Tough | +3 | 0 |
+User's placement next round is 4 (will appeal after others that used a move of this kind).
+Return | Cute | +1 | 0 |
+An appeal that excites the audience in any Contest.
+Revenge | Tough | +3 | 0 | -> Assurance, Payback |
+User's placement next round is 4 (will appeal after others that used a move of this kind).
+Reversal | Cool | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Roar | Cool | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Roar of Time | Cool | +4 | -4 |
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Rock Blast | Tough | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Rock Climb | Cool | +1 | 0 |
+Appeal score equals to 1 + (3 * user's condition). The additional points that condition stars normally add on doesn't apply here.
+Rock Polish | Tough | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Rock Slide | Tough | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Rock Smash | Tough | Varies | 0 |
+Appeal score equals to 1 + (3 * user's condition). The additional points that condition stars normally add on doesn't apply here.
+Rock Throw | Tough | +2 | 0 | -> Rock Slide, Rock Tomb |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Rock Tomb | Smart | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Rock Wrecker | Tough | +4 | -4 |
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Role Play | Cute | +1 | 0 |
+Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
+Rolling Kick | Cool | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Rollout | Tough | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Roost | Cool | +4 | 0 |
+No additional effect.
+Rototiller | Tough | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Round | Cute | +3 | 0 |
+Can be repeatedly used without a penalty.
+Sacred Fire | Beauty | +4 | 0 |
+No additional effect.
+Safeguard | Beauty | +1 | 0 |
+Can avoid being startled by others till end of round.
+Sand Attack | Cute | +2 | -1 | -> Mud-Slap |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Sand Tomb | Smart | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Sandstorm | Tough | +3 | 0 | -> Mud-Slap, Mud Shot, Mud Sport, Sand Attack, Sand Tomb, Shore Up, Weather Ball |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Scald | Tough | +4 | 0 | -> Sparkling Aria, Steam Eruption |
+No additional effect.
+Scary Face | Tough | +2 | -1 | -> Bite, Crunch, Leer, Super Fang |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Scratch | Tough | +4 | 0 | -> Fury Swipes, Slash |
+No additional effect.
+Screech | Smart | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Searing Shot | Beauty | +4 | 0 |
+No additional effect.
+Secret Power | Smart | Varies |
+Appeal score equals to 1 + (3 * user's condition). The additional points that condition stars normally add on doesn't apply here.
+Secret Sword | Smart | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Seed Bomb | Smart | +4 | 0 |
+No additional effect.
+Seed Flare | Cool | +4 | 0 |
+No additional effect.
+Seismic Toss | Tough | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Self-Destruct | Beauty | +8 | 0 |
+After this appeal, you can no longer participate. You can't be startled in this state.
+Shadow Ball | Smart | +3 | 0 |
+If any Pokemon that appealed before the user is in Combo Standby, it is cancelled out.
+Shadow Claw | Cute | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Shadow Force | Smart | +2 | 0 |
+Can avoid being startled by others once till end of round.
+Shadow Punch | Smart | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Shadow Sneak | Smart | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Sharpen | Cute | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Sheer Cold | Beauty | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Shell Smash | Tough | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Shift Gear | Smart | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Shock Wave | Cool | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Signal Beam | Beauty | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Silver Wind | Beauty | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Simple Beam | Cute | +1 | 0 |
+Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
+Sing | Cute | +2 | 0 | -> Perish Song, Refresh |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Sketch | Smart | +1 | 0 |
+Appeal score is increased by the appeal score of the Pokemon immediately preceding the user (minimum 0).
+Skill Swap | Smart | +1 | 0 |
+Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
+Skull Bash | Tough | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Sky Attack | Cool | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Sky Drop | Smart | +1 | 0 |
+Can avoid being startled by others till end of round.
+Sky Uppercut | Cool | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Slack Off | Cute | Varies | 0 |
+Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
+Slam | Tough | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Slash | Cool | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Sleep Powder | Smart | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Sleep Talk | Cute | +3 | 0 |
+Can be repeatedly used without a penalty.
+Sludge | Tough | +1 | -4 | -> Sludge Bomb |
+Startles the Pokemon that appealed directly before the user.
+Sludge Bomb | Tough | +2 | -1 | -> Sludge |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Sludge Wave | Tough | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Smack Down | Tough | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Smelling Salts | Smart | +2 | -3 |
+Startles the Pokemon that appealed directly before the user.
+Smog | Tough | +1 | -3 | -> Smokescreen |
+Startles all Pokemon that appealed before the user.
+Smokescreen | Smart | +3 | 0 |
+If any Pokemon that appealed before the user is in Combo Standby, it is cancelled out.
+Snarl | Cool | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Snatch | Smart | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Snore | Cute | +4 | 0 |
+No additional effect.
+Soak | Smart | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Soft-Boiled | Beauty | +4 | 0 | -> Egg Bomb |
+No additional effect.
+Solar Beam | Cool | +4 | 0 |
+No additional effect.
+Sonic Boom | Cool | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Spacial Rend | Tough | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Spark | Cool | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Spider Web | Smart | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Spike Cannon | Cool | +2 | -1 |
+Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
+Spikes | Smart | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Spiky Shield | Smart | +1 | 0 |
+Can avoid being startled by others till end of round.
+Spit Up | Tough | +4 | 0 |
+No additional effect.
+Spite | Tough | Varies | 0 |
+Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
+Splash | Cute | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Spore | Beauty | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Stealth Rock | Cool | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Steamroller | Tough | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Steel Wing | Cool | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Sticky Web | Smart | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Stockpile | Tough | +2 | 0 | -> Spit Up, Swallow |
+Can avoid being startled by others once till end of round.
+Stomp | Tough | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Stone Edge | Tough | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Stored Power | Cool | Varies | 0 |
+Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
+Storm Throw | Tough | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Strength | Tough | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+String Shot | Smart | +2 | -3 | -> Spider Web |
+Startles the Pokemon that appealed directly before user.
+Struggle | Cool | +4 | +0 |
+No additional effect.
+Struggle Bug | Tough | +2 | -3 |
+Startles the Pokemon that appealed directly before the user.
+Stun Spore | Smart | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Submission | Cool | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Substitute | Smart | +2 | 0 |
+Can avoid being startled by others once till end of round.
+Sucker Punch | Smart | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Sunny Day | Beauty | Varies | 0 | -> Blast Burn, Blaze Kick, Burn Up, Ember, Eruption, Fire Blast, Fire Lash, Fire Punch, Fire Spin, Flamethrower, Flame Wheel, ~~Flare Blitz~~, Heat Wave, Lava Plume, Magma Storm, Moonlight, Morning Sun, ~~Overheat~~, Sacred Fire, Solar Beam, Solar Blade, Synthesis, Weather Ball, Will-O-Wisp |
+Appeal score vary with Applause Meter. C0: +1 | C1: +2 | C2: +3 | C3: +5 | C4: +6.
+Super Fang | Tough | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Superpower | Tough | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Supersonic | Smart | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Surf | Beauty | +3 | 0 | -> Dive |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Swagger | Cute | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Swallow | Tough | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Sweet Kiss | Cute | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Sweet Scent | Cute | +1 | -3 | -> Poison Powder, Sleep Powder, Stun Spore |
+Startles all Pokemon that appealed before the user.
+Swift | Cool | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Switcheroo | Cool | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Swords Dance | Beauty | +1 | -> Crabhammer, Crush Claw, Cut, False Swipe, Fury Cutter, Slash, X-Scissor |
+Increases the user's condition by +1 Star (maximum 3).
+Synchronoise | Smart | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Synthesis | Smart | Varies | 0 |
+Appeal score is randomly increased by +1, +2, +4, +6, or +8.
+Tackle | Tough | +4 | 0 |
+No additional effect.
+Tail Glow | Beauty | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Tail Slap | Cute | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Tail Whip | Cute | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Tailwind | Smart | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+Take Down | Tough | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Taunt | Smart | +2 | 0 | -> Counter, Detect, Mirror Coat |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Techno Blast | Cool | +1 | 0 |
+An appeal that excites the audience in any Contest.
+Teeter Dance | Cute | +4 | -4 |
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Telekinesis | Smart | +3 | 0 |
+If any Pokemon that appealed before the user is in Combo Standby, it is cancelled out.
+Teleport | Cool | +1 | 0 |
+Can avoid being startled by others till end of round.
+Thief | Tough | +1 | 0 |
+Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
+Thrash | Tough | +4 | -4 |
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Thunder | Cool | +2 | -2 |
+Startles all Pokemon that appealed before the user.
+Thunder Fang | Smart | +4 | 0 | -> Fire Fang, Ice Fang |
+No additional effect.
+Thunderbolt | Cool | +4 | 0 |
+No additional effect.
+Thunder Punch | Cool | +4 | 0 | -> Ice Punch, Fire Punch |
+No additional effect.
+Thunder Shock | Cool | +4 | 0 |
+No additional effect.
+Thunder Wave | Cool | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Tickle | Cute | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Torment | Tough | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Topsy-Turvy | Cute | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Toxic | Smart | +3 | 0 | -> Hex, Toxic Thread, Venom Drench, Venoshock |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Toxic Spikes | Smart | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Transform | Smart | +3 | 0 |
+Can be repeatedly used without a penalty.
+Tri Attack | Beauty | +2 | -2 |
+Startles all Pokemon that appealed before the user.
+Trick | Smart | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Trick Room | Cute | +3 | 0 |
+User's placement next round is 4 (will appeal after others that used a move of this kind).
+Trick-or-Treat | Smart | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Triple Kick | Cool | +4 | 0 |
+No additional effect.
+Trump Card | Cool | Varies | 0 |
+Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
+Twineedle | Cool | +2 | -3 |
+Startles the Pokemon that appealed directly before the user.
+Twister | Cool | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+U-Turn | Cute | +1 | 0 |
+Can avoid being startled by others till end of round.
+Uproar | Cute | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Vacuum Wave | Smart | +3 | 0 |
+User's placement next round is 1 (will appeal before others that used a move of this kind).
+V-Create | Cool | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Venom Drench | Smart | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Venoshock | Tough | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Vice Grip | Tough | +4 | 0 | -> Bind, Guillotine |
+No additional effect.
+Vine Whip | Cool | +4 | 0 |
+No additional effect.
+Vital Throw | Cool | +3 | 0 |
+User's placement next round is 4 (will appeal after others that used a move of this kind).
+Volt Switch | Cool | +1 | 0 |
+Can avoid being startled by others till end of round.
+Volt Tackle | Cool | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Wake-Up Slap | Smart | +2 | -3 |
+Startles the Pokemon that appealed directly before the user.
+Water Gun | Cute | +4 | 0 |
+No additional effect.
+Water Pledge | Cute | +4 | 0 |
+No additional effect.
+Water Pulse | Beauty | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Water Shuriken | Beauty | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Water Sport | Cute | +4 | 0 | -> Mud Sport, Refresh, Water Gun |
+No additional effect.
+Water Spout | Beauty | Varies | 0 |
+Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
+Waterfall | Tough | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Weather Ball | Smart | +4 | 0 |
+No additional effect.
+Whirlpool | Beauty | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Whirlwind | Smart | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Wide Guard | Tough | +1 | 0 |
+Can avoid being startled by others till end of round.
+Wild Charge | Cool | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Will-O-Wisp | Beauty | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Wing Attack | Cool | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Wish | Cute | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Withdraw | Cute | +1 | 0 |
+Can avoid being startled by others till end of round.
+Wonder Room | Beauty | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Wood Hammer | Tough | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Work Up | Beauty | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Worry Seed | Beauty | +2 | 0 | -> Leech Seed |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Wrap | Tough | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Wring Out | Smart | +2 | -3 |
+Startles the Pokemon that appealed directly before the user.
+X-Scissor | Beauty | +4 | 0 |
+No additional effect.
+Yawn | Cute | +2 | 0 | -> Rest, Slack Off |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Zap Cannon | Cool | +4 | 0 |
+No additional effect.
+Zen Headbutt | Beauty | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Accelerock | Tough | +3 | 0 |
+User's placement next round is 1. The last user will take precedent.
+Anchor Shot | Smart | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Aurora Veil | Beauty | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Baneful Bunker | Tough | +1 | 0 |
+Can avoid being startled by others till end of round.
+Beak Blast | Cool | +3 | 0 |
+If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
+Brutal Swing | Tough | +4 | 0 |
+No additional effect.
+Burn Up | Beauty | +4 | 0 |
+No additional effect.
+Clanging Scales | Beauty | +1 | -4 |
+Startles the Pokemon that appealed directly before the user.
+Core Enforcer | Tough | +3 | 0 |
+If any Pokemon that appealed before the user is in Combo Standby, it is cancelled out.
+Darkest Lariat | Cool | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Dragon Hammer | Cool | +4 | 0 |
+No additional effect.
+Fire Lash | Beauty | +2 | -3 |
+Startles the Pokemon that appealed directly before user.
+First Impression | Cool | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Fleur Cannon | Cute | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Floral Healing | Cute | Varies | 0 |
+Appeal score is randomly +1, +2, +4, +6, or +8.
+Gear Up | Smart | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+High Horsepower | Tough | +4 | 0 |
+No additional effect.
+Hyperspace Fury | Tough | +4 | 0 | -> Hyperspace Hole |
+No additional effect.
+Hyperspace Hole | Smart | +3 | 0 | -> Hyperspace Fury |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Ice Hammer | Beauty | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Instruct | Smart | +1 | 0 |
+Appeal score is increased by the appeal score of the Pokemon immediately preceding the user (minimum 0).
+Laser Focus | Cool | +1 | 0 |
+Increases the user's condition by +1 Star (maximum 3).
+Leafage | Cool | +4 | 0 |
+No additional effect.
+Liquidation | Tough | +3 | 0 |
+If any Pokemon that appealed before the user is in Combo Standby, it is cancelled out.
+Lunge  | Cute | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Mind Blown | Beauty | +6 | 0 |
+If user Pokemon is startled this turn, it loses twice as many Appeal Points.
+Moongeist Beam | Smart | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Multi-Attack | Beauty | +3 | 0 |
+The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
+Nature's Madness | Cute| +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Plasma Fists | Cool | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Photon Geyser | Smart | +2 | 0 |
+Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
+Pollen Puff | Cute | +4 | 0 |
+No additional effect.
+Power Trip | Tough | Varies | 0 |
+Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
+Prismatic Laser | Smart | +4 | -4 |
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Psychic Fangs | Cute | +3 | 0 |
+Cancels any condition stars from any Pokemon that had appealed before the user.
+Psychic Terrain | Smart | Varies | 0 |
+Appeal score vary with Applause Meter. C0: +1 | C1: +2 | C2: +3 | C3: +5 | C4: +6.
+Purify | Smart | +4 | 0 |
+No additional effect.
+Revelation Dance | Beauty | +3 | 0 |
+Can be repeatedly used without a penalty.
+Sacred Sword | Tough | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Shadow Bone | Tough | +3 | 0 |
+If any Pokemon that appealed before the user is in Combo Standby, it is cancelled out.
+Shell Trap | Beauty | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Shore Up | Cute | Varies | 0 |
+Appeal score is randomly +1, +2, +4, +6, or +8.
+Smart Strike | Smart | +2 | 0 |
+Appeal score is increased by +4 if user is in position 1.
+Solar Blade | Tough | +4 | 0 |
+No additional effect.
+Sparkling Aria | Beauty | +4 | 0 |
+No additional effect.
+Spectral Thief | Smart | +1 | 0 |
+Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
+Speed Swap | Smart | +1 | 0 |
+Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
+Spirit Shackle | Smart | +2 | Varies |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Spotlight | Cute | +3 | 0 |
+The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
+Steam Eruption | Tough | +4 | 0 |
+No additional effect.
+Stomping Tantrum  | Tough | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Strength Sap | Smart | +1 | 0 |
+Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
+Sunsteel Strike | Cool | +2 | -1 |
+If any Pokemon in front of the user used the same attribute move, they are startled for -4. Otherwise, they are startled for -1.
+Tearful Look | Cute | +2 | 0 |
+Appeal score is increased by +4 if user is in position 4.
+Thousand Arrows | Tough | +4 | 0 | -> Thousand Waves |
+No additional effect.
+Thousand Waves | Tough | +2 | Varies | -> Thousand Arrows |
+Startles each previous Pokemon an amount equal to half of that Pokemon's appeal, rounded down (minimum 1).
+Throat Chop | Smart | +2 | 0 |
+Makes all of the Pokemon who appeal after the user's turn nervous.
+Toxic Thread | Tough | +3 | 0 |
+If any Pokemon that appealed before the user is in Combo Standby, it is cancelled out.
+Trop Kick  | Tough | +1 | -3 |
+Startles all Pokemon that appealed before the user.
+Zing Zap | Cool | +4 | 0 |
+No additional effect.

@@ -1,0 +1,2039 @@
+﻿Absorb | Smart | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Acid | Smart | +3 |
+No additional effect.
+
+Acid Armor | Tough | n/a |
+Doubles your Appeal Points next round.
+
+Acid Spray | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Acrobatics | Cool | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Acupressure | Cool | n/a |
+Doubles your Appeal Points next round.
+
+Aerial Ace | Cool | +2 |
+If performed first, earn +2 more.
+
+Aeroblast | Cool | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+After You | Cute | +2 |
+Next round turn order is randomized for all moves (overrides position moves).
+
+Agility | Cool | +2 |
+User Pokémon performs first next round.
+
+Air Cutter | Cool | +3 |
+No additional effect.
+
+Air Slash | Cool | +2 |
+If performed first, earn +2 more.
+
+Ally Switch | Cute | n/a |
+Appeal Points are four minus chosen Judge's Voltage. (eg. 4 – 1 = 3 Appeal Points)
+
+Amnesia | Cute | n/a |
+Doubles your Appeal Points next round.
+
+Ancient Power | Tough | +2 |
+If performed last, earn +2 more.
+
+Aqua Jet | Beauty | +2 |
+User Pokémon performs first next round.
+
+Aqua Ring | Beauty | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Aqua Tail | Cute | +3 |
+No additional effect.
+
+Arm Thrust | Tough | +2 |
+Can perform twice in a row.
+
+Aromatic Mist | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Aromatherapy | Smart | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Assist | Cute | +2 |
+Next round, turn order is randomized for all Pokémon.
+
+Assurance | Beauty | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Astonish | Smart | +3 |
+No additional effect.
+
+Attack Order | Smart | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Attract | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Aura Sphere | Beauty | +2 |
+If performed first, earn +2 more.
+
+Aurora Beam | Beauty | +2 |
+If performed first, earn +2 more.
+
+Autotomize | Smart | +2 |
+User Pokémon performs first next round.
+
+Avalanche | Cool | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Baby-Doll Eyes | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Barrage | Tough | +2 |
+Can perform twice in a row.
+
+Barrier | Cool | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Baton Pass | Cute | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Beat Up | Smart | +2 |
+Can perform twice in a row.
+
+Belch | Tough | +2 |
+If performed last, earn +2 more.
+
+Belly Drum | Cute | n/a |
+Doubles your Appeal Points next round.
+
+Bestow | Smart | n/a |
+If previous Pokémon hit max Voltage, user will earn the same points as that Pokémon (even if different Judge is selected).
+
+Bide | Tough | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Bind | Tough | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Bite | Tough | +3 |
+No additional effect.
+
+Blast Burn | Beauty | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Blaze Kick | Beauty | +2 |
+If performed first, earn +2 more.
+
+Blizzard | Beauty | +2 |
+If performed first, earn +2 more.
+
+Blue Flare | Beauty | +2 |
+If performed first, earn +2 more.
+
+Block | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Body Slam | Tough | +3 |
+No additional effect.
+
+Bone Club | Tough | +3 |
+No additional effect.
+
+Bone Rush | Tough | +2 |
+Can be performed twice in a row.
+
+Bonemerang | Tough | +2 |
+Can be performed twice in a row.
+
+Bolt Strike | Cool | +2 |
+If performed first, earn +2 more.
+
+Boomburst | Tough | +2 |
+If performed last, earn +2 more.
+
+Bounce | Cute | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Brave Bird | Cute | +2 |
+If performed last, earn +2 more.
+
+Brick Break | Cool | +3 |
+No additional effect.
+
+Brine | Smart | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Bubble | Cute | +2 |
+User Pokémon performs last next round.
+
+Bubble Beam | Beauty | +2 |
+User Pokémon performs last next round.
+
+Bug Bite | Tough | n/a |
+If previous Pokémon hit max Voltage, User will earn the same points as that Pokémon (even if a different Judge is selected).
+
+Bug Buzz | Cute | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Bulk Up | Beauty | n/a |
+Doubles Appeal Points next round.
+
+Bulldoze | Tough | +2 |
+User Pokémon performs last next round.
+
+Bullet Punch | Smart | +2 |
+User Pokémon performs first next round.
+
+Bullet Seed | Cool | +2 |
+Can be used twice in a row.
+
+Calm Mind | Smart | n/a |
+Doubles Appeal Points next round.
+
+Camouflage | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Captivate | Beauty | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Celebrate | Cute | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Charge | Smart | n/a |
+Doubles Appeal Points next round.
+
+Charge Beam | Beauty | +2 |
+If performed first, earn +2 more.
+
+Charm | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Chatter | Smart | +1 |
+At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Chip Away | Tough | +2 |
+If performed first, earn +2 more.
+
+Circle Throw | Cool | +2 |
+At the end of the turn (after points from Judges' impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Clamp | Tough | +3 |
+No additional effect.
+
+Clear Smog | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Close Combat | Smart | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Coil | Smart | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Comet Punch | Tough | +2 |
+Can be used twice in a row.
+
+Confide | Smart | +3 |
+No additional effect.
+
+Confuse Ray | Smart | +2 |
+Lowers Voltage of all Judges by 1.
+
+Confusion | Smart | +3 |
+No additional effect.
+
+Constrict | Tough | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Conversion | Beauty | +1 |
+At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Conversion 2 | Beauty | +1 |
+At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Copycat | Cool | n/a |
+If previous Pokémon hit max Voltage, User will earn the same points as that Pokémon (even if a different Judge is selected).
+
+Cosmic Power | Cool | n/a |
+Doubles Appeal Points next round.
+
+Cotton Guard | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Cotton Spore | Beauty | +2 |
+User Pokémon performs first next round.
+
+Counter | Tough | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Covet | Cute | n/a |
+If previous Pokémon hit max Voltage, User will earn the same points as that Pokémon (even if a different Judge is selected).
+
+Crabhammer | Tough | +2 |
+If performed last, earn +2 more.
+
+Crafty Shield | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Cross Chop | Cool | +2 |
+If performed last, earn +2 more.
+
+Cross Poison | Cool | +3 |
+No additional effect.
+
+Crunch | Tough | +1 |
+If performed last, earn +2 more.
+
+Crush Claw | Cool | +3 |
+No additional effect.
+
+Crush Grip | Tough | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Curse | Tough | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Cut | Cool | +3 |
+No additional effect.
+
+Dark Pulse | Cool | +2 |
+If performed first, earn +2 more.
+
+Dark Void | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Dazzling Gleam | Cute | +2 |
+Lowers the Voltage of all Judges by 1.
+
+Defend Order | Smart | n/a |
+Doubles Appeal Points next round.
+
+Defense Curl | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Defog | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Destiny Bond | Smart | +1 |
+At the end of the turn (after points from Judges’ impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Detect | Cool | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Dig | Smart | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Disable | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Disarming Voice | Cute | +2 |
+If performed first, earn +2 more.
+
+Discharge | Cool | +2 |
+If performed first, earn +2 more.
+
+Dive | Beauty | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Dizzy Punch | Cool | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Doom Desire | Cool | +2 |
+If performed first, earn +2 more.
+
+Double Hit | Smart | +2 |
+Can be used twice in a row.
+
+Double Kick | Cool | +2 |
+Can be used twice in a row.
+
+Double Slap | Tough | +2 |
+Can be used twice in a row.
+
+Double Team | Cool | +2 |
+User Pokémon performs first next round.
+
+Double-Edge | Tough | +1 |
+At the end of the turn (after points from Judges’ impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Draco Meteor | Smart | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Dragon Breath | Cool | +2 |
+If performed first, earn +2 more.
+
+Dragon Claw | Cool | +2 |
+If performed first, earn +2 more.
+
+Dragon Dance | Cool | n/a |
+Doubles Appeal Points next round.
+
+Dragon Pulse | Smart | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Dragon Rage | Cool | +3 |
+No additional effect.
+
+Dragon Rush | Cool | +2 |
+If performed last, earn +2 more.
+
+Dragon Tail | Cool | +1 |
+At the end of the turn (after points from Judges' impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Drain Punch | Beauty | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Draining Kiss | Cute | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Dream Eater | Smart | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Drill Peck | Cool | +3 |
+No additional effect.
+
+Drill Run | Tough | +3 |
+No additional effect.
+
+Dual Chop | Cool | +2 |
+Can be used twice in a row.
+
+Dynamic Punch | Cool | +2 |
+If performed last, earn +2 more.
+
+Earth Power | Smart | +2 |
+If performed last, earn +2 more.
+
+Earthquake | Tough | +2 |
+If performed last, earn +2 more.
+
+Echoed Voice | Tough | +2 |
+Can be used twice in a row.
+
+Eerie Impulse | Cool | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Egg Bomb | Tough | +3 |
+No additional effect.
+
+Electric Terrain | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Electrify | Cool | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Electro Ball | Cool | +3 |
+No additional effect
+
+Electroweb | Cool | +3 |
+User Pokémon performs last next round.
+
+Embargo | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Ember | Beauty | +3 |
+No additional effect.
+
+Encore | Cute | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Endeavor | Tough | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Endure | Tough | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Energy Ball | Beauty | +2 |
+If performed first, earn +2 more.
+
+Entrainment | Tough | n/a |
+If previous Pokémon hit max Voltage, user will earn the same points as that Pokémon (even if a different Judge).
+
+Eruption | Beauty | +2 |
+If performed last, earn +2 more.
+
+Explosion | Beauty | +1 |
+At the end of the turn (after points from Judges’ impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Extrasensory | Cool | +2 |
+If performed first, earn +2 more.
+
+Extreme Speed | Cool | +2 |
+User Pokémon performs first next round.
+
+Facade | Cute | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Fairy Lock | Cute | +2 |
+Voltage of all Judges are lowered by 1.
+
+Fairy Wind | Cute | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Fake Out | Cute | +2 |
+If performed first, earn +2 more.
+
+Fake Tears | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+False Swipe | Cool | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Feather Dance | Beauty | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Feint | Beauty | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Feint Attack | Smart | +2 |
+If performed last, earn +2 more.
+
+Fell Stinger | Tough | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Fiery Dance | Beauty | +2 |
+If performed first, earn +2 more.
+
+Final Gambit | Cool | +1 |
+At the end of the turn (after points from Judges' impressions are added), user earns +15 more if all Pokémon choose the same Judge.
+
+Fire Blast | Beauty | +2 |
+If performed first, earn +2 more.
+
+Fire Fang | Beauty | +3 |
+No additional effect.
+
+Fire Punch | Beauty | +2 |
+If performed first, earn +2 more.
+
+Fire Spin | Beauty | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Fissure | Tough | +1 |
+At the end of the turn (after points from Judges’ impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Flail | Cute | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Flamethrower | Beauty | +2 |
+If performed first, earn +2 more.
+
+Flare Blitz | Smart | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Flame Burst | Beauty | +2 |
+Can be performed first, earn +2 more.
+
+Flame Wheel | Beauty | +2 |
+Can be performed twice in a row.
+
+Flash | Beauty | +2 |
+Lowers the Voltage of all Judges by 1.
+
+Flash Cannon | Smart | +2 |
+If performed first, earn +2 more.
+
+Flatter | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Fling | Tough | +1 |
+At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Flower Shield | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Fly | Smart | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Flying Press | Cool | +2 |
+If performed first, earn +2 more.
+
+Focus Blast | Cool | +2 |
+If performed first, earn +2 more.
+
+Focus Energy | Cool | n/a |
+Doubles Appeal Points next round.
+
+Focus Punch | Tough | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Follow Me | Cute | +2 |
+Next round, turn order is randomized for all Pokémon.
+
+Force Palm | Cool | +2 |
+If performed last, earn +2 more.
+
+Foresight | Smart | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Forest's Curse | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Foul Play | Cool | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Freeze-Dry | Beauty | +2 |
+If performed first, earn +2 more.
+
+Freeze Shock | Beauty | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Frenzy Plant | Cool | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Frost Breath | Beauty | +2 |
+If performed first, earn +2 more.
+
+Frustration | Cute | +2 |
+If performed last, earn +2 more.
+
+Fury Attack | Cool | +2 |
+Can be performed twice in a row.
+
+Fury Cutter | Cool | +2 |
+Can be performed twice in a row.
+
+Fury Swipes | Tough | +2 |
+Can be performed twice in a row.
+
+Fusion Bolt | Beauty | +2 |
+Can be performed twice in a row.
+
+Fusion Flare | Beauty | +2 |
+Can be performed twice in a row.
+
+Future Sight | Smart | +2 |
+If performed first, earn +2 more.
+
+Gastro Acid | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Gear Grind | Tough | +2 |
+Can be performed twice in a row.
+
+Geomancy | Cute | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Giga Drain | Smart | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Giga Impact | Beauty | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Glaciate | Beauty | +2 |
+User Pokémon performs last next round.
+
+Glare | Tough | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Grass Knot | Smart | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Grass Pledge | Smart | +2 |
+Can be performed twice in a row.
+
+Grass Whistle | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Grassy Terrain | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Gravity | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Growl | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Growth | Beauty | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Grudge | Tough | +2 |
+Lowers the Voltage of all Judges by 1.
+
+Guard Split | Cute | n/a |
+Appeal Points are four minus chosen Judges' Voltage. (eg. 4 – 1 = 3)
+
+Guard Swap | Cute | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Guillotine | Cool | +1 |
+At the end of the turn (after points from Judges’ impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Gunk Shot | Cool | +3 |
+No additional effect.
+
+Gust | Smart | +3 |
+No additional effect.
+
+Gyro Ball | Beauty | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Hail | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Hammer Arm | Cool | +2 |
+User Pokémon performs last next round.
+
+Harden | Tough | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Happy Hour | Cool | +1 |
+At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Haze | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Headbutt | Tough | +3 |
+No additional effect.
+
+Head Charge | Tough | +1 |
+At the end of the turn (after points from Judges' impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Head Pulse | Cute | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Head Smash | Tough | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Heal Bell | Beauty | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Heal Block | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Healing Wish | Cute | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Heal Order | Smart | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Heart Stamp | Cute | +3 |
+No additional effect.
+
+Heart Swap | Cool | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Heat Crash | Beauty | +3 |
+No additional effect.
+
+Heat Wave | Beauty | +2 |
+If performed first, earn +2 more.
+
+Heavy Slam | Tough | +3 |
+No additional effect.
+
+Helping Hand | Smart | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Hex | Smart | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to Voltage).
+
+High Jump Kick | Cool | +3 |
+No additional effect.
+
+Hidden Power | Smart | +1 |
+At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Hone Claws | Cute | n/a |
+Doubles Appeal Score next round.
+
+Horn Attack | Cool | +3 |
+No additional effect.
+
+Horn Drill | Cool | +1 |
+At the end of the turn (after points from Judges’ impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Horn Leech | Smart | +1 |
+If previous Pokémon caused a Judge's Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is a different), earn +3 more.
+
+Howl | Cool | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Hurricane | Cool | +2 |
+If performed first, earn +2 more.
+
+Hydro Cannon | Beauty | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Hydro Pump | Beauty | +2 |
+If performed first, earn +2 more.
+
+Hyper Beam | Cool | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Hyper Fang | Cool | +2 |
+If performed last, earn +2 more.
+
+Hyper Voice | Cool | +3 |
+No additional effect.
+
+Hypnosis | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Ice Ball | Beauty | +2 |
+Can be performed twice in a row.
+
+Ice Beam | Beauty | +2 |
+If performed first, earn +2 more.
+
+Ice Burn | Beauty | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Ice Fang | Cool | +3 |
+No additional effect.
+
+Ice Punch | Beauty | +2 |
+If performed first, earn +2 more.
+
+Ice Shard | Beauty | +2 |
+User Pokémon performs last next round.
+
+Icicle Crash | Beauty | +3 |
+No additional effect.
+
+Icicle Spear | Beauty | +2 |
+Can be performed twice in a row.
+
+Icy Wind | Beauty | +2 |
+User Pokémon performs last next round.
+
+Imprison | Smart | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Inferno | Beauty | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Infestation | Smart | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Incinerate | Beauty | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Ingrain | Smart | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Iron Defense | Tough | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Iron Head | Tough | +2 |
+If performed last, earn +2 more.
+
+Iron Tail | Cool | +2 |
+If performed last, earn +2 more.
+
+Ion Deluge | Beauty | +3 |
+No additional effect.
+
+Judgment | Smart | +2 | |
+Order of appeals is randomized next turn.
+
+Jump Kick | Cool | +3 |
+No additional effect.
+
+Karate Chop | Tough | +3 |
+No additional effect.
+
+Kinesis | Smart | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+King's Shield | Tough | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Knock Off | Smart | +3 |
+No additional effect.
+
+Land's Wrath | Tough | +2 |
+If performed last, earn +2 more.
+
+Last Resort | Cute | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Lava Plume | Tough | +2 |
+If performed first, earn +2 more.
+
+Leaf Blade | Cool | +2 |
+If performed first, earn +2 more.
+
+Leaf Storm | Cute | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Leaf Tornado | Smart | +2 |
+If performed last, earn +2 more.
+
+Leech Life | Smart | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Leech Seed | Smart | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Leer | Cool | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Lick | Tough | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Light Screen | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Lock-On | Smart | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Lovely Kiss | Beauty | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Low Kick | Tough | +3 |
+No additional effect.
+
+Low Sweep | Cool | +2 |
+User Pokémon performs last next turn.
+
+Lucky Chant | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Lunar Dance | Beauty | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Luster Purge | Smart | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Mach Punch | Cool | +2 |
+User Pokémon performs first next round.
+
+Magic Coat | Beauty | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Magical Leaf | Beauty | +2 |
+If performed first, earn +2 more.
+
+Magic Room | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Magma Storm | Tough | +2 |
+Can be used twice in a row.
+
+Magnet Bomb | Cool | +3 |
+No additional effect.
+
+Magnet Rise | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Magnetic Flux | Beauty | n/a |
+Doubles Appeal Points next round.
+
+Magnitude | Tough | +2 |
+If performed last, earn +2 more.
+
+Mat Block | Cool | +2 |
+If performed first, earn +2 more.
+
+Me First | Cute | +2 |
+User Pokémon performs first next round.
+
+Mean Look | Beauty | +2 |
+Voltage of all Judges are lowered by 1.
+
+Meditate | Beauty | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Mega Drain | Smart | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Mega Kick | Cool | +2 |
+If performed last, earn +2 more.
+
+Mega Punch | Tough | +2 |
+If performed last, earn +2 more.
+
+Megahorn | Cool | +2 |
+If performed last, earn +2 more.
+
+Memento | Tough | +1 |
+At the end of the turn (after points from Judges’ impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Metal Claw | Cool | +2 |
+If performed last, earn +2 more.
+
+Metal Burst | Beauty | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Metal Sound | Smart | +2 |
+Voltage of all Judges are lowered by 1.
+
+Meteor Mash | Cool | +2 |
+If performed last, earn +2 more.
+
+Metronome | Cute | +2 |
+Next round, turn order is randomized for all Pokémon.
+
+Milk Drink | Cute | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Mimic | Cute | n/a |
+If previous Pokémon hit max Voltage, User will earn the same points as that Pokémon (even if a different Judge is selected).
+
+Mind Reader | Smart | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Minimize | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Miracle Eye | Cute | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Mirror Coat | Beauty | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Mirror Move | Smart | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Mirror Shot | Cute | +2 |
+If performed first, earn +2 more.
+
+Mist | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Misty Terrain | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Mist Ball | Smart | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Moonblast | Cute | +2 |
+If performed first, earn +2 more.
+
+Moonlight | Beauty | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Morning Sun | Beauty | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Mud Bomb | Smart | +2 |
+If performed last, earn +2 more.
+
+Mud Shot | Tough | +2 |
+User Pokémon performs last next round.
+
+Mud Sport | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Muddy Water | Tough | +2 |
+If performed last, earn +2 more.
+
+Mud-Slap | Cute | +3 |
+No additional effect.
+
+Mystical Fire | Beauty | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Nasty Plot | Cute | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Natural Gift | Cool | +2 |
+If performed last, earn +2 more.
+
+Nature Power | Beauty | +2 |
+Next round, turn order is randomized for all Pokémon.
+
+Needle Arm | Smart | +3 |
+No additional effect.
+
+Night Daze | Cool | +2 |
+If performed last, earn +2 more.
+
+Night Shade | Smart | +3 |
+No additional effect.
+
+Night Slash | Beauty | +3 |
+No additional effect.
+
+Nightmare | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Noble Roar | Cool | +2 |
+Appeal score is increased by +4 if user is in position 4.
+
+Nuzzle | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Oblivion Wing | Cool | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Octazooka | Tough | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Odor Sleuth | Smart | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Ominous Wind | Smart | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Outrage | Cool | +2 |
+Can be performed twice in a row.
+
+Overheat | Beauty | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Pain Split | Smart | +2 |
+Voltage of all Judges are lowered by 1.
+
+Parabolic Charge | Beauty | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Parting Shot | Tough | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Pay Day | Smart | +1 |
+At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Payback | Cool | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Peck | Cool | +3 |
+No additional effect.
+
+Perish Song | Beauty | +2 |
+Voltage of all Judges are lowered by 1.
+
+Petal Blizzard | Beauty | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Petal Dance | Beauty | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Phantom Force | Smart | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Pin Missile | Cool | +2 |
+Can be performed twice in a row.
+
+Play Nice | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Play Rough | Tough | +3 |
+No additional effect.
+
+Pluck | Cute | n/a |
+If previous Pokémon hit max Voltage, User will earn the same points as that Pokémon (even if a different Judge is selected).
+
+Poison Fang | Smart | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Poison Gas | Smart | +3 |
+No additional effect.
+
+Poison Jab | Smart | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Poison Sting | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Poison Tail | Smart | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Poison Powder | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Pound | Tough | +3 |
+No additional effect.
+
+Powder | Smart | +2 |
+Next round, turn order is randomized for all Pokémon (overides move that set position).
+
+Powder Snow | Beauty | +3 |
+No additional effect.
+
+Power-Up Punch | Tough | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Power Gem | Beauty | +3 |
+No additional effect.
+
+Power Split | Cute | n/a |
+Appeal Points are four mins Judge's Voltage (eg. 4 – 1 = 3).
+
+Power Swap | Beauty | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Power Trick | Cool | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Power Whip | Beauty | +3 |
+No additional effect.
+
+Present | Cute | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Protect | Cute | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Psybeam | Beauty | +2 |
+If performed first, earn +2 more.
+
+Psych Up | Smart | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Psychic | Smart | +2 |
+If performed first, earn +2 more.
+
+Psycho Boost | Smart | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Psycho Cut | Cool | +2 |
+If performed first, earn +2 more.
+
+Psycho Shift | Cool | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Psyshock | Smart | n/a |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Psystrike | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Psywave | Smart | +3 |
+No additional effect.
+
+Punishment | Smart | +1 |
+At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Pursuit | Smart | +1 |
+If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Quash | Cool | +2 |
+If performed last in a turn, earn +2 more.
+
+Quick Attack | Cool | +2 |
+User Pokémon performs first next round.
+
+Quick Guard | Tough | +2 |
+If performed first, earn +2 more.
+
+Quiver Dance | Cute | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Rage | Cool | n/a|
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Rage Powder | Beauty | +2 |
+Next round, turn order is randomized for all Pokémon (overides move that set position).
+
+Rain Dance | Tough | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Rapid Spin | Cool | +2 |
+If performed first, earn +2 more.
+
+Razor Leaf | Cool | +3 |
+No additional effect.
+
+Razor Shell | Cute | +3 |
+No additional effect.
+
+Razor Wind | Cool | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Recover | Smart | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Recycle | Smart | n/a |
+If previous Pokémon hit max Voltage, User will earn the same points as that Pokémon (even if a different Judge is selected).
+
+Reflect | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Reflect Type | Smart | +3 |
+No additional effect.
+
+Refresh | Cute | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Relic Song | Cool | +2 |
+Voltage of all Judges is lowered by -1.
+
+Rest | Cute | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Retaliate | Tough | +2 |
+If performed last, earn +2 more.
+
+Return | Cute | +2 |
+If performed first, earn +2 more.
+
+Revenge | Tough | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Reversal | Cool | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Roar| Cool | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Roar of Time | Cool | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Rock Blast | Tough | +2 |
+Can be performed twice in a row.
+
+Rock Climb | Cool | +2 |
+If performed last, earn +2 more.
+
+Rock Polish | Tough | +2 |
+User Pokémon performs first next round.
+
+Rock Slide | Tough | +3 |
+No additional effect.
+
+Rock Smash | Tough | +2 |
+If performed last, earn +2 more.
+
+Rock Throw | Tough | +3 |
+No additional effect.
+
+Rock Tomb | Smart | +2 |
+User Pokémon performs last next round.
+
+Rock Wrecker | Tough | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Role Play | Cute | +1 |
+At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Rolling Kick | Cool | +3 |
+No additional effect.
+
+Rollout | Tough | +2 |
+Can be performed twice in a row.
+
+Roost | Cool | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Rototiller | Tough | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Round | Cute | +1 |
+At the end of the turn (after points from Judges' impressions are added), if the user's score is the lowest of all the scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Sacred Fire | Beauty | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Safeguard | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Sand Attack | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Sand Tomb | Smart | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Sandstorm | Tough | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Scald | Beauty | +3 |
+No additional effect.
+
+Scary Face | Tough | +2 |
+User Pokémon performs last next round.
+
+Scratch | Tough | +3 |
+No additional effect.
+
+Screech | Smart | +2 |
+Voltage of all Judges are lowered by 1.
+
+Searing Shot | Beauty | +3 |
+No additional effect.
+
+Secret Power | Smart | +2 |
+Next round, turn order is randomized for all Pokémon.
+
+Secret Sword | Tough | +3 |
+No additional effect.
+
+Seed Bomb | Smart | +3 |
+No additional effect.
+
+Seed Flare | Smart | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Seismic Toss | Tough | +3 |
+No additional effect.
+
+Self-Destruct | Beauty | +1 |
+At the end of the turn (after points from Judges’ impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Shadow Ball | Smart | +2 |
+If performed first, earn +2 more.
+
+Shadow Claw | Cute | +2 |
+If performed first, earn +2 more.
+
+Shadow Force | Smart | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Shadow Punch | Smart | +2 |
+If performed first, earn +2 more.
+
+Shadow Sneak | Smart | +2 |
+User Pokémon performs first next round.
+
+Sharpen | Cute | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Sheer Cold | Beauty | +1 |
+At the end of the turn (after points from Judges’ impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Shell Smash | Cute | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Shock Wave | Cool | +2 |
+If performed first, earn +2 more.
+
+Shift Gear | Cool | +2 |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Signal Beam | Beauty | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Silver Wind | Beauty | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Simple Beam | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Sing| Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Sketch | Smart | +1 |
+At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Skill Swap | Smart | n/a |
+If previous Pokémon hit max Voltage, User will earn the same points as that Pokémon (even if a different Judge is selected).
+
+Skull Bash | Tough | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more..
+
+Sky Attack | Cool | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Sky Drop | Cool | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Sky Uppercut | Cool | +2 |
+If performed first, earn +2 more.
+
+Slack Off | Cute | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Slam | Tough | +3 |
+No additional effect.
+
+Slash | Cool | +3 |
+No additional effect.
+
+Sleep Powder | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Sleep Talk | Cute | +3 |
+No additional effect.
+
+Sludge | Tough | +2 |
+If performed last, earn +2 more.
+
+Sludge Bomb | Tough | +2 |
+If performed last, earn +2 more.
+
+Sludge Wave | Tough | +2 |
+If performed first, earn +2 more.
+
+Smack Down | Cool | +3 |
+No additional effect.
+
+Smelling Salts| Smart | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Smog | Tough | +3 |
+No additional effect.
+
+Smokescreen | Smart | +2 |
+Voltage of all Judges are lowered by 1.
+
+Snarl | Tough | +2 |
+User Pokémon perfroms last next round.
+
+Snatch | Smart | n/a |
+If previous Pokémon hit max Voltage, User will earn the same points as that Pokémon (even if a different Judge is selected).
+
+Snore | Cute | +3 |
+No additional effect.
+
+Soak | Beauty | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Soft-Boiled | Beauty | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Solar Beam | Cool | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Sonic Boom | Cool | +3 |
+No additional effect.
+
+Spacial Rend | Tough | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Spark | Cool | +3 |
+No additional effect.
+
+Spider Web | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Spike Cannon | Cool | +2 |
+Can be performed twice in a row.
+
+Spikes | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Spiky Shield | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Spit Up | Tough | +2 |
+If performed last, earn +2 more.
+
+Spite | Tough | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Splash | Cute | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Spore | Beauty | +2 |
+Voltage of all Judges is lowered by 1.
+
+Stealth Rock | Cool | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Steamroller | Tough | +3 |
+No additional effect.
+
+Steel Wing | Cool | +3 |
+No additional effect.
+
+Sticky Web | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Stockpile | Tough | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Stomp | Tough | +3 |
+No additional effect.
+
+Stone Edge | Tough | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Stored Power | Smart | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Storm Throw | Tough | +2 |
+If performed first, earn +2 more.
+
+Strength | Tough | +3 |
+No additional effect.
+
+String Shot | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Struggle Bug | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Stun Spore | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Submission | Cool | +3 |
+No additional effect.
+
+Substitute | Smart | +1 |
+At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Sucker Punch | Smart | +2 |
+User Pokémon performs first next round.
+
+Sunny Day | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Super Fang | Tough | +3 |
+No additional effect.
+
+Superpower | Tough | +2 |
+If performed last, earn +2 more.
+
+Supersonic | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Surf | Beauty | +2 |
+If performed first, earn +2 more.
+
+Swagger | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Swallow | Tough | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Sweet Kiss | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Sweet Scent | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Swift | Cool | +2 |
+If performed first, earn +2 more.
+
+Swords Dance | Beauty | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Switcheroo | Cool | n/a |
+If previous Pokémon hit max Voltage, User will earn the same points as that Pokémon (even if a different Judge is selected).
+
+Synchronoise | Smart | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Synthesis | Smart | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Tackle | Tough | +3 |
+No additional effect.
+
+Tail Glow | Beauty | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Tail Slap | Cute | +2 |
+Can be used twice in a row.
+
+Tail Whip | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Tailwind | Smart | +2 |
+User Pokémon performs first next round.
+
+Take Down | Tough | +3 |
+No additional effect.
+
+Taunt | Smart | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Techno Blast | Cool | +1 |
+At the end of a turn (after points from Judges' impressions are added), if User's score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokermon are tied for lowest).
+
+Teeter Dance | Cute | +2 |
+Next round, turn order is randomized for all Pokémon.
+
+Telekinesis | Smart | +2 |
+Lowers the Voltage of all Judges by -1.
+
+Teleport | Cool | +2 |
+User Pokémon performs first next round.
+
+Thief | Tough | n/a |
+If previous Pokémon hit max Voltage, User will earn the same points as that Pokémon (even if a different Judge is selected).
+
+Thrash | Tough | +2 |
+Can be performed twice in a row.
+
+Thunder | Cool | +2 |
+If performed first, earn +2 more.
+
+Thunderbolt | Cool | +2 |
+If performed first, earn +2 more.
+
+Thunder Fang | Smart | +3 |
+No additional effect.
+
+Thunder Punch | Cool | +2 |
+If performed first, earn +2 more.
+
+Thunder Shock | Cool | +3 |
+No additional effect.
+
+Thunder Wave | Cool | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Tickle | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Topsy-Turvy | Cute | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Torment | Tough | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Toxic | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Toxic Spikes | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Transform | Smart | +1 |
+At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
+
+Tri-Attack | Beauty | +3 |
+No additional effect.
+
+Trick | Smart | n/a |
+If previous Pokémon hit max Voltage, User will earn the same points as that Pokémon (even if a different Judge is selected).
+
+Trick Room | Cute | +2 |
+Next round, turn order is randomized for all Pokémon.
+
+Trick-or-Treat | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Triple Kick | Cool | +2 |
+Can be performed twice in a row.
+
+Trump Card | Cool | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Twineedle | Cool | +2 |
+Can be performed twice in a row.
+
+Twister | Cool | +3 |
+No additional effect.
+
+Uproar | Cute | +2 |
+Voltage of all Judges is lowered by 1.
+
+U-Turn | Cute | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Vacuum Wave | Smart | +2 |
+User Pokémon performs first next round.
+
+V-Create | Cool | +3 |
+No additional effect.
+
+Venom Drench | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Venoshock | Smart | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Vicegrip | Tough | +3 |
+No additional effect.
+
+Vine Whip | Cool | +3 |
+No additional effect.
+
+Vital Throw | Cool | +2 |
+User Pokémon performs last next round.
+
+Volt Tackle | Cool | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Volt Switch | Cool | n/a |
+Appeal Points are four minus chosen Judges's Voltage. (eg. 4 – 1 = 3 Appeal Points)
+
+Wake-Up Slap | Smart | n/a |
+Appeal Points is 4 minus chosen Judges’ Voltage. (eg. 4 – 1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Water Gun | Cute | +3 |
+No additional effect.
+
+Water Pledge | Beauty | +3 |
+No additional effect.
+
+Water Pulse | Beauty | +2 |
+If performed first, earn +2 more.
+
+Water Shuriken | Beauty | +3 |
+No additional effect.
+
+Water Sport | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Water Spout | Beauty | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Waterfall | Tough | +3 |
+No additional effect.
+
+Weather Ball | Smart | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Whirlpool | Beauty | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Whirlwind | Smart | +1 |
+At the end of the turn (after points from Judges’ impressions are added), user earns +15 more if all the Pokémon choose the same Judge.
+
+Wide Guard | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Wild Charge | Cool | +3 |
+No additional effect.
+
+Will-O-Wisp | Beauty | +2 |
+If performed first, earn +2 more.
+
+Wing Attack | Cool | +3 |
+No additional effect.
+
+Wish | Cute | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Withdraw | Cute | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Wonder Room | Smart | +2 |
+Next round, turn order is randomized for all Pokémon (overides moves of placement).
+
+Wood Hammer | Tough | +2 |
+If performed last, earn +2 more.
+
+Work Up | Cute | n/a |
+Doubles Appeal Points next round.
+
+Worry Seed | Beauty | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Wrap | Tough | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Wring Out | Smart | +2 |
+If the previous Pokémon hit max Voltage, earn +3 more (even if the Judge is different).
+
+X-Scissor | Beauty | +2 |
+If performed first, earn +2 more.
+
+Yawn | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Zap Cannon | Cool | +2 |
+If chosen Judge's Voltage goes up, earn +2 more.
+
+Zen Headbutt | Beauty | +2 |
+If performed last, earn +2 more.
+
+Flame Charge | Cool | +2 |
+User Pokemon performs first next round.
+
+Fire Pledge | Beauty | +2 |
+Can be performed twice in a row.
+
+Sacred Sword | Cool | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Heal Pulse | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Diamond Storm | Beauty | +2 |
+If performed first, earn +2 more.
+
+Steam Eruption | Beauty | +3 |
+No additional effect.
+
+Hyperspace Hole | Tough | +2 |
+If performed first, earn +2 more.
+
+Thousand Arrows | Beauty | +3 |
+No additional effect.
+
+Thousand Waves | Tough | +2 |
+Voltage of all Judges are lowered by 1.
+
+Origin Pulse | Beauty | +2 |
+If performed first, earn +2 more.
+
+Precipice Blades | Cool | +2 |
+If performed last, earn +2 more.
+
+Dragon Ascent | Beauty | +2 |
+If the previous Pokemon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Hyperspace Hole | Tough | +2 |
+If performed first, earn +2 more.
+
+Shore Up | Cute | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+First Impression | Cool | +2 |
+If performed first, earn +2 more.
+
+Baneful Bunker | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Spirit Shackle | Smart | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Darkest Lariat | Smart | +3 |
+No additional effect.
+
+Sparkling Aria | Beauty | +2 |
+If performed first, earn +2 more.
+
+Ice Hammer | Beauty | +2 |
+User Pokemon performs last next round.
+
+Floral Healing | Beauty | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+High Horsepower | Tough | +2 |
+If performed last, earn +2 more.
+
+Strength Sap | Smart | +1 |
+If the previous Pokemon caused a Judge's Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Solar Blade | Tough | +1 |
+If chosen Judge has not seen an appeal this round, earn +3 more.
+
+Leafage | Cool | +3 |
+No additional effect.
+
+Spotlight | Cute | +2 |
+Next round, turn order is randomized for all Pokemon (overides move that set position).
+
+Toxic Thread | Smart | +2 |
+User Pokemon performs last next round.
+
+Laser Focus | Cool | n/a |
+Doubles Appeal Points next round.
+
+Gear Up | Smart | n/a |
+Doubles Appeal Points next round.
+
+Throat Chop | Smart | n/a |
+Appeal Points is 4 minus chosen Judges・Voltage. (eg. 4 ・1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Pollen Puff | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Anchor Shot | Smart | +2 |
+Voltage of all Judges are lowered by 1.
+
+Psychic Terrain | Smart | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Lunge | Cute | +3 |
+No additional effect.
+
+Fire Lash | Cool | +3 |
+No additional effect.
+
+Power Trip | Smart | n/a |
+Earn Appeal Points depending on the position used; 1 = +1 ; 2 = +2 ; 3 = +3 ; 4 = +4.
+
+Burn Up | Beauty | +3 |
+No additional effect.
+
+Speed Swap | Smart | n/a |
+Appeal Points is 4 minus chosen Judges・Voltage. (eg. 4 ・1 = 3 Appeal Points)
+Basically, if Voltage equals 0, earn +4. V1 = +3. V2 = +2. V3 = +1. V4 = +0.
+
+Smart Strike | Smart | +2 |
+If performed first, earn +2 more.
+
+Purify | Smart | n/a |
+Appeal Points equal amount of Voltage on chosen Judge (applied before Voltage is added due to type compatibles).
+
+Revelation Dance | Beauty | +1 |
+At the end of a turn (after points from Judges・impressions are added), if User's score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokemon are tied for lowest).
+
+Core Enforcer | Tough | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Trop Kick | Tough | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Instruct | Smart | +1 |
+If the previous Pokemon caused a Judge's Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
+
+Beak Blast | Cool | +2 |
+Can be used twice in a row.
+
+Clanging Scales | Beauty | +3 |
+No additional effect.
+
+Dragon Hammer | Tough | +2 |
+If performed first, earn +2 more.
+
+Brutal Swing | Cool | +3 |
+No additional effect.
+
+Aurora Veil | Beauty | +2 |
+Prevents Voltage on any Judges from being increased (includes current use of move).
+
+Shell Trap | Beauty | +2 |
+If performed last in a turn, earn +2 more (applied before bonuses like Swords Dance, and before score is raised due to max Voltage).
+
+Fleur Cannon | Beauty | +2 |
+If the previous Pokemon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Psychic Fangs | Cute | +3 |
+No additional effect.
+
+Stomping Tantrum | Tough | +2 |
+Can be performed twice in a row.
+
+Shadow Bone | Cool | +2 |
+Can be performed twice in a row.
+
+Accelrock | Tough | +2 |
+User Pokemon performs first next round.
+
+Liquidation | Tough | +3 |
+No additional effect.
+
+Prismatic Laser | Beauty | +2 |
+If the previous Pokemon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Spectral Thief | Smart | n/a |
+Earn double Appeal Points next round. (This doubles appeal score after effects, but before Voltage.)
+
+Sunsteel Strike | Cool | +3 |
+No additional effect.
+
+Moongeist Beam | Smart | +3 |
+No additional effect.
+
+Tearful Look | Cute | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
+
+Zing Zap | Cool | +2 |
+If performed last, earn +2 more.
+
+Nature's Madness | Beauty | +3 |
+No additional effect.
+
+Multi-Attack | Beauty | +2 |
+Order of appeals is randomized next turn.
+
+Mind Blown | Beauty | +2 |
+If the previous Pokemon hit max Voltage, earn +3 more (even if the Judge is different).
+
+Plasma Fists | Cool | +2 |
+If performed last, earn +2 more.
+
+Photon Geyser | Smart | +2 |
+Prevents Voltage on any Judges from being decreased (includes current use of move).
