@@ -77,12 +77,12 @@ bot.on("message", function(message) {
         if ((oldmessage.indexOf("fd's stats") != -1) || (oldmessage.indexOf("fierce deity's stats") != -1) || (oldmessage.indexOf("fierce diety's stats") != -1)) { message.channel.send("\nhttp://fd-stats.proboards.com/thread/4/slaves?page=1") }
         if ((oldmessage.indexOf("xali's stats") != -1) || (oldmessage.indexOf("xalipeno's stats") != -1) || (oldmessage.indexOf("xalipeño's stats") != -1)) { message.channel.send("\nhttp://jalapenowarrior.proboards.com/thread/17?page=1") }
         if (oldmessage.indexOf("seppe's stats") != -1) { message.channel.send("\nhttp://seppeurpg.proboards.com/thread/2/owned") }
-        if ((oldmessage.indexOf("ori's stats") != -1) || (oldmessage.indexOf("oribhel's stats") != -1)) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=9869") }
+        if ((oldmessage.indexOf("ori's stats") != -1) || (oldmessage.indexOf("oribhel's stats") != -1) || (oldmessage.indexOf("heltear's stats") != -1)) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=9869") }
         if ((oldmessage.indexOf("jonas's stats") != -1) || (oldmessage.indexOf("jonastank's stats") != -1)) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=9820") }
         if ((oldmessage.indexOf("menegoth's stats") != -1) || (oldmessage.indexOf("mene's stats") != -1)) { message.channel.send("\nhttp://menegothstats.freeforums.net/thread/2/pok-mon") }
         if (oldmessage.indexOf("liam's stats") != -1) { message.channel.send("\nhttp://s15.zetaboards.com/The_Stats_of_Liam/topic/7891449/1/") }
         if ((oldmessage.indexOf("team evolution's stats") != -1) || (oldmessage.indexOf("charmander4lyf's stats") != -1) || (oldmessage.indexOf("ketamine's stats") != -1)) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=9307") }
-        if ((oldmessage.indexOf("monbrey's stats") != -1) || (oldmessage.indexOf("mon's stats") != -1)) { message.channel.send("\nhttp://urpg.monbrey.com.au/stats/pokemon.php") }
+        if ((oldmessage.indexOf("monbrey's stats") != -1) || (oldmessage.indexOf("mon's stats") != -1)) { message.channel.send("\nhttps://urpg.monbrey.com.au/stats-new/") }
         if ((oldmessage.indexOf("caite's stats") != -1) || (oldmessage.indexOf("caite-chan's stats") != -1) || (oldmessage.indexOf("caite chan's stats") != -1)) { message.channel.send("\nhttp://caitechan.proboards.com/thread/2") }
         if ((oldmessage.indexOf("gun's stats") != -1) || (oldmessage.indexOf("gun6's stats") != -1) || (oldmessage.indexOf("gun 6's stats") != -1)) { message.channel.send("\nhttp://www.pokemoncrossroads.com/forum/showthread.php?16180-Gun6-s-Stats") }
         if (oldmessage.indexOf("ataro's stats") != -1) { message.channel.send("\nhttp://s4.zetaboards.com/rustyrefbotataro/topic/8274811/1/") }
@@ -95,7 +95,7 @@ bot.on("message", function(message) {
         if ((oldmessage.indexOf("princess crow's stats") != -1) || (oldmessage.indexOf("pc's stats") != -1) || (oldmessage.indexOf("hannah's stats") != -1)) { message.channel.send("\nhttp://princesscrow.proboards.com/thread/2/pokemon-list-1") }
         if ((oldmessage.indexOf("pv's stats") != -1) || (oldmessage.indexOf("vultan's stats") != -1) || (oldmessage.indexOf("artist's stats") != -1)) { message.channel.send("\nhttp://s13.zetaboards.com/Prince_Vultan/topic/9093369/1/") }
         if ((oldmessage.indexOf("julio's stats") != -1) || (oldmessage.indexOf("juliorain's stats") != -1) || (oldmessage.indexOf("julio rain's stats") != -1)) { message.channel.send("\nhttps://juliorain.wordpress.com/") }
-        if ((oldmessage.indexOf("maxichel kigahen's stats") != -1) || (oldmessage.indexOf("mikey's stats") != -1) || (oldmessage.indexOf("mikey57's stats") != -1) || (oldmessage.indexOf("mikey 57's stats") != -1)) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=6289") }
+        if ((oldmessage.indexOf("maxichel kigahen's stats") != -1) || (oldmessage.indexOf("mikey's stats") != -1) || (oldmessage.indexOf("mikey57's stats") != -1) || (oldmessage.indexOf("mikey 57's stats") != -1)) { message.channel.send("\nhttps://mikey57urpg.wordpress.com/") }
         if ((oldmessage.indexOf("elrond 2.0's stats") != -1) || (oldmessage.indexOf("elrond's stats") != -1)) { message.channel.send("\nhttps://pokemonurpg.com/stats/Elrond") }
         if ((oldmessage.indexOf("soul's stats") != -1) || (oldmessage.indexOf("soul master's stats") != -1) || (oldmessage.indexOf("soulmaster's stats") != -1) || (oldmessage.indexOf("sm's stats") != -1)) { message.channel.send("\nhttp://soulmasterurpgf.proboards.com/thread/2/pokemon-own") }
         if ((oldmessage.indexOf("winter's stats") != -1) || (oldmessage.indexOf("wv's stats") != -1) || (oldmessage.indexOf("wintervines's stats") != -1)) { message.channel.send("\nhttp://frozenchains.proboards.com/thread/5") }
@@ -106,7 +106,8 @@ bot.on("message", function(message) {
         if ((oldmessage.indexOf("captaindude's stats") != -1) || (oldmessage.indexOf("cd's stats") != -1)) { message.channel.send("\nhttp://captaindudeurpg.proboards.com/board/1") }
         if ((oldmessage.indexOf("mandl27's stats") != -1) || (oldmessage.indexOf("mandl's stats") != -1) || (oldmessage.indexOf("mand's stats") != -1) || (oldmessage.indexOf("ml's stats") != -1)) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10294") }
         if (oldmessage.indexOf("saur's stats") != -1) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=9871&pid=123349#pid123349") }
-        if (oldmessage.indexOf("sapahn's stats") != -1) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10208")}
+        if (oldmessage.indexOf("sapahn's stats") != -1) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10208") }
+        if (oldmessage.indexOf("fortree's stats") != -1) { message.channel.send("\nhttp://ashkstatsurpg.proboards.com/thread/65/fortree-city-gym-2015") }
     }
     if (message.content.indexOf(",rse ") == 0) {
         let movelist = ""
@@ -248,7 +249,7 @@ bot.on("message", function(message) {
         if(lowmessage == "competitive") message.channel.send("6v6\nSM Private Preview\nOHKO ACC EVA SLP FRZ Species Item Legend Clauses On\nHelds On\nDefault Weather and Terrain");
         if(lowmessage == "e4" || lowmessage.indexOf("elite") != -1) message.channel.send("6 vs 6\nSM Private Full or SM Private Preview\nItems Allowed\nSleep Clause\nFreeze Clause\nOHKO Clause\nAccuracy Clause\nEvasion Clause\nNo Legendary Pokemon\nDefender’s Choice: Species Clause, Item Clause, Weather, Terrain");
         if(lowmessage == "ld") message.channel.send("4 VS. 4+\nSM Private Full or Preview\nItems Optional\nSleep, Freeze, OHKO, Accuracy, Evasion and Legend Clauses On\nMega, Z, Item and Species Clauses Optional\nStarting Weather and Terrain Optional");
-        if(lowmessage == "ashrandoms") message.channel.send("6v6\nSM Public Box\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds On\nRandom Weather and Terrain\nRoll for first send\n\nAny changes?");
+        if(lowmessage == "ashrandoms") message.channel.send("6v6\nSM Public Box (Roll your 6 and use that as your Box)\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds On\nRandom Weather and Terrain\nRoll for first send\n\nAny changes?");
         if(lowmessage == "fortree") message.channel.send("6v6\nSM Public Open\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First");
         if(lowmessage == "ashmockfire") message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Delphox, Flareon, Houndoom, Marowak (Alola), Ninetales, Numel, Salamence, Talonflame, Turtonator, Volcarona.  Yours may be whatever you wish.");
         if(lowmessage == "ashmockdragon") message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.")
@@ -275,15 +276,15 @@ bot.on("message", function(message) {
             var terrain = Math.floor(Math.random() * 12);
             var rules = numPok + "v" + numPok + "\n";
             switch(gen) {
-                case 0: rules += "GSC"; break;
-                case 1: rules += "RSE"; break;
-                case 2: rules += "SM"; break;
+                case 0: rules += "GSC "; break;
+                case 1: rules += "RSE "; break;
+                case 2: rules += "SM "; break;
             }
             if (mode != 0) {
-                rules += "Private";
+                rules += "Private ";
             }
             else {
-                rules += "Public";
+                rules += "Public ";
             }
             switch(format) {
                 case 0: rules += "Full\n"; break;
@@ -858,7 +859,7 @@ bot.on("message", function(message) {
         if ((message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065") && lowmessage.indexOf("and") != -1 && lowmessage.indexOf("out") != -1 && lowmessage.indexOf("and") < lowmessage.indexOf("out")) {
             message.react(message.guild.emojis.get("246070314163896320"));
         }
-        if (lowmessage.indexOf(",role") == 0) {
+        if (lowmessage.indexOf(",role") == 0 || lowmessage.indexOf(",spoiler") == 0) {
             if (lowmessage.indexOf(",role spoiler") == 0 || lowmessage.indexOf(",spoiler") == 0) {
                 if (message.member.roles.has("440004078219558912")) {
                     message.member.removeRole(message.guild.roles.get("440004078219558912"));
@@ -889,7 +890,7 @@ bot.on("message", function(message) {
                     message.channel.send("Forum FFA role added!");
                 }
             }
-            else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` (access to the chat for Sword/Shield spoilers), `coordinator` (being pinged for contests looking for players), and `forumffa` (being pinged for Forum FFAs starting or turns being posted).")}
+            else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` (access to the chat for Avengers: Endgame spoilers), `coordinator` (being pinged for contests looking for players), and `forumffa` (being pinged for Forum FFAs starting or turns being posted).")}
         }
         if (message.channel.id == "401543302710689793" && lowmessage.indexOf("!!") != lowmessage.lastIndexOf("!!")) {
             var cardName = message.cleanContent.split("!!")[1];
@@ -900,23 +901,23 @@ bot.on("message", function(message) {
         }
         if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
             if (message.channel.name.indexOf("war") != -1) {
-                bot.channels.get("386808630709714954").send(message.member.nickname + ": " + message.cleanContent);
+                bot.channels.get("386808630709714954").send(message.member.displayName + ": " + message.cleanContent);
             }
             if (message.channel.name.indexOf("boss") != -1) {
-                bot.channels.get("386804780615335947").send(message.member.nickname + ": " + message.cleanContent);
+                bot.channels.get("386804780615335947").send(message.member.displayName + ": " + message.cleanContent);
             }
             if (message.content.indexOf(",end") == 0 && message.member.roles.has("561688333609074730")) {message.channel.delete();}
         }
         if (message.channel.name == "judge-test") {
-            bot.channels.get("294334136355651584").send(message.member.nickname + ": " + message.cleanContent);
+            bot.channels.get("294334136355651584").send(message.member.displayName + ": " + message.cleanContent);
             if (message.content.indexOf(",end") == 0 && message.member.roles.has("358435669372305408")) {message.channel.delete();}
         }
         if (message.channel.name == "ref-test") {
-            bot.channels.get("261370056246689792").send(message.member.nickname + ": " + message.cleanContent);
+            bot.channels.get("261370056246689792").send(message.member.displayName + ": " + message.cleanContent);
             if (message.content.indexOf(",end") == 0 && message.member.roles.has("358431855743336448")) {message.channel.delete();}
         }
         if (message.channel.name == "ranger-test") {
-            bot.channels.get("253364200955445248").send(message.member.nickname + ": " + message.cleanContent);
+            bot.channels.get("253364200955445248").send(message.member.displayName + ": " + message.cleanContent);
             if (message.content.indexOf(",end") == 0 && message.member.roles.has("419636474825277450")) {message.channel.delete();}
         }
     }
@@ -1221,6 +1222,8 @@ bot.on("messageDelete", async function(message) {
     if (message.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
     if (message.channel.id == "253364200955445248") {channelToNotify = "524695540995325971";}
     if (message.channel.id == "254207242780409857") {channelToNotify = "254207242780409857";}
+    if (message.channel.id == "440004235635982336") {return;}
+    if (message.channel.id == "409818526313086976" && message.cleanContent.indexOf("p!") == 0) {return;}
     if (message.channel.name == "judge-test") {channelToNotify = "294334136355651584";}
     if (message.channel.name == "ref-test") {channelToNotify = "261370056246689792";}
     if (message.channel.name == "ranger-test") {channelToNotify = "253364200955445248";}
@@ -1334,7 +1337,7 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
             }
     		var deleteLog = ""
             if ((newMessage.channel.parentID == "530600551763673088" && newMessage.channel.id != "386804780615335947" && newMessage.channel.id != "386808630709714954") || oldMessage.channel.name == "judge-test" || oldMessage.channel.name == "ref-test") {
-                deleteLog += newMessage.member.nickname;
+                deleteLog += newMessage.member.displayName;
                 deleteLog += "'s message saying \"";
                 deleteLog += newMessage.cleanContent;
                 deleteLog += "\"";
