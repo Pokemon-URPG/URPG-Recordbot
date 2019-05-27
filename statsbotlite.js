@@ -4,7 +4,6 @@ const auth = require("./auth.json")
 const fs = require("fs")
 const ss = require("string-similarity");
 
-
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(logger.transports.Console, {
