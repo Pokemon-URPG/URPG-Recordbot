@@ -1524,4 +1524,4 @@ bot.on("guildMemberRemove", function(member) {
 //    if (member.roles.prototype.size != 0) {}
 })
 
-bot.login(auth.token)
+bot.login(process.env.token)
