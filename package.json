@@ -1,0 +1,25 @@
+{
+
+  "name": "URPG Recordbot",
+
+  "description": "Recordbot for URPG",
+
+  "version": "0.0.0",
+
+  "main": "statsbotlite.js",
+
+  "scripts": {
+
+    "start": "node statsbotslite"
+
+  },
+
+  "dependencies": {
+
+    "discord.js": "11.5.0",
+
+    "request": "2.81.0"
+
+  }
+
+}

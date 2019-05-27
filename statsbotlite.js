@@ -13,6 +13,7 @@ logger.add(logger.transports.Console, {
 logger.level = "debug"
 // Initialize Discord Bot
 var bot = new Discord.Client({ disableEveryone: true })
+var badWords = ["gay", "fag", "retard", ];
 
 bot.on("ready", function() {
     logger.info("Connected")
@@ -30,6 +31,18 @@ bot.on('error', console.error);
 
 bot.on("message", function(message) {
     let lowmessage = message.content.toLowerCase()
+    for (let i = 0; i < badWords.length; i++) {
+        if (lowmessage.indexOf(badWords[i]) != -1) {
+            var badWordsLog = "";
+            badWordsLog += message.member.displayName;
+            badWordsLog += " said the following here ";
+            badWordsLog += message.url;
+            badWordsLog += ": ```";
+            badWordsLog += message.cleanContent;
+            badWordsLog += "```"
+            bot.channels.get("545384090044727296").send(badWordsLog);
+        }
+    }
     if ((lowmessage.indexOf(",") == 0 || lowmessage.indexOf("statsbot") != -1 || message.channel.type == "dm") && lowmessage.indexOf("stats") != -1 && lowmessage.indexOf("?") == -1) {
         let oldmessage = lowmessage
         lowmessage = ""
@@ -55,7 +68,7 @@ bot.on("message", function(message) {
         if (oldmessage.indexOf("commba's stats") != -1) { message.channel.send("\nhttp://w11.zetaboards.com/CommBAURPG/topic/7546474/1/") }
         if (oldmessage.indexOf("axion's stats") != -1) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=3987") }
         if (oldmessage.indexOf("izuru's stats") != -1) { message.channel.send("\nhttp://www.pokemoncrossroads.com/forum/showthread.php?18030-Izuru-s-Stats&p=279688&viewfull=1#post279688") }
-        if (oldmessage.indexOf("fenris's stats") != -1) { message.channel.send("\nhttp://fenris-urpg.freeforums.net/thread/6/pokemon-number") }
+        if (oldmessage.indexOf("fenris's stats") != -1) { message.channel.send("\nhttps://fenris-urpg.freeforums.net/thread/134/pokemon-stats") }
         if ((oldmessage.indexOf("reneescarted's stats") != -1) || (oldmessage.indexOf("renee's stats") != -1) || (oldmessage.indexOf("renée's stats") != -1)) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10261&pid=127856#pid127856") }
         if (oldmessage.indexOf("lychee's stats") != -1) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=8369") }
         if ((oldmessage.indexOf("swift's stats") != -1) || (oldmessage.indexOf("gallade's stats") != -1)) { message.channel.send("\nhttp://swiftgallade.freeforums.net/thread/2/pokemon-especially-gallade") }
@@ -108,6 +121,8 @@ bot.on("message", function(message) {
         if (oldmessage.indexOf("saur's stats") != -1) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=9871&pid=123349#pid123349") }
         if (oldmessage.indexOf("sapahn's stats") != -1) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10208") }
         if (oldmessage.indexOf("fortree's stats") != -1) { message.channel.send("\nhttp://ashkstatsurpg.proboards.com/thread/65/fortree-city-gym-2015") }
+        if (oldmessage.indexOf("after's stats") != -1) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10215") }
+        if (oldmessage.indexOf("pokeviper's stats") != -1) { message.channel.send("\nhttp://pokeviperbadass.proboards.com/") }
     }
     if (message.content.indexOf(",rse ") == 0) {
         let movelist = ""
@@ -240,7 +255,7 @@ bot.on("message", function(message) {
         }
     }
 
-    if(lowmessage.indexOf(",rules ") != -1)
+    if(lowmessage.indexOf(",rules ") == 0)
     {
         lowmessage = lowmessage.split(",rules ")[1];
         if(lowmessage == "casual") message.channel.send("6v6\nSM Public Open\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
@@ -252,8 +267,9 @@ bot.on("message", function(message) {
         if(lowmessage == "ashrandoms") message.channel.send("6v6\nSM Public Box (Roll your 6 and use that as your Box)\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds On\nRandom Weather and Terrain\nRoll for first send\n\nAny changes?");
         if(lowmessage == "fortree") message.channel.send("6v6\nSM Public Open\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First");
         if(lowmessage == "ashmockfire") message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Delphox, Flareon, Houndoom, Marowak (Alola), Ninetales, Numel, Salamence, Talonflame, Turtonator, Volcarona.  Yours may be whatever you wish.");
-        if(lowmessage == "ashmockdragon") message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.")
-        if(lowmessage == "randomize") {
+        if(lowmessage == "ashmockdragon") message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
+        if(lowmessage == "maylee") message.channel.send("6v6 SM Private Full\nSleep/Freeze/OHKO/Evasion/Accuracy/Legends clauses active\nHelds on, building terrain, no starting weather\n\nIf both battlers agree, the following rules may be changed: Mega/Z/Item/Species, Helds off instead of on, Preview instead of Full");
+        if(lowmessage.indexOf("randomize") == 0) {
             var numPok = Math.floor(Math.random() * 5) + 2;
             var gen = Math.floor(Math.random() * 3);
             var format = Math.floor(Math.random() * 4);
@@ -274,6 +290,59 @@ bot.on("message", function(message) {
             var zmo = Math.floor(Math.random() * 2);
             var weather = Math.floor(Math.random() * 6);
             var terrain = Math.floor(Math.random() * 12);
+            if (lowmessage.indexOf("double") != -1) {mode = 2;}
+            if (lowmessage.indexOf("triple") != -1) {mode = 3;}
+            if (lowmessage.indexOf("rotation") != -1) {mode = 4;}
+            if (mode > 2) {numPok = Math.floor(Math.random() * 4) + 3;}
+            if (lowmessage.indexOf("2") != -1) {numPok = 2;}
+            if (lowmessage.indexOf("3") != -1) {numPok = 3;}
+            if (lowmessage.indexOf("4") != -1) {numPok = 4;}
+            if (lowmessage.indexOf("5") != -1) {numPok = 5;}
+            if (lowmessage.indexOf("6") != -1) {numPok = 6;}
+            if (lowmessage.indexOf("gsc") != -1) {gen = 0;}
+            if (lowmessage.indexOf("rse") != -1) {gen = 1;}
+            if (lowmessage.indexOf("sm") != -1) {gen = 2;}
+            if (lowmessage.indexOf("-open") != -1 && format == 0) {format = Math.floor(Math.random() * 3) + 1;}
+            else if (lowmessage.indexOf("open") != -1) {format = 0;}
+            else if (lowmessage.indexOf("box") != -1) {format = 1;}
+            else if (lowmessage.indexOf("full") != -1) {format = 2;}
+            else if (lowmessage.indexOf("preview") != -1) {format = 3;}
+            if (lowmessage.indexOf("public") != -1) {mode = 0;}
+            if (lowmessage.indexOf("-launcher") != -1) {launcher = 1;}
+            else if (lowmessage.indexOf("launcher") != -1) {launcher = 0;}
+            if (lowmessage.indexOf("-sky") != -1) {sky = 1;}
+            else if (lowmessage.indexOf("sky") != -1) {sky = 0;}
+            if (lowmessage.indexOf("-inverse") != -1) {inv = 1;}
+            else if (lowmessage.indexOf("inverse") != -1) {inv = 0;}
+            if (lowmessage.indexOf("-sleep") != -1 || lowmessage.indexOf("-slp") != -1) {slp = 1;}
+            else if (lowmessage.indexOf("sleep") != -1 || lowmessage.indexOf("slp") != -1) {slp = 0;}
+            if (lowmessage.indexOf("-freeze") != -1 || lowmessage.indexOf("-frz") != -1) {frz = 1;}
+            else if (lowmessage.indexOf("freeze") != -1 || lowmessage.indexOf("frz") != -1) {frz = 0;}
+            if (lowmessage.indexOf("-ohko") != -1) {ohko = 1;}
+            else if (lowmessage.indexOf("ohko") != -1) {ohko = 0;}
+            if (lowmessage.indexOf("-acc") != -1) {acc = 1;}
+            else if (lowmessage.indexOf("acc") != -1) {acc = 0;}
+            if (lowmessage.indexOf("-eva") != -1) {eva = 1;}
+            else if (lowmessage.indexOf("eva") != -1) {eva = 0;}
+            if (lowmessage.indexOf("-species") != -1) {spc = 1;}
+            else if (lowmessage.indexOf("species") != -1) {spc = 0;}
+            if (lowmessage.indexOf("-items") != -1) {items = 1;}
+            else if (lowmessage.indexOf("items") != -1) {items = 0;}
+            if (lowmessage.indexOf("-mega") != -1) {mega = 0;}
+            //else if (lowmessage.indexOf("mega") != -1) {mega = 1;}
+            if (lowmessage.indexOf("-legend") != -1) {leg = 0;}
+            else if (lowmessage.indexOf("legend") != -1) {leg = 1;}
+            if (lowmessage.indexOf("-z") != -1) {zmo = 0;}
+            //else if (lowmessage.indexOf("zmove") != -1) {zmo = 1; items =1;}
+            if (lowmessage.indexOf("-weather") != -1) {weather = 0;}
+            else if (lowmessage.indexOf("sun") != -1) {weather = 1;}
+            else if (lowmessage.indexOf("rain") != -1) {weather = 2;}
+            else if (lowmessage.indexOf("sandstorm") != -1) {weather = 3;}
+            else if (lowmessage.indexOf("hail") != -1) {weather = 4;}
+            else if (lowmessage.indexOf("fog") != -1) {weather = 5;}
+            else if (lowmessage.indexOf("weather") != -1 && weather == 0) {weather = Math.floor(Math.random() * 5) + 1;}
+            if (lowmessage.indexOf("-terrain") != -1) {terrain = 0;}
+            else if (lowmessage.indexOf("space") != -1) {terrain = 11;}
             var rules = numPok + "v" + numPok + "\n";
             switch(gen) {
                 case 0: rules += "GSC "; break;
@@ -287,10 +356,10 @@ bot.on("message", function(message) {
                 rules += "Public ";
             }
             switch(format) {
-                case 0: rules += "Full\n"; break;
-                case 1: rules += "Open\n"; break;
-                case 2: rules += "Preview\n"; break;
-                case 3: rules += "Box\n"; break;
+                case 0: rules += "Open\n"; break;
+                case 1: rules += "Box\n"; break;
+                case 2: rules += "Full\n"; break;
+                case 3: rules += "Preview\n"; break;
             }
             switch(mode) {
                 case 0: rules += "Single Battle\n"; break;
@@ -838,10 +907,10 @@ bot.on("message", function(message) {
 	    			message.channel.send(helpMessage);
     			}
     		}
-            /*if (message.author.id == "135999597947387904" && lowmessage.indexOf(",roles") == 0) {
+            if (message.author.id == "135999597947387904" && lowmessage.indexOf(",roles") == 0) {
                 //var rolesList = `message.guild.roles.map(role r => ${r.id} : ${r.name}).join("\n")`;
-                message.channel.send(message.guild.roles.find(r=>r.name === "Death Eater").id);
-            }*/
+                message.channel.send(message.guild.roles.find(r=>r.name === "maylee-week-2").id);
+            }
     	}
     	/*if (lowmessage.indexOf("hippopotomonstrosesquipedaliophobia") != -1 && !message.author.bot) {
     		message.delete();
@@ -859,7 +928,7 @@ bot.on("message", function(message) {
         if ((message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065") && lowmessage.indexOf("and") != -1 && lowmessage.indexOf("out") != -1 && lowmessage.indexOf("and") < lowmessage.indexOf("out")) {
             message.react(message.guild.emojis.get("246070314163896320"));
         }
-        if (lowmessage.indexOf(",role") == 0 || lowmessage.indexOf(",spoiler") == 0) {
+        if (lowmessage.indexOf(",role") == 0 || lowmessage.indexOf(",spoiler") == 0 || lowmessage == ",ffa") {
             if (lowmessage.indexOf(",role spoiler") == 0 || lowmessage.indexOf(",spoiler") == 0) {
                 if (message.member.roles.has("440004078219558912")) {
                     message.member.removeRole(message.guild.roles.get("440004078219558912"));
@@ -890,13 +959,24 @@ bot.on("message", function(message) {
                     message.channel.send("Forum FFA role added!");
                 }
             }
+            else if (lowmessage.indexOf(",role ffa") == 0 || lowmessage == ",ffa") {
+                if (message.member.roles.has("575087931824275466")) {
+                    message.member.removeRole(message.guild.roles.get("575087931824275466"));
+                    message.channel.send("FFA role removed!");
+                }
+                else {
+                    message.member.addRole(message.guild.roles.get("575087931824275466"));
+                    message.channel.send("FFA role added!");
+                }
+            }
             else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` (access to the chat for Avengers: Endgame spoilers), `coordinator` (being pinged for contests looking for players), and `forumffa` (being pinged for Forum FFAs starting or turns being posted).")}
         }
         if (message.channel.id == "401543302710689793" && lowmessage.indexOf("!!") != lowmessage.lastIndexOf("!!")) {
             var cardName = message.cleanContent.split("!!")[1];
             var cardSet = message.cleanContent.split("!!") [2];
             if (cardSet.length > 4 || cardSet.length < 2) {return;}
-            cardName = cardName.replace(/ /g, "%2B").replace(/,/g, "%252C").replace(/\./g, "%252E").replace(/û/g, "u").replace(/\'/g, "%2527").replace(/`/g, "%2527");
+            if (cardName == "Mine, Mine, Mine" || cardName == "Incoming" || cardName == "Kill! Destroy") {cardName += "!";}
+            cardName = cardName.replace(/ /g, "%2B").replace(/,/g, "%252C").replace(/\./, "%252E").replace(/û/g, "u").replace(/\'/g, "%2527").replace(/`/g, "%2527").replace(/®/g, "%25C2%25AE").replace(/:registered:/g, "%25C2%25AE").replace(/&/g, "%2526").replace(/"/g, "%2522").replace(/!/g, "%2521").replace(/\?/g, "%253F");
             message.channel.send("https://cdn1.mtggoldfish.com/images/gf/" + cardName + "%2B%255B" + cardSet + "%255D.jpg");
         }
         if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
@@ -955,11 +1035,36 @@ bot.on("message", function(message) {
             case 6: message.channel.send("I can randomize things too, you know?  Whole rulesets at a time!"); break;
         }
     }
+    /*if (lowmessage.indexOf("week2: ") == 0 && message.author.id == "135999597947387904") {
+        message.channel.send(message.content.substr(7));
+        //bot.channels.get("575461222443384833").fetchMessage("578071691075256321").edit("After#1971:```Zoroark, Luxio (* Luxray), Frogadier (* Greninja), Froakie, Togetic (* Togekiss), Shelgon (* Salamence), Cofagrigus, Qwilfish, Metagross, Garchomp```");
+    }*/
 })
 
 bot.on("message", async function(message){
     var lowmessage = message.content.toLowerCase();
-    if (message.guild === null) {return;}
+    if (message.guild === null) {
+        if (lowmessage.indexOf("week2: ") == 0) {
+            var alreadySubmitted = (await bot.guilds.get("135864828240592896").fetchMember(message.author)).roles.has("580179133649256461");
+            if (alreadySubmitted) {
+                await message.author.send("I'm afraid you have already submitted your box for the week.");
+                return;
+            }
+            //var hasNickname = (await bot.guilds.get("135864828240592896").fetchMember(message.author)).displayName == 
+            var maylee = "";
+            maylee += message.author.tag;
+            //if ()
+            //maylee += ", also known as ";
+            //maylee += await bot.guilds.get("135864828240592896").fetchMember(message.author).displayName;
+            maylee += ": ```";
+            maylee += message.content.substr(7);
+            maylee += "```";
+            await bot.channels.get("580179002719993856").send(maylee);
+            await message.author.send("Team successfully submitted for week 2 of Maylee event.");
+            await (await (await bot.guilds.get("135864828240592896")).fetchMember(message.author)).addRole("580179133649256461");
+        }
+        return;
+    }
     if (message.guild.id != "135864828240592896") {return;}
     //message.channel.send(`This is a test: ${message.member.roles.some(role => role.id == 444947836476325889)}`)
     if (lowmessage.indexOf(",mentionrefs") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("358431855743336448"))) {
@@ -992,14 +1097,14 @@ bot.on("message", async function(message){
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("533356018005180416")}${lowmessage.split(",mentionarbiters")[1]}`);
         await bot.guilds.get("135864828240592896").roles.get("533356018005180416").setMentionable(false);
     }
-    if (lowmessage.indexOf(",mentionffa") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("507342993028808707"))) {
+    if (lowmessage.indexOf(",mentionforumffa") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("507342993028808707"))) {
         await bot.guilds.get("135864828240592896").roles.get("507342482988859402").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("507342482988859402")}${lowmessage.split(",mentionarbiters")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("507342482988859402")}${lowmessage.split(",mentionforumffa")[1]}`);
         await bot.guilds.get("135864828240592896").roles.get("507342482988859402").setMentionable(false);
     }
     if (lowmessage.indexOf(",mentionmembers") == 0 && message.member.hasPermission("MENTION_EVERYONE")) {
         await bot.guilds.get("135864828240592896").roles.get("456993685679243286").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("456993685679243286")}${lowmessage.split(",mentionarbiters")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("456993685679243286")}${lowmessage.split(",mentionmembers")[1]}`);
         await bot.guilds.get("135864828240592896").roles.get("456993685679243286").setMentionable(false);
     }
     if (lowmessage.indexOf(",mentioncoordinators") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("243950906683424768"))) {
@@ -1016,6 +1121,14 @@ bot.on("message", async function(message){
         await bot.guilds.get("135864828240592896").roles.get("444947868835381263").setMentionable(true);
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("444947868835381263")}${lowmessage.split(",mentionelites")[1]}`);
         await bot.guilds.get("135864828240592896").roles.get("444947868835381263").setMentionable(false);
+    }
+    if ((lowmessage.indexOf(",mentionffa") == 0 || lowmessage.indexOf("!ffa -p") == 0) && (message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065") && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("243949285438259201"))) {
+        var theMessage = "";
+        if (lowmessage.indexOf(",mentionffa") == 0) { theMessage = lowmessage.split(",mentionffa"); }
+        else { theMessage = lowmessage.split("!ffa -p")[1]; }
+        await bot.guilds.get("135864828240592896").roles.get("575087931824275466").setMentionable(true);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("575087931824275466")}${theMessage}`);
+        await bot.guilds.get("135864828240592896").roles.get("575087931824275466").setMentionable(false);
     }
     /*if (lowmessage.indexOf(",mentionseniorrefs") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("243949285438259201"))) {
         await bot.guilds.get("135864828240592896").roles.get("358431855743336448").setMentionable(true);
@@ -1185,6 +1298,16 @@ bot.on("message", async function(message){
         await bot.channels.get("322151372453838848").setPosition(1);
         await message.channel.send("Reordering complete!");
     }
+    if (lowmessage.indexOf(",spoilerseason ") == 0 && message.member.hasPermission("MANAGE_SERVER")) {
+        var spoilers = await bot.guilds.get("135864828240592896").roles.get("440004078219558912").members.array();
+        for (i = 0; i < spoilers.size; i++) {
+            await spoilers[i].removeRole(message.guild.roles.get("440004078219558912"));
+        }
+        await bot.channels.get("440004235635982336").setName("spoilers-" + message.cleanContent.split(" ")[1]);
+    }
+    if (lowmessage.indexOf(",week1start") == 0 && (message.member.roles.has("135865553423302657") || message.member.roles.has("135868852092403713"))) {
+        bot.channels.get("575461222443384833").permissionOverwrites.deleteAll();
+    }
 })
 /* var logChannel = bot.channels.get("254207242780409857")
 bot.on('messageDelete', function (author, content, channel) {
@@ -1222,6 +1345,9 @@ bot.on("messageDelete", async function(message) {
     if (message.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
     if (message.channel.id == "253364200955445248") {channelToNotify = "524695540995325971";}
     if (message.channel.id == "254207242780409857") {channelToNotify = "254207242780409857";}
+    if (message.channel.id == "136595690980638720") {channelToNotify = "136595690980638720";}
+    if (message.channel.id == "294333921200701450") {channelToNotify = "294333921200701450";}
+    if (message.channel.id == "524695540995325971") {channelToNotify = "524695540995325971";}
     if (message.channel.id == "440004235635982336") {return;}
     if (message.channel.id == "409818526313086976" && message.cleanContent.indexOf("p!") == 0) {return;}
     if (message.channel.name == "judge-test") {channelToNotify = "294334136355651584";}
@@ -1278,7 +1404,7 @@ bot.on("messageDelete", async function(message) {
     }
     if (message.cleanContent != "") {
         deleteLog += ": ```";
-        deleteLog += message.cleanContent;
+        deleteLog += message.cleanContent.replace(/```/g, "​`​`​`​");
         deleteLog += "```";
     }
     //channelToNotify = "254207242780409857";
@@ -1308,7 +1434,7 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
         editLog += " from "
         editLog += newMessage.channel.id;
         editLog += " has been edited to say the following: ```";
-        editLog += newMessage.cleanContent;
+        editLog += newMessage.cleanContent.replace(/```/g, "​`​`​`​");
         editLog += "```";
         bot.channels.get("545737721612730368").send(editLog);
         return;
@@ -1324,6 +1450,9 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
     		if (oldMessage.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
     		if (oldMessage.channel.id == "253364200955445248") {channelToNotify = "524695540995325971";}
     		if (oldMessage.channel.id == "254207242780409857") {channelToNotify = "254207242780409857";}
+            if (oldMessage.channel.id == "136595690980638720") {channelToNotify = "136595690980638720";}
+            if (oldMessage.channel.id == "294333921200701450") {channelToNotify = "294333921200701450";}
+            if (oldMessage.channel.id == "524695540995325971") {channelToNotify = "524695540995325971";}
             if (oldMessage.channel.name == "judge-test") {channelToNotify = "294334136355651584";}
             if (oldMessage.channel.name == "ref-test") {channelToNotify = "261370056246689792";}
             if (oldMessage.channel.name == "ranger-test") {channelToNotify = "253364200955445248";}
@@ -1349,7 +1478,7 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
     		deleteLog += message.channel.id;*/
     		if (oldMessage.cleanContent != "") {
                 deleteLog += " used to say: ```";
-    		    deleteLog += oldMessage.cleanContent;
+    		    deleteLog += oldMessage.cleanContent.replace(/```/g, "​`​`​`​");
     		    deleteLog += "```";
             }
             else { deleteLog += " was previously textless."; }
