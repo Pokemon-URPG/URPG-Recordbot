@@ -15,11 +15,9 @@
   },
 
   "dependencies": {
-
     "discord.js": "11.5.0",
-
-    "request": "2.81.0"
-
+    "string-similarity": "3.0.0",
+    "winston": "2.4.0",
   }
 
 }
