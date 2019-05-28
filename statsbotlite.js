@@ -33,9 +33,9 @@ bot.on("message", function(message) {
         if (lowmessage.indexOf(badWords[i]) != -1 && !message.author.bot) {
             var badWordsLog = "";
             badWordsLog += message.member.displayName;
-            badWordsLog += " said the following here ";
+            badWordsLog += " said the following here <";
             badWordsLog += message.url;
-            badWordsLog += ": ```";
+            badWordsLog += ">: ```";
             badWordsLog += message.cleanContent;
             badWordsLog += "```"
             bot.channels.get("545384090044727296").send(badWordsLog);
