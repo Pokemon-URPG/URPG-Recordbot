@@ -30,7 +30,7 @@ bot.on('error', console.error);
 bot.on("message", function(message) {
     let lowmessage = message.content.toLowerCase()
     for (let i = 0; i < badWords.length; i++) {
-        if (lowmessage.indexOf(badWords[i]) != -1) {
+        if (lowmessage.indexOf(badWords[i]) != -1 && !message.author.bot) {
             var badWordsLog = "";
             badWordsLog += message.member.displayName;
             badWordsLog += " said the following here ";
