@@ -1059,7 +1059,7 @@ bot.on("message", async function(message){
             maylee += ": ```";
             maylee += message.content.substr(7);
             maylee += "```";
-            await bot.channels.get("580179002719993856").send(maylee);
+            await bot.channels.get("582821680880156684").send(maylee);
             await message.author.send("Team successfully submitted for week 3 of Maylee event.");
             await (await (await bot.guilds.get("135864828240592896")).fetchMember(message.author)).addRole("582821543587872774");
         }
@@ -1369,7 +1369,7 @@ bot.on("messageDelete", async function(message) {
       && (entry.createdTimestamp > (Date.now() - 5000))
       && (entry.extra.count >= 1)) {
         user = entry.executor.username;
-        //if (entry.executor.roles.has("135865553423302657") && message.author.bot) {return;}
+        if (entry.executor.roles.has("135865553423302657") && message.author.bot) {return;}
     } else {
         if (message.channel.id == "552715426979905547") {return;}
         user = message.author.username;
