@@ -906,9 +906,10 @@ bot.on("message", function(message) {
 	    			message.channel.send(helpMessage);
     			}
     		}
-            if (message.author.id == "135999597947387904" && lowmessage.indexOf(",roles") == 0) {
+            if (message.author.id == "135999597947387904" && lowmessage == ",roles") {
                 //var rolesList = `message.guild.roles.map(role r => ${r.id} : ${r.name}).join("\n")`;
-                message.channel.send(message.guild.roles.find(r=>r.name === "maylee-week-2").id);
+                message.channel.send(message.guild.roles.find(r=>r.name === "maylee-week-3").id);
+                return;
             }
     	}
     	/*if (lowmessage.indexOf("hippopotomonstrosesquipedaliophobia") != -1 && !message.author.bot) {
