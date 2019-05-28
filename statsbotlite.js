@@ -43,7 +43,7 @@ bot.on("message", function(message) {
     }
     //if ((lowmessage.indexOf(",") == 0 || lowmessage.indexOf("statsbot") != -1 || message.channel.type == "dm") && lowmessage.indexOf("stats") != -1 && lowmessage.indexOf("?") == -1) {
     if (lowmessage.indexOf(",stats") == 0) {
-        let oldmessage = lowmessage
+        let oldmessage = lowmessage + " ";
         /*lowmessage = ""
         let tempMessage = ""
         for (let x = 0; x < oldmessage.length; x++) {
