@@ -41,86 +41,87 @@ bot.on("message", function(message) {
             bot.channels.get("545384090044727296").send(badWordsLog);
         }
     }
-    if ((lowmessage.indexOf(",") == 0 || lowmessage.indexOf("statsbot") != -1 || message.channel.type == "dm") && lowmessage.indexOf("stats") != -1 && lowmessage.indexOf("?") == -1) {
+    //if ((lowmessage.indexOf(",") == 0 || lowmessage.indexOf("statsbot") != -1 || message.channel.type == "dm") && lowmessage.indexOf("stats") != -1 && lowmessage.indexOf("?") == -1) {
+    if (lowmessage.indexOf(",stats") == 0) {
         let oldmessage = lowmessage
-        lowmessage = ""
+        /*lowmessage = ""
         let tempMessage = ""
         for (let x = 0; x < oldmessage.length; x++) {
             if ((oldmessage[x] == "’") || (oldmessage[x] == "‘")) { tempMessage += "'" } else { tempMessage += oldmessage[x] }
         }
-    	if (oldmessage.indexOf(",stats") == 0) { tempMessage += "'s stats"; }
-        oldmessage = tempMessage
-        if ((oldmessage.indexOf("gray's stats") != -1) || (oldmessage.indexOf("gray nine's stats") != -1) || (oldmessage.indexOf("gray 9's stats") != -1) || (oldmessage.indexOf("gn's stats") != -1) || (oldmessage.indexOf("g9's stats") != -1) || (oldmessage.indexOf("gmg's stats") != -1) || (oldmessage.indexOf("gm's stats") != -1)) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=9849&pid=122945#pid122945") }
-        if ((oldmessage.indexOf("jacen's stats") != -1) || (oldmessage.indexOf("jacenboy's stats") != -1) || (oldmessage.indexOf("jacen boy's stats") != -1)) { message.channel.send("\nhttp://urpg.jacenboy.com/pokes.php") }
-        if (oldmessage.indexOf("rick's stats") != -1) { message.channel.send("\nhttps://urpg-rick.weebly.com/") }
-        if ((oldmessage.indexOf("john's stats") != -1) || (oldmessage.indexOf("johnbdm's stats") != -1)) { message.channel.send("\nhttps://urpg-rick.weebly.com/") }
-        if ((oldmessage.indexOf("blue's stats") != -1) || (oldmessage.indexOf("towel's stats") != -1)) { message.channel.send("\nhttps://www.tapatalk.com/groups/fuzzyhat_and_friends/the-atmospelago-f8/") }
-        if ((oldmessage.indexOf("chainy's stats") != -1) || (oldmessage.indexOf("chain's stats") != -1) || (oldmessage.indexOf("reaction01's stats") != -1) || (oldmessage.indexOf("chainey's stats") != -1) || (oldmessage.indexOf("reaction's stats") != -1)) { message.channel.send("\nhttp://frozenchains.proboards.com/thread/82/pokemon-roster") }
-        if (oldmessage.indexOf("smiles's stats") != -1) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=2175&pid=42539#pid42539") }
-        if (oldmessage.indexOf("jake's stats") != -1) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=9339") }
-        if (oldmessage.indexOf("airik's stats") != -1) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=7362&pid=100381#pid100381") }
-        if (oldmessage.indexOf("fusion's stats") != -1) { message.channel.send("\nhttp://fossilfusionurpg.proboards.com/post/3/thread") }
-        if (oldmessage.indexOf("bee's stats") != -1) { message.channel.send("\nhttp://kingofcybertron.proboards.com/thread/15?page=1") }
-        if (oldmessage.indexOf("roulette's stats") != -1) { message.channel.send("\nhttp://rdstatsfasho.proboards.com/post/3/thread") }
-        if (oldmessage.indexOf("elamite's stats") != -1) { message.channel.send("\nhttp://krummhorn.boards.net/thread/1?page=1") }
-        if (oldmessage.indexOf("commba's stats") != -1) { message.channel.send("\nhttp://w11.zetaboards.com/CommBAURPG/topic/7546474/1/") }
-        if (oldmessage.indexOf("axion's stats") != -1) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=3987") }
-        if (oldmessage.indexOf("izuru's stats") != -1) { message.channel.send("\nhttp://www.pokemoncrossroads.com/forum/showthread.php?18030-Izuru-s-Stats&p=279688&viewfull=1#post279688") }
-        if (oldmessage.indexOf("fenris's stats") != -1) { message.channel.send("\nhttps://fenris-urpg.freeforums.net/thread/134/pokemon-stats") }
-        if ((oldmessage.indexOf("reneescarted's stats") != -1) || (oldmessage.indexOf("renee's stats") != -1) || (oldmessage.indexOf("renée's stats") != -1)) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10261&pid=127856#pid127856") }
-        if (oldmessage.indexOf("lychee's stats") != -1) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=8369") }
-        if ((oldmessage.indexOf("swift's stats") != -1) || (oldmessage.indexOf("gallade's stats") != -1)) { message.channel.send("\nhttp://swiftgallade.freeforums.net/thread/2/pokemon-especially-gallade") }
-        if (oldmessage.indexOf("zolar's stats") != -1) { message.channel.send("\nhttp://evilgeniusclub.proboards.com/thread/70/pokemon-numbered-list") }
-        if (oldmessage.indexOf("pidge's stats") != -1) { message.channel.send("\nhttps://www.tapatalk.com/groups/pidge/pidge-f3/") }
-        if ((oldmessage.indexOf("k'sa's stats") != -1) || (oldmessage.indexOf("k'sariya's stats") != -1)) { message.channel.send("\nhttps://ksariya.urpgstats.com/") }
-        if ((oldmessage.indexOf("bulbasaur's stats") != -1) || (oldmessage.indexOf("eric's stats") != -1)) { message.channel.send("\nhttp://www.pokemoncrossroads.com/forum/showthread.php?2987-These-aren-t-Bulbasaur-s-URPG-Stats") }
-        if (oldmessage.indexOf("dekrueger's stats") != -1) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=9235&pid=116946#pid116946") }
-        if ((oldmessage.indexOf("darkness ruler's stats") != -1) || (oldmessage.indexOf("dr's stats") != -1) || (oldmessage.indexOf("darknessruler's stats") != -1)) { message.channel.send("\nhttp://w11.zetaboards.com/DarknessRuler/topic/9170207/1/") }
-        if ((oldmessage.indexOf("mako's stats") != -1) || (oldmessage.indexOf("morru's stats") != -1) || (oldmessage.indexOf("magnum's stats") != -1)) { message.channel.send("\nhttp://morrumagnumurpg.proboards.com/thread/2/pok-mon") }
-        if ((oldmessage.indexOf("velo's stats") != -1) || (oldmessage.indexOf("jello's stats") != -1) || (oldmessage.indexOf("vj's stats") != -1)) { message.channel.send("\nhttps://velojellourpg.wordpress.com/") }
-        if ((oldmessage.indexOf("weir's stats") != -1) || (oldmessage.indexOf("weirlind's stats") != -1) || (oldmessage.indexOf("weirlind120's stats") != -1) || (oldmessage.indexOf("gold's stats") != -1) || (oldmessage.indexOf("rrr's stats") != -1)) { message.channel.send("\nhttps://gold.urpgstats.com/pokemon/") }
-        if (oldmessage.indexOf("nitro's stats") != -1) { message.channel.send("\nhttp://w11.zetaboards.com/nitro/topic/8043094/1/?x=0") }
-        if ((oldmessage.indexOf("ralin's stats") != -1) || (oldmessage.indexOf("ralinocity's stats") != -1) || (oldmessage.indexOf("jack's stats") != -1)) { message.channel.send("\nhttps://jackurpg.wordpress.com/") }
-        if ((oldmessage.indexOf("syn's stats") != -1) || (oldmessage.indexOf("synthesis's stats") != -1)) { message.channel.send("\nhttp://synthesisurpg.proboards.com/thread/2/re-current-pokemon") }
-        if ((oldmessage.indexOf("evan's stats") != -1) || (oldmessage.indexOf("evanfardreamer's stats") != -1)) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=9387") }
-        if (oldmessage.indexOf("dash's stats") != -1) { message.channel.send("\nhttp://dashurpgstats.proboards.com/thread/1/pokemon"); oldmessage = "" }
-        if ((oldmessage.indexOf("ash's stats") != -1) || (oldmessage.indexOf("ash k's stats") != -1) || (oldmessage.indexOf("ash k.'s stats") != -1)) { message.channel.send("\nhttp://ashkstatsurpg.proboards.com/thread/23/pok-mon-index") }
-        if ((oldmessage.indexOf("fd's stats") != -1) || (oldmessage.indexOf("fierce deity's stats") != -1) || (oldmessage.indexOf("fierce diety's stats") != -1)) { message.channel.send("\nhttp://fd-stats.proboards.com/thread/4/slaves?page=1") }
-        if ((oldmessage.indexOf("xali's stats") != -1) || (oldmessage.indexOf("xalipeno's stats") != -1) || (oldmessage.indexOf("xalipeño's stats") != -1)) { message.channel.send("\nhttp://jalapenowarrior.proboards.com/thread/17?page=1") }
-        if (oldmessage.indexOf("seppe's stats") != -1) { message.channel.send("\nhttp://seppeurpg.proboards.com/thread/2/owned") }
-        if ((oldmessage.indexOf("ori's stats") != -1) || (oldmessage.indexOf("oribhel's stats") != -1) || (oldmessage.indexOf("heltear's stats") != -1)) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=9869") }
-        if ((oldmessage.indexOf("jonas's stats") != -1) || (oldmessage.indexOf("jonastank's stats") != -1)) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=9820") }
-        if ((oldmessage.indexOf("menegoth's stats") != -1) || (oldmessage.indexOf("mene's stats") != -1)) { message.channel.send("\nhttp://menegothstats.freeforums.net/thread/2/pok-mon") }
-        if (oldmessage.indexOf("liam's stats") != -1) { message.channel.send("\nhttp://s15.zetaboards.com/The_Stats_of_Liam/topic/7891449/1/") }
-        if ((oldmessage.indexOf("team evolution's stats") != -1) || (oldmessage.indexOf("charmander4lyf's stats") != -1) || (oldmessage.indexOf("ketamine's stats") != -1)) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=9307") }
-        if ((oldmessage.indexOf("monbrey's stats") != -1) || (oldmessage.indexOf("mon's stats") != -1)) { message.channel.send("\nhttps://urpg.monbrey.com.au/stats-new/") }
-        if ((oldmessage.indexOf("caite's stats") != -1) || (oldmessage.indexOf("caite-chan's stats") != -1) || (oldmessage.indexOf("caite chan's stats") != -1)) { message.channel.send("\nhttp://caitechan.proboards.com/thread/2") }
-        if ((oldmessage.indexOf("gun's stats") != -1) || (oldmessage.indexOf("gun6's stats") != -1) || (oldmessage.indexOf("gun 6's stats") != -1)) { message.channel.send("\nhttp://www.pokemoncrossroads.com/forum/showthread.php?16180-Gun6-s-Stats") }
-        if (oldmessage.indexOf("ataro's stats") != -1) { message.channel.send("\nhttp://s4.zetaboards.com/rustyrefbotataro/topic/8274811/1/") }
-        if ((oldmessage.indexOf("magik's stats") != -1) || (oldmessage.indexOf("magikchicken's stats") != -1) || (oldmessage.indexOf("magik chicken's stats") != -1)) { message.channel.send("\nhttp://forum.pokemonurpg.com/showthread.php?tid=9237") }
-        if ((oldmessage.indexOf("neon's stats") != -1) || (oldmessage.indexOf("neonsands's stats") != -1) || (oldmessage.indexOf("neonsand's stats") != -1)) { message.channel.send("\nhttps://pokemonurpg.com/archive/general.394/trainers-stats.401/the-stats-of-neonsands.60099.html") }
-        if ((oldmessage.indexOf("felly's stats") != -1) || (oldmessage.indexOf("mistral's stats") != -1)) { message.channel.send("\nhttps://mistralurpg.wordpress.com/pokemon/") }
-        if ((oldmessage.indexOf("haily's stats") != -1) || (oldmessage.indexOf("hailly's stats") != -1) || (oldmessage.indexOf("haillys's stats") != -1)) { message.channel.send("\nhttp://www.pokemoncrossroads.com/forum/showthread.php?16320-Haillys-s-Stats") }
-        if ((oldmessage.indexOf("volt's stats") != -1) || (oldmessage.indexOf("voltaire's stats") != -1) || (oldmessage.indexOf("voltaire magneton's stats") != -1) || (oldmessage.indexOf("voltchen magneton's stats") != -1) || (oldmessage.indexOf("vm's stats") != -1)) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10310") }
-        if ((oldmessage.indexOf("qe's stats") != -1) || (oldmessage.indexOf("se's stats") != -1) || (oldmessage.indexOf("sinnoheevee's stats") != -1) || (oldmessage.indexOf("sinnoh eevee's stats") != -1) || (oldmessage.indexOf("queen eevee's stats") != -1)) { message.channel.send("\nhttps://www.tapatalk.com/groups/sinnoheevee/current-pokemon-t1.html#p1") }
-        if ((oldmessage.indexOf("princess crow's stats") != -1) || (oldmessage.indexOf("pc's stats") != -1) || (oldmessage.indexOf("hannah's stats") != -1)) { message.channel.send("\nhttp://princesscrow.proboards.com/thread/2/pokemon-list-1") }
-        if ((oldmessage.indexOf("pv's stats") != -1) || (oldmessage.indexOf("vultan's stats") != -1) || (oldmessage.indexOf("artist's stats") != -1)) { message.channel.send("\nhttp://s13.zetaboards.com/Prince_Vultan/topic/9093369/1/") }
-        if ((oldmessage.indexOf("julio's stats") != -1) || (oldmessage.indexOf("juliorain's stats") != -1) || (oldmessage.indexOf("julio rain's stats") != -1)) { message.channel.send("\nhttps://juliorain.wordpress.com/") }
-        if ((oldmessage.indexOf("maxichel kigahen's stats") != -1) || (oldmessage.indexOf("mikey's stats") != -1) || (oldmessage.indexOf("mikey57's stats") != -1) || (oldmessage.indexOf("mikey 57's stats") != -1)) { message.channel.send("\nhttps://mikey57urpg.wordpress.com/") }
-        if ((oldmessage.indexOf("elrond 2.0's stats") != -1) || (oldmessage.indexOf("elrond's stats") != -1)) { message.channel.send("\nhttps://pokemonurpg.com/stats/Elrond") }
-        if ((oldmessage.indexOf("soul's stats") != -1) || (oldmessage.indexOf("soul master's stats") != -1) || (oldmessage.indexOf("soulmaster's stats") != -1) || (oldmessage.indexOf("sm's stats") != -1)) { message.channel.send("\nhttp://soulmasterurpgf.proboards.com/thread/2/pokemon-own") }
-        if ((oldmessage.indexOf("winter's stats") != -1) || (oldmessage.indexOf("wv's stats") != -1) || (oldmessage.indexOf("wintervines's stats") != -1)) { message.channel.send("\nhttp://frozenchains.proboards.com/thread/5") }
-        if ((oldmessage.indexOf("siles's stats") != -1) || (oldmessage.indexOf("siless's stats") != -1)) { message.channel.send("\nhttp://silessurpg.proboards.com/thread/1/silesss-stats") }
-        if ((oldmessage.indexOf("w32's stats") != -1) || (oldmessage.indexOf("coravint's stats") != -1)) { message.channel.send("\nhttps://project-507nm.neocities.org/pokemonlist.html") }
-        if (oldmessage.indexOf("sou's stats") != -1) { message.channel.send("\nhttp://soucleife.proboards.com/thread/2/pokemon-stats") }
-        if (oldmessage.indexOf("trainer17's stats") != -1) { message.channel.send("\nhttp://kingofcybertron.proboards.com/thread/35/pokemon-team?page=1") }
-        if ((oldmessage.indexOf("captaindude's stats") != -1) || (oldmessage.indexOf("cd's stats") != -1)) { message.channel.send("\nhttp://captaindudeurpg.proboards.com/board/1") }
-        if ((oldmessage.indexOf("mandl27's stats") != -1) || (oldmessage.indexOf("mandl's stats") != -1) || (oldmessage.indexOf("mand's stats") != -1) || (oldmessage.indexOf("ml's stats") != -1)) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10294") }
-        if (oldmessage.indexOf("saur's stats") != -1) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=9871&pid=123349#pid123349") }
-        if (oldmessage.indexOf("sapahn's stats") != -1) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10208") }
-        if (oldmessage.indexOf("fortree's stats") != -1) { message.channel.send("\nhttp://ashkstatsurpg.proboards.com/thread/65/fortree-city-gym-2015") }
-        if (oldmessage.indexOf("after's stats") != -1) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=10215") }
-        if (oldmessage.indexOf("pokeviper's stats") != -1) { message.channel.send("\nhttp://pokeviperbadass.proboards.com/") }
+    	if (oldmessage.indexOf(",stats") == 0) { tempMessage += ""; }
+        oldmessage = tempMessage + " ";*/
+        if ((oldmessage.indexOf("gray ") != -1) || (oldmessage.indexOf("gray nine ") != -1) || (oldmessage.indexOf("gray 9 ") != -1) || (oldmessage.indexOf(" gn ") != -1) || (oldmessage.indexOf("g9 ") != -1) || (oldmessage.indexOf("gmg ") != -1) || (oldmessage.indexOf(" gm ") != -1)) { message.channel.send("\nGray Nine's stats: http://forum.pokemonurpg.com/showthread.php?tid=9849&pid=122945#pid122945") }
+        if ((oldmessage.indexOf("jacen ") != -1) || (oldmessage.indexOf("jacenboy ") != -1) || (oldmessage.indexOf("jacen boy ") != -1)) { message.channel.send("\nJacenBoy's stats: http://urpg.jacenboy.com/pokes.php") }
+        if (oldmessage.indexOf("rick ") != -1) { message.channel.send("\nRick's stats: https://urpg-rick.weebly.com/") }
+        if ((oldmessage.indexOf("john ") != -1) || (oldmessage.indexOf("johnbdm ") != -1)) { message.channel.send("\nJohnBDM's stats: https://urpg-rick.weebly.com/") }
+        if ((oldmessage.indexOf("blue ") != -1) || (oldmessage.indexOf("towel ") != -1) || (oldmessage.indexOf("bt ") != -1)) { message.channel.send("\nBlueTowel's stats: https://www.tapatalk.com/groups/fuzzyhat_and_friends/the-atmospelago-f8/") }
+        if ((oldmessage.indexOf("chainy ") != -1) || (oldmessage.indexOf("chain ") != -1) || (oldmessage.indexOf("reaction01 ") != -1) || (oldmessage.indexOf("chainey ") != -1) || (oldmessage.indexOf("reaction ") != -1)) { message.channel.send("\nChainReaction01's stats: http://frozenchains.proboards.com/thread/82/pokemon-roster") }
+        if (oldmessage.indexOf("smiles ") != -1) { message.channel.send("\nSmiles's stats: http://forum.pokemonurpg.com/showthread.php?tid=2175&pid=42539#pid42539") }
+        if (oldmessage.indexOf("jake ") != -1) { message.channel.send("\nCowboyJake's stats: http://forum.pokemonurpg.com/showthread.php?tid=9339") }
+        if (oldmessage.indexOf("airik ") != -1) { message.channel.send("\nAirik's stats: http://forum.pokemonurpg.com/showthread.php?tid=7362&pid=100381#pid100381") }
+        if (oldmessage.indexOf("fusion ") != -1) { message.channel.send("\nFossilFusion's stats: http://fossilfusionurpg.proboards.com/post/3/thread") }
+        if ((oldmessage.indexOf("bee ") != -1) || (oldmessage.indexOf("dinobot ") != -1)) { message.channel.send("\nDinobot's stats: http://kingofcybertron.proboards.com/thread/15?page=1") }
+        if (oldmessage.indexOf("roulette ") != -1) { message.channel.send("\nRoulette's stats: http://rdstatsfasho.proboards.com/post/3/thread") }
+        if (oldmessage.indexOf("elamite ") != -1) { message.channel.send("\nElamite's stats: http://krummhorn.boards.net/thread/1?page=1") }
+        if (oldmessage.indexOf("commba ") != -1) { message.channel.send("\nCommBA's stats: http://w11.zetaboards.com/CommBAURPG/topic/7546474/1/") }
+        if (oldmessage.indexOf("axion ") != -1) { message.channel.send("\nAxion's stats: http://forum.pokemonurpg.com/showthread.php?tid=3987") }
+        if (oldmessage.indexOf("izuru ") != -1) { message.channel.send("\nIzuru's stats: http://www.pokemoncrossroads.com/forum/showthread.php?18030-Izuru-s-Stats&p=279688&viewfull=1#post279688") }
+        if (oldmessage.indexOf("fenris ") != -1) { message.channel.send("\nFenris's stats: https://fenris-urpg.freeforums.net/thread/134/pokemon-stats") }
+        if ((oldmessage.indexOf("reneescarted ") != -1) || (oldmessage.indexOf("renee ") != -1) || (oldmessage.indexOf("renée ") != -1)) { message.channel.send("\nRenéeScarted's stats: https://forum.pokemonurpg.com/showthread.php?tid=10261&pid=127856#pid127856") }
+        if (oldmessage.indexOf("lychee ") != -1) { message.channel.send("\nLychee's stats: http://forum.pokemonurpg.com/showthread.php?tid=8369") }
+        if ((oldmessage.indexOf("swift") != -1) || (oldmessage.indexOf("gallade ") != -1)) { message.channel.send("\nSwiftGallade46's stats: http://swiftgallade.freeforums.net/thread/2/pokemon-especially-gallade") }
+        if (oldmessage.indexOf("zolar ") != -1) { message.channel.send("\nZolar's stats: http://evilgeniusclub.proboards.com/thread/70/pokemon-numbered-list") }
+        if (oldmessage.indexOf("pidge ") != -1) { message.channel.send("\nPidge's stats: https://www.tapatalk.com/groups/pidge/pidge-f3/") }
+        if ((oldmessage.indexOf("k'sa ") != -1) || (oldmessage.indexOf("k'sariya ") != -1)) { message.channel.send("\nK'sariya's stats: https://ksariya.urpgstats.com/") }
+        if ((oldmessage.indexOf("saur ") != -1) || (oldmessage.indexOf("eric ") != -1)) { message.channel.send("\nSaur's stats: https://forum.pokemonurpg.com/showthread.php?tid=9871&pid=123349#pid123349") }
+        if (oldmessage.indexOf("dekrueger ") != -1) { message.channel.send("\nDeKrueger's stats: http://forum.pokemonurpg.com/showthread.php?tid=9235&pid=116946#pid116946") }
+        if ((oldmessage.indexOf("darkness ruler ") != -1) || (oldmessage.indexOf("dr ") != -1) || (oldmessage.indexOf("darknessruler ") != -1)) { message.channel.send("\nDarknessRuler's stats: http://w11.zetaboards.com/DarknessRuler/topic/9170207/1/") }
+        if ((oldmessage.indexOf("mako ") != -1) || (oldmessage.indexOf("morru ") != -1) || (oldmessage.indexOf("magnum ") != -1)) { message.channel.send("\nMako's stats: http://morrumagnumurpg.proboards.com/thread/2/pok-mon") }
+        if ((oldmessage.indexOf("velo ") != -1) || (oldmessage.indexOf("jello ") != -1) || (oldmessage.indexOf(" vj ") != -1)) { message.channel.send("\nVeloJello's stats: https://velojellourpg.wordpress.com/") }
+        if ((oldmessage.indexOf("weir") != -1) /*|| (oldmessage.indexOf("weirlind ") != -1) || (oldmessage.indexOf("weirlind120 ") != -1) || (oldmessage.indexOf("rrr") != -1)*/ || (oldmessage.indexOf("gold ") != -1)) { message.channel.send("\nGold's stats: https://gold.urpgstats.com/pokemon/") }
+        if (oldmessage.indexOf("nitro ") != -1) { message.channel.send("\nNitro's stats: http://w11.zetaboards.com/nitro/topic/8043094/1/?x=0") }
+        if ((oldmessage.indexOf("ralin") != -1) /*|| (oldmessage.indexOf("ralinocity") != -1)*/ || (oldmessage.indexOf("jack ") != -1)) { message.channel.send("\nJack's stats: https://jackurpg.wordpress.com/") }
+        if ((oldmessage.indexOf("syn ") != -1) || (oldmessage.indexOf("synthesis ") != -1)) { message.channel.send("\nSynthesis's stats: http://synthesisurpg.proboards.com/thread/2/re-current-pokemon") }
+        if ((oldmessage.indexOf("evan ") != -1) || (oldmessage.indexOf("evanfardreamer ") != -1)) { message.channel.send("\nEvanfardreamer's stats: http://forum.pokemonurpg.com/showthread.php?tid=9387") }
+        if (oldmessage.indexOf("dash ") != -1) { message.channel.send("\nhttp://dashurpgstats.proboards.com/thread/1/pokemon") }
+        if ((oldmessage.indexOf(" ash ") != -1) /*|| (oldmessage.indexOf("ash k") != -1) || (oldmessage.indexOf("ash k.") != -1)*/) { message.channel.send("\nAsh K.'s stats: http://ashkstatsurpg.proboards.com/thread/23/pok-mon-index") }
+        if ((oldmessage.indexOf(" fd ") != -1) || (oldmessage.indexOf("fierce deity ") != -1) || (oldmessage.indexOf("fierce diety ") != -1)) { message.channel.send("\nFierce Deity's stats: http://fd-stats.proboards.com/thread/4/slaves?page=1") }
+        if ((oldmessage.indexOf("xali ") != -1) || (oldmessage.indexOf("xalipeno ") != -1) || (oldmessage.indexOf("xalipeño ") != -1)) { message.channel.send("\nXali's stats: http://jalapenowarrior.proboards.com/thread/17?page=1") }
+        if (oldmessage.indexOf("seppe ") != -1) { message.channel.send("\nSeppe's stats: http://seppeurpg.proboards.com/thread/2/owned") }
+        if ((oldmessage.indexOf("ori ") != -1) || (oldmessage.indexOf("oribhel ") != -1) || (oldmessage.indexOf("heltear ") != -1)) { message.channel.send("\nHeltear's stats: http://forum.pokemonurpg.com/showthread.php?tid=9869") }
+        if ((oldmessage.indexOf("jonas ") != -1) || (oldmessage.indexOf("jonastank ") != -1)) { message.channel.send("\nJonasTank's stats: http://forum.pokemonurpg.com/showthread.php?tid=9820") }
+        if ((oldmessage.indexOf("menegoth ") != -1) || (oldmessage.indexOf("mene ") != -1)) { message.channel.send("\nMenegoth's stats: http://menegothstats.freeforums.net/thread/2/pok-mon") }
+        if (oldmessage.indexOf("liam ") != -1) { message.channel.send("\nLiam's stats: http://s15.zetaboards.com/The_Stats_of_Liam/topic/7891449/1/") }
+        if ((oldmessage.indexOf("team evolution ") != -1) || (oldmessage.indexOf("charmander4lyf ") != -1) || (oldmessage.indexOf("ketamine ") != -1) || (oldmessage.indexOf(" te ") != -1)) { message.channel.send("\nTeam Evolution's stats: http://forum.pokemonurpg.com/showthread.php?tid=9307") }
+        if ((oldmessage.indexOf("monbrey ") != -1) || (oldmessage.indexOf("mon ") != -1)) { message.channel.send("\nMonbrey's stats: https://urpg.monbrey.com.au/stats-new/") }
+        if ((oldmessage.indexOf("caite ") != -1) || (oldmessage.indexOf("caite-chan ") != -1) || (oldmessage.indexOf("caite chan ") != -1)) { message.channel.send("\nCaite Chan's stats: http://caitechan.proboards.com/thread/2") }
+        if ((oldmessage.indexOf("gun ") != -1) || (oldmessage.indexOf("gun6 ") != -1) || (oldmessage.indexOf("gun 6 ") != -1)) { message.channel.send("\ngun6's stats: http://www.pokemoncrossroads.com/forum/showthread.php?16180-Gun6-s-Stats") }
+        if (oldmessage.indexOf("ataro ") != -1) { message.channel.send("\nAtaro's stats: http://s4.zetaboards.com/rustyrefbotataro/topic/8274811/1/") }
+        if ((oldmessage.indexOf("magik ") != -1) || (oldmessage.indexOf("magikchicken ") != -1) || (oldmessage.indexOf("magik chicken ") != -1)) { message.channel.send("\nMagikchicken's stats: http://forum.pokemonurpg.com/showthread.php?tid=9237") }
+        if ((oldmessage.indexOf("neon ") != -1) || (oldmessage.indexOf("neonsands ") != -1) || (oldmessage.indexOf("neonsand ") != -1)) { message.channel.send("\nNeonsands's stats: https://pokemonurpg.com/archive/general.394/trainers-stats.401/the-stats-of-neonsands.60099.html") }
+        if ((oldmessage.indexOf("felly ") != -1) || (oldmessage.indexOf("mistral ") != -1)) { message.channel.send("\nFelly's stats: https://mistralurpg.wordpress.com/pokemon/") }
+        if ((oldmessage.indexOf("haily ") != -1) || (oldmessage.indexOf("hailly ") != -1) || (oldmessage.indexOf("haillys ") != -1)) { message.channel.send("\nHaillys's stats: http://www.pokemoncrossroads.com/forum/showthread.php?16320-Haillys-s-Stats") }
+        if ((oldmessage.indexOf("volt ") != -1) || (oldmessage.indexOf("voltaire ") != -1) || (oldmessage.indexOf("voltaire magneton ") != -1) || (oldmessage.indexOf("voltchen magneton ") != -1) || (oldmessage.indexOf(" vm ") != -1)) { message.channel.send("\nVoltaire Magneton's stats: https://forum.pokemonurpg.com/showthread.php?tid=10310") }
+        if ((oldmessage.indexOf(" qe ") != -1) || (oldmessage.indexOf(" se ") != -1) || (oldmessage.indexOf(" sinnoheevee ") != -1) || (oldmessage.indexOf(" sinnoh eevee ") != -1) || (oldmessage.indexOf(" queen eevee ") != -1)) { message.channel.send("\nSinnoh Eevee's stats: https://www.tapatalk.com/groups/sinnoheevee/current-pokemon-t1.html#p1") }
+        if ((oldmessage.indexOf("princess crow ") != -1) || (oldmessage.indexOf(" pc ") != -1) || (oldmessage.indexOf("hannah ") != -1)) { message.channel.send("\nPrincess Crow's stats: http://princesscrow.proboards.com/thread/2/pokemon-list-1") }
+        if ((oldmessage.indexOf(" pv ") != -1) || (oldmessage.indexOf("vultan ") != -1) || (oldmessage.indexOf("artist ") != -1)) { message.channel.send("\nPrinceVultan's stats: http://s13.zetaboards.com/Prince_Vultan/topic/9093369/1/") }
+        if ((oldmessage.indexOf("julio ") != -1) || (oldmessage.indexOf("juliorain ") != -1) /*|| (oldmessage.indexOf("julio rain ") != -1)*/) { message.channel.send("\njuliorain's stats: https://juliorain.wordpress.com/") }
+        if ((oldmessage.indexOf("maxichel kigahen ") != -1) || (oldmessage.indexOf("mikey ") != -1) || (oldmessage.indexOf("mikey57 ") != -1) /*|| (oldmessage.indexOf("mikey 57") != -1)*/) { message.channel.send("\nMikey57's stats: https://mikey57urpg.wordpress.com/") }
+        if (/*(oldmessage.indexOf("elrond 2.0") != -1) ||*/ (oldmessage.indexOf("elrond ") != -1)) { message.channel.send("\nElrond's stats: https://pokemonurpg.com/stats/Elrond") }
+        if ((oldmessage.indexOf(" soul ") != -1) /*|| (oldmessage.indexOf("soul master") != -1)*/ || (oldmessage.indexOf("soulmaster ") != -1) || (oldmessage.indexOf(" sm ") != -1)) { message.channel.send("\nSoulMaster's stats: http://soulmasterurpgf.proboards.com/thread/2/pokemon-own") }
+        if ((oldmessage.indexOf("winter ") != -1) || (oldmessage.indexOf(" wv ") != -1) || (oldmessage.indexOf("wintervines ") != -1)) { message.channel.send("\nWinterVines's stats: http://frozenchains.proboards.com/thread/5") }
+        if ((oldmessage.indexOf("siles ") != -1) || (oldmessage.indexOf("siless ") != -1)) { message.channel.send("\nSiless's stats: http://silessurpg.proboards.com/thread/1/silesss-stats") }
+        if ((oldmessage.indexOf("w32 ") != -1) || (oldmessage.indexOf("coravint ") != -1)) { message.channel.send("\nW32's stats: https://project-507nm.neocities.org/pokemonlist.html") }
+        if (oldmessage.indexOf(" sou ") != -1) { message.channel.send("\nSou's stats: http://soucleife.proboards.com/thread/2/pokemon-stats") }
+        if (oldmessage.indexOf("trainer17 ") != -1) { message.channel.send("\nTrainer17's stats: http://kingofcybertron.proboards.com/thread/35/pokemon-team?page=1") }
+        if ((oldmessage.indexOf("captaindude ") != -1) || (oldmessage.indexOf(" cd ") != -1)) { message.channel.send("\nCaptainDude's stats: http://captaindudeurpg.proboards.com/board/1") }
+        if ((oldmessage.indexOf("mandl27 ") != -1) || (oldmessage.indexOf("mandl ") != -1) || (oldmessage.indexOf(" mand ") != -1) || (oldmessage.indexOf(" ml ") != -1)) { message.channel.send("\nMandL27's stats: https://forum.pokemonurpg.com/showthread.php?tid=10294") }
+        //if (oldmessage.indexOf("saur") != -1) { message.channel.send("\nhttps://forum.pokemonurpg.com/showthread.php?tid=9871&pid=123349#pid123349") }
+        if (oldmessage.indexOf("sapahn ") != -1) { message.channel.send("\nSapahn's stats: https://forum.pokemonurpg.com/showthread.php?tid=10208") }
+        if (oldmessage.indexOf("fortree ") != -1) { message.channel.send("\nAsh K.'s Fortree Gym stats: http://ashkstatsurpg.proboards.com/thread/65/fortree-city-gym-2015") }
+        if (oldmessage.indexOf(" after ") != -1) { message.channel.send("\nAfter's stats: https://forum.pokemonurpg.com/showthread.php?tid=10215") }
+        if ((oldmessage.indexOf("pokeviper ") != -1) || (oldmessage.indexOf(" pv ") != -1) || (oldmessage.indexOf("pokéviper") != -1)) { message.channel.send("\nPokhttp://pokeviperbadass.proboards.com/") }
     }
     if (message.content.indexOf(",rse ") == 0) {
         let movelist = ""
@@ -877,7 +878,7 @@ bot.on("message", function(message) {
     	if (message.channel.id == "409818526313086976" || message.channel.id == "254207242780409857") {
     		if (lowmessage.indexOf(",help") == 0) {
     			if (lowmessage.indexOf("stat") != -1) {
-    				message.channel.send("Send either `,stats NAME` or a message containing `NAME's stats` and either starting with `,` or containing `statsbot` and I will link you to their stats!  I accept some commonly used nicknames.  If you know of stats that I don't, please @ Ash K. with the username and link and they will be added.");
+    				message.channel.send("Send either `,stats NAME` or a message containing `NAME` and either starting with `,` or containing `statsbot` and I will link you to their stats!  I accept some commonly used nicknames.  If you know of stats that I don't, please @ Ash K. with the username and link and they will be added.");
     			}
     			else if (lowmessage.indexOf("rank") != -1) {
     				message.channel.send("Send `,rank POKÉMON` and I'll tell you what rank `POKÉMON` is in art and stories, as well as if it's in the Pokémart or Berry Store!  Alternatively, if you send `,rank RANK` I'll tell you all the Pokémon that are RANK in art and stories!")
@@ -901,7 +902,7 @@ bot.on("message", function(message) {
     				message.channel.send("Send `,help` to get the general help command or send `,help COMMAND` for more info on how to use `COMMAND`.  Please note that all help commands only work in <#409818526313086976> to reduce spam.")
     			}
     			else {
-    				var helpMessage = "**Commands:**\n`,stats NAME`: Get a link to a NAME's stats.\n`,rank POKÉMON`: Figure out how to acquire POKÉMON in URPG.\n`,rank RANK`: I'll tell you all the Pokémon that are RANK in art and stories!\n`,rse MOVE` or `,dppt MOVE` or `,oras MOVE`: Contest move lookups for their respective contest types.\n`,contestlog TYPE RANK ATTRIBUTE`: Generates a blank template for a judge's log. Parameters can be in any order.\n`,rules`: Generates a premade ruleset. If you would like to add to my database, please send your rules to Ash K. with a name (represent line breaks with \\n).\n`,hp POKÉMON`: My suggestion for what Hidden Power type to give POKÉMON.\n`,spoiler` or `,rank spoiler`: Give or remove spoilers role from yourself, which gives access to the spoilers chat.\n`,info`: Get a link to URPG's Infohub.\n`,forum`: Get a link to URPG's forums.\n`,calc`: Get a link to the online reffing calculator.\n`,mart`: Get a link to the Pokémart.\n`,berry`: Get a link to the Berry Store.\n`,help`: Display this message.\n`,help COMMAND`: Display a quick summary of how to use COMMAND and what it does.\n\n**Additional features:**\nI accept anonymous feedback! Send me a direct message beginning with `noreply:` or `no reply:` and I will relay your message to staff.\nIf you instead begin an anonymous report with `reply:`, I will relay your message and leave a way for staff to respond. *I relay only the ID of the DM channel between you and me, not your user ID or other information a human can use to identify you*.\nI keep records of deleted messages, majorly edited messages, and members leaving the server.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI assist in mentioning roles! See `,help mention` for more info. Doing so requires specific roles.\nI archive chats as needed!  A moderator can call `,archive` to do so for that chat.\n\n**Note:** All commands are case insensitive. If you have a suggestion for additional features, feel free to message Ash K.!";
+    				var helpMessage = "**Commands:**\n`,stats NAME`: Get a link to a NAME.\n`,rank POKÉMON`: Figure out how to acquire POKÉMON in URPG.\n`,rank RANK`: I'll tell you all the Pokémon that are RANK in art and stories!\n`,rse MOVE` or `,dppt MOVE` or `,oras MOVE`: Contest move lookups for their respective contest types.\n`,contestlog TYPE RANK ATTRIBUTE`: Generates a blank template for a judge's log. Parameters can be in any order.\n`,rules`: Generates a premade ruleset. If you would like to add to my database, please send your rules to Ash K. with a name (represent line breaks with \\n).\n`,hp POKÉMON`: My suggestion for what Hidden Power type to give POKÉMON.\n`,spoiler` or `,rank spoiler`: Give or remove spoilers role from yourself, which gives access to the spoilers chat.\n`,info`: Get a link to URPG's Infohub.\n`,forum`: Get a link to URPG's forums.\n`,calc`: Get a link to the online reffing calculator.\n`,mart`: Get a link to the Pokémart.\n`,berry`: Get a link to the Berry Store.\n`,help`: Display this message.\n`,help COMMAND`: Display a quick summary of how to use COMMAND and what it does.\n\n**Additional features:**\nI accept anonymous feedback! Send me a direct message beginning with `noreply:` or `no reply:` and I will relay your message to staff.\nIf you instead begin an anonymous report with `reply:`, I will relay your message and leave a way for staff to respond. *I relay only the ID of the DM channel between you and me, not your user ID or other information a human can use to identify you*.\nI keep records of deleted messages, majorly edited messages, and members leaving the server.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI assist in mentioning roles! See `,help mention` for more info. Doing so requires specific roles.\nI archive chats as needed!  A moderator can call `,archive` to do so for that chat.\n\n**Note:** All commands are case insensitive. If you have a suggestion for additional features, feel free to message Ash K.!";
 	    			message.channel.send(helpMessage);
     			}
     		}
