@@ -11,7 +11,7 @@ logger.add(logger.transports.Console, {
 logger.level = "debug"
 // Initialize Discord Bot
 var bot = new Discord.Client({ disableEveryone: true })
-var badWords = ["gay", "fag", "retard", ];
+var badWords = ["gay", "fag", "retard", "cuck", ];
 
 bot.on("ready", function() {
     logger.info("Connected")
@@ -1368,6 +1368,7 @@ bot.on("messageDelete", async function(message) {
       && (entry.createdTimestamp > (Date.now() - 5000))
       && (entry.extra.count >= 1)) {
         user = entry.executor.username;
+        if (entry.executor.roles.has("135865553423302657") && message.author.bot) {return;}
     } else {
         if (message.channel.id == "552715426979905547") {return;}
         user = message.author.username;
