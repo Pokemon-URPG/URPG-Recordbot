@@ -112,7 +112,7 @@ bot.on("message", function(message) {
         if ((oldmessage.indexOf(" soul ") != -1) /*|| (oldmessage.indexOf("soul master") != -1)*/ || (oldmessage.indexOf("soulmaster ") != -1) || (oldmessage.indexOf(" sm ") != -1)) { message.channel.send("\nSoulMaster's stats: http://soulmasterurpgf.proboards.com/thread/2/pokemon-own") }
         if ((oldmessage.indexOf("winter ") != -1) || (oldmessage.indexOf(" wv ") != -1) || (oldmessage.indexOf("wintervines ") != -1)) { message.channel.send("\nWinterVines's stats: http://frozenchains.proboards.com/thread/5") }
         if ((oldmessage.indexOf("siles ") != -1) || (oldmessage.indexOf("siless ") != -1)) { message.channel.send("\nSiless's stats: http://silessurpg.proboards.com/thread/1/silesss-stats") }
-        if ((oldmessage.indexOf("w32 ") != -1) || (oldmessage.indexOf("coravint ") != -1)) { message.channel.send("\nW32Coraviant's stats: https://project-507nm.neocities.org/pokemonlist.html") }
+        if ((oldmessage.indexOf("w32 ") != -1) || (oldmessage.indexOf("coravint ") != -1)) { message.channel.send("\nW32Coraviant's stats: https://w32coravint-urpg.neocities.org/") }
         if (oldmessage.indexOf(" sou ") != -1) { message.channel.send("\nSou's stats: http://soucleife.proboards.com/thread/2/pokemon-stats") }
         if (oldmessage.indexOf("trainer17 ") != -1) { message.channel.send("\nTrainer17's stats: http://kingofcybertron.proboards.com/thread/35/pokemon-team?page=1") }
         if ((oldmessage.indexOf("captaindude ") != -1) || (oldmessage.indexOf(" cd ") != -1)) { message.channel.send("\nCaptainDude's stats: http://captaindudeurpg.proboards.com/board/1") }
@@ -1369,7 +1369,7 @@ bot.on("messageDelete", async function(message) {
       && (entry.createdTimestamp > (Date.now() - 5000))
       && (entry.extra.count >= 1)) {
         user = entry.executor.username;
-        if (entry.executor.roles.has("135865553423302657") && message.author.bot) {return;}
+        //if (entry.executor.roles.has("135865553423302657") && message.author.bot) {return;}
     } else {
         if (message.channel.id == "552715426979905547") {return;}
         user = message.author.username;
