@@ -43,7 +43,7 @@ bot.on("message", function(message) {
     }
     //if ((lowmessage.indexOf(",") == 0 || lowmessage.indexOf("statsbot") != -1 || message.channel.type == "dm") && lowmessage.indexOf("stats") != -1 && lowmessage.indexOf("?") == -1) {
     if (lowmessage.indexOf(",stats") == 0 || lowmessage.indexOf("'s statsbot") != -1) {
-        let oldmessage = lowmessage.replace(/'s statsbot/g, " ") + " ";
+        let oldmessage = " " + lowmessage.replace(/'s statsbot/g, " ") + " ";
         /*lowmessage = ""
         let tempMessage = ""
         for (let x = 0; x < oldmessage.length; x++) {
@@ -84,7 +84,7 @@ bot.on("message", function(message) {
         if ((oldmessage.indexOf("ralin") != -1) /*|| (oldmessage.indexOf("ralinocity") != -1)*/ || (oldmessage.indexOf("jack ") != -1)) { message.channel.send("\nJack's stats: https://jackurpg.wordpress.com/") }
         if ((oldmessage.indexOf("syn ") != -1) || (oldmessage.indexOf("synthesis ") != -1)) { message.channel.send("\nSynthesis's stats: http://synthesisurpg.proboards.com/thread/2/re-current-pokemon") }
         if ((oldmessage.indexOf("evan ") != -1) || (oldmessage.indexOf("evanfardreamer ") != -1)) { message.channel.send("\nEvanfardreamer's stats: http://forum.pokemonurpg.com/showthread.php?tid=9387") }
-        if (oldmessage.indexOf("dash ") != -1) { message.channel.send("\nhttp://dashurpgstats.proboards.com/thread/1/pokemon") }
+        if (oldmessage.indexOf("dash ") != -1) { message.channel.send("\nDash's stats: http://dashurpgstats.proboards.com/thread/1/pokemon") }
         if ((oldmessage.indexOf(" ash ") != -1) /*|| (oldmessage.indexOf("ash k") != -1) || (oldmessage.indexOf("ash k.") != -1)*/) { message.channel.send("\nAsh K.'s stats: http://ashkstatsurpg.proboards.com/thread/23/pok-mon-index") }
         if ((oldmessage.indexOf(" fd ") != -1) || (oldmessage.indexOf("fierce deity ") != -1) || (oldmessage.indexOf("fierce diety ") != -1)) { message.channel.send("\nFierce Deity's stats: http://fd-stats.proboards.com/thread/4/slaves?page=1") }
         if ((oldmessage.indexOf("xali ") != -1) || (oldmessage.indexOf("xalipeno ") != -1) || (oldmessage.indexOf("xalipeño ") != -1)) { message.channel.send("\nXali's stats: http://jalapenowarrior.proboards.com/thread/17?page=1") }
