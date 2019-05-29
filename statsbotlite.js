@@ -42,8 +42,8 @@ bot.on("message", function(message) {
         }
     }
     //if ((lowmessage.indexOf(",") == 0 || lowmessage.indexOf("statsbot") != -1 || message.channel.type == "dm") && lowmessage.indexOf("stats") != -1 && lowmessage.indexOf("?") == -1) {
-    if (lowmessage.indexOf(",stats") == 0) {
-        let oldmessage = lowmessage + " ";
+    if (lowmessage.indexOf(",stats") == 0 || lowmessage.indexOf("'s statsbot") != -1) {
+        let oldmessage = lowmessage.replace(/'s statsbot/g, " ") + " ";
         /*lowmessage = ""
         let tempMessage = ""
         for (let x = 0; x < oldmessage.length; x++) {
@@ -1305,9 +1305,9 @@ bot.on("message", async function(message){
         }
         await bot.channels.get("440004235635982336").setName("spoilers-" + message.cleanContent.split(" ")[1]);
     }
-    if (lowmessage.indexOf(",week1start") == 0 && (message.member.roles.has("135865553423302657") || message.member.roles.has("135868852092403713"))) {
+    /*if (lowmessage.indexOf(",week1start") == 0 && (message.member.roles.has("135865553423302657") || message.member.roles.has("135868852092403713"))) {
         bot.channels.get("575461222443384833").permissionOverwrites.deleteAll();
-    }
+    }*/
 })
 /* var logChannel = bot.channels.get("254207242780409857")
 bot.on('messageDelete', function (author, content, channel) {
