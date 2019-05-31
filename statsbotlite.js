@@ -11,7 +11,7 @@ logger.add(logger.transports.Console, {
 logger.level = "debug"
 // Initialize Discord Bot
 var bot = new Discord.Client({ disableEveryone: true })
-var badWords = ["gay", "fag", "retard", "cuck", ];
+var badWords = ["gay", " fag", "fag ", "retard", "cuck", ];
 
 bot.on("ready", function() {
     logger.info("Connected")
@@ -29,18 +29,18 @@ bot.on('error', console.error);
 
 bot.on("message", function(message) {
     let lowmessage = message.content.toLowerCase()
+    var badWordsLog = "";
     for (let i = 0; i < badWords.length; i++) {
-        if (lowmessage.indexOf(badWords[i]) != -1 && !message.author.bot) {
-            var badWordsLog = "";
+        if ((lowmessage.indexOf(badWords[i]) != -1 || lowmessage == "fag") && !message.author.bot && badWordsLog == "") {
             badWordsLog += message.member.displayName;
             badWordsLog += " said the following here <";
             badWordsLog += message.url;
             badWordsLog += ">: ```";
             badWordsLog += message.cleanContent;
             badWordsLog += "```"
-            bot.channels.get("545384090044727296").send(badWordsLog);
         }
     }
+    bot.channels.get("545384090044727296").send(badWordsLog);
     //if ((lowmessage.indexOf(",") == 0 || lowmessage.indexOf("statsbot") != -1 || message.channel.type == "dm") && lowmessage.indexOf("stats") != -1 && lowmessage.indexOf("?") == -1) {
     if (lowmessage.indexOf(",stats") == 0 || lowmessage.indexOf("'s statsbot") != -1) {
         let oldmessage = " " + lowmessage.replace(/'s statsbot/g, " ") + " ";
