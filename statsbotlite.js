@@ -908,7 +908,7 @@ bot.on("message", function(message) {
     		}
             if (message.author.id == "135999597947387904" && lowmessage == ",roles") {
                 //var rolesList = `message.guild.roles.map(role r => ${r.id} : ${r.name}).join("\n")`;
-                message.channel.send(message.guild.roles.find(r=>r.name === "maylee-week-3").id);
+                message.channel.send(message.guild.roles.find(r=>r.name === "Head of URPG").id);
                 return;
             }
     	}
