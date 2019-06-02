@@ -92,7 +92,7 @@ bot.on("message", function(message) {
         if ((oldmessage.indexOf("ori ") != -1) || (oldmessage.indexOf("oribhel ") != -1) || (oldmessage.indexOf("heltear ") != -1)) { message.channel.send("\nHeltear's stats: http://forum.pokemonurpg.com/showthread.php?tid=9869") }
         if ((oldmessage.indexOf("jonas ") != -1) || (oldmessage.indexOf("jonastank ") != -1)) { message.channel.send("\nJonasTank's stats: http://forum.pokemonurpg.com/showthread.php?tid=9820") }
         if ((oldmessage.indexOf("menegoth ") != -1) || (oldmessage.indexOf("mene ") != -1)) { message.channel.send("\nMenegoth's stats: http://menegothstats.freeforums.net/thread/2/pok-mon") }
-        if (oldmessage.indexOf("liam ") != -1) { message.channel.send("\nLiam's stats: http://s15.zetaboards.com/The_Stats_of_Liam/topic/7891449/1/") }
+        if (oldmessage.indexOf("liam ") != -1) { message.channel.send("\nLiam's stats: https://liamsstats.home.blog/") }
         if ((oldmessage.indexOf("team evolution ") != -1) || (oldmessage.indexOf("charmander4lyf ") != -1) || (oldmessage.indexOf("ketamine ") != -1) || (oldmessage.indexOf(" te ") != -1)) { message.channel.send("\nTeam Evolution's stats: http://forum.pokemonurpg.com/showthread.php?tid=9307") }
         if ((oldmessage.indexOf("monbrey ") != -1) || (oldmessage.indexOf("mon ") != -1)) { message.channel.send("\nMonbrey's stats: https://urpg.monbrey.com.au/stats-new/") }
         if ((oldmessage.indexOf("caite ") != -1) || (oldmessage.indexOf("caite-chan ") != -1) || (oldmessage.indexOf("caite chan ") != -1)) { message.channel.send("\nCaite Chan's stats: http://caitechan.proboards.com/thread/2") }
