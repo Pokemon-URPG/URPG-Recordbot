@@ -911,6 +911,21 @@ bot.on("message", function(message) {
                 message.channel.send(message.guild.roles.find(r=>r.name === "Head of URPG").id);
                 return;
             }
+            if (message.author.id == "135999597947387904" && lowmessage == ",staffupdates") {
+                message.guild.fetchMember(bot.fetchUser("140309419270340609").addRole("582821543587872774");
+                /*message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
+                message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
+                message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
+                message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
+                message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
+                message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
+                message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
+                message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
+                message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
+                message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
+                message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
+                message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");*/
+            }
     	}
     	/*if (lowmessage.indexOf("hippopotomonstrosesquipedaliophobia") != -1 && !message.author.bot) {
     		message.delete();
