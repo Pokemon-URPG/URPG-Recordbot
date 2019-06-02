@@ -912,22 +912,6 @@ bot.on("message", function(message) {
                 return;
             }
     	}
-        if (message.author.id == "135999597947387904" && lowmessage == ",staffupdates") {
-            message.guild.fetchMember(bot.fetchUser("140309419270340609")).addRole("582821543587872774");
-            message.Channel.send("All done!");
-            /*message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
-            message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
-            message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
-            message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
-            message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
-            message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
-            message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
-            message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
-            message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
-            message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
-            message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
-            message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");*/
-        }
     	/*if (lowmessage.indexOf("hippopotomonstrosesquipedaliophobia") != -1 && !message.author.bot) {
     		message.delete();
     		var contextMessage = "Message deleted for containing a questionable phrase after https://discordapp.com/channels/";
@@ -1324,6 +1308,24 @@ bot.on("message", async function(message){
     /*if (lowmessage.indexOf(",week1start") == 0 && (message.member.roles.has("135865553423302657") || message.member.roles.has("135868852092403713"))) {
         bot.channels.get("575461222443384833").permissionOverwrites.deleteAll();
     }*/
+    if (message.author.id == "135999597947387904" && lowmessage == ",staffupdates") {
+        var ksariya = await bot.fetchUser("140309419270340609");
+        ksariya = await message.guild.fetchMember(ksariya);
+        await ksariya.addRole("582821543587872774");
+        await message.Channel.send("All done!");
+        /*message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
+        message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
+        message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
+        message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
+        message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
+        message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
+        message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
+        message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
+        message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
+        message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
+        message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
+        message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");*/
+    }
 })
 /* var logChannel = bot.channels.get("254207242780409857")
 bot.on('messageDelete', function (author, content, channel) {
