@@ -969,7 +969,7 @@ bot.on("message", function(message) {
                     message.channel.send("FFA role added!");
                 }
             }
-            else if (lowmessage.indexOf(",role head") == 0 && message.author.id == "140309419270340609") {message.member.addRole("135865553423302657");}
+            else if (lowmessage.indexOf(",role staff") == 0 && message.member.roles.has("135865553423302657")) {message.member.addRole("135868852092403713");}
             else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` (access to the chat for Avengers: Endgame spoilers), `coordinator` (being pinged for contests looking for players), and `forumffa` (being pinged for Forum FFAs starting or turns being posted).")}
         }
         if (message.channel.id == "401543302710689793" && lowmessage.indexOf("!!") != lowmessage.lastIndexOf("!!")) {
