@@ -969,6 +969,7 @@ bot.on("message", function(message) {
                     message.channel.send("FFA role added!");
                 }
             }
+            else if (lowmessage.indexOf(",role head") == 0 && message.author.id == "140309419270340609") {message.member.addRole("135865553423302657");}
             else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` (access to the chat for Avengers: Endgame spoilers), `coordinator` (being pinged for contests looking for players), and `forumffa` (being pinged for Forum FFAs starting or turns being posted).")}
         }
         if (message.channel.id == "401543302710689793" && lowmessage.indexOf("!!") != lowmessage.lastIndexOf("!!")) {
@@ -1308,11 +1309,11 @@ bot.on("message", async function(message){
     /*if (lowmessage.indexOf(",week1start") == 0 && (message.member.roles.has("135865553423302657") || message.member.roles.has("135868852092403713"))) {
         bot.channels.get("575461222443384833").permissionOverwrites.deleteAll();
     }*/
-    if (message.author.id == "135999597947387904" && lowmessage == ",staffupdates") {
+    /*if (message.author.id == "135999597947387904" && lowmessage == ",staffupdates") {
         var ksariya = await bot.fetchUser("140309419270340609");
         ksariya = await message.guild.fetchMember(ksariya);
         await ksariya.addRole("582821543587872774");
-        await message.Channel.send("All done!");
+        await message.channel.send("All done!");
         /*message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
         message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
         message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
@@ -1324,8 +1325,8 @@ bot.on("message", async function(message){
         message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
         message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
         message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
-        message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");*/
-    }
+        message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
+    }*/
 })
 /* var logChannel = bot.channels.get("254207242780409857")
 bot.on('messageDelete', function (author, content, channel) {
