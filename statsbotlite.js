@@ -969,7 +969,7 @@ bot.on("message", function(message) {
                     message.channel.send("FFA role added!");
                 }
             }
-            else if (lowmessage.indexOf(",role staff") == 0 && message.member.roles.has("135865553423302657")) {message.member.addRole("135868852092403713");}
+            //else if (lowmessage.indexOf(",role staff") == 0 && message.member.roles.has("135865553423302657")) {message.member.addRole("135868852092403713");}
             else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` (access to the chat for Avengers: Endgame spoilers), `coordinator` (being pinged for contests looking for players), and `forumffa` (being pinged for Forum FFAs starting or turns being posted).")}
         }
         if (message.channel.id == "401543302710689793" && lowmessage.indexOf("!!") != lowmessage.lastIndexOf("!!")) {
@@ -1299,7 +1299,7 @@ bot.on("message", async function(message){
         await bot.channels.get("322151372453838848").setPosition(1);
         await message.channel.send("Reordering complete!");
     }
-    if (lowmessage.indexOf(",spoilerseason ") == 0 && message.member.hasPermission("MANAGE_SERVER")) {
+    if (lowmessage.indexOf(",spoilerseason ") == 0 && message.member.roles.has("135868852092403713")) {
         var spoilers = await bot.guilds.get("135864828240592896").roles.get("440004078219558912").members.array();
         for (i = 0; i < spoilers.size; i++) {
             await spoilers[i].removeRole(message.guild.roles.get("440004078219558912"));
@@ -1463,8 +1463,8 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
     if (!oldMessage.guild.available) {return;}
     if (oldMessage.guild.id != "135864828240592896") {return;}
     if (oldMessage.author.bot) {return;}
-    if (diff <= .8 || oldMessage.channel.id == "261370056246689792" || oldMessage.channel.id == "294334136355651584" || oldMessage.channel.name == "judge-test" || oldMessage.channel.name == "ref-test") {
-    	if (newMessage.content.length > 5 || oldMessage.content.length > 5 || oldMessage.channel.id == "261370056246689792" || oldMessage.channel.id == "294334136355651584" || oldMessage.channel.name == "judge-test" || oldMessage.channel.name == "ref-test") {
+    if (diff <= .8 || oldMessage.channel.id == "261370056246689792" || oldMessage.channel.id == "294334136355651584" || oldMessage.channel.name == "judge-test" || oldMessage.channel.name == "ref-test" || oldMessage.channel.id == "585321627609202689") {
+    	if (newMessage.content.length > 5 || oldMessage.content.length > 5 || oldMessage.channel.id == "261370056246689792" || oldMessage.channel.id == "294334136355651584" || oldMessage.channel.name == "judge-test" || oldMessage.channel.name == "ref-test" || oldMessage.channel.id == "585321627609202689") {
     		if (oldMessage.channel.id == "261370056246689792") {channelToNotify = "136595690980638720";}
     		if (oldMessage.channel.id == "294334136355651584") {channelToNotify = "294333921200701450";}
     		if (oldMessage.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
@@ -1537,11 +1537,23 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
   logs.send(`A message was deleted in ${message.channel.name} by ${user}`);
 })*/
 
-bot.on("guildMemberRemove", function(member) {
-    var left = bot.users.get(member.id)
-    bot.channels.get("545384090044727296").send(`Member ${left.username} has left.`)
+bot.on("guildMemberRemove", async function(member) {
+    var leaveLog = "Member ";
+    leaveLog += member.username;
+    const entry = await message.guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first())
+    const entry2 = await message.guild.fetchAuditLogs({type: 'MEMBER_KICK'}).then(audit => audit.entries.first())
+    if ((entry.target.id === member.id) && (entry.createdTimestamp > (Date.now() - 5000)) {
+        leaveLog += " was banned by ";
+        leaveLog += entry.executor.username;
+    }
+    else if ((entry2.target.id === member.id) && (entry2.createdTimestamp > (Date.now() - 5000)) {
+        leaveLog += " was kicked by ";
+        leaveLog += entry.executor.username;
+    }
+    else {leaveLog += " has left."}
+    bot.channels.get("545384090044727296").send(leaveLog);
     //member.send("Hello! I'm an automated message from the URPG's bot. We're sorry to see you leave the server; we want to improve the game/community experience for everyone, so if you'd be so kind as to reply to this DM with a couple quick answers we'd very much appreciate it - it will benefit the whole community! **We will not be sending you any further messages after this.**\n\n:star: Were there any particular reason(s) why you decided to leave?\n:star: Was there anything that you think should have been done differently or that didn't meet your expectations?\n\nThank you for your time!");
-//    if (member.roles.prototype.size != 0) {}
+    //if (member.roles.prototype.size != 0) {}
 })
 
 bot.login(process.env.token)
