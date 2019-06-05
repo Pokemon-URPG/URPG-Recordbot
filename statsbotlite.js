@@ -1045,7 +1045,7 @@ bot.on("message", function(message) {
 bot.on("message", async function(message){
     var lowmessage = message.content.toLowerCase();
     if (message.guild === null) {
-        if (lowmessage.indexOf("week3: ") == 0) {
+        /*if (lowmessage.indexOf("week3: ") == 0) {
             var alreadySubmitted = (await bot.guilds.get("135864828240592896").fetchMember(message.author)).roles.has("582821543587872774");
             if (alreadySubmitted) {
                 await message.author.send("I'm afraid you have already submitted your box for the week.");
@@ -1063,7 +1063,7 @@ bot.on("message", async function(message){
             await bot.channels.get("582821680880156684").send(maylee);
             await message.author.send("Team successfully submitted for week 3 of Maylee event.");
             await (await (await bot.guilds.get("135864828240592896")).fetchMember(message.author)).addRole("582821543587872774");
-        }
+        }*/
         return;
     }
     if (message.guild.id != "135864828240592896") {return;}
