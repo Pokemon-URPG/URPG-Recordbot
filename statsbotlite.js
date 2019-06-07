@@ -40,7 +40,7 @@ bot.on("message", function(message) {
             badWordsLog += "```"
         }
     }
-    bot.channels.get("545384090044727296").send(badWordsLog);
+    if (badWordsLog != "") {bot.channels.get("545384090044727296").send(badWordsLog);}
     //if ((lowmessage.indexOf(",") == 0 || lowmessage.indexOf("statsbot") != -1 || message.channel.type == "dm") && lowmessage.indexOf("stats") != -1 && lowmessage.indexOf("?") == -1) {
     if (lowmessage.indexOf(",stats") == 0 || lowmessage.indexOf("'s statsbot") != -1) {
         let oldmessage = " " + lowmessage.replace(/'s statsbot/g, " ") + " ";
