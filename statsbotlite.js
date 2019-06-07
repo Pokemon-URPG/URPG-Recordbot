@@ -1545,8 +1545,8 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
 })*/
 
 bot.on("guildMemberRemove", async function(member) {
-    var channelToNotify = "545384090044727296";
-    if (member.guild != "135864828240592896") {channelToNotify = "531433553225842700"}
+    //var channelToNotify = "545384090044727296";
+    //if (member.guild != "135864828240592896") {channelToNotify = "531433553225842700"}
     var leaveLog = "Member ";
     leaveLog += member.displayName;
     const entry = await member.guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first())
@@ -1560,7 +1560,7 @@ bot.on("guildMemberRemove", async function(member) {
         leaveLog += entry.executor.username;
     }
     else {leaveLog += " has left."}
-    bot.channels.get(channelToNotify).send(leaveLog);
+    bot.channels.get("545384090044727296").send(leaveLog);
     //member.send("Hello! I'm an automated message from the URPG's bot. We're sorry to see you leave the server; we want to improve the game/community experience for everyone, so if you'd be so kind as to reply to this DM with a couple quick answers we'd very much appreciate it - it will benefit the whole community! **We will not be sending you any further messages after this.**\n\n:star: Were there any particular reason(s) why you decided to leave?\n:star: Was there anything that you think should have been done differently or that didn't meet your expectations?\n\nThank you for your time!");
     //if (member.roles.prototype.size != 0) {}
 })
