@@ -1540,8 +1540,8 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
 bot.on("guildMemberRemove", async function(member) {
     var leaveLog = "Member ";
     leaveLog += member.username;
-    const entry = await message.guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first())
-    const entry2 = await message.guild.fetchAuditLogs({type: 'MEMBER_KICK'}).then(audit => audit.entries.first())
+    const entry = await message.guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first()).catch();
+    const entry2 = await message.guild.fetchAuditLogs({type: 'MEMBER_KICK'}).then(audit => audit.entries.first()).catch();
     if ((entry.target.id === member.id) && (entry.createdTimestamp > (Date.now() - 5000))) {
         leaveLog += " was banned by ";
         leaveLog += entry.executor.username;
