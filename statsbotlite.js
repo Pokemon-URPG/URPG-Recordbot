@@ -1064,6 +1064,13 @@ bot.on("message", async function(message){
             await message.author.send("Team successfully submitted for week 3 of Maylee event.");
             await (await (await bot.guilds.get("135864828240592896")).fetchMember(message.author)).addRole("582821543587872774");
         }*/
+        //var URPGmember = await bot.guilds.get("135864828240592896").fetchMember(message.author));
+        /*var URPGmember = await bot.guilds.get("531433553225842698").fetchMember(message.author));
+        if (URPGmember.roles.has("525166741714763806") && message.content.toLowerCase().indexOf("i am human") != -1) {
+            await URPGmember.removeRole(bot.guilds.get("531433553225842698").roles.get("586432252901195777"));
+            //await URPGmember.removeRole(bot.guilds.get("135864828240592896").roles.get("525166741714763806"));
+            await message.channel.send("Thank you for your understanding.  You have been unmuted.");
+        }*/
         return;
     }
     if (message.guild.id != "135864828240592896") {return;}
@@ -1538,8 +1545,10 @@ bot.on("messageUpdate", function(oldMessage, newMessage) {
 })*/
 
 bot.on("guildMemberRemove", async function(member) {
+    var channelToNotify = "545384090044727296";
+    if (member.guild != "135864828240592896") {channelToNotify = "531433553225842700"}
     var leaveLog = "Member ";
-    leaveLog += member.username;
+    leaveLog += member.displayName;
     const entry = await member.guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first())
     const entry2 = await member.guild.fetchAuditLogs({type: 'MEMBER_KICK'}).then(audit => audit.entries.first())
     if ((entry.target.id === member.id) && (entry.createdTimestamp > (Date.now() - 5000))) {
@@ -1551,9 +1560,18 @@ bot.on("guildMemberRemove", async function(member) {
         leaveLog += entry.executor.username;
     }
     else {leaveLog += " has left."}
-    bot.channels.get("545384090044727296").send(leaveLog);
+    bot.channels.get(channelToNotify).send(leaveLog);
     //member.send("Hello! I'm an automated message from the URPG's bot. We're sorry to see you leave the server; we want to improve the game/community experience for everyone, so if you'd be so kind as to reply to this DM with a couple quick answers we'd very much appreciate it - it will benefit the whole community! **We will not be sending you any further messages after this.**\n\n:star: Were there any particular reason(s) why you decided to leave?\n:star: Was there anything that you think should have been done differently or that didn't meet your expectations?\n\nThank you for your time!");
     //if (member.roles.prototype.size != 0) {}
 })
+
+/*bot.on("guildMemberAdd", async function(member) {
+    if (member.guild == "135864828240592896") {return;}
+    if (member.user.username.indexOf(".") != -1) {
+        //await member.addRole("525166741714763806");
+        await member.addRole("586432252901195777");
+        await member.send("It appears you have a username similar to many recent bots we've seen.  If you are a not a bot, please respond to this message with \"I am human\" and you will be unmuted.  If for any reason this doesn't work, you may also message <@135999597947387904> to be unmuted.");
+    }
+})*/
 
 bot.login(process.env.token)
