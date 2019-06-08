@@ -1551,11 +1551,11 @@ bot.on("guildMemberRemove", async function(member) {
     leaveLog += member.displayName;
     const entry = await member.guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first())
     const entry2 = await member.guild.fetchAuditLogs({type: 'MEMBER_KICK'}).then(audit => audit.entries.first())
-    if ((entry.target.id === member.id) && (entry.createdTimestamp > (Date.now() - 5000))) {
+    if (entry != null && (entry.target.id === member.id) && (entry.createdTimestamp > (Date.now() - 5000))) {
         leaveLog += " was banned by ";
         leaveLog += entry.executor.username;
     }
-    else if ((entry2.target.id === member.id) && (entry2.createdTimestamp > (Date.now() - 5000))) {
+    else if (entry2 != null && (entry2.target.id === member.id) && (entry2.createdTimestamp > (Date.now() - 5000))) {
         leaveLog += " was kicked by ";
         leaveLog += entry.executor.username;
     }
