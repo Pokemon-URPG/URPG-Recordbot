@@ -1169,7 +1169,7 @@ bot.on("message", async function(message){
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("533356631455694849")}${lowmessage.split(",mentionelderarbiters")[1]}`);
         await bot.guilds.get("135864828240592896").roles.get("533356631455694849").setMentionable(false);
     }*/
-    if (lowmessage == ",archive" && message.member.hasPermission("MANAGE_CHANNELS")) {
+    if (lowmessage == ",archive" && (message.member.hasPermission("MANAGE_CHANNELS") || message.member.roles.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.get("135864828240592896").channels.get("432291722492379136"));
         /*//message.channel.lockPermissions();
         await message.channel.permissionOverwrites.deleteAll();
