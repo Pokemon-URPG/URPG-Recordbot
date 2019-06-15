@@ -1340,11 +1340,11 @@ bot.on("message", async function(message){
     var currentTime = new Date();
     if (lowmessage.indexOf(",bump") == 0) {
         if (isNaN(lowmessage.split(" ")[1])) {return;}
-        bumpTime = new Date(currentTime.getTime() + lowmessage.split(" ")[1]);
+        bumpTime.setTime(currentTime.getTime() + lowmessage.split(" ")[1]);
         message.channel.send("Bump time set to " + bumpTime);
     }
     if (bumpTime.getTime() <= currentTime.getTime()) {
-        bumpTime = new Date(currentTime.getTime() + 7205000);
+        bumpTime.setTime(currentTime.getTime() + 7205000);
         bot.channels.get("409818526313086976").send("dc!bump");
     }
 })
