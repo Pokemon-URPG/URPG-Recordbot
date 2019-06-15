@@ -1338,8 +1338,8 @@ bot.on("message", async function(message){
         message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
     }*/
     var currentTime = new Date();
-    if (bumpTime.getTime() <= currentTime.getTime()) {
-        bumpTime = new Date(currentTime.getTime() + 725000);
+    if (bumpTime.getTime() <= currentTime.getTime() || lowmessage.indexOf(",bump") == 0) {
+        bumpTime = new Date(currentTime.getTime() + 7205000);
         bot.channels.get("409818526313086976").send("dc!bump");
     }
 })
