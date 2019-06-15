@@ -1335,6 +1335,10 @@ bot.on("message", async function(message){
         message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
         message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
     }*/
+    if (lowmessage.indexOf(",bump") == 0 && message.channel.id == "409818526313086976") {
+        message.channel.send("!d bump");
+        message.channel.send("dc!bump");
+    }
 })
 /* var logChannel = bot.channels.get("254207242780409857")
 bot.on('messageDelete', function (author, content, channel) {
