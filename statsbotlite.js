@@ -12,7 +12,7 @@ logger.level = "debug"
 // Initialize Discord Bot
 var bot = new Discord.Client({ disableEveryone: true })
 var badWords = ["gay", " fag", "fag ", "retard", "cuck", ];
-var bumpTime = new Date();
+var bumpTime;
 
 bot.on("ready", function() {
     logger.info("Connected")
