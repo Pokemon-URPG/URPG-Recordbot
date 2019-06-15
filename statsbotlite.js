@@ -12,11 +12,13 @@ logger.level = "debug"
 // Initialize Discord Bot
 var bot = new Discord.Client({ disableEveryone: true })
 var badWords = ["gay", " fag", "fag ", "retard", "cuck", ];
+var bumpTime = new Date();
 
 bot.on("ready", function() {
     logger.info("Connected")
     logger.info("Logged in as: ")
     logger.info(bot.user.username + " - (" + bot.user.id + ")")
+    bumpTime = new Date();
 })
 
 bot.on('error', console.error);
@@ -1335,9 +1337,10 @@ bot.on("message", async function(message){
         message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
         message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
     }*/
-    if (lowmessage.indexOf(",bump") == 0 && message.channel.id == "409818526313086976") {
-        message.channel.send("!d bump");
-        message.channel.send("dc!bump");
+    var currentTime = new Date();
+    if (bumpTime.getTime() >= currentTime.getTime()) {
+        bumpTime = new Date(currentTime.getTime() + 725000);
+        bot.channels.get("409818526313086976").send("dc!bump");
     }
 })
 /* var logChannel = bot.channels.get("254207242780409857")
