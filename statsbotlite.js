@@ -1338,14 +1338,14 @@ bot.on("message", async function(message){
         message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
     }*/
     var currentTime = new Date();
-    if (bumpTime.getTime() <= currentTime.getTime()) {
-        bumpTime = new Date(currentTime.getTime() + 7205000);
-        bot.channels.get("409818526313086976").send("dc!bump");
-    }
     if (lowmessage.indexOf(",bump") == 0) {
         if (isNaN(lowmessage.split(" ")[1])) {return;}
         bumpTime = new Date(currentTime.getTime() + lowmessage.split(" ")[1]);
         message.channel.send("Bump time set to " + bumpTime);
+    }
+    if (bumpTime.getTime() <= currentTime.getTime()) {
+        bumpTime = new Date(currentTime.getTime() + 7205000);
+        bot.channels.get("409818526313086976").send("dc!bump");
     }
 })
 /* var logChannel = bot.channels.get("254207242780409857")
