@@ -1340,7 +1340,7 @@ bot.on("message", async function(message){
     var currentTime = new Date();
     if (lowmessage.indexOf(",bump") == 0) {
         if (isNaN(lowmessage.split(" ")[1])) {return;}
-        bumpTime.setTime(currentTime.getTime() + lowmessage.split(" ")[1]);
+        bumpTime.setTime(lowmessage.split(" ")[1] * 1 + currentTime.getTime());
         message.channel.send("Bump time set to " + bumpTime);
     }
     if (bumpTime.getTime() <= currentTime.getTime()) {
