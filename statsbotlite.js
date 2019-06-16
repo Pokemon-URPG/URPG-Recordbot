@@ -18,8 +18,16 @@ bot.on("ready", function() {
     logger.info("Connected")
     logger.info("Logged in as: ")
     logger.info(bot.user.username + " - (" + bot.user.id + ")")
-    bumpTime = new Date();
+    //bumpTime = new Date();
+    bumpServer();
 })
+
+function bumpServer() {
+    bot.channels.get("409818526313086976").send("dc!bump");
+    bumpTime = setTimeout(function() {
+        bumpServer();
+    }, 7205000);
+}
 
 bot.on('error', console.error);
 
@@ -1047,6 +1055,20 @@ bot.on("message", function(message) {
 
 bot.on("message", async function(message){
     var lowmessage = message.content.toLowerCase();
+    //var currentTime = new Date();
+    if (lowmessage.indexOf(",bump") == 0) {
+        if (isNaN(lowmessage.split(" ")[1])) {return;}
+        clearTimeout(bumpTime);
+        bumpTime = setTimeout(function () {
+            bumpServer();
+        }, lowmessage.split(" ")[1]) * 60000)
+        //bumpTime.setTime(lowmessage.split(" ")[1] * 1 + currentTime.getTime());
+        message.channel.send("Bump time set to " + lowmessage.split(" ")[1]) + " minutes from now.");
+    }
+    /*if (bumpTime.getTime() <= currentTime.getTime()) {
+        bumpTime.setTime(currentTime.getTime() + 7205000);
+        bot.channels.get("409818526313086976").send("dc!bump");
+    }*/
     if (message.guild === null) {
         /*if (lowmessage.indexOf("week3: ") == 0) {
             var alreadySubmitted = (await bot.guilds.get("135864828240592896").fetchMember(message.author)).roles.has("582821543587872774");
@@ -1337,16 +1359,6 @@ bot.on("message", async function(message){
         message.guild.fetchMember(bot.fetchUser("").addRole("135865553423302657");
         message.guild.fetchMember(bot.fetchUser("").removeRole("135868852092403713");
     }*/
-    var currentTime = new Date();
-    if (lowmessage.indexOf(",bump") == 0) {
-        if (isNaN(lowmessage.split(" ")[1])) {return;}
-        bumpTime.setTime(lowmessage.split(" ")[1] * 1 + currentTime.getTime());
-        message.channel.send("Bump time set to " + bumpTime);
-    }
-    if (bumpTime.getTime() <= currentTime.getTime()) {
-        bumpTime.setTime(currentTime.getTime() + 7205000);
-        bot.channels.get("409818526313086976").send("dc!bump");
-    }
 })
 /* var logChannel = bot.channels.get("254207242780409857")
 bot.on('messageDelete', function (author, content, channel) {
