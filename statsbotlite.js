@@ -1063,7 +1063,7 @@ bot.on("message", async function(message){
             bumpServer();
         }, lowmessage.split(" ")[1] * 60000)
         //bumpTime.setTime(lowmessage.split(" ")[1] * 1 + currentTime.getTime());
-        message.channel.send("Bump time set to " + lowmessage.split(" ")[1]) + " minutes from now.");
+        message.channel.send("Bump time set to " + lowmessage.split(" ")[1] + " minutes from now.");
     }
     /*if (bumpTime.getTime() <= currentTime.getTime()) {
         bumpTime.setTime(currentTime.getTime() + 7205000);
