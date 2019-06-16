@@ -1061,7 +1061,7 @@ bot.on("message", async function(message){
         clearTimeout(bumpTime);
         bumpTime = setTimeout(function () {
             bumpServer();
-        }, lowmessage.split(" ")[1]) * 60000)
+        }, lowmessage.split(" ")[1] * 60000)
         //bumpTime.setTime(lowmessage.split(" ")[1] * 1 + currentTime.getTime());
         message.channel.send("Bump time set to " + lowmessage.split(" ")[1]) + " minutes from now.");
     }
