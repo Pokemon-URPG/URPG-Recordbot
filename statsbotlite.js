@@ -802,6 +802,7 @@ bot.on("message", function(message) {
     if (lowmessage.indexOf(",forum") == 0) { message.channel.send("https://forum.pokemonurpg.com/"); }
     if (lowmessage.indexOf(",mart") == 0) { message.channel.send("http://forum.pokemonurpg.com/showthread.php?tid=1682"); }
     if (lowmessage.indexOf(",berry") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1686"); }
+    if (lowmessage.indexOf(",start") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1722"); }
 
     if (lowmessage.indexOf(",") == 0 && lowmessage.indexOf("fairy") != -1 && message.channel.id == "409818526313086976" && !message.author.bot) {
         message.channel.send("", {
@@ -983,7 +984,7 @@ bot.on("message", function(message) {
             //else if (lowmessage.indexOf(",role staff") == 0 && message.member.roles.has("135865553423302657")) {message.member.addRole("135868852092403713");}
             else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` (access to the chat for Avengers: Endgame spoilers), `coordinator` (being pinged for contests looking for players), and `forumffa` (being pinged for Forum FFAs starting or turns being posted).")}
         }
-        if (message.channel.id == "401543302710689793" && lowmessage.indexOf("!!") != lowmessage.lastIndexOf("!!")) {
+        if ((message.channel.id == "401543302710689793" || message.guild === null) && lowmessage.indexOf("!!") != lowmessage.lastIndexOf("!!")) {
             var cardName = message.cleanContent.split("!!")[1];
             var cardSet = message.cleanContent.split("!!") [2];
             if (cardSet.length > 4 || cardSet.length < 2) {return;}
@@ -1211,7 +1212,7 @@ bot.on("message", async function(message){
                     denied: ['VIEW_CHANNEL']
                 },
                 {
-                    id: "135865553423302657",
+                    id: "135868852092403713",
                     allowed: ['VIEW_CHANNEL']    
                 }
             ]
