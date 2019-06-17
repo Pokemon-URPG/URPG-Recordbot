@@ -23,7 +23,7 @@ bot.on("ready", function() {
 })
 
 function bumpServer() {
-    bot.channels.get("409818526313086976").send("dc!bump");
+    bot.channels.get("590150047279087617").send("dc!bump");
     bumpTime = setTimeout(function() {
         bumpServer();
     }, 7205000);
