@@ -11,7 +11,7 @@ logger.add(logger.transports.Console, {
 logger.level = "debug"
 // Initialize Discord Bot
 var bot = new Discord.Client({ disableEveryone: true })
-var badWords = ["gay", " fag", "fag ", "retard", "cuck", ];
+var badWords = ["gay", " fag", "fag ", "retard", "cuck", "slut", ];
 var bumpTime;
 
 bot.on("ready", function() {
@@ -29,6 +29,10 @@ function bumpServer() {
     }, 7205000);
 }
 
+function bumpNotification() {
+    bot.channels.get("409818526313086976").send("DISBOARD bump ready.");
+}
+
 bot.on('error', console.error);
 
 /*bot.on("disconnect", function(event) {
@@ -39,6 +43,11 @@ bot.on('error', console.error);
 
 bot.on("message", function(message) {
     let lowmessage = message.content.toLowerCase()
+    if (message.author.id == "302050872383242240" && lowmessage.indexOf("bump done") != -1) {
+        setTimeout(function() {
+            bumpNotification();
+        }, 7200000);
+    }
     var badWordsLog = "";
     for (let i = 0; i < badWords.length; i++) {
         if ((lowmessage.indexOf(badWords[i]) != -1 || lowmessage == "fag") && !message.author.bot && badWordsLog == "") {
@@ -890,10 +899,10 @@ bot.on("message", function(message) {
     	if (message.channel.id == "409818526313086976" || message.channel.id == "254207242780409857") {
     		if (lowmessage.indexOf(",help") == 0) {
     			if (lowmessage.indexOf("stat") != -1) {
-    				message.channel.send("Send either `,stats NAME` or a message containing `NAME` and either starting with `,` or containing `statsbot` and I will link you to their stats!  I accept some commonly used nicknames.  If you know of stats that I don't, please @ Ash K. with the username and link and they will be added.");
+    				message.channel.send("Send either `,stats` and then any number of usernames or recognized nicknames and I will link you to each of their stats! If you know of stats or nicknames that I don't, please @ Ash K. with the username and/or nickname and link and they will be added.");
     			}
     			else if (lowmessage.indexOf("rank") != -1) {
-    				message.channel.send("Send `,rank POKÉMON` and I'll tell you what rank `POKÉMON` is in art and stories, as well as if it's in the Pokémart or Berry Store!  Alternatively, if you send `,rank RANK` I'll tell you all the Pokémon that are RANK in art and stories!")
+    				message.channel.send("Send `,rank POKÉMON` and I'll tell you what rank `POKÉMON` is in art and stories, as well as if it's in the Pokémart or Berry Store!  Alternatively, if you send `,rank RANK` I'll tell you all the Pokémon that are RANK in art and stories!");
     			}
     			else if (lowmessage.indexOf("rse") != -1) {
     				message.channel.send("Send `,rse MOVE` and I'll tell you what `MOVE` does in RSE Contests!");
@@ -905,17 +914,21 @@ bot.on("message", function(message) {
     				message.channel.send("Send `,oras MOVE` and I'll tell you what `MOVE` does in ORAS Contests!");
     			}
                 else if (lowmessage.indexOf("mention") != -1) {
-                    message.channel.send("`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `mentionarbiters`: Pings the applicable role with a message.  Doing so requires either being a senior of that section or the permission to mention everyone.\n`,mentionffa`: Pings Forum FFA role with a message.  Doing so requires either Forum FFA Host role or mention everyone permission.\n`,mentionmembers`: Pings member role with a message.  Doing so requires mention everyone permission.")
+                    message.channel.send("`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `mentionarbiters`: Pings the applicable role.  Required role: Applicable section senior.\n`,mentionforumffa`: Pings Forum FFA role.  Required role: Forum FFA Host.\n`,mentionffa` or `!ffa -p`: Pings everyone who wants to be notified about FFAs. Required role: Referee. Required channel: <#136222872371855360> or <#269634154101080065>\n`,mentioncoordinators`: Pings everyone who wishes to be notified about contests happening. Required role: Judge.\n`,mentionmembers`: Pings member role with a message.  Required role: No role allows this.\n\n**Notes about all mention functions:**\nMention everyone permission allows use of a ping without the mentioned role.\nYou may put a message after the ping command and it will be copied after the ping, so that looking at mentions will directly show that information.");
                 }
                 else if (lowmessage.indexOf("staff") != -1 || lowmessage.indexOf("mod") != -1 || lowmessage.indexOf("auth") != -1 || lowmessage.indexOf("restrict") != -1) {
-                    message.channel.send("**Restricted Commands:**\n`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `mentionarbiters`: Pings the applicable role with a message.  Doing so requires either being a senior of that section or the permission to mention everyone.\n`,mentionffa`: Pings Forum FFA role with a message.  Doing so requires either Forum FFA Host role or mention everyone permission.\n`,mentionmembers`: Pings member role with a message.  Doing so requires mention everyone permission.\n`,anonreply # message`: Sends a reply to the `,reply:` anonymous report with the given number.  Must be issued in the staff channel.\n`,archive`: Archives the channel, putting it in the archive category and removes access to all non-moderators.  Requires Manage Channels permission.\n`,records available`: Restarts me!  Requires Manage Server permission (and only works if I'm actually around to see your request).")
+                    message.channel.send("**Restricted Commands:**\nAll `,mention` functions: See `,help mention` for more info.\n`,anonreply # message`: Sends a reply to the `,reply:` anonymous report with the given number. Required channel: staff.\n`,archive`: Archives the channel, putting it in the archive category and removes access to all non-staff. Use `,archive public` or `,publicarchive` for public channels and `,archive`, `,archive private`, or `,privatearchive` for private channels. Required role: content-upkeeper\n`,contestboss`: Creates the temporary rooms for a contest boss. Required role: Death Eater.\n`,reftest`, `,judgetest`, or `,rangertest`: Creates a temporary test channel. If the command contains a mention, also adds that member to the channel. Required role: Appropriate section senior.\n`,end`: Deletes a temporary channel. Only works in a temporary channel and requires the same role required to create that channel.\n`,fixorder`: Resets profession chat order. Required role: content-upkeeper.\n`,spoilerseason THING-TO-SPOIL`: changes the name of <#440004235635982336> to #spoilers-THING-TO-SPOIL and removes spoiler role from everyone. Required role: content-upkeeper.\n`,newdiscussion`: Creates a new staff discussion channel. Required channel: staff.");
                 }
-	    		else if (lowmessage.indexOf(",help help") == 0) {
-    				message.channel.send("Send `,help` to get the general help command or send `,help COMMAND` for more info on how to use `COMMAND`.  Please note that all help commands only work in <#409818526313086976> to reduce spam.")
-    			}
+                else if (lowmessage.indexOf("role") != -1) {
+                    message.channel.send("**Self-assignable roles:**\nspoiler: Access to <#440004235635982336>.\nffa: Pings for Discord FFAs.\nforumffa: Pings for Forum FFAs and Forum FFA turns.\ncoordinator: Pings for contests.\n\nSend `,role ROLE` (i.e. `,role spoiler`) to add or remove yourself from any of these roles. Spoiler role will automatically be reset when it changes to spoilers for a different thing.");
+                }
+	    		/*else if (lowmessage.indexOf(",help help") == 0) {
+    				message.channel.send("Send `,help` to get the general help command or send `,help COMMAND` for more info on how to use `COMMAND`.  Please note that all help commands only work in <#409818526313086976> to reduce spam.");
+    			}*/
     			else {
-    				var helpMessage = "**Commands:**\n`,stats NAME`: Get a link to a NAME.\n`,rank POKÉMON`: Figure out how to acquire POKÉMON in URPG.\n`,rank RANK`: I'll tell you all the Pokémon that are RANK in art and stories!\n`,rse MOVE` or `,dppt MOVE` or `,oras MOVE`: Contest move lookups for their respective contest types.\n`,contestlog TYPE RANK ATTRIBUTE`: Generates a blank template for a judge's log. Parameters can be in any order.\n`,rules`: Generates a premade ruleset. If you would like to add to my database, please send your rules to Ash K. with a name (represent line breaks with \\n).\n`,hp POKÉMON`: My suggestion for what Hidden Power type to give POKÉMON.\n`,spoiler` or `,rank spoiler`: Give or remove spoilers role from yourself, which gives access to the spoilers chat.\n`,info`: Get a link to URPG's Infohub.\n`,forum`: Get a link to URPG's forums.\n`,calc`: Get a link to the online reffing calculator.\n`,mart`: Get a link to the Pokémart.\n`,berry`: Get a link to the Berry Store.\n`,help`: Display this message.\n`,help COMMAND`: Display a quick summary of how to use COMMAND and what it does.\n\n**Additional features:**\nI accept anonymous feedback! Send me a direct message beginning with `noreply:` or `no reply:` and I will relay your message to staff.\nIf you instead begin an anonymous report with `reply:`, I will relay your message and leave a way for staff to respond. *I relay only the ID of the DM channel between you and me, not your user ID or other information a human can use to identify you*.\nI keep records of deleted messages, majorly edited messages, and members leaving the server.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI assist in mentioning roles! See `,help mention` for more info. Doing so requires specific roles.\nI archive chats as needed!  A moderator can call `,archive` to do so for that chat.\n\n**Note:** All commands are case insensitive. If you have a suggestion for additional features, feel free to message Ash K.!";
-	    			message.channel.send(helpMessage);
+    				/*var helpMessage = "**Commands:**\n`,stats NAME`: Get a link to a NAME.\n`,rank POKÉMON`: Figure out how to acquire POKÉMON in URPG.\n`,rank RANK`: I'll tell you all the Pokémon that are RANK in art and stories!\n`,rse MOVE` or `,dppt MOVE` or `,oras MOVE`: Contest move lookups for their respective contest types.\n`,contestlog TYPE RANK ATTRIBUTE`: Generates a blank template for a judge's log. Parameters can be in any order.\n`,rules`: Generates a premade ruleset. If you would like to add to my database, please send your rules to Ash K. with a name (represent line breaks with \\n).\n`,hp POKÉMON`: My suggestion for what Hidden Power type to give POKÉMON.\n`,spoiler` or `,rank spoiler`: Give or remove spoilers role from yourself, which gives access to the spoilers chat.\n`,info`: Get a link to URPG's Infohub.\n`,forum`: Get a link to URPG's forums.\n`,calc`: Get a link to the online reffing calculator.\n`,mart`: Get a link to the Pokémart.\n`,berry`: Get a link to the Berry Store.\n`,help`: Display this message.\n`,help COMMAND`: Display a quick summary of how to use COMMAND and what it does.\n\n**Additional features:**\nI accept anonymous feedback! Send me a direct message beginning with `noreply:` or `no reply:` and I will relay your message to staff.\nIf you instead begin an anonymous report with `reply:`, I will relay your message and leave a way for staff to respond. *I relay only the ID of the DM channel between you and me, not your user ID or other information a human can use to identify you*.\nI keep records of deleted messages, majorly edited messages, and members leaving the server.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI assist in mentioning roles! See `,help mention` for more info. Doing so requires specific roles.\nI archive chats as needed!  A moderator can call `,archive` to do so for that chat.\n\n**Note:** All commands are case insensitive. If you have a suggestion for additional features, feel free to message Ash K.!";
+	    			message.channel.send(helpMessage);*/
+                    message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\nPlease note that all help commands only work in <#409818526313086976> to reduce spam.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
     			}
     		}
             if (message.author.id == "135999597947387904" && lowmessage == ",roles") {
@@ -987,7 +1000,7 @@ bot.on("message", function(message) {
         if ((message.channel.id == "401543302710689793" || message.guild === null) && lowmessage.indexOf("!!") != lowmessage.lastIndexOf("!!")) {
             var cardName = message.cleanContent.split("!!")[1];
             var cardSet = message.cleanContent.split("!!") [2];
-            if (cardSet.length > 4 || cardSet.length < 2) {return;}
+            if (cardSet.length > 5 || cardSet.length < 2) {return;}
             if (cardName == "Mine, Mine, Mine" || cardName == "Incoming" || cardName == "Kill! Destroy") {cardName += "!";}
             cardName = cardName.replace(/ /g, "%2B").replace(/,/g, "%252C").replace(/\./, "%252E").replace(/û/g, "u").replace(/\'/g, "%2527").replace(/`/g, "%2527").replace(/®/g, "%25C2%25AE").replace(/:registered:/g, "%25C2%25AE").replace(/&/g, "%2526").replace(/"/g, "%2522").replace(/!/g, "%2521").replace(/\?/g, "%253F");
             message.channel.send("https://cdn1.mtggoldfish.com/images/gf/" + cardName + "%2B%255B" + cardSet + "%255D.jpg");
@@ -1194,7 +1207,31 @@ bot.on("message", async function(message){
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("533356631455694849")}${lowmessage.split(",mentionelderarbiters")[1]}`);
         await bot.guilds.get("135864828240592896").roles.get("533356631455694849").setMentionable(false);
     }*/
-    if (lowmessage == ",archive" && (message.member.hasPermission("MANAGE_CHANNELS") || message.member.roles.has("584764993044611075"))) {
+    if ((lowmessage == ",archive public" || lowmessage == ",publicarchive") && (message.member.hasPermission("MANAGE_CHANNELS") || message.member.roles.has("584764993044611075"))) {
+        await message.channel.setParent(bot.guilds.get("135864828240592896").channels.get("432291722492379136"));
+        /*//message.channel.lockPermissions();
+        await message.channel.permissionOverwrites.deleteAll();
+        await message.channel.overwritePermissions("135864828240592896", [{
+            VIEW_CHANNEL: false
+        }])
+        await message.channel.overwritePermissions("135865553423302657", [{
+            VIEW_CHANNEL: true
+        }])
+        await message.channel.setParent('569628579189751828')*/
+        await message.channel.replacePermissionOverwrites({
+            overwrites: [
+                {
+                    id: message.guild.id,
+                    denied: ['VIEW_CHANNEL']
+                },
+                {
+                    id: "135868852092403713",
+                    allowed: ['VIEW_CHANNEL']    
+                }
+            ]
+        })
+    }
+    else if ((lowmessage == ",archive" || lowmessage == ",private archive" || lowmessage == ",archive private") && (message.member.hasPermission("MANAGE_CHANNELS") || message.member.roles.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.get("135864828240592896").channels.get("432291722492379136"));
         /*//message.channel.lockPermissions();
         await message.channel.permissionOverwrites.deleteAll();
@@ -1315,7 +1352,7 @@ bot.on("message", async function(message){
         })
         await message.channel.send("Channel <#" + newChannel.id + "> successfully created!");
     }
-    if (lowmessage.indexOf(",fixorder") == 0 && (message.member.roles.has("135865553423302657") || message.member.roles.has("135868852092403713"))) {
+    if (lowmessage.indexOf(",fixorder") == 0 && message.member.roles.has("584764993044611075")) {
         await bot.channels.get("299759952925294592").setPosition(1);
         await bot.channels.get("294334136355651584").setPosition(1);
         await bot.channels.get("294333921200701450").setPosition(1);
@@ -1332,7 +1369,7 @@ bot.on("message", async function(message){
         await bot.channels.get("322151372453838848").setPosition(1);
         await message.channel.send("Reordering complete!");
     }
-    if (lowmessage.indexOf(",spoilerseason ") == 0 && message.member.roles.has("135868852092403713")) {
+    if (lowmessage.indexOf(",spoilerseason ") == 0 && message.member.roles.has("584764993044611075")) {
         var spoilers = await bot.guilds.get("135864828240592896").roles.get("440004078219558912").members.array();
         for (i = 0; i < spoilers.size; i++) {
             await spoilers[i].removeRole(message.guild.roles.get("440004078219558912"));
