@@ -309,24 +309,38 @@ bot.on("message", function(message) {
             var zmo = Math.floor(Math.random() * 2);
             var weather = Math.floor(Math.random() * 6);
             var terrain = Math.floor(Math.random() * 12);
+            if (lowmessage.indexOf("single") != -1) {mode = Math.floor(Math.random() * 2);}
             if (lowmessage.indexOf("double") != -1) {mode = 2;}
-            if (lowmessage.indexOf("triple") != -1) {mode = 3;}
-            if (lowmessage.indexOf("rotation") != -1) {mode = 4;}
+            if (lowmessage.indexOf("-triple") != -1) {
+                if (lowmessage.indexOf("-rotation") != -1) {mode = Math.floor(Math.random() * 3);}
+                else {
+                    mode = Math.floor(Math.random() * 4);
+                    if (mode == 3) {mode = 4;}
+                }
+            }
+            else if (lowmessage.indexOf("triple") != -1) {mode = 3;}
+            if (lowmessage.indexOf("-rotation") != -1) {
+                if (lowmessage.indexOf("-triple") == -1) {mode = Math.floor(Math.random() * 4);}
+            }
+            else if (lowmessage.indexOf("rotation") != -1) {mode = 4;}
             if (mode > 2) {numPok = Math.floor(Math.random() * 4) + 3;}
             if (lowmessage.indexOf("2") != -1) {numPok = 2;}
             if (lowmessage.indexOf("3") != -1) {numPok = 3;}
             if (lowmessage.indexOf("4") != -1) {numPok = 4;}
             if (lowmessage.indexOf("5") != -1) {numPok = 5;}
             if (lowmessage.indexOf("6") != -1) {numPok = 6;}
-            if (lowmessage.indexOf("gsc") != -1) {gen = 0;}
+            if (lowmessage.indexOf("-gsc") != -1) {gen = Math.floor(Math.random() * 2) + 1;}
+            else if (lowmessage.indexOf("gsc") != -1) {gen = 0;}
             if (lowmessage.indexOf("rse") != -1) {gen = 1;}
-            if (lowmessage.indexOf("sm") != -1) {gen = 2;}
-            if (lowmessage.indexOf("-open") != -1 && format == 0) {format = Math.floor(Math.random() * 3) + 1;}
+            if (lowmessage.indexOf("-sm") != -1) {gen = Math.floor(Math.random() * 2);}
+            else if (lowmessage.indexOf("sm") != -1) {gen = 2;}
+            if (lowmessage.indexOf("-open") != -1) {format = Math.floor(Math.random() * 3) + 1;}
             else if (lowmessage.indexOf("open") != -1) {format = 0;}
             else if (lowmessage.indexOf("box") != -1) {format = 1;}
             else if (lowmessage.indexOf("full") != -1) {format = 2;}
             else if (lowmessage.indexOf("preview") != -1) {format = 3;}
             if (lowmessage.indexOf("public") != -1) {mode = 0;}
+            if (lowmessage.indexOf("private") != -1) {mode = Math.floor(Math.random() * 4) + 1;}
             if (lowmessage.indexOf("-launcher") != -1) {launcher = 1;}
             else if (lowmessage.indexOf("launcher") != -1) {launcher = 0;}
             if (lowmessage.indexOf("-sky") != -1) {sky = 1;}
@@ -343,16 +357,18 @@ bot.on("message", function(message) {
             else if (lowmessage.indexOf("acc") != -1) {acc = 0;}
             if (lowmessage.indexOf("-eva") != -1) {eva = 1;}
             else if (lowmessage.indexOf("eva") != -1) {eva = 0;}
+            if (lowmessage.indexOf("-itemc") != -1) {itemc = 1;}
+            else if (lowmessage.indexOf("itemc") != -1) {itemc = 0;}
             if (lowmessage.indexOf("-species") != -1) {spc = 1;}
             else if (lowmessage.indexOf("species") != -1) {spc = 0;}
             if (lowmessage.indexOf("-items") != -1) {items = 1;}
             else if (lowmessage.indexOf("items") != -1) {items = 0;}
             if (lowmessage.indexOf("-mega") != -1) {mega = 0;}
-            //else if (lowmessage.indexOf("mega") != -1) {mega = 1;}
+            else if (lowmessage.indexOf("mega") != -1) {mega = 1;}
             if (lowmessage.indexOf("-legend") != -1) {leg = 0;}
             else if (lowmessage.indexOf("legend") != -1) {leg = 1;}
             if (lowmessage.indexOf("-z") != -1) {zmo = 0;}
-            //else if (lowmessage.indexOf("zmove") != -1) {zmo = 1; items =1;}
+            else if (lowmessage.indexOf("zmove") != -1) {zmo = 1;}
             if (lowmessage.indexOf("-weather") != -1) {weather = 0;}
             else if (lowmessage.indexOf("sun") != -1) {weather = 1;}
             else if (lowmessage.indexOf("rain") != -1) {weather = 2;}
@@ -917,10 +933,31 @@ bot.on("message", function(message) {
                     message.channel.send("`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `mentionarbiters`: Pings the applicable role.  Required role: Applicable section senior.\n`,mentionforumffa`: Pings Forum FFA role.  Required role: Forum FFA Host.\n`,mentionffa` or `!ffa -p`: Pings everyone who wants to be notified about FFAs. Required role: Referee. Required channel: <#136222872371855360> or <#269634154101080065>\n`,mentioncoordinators`: Pings everyone who wishes to be notified about contests happening. Required role: Judge.\n`,mentionmembers`: Pings member role with a message.  Required role: No role allows this.\n\n**Notes about all mention functions:**\nMention everyone permission allows use of a ping without the mentioned role.\nYou may put a message after the ping command and it will be copied after the ping, so that looking at mentions will directly show that information.");
                 }
                 else if (lowmessage.indexOf("staff") != -1 || lowmessage.indexOf("mod") != -1 || lowmessage.indexOf("auth") != -1 || lowmessage.indexOf("restrict") != -1) {
-                    message.channel.send("**Restricted Commands:**\nAll `,mention` functions: See `,help mention` for more info.\n`,anonreply # message`: Sends a reply to the `,reply:` anonymous report with the given number. Required channel: staff.\n`,archive`: Archives the channel, putting it in the archive category and removes access to all non-staff. Use `,archive public` or `,publicarchive` for public channels and `,archive`, `,archive private`, or `,privatearchive` for private channels. Required role: content-upkeeper\n`,contestboss`: Creates the temporary rooms for a contest boss. Required role: Death Eater.\n`,reftest`, `,judgetest`, or `,rangertest`: Creates a temporary test channel. If the command contains a mention, also adds that member to the channel. Required role: Appropriate section senior.\n`,end`: Deletes a temporary channel. Only works in a temporary channel and requires the same role required to create that channel.\n`,fixorder`: Resets profession chat order. Required role: content-upkeeper.\n`,spoilerseason THING-TO-SPOIL`: changes the name of <#440004235635982336> to #spoilers-THING-TO-SPOIL and removes spoiler role from everyone. Required role: content-upkeeper.\n`,newdiscussion`: Creates a new staff discussion channel. Required channel: staff.");
+                    message.channel.send("**Restricted Commands:**\nAll `,mention` functions: See `,help mention` for more info.\n`,anonreply # message`: Sends a reply to the `reply:` anonymous report with the given number. Required channel: staff.\n`,archive`: Archives the channel, putting it in the archive category and removes access to all non-staff. Use `,archive public` or `,publicarchive` for public channels and `,archive`, `,archive private`, or `,privatearchive` for private channels. Required role: content-upkeeper\n`,contestboss`: Creates the temporary rooms for a contest boss. Required role: Death Eater.\n`,reftest`, `,judgetest`, or `,rangertest`: Creates a temporary test channel. If the command contains a mention, also adds that member to the channel. Required role: Appropriate section senior.\n`,end`: Deletes a temporary channel. Only works in a temporary channel and requires the same role required to create that channel.\n`,fixorder`: Resets profession chat order. Required role: content-upkeeper.\n`,spoilerseason THING-TO-SPOIL`: changes the name of <#440004235635982336> to #spoilers-THING-TO-SPOIL and removes spoiler role from everyone. Required role: content-upkeeper.\n`,newdiscussion`: Creates a new staff discussion channel. Required channel: staff.");
                 }
                 else if (lowmessage.indexOf("role") != -1) {
                     message.channel.send("**Self-assignable roles:**\nspoiler: Access to <#440004235635982336>.\nffa: Pings for Discord FFAs.\nforumffa: Pings for Forum FFAs and Forum FFA turns.\ncoordinator: Pings for contests.\n\nSend `,role ROLE` (i.e. `,role spoiler`) to add or remove yourself from any of these roles. Spoiler role will automatically be reset when it changes to spoilers for a different thing.");
+                }
+                else if (lowmessage.indexOf("link") != -1) {
+                    message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,info`: Link to the Infohub\nIf you have any suggestions for other links I should have, please @ Ash K.");
+                }
+                else if (lowmessage.indexOf("randomize") != -1) {
+                    message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -open, open, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space");
+                }
+                else if (lowmessage.indexOf("rules") != -1) {
+                    message.channel.send("Use `,rules RULESET` to bring up a specific ruleset:\ncasual: Typical ruleset for casual battles\nppr: Similar but Public Preview (for randoms)\nhidden: Similar but Private Preview\ncompetitive: More serious battle rules\ne4: Official rules for any Elite Four or Champion battle\nld: Official rules for any Legend Defender battle\nashrandoms: Ash's preferred ruleset for randoms\nfortree: Fortree Gym default rules\nashmockfire: Ash's rules for a mock Fire gym (treated as a normal battle for pay and such)\nashmockdragon: Same as above but for Dragon\nmaylee: Rules for the Maylee battle event\nffa: Typical FFA ruleset\nrandomize: Randomized rule set among legal rulesets. See `,help randomize` for more information on how to fix certain conditions.");
+                }
+                else if (lowmessage.indexOf("effective") != -1) {
+                    message.channel.send("Send `,effective POKÉMON` and I'll list the effectiveness of each type against POKÉMON!");
+                }
+                else if (lowmessage.indexOf("log") != -1) {
+                    message.channel.send("Send `,contestlog RANK ATTRIBUTE TYPE` and I'll generate a blank log for a contest matching those criteria. The parameters can be in any order.");
+                }
+                else if (lowmessage.indexOf("sr") != -1) {
+                    message.channel.send("Send `,sr POKÉMON` and I'll tell you how much damage Stealth Rock would do to POKÉMON! Note that this will **not** be rounded to accurately reflect exact HP values.");
+                }
+                else if (lowmessage.indexOf("hp") != -1) {
+                    message.channel.send("Send `,hp POKÉMON` and I'll suggest Hidden Power type(s) for POKÉMON. Note that it is form-sensitive for Pokémon like Pikachu or Rotom that have different movesets in different forms and is not a complete list.");
                 }
 	    		/*else if (lowmessage.indexOf(",help help") == 0) {
     				message.channel.send("Send `,help` to get the general help command or send `,help COMMAND` for more info on how to use `COMMAND`.  Please note that all help commands only work in <#409818526313086976> to reduce spam.");
@@ -928,7 +965,7 @@ bot.on("message", function(message) {
     			else {
     				/*var helpMessage = "**Commands:**\n`,stats NAME`: Get a link to a NAME.\n`,rank POKÉMON`: Figure out how to acquire POKÉMON in URPG.\n`,rank RANK`: I'll tell you all the Pokémon that are RANK in art and stories!\n`,rse MOVE` or `,dppt MOVE` or `,oras MOVE`: Contest move lookups for their respective contest types.\n`,contestlog TYPE RANK ATTRIBUTE`: Generates a blank template for a judge's log. Parameters can be in any order.\n`,rules`: Generates a premade ruleset. If you would like to add to my database, please send your rules to Ash K. with a name (represent line breaks with \\n).\n`,hp POKÉMON`: My suggestion for what Hidden Power type to give POKÉMON.\n`,spoiler` or `,rank spoiler`: Give or remove spoilers role from yourself, which gives access to the spoilers chat.\n`,info`: Get a link to URPG's Infohub.\n`,forum`: Get a link to URPG's forums.\n`,calc`: Get a link to the online reffing calculator.\n`,mart`: Get a link to the Pokémart.\n`,berry`: Get a link to the Berry Store.\n`,help`: Display this message.\n`,help COMMAND`: Display a quick summary of how to use COMMAND and what it does.\n\n**Additional features:**\nI accept anonymous feedback! Send me a direct message beginning with `noreply:` or `no reply:` and I will relay your message to staff.\nIf you instead begin an anonymous report with `reply:`, I will relay your message and leave a way for staff to respond. *I relay only the ID of the DM channel between you and me, not your user ID or other information a human can use to identify you*.\nI keep records of deleted messages, majorly edited messages, and members leaving the server.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI assist in mentioning roles! See `,help mention` for more info. Doing so requires specific roles.\nI archive chats as needed!  A moderator can call `,archive` to do so for that chat.\n\n**Note:** All commands are case insensitive. If you have a suggestion for additional features, feel free to message Ash K.!";
 	    			message.channel.send(helpMessage);*/
-                    message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\nPlease note that all help commands only work in <#409818526313086976> to reduce spam.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
+                    message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,effective`: Effectiveness of each type against a given Pokémon.\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n,hp`: Recommended Hidden Power type for a given Pokémon.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\nPlease note that all help commands only work in <#409818526313086976> to reduce spam.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
     			}
     		}
             if (message.author.id == "135999597947387904" && lowmessage == ",roles") {
