@@ -142,7 +142,7 @@ bot.on("message", function(message) {
         if (oldmessage.indexOf(" after ") != -1) { message.channel.send("\nAfter's stats: https://forum.pokemonurpg.com/showthread.php?tid=10215") }
         if ((oldmessage.indexOf("pokeviper ") != -1) || (oldmessage.indexOf(" pv ") != -1) || (oldmessage.indexOf("pokéviper") != -1)) { message.channel.send("\nPokeViper's stats: http://pokeviperbadass.proboards.com/") }
     }
-    if (message.content.indexOf(",rse ") == 0) {
+    if (lowmessage.indexOf(",rse ") == 0) {
         let movelist = ""
 
         try { movelist = fs.readFileSync("rse.txt", "utf8") } catch (err) {
@@ -151,13 +151,13 @@ bot.on("message", function(message) {
         }
 
         const moves = movelist.split("\r\n")
-        const desiredmove = lowmessage.split(",rse ")[1]
+        const desiredmove = lowmessage.substr(5)
         for (let x = 0; x < moves.length; x += 2) {
             if (moves[x].split(" | ")[0].toLowerCase() == desiredmove) message.channel.send(moves[x] + "\n" + moves[x + 1])
         }
     }
 
-    if (message.content.indexOf(",dppt ") == 0) {
+    if (lowmessage.indexOf(",dppt ") == 0) {
         let movelist = ""
 
         try { movelist = fs.readFileSync("dppt.txt", "utf8") } catch (err) {
@@ -166,13 +166,13 @@ bot.on("message", function(message) {
         }
 
         const moves = movelist.split("\r\n\r\n")
-        const desiredmove = lowmessage.split(",dppt ")[1]
+        const desiredmove = lowmessage.substr(6)
         for (let x = 0; x < moves.length; x++) {
             if (moves[x].split(" | ")[0].toLowerCase() == desiredmove) message.channel.send(moves[x])
         }
     }
 
-    if (message.content.indexOf(",oras ") == 0) {
+    if (lowmessage.indexOf(",oras ") == 0) {
         let movelist = ""
 
         try { movelist = fs.readFileSync("oras.txt", "utf8") } catch (err) {
@@ -181,7 +181,7 @@ bot.on("message", function(message) {
         }
 
         const moves = movelist.split("\r\n")
-        const desiredmove = lowmessage.split(",oras ")[1]
+        const desiredmove = lowmessage.substr(6)
         for (let x = 0; x < moves.length; x += 2) {
             if (moves[x].split(" | ")[0].toLowerCase() == desiredmove) message.channel.send(moves[x] + "\n" + moves[x + 1])
         }
