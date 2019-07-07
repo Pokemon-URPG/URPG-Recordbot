@@ -1049,7 +1049,7 @@ bot.on("message", function(message) {
                     message.channel.send("Other spoilers role removed!")
                 }
             }
-            else if (lowmessage.indexOf(",role spoiler") == 0 || lowmessage.indexOf(",spoiler") == 0 || lowmessage.indexOf(",s ") == 0) {
+            else if (lowmessage.indexOf("spoiler") != -1 || lowmessage.indexOf(",s ") == 0) {
                 message.channel.send("Please specify if you would like spoilers for the next Pokémon game (`,spoiler pokemon`) or for the current other topic (`,spoiler other`)");
             }
             else if (lowmessage.indexOf(",role coordinator") == 0) {
