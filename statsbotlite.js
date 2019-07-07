@@ -1039,7 +1039,7 @@ bot.on("message", function(message) {
                 }
             }
             //else if (lowmessage.indexOf(",role otherspoiler") == 0 || lowmessage.indexOf(",role spoiler other") == 0 || lowmessage.indexOf(",spoiler other") == 0 || lowmessage.indexOf(",role spoilers other") == 0 || lowmessage.indexOf(",spoilers other") == 0)
-            else if ((lowmessage.indexOf(",s ") == 0 || lowmessage.indexOf("spoiler") != -1) && lowmessage.indexOf("other") != -1)
+            else if ((lowmessage.indexOf(",s ") == 0 || lowmessage.indexOf("spoiler") != -1) && lowmessage.indexOf("other") != -1) {
                 if (message.member.roles.has("597313962798874626")) {
                     message.member.removeRole(message.guild.roles.get("597313962798874626"));
                     message.channel.send("Other spoilers role removed!")
