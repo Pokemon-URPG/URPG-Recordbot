@@ -822,6 +822,38 @@ bot.on("message", function(message) {
         }
     }
 
+    if (lowmessage.indexOf(",clause") == 0) {
+        //var clauses = lowmessage.split(" ");
+        //for (var i = 0; i < clauses.length; i++) {
+        if (lowmessage.indexOf("public") != -1) { message.channel.send("Public: All Pokemon and moves are sent in the public chat. A dice is rolled to determine who sends first unless specified otherwise.\nIt is important to note that in battle modes in which you select your moves in the chat or thread, you must alternate sending your Pokemon and moves first. The battlers can agree on who sends his/her Pokemon first, or the ref can roll to see who gets to decide. Gym leaders are allowed to force the challenger to send first. After a battler sends his/her Pokemon out first, the other battler sends his/her Pokemon and move. Afterwards, the person who sent his/her Pokemon first sends their move second. Then battlers take turns alternating sending first. If a single Pokemon is knocked out in a turn, the battler replaces that Pokemon, but this does not count as sending first or second, so the alternation of sending first continues normally. If both Pokemon are knocked out in a single turn, then the battlers select their Pokemon as though they are continuing alternating. Sending implied moves, such as continuing Outrage, recharging for Hyper Beam, and a battler sending his/her last remaining Pokemon still count for alternating sending first or second."); }
+        if (lowmessage.indexOf("private")!= -1) { message.channel.send("Private: All Pokemon and moves are sent privately to the referee."); }
+        if (lowmessage.indexOf("gsc") != -1) { message.channel.send("GSC: All Pokemon have no abilities (excluding Truant/Defeatist/Slow Start on Slaking/Archeops/Regigigas respectively). Whether a move is physical or special is determined by its type."); }
+        if (lowmessage.indexOf("rse") != -1) { message.channel.send("RSE: Pokemon have abilities. Whether a move is physical or special is determined by its type."); }
+        if (lowmessage.indexOf("sm") != -1) { message.channel.send("SM: All mechanics function as per the latest game."); }
+        if (lowmessage.indexOf("full") != -1) { message.channel.send("Full: A complete team of Pokemon, with abilities and held items, is sent to the referee prior to the battle. Leads are selected after the team is sent."); }
+        if (lowmessage.indexOf("preview") != -1) { message.channel.send("Preview: A complete team of Pokemon, with abilities and held items, is sent to the referee prior to the battle. The referee will reveal both teams before leads are selected."); }
+        if (lowmessage.indexOf("open") != -1) { message.channel.send("Open: Pokemon are sent during the battle – teams are not predetermined."); }
+        if (lowmessage.indexOf("box") != -1) { message.channel.send("Box: Trainers send their full stats or a subset (of any size) of their Pokémon to use to the ref (i.e. “all”, “not Meowth”, “Bulbasaur, Charmander, Squirtle, Pikachu”). The ref will then announce those selections and the trainers battle as if those were the Pokémon they own, choosing which of those Pokémon as they go and sending gender, item, and ability when the Pokémon is first sent out."); }
+        if (lowmessage.indexOf("double") != -1) { message.channel.send("Double Battle: In a Double Battle, each trainer has two Pokemon out at the same time. When Pokemon are knocked out, if the battler has more Pokemon available in his/her party, he/she must send Pokemon to replace them at the end of the turn.\nEach Pokemon is able to target any other Pokemon on the field, including its own ally. However, there are moves that affect multiple Pokemon at once. These moves can be found by clicking here. When a move hits more than one Pokemon at once, its base power is reduced to 75% of its original value. Furthermore, each instance of the move hitting a Pokemon requires its own accuracy roll, if the move is less than 100% accurate. Likewise, the secondary effects of moves that target multiple Pokemon require an individual roll for each target that is hit.\nWhen Reflect, Light Screen, and Aurora Veil are used in a Double Battle, they benefit both Pokemon on the side it is used. However, instead of halving damage like in Single Battles, the damage is reduced by 1/3 instead.\nThis rule is only compatible with battle modes in which you must send your Pokemon and moves privately to the ref."); }
+        if (lowmessage.indexOf("multi") != -1) { message.channel.send("Multi Battle: This is a Double Battle, but you are teamed with another battler. Each battler only controls one Pokemon at a time. Each battler must send the same amount of Pokemon. This rule is only compatible with battle modes in which you must send your Pokemon and moves privately to the ref."); }
+        if (lowmessage.indexOf("triple") != -1) { message.channel.send("Triple Battle: Three Pokemon are used at the same time by both sides. This rule is only compatible with battle modes in which you must send your Pokemon and moves privately to the ref."); }
+        if (lowmessage.indexOf("rotation") != -1) { message.channel.send("Rotation Battle: Three Pokemon are sent at the same time by both sides, but one Pokemon must be sent as the front Pokemon, while the other two are on standby. Only the front Pokemon can attack, and it is also the target of all attacks. However, a player may rotate any of his/her standby Pokemon to the front and attack with it the same turn. This rule is only compatible with battle modes in which you must send your Pokemon and moves privately to the ref."); }
+        if (lowmessage.indexOf("wonder") != -1) || lowmessage.indexOf("launcher") != -1) { message.channel.send("Wonder Launcher: When the Wonder Launcher is enabled, battlers are able to use special points to purchase items during the battle to use on his/her Pokemon. Each battler starts with 0 points, and each battler gains 1 point at the end of each turn. If a battler has 14 unused points, he/she will gain no additional points until he/she uses some. The list of purchasable items can be found by clicking here. When an item is purchased, it must be used immediately. Battlers cannot buy items and store them for later use. When an item is purchased and used, the battler forgoes his/her move that turn to use the item, and the opponent is aware of the use of the item. Items that increase a Pokemon’s stat stages or critical hit stages and ‘Urge Items’ can only be used on a controlled active Pokemon. Revive and Max Revive can only be used on fainted Pokemon. The rest of the items can be used on any Pokemon in the battler’s party. If a battler purchases an item that is unable to do anything for the battler’s current party, the item will do nothing, and points will still be lost. In-depth information of the effects of items can be found here: https://bulbapedia.bulbagarden.net/wiki/Wonder_Launcher for prices."); }
+        if (lowmessage.indexOf("gameboy") != -1) { message.channel.send("Gameboy Clause: Each battler selects up to four moves for each of their Pokemon for the battle before it begins. This rule is only compatible with battle modes in which you must send your Pokemon and moves privately to the ref."); }
+        if (lowmessage.indexOf("sky") != -1) { message.channel.send("Sky Battle: Each battler may only use Pokemon that qualify for Sky Battles, generally Flying and Levitating Pokemon, though not all. A complete list can be found here: https://bulbapedia.bulbagarden.net/wiki/Sky_Battle#Eligible_Pok.C3.A9mon\n*Not a valid rule for gym battles.*"); }
+        if (lowmessage.indexOf("inverse") != -1) { message.channel.send("Inverse Battle: Type effectiveness is reversed for the battle. 4x becomes 1/4x, 2x becomes 1/2x and vice versa. Immunities are treated as 2x super effective (the other type still applies, if there is one).\n*Not a valid rule for gym battles.*"); }
+        if (lowmessage.indexOf("sleep") != -1 || lowmessage.indexOf("slp") != -1) { message.channel.send("Sleep Clause: Only one Pokemon per side may be put to sleep at a time by the opponent. Any additional attempts will fail. Rest does not count towards Sleep Clause."); }
+        if (lowmessage.indexOf("freeze") != -1 || lowmessage.indexOf("frz") != -1) { message.channel.send("Freeze Clause: Only one Pokemon per side may be frozen. Any additional freeze chances will fail."); }
+        if (lowmessage.indexOf("ohko") != -1) { message.channel.send("OHKO Clause: OHKO moves: Fissure, Guillotine, Horn Drill, and Sheer Cold will always fail."); }
+        if (lowmessage.indexOf("acc") != -1) { message.channel.send("Accuracy Clause: Moves that have a 100% chance of lowering accuracy will not lower accuracy. Other effects like damage from Mud-Slap will still occur. If a Z-Effect would lower an opponent’s Accuracy, this effect is not applied, however the move is still considered a Z-Move for all other purposes."); }
+        if (lowmessage.indexOf("eva") != -1) { message.channel.send("Evasion Clause: Moves that increase evasion directly, Double Team and Minimize, will fail. If a Z-Effect would raise the user’s Evasion, this effect is not applied, however the move is still considered a Z-Move for all other purposes."); }
+        if (lowmessage.indexOf("species") != -1) { message.channel.send("Species Clause: Each battler may not send more than one of a single species of Pokemon, defined by Pokedex number."); }
+        if (lowmessage.indexOf("item clause") != -1 || lowmessage.indexOf("itemc") != -1) { message.channel.send("Item Clause: Each battler may not equip more than one of a single type of item, defined by its name."); }
+        if (lowmessage.indexOf("mega") != -1) { message.channel.send("Megas Clause: Battlers may not Mega Evolve their Pokemon. Mega Stones are still permitted as held items."); }
+        if (lowmessage.indexOf("legend") != -1) { message.channel.send("Legends Clause: Battlers may not use Legendary Pokemon."); }
+        if (lowmessage.indexOf("zm") != -1 || lowmessage.indexOf("z-m") != -1) { message.channel.send("Z-Moves Clause: Battles may not use Z-Moves. Z-Crystals are still permitted as held items."); }
+    }
+
     if (lowmessage.indexOf(",calc") == 0) { message.channel.send("https://pokemonurpg.com/calcs/battlev3.html"); }
     if (lowmessage.indexOf(",info") == 0) { message.channel.send("https://pokemonurpg.com/info/"); }
     if (lowmessage.indexOf(",forum") == 0) { message.channel.send("https://forum.pokemonurpg.com/"); }
@@ -960,13 +992,16 @@ bot.on("message", function(message) {
                 else if (lowmessage.indexOf("hp") != -1) {
                     message.channel.send("Send `,hp POKÉMON` and I'll suggest Hidden Power type(s) for POKÉMON. Note that it is form-sensitive for Pokémon like Pikachu or Rotom that have different movesets in different forms and is not a complete list.");
                 }
+                else if (lowmessage.indexOf("clause") != -1) {
+                    message.channel.send("Send `,clause RULE1 RULE2 RULE3...` and I'll tell you what each of those rules do here in URPG! Rules can be in any order and some common nicknames (like `frz`) are accepted.")
+                }
 	    		/*else if (lowmessage.indexOf(",help help") == 0) {
     				message.channel.send("Send `,help` to get the general help command or send `,help COMMAND` for more info on how to use `COMMAND`.  Please note that all help commands only work in <#409818526313086976> to reduce spam.");
     			}*/
     			else {
     				/*var helpMessage = "**Commands:**\n`,stats NAME`: Get a link to a NAME.\n`,rank POKÉMON`: Figure out how to acquire POKÉMON in URPG.\n`,rank RANK`: I'll tell you all the Pokémon that are RANK in art and stories!\n`,rse MOVE` or `,dppt MOVE` or `,oras MOVE`: Contest move lookups for their respective contest types.\n`,contestlog TYPE RANK ATTRIBUTE`: Generates a blank template for a judge's log. Parameters can be in any order.\n`,rules`: Generates a premade ruleset. If you would like to add to my database, please send your rules to Ash K. with a name (represent line breaks with \\n).\n`,hp POKÉMON`: My suggestion for what Hidden Power type to give POKÉMON.\n`,spoiler` or `,rank spoiler`: Give or remove spoilers role from yourself, which gives access to the spoilers chat.\n`,info`: Get a link to URPG's Infohub.\n`,forum`: Get a link to URPG's forums.\n`,calc`: Get a link to the online reffing calculator.\n`,mart`: Get a link to the Pokémart.\n`,berry`: Get a link to the Berry Store.\n`,help`: Display this message.\n`,help COMMAND`: Display a quick summary of how to use COMMAND and what it does.\n\n**Additional features:**\nI accept anonymous feedback! Send me a direct message beginning with `noreply:` or `no reply:` and I will relay your message to staff.\nIf you instead begin an anonymous report with `reply:`, I will relay your message and leave a way for staff to respond. *I relay only the ID of the DM channel between you and me, not your user ID or other information a human can use to identify you*.\nI keep records of deleted messages, majorly edited messages, and members leaving the server.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI assist in mentioning roles! See `,help mention` for more info. Doing so requires specific roles.\nI archive chats as needed!  A moderator can call `,archive` to do so for that chat.\n\n**Note:** All commands are case insensitive. If you have a suggestion for additional features, feel free to message Ash K.!";
 	    			message.channel.send(helpMessage);*/
-                    message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,effective`: Effectiveness of each type against a given Pokémon.\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\nSee `,help link` for quick link options.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\nPlease note that all help commands only work in <#409818526313086976> to reduce spam.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
+                    message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given Pokémon.\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\nSee `,help link` for quick link options.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\nPlease note that all help commands only work in <#409818526313086976> to reduce spam.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
     			}
     		}
             /*if (message.author.id == "135999597947387904" && lowmessage == ",roles") {
@@ -991,16 +1026,31 @@ bot.on("message", function(message) {
         if ((message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065") && lowmessage.indexOf("and") != -1 && lowmessage.indexOf("out") != -1 && lowmessage.indexOf("and") < lowmessage.indexOf("out")) {
             message.react(message.guild.emojis.get("246070314163896320"));
         }
-        if (lowmessage.indexOf(",role") == 0 || lowmessage.indexOf(",spoiler") == 0 || lowmessage == ",ffa") {
-            if (lowmessage.indexOf(",role spoiler") == 0 || lowmessage.indexOf(",spoiler") == 0) {
+        if (lowmessage.indexOf(",role") == 0 || lowmessage.indexOf(",spoiler") == 0 || lowmessage == ",ffa" || lowmessage.indexOf(",s ") == 0) {
+            //if (lowmessage.indexOf(",role pkmnspoiler") == 0 || lowmessage.indexOf(",role spoiler pokemon") == 0 || lowmessage.indexOf(",role spoiler pokémon") == 0) || lowmessage.indexOf(",spoiler pokemon") == 0 || lowmessage.indexOf(",spoiler pokémon") == 0) {
+            if ((lowmessage.indexOf(",s ") == 0 || lowmessage.indexOf("spoiler") != -1) && (lowmessage.indexOf("pkmn") != -1 || lowmessage.indexOf("pokemon") != -1 || lowmessage.indexOf("pokémon") != -1))
                 if (message.member.roles.has("440004078219558912")) {
                     message.member.removeRole(message.guild.roles.get("440004078219558912"));
-                    message.channel.send("Spoilers role removed!")
+                    message.channel.send("Pokémon spoilers role removed!")
                 }
                 else {
                     message.member.addRole(message.guild.roles.get("440004078219558912"));
-                    message.channel.send("Spoilers role added!")
+                    message.channel.send("Pokémon spoilers role added!")
                 }
+            }
+            //else if (lowmessage.indexOf(",role otherspoiler") == 0 || lowmessage.indexOf(",role spoiler other") == 0 || lowmessage.indexOf(",spoiler other") == 0 || lowmessage.indexOf(",role spoilers other") == 0 || lowmessage.indexOf(",spoilers other") == 0)
+            else if ((lowmessage.indexOf(",s ") == 0 || lowmessage.indexOf("spoiler") != -1) && lowmessage.indexOf("other") != -1)
+                if (message.member.roles.has("597313962798874626")) {
+                    message.member.removeRole(message.guild.roles.get("597313962798874626"));
+                    message.channel.send("Other spoilers role removed!")
+                }
+                else {
+                    message.member.addRole(message.guild.roles.get("597313962798874626"));
+                    message.channel.send("Other spoilers role removed!")
+                }
+            }
+            else if (lowmessage.indexOf(",role spoiler") == 0 || lowmessage.indexOf(",spoiler") == 0 || lowmessage.indexOf(",s ") == 0) {
+                message.channel.send("Please specify if you would like spoilers for the next Pokémon game (`,spoiler pokemon`) or for the current other topic (`,spoiler other`)");
             }
             else if (lowmessage.indexOf(",role coordinator") == 0) {
                 if (message.member.roles.has("552232839861633046")) {
@@ -1426,12 +1476,19 @@ bot.on("message", async function(message){
         await bot.channels.get("322151372453838848").setPosition(1);
         await message.channel.send("Reordering complete!");
     }
-    if (lowmessage.indexOf(",spoilerseason ") == 0 && message.member.roles.has("584764993044611075")) {
+    if ((lowmessage.indexOf(",pkmnspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonpkmn ") == 0) && message.member.roles.has("584764993044611075")) {
         var spoilers = await bot.guilds.get("135864828240592896").roles.get("440004078219558912").members.array();
         for (i = 0; i < spoilers.size; i++) {
             await spoilers[i].removeRole(message.guild.roles.get("440004078219558912"));
         }
         await bot.channels.get("440004235635982336").setName("spoilers-" + message.cleanContent.split(" ")[1]);
+    }
+    if ((lowmessage.indexOf(",otherspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonother ") == 0) && message.member.roles.has("584764993044611075")) {
+        var spoilers = await bot.guilds.get("135864828240592896").roles.get("597313962798874626").members.array();
+        for (i = 0; i < spoilers.size; i++) {
+            await spoilers[i].removeRole(message.guild.roles.get("597313962798874626"));
+        }
+        await bot.channels.get("597314223483387905").setName("spoilers-" + message.cleanContent.split(" ")[1]);
     }
     /*if (lowmessage.indexOf(",week1start") == 0 && (message.member.roles.has("135865553423302657") || message.member.roles.has("135868852092403713"))) {
         bot.channels.get("575461222443384833").permissionOverwrites.deleteAll();
