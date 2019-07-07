@@ -1028,7 +1028,7 @@ bot.on("message", function(message) {
         }
         if (lowmessage.indexOf(",role") == 0 || lowmessage.indexOf(",spoiler") == 0 || lowmessage == ",ffa" || lowmessage.indexOf(",s ") == 0) {
             //if (lowmessage.indexOf(",role pkmnspoiler") == 0 || lowmessage.indexOf(",role spoiler pokemon") == 0 || lowmessage.indexOf(",role spoiler pokémon") == 0) || lowmessage.indexOf(",spoiler pokemon") == 0 || lowmessage.indexOf(",spoiler pokémon") == 0) {
-            if ((lowmessage.indexOf(",s ") == 0 || lowmessage.indexOf("spoiler") != -1) && (lowmessage.indexOf("pkmn") != -1 || lowmessage.indexOf("pokemon") != -1 || lowmessage.indexOf("pokémon") != -1))
+            if ((lowmessage.indexOf(",s ") == 0 || lowmessage.indexOf("spoiler") != -1) && (lowmessage.indexOf("pkmn") != -1 || lowmessage.indexOf("pokemon") != -1 || lowmessage.indexOf("pokémon") != -1)) {
                 if (message.member.roles.has("440004078219558912")) {
                     message.member.removeRole(message.guild.roles.get("440004078219558912"));
                     message.channel.send("Pokémon spoilers role removed!")
