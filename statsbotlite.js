@@ -50,7 +50,7 @@ bot.on("message", function(message) {
     }
     var badWordsLog = "";
     for (let i = 0; i < badWords.length; i++) {
-        if ((lowmessage.indexOf(badWords[i]) != -1 || lowmessage == "fag") && !message.author.bot && badWordsLog == "") {
+        if ((lowmessage.indexOf(badWords[i]) != -1 || lowmessage.indexOf("fag") == 0) && !message.author.bot && badWordsLog == "") {
             badWordsLog += message.member.displayName;
             badWordsLog += " said the following here <";
             badWordsLog += message.url;
@@ -969,7 +969,7 @@ bot.on("message", function(message) {
                     message.channel.send("**Restricted Commands:**\nAll `,mention` functions: See `,help mention` for more info.\n`,member`: The first person mentioned, if any, will be given the member role. Role required: Staff, staff-alumni, or approver.\n`,anonreply # message`: Sends a reply to the `reply:` anonymous report with the given number. Required channel: staff.\n`,archive`: Archives the channel, putting it in the archive category and removes access to all non-staff. Use `,archive public` or `,publicarchive` for public channels and `,archive`, `,archive private`, or `,privatearchive` for private channels. Required role: content-upkeeper\n`,contestboss`: Creates the temporary rooms for a contest boss. Required role: Death Eater.\n`,reftest`, `,judgetest`, or `,rangertest`: Creates a temporary test channel. If the command contains a mention, also adds that member to the channel. Required role: Appropriate section senior.\n`,end`: Deletes a temporary channel. Only works in a temporary channel and requires the same role required to create that channel.\n`,fixorder`: Resets profession chat order. Required role: content-upkeeper.\n`,pkmnspoilerseason THING-TO-SPOIL`: changes the name of <#440004235635982336> to #spoilers-THING-TO-SPOIL and removes pkmnspoilers role from everyone. Required role: content-upkeeper.\n`,otherspoilerseason THING-TO-SPOIL`: changes the name of <#597314223483387905> to #spoilers-THING-TO-SPOIL and removes otherspoilers role from everyone. Required role: content-upkeeper.\n`,newdiscussion CHANNEL-NAME`: Creates a new staff discussion channel with the given name. Required channel: staff.\n`,newproject CHANNEL-NAME`: Creates a new project discussion channel with the given name. Required channel: Any in the Teams & Projects category.");
                 }
                 else if (lowmessage.indexOf("role") != -1) {
-                    message.channel.send("**Self-assignable roles:**\npkmnspoilers: Access to <#440004235635982336>.\notherspoilers: Access to <#597314223483387905>.\nffa: Pings for Discord FFAs.\nforumffa: Pings for Forum FFAs and Forum FFA turns.\ncoordinator: Pings for contests.\n\nSend `,role ROLE` (i.e. `,role spoiler`) to add or remove yourself from any of these roles. Spoiler role will automatically be reset when it changes to spoilers for a different thing.");
+                    message.channel.send("**Self-assignable roles:**\npkmnspoilers: Access to <#440004235635982336>.\notherspoilers: Access to <#597314223483387905>.\nffa: Pings for Discord FFAs.\nforumffa: Pings for Forum FFAs and Forum FFA turns.\ncoordinator: Pings for contests.\n\nSend `,role ROLE` (i.e. `,role ffa`) to add or remove yourself from any of these roles. Spoiler role will automatically be reset when it changes to spoilers for a different thing.");
                 }
                 else if (lowmessage.indexOf("link") != -1) {
                     message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,info`: Link to the Infohub\nIf you have any suggestions for other links I should have, please @ Ash K.");
@@ -1001,7 +1001,7 @@ bot.on("message", function(message) {
     			else {
     				/*var helpMessage = "**Commands:**\n`,stats NAME`: Get a link to a NAME.\n`,rank POKÉMON`: Figure out how to acquire POKÉMON in URPG.\n`,rank RANK`: I'll tell you all the Pokémon that are RANK in art and stories!\n`,rse MOVE` or `,dppt MOVE` or `,oras MOVE`: Contest move lookups for their respective contest types.\n`,contestlog TYPE RANK ATTRIBUTE`: Generates a blank template for a judge's log. Parameters can be in any order.\n`,rules`: Generates a premade ruleset. If you would like to add to my database, please send your rules to Ash K. with a name (represent line breaks with \\n).\n`,hp POKÉMON`: My suggestion for what Hidden Power type to give POKÉMON.\n`,spoiler` or `,rank spoiler`: Give or remove spoilers role from yourself, which gives access to the spoilers chat.\n`,info`: Get a link to URPG's Infohub.\n`,forum`: Get a link to URPG's forums.\n`,calc`: Get a link to the online reffing calculator.\n`,mart`: Get a link to the Pokémart.\n`,berry`: Get a link to the Berry Store.\n`,help`: Display this message.\n`,help COMMAND`: Display a quick summary of how to use COMMAND and what it does.\n\n**Additional features:**\nI accept anonymous feedback! Send me a direct message beginning with `noreply:` or `no reply:` and I will relay your message to staff.\nIf you instead begin an anonymous report with `reply:`, I will relay your message and leave a way for staff to respond. *I relay only the ID of the DM channel between you and me, not your user ID or other information a human can use to identify you*.\nI keep records of deleted messages, majorly edited messages, and members leaving the server.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI assist in mentioning roles! See `,help mention` for more info. Doing so requires specific roles.\nI archive chats as needed!  A moderator can call `,archive` to do so for that chat.\n\n**Note:** All commands are case insensitive. If you have a suggestion for additional features, feel free to message Ash K.!";
 	    			message.channel.send(helpMessage);*/
-                    message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given Pokémon.\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\nSee `,help link` for quick link options.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\nPlease note that all help commands only work in <#409818526313086976> to reduce spam.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats\n!If you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
+                    message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given Pokémon.\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\nSee `,help link` for quick link options.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\nPlease note that all help commands only work in <#409818526313086976> to reduce spam.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
     			}
     		}
             /*if (message.author.id == "135999597947387904" && lowmessage == ",roles") {
@@ -1212,74 +1212,74 @@ bot.on("message", async function(message){
     if ((lowmessage.indexOf(",mentionrefs") == 0 || lowmessage.indexOf(",mention refs") == 0) && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("358431855743336448"))) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("243949285438259201").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("243949285438259201")}${lowmessage.split(",mentionrefs")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("243949285438259201")}${message.content.substr(12)}`);
         await bot.guilds.get("135864828240592896").roles.get("243949285438259201").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionjudges") == 0 || lowmessage.indexOf(",mention judges") == 0) && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("358435669372305408"))) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("243950906683424768").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("243950906683424768")}${lowmessage.split(",mentionjudges")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("243950906683424768")}${message.content.substr(14)}`);
         await bot.guilds.get("135864828240592896").roles.get("243950906683424768").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentioncurators") == 0 || lowmessage.indexOf(",mention curators") == 0) && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("419775555488186369"))) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("312119111750647809").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("312119111750647809")}${lowmessage.split(",mentioncurators")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("312119111750647809")}${message.content.substr(16)}`);
         await bot.guilds.get("135864828240592896").roles.get("312119111750647809").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentiongraders") == 0 || lowmessage.indexOf(",mention graders") == 0) && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("419636334982987777"))) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("312118803616235523").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("312118803616235523")}${lowmessage.split(",mentiongraders")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("312118803616235523")}${message.content.substr(15)}`);
         await bot.guilds.get("135864828240592896").roles.get("312118803616235523").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionrangers") == 0 || lowmessage.indexOf(",mention rangers") == 0) && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("419636474825277450"))) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("312119050484449280").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("312119050484449280")}${lowmessage.split(",mentionrangers")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("312119050484449280")}${message.content.substr(15)}`);
         await bot.guilds.get("135864828240592896").roles.get("312119050484449280").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionarbiters") == 0 || lowmessage.indexOf(",mention arbiters") == 0) && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("533356631455694849"))) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("533356018005180416").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("533356018005180416")}${lowmessage.split(",mentionarbiters")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("533356018005180416")}${message.content.substr(16)}`);
         await bot.guilds.get("135864828240592896").roles.get("533356018005180416").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionforumffa") == 0 || lowmessage.indexOf(",mention forumffa") == 0) && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("507342993028808707"))) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("507342482988859402").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("507342482988859402")}${lowmessage.split(",mentionforumffa")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("507342482988859402")}${message.content.substr(16)}`);
         await bot.guilds.get("135864828240592896").roles.get("507342482988859402").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionmembers") == 0 || lowmessage.indexOf(",mention members") == 0) && message.member.hasPermission("MENTION_EVERYONE")) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("456993685679243286").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("456993685679243286")}${lowmessage.split(",mentionmembers")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("456993685679243286")}${message.content.substr(15)}`);
         await bot.guilds.get("135864828240592896").roles.get("456993685679243286").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentioncoordinators") == 0 || lowmessage.indexOf(",mention coordinators") == 0) && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("243950906683424768"))) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("552232839861633046").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("552232839861633046")}${lowmessage.split(",mentioncoordinators")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("552232839861633046")}${message.content.substr(20)}`);
         await bot.guilds.get("135864828240592896").roles.get("552232839861633046").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionleaders") == 0 || lowmessage.indexOf(",mention leaders") == 0) && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("358431855743336448"))) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("444947885893746698").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("444947885893746698")}${lowmessage.split(",mentionleaders")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("444947885893746698")}${message.content.substr(15)}`);
         await bot.guilds.get("135864828240592896").roles.get("444947885893746698").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionelites") == 0 || lowmessage.indexOf(",mention elites") == 0) && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("358431855743336448"))) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("444947868835381263").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("444947868835381263")}${lowmessage.split(",mentionelites")[1]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("444947868835381263")}${message.content.substr(14)]}`);
         await bot.guilds.get("135864828240592896").roles.get("444947868835381263").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionffa") == 0 || lowmessage.indexOf("!ffa -p") == 0 || lowmessage.indexOf(",mention ffa") == 0) && (message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065") && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("243949285438259201"))) {
         var theMessage = "";
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
-        if (lowmessage.indexOf(",mentionffa") == 0) { theMessage = lowmessage.split(",mentionffa"); }
-        else { theMessage = lowmessage.split("!ffa -p")[1]; }
+        if (lowmessage.indexOf(",mentionffa") == 0) { theMessage = message.content.substr(11); }
+        else { theMessage = message.content.substr(7); }
         await bot.guilds.get("135864828240592896").roles.get("575087931824275466").setMentionable(true);
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("575087931824275466")}${theMessage}`);
         await bot.guilds.get("135864828240592896").roles.get("575087931824275466").setMentionable(false);
