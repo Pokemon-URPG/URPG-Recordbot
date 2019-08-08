@@ -1272,7 +1272,7 @@ bot.on("message", async function(message){
     if ((lowmessage.indexOf(",mentionelites") == 0 || lowmessage.indexOf(",mention elites") == 0) && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("358431855743336448"))) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("444947868835381263").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("444947868835381263")}${message.content.substr(14)]}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("444947868835381263")}${message.content.substr(14)}`);
         await bot.guilds.get("135864828240592896").roles.get("444947868835381263").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionffa") == 0 || lowmessage.indexOf("!ffa -p") == 0 || lowmessage.indexOf(",mention ffa") == 0) && (message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065") && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("243949285438259201"))) {
