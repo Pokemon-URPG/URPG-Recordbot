@@ -203,11 +203,11 @@ bot.on("message", function(message) {
                     message.channel.send(themessage)
                     break
                 }
-                if (rankpoke.indexOf("muk") != -1) {
+                if (rankpoke == "muk") {
                     message.channel.send("That's a Complex! You'll need to write 30,000-40,000 characters or have your art pass at Complex rank!")
                     break
                 }
-                if (rankpoke.indexOf("abra") != -1) {
+                if (rankpoke == "abra") {
                     message.channel.send("That's a Complex! You'll need to write 30,000-40,000 characters or have your art pass at Complex rank!")
                     break
                 }
