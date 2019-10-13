@@ -141,6 +141,7 @@ bot.on("message", function(message) {
         if (oldmessage.indexOf("fortree ") != -1) { message.channel.send("\nAsh K.'s Fortree Gym stats: http://ashkstatsurpg.proboards.com/thread/65/fortree-city-gym-2015") }
         if (oldmessage.indexOf(" after ") != -1) { message.channel.send("\nAfter's stats: https://forum.pokemonurpg.com/showthread.php?tid=10215") }
         if ((oldmessage.indexOf("pokeviper ") != -1) || (oldmessage.indexOf(" pv ") != -1) || (oldmessage.indexOf("pokéviper") != -1)) { message.channel.send("\nPokeViper's stats: http://pokeviperbadass.proboards.com/") }
+        if ((oldmessage.indexOf("shock") != -1) || (oldmessage.indexOf("3600") != -1)) { message.channel.send("\nShock3600's stats: https://forum.pokemonurpg.com/showthread.php?tid=10434&pid=130683#pid130683") }
     }
     if (lowmessage.indexOf(",rse ") == 0) {
         let movelist = ""
