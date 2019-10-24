@@ -143,6 +143,7 @@ bot.on("message", function(message) {
         if ((oldmessage.indexOf("pokeviper ") != -1) || (oldmessage.indexOf(" pv ") != -1) || (oldmessage.indexOf("pokéviper") != -1)) { message.channel.send("\nPokeViper's stats: http://pokeviperbadass.proboards.com/") }
         if ((oldmessage.indexOf("shock") != -1) || (oldmessage.indexOf("3600") != -1)) { message.channel.send("\nShock3600's stats: http://rebrand.ly/shock3600stats") }
         if (oldmessage.indexOf("best") != -1) { message.channel.send("\nTheVeryBest's stats: https://forum.pokemonurpg.com/showthread.php?tid=10447&pid=130885#pid130885") }
+        if (oldmessage.indexOf("louise") != -1) { message.channel.send("\nlouise's stats: https://forum.pokemonurpg.com/showthread.php?tid=10448&pid=130898#pid130898") }
     }
     if (lowmessage.indexOf(",rse ") == 0) {
         let movelist = ""
@@ -1493,7 +1494,7 @@ bot.on("message", async function(message){
         await bot.channels.get("322151372453838848").setPosition(1);
         await message.channel.send("Reordering complete!");
     }
-    if ((lowmessage.indexOf(",pkmnspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonpkmn ") == 0) && message.member.roles.has("584764993044611075")) {
+    if ((lowmessage.indexOf(",pkmnspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonpkmn ") == 0) && (message.member.roles.has("584764993044611075") || message.member.hasPermission("MANAGE_CHANNELS")) {
         var spoilers = await bot.guilds.get("135864828240592896").roles.get("440004078219558912").members.array();
         for (i = 0; i < spoilers.size; i++) {
             await spoilers[i].removeRole(message.guild.roles.get("440004078219558912"));
@@ -1501,7 +1502,7 @@ bot.on("message", async function(message){
         await bot.channels.get("440004235635982336").setName("spoilers-" + message.cleanContent.split(" ")[1]);
         await message.channel.send ("Pokémon spoiler season now set to <#440004235635982336>.");
     }
-    if ((lowmessage.indexOf(",otherspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonother ") == 0) && message.member.roles.has("584764993044611075")) {
+    if ((lowmessage.indexOf(",otherspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonother ") == 0) && (message.member.roles.has("584764993044611075") || message.member.hasPermission("MANAGE_CHANNELS")) {
         var spoilers = await bot.guilds.get("135864828240592896").roles.get("597313962798874626").members.array();
         for (i = 0; i < spoilers.size; i++) {
             await spoilers[i].removeRole(message.guild.roles.get("597313962798874626"));
