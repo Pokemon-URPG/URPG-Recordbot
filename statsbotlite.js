@@ -113,7 +113,7 @@ bot.on("message", function(message) {
         if ((oldmessage.indexOf("menegoth ") != -1) || (oldmessage.indexOf("mene ") != -1)) { message.channel.send("\nMenegoth's stats: http://menegothstats.freeforums.net/thread/2/pok-mon") }
         if (oldmessage.indexOf("liam ") != -1) { message.channel.send("\nLiam's stats: https://liamsstats.home.blog/") }
         if ((oldmessage.indexOf("team evolution ") != -1) || (oldmessage.indexOf("charmander4lyf ") != -1) || (oldmessage.indexOf("ketamine ") != -1) || (oldmessage.indexOf(" te ") != -1)) { message.channel.send("\nTeam Evolution's stats: http://forum.pokemonurpg.com/showthread.php?tid=9307") }
-        if ((oldmessage.indexOf("monbrey ") != -1) || (oldmessage.indexOf("mon ") != -1)) { message.channel.send("\nMonbrey's stats: https://urpg.monbrey.com.au/stats-new/") }
+        if ((oldmessage.indexOf("monbrey ") != -1) || (oldmessage.indexOf("mon ") != -1)) { message.channel.send("\nMonbrey's stats: https://urpg.monbrey.com.au/") }
         if ((oldmessage.indexOf("caite ") != -1) || (oldmessage.indexOf("caite-chan ") != -1) || (oldmessage.indexOf("caite chan ") != -1)) { message.channel.send("\nCaite Chan's stats: http://caitechan.proboards.com/thread/2") }
         if ((oldmessage.indexOf("gun ") != -1) || (oldmessage.indexOf("gun6 ") != -1) || (oldmessage.indexOf("gun 6 ") != -1)) { message.channel.send("\ngun6's stats: http://www.pokemoncrossroads.com/forum/showthread.php?16180-Gun6-s-Stats") }
         if (oldmessage.indexOf("ataro ") != -1) { message.channel.send("\nAtaro's stats: http://s4.zetaboards.com/rustyrefbotataro/topic/8274811/1/") }
@@ -1499,6 +1499,7 @@ bot.on("message", async function(message){
             await spoilers[i].removeRole(message.guild.roles.get("440004078219558912"));
         }
         await bot.channels.get("440004235635982336").setName("spoilers-" + message.cleanContent.split(" ")[1]);
+        await message.channel.send ("Pokémon spoiler season now set to <#440004235635982336>.");
     }
     if ((lowmessage.indexOf(",otherspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonother ") == 0) && message.member.roles.has("584764993044611075")) {
         var spoilers = await bot.guilds.get("135864828240592896").roles.get("597313962798874626").members.array();
@@ -1506,6 +1507,7 @@ bot.on("message", async function(message){
             await spoilers[i].removeRole(message.guild.roles.get("597313962798874626"));
         }
         await bot.channels.get("597314223483387905").setName("spoilers-" + message.cleanContent.split(" ")[1]);
+        await message.channel.send ("Other spoiler season now set to <#597314223483387905>.");
     }
     /*if (lowmessage.indexOf(",week1start") == 0 && (message.member.roles.has("135865553423302657") || message.member.roles.has("135868852092403713"))) {
         bot.channels.get("575461222443384833").permissionOverwrites.deleteAll();
