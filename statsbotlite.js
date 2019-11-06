@@ -1179,7 +1179,7 @@ bot.on("message", function(message) {
             var urpgspatt = lowmessage.substring(9).split("/")[3] * 2 + 99;
             var urpgspdef = lowmessage.substring(9).split("/")[4] * 2 + 99;
             var urpgspeed = lowmessage.substring(9).split("/")[5] * 2 + 99;
-            message.channel.send("That would be URPG stats of " + urpghp + "/" + urpgatt + "/" + urpgdef + "/" + urpgspatt + "/" urpgspdef + "/" + urpgspeed + "!");
+            message.channel.send("That would be URPG stats of " + urpghp + "/" + urpgatt + "/" + urpgdef + "/" + urpgspatt + "/" + urpgspdef + "/" + urpgspeed + "!");
         }            
     }
     /*if (lowmessage.indexOf("week2: ") == 0 && message.author.id == "135999597947387904") {
