@@ -997,10 +997,10 @@ bot.on("message", function(message) {
                     message.channel.send("Send `,hp POKÉMON` and I'll suggest Hidden Power type(s) for POKÉMON. Note that it is form-sensitive for Pokémon like Pikachu or Rotom that have different movesets in different forms and is not a complete list.");
                 }
                 else if (lowmessage.indexOf("clause") != -1) {
-                    message.channel.send("Send `,clause RULE1 RULE2 RULE3...` and I'll tell you what each of those rules do here in URPG! Rules can be in any order and some common nicknames (like `frz`) are accepted.")
+                    message.channel.send("Send `,clause RULE1 RULE2 RULE3...` and I'll tell you what each of those rules do here in URPG! Rules can be in any order and some common nicknames (like `frz`) are accepted.");
                 }
                 else if (lowmessage.indexOf("convert") != -1) {
-                    message.channel.send("Send `,converthp BASEHP` to convert BASEHP to URPG HP.\nSend `,convertother BASESTAT` to convert BASESTAT to the URPG non-HP equivalent.\nSend `,convert BASEHP/BASEATT/BASEDEF/BASESPATT/BASESPDEF/BASESPEED` to convert the full stat spread to URPG stats.  Must use `/` between each number. Do not include anything after the listed commands.")
+                    message.channel.send("Send `,converthp BASEHP` to convert BASEHP to URPG HP.\nSend `,convertother BASESTAT` to convert BASESTAT to the URPG non-HP equivalent.\nSend `,convert BASEHP/BASEATT/BASEDEF/BASESPATT/BASESPDEF/BASESPEED` to convert the full stat spread to URPG stats.  Must use `/` between each number. Do not include anything after the listed commands.");
                 }
 	    		/*else if (lowmessage.indexOf(",help help") == 0) {
     				message.channel.send("Send `,help` to get the general help command or send `,help COMMAND` for more info on how to use `COMMAND`.  Please note that all help commands only work in <#409818526313086976> to reduce spam.");
@@ -1172,7 +1172,7 @@ bot.on("message", function(message) {
             var urpgstat = lowmessage.substring(13) * 2 + 99;
             message.channel.send(lowmessage.substring(13) + " base non-HP stat would be " + urpgstat + " URPG stat!");
         }
-        else if (!isNaN(lowmessage.substring(9).split("/")[0]) && !isNaN(lowmessage.substring(9).split("/")[1] && !isNaN(lowmessage.substring(9).split("/")[2] && !isNaN(lowmessage.substring(9).split("/")[3] && !isNaN(lowmessage.substring(9).split("/")[4] && !isNaN(lowmessage.substring(9).split("/")[5]) {
+        else if (!isNaN(lowmessage.substring(9).split("/")[0]) && !isNaN(lowmessage.substring(9).split("/")[1]) && !isNaN(lowmessage.substring(9).split("/")[2]) && !isNaN(lowmessage.substring(9).split("/")[3]) && !isNaN(lowmessage.substring(9).split("/")[4]) && !isNaN(lowmessage.substring(9).split("/")[5])) {
             var urpghp = lowmessage.substring(9).split("/")[0] * 2 + 204;
             var urpgatt = lowmessage.substring(9).split("/")[1] * 2 + 99;
             var urpgdef = lowmessage.substring(9).split("/")[2] * 2 + 99;
