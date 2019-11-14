@@ -1002,7 +1002,7 @@ bot.on("message", function(message) {
                     message.channel.send("Send `,clause RULE1 RULE2 RULE3...` and I'll tell you what each of those rules do here in URPG! Rules can be in any order and some common nicknames (like `frz`) are accepted.");
                 }
                 else if (lowmessage.indexOf("convert") != -1) {
-                    message.channel.send("Send `,converthp BASEHP` to convert BASEHP to URPG HP.\nSend `,convertother BASESTAT` to convert BASESTAT to the URPG non-HP equivalent.\nSend `,convert BASEHP/BASEATT/BASEDEF/BASESPATT/BASESPDEF/BASESPEED` to convert the full stat spread to URPG stats.  Must use `/` between each number. Do not include anything after the listed commands.");
+                    message.channel.send("Send `,converthp BASEHP` to convert BASEHP to URPG HP.\nSend `,convertother BASESTAT` to convert BASESTAT to the URPG non-HP equivalent.\nSend `,convert BASEHP/BASEATT/BASEDEF/BASESPATT/BASESPDEF/BASESPEED` to convert the full stat spread to URPG stats.  Must use `/` or `.` between each number. Do not include anything after the listed commands.");
                 }
 	    		/*else if (lowmessage.indexOf(",help help") == 0) {
     				message.channel.send("Send `,help` to get the general help command or send `,help COMMAND` for more info on how to use `COMMAND`.  Please note that all help commands only work in <#409818526313086976> to reduce spam.");
@@ -1166,6 +1166,7 @@ bot.on("message", function(message) {
         }
     }
     if (lowmessage.indexOf(",convert") == 0) {
+        lowmessage = lowmessage.replace(/\./g, "/");
         if (lowmessage.indexOf(",converthp") == 0 && !isNaN(lowmessage.substring(10))) {
             var urpghp = lowmessage.substring(10) * 2 + 204;
             message.channel.send(lowmessage.substring(10) + " base HP would be " + urpghp + " URPG HP!");
@@ -1182,7 +1183,8 @@ bot.on("message", function(message) {
             var urpgspdef = lowmessage.substring(9).split("/")[4] * 2 + 99;
             var urpgspeed = lowmessage.substring(9).split("/")[5] * 2 + 99;
             message.channel.send("That would be URPG stats of " + urpghp + "/" + urpgatt + "/" + urpgdef + "/" + urpgspatt + "/" + urpgspdef + "/" + urpgspeed + "!");
-        }            
+        }
+        else { message.channel.send("Formatting not recognized, please try one of the following.\nSend `,converthp BASEHP` to convert BASEHP to URPG HP.\nSend `,convertother BASESTAT` to convert BASESTAT to the URPG non-HP equivalent.\nSend `,convert BASEHP/BASEATT/BASEDEF/BASESPATT/BASESPDEF/BASESPEED` to convert the full stat spread to URPG stats.  Must use `/` or `.` between each number. Do not include anything after the listed commands.")}            
     }
     /*if (lowmessage.indexOf("week2: ") == 0 && message.author.id == "135999597947387904") {
         message.channel.send(message.content.substring(7));
@@ -1311,6 +1313,12 @@ bot.on("message", async function(message){
         await bot.guilds.get("135864828240592896").roles.get("575087931824275466").setMentionable(true);
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("575087931824275466")}${theMessage}`);
         await bot.guilds.get("135864828240592896").roles.get("575087931824275466").setMentionable(false);
+    }
+    if ((lowmessage.indexOf(",mentionstaff") == 0 || lowmessage.indexOf(",mention staff") == 0) && message.member.roles.has("456993685679243286")) {
+        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
+        await bot.guilds.get("135864828240592896").roles.get("135868852092403713").setMentionable(true);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("135868852092403713")}${message.content.substring(15)}`);
+        await bot.guilds.get("135864828240592896").roles.get("135868852092403713").setMentionable(false);
     }
     /*if (lowmessage.indexOf(",mentionseniorrefs") == 0 && (message.member.hasPermission("MENTION_EVERYONE") || message.member.roles.has("243949285438259201"))) {
         await bot.guilds.get("135864828240592896").roles.get("358431855743336448").setMentionable(true);
