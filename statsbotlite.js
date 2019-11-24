@@ -147,6 +147,7 @@ bot.on("message", function(message) {
         if ((oldmessage.indexOf("luck") != -1) || (oldmessage.indexOf(" lg ") != -1)) { message.channel.send("\nLuckgandor's stats: https://forum.pokemonurpg.com/showthread.php?tid=9250") }
         if (oldmessage.indexOf("reciver") != -1) { message.channel.send("ReciverSquad's stats: https://forum.pokemonurpg.com/showthread.php?tid=10479") }
         if ((oldmessage.indexOf("harry") != -1) || (oldmessage.indexOf("kim") != -1)) { message.channel.send("\nHKim's stats: https://forum.pokemonurpg.com/showthread.php?tid=10041") }
+        if (oldmessage.indexOf("celadon ") != -1) { message.channel.send("\nsapahn's Celadon Gym stats: https://sapahnurpg.wordpress.com/celadon-city-gym/%22") }
     }
     if (lowmessage.indexOf(",rse ") == 0) {
         let movelist = ""
