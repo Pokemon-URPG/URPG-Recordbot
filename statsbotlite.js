@@ -147,7 +147,7 @@ bot.on("message", function(message) {
         if ((oldmessage.indexOf("luck") != -1) || (oldmessage.indexOf(" lg ") != -1)) { message.channel.send("\nLuckgandor's stats: https://forum.pokemonurpg.com/showthread.php?tid=9250") }
         if (oldmessage.indexOf("reciver") != -1) { message.channel.send("ReciverSquad's stats: https://forum.pokemonurpg.com/showthread.php?tid=10479") }
         if ((oldmessage.indexOf("harry") != -1) || (oldmessage.indexOf("kim") != -1)) { message.channel.send("\nHKim's stats: https://forum.pokemonurpg.com/showthread.php?tid=10041") }
-        if (oldmessage.indexOf("celadon ") != -1) { message.channel.send("\nsapahn's Celadon Gym stats: https://sapahnurpg.wordpress.com/celadon-city-gym/%22") }
+        if (oldmessage.indexOf("celadon ") != -1) { message.channel.send("\nsapahn's Celadon Gym stats: https://sapahnurpg.wordpress.com/celadon-city-gym/") }
     }
     if (lowmessage.indexOf(",rse ") == 0) {
         let movelist = ""
@@ -869,6 +869,7 @@ bot.on("message", function(message) {
     if (lowmessage.indexOf(",berry") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1686"); }
     if (lowmessage.indexOf(",start") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1722"); }
     if (lowmessage.indexOf(",bmgarchive") == 0) { message.channel.send("https://pokemonurpg.com/archive/urpg.html"); }
+    if (lowmessage.indexOf(",wildcard") == 0) { message.channel.send("Normal: Clefable, Granbull\nGrass: Sudowoodo, Florges, Comfey\nFire: Salamence, Solrock\nWater: Dragalge, Stunfisk, Masquerain\nElectric: Klinklang, Probopass, Porygon-Z, Porygon2\nIce: Empoleon, Slowbro, Quagsire\nFighting: Electivire, Bisharp, Kangaskhan, Pinsir, Incineroar\nPoison: Gliscor, Breloom, Parasect, Accelgor\nGround: Tyranitar, Cacturne\nFlying: Volcarona, Flygon, Venomoth, Beedrill, Dustox, Decidueye\nPsychic: Venomoth, Ninetales, Golduck, Darmanitan (Zen Mode only)\nBug: Flygon, Kabutops, Drapion, Lurantis\nRock: Camerupt, Torkoal, Steelix, Sandslash, Sableye\nDragon: Charizard, Gyarados\nGhost: Ninetales, Rotom Forms\nSteel: Electrode, Golurk, Dhelmise\nDark: Arbok, Gengar, Gothitelle\nFairy: Blissey, Chansey, Phione\n\n**Mega only:**\nFighting: Lopunny\nFlying: Pinsir\nDragon: Ampharos, Sceptile\nDark: Gyarados\nFairy: Altaria, Audino"); }
 
     if (lowmessage.indexOf(",") == 0 && lowmessage.indexOf("fairy") != -1 && message.channel.id == "409818526313086976" && !message.author.bot) {
         message.channel.send("", {
