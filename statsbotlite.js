@@ -1401,9 +1401,9 @@ bot.on("message", async function(message){
             ]
         })
     }
-    if (message.author.id == "365975655608745985" /*&& message.channel.id != "409818526313086976"*/) {
+    /*if (message.author.id == "365975655608745985" && message.channel.id != "409818526313086976") {
         message.channel.send("p!channel config disable level-up-messages");
-    }
+    }*/
     if (lowmessage.indexOf(",records available") == 0 && message.member.hasPermission("MANAGE_SERVER")) {
         await message.channel.send("Be right back!");
         await bot.destroy();
