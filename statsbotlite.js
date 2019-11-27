@@ -862,7 +862,7 @@ bot.on("message", function(message) {
         if (lowmessage.indexOf("zm") != -1 || lowmessage.indexOf("z-m") != -1) { message.channel.send("Z-Moves Clause: Battles may not use Z-Moves. Z-Crystals are still permitted as held items."); }
     }
 
-    if (lowmessage.indexOf(",calc") == 0) { message.channel.send("https://pokemonurpg.com/calcs/battlev3.html"); }
+    if (lowmessage.indexOf(",calc") == 0) { message.channel.send("https://pokemonurpg.com/pokemonurpg-dot-com/calcs/battlev3.html"); }
     if (lowmessage.indexOf(",info") == 0) { message.channel.send("https://pokemonurpg.com/info/"); }
     if (lowmessage.indexOf(",forum") == 0) { message.channel.send("https://forum.pokemonurpg.com/"); }
     if (lowmessage.indexOf(",mart") == 0) { message.channel.send("http://forum.pokemonurpg.com/showthread.php?tid=1682"); }
