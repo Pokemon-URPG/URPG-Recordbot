@@ -294,6 +294,10 @@ bot.on("message", function(message) {
     if(lowmessage.indexOf(",rules ") == 0)
     {
         lowmessage = lowmessage.split(",rules ")[1];
+        if(lowmessage.indexOf("casual") != -1 && lowmessage.indexOf("2") != -1) message.channel.send("2v2\nSM Public Open\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
+        if(lowmessage.indexOf("casual") != -1 && lowmessage.indexOf("3") != -1) message.channel.send("3v3\nSM Public Open\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
+        if(lowmessage.indexOf("casual") != -1 && lowmessage.indexOf("4") != -1) message.channel.send("4v4\nSM Public Open\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
+        if(lowmessage.indexOf("casual") != -1 && lowmessage.indexOf("5") != -1) message.channel.send("5v5\nSM Public Open\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
         if(lowmessage == "casual") message.channel.send("6v6\nSM Public Open\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
         if(lowmessage == "ppr") message.channel.send("6v6\nSM Public Preview\nOHKO ACC EVA SLP FRZ Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
         if(lowmessage == "hidden") message.channel.send("6v6\nSM Private Preview\nOHKO ACC EVA SLP FRZ Clauses On\nHelds Off\nDefault Weather and Terrain");
