@@ -18,11 +18,11 @@ bot.on("ready", function() {
     logger.info("Connected")
     logger.info("Logged in as: ")
     logger.info(bot.user.username + " - (" + bot.user.id + ")")
-    //var d = new Date();
-    //var timer = 7210000 - (d % 7210000);
-    //bumpTime = setTimeout(function() {
-    bumpServer();
-    //}, timer);
+    var d = new Date();
+    var timer = 7210000 - (d % 7210000);
+    bumpTime = setTimeout(function() {
+        bumpServer();
+    }, timer);
 })
 
 function bumpServer() {
@@ -46,18 +46,18 @@ bot.on('error', console.error);
 
 bot.on("message", function(message) {
     let lowmessage = message.content.toLowerCase()
-    if (message.author.id == "302050872383242240" && lowmessage.indexOf("bump done") != -1) {
+    if (message.author.id == "302050872383242240" && message.embeds[0].description.toLowerCase().indexOf("bump done") != -1) {
         setTimeout(function() {
             bumpNotification();
         }, 7200000);
     }
-    if (message.author.id == "302050872383242240" && message.embeds[0] != null) {
+    /*if (message.author.id == "302050872383242240" && message.embeds[0] != null) {
         var disboardInfo = "Disboard embed " + message.url + " info:\nDescription: " + message.embeds[0].description + "\nTitle: " + message.embeds[0].title;
         for (let i = 0; i < message.embeds[0].fields.length; i++) {
             disboardInfo += "\nField " + i + " Name: " + message.embeds[0].fields[i].name + "; Value: " + message.embeds[0].fields[i].value;
         }
         bot.channels.get("254207242780409857").send(disboardInfo);
-    }
+    }*/
     var badWordsLog = "";
     for (let i = 0; i < badWords.length; i++) {
         if ((lowmessage.indexOf(badWords[i]) != -1 || lowmessage.indexOf("fag") == 0) && !message.author.bot && badWordsLog == "") {
