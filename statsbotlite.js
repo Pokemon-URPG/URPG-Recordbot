@@ -18,8 +18,11 @@ bot.on("ready", function() {
     logger.info("Connected")
     logger.info("Logged in as: ")
     logger.info(bot.user.username + " - (" + bot.user.id + ")")
-    //bumpTime = new Date();
+    //var d = new Date();
+    //var timer = 7210000 - (d % 7210000);
+    //bumpTime = setTimeout(function() {
     bumpServer();
+    //}, timer);
 })
 
 function bumpServer() {
@@ -47,6 +50,9 @@ bot.on("message", function(message) {
         setTimeout(function() {
             bumpNotification();
         }, 7200000);
+    }
+    if (message.author.id == "302050872383242240" && message.embeds[0] != null) {
+        bot.channels.get("254207242780409857").send("Disboard embed " + message.url + " info:\nDescription: " + message.embeds[0].description + "\nTitle: " + message.embeds[0].title + "\nFields 1, 2, 3 Names: " + message.embeds[0].fields[0].name + ", " + message.embeds[0].fields[1].name + ", " + message.embeds[0].fields[2].name + "\nFields 1, 2, 3 Values: " + message.embeds[0].fields[0].value + ", " + message.embeds[0].fields[1].value + ", " + message.embeds[0].fields[2].value));
     }
     var badWordsLog = "";
     for (let i = 0; i < badWords.length; i++) {
@@ -976,7 +982,7 @@ bot.on("message", function(message) {
                     message.channel.send("`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `mentionarbiters`: Pings the applicable role.  Required role: Applicable section senior.\n`,mentionforumffa`: Pings Forum FFA role.  Required role: Forum FFA Host.\n`,mentionffa` or `!ffa -p`: Pings everyone who wants to be notified about FFAs. Required role: Referee. Required channel: <#136222872371855360> or <#269634154101080065>\n`,mentioncoordinators`: Pings everyone who wishes to be notified about contests happening. Required role: Judge.\n`,mentionmembers`: Pings member role with a message.  Required role: No role allows this.\n`,mentionstaff`: Pings staff if something needs addressing quickly.  Required role: Member.\n\n**Notes about all mention functions:**\nMention everyone permission allows use of a ping without the mentioned role.\nYou may put a message after the ping command and it will be copied after the ping, so that looking at mentions will directly show that information.");
                 }
                 else if (lowmessage.indexOf("staff") != -1 || lowmessage.indexOf("mod") != -1 || lowmessage.indexOf("auth") != -1 || lowmessage.indexOf("restrict") != -1) {
-                    message.channel.send("**Restricted Commands:**\nAll `,mention` functions: See `,help mention` for more info.\n`,member`: The first person mentioned, if any, will be given the member role. Role required: Staff, staff-alumni, or approver.\n`,anonreply # message`: Sends a reply to the `reply:` anonymous report with the given number. Required channel: staff.\n`,archive`: Archives the channel, putting it in the archive category and removes access to all non-staff. Use `,archive public` or `,publicarchive` for public channels and `,archive`, `,archive private`, or `,privatearchive` for private channels. Required role: content-upkeeper\n`,contestboss`: Creates the temporary rooms for a contest boss. Required role: Death Eater.\n`,reftest`, `,judgetest`, or `,rangertest`: Creates a temporary test channel. If the command contains a mention, also adds that member to the channel. Required role: Appropriate section senior.\n`,end`: Deletes a temporary channel. Only works in a temporary channel and requires the same role required to create that channel.\n`,fixorder`: Resets profession chat order. Required role: content-upkeeper.\n`,pkmnspoilerseason THING-TO-SPOIL`: changes the name of <#440004235635982336> to #spoilers-THING-TO-SPOIL and removes pkmnspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,otherspoilerseason THING-TO-SPOIL`: changes the name of <#597314223483387905> to #spoilers-THING-TO-SPOIL and removes otherspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,newdiscussion CHANNEL-NAME`: Creates a new staff discussion channel with the given name. Required channel: staff.\n`,newproject CHANNEL-NAME`: Creates a new project discussion channel with the given name. Required channel: Any in the Teams & Projects category.");
+                    message.channel.send("**Restricted Commands:**\nAll `,mention` functions: See `,help mention` for more info.\n`,member`: The first person mentioned, if any, will be given the member role. Role required: Staff, staff-alumni, or approver.\n`,anonreply # message`: Sends a reply to the `reply:` anonymous report with the given number. Required channel: staff or any in Teams & Projects.\n`,archive`: Archives the channel, putting it in the archive category and removes access to all non-staff. Use `,archive public` or `,publicarchive` for public channels and `,archive`, `,archive private`, or `,privatearchive` for private channels. Required role: content-upkeeper\n`,contestboss`: Creates the temporary rooms for a contest boss. Required role: Death Eater.\n`,reftest`, `,judgetest`, or `,rangertest`: Creates a temporary test channel. If the command contains a mention, also adds that member to the channel. Required role: Appropriate section senior.\n`,end`: Deletes a temporary channel. Only works in a temporary channel and requires the same role required to create that channel.\n`,fixorder`: Resets profession chat order. Required role: content-upkeeper.\n`,pkmnspoilerseason THING-TO-SPOIL`: changes the name of <#440004235635982336> to #spoilers-THING-TO-SPOIL and removes pkmnspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,otherspoilerseason THING-TO-SPOIL`: changes the name of <#597314223483387905> to #spoilers-THING-TO-SPOIL and removes otherspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,newdiscussion CHANNEL-NAME`: Creates a new staff discussion channel with the given name. Required channel: staff.\n`,newproject CHANNEL-NAME`: Creates a new project discussion channel with the given name. Required channel: Any in the Teams & Projects category.");
                 }
                 else if (lowmessage.indexOf("role") != -1) {
                     message.channel.send("**Self-assignable roles:**\npkmnspoilers: Access to <#440004235635982336>.\notherspoilers: Access to <#597314223483387905>.\nffa: Pings for Discord FFAs.\nforumffa: Pings for Forum FFAs and Forum FFA turns.\ncoordinator: Pings for contests.\n\nSend `,role ROLE` (i.e. `,role ffa`) to add or remove yourself from any of these roles. Spoiler role will automatically be reset when it changes to spoilers for a different thing.");
@@ -1096,7 +1102,7 @@ bot.on("message", function(message) {
                 }
             }
             //else if (lowmessage.indexOf(",role staff") == 0 && message.member.roles.has("135865553423302657")) {message.member.addRole("135868852092403713");}
-            else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `spoilers` (access to the chat for Avengers: Endgame spoilers), `coordinator` (being pinged for contests looking for players), and `forumffa` (being pinged for Forum FFAs starting or turns being posted).")}
+            else {message.channel.send("I'm afraid either that role doesn't exist or you can't assign it to yourself.  The current self-assignable roles are `pokemon spoiler` (access to <#440004235635982336>), `other spoiler` (access <#597314223483387905>), `ffa` (being pinged for Discord FFAs), `coordinator` (being pinged for contests looking for players), and `forumffa` (being pinged for Forum FFAs starting or turns being posted).")}
         }
         if (lowmessage.indexOf(",member") == 0 && (message.member.roles.has("135868852092403713") || message.member.roles.has("244600394733322242") || message.member.roles.has("457003662217052163"))) {
             if (message.mentions.members.length != 0) {
@@ -1135,7 +1141,7 @@ bot.on("message", function(message) {
             if (message.content.indexOf(",end") == 0 && message.member.roles.has("419636474825277450")) {message.channel.delete();}
         }
     }
-    if (message.channel.id == "135870064573284352" && message.content.indexOf(",anonreply") == 0) {
+    if ((message.channel.id == "135870064573284352" || message.channel.parentID == "443857882937819146") && message.content.indexOf(",anonreply") == 0) {
     	/*const anonReply = lowmessage.split("_");
     	bot.channels.get(anonReply[1]).send(anonReply[2]);*/
         const anonToReplyTo = message.content.split(" ");
