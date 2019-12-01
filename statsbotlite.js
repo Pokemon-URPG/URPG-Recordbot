@@ -54,7 +54,7 @@ bot.on("message", function(message) {
     if (message.author.id == "302050872383242240" && message.embeds[0] != null) {
         var disboardInfo = "Disboard embed " + message.url + " info:\nDescription: " + message.embeds[0].description + "\nTitle: " + message.embeds[0].title;
         for (let i = 0; i < message.embeds[0].fields.length; i++) {
-            disboardInfo += "\nField " + i " Name: " + message.embeds[0].fields[i].name + "; Value: " + message.embeds[0].fields[i].value;
+            disboardInfo += "\nField " + i + " Name: " + message.embeds[0].fields[i].name + "; Value: " + message.embeds[0].fields[i].value;
         }
         bot.channels.get("254207242780409857").send(disboardInfo);
     }
