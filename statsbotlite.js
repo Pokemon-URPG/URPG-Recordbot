@@ -11,7 +11,7 @@ logger.add(logger.transports.Console, {
 logger.level = "debug"
 // Initialize Discord Bot
 var bot = new Discord.Client({ disableEveryone: true })
-var badWords = ["gay", " fag", "fag ", "retard", "cuck", "slut", "kys"];
+var badWords = [" fag", "fag ", "retard", "cuck", "slut", "kys"];
 var bumpTime;
 
 bot.on("ready", function() {
@@ -52,7 +52,11 @@ bot.on("message", function(message) {
         }, 7200000);
     }
     if (message.author.id == "302050872383242240" && message.embeds[0] != null) {
-        bot.channels.get("254207242780409857").send("Disboard embed " + message.url + " info:\nDescription: " + message.embeds[0].description + "\nTitle: " + message.embeds[0].title + "\nFields 1, 2, 3 Names: " + message.embeds[0].fields[0].name + ", " + message.embeds[0].fields[1].name + ", " + message.embeds[0].fields[2].name + "\nFields 1, 2, 3 Values: " + message.embeds[0].fields[0].value + ", " + message.embeds[0].fields[1].value + ", " + message.embeds[0].fields[2].value);
+        var disboardInfo = "Disboard embed " + message.url + " info:\nDescription: " + message.embeds[0].description + "\nTitle: " + message.embeds[0].title;
+        for (let i = 0; i < message.embeds[0].fields.length; i++) {
+            disboardInfo += "\nField " + i " Name: " + message.embeds[0].fields[i].name + "; Value: " + message.embeds[0].fields[i].value;
+        }
+        bot.channels.get("254207242780409857").send(disboardInfo);
     }
     var badWordsLog = "";
     for (let i = 0; i < badWords.length; i++) {
