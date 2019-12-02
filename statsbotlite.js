@@ -23,6 +23,7 @@ bot.on("ready", function() {
     bumpTime = setTimeout(function() {
         bumpServer();
     }, timer);
+    bot.users.get("135999597947387904").send("I have arisen!  Please help me synchronize DISBOARD bump notifications.");
 })
 
 function bumpServer() {
@@ -33,7 +34,7 @@ function bumpServer() {
 }
 
 function bumpNotification() {
-    bot.channels.get("409818526313086976").send("DISBOARD bump ready.");
+    bot.channels.get("409818526313086976").send("DISBOARD bump ready.  The command is `!d bump`.");
 }
 
 bot.on('error', console.error);
@@ -50,6 +51,15 @@ bot.on("message", function(message) {
         setTimeout(function() {
             bumpNotification();
         }, 7200000);
+    }
+    if (message.author.id == "302050872383242240" && message.embeds[0].description.toLowerCase().indexOf("please wait another") != -1) {
+        var disTime = message.embeds[0].description.toLowerCase().slice(message.embeds[0].description.toLowerCase().indexOf("please wait another")).split(" ")[3];
+        if (isNaN(disTime)) { bot.users.get("135999597947387904").send("disTime is NaN"); }
+        else {
+            setTimeout(function() {
+                bumpNotification();
+            }, 60000 * (disTime + 1));
+        }
     }
     /*if (message.author.id == "302050872383242240" && message.embeds[0] != null) {
         var disboardInfo = "Disboard embed " + message.url + " info:\nDescription: " + message.embeds[0].description + "\nTitle: " + message.embeds[0].title;
@@ -1532,20 +1542,22 @@ bot.on("message", async function(message){
         await message.channel.send("Channel <#" + newChannel.id + "> successfully created!");
     }
     if (lowmessage.indexOf(",fixorder") == 0 && message.member.roles.has("584764993044611075")) {
-        await bot.channels.get("299759952925294592").setPosition(1);
-        await bot.channels.get("294334136355651584").setPosition(1);
-        await bot.channels.get("294333921200701450").setPosition(1);
-        await bot.channels.get("293899148112035840").setPosition(1);
-        await bot.channels.get("206950528675086338").setPosition(1);
-        await bot.channels.get("533356212377354260").setPosition(1);
-        await bot.channels.get("253364200955445248").setPosition(1);
-        await bot.channels.get("524695540995325971").setPosition(1);
-        await bot.channels.get("136694015285264384").setPosition(1);
-        await bot.channels.get("563508268820070400").setPosition(1);
-        await bot.channels.get("406933479062765571").setPosition(1);
-        await bot.channels.get("261370056246689792").setPosition(1);
-        await bot.channels.get("136595690980638720").setPosition(1);
-        await bot.channels.get("322151372453838848").setPosition(1);
+        //await bot.channels.get("299759952925294592").setPosition(1);urpgtimes(gone)
+        await bot.channels.get("294334136355651584").setPosition(1);//judgingtest
+        await bot.channels.get("294333921200701450").setPosition(1);//judgingchiefs
+        await bot.channels.get("293899148112035840").setPosition(1);//judgingyou
+        //await bot.channels.get("206950528675086338").setPosition(1);graderfam(gone)
+        await bot.channels.get("533356212377354260").setPosition(1);//arbiters
+        await bot.channels.get("253364200955445248").setPosition(1);//rangertest
+        await bot.channels.get("651141055236014090").setPosition(1);//privaterolling2
+        await bot.channels.get("563508268820070400").setPosition(1);//privaterolling1
+        await bot.channels.get("524695540995325971").setPosition(1);//eliterangers
+        await bot.channels.get("136694015285264384").setPosition(1);//rangers
+        await bot.channels.get("261370056246689792").setPosition(1);//reftest
+        await bot.channels.get("650454730652385288").setPosition(1);//dynamax
+        await bot.channels.get("136595690980638720").setPosition(1);//seniorref
+        await bot.channels.get("322151372453838848").setPosition(1);//refs
+        await bot.channels.get("406933479062765571").setPosition(1);//techteam
         await message.channel.send("Reordering complete!");
     }
     if ((lowmessage.indexOf(",pkmnspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonpkmn ") == 0) && (message.member.roles.has("584764993044611075") || message.member.hasPermission("MANAGE_CHANNELS"))) {
