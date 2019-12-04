@@ -13,6 +13,7 @@ logger.level = "debug"
 var bot = new Discord.Client({ disableEveryone: true })
 var badWords = [" fag", "fag ", "retard", "cuck", "slut", "kys"];
 var bumpTime;
+var disBumpTime = null;
 
 bot.on("ready", function() {
     logger.info("Connected")
@@ -48,15 +49,15 @@ bot.on('error', console.error);
 bot.on("message", function(message) {
     let lowmessage = message.content.toLowerCase()
     if (message.author.id == "302050872383242240" && message.embeds[0].description.toLowerCase().indexOf("bump done") != -1) {
-        setTimeout(function() {
+        disBumpTime = setTimeout(function() {
             bumpNotification();
         }, 7200000);
     }
-    if (message.author.id == "302050872383242240" && message.embeds[0].description.toLowerCase().indexOf("please wait another") != -1) {
+    if (message.author.id == "302050872383242240" && message.embeds[0].description.toLowerCase().indexOf("please wait another") != -1 && disBumpTime == null) {
         var disTime = message.embeds[0].description.toLowerCase().slice(message.embeds[0].description.toLowerCase().indexOf("please wait another")).split(" ")[3];
         if (isNaN(disTime)) { bot.users.get("135999597947387904").send("disTime is NaN"); }
         else {
-            setTimeout(function() {
+            disBumpTime = setTimeout(function() {
                 bumpNotification();
             }, 60000 * (disTime + 1));
         }
@@ -169,6 +170,7 @@ bot.on("message", function(message) {
         if ((oldmessage.indexOf("harry") != -1) || (oldmessage.indexOf("kim") != -1)) { message.channel.send("\nHKim's stats: https://forum.pokemonurpg.com/showthread.php?tid=10041") }
         if (oldmessage.indexOf("celadon ") != -1) { message.channel.send("\nsapahn's Celadon Gym stats: https://sapahnurpg.wordpress.com/celadon-city-gym/") }
         if ((oldmessage.indexOf("turtwig") != -1)) { message.channel.send("\nTurtwig A's stats: https://forum.pokemonurpg.com/showthread.php?tid=9332") }
+        if ((oldmessage.indexOf("rokaido") != -1) || (oldmessage.indexOf("robo ") != -1)) { message.channel.send("\nRokaido's stats: https://forum.pokemonurpg.com/showthread.php?tid=10518&pid=132268#pid132268") }
     }
     if (lowmessage.indexOf(",rse ") == 0) {
         let movelist = ""
