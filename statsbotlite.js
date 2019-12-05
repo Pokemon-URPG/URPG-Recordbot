@@ -1027,7 +1027,7 @@ bot.on("message", function(message) {
                 else if (lowmessage.indexOf("randomize") != -1) {
                     message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -open, open, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space");
                 }
-                else if (lowmessage.indexOf("rules") != -1) {
+                else if (lowmessage.indexOf("rule") != -1) {
                     message.channel.send("Use `,rules RULESET` to bring up a specific ruleset:\ncasual: Typical ruleset for casual battles\nppr: Similar but Public Preview (for randoms)\nhidden: Similar but Private Preview\ncompetitive: More serious battle rules\ne4: Official rules for any Elite Four or Champion battle\nld: Official rules for any Legend Defender battle\nashrandoms: Ash's preferred ruleset for randoms\nfortree: Fortree Gym default rules\nashmockfire: Ash's rules for a mock Fire gym (treated as a normal battle for pay and such)\nashmockdragon: Same as above but for Dragon\nmaylee: Rules for the Maylee battle event\nffa: Typical FFA ruleset\nrandomize: Randomized rule set among legal rulesets. See `,help randomize` for more information on how to fix certain conditions.");
                 }
                 else if (lowmessage.indexOf("effective") != -1) {
@@ -1590,7 +1590,7 @@ bot.on("message", async function(message){
         bot.channels.get(anonReply[1]).send(anonReply[2]);*/
         const anonToReplyTo = message.content.split(" ");
         //bot.channels.get(anonToReplyTo[1]).send(message.content.split(",anonreply " + anonToReplyTo[1])[1] + " ");
-        const dm = await message.client.rest.makeRequest("get", Endpoints.Channel("<the DM channel ID>"), true);
+        const dm = await message.client.rest.makeRequest("get", Endpoints.Channel(anonToReplyTo[1]), true);
         const dmChannel = await message.client.rest.methods.createDM(dm.recipients[0]);
         dmChannel.send(message.content.split(",anonreply " + anonToReplyTo[1] + " ")[1]);
         message.channel.send("Your reply has been sent!");
