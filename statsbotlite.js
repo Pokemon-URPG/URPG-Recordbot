@@ -1161,13 +1161,6 @@ bot.on("message", function(message) {
             if (message.content.indexOf(",end") == 0 && message.member.roles.has("419636474825277450")) {message.channel.delete();}
         }
     }
-    if ((message.channel.id == "135870064573284352" || message.channel.parentID == "443857882937819146") && message.content.indexOf(",anonreply") == 0) {
-    	/*const anonReply = lowmessage.split("_");
-    	bot.channels.get(anonReply[1]).send(anonReply[2]);*/
-        const anonToReplyTo = message.content.split(" ");
-        bot.channels.get(anonToReplyTo[1]).send(message.content.split(",anonreply " + anonToReplyTo[1])[1] + " ");
-        message.channel.send("Your reply has been sent!");
-    }
     /*if (message.channel.id == "135870064573284352" && message.content.indexOf(",exittest") == 0) {
         message.channel.send("Hello! I'm an automated message from the URPG's bot. We're sorry to see you leave the server; we want to improve the game/community experience for everyone, so if you'd be so kind as to reply to this DM with a couple quick answers we'd very much appreciate it - it will benefit the whole community! **We will not be sending you any further messages after this.**\n\n:star: Were there any particular reason(s) why you decided to leave?\n:star: Was there anything that you think should have been done differently or that didn't meet your expectations?\n\nThank you for your time!");
             /*var exitReport = "Exit reply from ";
@@ -1577,6 +1570,16 @@ bot.on("message", async function(message){
         }
         await bot.channels.get("597314223483387905").setName("spoilers-" + message.cleanContent.split(" ")[1]);
         await message.channel.send ("Other spoiler season now set to <#597314223483387905>.");
+    }
+    if ((message.channel.id == "135870064573284352" || message.channel.parentID == "443857882937819146") && message.content.indexOf(",anonreply") == 0) {
+        /*const anonReply = lowmessage.split("_");
+        bot.channels.get(anonReply[1]).send(anonReply[2]);*/
+        const anonToReplyTo = message.content.split(" ");
+        //bot.channels.get(anonToReplyTo[1]).send(message.content.split(",anonreply " + anonToReplyTo[1])[1] + " ");
+        const dm = await message.client.rest.makeRequest("get", Endpoints.Channel("<the DM channel ID>"), true);
+        const dmChannel = await message.client.rest.methods.createDM(dm.recipients[0]);
+        dmChannel.send(message.content.split(",anonreply " + anonToReplyTo[1] + " ")[1]);
+        message.channel.send("Your reply has been sent!");
     }
     /*if (lowmessage.indexOf(",week1start") == 0 && (message.member.roles.has("135865553423302657") || message.member.roles.has("135868852092403713"))) {
         bot.channels.get("575461222443384833").permissionOverwrites.deleteAll();
