@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 const logger = require("winston")
 const fs = require("fs")
 const ss = require("string-similarity");
+const { Endpoints } = require("discord.js/src/util/Constants");
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -24,7 +25,7 @@ bot.on("ready", function() {
     bumpTime = setTimeout(function() {
         bumpServer();
     }, timer);
-    bot.users.get("135999597947387904").send("I have arisen!  Please help me synchronize DISBOARD bump notifications.");
+    bot.channels.get("409818526313086976").send("I have arisen!  Please help me set my DISBOARD bump notification timer with a `!d bump`.");
 })
 
 function bumpServer() {
@@ -310,18 +311,18 @@ bot.on("message", function(message) {
         if(lowmessage.indexOf("casual") != -1 && lowmessage.indexOf("3") != -1) message.channel.send("3v3\nSM Public Open\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
         if(lowmessage.indexOf("casual") != -1 && lowmessage.indexOf("4") != -1) message.channel.send("4v4\nSM Public Open\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
         if(lowmessage.indexOf("casual") != -1 && lowmessage.indexOf("5") != -1) message.channel.send("5v5\nSM Public Open\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
-        if(lowmessage == "casual") message.channel.send("6v6\nSM Public Open\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
-        if(lowmessage == "ppr") message.channel.send("6v6\nSM Public Preview\nOHKO ACC EVA SLP FRZ Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
-        if(lowmessage == "hidden") message.channel.send("6v6\nSM Private Preview\nOHKO ACC EVA SLP FRZ Clauses On\nHelds Off\nDefault Weather and Terrain");
-        if(lowmessage == "competitive") message.channel.send("6v6\nSM Private Preview\nOHKO ACC EVA SLP FRZ Species Item Legend Clauses On\nHelds On\nDefault Weather and Terrain");
-        if(lowmessage == "e4" || lowmessage.indexOf("elite") != -1) message.channel.send("6 vs 6\nSM Private Full or SM Private Preview\nItems Allowed\nSleep Clause\nFreeze Clause\nOHKO Clause\nAccuracy Clause\nEvasion Clause\nNo Legendary Pokemon\nDefender’s Choice: Species Clause, Item Clause, Weather, Terrain");
-        if(lowmessage == "ld") message.channel.send("4 VS. 4+\nSM Private Full or Preview\nItems Optional\nSleep, Freeze, OHKO, Accuracy, Evasion and Legend Clauses On\nMega, Z, Item and Species Clauses Optional\nStarting Weather and Terrain Optional");
-        if(lowmessage == "ashrandoms") message.channel.send("6v6\nSM Public Box (Roll your 6 and use that as your Box)\nOHKO ACC EVA SLP FRZ Mega Clauses On\nHelds On\nRandom Weather and Terrain\nRoll for first send\n\nAny changes?");
-        if(lowmessage == "fortree") message.channel.send("6v6\nSM Public Open\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First");
-        if(lowmessage == "ashmockfire") message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Delphox, Flareon, Houndoom, Marowak (Alola), Ninetales, Numel, Salamence, Talonflame, Turtonator, Volcarona.  Yours may be whatever you wish.");
-        if(lowmessage == "ashmockdragon") message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
+        if(lowmessage == "casual") message.channel.send("6v6\nSM Public Open\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
+        if(lowmessage == "ppr") message.channel.send("6v6\nSM Public Preview\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
+        if(lowmessage == "hidden") message.channel.send("6v6\nSM Private Preview\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather and Terrain");
+        if(lowmessage == "competitive") message.channel.send("6v6\nSM Private Preview\nOHKO ACC EVA SLP FRZ Species Item Legend Dynamax Imprison Clauses On\nHelds On\nDefault Weather and Terrain");
+        if(lowmessage == "e4" || lowmessage.indexOf("elite") != -1) message.channel.send("6 vs 6\nSM Private Full or SM Private Preview\nItems Allowed\nSleep Clause\nFreeze Clause\nOHKO Clause\nAccuracy Clause\nEvasion Clause\nImprison Clause\nNo Legendary Pokemon\nDefender’s Choice: Dyanamax Clause OR Mega & Z Clauses, Species Clause, Item Clause, Weather, Terrain");
+        if(lowmessage == "ld") message.channel.send("4 VS. 4+\nSM Private Full or Preview\nItems Optional\nSleep, Freeze, OHKO, Accuracy, Evasion, Imprison, and Legend Clauses On\nMega, Z, Dyanamax, Item and Species Clauses Optional\nStarting Weather and Terrain Optional");
+        if(lowmessage == "ashrandoms") message.channel.send("6v6\nSM Public Box (Roll your 6 and use that as your Box)\nOHKO ACC EVA SLP FRZ Imprison Dynamax Mega Clauses On\nHelds On\nRandom Weather and Terrain\nRoll for first send\n\nAny changes?");
+        if(lowmessage == "fortree") message.channel.send("6v6\nSM Public Open\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First");
+        if(lowmessage == "ashmockfire") message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Delphox, Flareon, Houndoom, Marowak (Alola), Ninetales, Numel, Salamence, Talonflame, Turtonator, Volcarona.  Yours may be whatever you wish.");
+        if(lowmessage == "ashmockdragon") message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
         if(lowmessage == "maylee") message.channel.send("6v6 SM Private Full\nSleep/Freeze/OHKO/Evasion/Accuracy/Legends clauses active\nHelds on, building terrain, no starting weather\n\nIf both battlers agree, the following rules may be changed: Mega/Z/Item/Species, Helds off instead of on, Preview instead of Full");
-        if(lowmessage == "ffa") message.channel.send("SM Private Full\nNo Holds\nNo Sleep Moves (Barring Rest)\nEVA/ACC/OHKO Clauses\nPerish Song Fails\nHit All - Hit One\nImprison Fails\nEncore Fails\nAttract Fails\nRage Powder/Follow Me/Spotlight Fails\nRedirects On\nIllusion Pokémon disguises as a random Pokémon from the National Pokédex\nImposter, Download, and Intimidate select a random participating Pokémon\nNot sending or forfeiting results in KO at the beginning of the turn");
+        if(lowmessage == "ffa") message.channel.send("SM Private Full\nNo Holds\nNo Sleep Moves (Barring Rest)\nEVA/ACC/OHKO/Imprison/Dyanamax Clauses\nPerish Song Fails\nHit All - Hit One\nEncore Fails\nAttract Fails\nRage Powder/Follow Me/Spotlight Fails\nRedirects On\nIllusion Pokémon disguises as a random Pokémon from the National Pokédex\nImposter, Download, and Intimidate select a random participating Pokémon\nNot sending or forfeiting results in KO at the beginning of the turn");
         if(lowmessage.indexOf("randomize") == 0) {
             var numPok = Math.floor(Math.random() * 5) + 2;
             var gen = Math.floor(Math.random() * 3);
@@ -338,9 +339,12 @@ bot.on("message", function(message) {
             var spc = Math.floor(Math.random() * 2);
             var items = Math.floor(Math.random() * 2);
             var itemc = Math.floor(Math.random() * 2);
-            var mega = Math.floor(Math.random() * 2);
+            var imp = Math.floor(Math.random() * 2);
+            //var mega = Math.floor(Math.random() * 2);
             var leg = Math.floor(Math.random() * 2);
-            var zmo = Math.floor(Math.random() * 2);
+            //var zmo = Math.floor(Math.random() * 2);
+            //var dyna = Math.floor(Math.random() * 2);
+            var mzmax = Math.floor(Math.random() * 5);
             var weather = Math.floor(Math.random() * 6);
             var terrain = Math.floor(Math.random() * 12);
             if (lowmessage.indexOf("single") != -1) {mode = Math.floor(Math.random() * 2);}
@@ -397,12 +401,14 @@ bot.on("message", function(message) {
             else if (lowmessage.indexOf("species") != -1) {spc = 0;}
             if (lowmessage.indexOf("-items") != -1) {items = 1;}
             else if (lowmessage.indexOf("items") != -1) {items = 0;}
-            if (lowmessage.indexOf("-mega") != -1) {mega = 0;}
-            else if (lowmessage.indexOf("mega") != -1) {mega = 1;}
+            if (lowmessage.indexOf("-imprison") != -1) {imp = 1;}
+            else if (lowmessage.indexOf("imprison") != -1) {imp = 0;}
+            //if (lowmessage.indexOf("-mega") != -1) {mega = 0;}
+            //else if (lowmessage.indexOf("mega") != -1) {mega = 1;}
             if (lowmessage.indexOf("-legend") != -1) {leg = 0;}
             else if (lowmessage.indexOf("legend") != -1) {leg = 1;}
-            if (lowmessage.indexOf("-z") != -1) {zmo = 0;}
-            else if (lowmessage.indexOf("zmove") != -1) {zmo = 1;}
+            //if (lowmessage.indexOf("-z") != -1) {zmo = 0;}
+            //else if (lowmessage.indexOf("zmove") != -1) {zmo = 1;}
             if (lowmessage.indexOf("-weather") != -1) {weather = 0;}
             else if (lowmessage.indexOf("sun") != -1) {weather = 1;}
             else if (lowmessage.indexOf("rain") != -1) {weather = 2;}
@@ -449,8 +455,14 @@ bot.on("message", function(message) {
             if (eva == 0) {rules += "Evasion Clause\n";}
             if (itemc == 0 && items == 0) {rules += "Item Clause\n";}
             if (spc == 0) {rules += "Species Clause\n";}
-            if ((items == 0 || leg != 0) && mega == 0) {rules += "Mega Clause\n";}
-            if (items == 0 && zmo == 0) {rules += "Z-Moves Clause\n";}
+            if (imp == 0) {rules += "Imprison Clause\n";}
+            switch(mzmax) {
+                case 0: rules += "Z-Moves/Dynamax Clauses\n"; break;
+                case 1: rules += "Dynamax Clause\n"; break;
+                case 2: rules += "Mega/Dynamax Claues\n"; break;
+                case 3: rules += "Mega/Z-Moves/Dynamax Clauses\n"; break;
+                case 4: rules += "Mega/Z-Moves Clauses\n"; break;
+            }
             if (leg == 0) {rules += "Legends Clause\n";}
             switch(weather) {
                 case 0: rules += "No Starting Weather\n"; break;
@@ -887,6 +899,8 @@ bot.on("message", function(message) {
         if (lowmessage.indexOf("mega") != -1) { message.channel.send("Megas Clause: Battlers may not Mega Evolve their Pokemon. Mega Stones are still permitted as held items."); }
         if (lowmessage.indexOf("legend") != -1) { message.channel.send("Legends Clause: Battlers may not use Legendary Pokemon."); }
         if (lowmessage.indexOf("zm") != -1 || lowmessage.indexOf("z-m") != -1) { message.channel.send("Z-Moves Clause: Battles may not use Z-Moves. Z-Crystals are still permitted as held items."); }
+        if (lowmessage.indexOf("imprison") != -1) { message.channel.send("Imprison Clause: Fully prevents Imprison from being used. Referees must prompt battlers to choose a new move if Imprison is selected. Imprison may not be selected by Sleep Talk/Metronome/Assist, and will cause a reroll if rolled. Imprison Clause is automatically turned on for any Gym, Battle Frontier, or Elite Four/Champion matches. This may not be removed. Imprison Clause may be turned off for Casual Battles, as well as Street League Gyms."); }
+        if (lowmessage.indexOf("dynamax") != -1) { message.channel.send("Dynamax Clause: Disallows Dynamaxing. Dynamax is a mechanic where a Pokemon grows in size for 3 turns, doubling its max HP, and all moves change into Max Moves. Max moves are stronger moves than their regular counterparts, and provide a boost or weather/terrain effect. Gigantimax has been rolled into Dynamax for URPG; a Gigantimax Pokemon may use either Dynamaxed moves, or their Gigantimax move, at any time for the 3 turn duration. Dynamax may not be used in the same battle as either Mega or Z-Moves."); }
     }
 
     if (lowmessage.indexOf(",calc") == 0) { message.channel.send("https://pokemonurpg.com/pokemonurpg-dot-com/calcs/battlev3.html"); }
