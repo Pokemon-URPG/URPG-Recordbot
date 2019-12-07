@@ -1403,7 +1403,7 @@ async function newProject(message) {
     }
 }
 
-async function fixOrder(message) {
+async function fixOrder(message, messageAuthor) {
     if (lowmessage.indexOf(",fixorder") == 0 && messageAuthor.roles.has("584764993044611075")) {
         await bot.channels.get("294334136355651584").setPosition(1);//judgingtest
         await bot.channels.get("294333921200701450").setPosition(1);//judgingchiefs
