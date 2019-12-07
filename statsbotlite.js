@@ -1483,8 +1483,6 @@ bot.on("message", async function(message) {
     await disboardBumper(message);
     
     await discordCenterBumper(message);
-
-    await badWordsReporter(message, messageAuthor, false);
     
     await stats(message);
 
@@ -1534,6 +1532,8 @@ bot.on("message", async function(message) {
     if (message.guild.id != "135864828240592896") {return;}
 
     let messageAuthor = await message.guild.fetchMember(message.author);
+
+    await badWordsReporter(message, messageAuthor, false);
 
     await memberRole(message, messageAuthor);
 
