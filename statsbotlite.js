@@ -1463,11 +1463,9 @@ async function disboardTimer(message) {
     }
     if (message.author.id == "302050872383242240" && message.embeds[0].description.toLowerCase().indexOf("please wait another") != -1 && disBumpTime == null) {
         var disTime = message.embeds[0].description.toLowerCase().slice(message.embeds[0].description.toLowerCase().indexOf("please wait another")).split(" ")[3];
-        else {
-            disBumpTime = setTimeout(function() {
-                bumpNotification();
-            }, 60000 * disTime);
-        }
+        disBumpTime = setTimeout(function() {
+            bumpNotification();
+        }, 60000 * disTime;
     }
 }
 
