@@ -1455,22 +1455,19 @@ async function anonymousReply(message) {
     }
 }
 
-async function disboardBumper(message) {
+async function disboardTimer(message) {
     if (message.author.id == "302050872383242240" && message.embeds[0].description.toLowerCase().indexOf("bump done") != -1) {
         disBumpTime = setTimeout(function() {
             bumpNotification();
         }, 7200000);
     }
-}
-
-async function discordCenterBumper(message) {
     if (message.author.id == "302050872383242240" && message.embeds[0].description.toLowerCase().indexOf("please wait another") != -1 && disBumpTime == null) {
         var disTime = message.embeds[0].description.toLowerCase().slice(message.embeds[0].description.toLowerCase().indexOf("please wait another")).split(" ")[3];
         if (isNaN(disTime)) { bot.users.get("135999597947387904").send("disTime is NaN"); }
         else {
             disBumpTime = setTimeout(function() {
                 bumpNotification();
-            }, 60000 * (disTime + 1));
+            }, 60000 * disTime;
         }
     }
 }
@@ -1480,10 +1477,8 @@ bot.on('error', console.error);
 bot.on("message", async function(message) {
     lowmessage = message.content.toLowerCase();
 
-    await disboardBumper(message);
-    
-    await discordCenterBumper(message);
-    
+    await disboardTimer(message);
+
     await stats(message);
 
     await rse(message);
@@ -1507,7 +1502,7 @@ bot.on("message", async function(message) {
     await clauses(message);
 
     await links(message);
-    
+
     await wildcards(message);
 
     await fairyGIF(message);
