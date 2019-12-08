@@ -1238,7 +1238,7 @@ async function mention(message, messageAuthor) {
         await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("444947868835381263")}${message.content.substring(14)}`);
         await bot.guilds.get("135864828240592896").roles.get("444947868835381263").setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentionffa") == 0 || lowmessage.indexOf("!ffa -p") == 0 || lowmessage.indexOf(",mention ffa") == 0) && (message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065") && (messageAuthor.hasPermission("MENTION_EVERYONE") || messageAuthor.roles.has("243949285438259201"))) {
+    if ((lowmessage.indexOf(",mentionffa") == 0 || lowmessage.indexOf("!ffa -p") == 0 || lowmessage.indexOf(",mention ffa") == 0) && (message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065" || message.channel.id == "653328600170364953") && (messageAuthor.hasPermission("MENTION_EVERYONE") || messageAuthor.roles.has("243949285438259201"))) {
         var theMessage = "";
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         if (lowmessage.indexOf(",mentionffa") == 0) { theMessage = message.content.substring(11); }
