@@ -1463,11 +1463,10 @@ async function disboardTimer(message) {
     }
     if (message.author.id == "302050872383242240" && message.embeds[0].description.toLowerCase().indexOf("please wait another") != -1 && disBumpTime == null) {
         var disTime = message.embeds[0].description.toLowerCase().slice(message.embeds[0].description.toLowerCase().indexOf("please wait another")).split(" ")[3];
-        if (isNaN(disTime)) { bot.users.get("135999597947387904").send("disTime is NaN"); }
         else {
             disBumpTime = setTimeout(function() {
                 bumpNotification();
-            }, 60000 * disTime;
+            }, 60000 * disTime);
         }
     }
 }
