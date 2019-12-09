@@ -65,7 +65,7 @@ function stats(message) {
         if ((oldmessage.indexOf("blue ") != -1) || (oldmessage.indexOf("towel ") != -1) || (oldmessage.indexOf("bt ") != -1)) { message.channel.send("\nBlueTowel's stats: https://www.tapatalk.com/groups/fuzzyhat_and_friends/the-atmospelago-f8/") }
         if ((oldmessage.indexOf("chainy ") != -1) || (oldmessage.indexOf("chain ") != -1) || (oldmessage.indexOf("reaction01 ") != -1) || (oldmessage.indexOf("chainey ") != -1) || (oldmessage.indexOf("reaction ") != -1)) { message.channel.send("\nChainReaction01's stats: http://frozenchains.proboards.com/thread/82/pokemon-roster") }
         if (oldmessage.indexOf("smiles ") != -1) { message.channel.send("\nSmiles's stats: http://forum.pokemonurpg.com/showthread.php?tid=2175&pid=42539#pid42539") }
-        if (oldmessage.indexOf("jake ") != -1) { message.channel.send("\nCowboyJake's stats: http://forum.pokemonurpg.com/showthread.php?tid=9339") }
+        if (oldmessage.indexOf("bean") != -1) { message.channel.send("\nBeanMachine's stats: http://forum.pokemonurpg.com/showthread.php?tid=9339") }
         if (oldmessage.indexOf("airik ") != -1) { message.channel.send("\nAirik's stats: http://forum.pokemonurpg.com/showthread.php?tid=7362&pid=100381#pid100381") }
         if (oldmessage.indexOf("fusion ") != -1) { message.channel.send("\nFossilFusion's stats: http://fossilfusionurpg.proboards.com/post/3/thread") }
         if ((oldmessage.indexOf("bee ") != -1) || (oldmessage.indexOf("dinobot ") != -1)) { message.channel.send("\nDinobot's stats: http://kingofcybertron.proboards.com/thread/15?page=1") }
