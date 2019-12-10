@@ -38,6 +38,9 @@ function bumpServer() {
 
 function bumpNotification() {
     bot.channels.get("409818526313086976").send("DISBOARD bump ready.  The command is `!d bump`.");
+    disBumpTime = setTimeout(function() {
+        bumpNotification();
+    }, 3600000);
 }
 
 function badWordsReporter(message, messageAuthor, isEdit) {
@@ -74,7 +77,7 @@ function stats(message) {
         if (oldmessage.indexOf("commba ") != -1) { message.channel.send("\nCommBA's stats: http://w11.zetaboards.com/CommBAURPG/topic/7546474/1/") }
         if (oldmessage.indexOf("axion ") != -1) { message.channel.send("\nAxion's stats: http://forum.pokemonurpg.com/showthread.php?tid=3987") }
         if (oldmessage.indexOf("izuru ") != -1) { message.channel.send("\nIzuru's stats: http://www.pokemoncrossroads.com/forum/showthread.php?18030-Izuru-s-Stats&p=279688&viewfull=1#post279688") }
-        if (oldmessage.indexOf("fenris ") != -1) { message.channel.send("\nFenris's stats: https://fenris-urpg.freeforums.net/thread/137/pokemon") }
+        if (oldmessage.indexOf("fenris ") != -1) { message.channel.send("\nFenris's stats: https://fenris-urpg.freeforums.net/thread/138/pokemon-stats") }
         if ((oldmessage.indexOf("reneescarted ") != -1) || (oldmessage.indexOf("renee ") != -1) || (oldmessage.indexOf("renée ") != -1)) { message.channel.send("\nRenéeScarted's stats: https://forum.pokemonurpg.com/showthread.php?tid=10261&pid=127856#pid127856") }
         if (oldmessage.indexOf("lychee ") != -1) { message.channel.send("\nLychee's stats: http://forum.pokemonurpg.com/showthread.php?tid=8369") }
         if ((oldmessage.indexOf("swift") != -1) || (oldmessage.indexOf("gallade ") != -1)) { message.channel.send("\nSwiftGallade46's stats: http://swiftgallade.freeforums.net/thread/2/pokemon-especially-gallade") }
@@ -483,6 +486,40 @@ function ruleset(message) {
                 case 11: rules += "Space Terrain"; break;
             }
             message.channel.send(rules);
+        }
+    }
+}
+
+function randWeather(message) {
+    if (lowmessage.indexOf(",weather") == 0) {
+        let weather = Math.floor(Math.random() * 6);
+        switch(weather) {
+            case 0: message.channel.send("No Starting Weather"); break;
+            case 1: message.channel.send("Sun"); break;
+            case 2: message.channel.send("Rain"); break;
+            case 3: message.channel.send("Sandstorm"); break;
+            case 4: message.channel.send("Hail"); break;
+            case 5: message.channel.send("Fog"); break;
+        }
+    }
+}
+
+function randTerrain(message) {
+    if (lowmessage.indexOf(",terrain") == 0) {
+        let terrain = Math.floor(Math.random() * 12);
+        switch(terrain) {
+            case 0: rules += "Building Terrain"; break;
+            case 1: rules += "Cave Terrain"; break;
+            case 2: rules += "Ice Terrain"; break;
+            case 3: rules += "Puddles Terrain"; break;
+            case 4: rules += "Badlands Terrain"; break;
+            case 5: rules += "Snow Terrain"; break;
+            case 6: rules += "Tall Grass Terrain"; break;
+            case 7: rules += "Water Terrain"; break;
+            case 8: rules += "Volcano Terrain"; break;
+            case 9: rules += "Burial Grounds Terrain"; break;
+            case 10: rules += "Soaring Terrain"; break;
+            case 11: rules += "Space Terrain"; break;
         }
     }
 }
@@ -996,7 +1033,7 @@ function help(message) {
             message.channel.send("Send `,oras MOVE` and I'll tell you what `MOVE` does in ORAS Contests!");
         }
         else if (lowmessage.indexOf("mention") != -1) {
-            message.channel.send("`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `mentionarbiters`: Pings the applicable role.  Required role: Applicable section senior.\n`,mentionforumffa`: Pings Forum FFA role.  Required role: Forum FFA Host.\n`,mentionffa` or `!ffa -p`: Pings everyone who wants to be notified about FFAs. Required role: Referee. Required channel: <#136222872371855360> or <#269634154101080065>\n`,mentioncoordinators`: Pings everyone who wishes to be notified about contests happening. Required role: Judge.\n`,mentionmembers`: Pings member role with a message.  Required role: No role allows this.\n`,mentionstaff`: Pings staff if something needs addressing quickly.  Required role: Member.\n\n**Notes about all mention functions:**\nMention everyone permission allows use of a ping without the mentioned role.\nYou may put a message after the ping command and it will be copied after the ping, so that looking at mentions will directly show that information.");
+            message.channel.send("`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `,mentionarbiters`: Pings the applicable role.  Required role: Applicable section senior.\n`,mentionforumffa`: Pings Forum FFA role.  Required role: Forum FFA Host.\n`,mentionffa` or `!ffa -p`: Pings everyone who wants to be notified about FFAs. Required role: Referee. Required channel: <#136222872371855360>, <#269634154101080065>, or <#653328600170364953>\n`,mentioncoordinators`: Pings everyone who wishes to be notified about contests happening. Required role: Judge.\n`,mentionmembers`: Pings member role with a message.  Required role: No role allows this.\n`,mentionstaff`: Pings staff if something needs addressing quickly.  Required role: Member.\n`,mentioncontentupkeeper`, `,mentiongamedesign`, `,mentionevents`, `,mentiontechnicalteam`: Pings the respective team if something of theirs needs addressing.  Required role: Member.\n\n**Notes about all mention functions:**\nMention everyone permission allows use of a ping without the mentioned role.\nYou may put a message after the ping command and it will be copied after the ping, so that looking at mentions will directly show that information.");
         }
         else if (lowmessage.indexOf("staff") != -1 || lowmessage.indexOf("mod") != -1 || lowmessage.indexOf("auth") != -1 || lowmessage.indexOf("restrict") != -1) {
             message.channel.send("**Restricted Commands:**\nAll `,mention` functions: See `,help mention` for more info.\n`,member`: The first person mentioned, if any, will be given the member role. Role required: Staff, staff-alumni, or approver.\n`,anonreply # message`: Sends a reply to the `reply:` anonymous report with the given number. Required channel: staff or any in Teams & Projects.\n`,archive`: Archives the channel, putting it in the archive category and removes access to all non-staff. Use `,archive public` or `,publicarchive` for public channels and `,archive`, `,archive private`, or `,privatearchive` for private channels. Required role: content-upkeeper\n`,contestboss`: Creates the temporary rooms for a contest boss. Required role: Death Eater.\n`,reftest`, `,judgetest`, or `,rangertest`: Creates a temporary test channel. If the command contains a mention, also adds that member to the channel. Required role: Appropriate section senior.\n`,end`: Deletes a temporary channel. Only works in a temporary channel and requires the same role required to create that channel.\n`,fixorder`: Resets profession chat order. Required role: content-upkeeper.\n`,pkmnspoilerseason THING-TO-SPOIL`: changes the name of <#440004235635982336> to #spoilers-THING-TO-SPOIL and removes pkmnspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,otherspoilerseason THING-TO-SPOIL`: changes the name of <#597314223483387905> to #spoilers-THING-TO-SPOIL and removes otherspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,newdiscussion CHANNEL-NAME`: Creates a new staff discussion channel with the given name. Required channel: staff.\n`,newproject CHANNEL-NAME`: Creates a new project discussion channel with the given name. Required channel: Any in the Teams & Projects category.");
@@ -1007,8 +1044,8 @@ function help(message) {
         else if (lowmessage.indexOf("link") != -1) {
             message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\nIf you have any suggestions for other links I should have, please @ Ash K.");
         }
-        else if (lowmessage.indexOf("randomize") != -1) {
-            message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -open, open, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space");
+        else if (lowmessage.indexOf("random") != -1 || lowmessage.indexOf("weather") != -1 || lowmessage.indexOf("terrain") != -1) {
+            message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -open, open, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively.");
         }
         else if (lowmessage.indexOf("rule") != -1) {
             message.channel.send("Use `,rules RULESET` to bring up a specific ruleset:\ncasual: Typical ruleset for casual battles\nppr: Similar but Public Preview (for randoms)\nhidden: Similar but Private Preview\ncompetitive: More serious battle rules\ne4: Official rules for any Elite Four or Champion battle\nld: Official rules for any Legend Defender battle\nashrandoms: Ash's preferred ruleset for randoms\nfortree: Fortree Gym default rules\nashmockfire: Ash's rules for a mock Fire gym (treated as a normal battle for pay and such)\nashmockdragon: Same as above but for Dragon\nmaylee: Rules for the Maylee battle event\nffa: Typical FFA ruleset\nrandomize: Randomized rule set among legal rulesets. See `,help randomize` for more information on how to fix certain conditions.");
@@ -1031,8 +1068,11 @@ function help(message) {
         else if (lowmessage.indexOf("convert") != -1) {
             message.channel.send("Send `,converthp BASEHP` to convert BASEHP to URPG HP.\nSend `,convertother BASESTAT` to convert BASESTAT to the URPG non-HP equivalent.\nSend `,convert BASEHP/BASEATT/BASEDEF/BASESPATT/BASESPDEF/BASESPEED` to convert the full stat spread to URPG stats.  Must use `/` or `.` between each number. Do not include anything after the listed commands.");
         }
+        else if (lowmessage.indexOf("magic") != -1 || lowmessage.indexOf("mtg") != -1) {
+            message.channel.send("In <#401543302710689793> or via DM, I will attempt to parse cards.  [[CARDNAME|SETCODE]] will give an image of CARDNAME from SETCODE and [[CARDNAME|SETCODE|NUMBER]] will give an embed with CARDNAME #NUMBER in SETCODE.  For both of these, the parameters must be exact (though the latter isn't case sensitive).  Multiple cards in the same message should all be parsed.")
+        }
         else {
-            message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given Pokémon.\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of allowed wildcards.\nSee `,help link` for quick link options.\nSee `,help convert` for converting base stats to URPG stats.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\nPlease note that all help commands only work in <#409818526313086976> to reduce spam.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
+            message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given Pokémon.\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of allowed wildcards.\nSee `,help link` for quick link options.\nSee `,help convert` for converting base stats to URPG stats.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\nPlease note that all help commands only work in <#409818526313086976> to reduce spam.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
         }
     }
 }
@@ -1113,14 +1153,28 @@ function memberRole(message, messageAuthor) {
 }
 
 function magicCardFetcher(message) {
-    if ((message.channel.id == "401543302710689793" || message.guild === null) && lowmessage.indexOf("!!") != lowmessage.lastIndexOf("!!")) {
-        var cardName = message.cleanContent.split("!!")[1];
-        var cardSet = message.cleanContent.split("!!") [2];
-        if (cardSet.length > 5 || cardSet.length < 2) {return;}
-        if (cardName == "Mine, Mine, Mine" || cardName == "Incoming" || cardName == "Kill! Destroy") {cardName += "!";}
-        cardName = cardName.replace(/ /g, "%2B").replace(/,/g, "%252C").replace(/\./, "%252E").replace(/û/g, "u").replace(/\'/g, "%2527").replace(/`/g, "%2527").replace(/®/g, "%25C2%25AE").replace(/:registered:/g, "%25C2%25AE").replace(/&/g, "%2526").replace(/"/g, "%2522").replace(/!/g, "%2521").replace(/\?/g, "%253F");
-        message.channel.send("https://cdn1.mtggoldfish.com/images/gf/" + cardName + "%2B%255B" + cardSet + "%255D.jpg");
+    if ((message.channel.id == "401543302710689793" || message.guild === null) && (lowmessage.indexOf("🦌🦌") != lowmessage.lastIndexOf("🦌🦌")) || (lowmessage.indexOf("[[") != -1 && lowmessage.lastIndexOf("]]") != -1 && lowmessage.indexOf("|") != -1)) {
+        magicCardPoster(message.cleanContent, message.channel);
     }
+}
+
+function magicCardPoster(input, channel) {
+    var request = input.replace(/[[/g, "🦌🦌").replace(/|/g, "🦌🦌").replace(/]]/g, "🦌🦌");
+    if (request.split("🦌🦌").length < 2) {return;}
+    var cardName = request.split("🦌🦌")[1];
+    var cardSet = request.split("🦌🦌")[2];
+    var fetched = false;
+    if (cardSet.length > 5 || cardSet.length < 2) {return;}
+    if (!isNaN(request.split("🦌🦌")[3])) {
+        var cardNumber = request.split("🦌🦌")[3];
+        cardName = cardName.replace(/û/g, "%C3%BB").replace(/,/g, "").replace(/./g, "").replace(/\'/g, "").replace(/`/g, "").replace(/®/g, "").replace(/:registered:/, "").replace(/"/g, "").replace(/\?/g, "%3F").replace(/!/g, "").replace(/ /g, "-");
+        channel.send("https://scryfall.com/card/" + cardSet +"/" + cardNumber + "/" + cardName.toLowerCase() + "?utm_source=discord");
+        fetched = true;
+    }
+    if (cardName == "Mine, Mine, Mine" || cardName == "Incoming" || cardName == "Kill! Destroy") {cardName += "!";}
+    cardName = cardName.replace(/ /g, "%2B").replace(/,/g, "%252C").replace(/\./, "%252E").replace(/û/g, "u").replace(/\'/g, "%2527").replace(/`/g, "%2527").replace(/®/g, "%25C2%25AE").replace(/:registered:/g, "%25C2%25AE").replace(/&/g, "%2526").replace(/"/g, "%2522").replace(/!/g, "%2521").replace(/\?/g, "%253F");
+    if (!fetched) { channel.send("https://cdn1.mtggoldfish.com/images/gf/" + cardName + "%2B%255B" + cardSet + "%255D.jpg"); }
+    if (input.indexOf("]]") != input.lastIndexOf("]]")) { magicCardPoster(input.substring(input.indexOf("]]") + 2), channel); } 
 }
 
 function tempChannelReporter(message, messageAuthor) {
@@ -1250,8 +1304,41 @@ async function mention(message, messageAuthor) {
     if ((lowmessage.indexOf(",mentionstaff") == 0 || lowmessage.indexOf(",mention staff") == 0) && messageAuthor.roles.has("456993685679243286")) {
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
         await bot.guilds.get("135864828240592896").roles.get("135868852092403713").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("135868852092403713")}${message.content.substring(15)}`);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("135868852092403713")}${message.content.substring(13)}`);
         await bot.guilds.get("135864828240592896").roles.get("135868852092403713").setMentionable(false);
+    }
+    if ((lowmessage.indexOf(",mentioncontentupkeep") == 0 || lowmessage.indexOf(",mention contentupkeep") == 0 || lowmessage.indexOf(",mention content upkeep") == 0 || lowmessage.indexOf(",mention content-upkeeper") == 0) && messageAuthor.roles.has("456993685679243286")) {
+        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
+        if (lowmessage.indexOf(",mentioncontent upkeep") != -1) { lowmessage.replace(/,mentioncontent upkeep/, ",mentioncontentupkeep"); }
+        if (lowmessage.indexOf(",mentioncontent-upkeep") != -1) { lowmessage.replace(/,mentioncontent-upkeep/, ",mentioncontentupkeep"); }
+        await bot.guilds.get("135864828240592896").roles.get("584764993044611075").setMentionable(true);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("584764993044611075")}${message.content.substring(21)}`);
+        await bot.guilds.get("135864828240592896").roles.get("584764993044611075").setMentionable(false);
+    }
+    if ((lowmessage.indexOf(",mentiongamedesign") == 0 || lowmessage.indexOf(",mention gamedesign") == 0 || lowmessage.indexOf(",mention game design") == 0 || lowmessage.indexOf(",mention game-design") == 0) && messageAuthor.roles.has("456993685679243286")) {
+        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
+        if (lowmessage.indexOf(",mentiongame design") != -1) { lowmessage.replace(/,mentiongame design/, ",mentiongamedesign"); }
+        if (lowmessage.indexOf(",mentiongame-design") != -1) { lowmessage.replace(/,mentiongame-design/, ",mentiongamedesign"); }
+        await bot.guilds.get("135864828240592896").roles.get("584765105414078464").setMentionable(true);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("584765105414078464")}${message.content.substring(18)}`);
+        await bot.guilds.get("135864828240592896").roles.get("584765105414078464").setMentionable(false);
+    }
+    if ((lowmessage.indexOf(",mentionevent") == 0 || lowmessage.indexOf(",mention event") == 0) && messageAuthor.roles.has("456993685679243286")) {
+        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
+        if (lowmessage.indexOf(",mentionevent coordinator") != -1) { lowmessage.replace(/,mentionevent coordinator/, ",mentionevent"); }
+        if (lowmessage.indexOf(",mentionevent-coordinator") != -1) { lowmessage.replace(/,mentionevent-coordinator/, ",mentionevent"); }
+        if (lowmessage.indexOf(",mentionevents") != -1) { lowmessage.replace(/,mentionevents/, ",mentionevent"); }
+        await bot.guilds.get("135864828240592896").roles.get("584764766921293825").setMentionable(true);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("584764766921293825")}${message.content.substring(14)}`);
+        await bot.guilds.get("135864828240592896").roles.get("584764766921293825").setMentionable(false);
+    }
+    if ((lowmessage.indexOf(",mentiontechnicalteam") == 0 || lowmessage.indexOf(",mention technicalteam") == 0 || lowmessage.indexOf(",mention technical team") == 0 || lowmessage.indexOf(",mention technical-team") == 0) && messageAuthor.roles.has("456993685679243286")) {
+        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(/,mention /, ",mention"); }
+        if (lowmessage.indexOf(",mentiontechnical team") != -1) { lowmessage.replace(/,mentiontechnical team/, ",mentiontechnicalteam"); }
+        if (lowmessage.indexOf(",mentiontechnical-team") != -1) { lowmessage.replace(/,mentiontechnical-team/, ",mentiontechnicalteam"); }
+        await bot.guilds.get("135864828240592896").roles.get("584764766921293825").setMentionable(true);
+        await message.channel.send(`${bot.guilds.get("135864828240592896").roles.get("584764766921293825")}${message.content.substring(21)}`);
+        await bot.guilds.get("135864828240592896").roles.get("584764766921293825").setMentionable(false);
     }
 }
 
@@ -1513,6 +1600,10 @@ bot.on("message", async function(message) {
     await magicCardFetcher(message);
 
     await statConverter(message);
+
+    await randWeather(message);
+
+    await randTerrain(message);
 
     if (message.guild === null) {
     	
