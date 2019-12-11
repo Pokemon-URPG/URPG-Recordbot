@@ -508,18 +508,18 @@ function randTerrain(message) {
     if (lowmessage.indexOf(",terrain") == 0) {
         let terrain = Math.floor(Math.random() * 12);
         switch(terrain) {
-            case 0: rules += "Building Terrain"; break;
-            case 1: rules += "Cave Terrain"; break;
-            case 2: rules += "Ice Terrain"; break;
-            case 3: rules += "Puddles Terrain"; break;
-            case 4: rules += "Badlands Terrain"; break;
-            case 5: rules += "Snow Terrain"; break;
-            case 6: rules += "Tall Grass Terrain"; break;
-            case 7: rules += "Water Terrain"; break;
-            case 8: rules += "Volcano Terrain"; break;
-            case 9: rules += "Burial Grounds Terrain"; break;
-            case 10: rules += "Soaring Terrain"; break;
-            case 11: rules += "Space Terrain"; break;
+            case 0: message.channel.send("Building Terrain"); break;
+            case 1: message.channel.send("Cave Terrain"); break;
+            case 2: message.channel.send("Ice Terrain"); break;
+            case 3: message.channel.send("Puddles Terrain"); break;
+            case 4: message.channel.send("Badlands Terrain"); break;
+            case 5: message.channel.send("Snow Terrain"); break;
+            case 6: message.channel.send("Tall Grass Terrain"); break;
+            case 7: message.channel.send("Water Terrain"); break;
+            case 8: message.channel.send("Volcano Terrain"); break;
+            case 9: message.channel.send("Burial Grounds Terrain"); break;
+            case 10: message.channel.send("Soaring Terrain"); break;
+            case 11: message.channel.send("Space Terrain"); break;
         }
     }
 }
@@ -954,6 +954,7 @@ function links(message) {
 }
 
 function wildcards(message) {
+    if (lowmessage.indexOf(",wc") == 0) { lowmessage = lowmessage.replace(/,wc/, ",wildcard"); }
     if (lowmessage.indexOf(",wildcard ") == 0) {
         var wclist = "";
         switch (lowmessage.split(" ") [1]){
@@ -1544,6 +1545,7 @@ async function anonymousReply(message) {
 
 async function disboardTimer(message) {
     if (message.author.id == "302050872383242240" && message.embeds[0].description.toLowerCase().indexOf("bump done") != -1) {
+        clearTimeout(disBumpTime);
         disBumpTime = setTimeout(function() {
             bumpNotification();
         }, 7200000);
