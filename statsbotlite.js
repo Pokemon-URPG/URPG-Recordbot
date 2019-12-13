@@ -1160,7 +1160,7 @@ function magicCardFetcher(message) {
 }
 
 function magicCardPoster(input, channel) {
-    var request = input.replace(/[[/g, "🦌🦌").replace(/|/g, "🦌🦌").replace(/]]/g, "🦌🦌");
+    var request = input.replace(/\[\[/g, "🦌🦌").replace(/\|/g, "🦌🦌").replace(/]]/g, "🦌🦌");
     if (request.split("🦌🦌").length < 2) {return;}
     var cardName = request.split("🦌🦌")[1];
     var cardSet = request.split("🦌🦌")[2];
