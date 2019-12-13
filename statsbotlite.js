@@ -1166,9 +1166,9 @@ function magicCardPoster(input, channel) {
     var cardSet = request.split("🦌🦌")[2];
     var fetched = false;
     if (cardSet.length > 5 || cardSet.length < 2) {return;}
-    if (request.split("🦌🦌").length > 0 && !isNaN(request.split("🦌🦌")[3])) {
+    if (request.split("🦌🦌")[3].length > 0 && !isNaN(request.split("🦌🦌")[3])) {
         var cardNumber = request.split("🦌🦌")[3];
-        cardName = cardName.replace(/û/g, "%C3%BB").replace(/,/g, "").replace(/./g, "").replace(/\'/g, "").replace(/`/g, "").replace(/®/g, "").replace(/:registered:/, "").replace(/"/g, "").replace(/\?/g, "%3F").replace(/!/g, "").replace(/ /g, "-");
+        cardName = cardName.replace(/û/g, "%C3%BB").replace(/,/g, "").replace(/\./g, "").replace(/\'/g, "").replace(/`/g, "").replace(/®/g, "").replace(/:registered:/, "").replace(/"/g, "").replace(/\?/g, "%3F").replace(/!/g, "").replace(/ /g, "-");
         channel.send("https://scryfall.com/card/" + cardSet +"/" + cardNumber + "/" + cardName.toLowerCase() + "?utm_source=discord");
         fetched = true;
     }
