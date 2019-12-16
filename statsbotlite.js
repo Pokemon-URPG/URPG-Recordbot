@@ -27,6 +27,9 @@ bot.on("ready", function() {
         bumpServer();
     }, timer);
     bot.channels.get("409818526313086976").send("I have arisen!  Please help me set my DISBOARD bump notification timer with a `!d bump`.");
+    disBumpTime = setTimeout(function() {
+        bumpNotification();
+    }, 7200000);
 })
 
 function bumpServer() {
@@ -1504,7 +1507,7 @@ async function fixOrder(message, messageAuthor) {
         await bot.channels.get("136694015285264384").setPosition(1);//rangers
         await bot.channels.get("261370056246689792").setPosition(1);//reftest
         await bot.channels.get("652208449555267591").setPosition(1);//SwSh
-        await bot.channels.get("650454730652385288").setPosition(1);//dynamax
+        await bot.channels.get("652207797848637453").setPosition(1);//dynamax
         await bot.channels.get("136595690980638720").setPosition(1);//seniorref
         await bot.channels.get("322151372453838848").setPosition(1);//refs
         await bot.channels.get("406933479062765571").setPosition(1);//techteam
