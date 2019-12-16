@@ -1503,6 +1503,7 @@ async function fixOrder(message, messageAuthor) {
         await bot.channels.get("524695540995325971").setPosition(1);//eliterangers
         await bot.channels.get("136694015285264384").setPosition(1);//rangers
         await bot.channels.get("261370056246689792").setPosition(1);//reftest
+        await bot.channels.get("652208449555267591").setPosition(1);//SwSh
         await bot.channels.get("650454730652385288").setPosition(1);//dynamax
         await bot.channels.get("136595690980638720").setPosition(1);//seniorref
         await bot.channels.get("322151372453838848").setPosition(1);//refs
