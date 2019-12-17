@@ -1554,8 +1554,9 @@ async function disboardTimer(message) {
             bumpNotification();
         }, 7200000);
     }
-    if (message.author.id == "302050872383242240" && message.embeds[0].description.toLowerCase().indexOf("please wait another") != -1 && disBumpTime == null) {
+    if (message.author.id == "302050872383242240" && message.embeds[0].description.toLowerCase().indexOf("please wait another") != -1) {
         var disTime = message.embeds[0].description.toLowerCase().slice(message.embeds[0].description.toLowerCase().indexOf("please wait another")).split(" ")[3];
+        clearTimeout(disBumpTime);
         disBumpTime = setTimeout(function() {
             bumpNotification();
         }, 60000 * disTime);
@@ -1659,6 +1660,10 @@ bot.on("messageDelete", async function(message) {
     if (message.guild.id != "135864828240592896") {return;}
     if (message.author.id == "461133571034316810") {return;}
     var channelToNotify = "545384090044727296";
+    if (message.channel.id == "545384090044727296" && message.user.id == "531429270451519490") {
+        message.channel.send("One of my logs was deleted from here.");
+        return;
+    }
     if (message.channel.id == "261370056246689792") {channelToNotify = "136595690980638720";}
     if (message.channel.id == "294334136355651584") {channelToNotify = "294333921200701450";}
     if (message.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
