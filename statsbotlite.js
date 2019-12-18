@@ -910,6 +910,30 @@ function effectiveness(message) {
     }
 }
 
+function beatUp(message) {
+    if(lowmessage.indexOf(",effective ") == 0)
+    {
+        var pokemon = lowmessage.split(",effective ")[1];
+        if (!isNaN(pokemon)) {
+            var beatUpBP = Math.floor(((allpokes[x].split('/')[4] - 99) / 2) / 10) + 5;
+            message.channel.send("A Pokémon with a base URPG Attack stat of " + pokemon + " would have a base " + beatUpBP + " power Beat Up!");
+            return;
+        }
+        //var fs = require('fs');
+        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
+        for(var x = 0; x < allpokes.length; x++)
+        {
+            if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
+            {
+                var beatUpBP = Math.floor(((allpokes[x].split('/')[4] - 99) / 2) / 10) + 5;
+                message.channel.send(pokemon + " would have a base " + beatUpBP + " power Beat Up!");
+                return;
+            }
+        }
+        message.channel.send("I'm afraid " + pokemon + " is not in my base stats database.  My research in the Galar region isn't yet complete, but I can give you the base power from its URPG attack stat with `,beatup 299` or similar.");
+    }
+}
+
 function clauses(message) {
     if (lowmessage.indexOf(",clause") == 0) {
         //var clauses = lowmessage.split(" ");
@@ -1076,7 +1100,7 @@ function help(message) {
             message.channel.send("In <#401543302710689793> or via DM, I will attempt to parse cards.  [[CARDNAME|SETCODE]] will give an image of CARDNAME from SETCODE and [[CARDNAME|SETCODE|NUMBER]] will give an embed with CARDNAME #NUMBER in SETCODE.  For both of these, the parameters must be exact (though the latter isn't case sensitive).  Multiple cards in the same message should all be parsed.")
         }
         else {
-            message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given Pokémon.\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of allowed wildcards.\nSee `,help link` for quick link options.\nSee `,help convert` for converting base stats to URPG stats.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\nPlease note that all help commands only work in <#409818526313086976> to reduce spam.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
+            message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given Pokémon.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of allowed wildcards.\nSee `,help link` for quick link options.\nSee `,help convert` for converting base stats to URPG stats.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\nPlease note that all help commands only work in <#409818526313086976> to reduce spam.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
         }
     }
 }
@@ -1589,6 +1613,8 @@ bot.on("message", async function(message) {
     await stealthRock(message);
 
     await effectiveness(message);
+
+    await beatUp(message);
 
     await clauses(message);
 
