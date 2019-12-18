@@ -911,9 +911,9 @@ function effectiveness(message) {
 }
 
 function beatUp(message) {
-    if(lowmessage.indexOf(",effective ") == 0)
+    if(lowmessage.indexOf(",beatup ") == 0)
     {
-        var pokemon = lowmessage.split(",effective ")[1];
+        var pokemon = lowmessage.split(",beatup ")[1];
         if (!isNaN(pokemon)) {
             var beatUpBP = Math.floor(((allpokes[x].split('/')[4] - 99) / 2) / 10) + 5;
             message.channel.send("A Pokémon with a base URPG Attack stat of " + pokemon + " would have a base " + beatUpBP + " power Beat Up!");
