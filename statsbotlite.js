@@ -915,7 +915,7 @@ function beatUp(message) {
     {
         var pokemon = lowmessage.split(",beatup ")[1];
         if (!isNaN(pokemon)) {
-            var beatUpBP = Math.floor(((allpokes[x].split('/')[4] - 99) / 2) / 10) + 5;
+            var beatUpBP = Math.floor(((pokemon - 99) / 2) / 10) + 5;
             message.channel.send("A Pokémon with a base URPG Attack stat of " + pokemon + " would have a base " + beatUpBP + " power Beat Up!");
             return;
         }
@@ -926,7 +926,7 @@ function beatUp(message) {
             if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
             {
                 var beatUpBP = Math.floor(((allpokes[x].split('/')[4] - 99) / 2) / 10) + 5;
-                message.channel.send(pokemon + " would have a base " + beatUpBP + " power Beat Up!");
+                message.channel.send(allpokes[x].split('/')[0] + " would have a base " + beatUpBP + " power Beat Up!");
                 return;
             }
         }
