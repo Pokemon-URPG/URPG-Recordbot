@@ -1628,8 +1628,6 @@ bot.on("message", async function(message) {
 
     await ffaGG(message);
 
-    await role(message);
-
     await magicCardFetcher(message);
 
     await statConverter(message);
@@ -1648,6 +1646,8 @@ bot.on("message", async function(message) {
     if (message.guild.id != "135864828240592896") {return;}
 
     let messageAuthor = await message.guild.fetchMember(message.author);
+
+    await role(message, messageAuthor);
 
     await badWordsReporter(message, messageAuthor, false);
 
