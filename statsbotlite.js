@@ -1112,7 +1112,7 @@ function ffaGG(message) {
 }
 
 function role(message, messageAuthor) {
-    if (lowmessage.indexOf(",role") == 0 || lowmessage.indexOf(",spoiler") == 0 || lowmessage == ",ffa" || lowmessage.indexOf(",s ") == 0) {
+    if (lowmessage.indexOf(",role") == 0 || lowmessage.indexOf(",spoiler") == 0 || lowmessage == ",ffa" || lowmessage.indexOf(",s ") == 0 || lowmessage.indexOf(",otherspoiler") == 0) {
         if ((lowmessage.indexOf(",s ") == 0 || lowmessage.indexOf("spoiler") != -1) && (lowmessage.indexOf("pkmn") != -1 || lowmessage.indexOf("pokemon") != -1 || lowmessage.indexOf("pokémon") != -1)) {
             if (messageAuthor.roles.has("440004078219558912")) {
                 messageAuthor.removeRole(message.guild.roles.get("440004078219558912"));
