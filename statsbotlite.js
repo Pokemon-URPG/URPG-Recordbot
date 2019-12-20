@@ -21,7 +21,7 @@ var urpgServer = "135864828240592896";
 var logsChannel = "545384090044727296";
 var payDayLog;
 
-bot.on("ready", function() {
+bot.on("ready", async function() {
     logger.info("Connected")
     logger.info("Logged in as: ")
     logger.info(bot.user.username + " - (" + bot.user.id + ")")
