@@ -46,7 +46,7 @@ function payDay(message, messageAuthor) {
             payDayReset;
         }
         let payments = message.mentions.members;
-        members.forEach(function(value, key) {
+        payments.forEach(function(value, key) {
             if (payDayLog.indexOf("<@" + key + ">") != -1) {
                 message.channel.send("<@" + key + "> has already received a Pay Day bonus this week.");
             }
