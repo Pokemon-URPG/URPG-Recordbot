@@ -35,16 +35,16 @@ bot.on("ready", async function() {
         bumpNotification();
     }, 7200000);
     payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
+    if (payDayLog.content.indexOf("DISBOARD bump") != -1) {
+        await payDayReset();
+    }
     setTimeout(function () {
         payDayReset();
     }, (d - 259200000) % 604800000);
 })
 
-function payDay(message, messageAuthor) {
+async function payDay(message, messageAuthor) {
     if (lowmessage.indexOf(",payday") == 0 && messageAuthor.roles.has("243949285438259201")) {
-        if (payDayLog.content.indexOf("DISBOARD bump") != -1) {
-            payDayReset;
-        }
         let payments = message.mentions.members;
         payments.forEach(function(value, key) {
             if (payDayLog.content.indexOf("<@" + key + ">") != -1) {
@@ -52,7 +52,7 @@ function payDay(message, messageAuthor) {
             }
             else {
                 var newLog = payDayLog.content + " <@" + key + ">";
-                payDayLog.edit(newLog);
+                await payDayLog.edit(newLog);
                 message.channel.send("<@" + key + "> receives a Pay Day bonus for this.");
             }
         });
