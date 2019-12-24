@@ -46,7 +46,7 @@ bot.on("ready", async function() {
 async function payDay(message, messageAuthor) {
     if (lowmessage.indexOf(",payday") == 0 && messageAuthor.roles.has("243949285438259201")) {
         let payments = message.mentions.members;
-        payments.forEach(function(value, key) {
+        payments.forEach(async function(value, key) {
             if (payDayLog.content.indexOf("<@" + key + ">") != -1) {
                 message.channel.send("<@" + key + "> has already received a Pay Day bonus this week.");
             }
