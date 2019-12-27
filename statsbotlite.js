@@ -1725,7 +1725,7 @@ bot.on("messageDelete", async function(message) {
     var channelToNotify = logsChannel;
     if (message.channel.id == logsChannel && message.author.id == "531429270451519490") {
         await message.channel.send("One of my logs was deleted from here.");
-        await return;
+        return;
     }
     if (message.channel.id == "261370056246689792") {channelToNotify = "136595690980638720";}
     if (message.channel.id == "294334136355651584") {channelToNotify = "294333921200701450";}
