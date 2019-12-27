@@ -60,6 +60,8 @@ async function payDay(message, messageAuthor) {
 }
 
 function payDayReset() {
+    let oldPayDay = payDayLog.cleanContent;
+    bot.channels.get(logsChannel).send("Pay Day reset.  Previously:\n\n" + oldPayDay);
     payDayLog.edit("Those who have gotten Pay Day this week:\n");
 }
 
@@ -1721,9 +1723,9 @@ bot.on("messageDelete", async function(message) {
     if (message.guild.id != urpgServer) {return;}
     if (message.author.id == "461133571034316810") {return;}
     var channelToNotify = logsChannel;
-    if (message.channel.id == logsChannel && message.user.id == "531429270451519490") {
+    if (message.channel.id == logsChannel && message.author.id == "531429270451519490") {
         await message.channel.send("One of my logs was deleted from here.");
-        return;
+        await return;
     }
     if (message.channel.id == "261370056246689792") {channelToNotify = "136595690980638720";}
     if (message.channel.id == "294334136355651584") {channelToNotify = "294333921200701450";}
@@ -1824,8 +1826,31 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     if (!oldMessage.guild.available) {return;}
     if (oldMessage.guild.id != urpgServer) {return;}
     if (oldMessage.author.bot) {return;}
-    if (diff <= .8 || oldMessage.channel.id == "261370056246689792" || oldMessage.channel.id == "294334136355651584" || oldMessage.channel.name == "judge-test" || oldMessage.channel.name == "ref-test" || oldMessage.channel.id == "585321627609202689") {
-    	if (newMessage.content.length > 5 || oldMessage.content.length > 5 || oldMessage.channel.id == "261370056246689792" || oldMessage.channel.id == "294334136355651584" || oldMessage.channel.name == "judge-test" || oldMessage.channel.name == "ref-test" || oldMessage.channel.id == "585321627609202689") {
+    var temp = false;
+    if (oldMessage.channel.name == "judge-test") {
+        channelToNotify = "294334136355651584";
+        temp = true;
+    }
+    if (oldMessage.channel.name == "ref-test") {
+        channelToNotify = "261370056246689792";
+        temp = true;
+    }
+    if (oldMessage.channel.name == "ranger-test") {
+        channelToNotify = "253364200955445248";
+        temp = true;
+    }
+    if (newMessage.channel.parentID == "530600551763673088" && newMessage.channel.id != "386804780615335947" && newMessage.channel.id != "386808630709714954") {
+        if (newMessage.channel.name.indexOf("war") != -1) {
+            channelToNotify = "386808630709714954";
+            temp = true;
+        }
+        if (newMessage.channel.name.indexOf("boss") != -1) {
+            channelToNotify = "386804780615335947";
+            temp = true;
+        }
+    }
+    if (diff <= .8 || temp) {
+    	if (newMessage.content.length > 5 || oldMessage.content.length > 5 || temp) {
     		if (oldMessage.channel.id == "261370056246689792") {channelToNotify = "136595690980638720";}
     		if (oldMessage.channel.id == "294334136355651584") {channelToNotify = "294333921200701450";}
     		if (oldMessage.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
@@ -1834,19 +1859,8 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
             if (oldMessage.channel.id == "136595690980638720") {channelToNotify = "136595690980638720";}
             if (oldMessage.channel.id == "294333921200701450") {channelToNotify = "294333921200701450";}
             if (oldMessage.channel.id == "524695540995325971") {channelToNotify = "524695540995325971";}
-            if (oldMessage.channel.name == "judge-test") {channelToNotify = "294334136355651584";}
-            if (oldMessage.channel.name == "ref-test") {channelToNotify = "261370056246689792";}
-            if (oldMessage.channel.name == "ranger-test") {channelToNotify = "253364200955445248";}
-            if (newMessage.channel.parentID == "530600551763673088" && newMessage.channel.id != "386804780615335947" && newMessage.channel.id != "386808630709714954") {
-                if (newMessage.channel.name.indexOf("war") != -1) {
-                    channelToNotify = "386808630709714954";
-                }
-                if (newMessage.channel.name.indexOf("boss") != -1) {
-                    channelToNotify = "386804780615335947";
-                }
-            }
     		var deleteLog = ""
-            if ((newMessage.channel.parentID == "530600551763673088" && newMessage.channel.id != "386804780615335947" && newMessage.channel.id != "386808630709714954") || oldMessage.channel.name == "judge-test" || oldMessage.channel.name == "ref-test") {
+            if (temp) {
                 deleteLog += await message.guild.fetchMember(message.author).displayName + "'s message saying \"" + newMessage.cleanContent + "\"";
             }
             else { deleteLog += newMessage.url; }
