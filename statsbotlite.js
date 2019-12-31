@@ -1508,7 +1508,7 @@ async function refTest(message, messageAuthor) {
             MANAGE_ROLES: true
         })
         if (message.mentions.users.length != 0) {
-            await testroom.overwritePermissions(message.mentions.users.first()), {
+            await testroom.overwritePermissions(message.mentions.users.first(), {
                 VIEW_CHANNEL: true
             })
         }
