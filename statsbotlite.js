@@ -42,7 +42,7 @@ bot.on("ready", async function() {
 
 async function payDay(message, messageAuthor) {
     if (lowmessage.indexOf(",payday") == 0 && messageAuthor.roles.has("243949285438259201")) {
-        let payments = message.mentions.members;
+        let payments = message.mentions.users;
         payments.forEach(async function(value, key) {
             if (payDayLog.content.indexOf("<@" + key + ">") != -1) {
                 message.channel.send("<@" + key + "> has already received a Pay Day bonus this week.");
@@ -185,6 +185,7 @@ function stats(message) {
         if ((oldmessage.indexOf(" atf") != -1) || (oldmessage.indexOf("americantreef") != -1)) { message.channel.send("AmericanTreeFrog's stats: https://forum.pokemonurpg.com/showthread.php?tid=10364") }
         if ((oldmessage.indexOf(" la ") != -1) || (oldmessage.indexOf("loyal") != -1) || (oldmessage.indexOf("arcanine") != -1) || (oldmessage.indexOf("mikey94028") != -1)) { message.channel.send("Loyal Arcanine's stats: https://forum.pokemonurpg.com/showthread.php?tid=10364") }
         if ((oldmessage.indexOf("jr") != -1) || (oldmessage.indexOf("junior") != -1) || (oldmessage.indexOf("pieandchips") != -1)) { message.channel.send("The Jr Trainer's stats: https://forum.pokemonurpg.com/showthread.php?tid=9255") }
+        if (oldmessage.indexOf("mt. chimney") != -1) { message.channel.send("Shock3600's Mt. Chimney Gym stats: http://rebrand.ly/shock3600gym") }
     }
 }
 
@@ -1022,7 +1023,10 @@ function links(message) {
     if (lowmessage.indexOf(",bmgarchive") == 0) { message.channel.send("https://pokemonurpg.com/archive/urpg.html"); }
     if (lowmessage.indexOf(",refund") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=7975"); }
     if (lowmessage.indexOf(",gen8") == 0 || lowmessage.indexOf(",galar") == 0) { message.channel.send("https://docs.google.com/document/d/1hZFqQJa3i6YlqehIJFeQ0b5NqUAuISHW7PdLV3wNUF0/edit#"); }
-
+    if (lowmessage.indexOf(",nukem") == 0) { message.channel.send("https://pokemonurpg.com/info/general/project-nukem/"); }
+    if (lowmessage.indexOf(",refpedia") == 0) { message.channel.send("https://pokemonurpg.com/info/battles/reffing-encyclopedia/"); }
+    if (lowmessage.indexOf(",gym") == 0) { message.channel.send("https://pokemonurpg.com/info/battles/champion-elite-four-gym-leaders/"); }
+    if (lowmessage.indexOf(",updategym") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=4417"); }
 }
 
 function wildcards(message) {
@@ -1115,7 +1119,7 @@ function help(message) {
             message.channel.send("**Self-assignable roles:**\npkmnspoilers: Access to <#440004235635982336>.\notherspoilers: Access to <#597314223483387905>.\nffa: Pings for Discord FFAs.\nforumffa: Pings for Forum FFAs and Forum FFA turns.\ncoordinator: Pings for contests.\n\nSend `,role ROLE` (i.e. `,role ffa`) to add or remove yourself from any of these roles. Spoiler role will automatically be reset when it changes to spoilers for a different thing.");
         }
         else if (lowmessage.indexOf("link") != -1) {
-            message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\nIf you have any suggestions for other links I should have, please @ Ash K.");
+            message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\n`,refund`: Link to the Refund Thread.\n`,gen8` or `,galar`: Link to the Generation 8 Public Changelog.\n`,nukem`, `,refpedia`, `,gym`: Links to respective Infohub topics.\n`,updategym`: Link to Apply for or Update a Gym thread.\nIf you have any suggestions for other links I should have, please @ Ash K.");
         }
         else if (lowmessage.indexOf("random") != -1 || lowmessage.indexOf("weather") != -1 || lowmessage.indexOf("terrain") != -1) {
             message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -open, open, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively.");
@@ -1217,8 +1221,8 @@ function role(message, messageAuthor) {
 
 function memberRole(message, messageAuthor) {
     if (lowmessage.indexOf(",member") == 0 && (messageAuthor.roles.has("135868852092403713") || messageAuthor.roles.has("244600394733322242") || messageAuthor.roles.has("457003662217052163"))) {
-        if (message.mentions.members.length != 0) {
-            message.mentions.members.first().addRole(message.guild.roles.get("456993685679243286"));
+        if (message.mentions.users.length != 0) {
+            message.guild.fetchMember(message.mentions.users.first().id).addRole(message.guild.roles.get("456993685679243286"));
             message.channel.send("Member role applied!");
         }
         else { message.channel.send("Please include a mention for the person you would like to give the member role to.")}
@@ -1484,8 +1488,8 @@ async function judgeTest(message, messageAuthor) {
             VIEW_CHANNEL: true,
             MANAGE_ROLES: true
         })
-        if (message.mentions.members.length != 0) {
-            await testroom.overwritePermissions(message.mentions.members.first(), {
+        if (message.mentions.users.length != 0) {
+            await testroom.overwritePermissions(message.mentions.users.first(), {
                 VIEW_CHANNEL: true
             })
         }
@@ -1503,8 +1507,8 @@ async function refTest(message, messageAuthor) {
             VIEW_CHANNEL: true,
             MANAGE_ROLES: true
         })
-        if (message.mentions.members.length != 0) {
-            await testroom.overwritePermissions(message.mentions.members.first(), {
+        if (message.mentions.users.length != 0) {
+            await testroom.overwritePermissions(message.mentions.users.first()), {
                 VIEW_CHANNEL: true
             })
         }
@@ -1522,8 +1526,8 @@ async function rangerTest(message, messageAuthor) {
             VIEW_CHANNEL: true,
             MANAGE_ROLES: true
         })
-        if (message.mentions.members.length != 0) {
-            await testroom.overwritePermissions(message.mentions.members.first(), {
+        if (message.mentions.users.length != 0) {
+            await testroom.overwritePermissions(message.mentions.users.first(), {
                 VIEW_CHANNEL: true
             })
         }
@@ -1588,6 +1592,7 @@ async function fixOrder(message, messageAuthor) {
 
 async function pkmnSpoilerSeason(message, messageAuthor) {
     if ((lowmessage.indexOf(",pkmnspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonpkmn ") == 0) && (messageAuthor.roles.has("584764993044611075") || messageAuthor.hasPermission("MANAGE_CHANNELS"))) {
+        await message.guild.fetchMembers();
         var spoilers = await bot.guilds.get(urpgServer).roles.get("440004078219558912").members.array();
         for (i = 0; i < spoilers.size; i++) {
             await spoilers[i].removeRole(message.guild.roles.get("440004078219558912"));
@@ -1599,6 +1604,7 @@ async function pkmnSpoilerSeason(message, messageAuthor) {
 
 async function otherSpoilerSeason(message, messageAuthor) {
     if ((lowmessage.indexOf(",otherspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonother ") == 0) && (messageAuthor.roles.has("584764993044611075") || messageAuthor.hasPermission("MANAGE_CHANNELS"))) {
+        await message.guild.fetchMembers();
         var spoilers = await bot.guilds.get(urpgServer).roles.get("597313962798874626").members.array();
         for (i = 0; i < spoilers.size; i++) {
             await spoilers[i].removeRole(message.guild.roles.get("597313962798874626"));
@@ -1820,16 +1826,6 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
         }
         editLog += " has been edited to say the following: ```";
         editLog += newMessage.cleanContent;
-        editLog += "```";
-        bot.channels.get("545737721612730368").send(editLog);
-        return;
-    }
-    if (oldMessage.guild === null && !bot.guilds.get(urpgServer).members.has(oldMessage.author.id)) {
-        var editLog = "An exit reply";
-        editLog += " from "
-        editLog += newMessage.channel.id;
-        editLog += " has been edited to say the following: ```";
-        editLog += newMessage.cleanContent.replace(/```/g, "​`​`​`​");
         editLog += "```";
         bot.channels.get("545737721612730368").send(editLog);
         return;
