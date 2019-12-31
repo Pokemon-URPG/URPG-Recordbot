@@ -1219,11 +1219,12 @@ function role(message, messageAuthor) {
     }
 }
 
-function memberRole(message, messageAuthor) {
+async function memberRole(message, messageAuthor) {
     if (lowmessage.indexOf(",member") == 0 && (messageAuthor.roles.has("135868852092403713") || messageAuthor.roles.has("244600394733322242") || messageAuthor.roles.has("457003662217052163"))) {
         if (message.mentions.users.length != 0) {
-            message.guild.fetchMember(message.mentions.users.first().id).addRole(message.guild.roles.get("456993685679243286"));
-            message.channel.send("Member role applied!");
+            let newMember = await message.guild.fetchMember(message.mentions.users.first().id)
+            await newMember.addRole(message.guild.roles.get("456993685679243286"));
+            await message.channel.send("Member role applied!");
         }
         else { message.channel.send("Please include a mention for the person you would like to give the member role to.")}
     }
