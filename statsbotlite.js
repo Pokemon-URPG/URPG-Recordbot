@@ -26,18 +26,18 @@ bot.on("ready", async function() {
     logger.info("Logged in as: ")
     logger.info(bot.user.username + " - (" + bot.user.id + ")")
     var d = new Date();
-    var timer = 7210000 - (d % 7210000);
+    var timer = 7210000 - (d.getTime() % 7210000);
     bumpTime = setTimeout(function() {
         bumpServer();
     }, timer);
+    payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
+    setTimeout(function () {
+        payDayReset();
+    }, (259200000 - d.getTime()) % 604800000);
     bot.channels.get(botCommands).send("I have arisen!  Please help me set my DISBOARD bump notification timer with a `!d bump`.");
     disBumpTime = setTimeout(function() {
         bumpNotification();
     }, 7200000);
-    payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
-    setTimeout(function () {
-        payDayReset();
-    }, (d - 259200000) % 604800000);
 })
 
 async function payDay(message, messageAuthor) {
@@ -186,6 +186,7 @@ function stats(message) {
         if ((oldmessage.indexOf(" la ") != -1) || (oldmessage.indexOf("loyal") != -1) || (oldmessage.indexOf("arcanine") != -1) || (oldmessage.indexOf("mikey94028") != -1)) { message.channel.send("Loyal Arcanine's stats: https://forum.pokemonurpg.com/showthread.php?tid=10364") }
         if ((oldmessage.indexOf("jr") != -1) || (oldmessage.indexOf("junior") != -1) || (oldmessage.indexOf("pieandchips") != -1)) { message.channel.send("The Jr Trainer's stats: https://forum.pokemonurpg.com/showthread.php?tid=9255") }
         if (oldmessage.indexOf("mt. chimney") != -1) { message.channel.send("Shock3600's Mt. Chimney Gym stats: http://rebrand.ly/shock3600gym") }
+        if (oldmessage.indexOf("rocco") != -1) { message.channel.send("Rocco's stats: https://forum.pokemonurpg.com/showthread.php?tid=10583") }
     }
 }
 
@@ -1021,6 +1022,7 @@ function links(message) {
     if (lowmessage.indexOf(",berry") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1686"); }
     if (lowmessage.indexOf(",start") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1722"); }
     if (lowmessage.indexOf(",bmgarchive") == 0) { message.channel.send("https://pokemonurpg.com/archive/urpg.html"); }
+    if (lowmessage.indexOf(",pxrarchive") == 0) { message.channel.send("https://pokemonurpg.com/archive/pxr/\nNote: You can make the pages appear correctly by clicking on the little shield on the right side of the URL bar and click \"Load unsafe scripts\""); }
     if (lowmessage.indexOf(",refund") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=7975"); }
     if (lowmessage.indexOf(",gen8") == 0 || lowmessage.indexOf(",galar") == 0) { message.channel.send("https://docs.google.com/document/d/1hZFqQJa3i6YlqehIJFeQ0b5NqUAuISHW7PdLV3wNUF0/edit#"); }
     if (lowmessage.indexOf(",nukem") == 0) { message.channel.send("https://pokemonurpg.com/info/general/project-nukem/"); }
@@ -1119,7 +1121,7 @@ function help(message) {
             message.channel.send("**Self-assignable roles:**\npkmnspoilers: Access to <#440004235635982336>.\notherspoilers: Access to <#597314223483387905>.\nffa: Pings for Discord FFAs.\nforumffa: Pings for Forum FFAs and Forum FFA turns.\ncoordinator: Pings for contests.\n\nSend `,role ROLE` (i.e. `,role ffa`) to add or remove yourself from any of these roles. Spoiler role will automatically be reset when it changes to spoilers for a different thing.");
         }
         else if (lowmessage.indexOf("link") != -1) {
-            message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\n`,refund`: Link to the Refund Thread.\n`,gen8` or `,galar`: Link to the Generation 8 Public Changelog.\n`,nukem`, `,refpedia`, `,gym`: Links to respective Infohub topics.\n`,updategym`: Link to Apply for or Update a Gym thread.\nIf you have any suggestions for other links I should have, please @ Ash K.");
+            message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\n`,pxrarchive`: Link to the archives of the PXR URPG section.\n`,refund`: Link to the Refund Thread.\n`,gen8` or `,galar`: Link to the Generation 8 Public Changelog.\n`,nukem`, `,refpedia`, `,gym`: Links to respective Infohub topics.\n`,updategym`: Link to Apply for or Update a Gym thread.\nIf you have any suggestions for other links I should have, please @ Ash K.");
         }
         else if (lowmessage.indexOf("random") != -1 || lowmessage.indexOf("weather") != -1 || lowmessage.indexOf("terrain") != -1) {
             message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -open, open, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively.");
@@ -1221,7 +1223,7 @@ function role(message, messageAuthor) {
 
 async function memberRole(message, messageAuthor) {
     if (lowmessage.indexOf(",member") == 0 && (messageAuthor.roles.has("135868852092403713") || messageAuthor.roles.has("244600394733322242") || messageAuthor.roles.has("457003662217052163"))) {
-        if (message.mentions.users.length != 0) {
+        if (message.mentions.users.size != 0) {
             let newMember = await message.guild.fetchMember(message.mentions.users.first().id)
             await newMember.addRole(message.guild.roles.get("456993685679243286"));
             await message.channel.send("Member role applied!");
@@ -1701,11 +1703,7 @@ bot.on("message", async function(message) {
 
     let messageAuthor = await message.guild.fetchMember(message.author);
 
-    await role(message, messageAuthor);
-
     await badWordsReporter(message, messageAuthor, false);
-
-    await memberRole(message, messageAuthor);
 
     await tempChannelReporter(message, messageAuthor);
 
