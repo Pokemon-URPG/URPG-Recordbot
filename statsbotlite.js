@@ -164,7 +164,7 @@ function stats(message) {
         if (oldmessage.indexOf("fortree ") != -1) { message.channel.send("\nAsh K.'s Fortree Gym stats: http://ashkstatsurpg.proboards.com/thread/65/fortree-city-gym-2015") }
         if (oldmessage.indexOf(" after ") != -1) { message.channel.send("\nAfter's stats: https://forum.pokemonurpg.com/showthread.php?tid=10215") }
         if ((oldmessage.indexOf("pokeviper ") != -1) || (oldmessage.indexOf(" pv ") != -1) || (oldmessage.indexOf("pokéviper") != -1)) { message.channel.send("\nPokeViper's stats: http://pokeviperbadass.proboards.com/") }
-        if ((oldmessage.indexOf("shock") != -1) || (oldmessage.indexOf("3600") != -1)) { message.channel.send("\nShock3600's stats: http://rebrand.ly/shock3600stats") }
+        if ((oldmessage.indexOf("shock") != -1) || (oldmessage.indexOf("3600") != -1)) { message.channel.send("\nShock3600's stats: https://forum.pokemonurpg.com/showthread.php?tid=10434") }
         if (oldmessage.indexOf("best ") != -1) { message.channel.send("\nTheVeryBest's stats: https://forum.pokemonurpg.com/showthread.php?tid=10447&pid=130885#pid130885") }
         if (oldmessage.indexOf("louise") != -1) { message.channel.send("\nlouise's stats: https://forum.pokemonurpg.com/showthread.php?tid=10448&pid=130898#pid130898") }
         if ((oldmessage.indexOf("luck") != -1) || (oldmessage.indexOf(" lg ") != -1)) { message.channel.send("\nLuckgandor's stats: https://forum.pokemonurpg.com/showthread.php?tid=9250") }
@@ -244,6 +244,7 @@ function oras(message) {
 function rank(message) {
     if (lowmessage.indexOf(",rank ") == 0) {
         if (lowmessage.split(" ")[1]) {
+            var found = false;
             const rankpoke = lowmessage.split(" ")[1]
             let pokemonlist = ""
             try { pokemonlist = fs.readFileSync("ranks.txt", "utf8") } catch (err) {
@@ -255,38 +256,47 @@ function rank(message) {
                 if (rankpoke.indexOf("nidoran") != -1) {
                     themessage = "Female Nidoran is a Simple! You'll need to write 5,000-10,000 characters or have your art pass at a Simple rank!\nFemale Nidoran can also be be found in the Pokemart!\nMale Nidoran is a Medium! You'll need to write 10,000-20,000 characters or have your art pass at Medium rank!"
                     message.channel.send(themessage)
+                    found = true
                     break
                 }
                 if (rankpoke == "muk") {
                     message.channel.send("That's a Complex! You'll need to write 30,000-40,000 characters or have your art pass at Complex rank!")
+                    found = true
                     break
                 }
                 if (rankpoke == "abra") {
                     message.channel.send("That's a Complex! You'll need to write 30,000-40,000 characters or have your art pass at Complex rank!")
+                    found = true
                     break
                 }
                 if (rankpoke.indexOf("easiest") != -1) {
                     message.channel.send(pokemonlists[0])
+                    found = true
                     break
                 }
                 if (rankpoke.indexOf("simple") != -1) {
                     message.channel.send(pokemonlists[1])
+                    found = true
                     break
                 }
                 if (rankpoke.indexOf("medium") != -1) {
                     message.channel.send(pokemonlists[2])
+                    found = true
                     break
                 }
                 if (rankpoke.indexOf("hard") != -1) {
                     message.channel.send(pokemonlists[3])
+                    found = true
                     break
                 }
                 if (rankpoke.indexOf("complex") != -1) {
                     message.channel.send(pokemonlists[4])
+                    found = true
                     break
                 }
                 if (rankpoke.indexOf("demanding") != -1) {
                     message.channel.send(pokemonlists[5])
+                    found = true
                     break
                 }
                 if (rankpoke.indexOf("merciless") != -1) {
@@ -299,6 +309,7 @@ function rank(message) {
                 }
                 if (rankpoke.indexOf("legendary") != -1) {
                     message.channel.send(pokemonlists[8])
+                    found = true
                     break
                 }
                 if (pokemonlists[x].toLowerCase().indexOf(rankpoke) != -1) {
@@ -312,6 +323,7 @@ function rank(message) {
                     if (x == 7) themessage = "That's a Stupefying! You'll need to write 65,000-75,000 characters or have your art pass at Stupefying rank!"
                     if (x == 8) themessage = "That's a Legendary! You'll need to earn the equivalent of $500,000 through your stories or art!"
                     if (x == 9) themessage = "That's mine!"
+                    found = true
                     try { pokemonlist = fs.readFileSync("mart.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my mart file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
                     }
@@ -323,6 +335,9 @@ function rank(message) {
                     message.channel.send(themessage)
                     break
                 }
+            }
+            if (!found) {
+                message.channel.send("I'm sorry, I was unable to find " + message.cleanContent.split(" ")[1] + ". If you were searching a Pokémon, please ensure it is unevolved and that you spelled it right.  If you were searching a rank, the categories are Easiest, Simple, Medium, Hard, Complex, Demanding, and Legendary.")
             }
         }
     }
@@ -948,9 +963,10 @@ function effectiveness(message) {
                 + damage[16] + 'x Dragon Damage\n'
                 + damage[17] + 'x Dark Damage';
                 message.channel.send(effectiveMessage);
-                break;
+                return;
             }
         }
+        message.channel.send("I'm afraid " + pokemon + " is not in my types database.  Check that you spelled it correct, and remember my research in the Galar region isn't yet complete.")
     }
 }
 
@@ -1151,7 +1167,7 @@ function help(message) {
             message.channel.send("In <#401543302710689793> or via DM, I will attempt to parse cards.  [[CARDNAME|SETCODE]] will give an image of CARDNAME from SETCODE and [[CARDNAME|SETCODE|NUMBER]] will give an embed with CARDNAME #NUMBER in SETCODE.  For both of these, the parameters must be exact (though the latter isn't case sensitive).  Multiple cards in the same message should all be parsed.")
         }
         else {
-            message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given Pokémon.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of allowed wildcards.\nSee `,help link` for quick link options.\nSee `,help convert` for converting base stats to URPG stats.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
+            message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help link` for quick link options.\nSee `,help convert` for converting base stats to URPG stats.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**Other commands:**\nSee `,help mention` for details on how to mention different roles.\nSee `,help restricted` for all other restricted commands.\nSee `,help role` for information about roles you can assign to yourself.\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.")
         }
     }
 }
@@ -1643,6 +1659,12 @@ async function disboardTimer(message) {
     }
 }
 
+function wrongBot(message) {
+    if (lowmessage.indexOf(",dex ") == 0 || lowmessage.indexOf(",d ") == 0 || lowmessage.indexOf(",move ") == 0 || lowmessage.indexOf(",item ") == 0 || lowmessage.indexOf(",role ") == 0 || lowmessage.indexOf(",ability ") == 0 || lowmessage.indexOf(",metronome") == 0 || lowmessage.indexOf(",eot") == 0 || lowmessage.indexOf(",veto") == 0 || lowmessage.indexOf(",speed") == 0 || lowmessage.indexOf(",ladder") == 0 || lowmessage.indexOf(",elo") == 0 || lowmessage.indexOf(",weight ") == 0) {
+        message.channel.send("This command is handled by my colleague, <@574745413773426688>, who is more responsive to `!` than `,`.  See `!help` or `!help COMMAND` for more info.");
+    }
+}
+
 bot.on('error', console.error);
 
 bot.on("message", async function(message) {
@@ -1691,6 +1713,8 @@ bot.on("message", async function(message) {
     await randWeather(message);
 
     await randTerrain(message);
+
+    await wrongBot(message);
 
     if (message.guild === null) {
     	
