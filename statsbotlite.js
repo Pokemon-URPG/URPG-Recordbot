@@ -187,6 +187,8 @@ function stats(message) {
         if ((oldmessage.indexOf("jr") != -1) || (oldmessage.indexOf("junior") != -1) || (oldmessage.indexOf("pieandchips") != -1)) { message.channel.send("The Jr Trainer's stats: https://forum.pokemonurpg.com/showthread.php?tid=9255") }
         if (oldmessage.indexOf("mt. chimney") != -1) { message.channel.send("Shock3600's Mt. Chimney Gym stats: http://rebrand.ly/shock3600gym") }
         if (oldmessage.indexOf("rocco") != -1) { message.channel.send("Rocco's stats: https://forum.pokemonurpg.com/showthread.php?tid=10583") }
+        if ((oldmessage.indexOf("volcan") != -1) || (oldmessage.indexOf(" vf ") != -1)) { message.channel.send("VolcanFlame's stats: https://forum.pokemonurpg.com/showthread.php?tid=10586&pid=134054#pid134054") }
+        if ((oldmessage.indexOf("frozenchaos") != -1) || (oldmessage.indexOf(" fc ") != -1)) { message.channel.send("FrozenChaos' stats: https://forum.pokemonurpg.com/showthread.php?tid=10584") }
     }
 }
 
@@ -327,7 +329,11 @@ function rank(message) {
                     try { pokemonlist = fs.readFileSync("mart.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my mart file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
                     }
-                    if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) { themessage += "\nYou can also find it in the Pokemart!" }
+                    if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) {
+                        themessage += "\nYou can also find it in the Pokemart for ";
+                        let price = pokemonlist.substring(pokemonlist.indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0];
+                        themessage += price + "!";
+                    }
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
                     }
@@ -876,9 +882,10 @@ function stealthRock(message) {
                 srMessage += srdamage;
                 srMessage += "% damage!";
                 message.channel.send(srMessage);
-                break;
+                return;
             }
         }
+        message.channel.send("I'm afraid " + pokemon + " is not in my types database.  Check that you spelled it correct, and remember my research in the Galar region isn't yet complete.");
     }
 }
 
@@ -966,7 +973,7 @@ function effectiveness(message) {
                 return;
             }
         }
-        message.channel.send("I'm afraid " + pokemon + " is not in my types database.  Check that you spelled it correct, and remember my research in the Galar region isn't yet complete.")
+        message.channel.send("I'm afraid " + pokemon + " is not in my types database.  Check that you spelled it correct, and remember my research in the Galar region isn't yet complete.");
     }
 }
 
