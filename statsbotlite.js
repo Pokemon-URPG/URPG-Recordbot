@@ -333,14 +333,12 @@ function rank(message) {
                         themessage += "\nYou can also find it in the Pokemart";
                         let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0];
                         themessage += " for " + price + "!";
-                        if (message.guild.id == "531433553225842698") {
-                            message.channel.send("Index is " + pokemonlist.toLowerCase().indexOf(rankpoke) + " and full substring is " + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3));
-                        }
                     }
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
                     }
                     if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) { themessage += "\nYou can also find it in the Berry Store!" }
+                    if (themessage.indexOf("*") != -1) { themessage += "\nItalicized Pokémon are also available in the Pokémart!"; }
                     message.channel.send(themessage)
                     break
                 }
