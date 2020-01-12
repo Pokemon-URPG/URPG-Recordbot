@@ -333,7 +333,7 @@ function rank(message) {
                         themessage += "\nYou can also find it in the Pokemart";
                         if (message.guild.id == "531433553225842698") {
                             let price = pokemonlist.substring(pokemonlist.indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0];
-                            themessage += " for " price;
+                            themessage += " for " + price;
                             message.channel.send("Index is " + pokemonlist.indexOf(rankpoke) + " and full substring is " + pokemonlist.substring(pokemonlist.indexOf(rankpoke) + rankpoke.length + 3));
                         }
                         themessage += "!";
