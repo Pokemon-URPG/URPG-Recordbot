@@ -259,7 +259,7 @@ function rank(message) {
                     themessage = "Female Nidoran is a Simple! You'll need to write 5,000-10,000 characters or have your art pass at a Simple rank!\nFemale Nidoran can also be be found in the Pokemart!\nMale Nidoran is a Medium! You'll need to write 10,000-20,000 characters or have your art pass at Medium rank!"
                     message.channel.send(themessage)
                     found = true
-                    break
+                    return
                 }
                 if (rankpoke == "muk") {
                     message.channel.send("That's a Complex! You'll need to write 30,000-40,000 characters or have your art pass at Complex rank!")
@@ -272,27 +272,27 @@ function rank(message) {
                     break
                 }
                 if (rankpoke.indexOf("easiest") != -1) {
-                    message.channel.send(pokemonlists[0])
+                    message.channel.send(pokemonlists[0] + "\nItalicized Pokémon are also available in the Pokémart!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("simple") != -1) {
-                    message.channel.send(pokemonlists[1])
+                    message.channel.send(pokemonlists[1] + "\nItalicized Pokémon are also available in the Pokémart!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("medium") != -1) {
-                    message.channel.send(pokemonlists[2])
+                    message.channel.send(pokemonlists[2] + "\nItalicized Pokémon are also available in the Pokémart!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("hard") != -1) {
-                    message.channel.send(pokemonlists[3])
+                    message.channel.send(pokemonlists[3] + "\nItalicized Pokémon are also available in the Pokémart!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("complex") != -1) {
-                    message.channel.send(pokemonlists[4])
+                    message.channel.send(pokemonlists[4] + "\nItalicized Pokémon are also available in the Pokémart!")
                     found = true
                     break
                 }
@@ -338,7 +338,6 @@ function rank(message) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
                     }
                     if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) { themessage += "\nYou can also find it in the Berry Store!" }
-                    if (themessage.indexOf("*") != -1) { themessage += "\nItalicized Pokémon are also available in the Pokémart!"; }
                     message.channel.send(themessage)
                     break
                 }
