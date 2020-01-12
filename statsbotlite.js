@@ -331,12 +331,11 @@ function rank(message) {
                     }
                     if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) {
                         themessage += "\nYou can also find it in the Pokemart";
+                        let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0];
+                        themessage += " for " + price + "!";
                         if (message.guild.id == "531433553225842698") {
-                            let price = pokemonlist.substring(pokemonlist.indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0];
-                            themessage += " for " + price;
-                            message.channel.send("Index is " + pokemonlist.indexOf(rankpoke) + " and full substring is " + pokemonlist.substring(pokemonlist.indexOf(rankpoke) + rankpoke.length + 3));
+                            message.channel.send("Index is " + pokemonlist.toLowerCase().indexOf(rankpoke) + " and full substring is " + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3));
                         }
-                        themessage += "!";
                     }
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
