@@ -1686,6 +1686,89 @@ async function unpinMessage(message, messageAuthor) {
     }
 }
 
+async function deleteReporter(message) {
+    if (message.guild === null) {return;}
+    if (!message.guild.available) {return;}
+    if (message.guild.id != urpgServer) {return;}
+    if (message.author.id == "461133571034316810") {return;}
+    var channelToNotify = logsChannel;
+    if (message.channel.id == logsChannel && message.author.id == "531429270451519490") {
+        await message.channel.send("One of my logs was deleted from here.");
+        return;
+    }
+    if (message.channel.id == "261370056246689792") {channelToNotify = "136595690980638720";}
+    if (message.channel.id == "294334136355651584") {channelToNotify = "294333921200701450";}
+    if (message.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
+    if (message.channel.id == "253364200955445248") {channelToNotify = "524695540995325971";}
+    if (message.channel.id == "254207242780409857") {channelToNotify = "254207242780409857";}
+    if (message.channel.id == "136595690980638720") {channelToNotify = "136595690980638720";}
+    if (message.channel.id == "294333921200701450") {channelToNotify = "294333921200701450";}
+    if (message.channel.id == "524695540995325971") {channelToNotify = "524695540995325971";}
+    if (message.channel.id == "440004235635982336") {return;}
+    if (message.channel.id == botCommands && message.cleanContent.indexOf("p!") == 0) {return;}
+    if (message.channel.name == "judge-test") {channelToNotify = "294334136355651584";}
+    if (message.channel.name == "ref-test") {channelToNotify = "261370056246689792";}
+    if (message.channel.name == "ranger-test") {channelToNotify = "253364200955445248";}
+    if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
+        if (message.channel.name.indexOf("war") != -1) {
+            channelToNotify = "386808630709714954";
+        }
+        if (message.channel.name.indexOf("boss") != -1) {
+            channelToNotify = "386804780615335947";
+        }
+    }
+    const entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
+    let user = ""
+    var botDeleterNotFound = false;
+    if (entry.extra.channel.id === message.channel.id
+      && (entry.target.id === message.author.id)
+      && (entry.createdTimestamp > (Date.now() - 5000))
+      && (entry.extra.count >= 1)) {
+        user = entry.executor.username;
+    } else {
+        if (message.channel.id == "552715426979905547") {return;}
+        user = message.author.username;
+        botDeleterNotFound = true;
+    }
+    var deleteLog = ""
+    if (message.cleanContent != "") {
+        deleteLog += "The following";
+    } else {
+        deleteLog += "A textless";
+    }
+    deleteLog += " message by ";
+    deleteLog += message.author.username;
+    deleteLog += " (id ";
+    deleteLog += message.author.id;
+    deleteLog += ")";
+    var attachmessage = "";
+    var attaches = message.attachments.array();
+    var attachnames = "";
+    for (i = 0; i < attaches.length; i++) {
+        if (i == attaches.length -1 && i != 0) {attachnames += "and ";}
+        attachnames += attaches[i].proxyURL
+        if (i != attaches.length -1 && attaches.length != 2) {attachnames += ", ";}
+        if (i != attaches.length -1 && attaches.length == 2) {attachnames += " ";}
+    }
+    if (attaches.length > 1) {attachmessage = " with attachments " + attachnames;}
+    if (attaches.length == 1) {attachmessage = " with an attachment " + attachnames;}
+    deleteLog += attachmessage;
+    deleteLog += " was deleted from <#";
+    deleteLog += message.channel.id;
+    if (message.author.bot && botDeleterNotFound) {
+        deleteLog += ">"
+    } else {
+        deleteLog += "> by ";
+        deleteLog += user;
+    }
+    if (message.cleanContent != "") {
+        deleteLog += ": ```";
+        deleteLog += message.cleanContent.replace(/```/g, "​`​`​`​");
+        deleteLog += "```";
+    }
+    bot.channels.get(channelToNotify).send(deleteLog);
+}
+
 bot.on('error', console.error);
 
 bot.on("message", async function(message) {
@@ -1784,86 +1867,14 @@ bot.on("message", async function(message) {
 })
 
 bot.on("messageDelete", async function(message) {
-    if (message.guild === null) {return;}
-    if (!message.guild.available) {return;}
-    if (message.guild.id != urpgServer) {return;}
-    if (message.author.id == "461133571034316810") {return;}
-    var channelToNotify = logsChannel;
-    if (message.channel.id == logsChannel && message.author.id == "531429270451519490") {
-        await message.channel.send("One of my logs was deleted from here.");
-        return;
+    deleteReporter(message);
+})
+
+bot.on("messageDeleteBulk", async function(messages) {
+    deletions = await messages.array();
+    for (i = 0; i < deletions.length; i++) {
+        await deleteReporter(deletions[i]);
     }
-    if (message.channel.id == "261370056246689792") {channelToNotify = "136595690980638720";}
-    if (message.channel.id == "294334136355651584") {channelToNotify = "294333921200701450";}
-    if (message.channel.id == "384871044676190210") {channelToNotify = "384871044676190210";}
-    if (message.channel.id == "253364200955445248") {channelToNotify = "524695540995325971";}
-    if (message.channel.id == "254207242780409857") {channelToNotify = "254207242780409857";}
-    if (message.channel.id == "136595690980638720") {channelToNotify = "136595690980638720";}
-    if (message.channel.id == "294333921200701450") {channelToNotify = "294333921200701450";}
-    if (message.channel.id == "524695540995325971") {channelToNotify = "524695540995325971";}
-    if (message.channel.id == "440004235635982336") {return;}
-    if (message.channel.id == botCommands && message.cleanContent.indexOf("p!") == 0) {return;}
-    if (message.channel.name == "judge-test") {channelToNotify = "294334136355651584";}
-    if (message.channel.name == "ref-test") {channelToNotify = "261370056246689792";}
-    if (message.channel.name == "ranger-test") {channelToNotify = "253364200955445248";}
-    if (message.channel.parentID == "530600551763673088" && message.channel.id != "386804780615335947" && message.channel.id != "386808630709714954") {
-        if (message.channel.name.indexOf("war") != -1) {
-            channelToNotify = "386808630709714954";
-        }
-        if (message.channel.name.indexOf("boss") != -1) {
-            channelToNotify = "386804780615335947";
-        }
-    }
-    const entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
-    let user = ""
-    var botDeleterNotFound = false;
-    if (entry.extra.channel.id === message.channel.id
-      && (entry.target.id === message.author.id)
-      && (entry.createdTimestamp > (Date.now() - 5000))
-      && (entry.extra.count >= 1)) {
-        user = entry.executor.username;
-    } else {
-        if (message.channel.id == "552715426979905547") {return;}
-        user = message.author.username;
-        botDeleterNotFound = true;
-    }
-    var deleteLog = ""
-    if (message.cleanContent != "") {
-        deleteLog += "The following";
-    } else {
-        deleteLog += "A textless";
-    }
-    deleteLog += " message by ";
-    deleteLog += message.author.username;
-    deleteLog += " (id ";
-    deleteLog += message.author.id;
-    deleteLog += ")";
-    var attachmessage = "";
-    var attaches = message.attachments.array();
-    var attachnames = "";
-    for (i = 0; i < attaches.length; i++) {
-        if (i == attaches.length -1 && i != 0) {attachnames += "and ";}
-        attachnames += attaches[i].proxyURL
-        if (i != attaches.length -1 && attaches.length != 2) {attachnames += ", ";}
-        if (i != attaches.length -1 && attaches.length == 2) {attachnames += " ";}
-    }
-    if (attaches.length > 1) {attachmessage = " with attachments " + attachnames;}
-    if (attaches.length == 1) {attachmessage = " with an attachment " + attachnames;}
-    deleteLog += attachmessage;
-    deleteLog += " was deleted from <#";
-    deleteLog += message.channel.id;
-    if (message.author.bot && botDeleterNotFound) {
-        deleteLog += ">"
-    } else {
-        deleteLog += "> by ";
-        deleteLog += user;
-    }
-    if (message.cleanContent != "") {
-        deleteLog += ": ```";
-        deleteLog += message.cleanContent.replace(/```/g, "​`​`​`​");
-        deleteLog += "```";
-    }
-    bot.channels.get(channelToNotify).send(deleteLog);
 })
 
 bot.on("messageUpdate", async function(oldMessage, newMessage) {
