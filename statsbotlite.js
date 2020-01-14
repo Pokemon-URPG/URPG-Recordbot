@@ -1069,7 +1069,7 @@ function wildcards(message) {
             case "poison": wclist = "Gliscor, Accelgor, Breloom"; break;
             case "ground": wclist = "Duraludon, Tyranitar, Cacturne"; break;
             case "flying": wclist = "Volcarona, Sirfetch'd, Decidueye"; break;
-            case "psychic": wclist = "Kanto-Ninetales, Darmanitan (Zen Mode only), Mienshao, Noctowl"; break;
+            case "psychic": wclist = "Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Noctowl"; break;
             case "bug": wclist = "Kabutops, Flygon, Falinks"; break;
             case "rock": wclist = "Sableye, Torterra, Steelix"; break;
             case "dragon": wclist = "Charizard, Gyarados, Ampharos, Sceptile"; break;
@@ -1077,7 +1077,7 @@ function wildcards(message) {
             case "steel": wclist = "Blastoise, Vikavolt, Dhelmise"; break;
             case "dark": wclist = "Gengar, Gyarados, Gothitelle"; break;
             case "fairy": wclist = "Delphox, Altaria, Blissey Line"; break;
-            default: wclist = "Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Salamence, Leafeon, Darmanitan-Galar (Zen Mode only), Solrock\nWater: Dragalge, Beartic, Hoenn Fossils\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowpoke Line, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Kanto-Ninetales, Darmanitan (Zen Mode only), Mienshao, Noctowl\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom, Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line";
+            default: wclist = "Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Salamence, Leafeon, Darmanitan-Galar (Zen Mode only), Solrock\nWater: Dragalge, Beartic, Hoenn Fossils\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowpoke Line, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Noctowl\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom, Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line";
         }
         message.channel.send(wclist);
     }
