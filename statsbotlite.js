@@ -57,6 +57,7 @@ bot.on("ready", async function() {
         bumpNotification();
     }, 7200000);
     var memberMe = await bot.guilds.get(urpgServer).fetchMember(bot.user);
+    lowmessage = ",fixorder";
     await fixOrder(null, memberMe);
     statusMessage();
 })
