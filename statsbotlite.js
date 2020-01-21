@@ -1695,7 +1695,7 @@ async function newProject(message) {
 }
 
 async function fixOrder(channel, messageAuthor) {
-    if (lowmessage.indexOf(",fixorder") == 0 && (messageAuthor.roles.has("584764993044611075") || messageAuthor.hasPermission("MANAGE_CHANNELS")) {
+    if (lowmessage.indexOf(",fixorder") == 0 && (messageAuthor.roles.has("584764993044611075") || messageAuthor.hasPermission("MANAGE_CHANNELS"))) {
         await bot.channels.get(judgeTestChannel).setPosition(1);//judgingtest
         await bot.channels.get(judgingChiefsChannel).setPosition(1);//judgingchiefs
         await bot.channels.get("293899148112035840").setPosition(1);//judgingyou
