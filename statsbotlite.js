@@ -67,6 +67,7 @@ function statusMessage() {
     var movelist = fs.readFileSync("rse.txt", "utf8").split("\r\n");
     var pokemon = allpokes[Math.floor(Math.random() * allpokes.length)].split("/")[0];
     var activityNum = Math.floor(Math.random() * 60);
+    let duration = Math.floor(Math.random() * 600000)
     //if you're reading this, don't spoil the surprise of the weird ones please.  But feel free to suggest additional options!
     switch (activityNum) {
         case 0: activity = " in a battle"; break;
@@ -98,7 +99,7 @@ function statusMessage() {
         case 26: activity = " exploring Great Lakes"; break;
         case 27: activity = " exploring Botanical Gardens"; break;
         case 28: activity = " exploring Wildflower Prairie"; break;
-        case 29: activity = " exploring Outer Havens"; break;
+        case 29: activity = " exploring Outer Heavens"; break;
         case 30: activity = " exploring Abandoned Power Plant"; break;
         case 31: activity = " exploring Meteor Valley"; break;
         case 32: activity = " exploring Mt. Oktori"; break;
@@ -130,10 +131,11 @@ function statusMessage() {
         case 58: activity = " in a raid"; break;
         case 59: activity = " ignoring me"; break;
     }
+    bot.channels.get("669306624925499412").send("Watching " + pokemon + activity);
     bot.user.setActivity(pokemon + activity, { type: 'WATCHING'});
     setTimeout(function() {
         statusMessage();
-    }, 600000)
+    }, duration)
 }
 
 async function payDay(message, messageAuthor) {
@@ -1272,8 +1274,11 @@ function help(message) {
         else if (lowmessage.indexOf("magic") != -1 || lowmessage.indexOf("mtg") != -1) {
             message.channel.send("In <#401543302710689793> or via DM, I will attempt to parse cards.  [[CARDNAME|SETCODE]] will give an image of CARDNAME from SETCODE and [[CARDNAME|SETCODE|NUMBER]] will give an embed with CARDNAME #NUMBER in SETCODE.  For both of these, the parameters must be exact (though the latter isn't case sensitive).  Multiple cards in the same message should all be parsed.")
         }
+        else if (lowmessage.indexOf("avatar") != -1) {
+            message.channel.send("Send `,avatar @PERSON` to get PERSON's avatar URL, `,avatar ID` to get the avatar URL of the person with ID (must be in this server), or just `,avatar` to get your own.");
+        }
         else {
-            message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
+            message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
         }
     }
 }
@@ -1867,6 +1872,21 @@ async function deleteReporter(message) {
     bot.channels.get(channelToNotify).send(deleteLog);
 }
 
+async function avatar(message) {
+    if (lowmessage.indexOf(",avatar") == 0) {
+        if (message.mentions.users.size != 0) {
+            message.channel.send(message.mentions.users.first.displayAvatarURL);
+        }
+        else if (!isNaN(lowmessage.split(" ")[1])) { 
+            var target = await bot.fetchUser(lowmessage.split(" ")[1]);
+            await message.channel.send(target.displayAvatarURL);
+        }
+        else {
+            message.channel.send(message.author.displayAvatarURL);
+        }
+    }
+}
+
 bot.on('error', console.error);
 
 bot.on("message", async function(message) {
@@ -1917,6 +1937,8 @@ bot.on("message", async function(message) {
     await randTerrain(message);
 
     await wrongBot(message);
+
+    await avatar(message);
 
     if (message.guild === null) {
     	
