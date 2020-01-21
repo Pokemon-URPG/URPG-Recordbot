@@ -65,7 +65,7 @@ bot.on("ready", async function() {
 function statusMessage() {
     var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
     var movelist = fs.readFileSync("rse.txt", "utf8").split("\r\n");
-    var pokemon = allpokes[Math.floor(Math.random() * allpokes.length)];
+    var pokemon = allpokes[Math.floor(Math.random() * allpokes.length)].split("/")[0];
     var activityNum = Math.floor(Math.random() * 60);
     //if you're reading this, don't spoil the surprise of the weird ones please.  But feel free to suggest additional options!
     switch (activityNum) {
@@ -117,8 +117,8 @@ function statusMessage() {
         case 45: activity = " fighting Team Snagem"; break;
         case 46: activity = " fighting Team Cipher"; break;
         case 47: activity = " in a dancing competition"; break;
-        case 48: activity = " befriending " + allpokes[Math.floor(Math.random() * allpokes.length)]; break;
-        case 49: activity = " battling " + allpokes[Math.floor(Math.random() * allpokes.length)]; break;
+        case 48: activity = " befriending " + allpokes[Math.floor(Math.random() * allpokes.length)].split("/")[0]; break;
+        case 49: activity = " battling " + allpokes[Math.floor(Math.random() * allpokes.length)].split("/")[0]; break;
         case 50: activity = " using " + movelist[Math.floor(Math.random() * (movelist.length / 2)) * 2].split(" | ")[0]; break;
         case 51: activity = " learning " + movelist[Math.floor(Math.random() * (movelist.length / 2)) * 2].split(" | ")[0]; break;
         case 52: activity = " examining a type chart"; break;
