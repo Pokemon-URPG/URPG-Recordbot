@@ -1104,9 +1104,9 @@ function effectiveness(message) {
         }
         //var fs = require('fs');
         var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
+        var covers = [0, 0, 0, 0, 0, 0]
         for(var x = 0; x < allpokes.length; x++)
         {
-            var covers = [0, 0, 0, 0, 0, 0]
             var damage = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1]
             switch(allpokes[x].split('/')[1])
             {
