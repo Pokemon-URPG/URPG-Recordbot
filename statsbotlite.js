@@ -12,7 +12,7 @@ logger.add(logger.transports.Console, {
 logger.level = "debug"
 // Initialize Discord Bot
 var bot = new Discord.Client({ disableEveryone: true })
-var badWords = [" fag", "fag ", "retard", "cuck", "slut", "kys"];
+var badWords = [" fag", "fag ", "retard", "cuck", "slut", "kys", "trigger"];
 var bumpTime;
 var disBumpTime = null;
 var lowmessage;
@@ -1075,6 +1075,113 @@ function effectiveness(message) {
     }
 }
 
+function effectiveness(message) {
+    if(lowmessage.indexOf(",coverage ") == 0)
+    {
+        var types = lowmessage.split(" ");
+        for (var i = 1; i < types.length; i++) {
+            switch (types[i]) {
+                case "normal": types[i] = 0; break;
+                case "grass": types[i] = 1; break;
+                case "fire": types[i] = 2; break;
+                case "water": types[i] = 3; break;
+                case "bug": types[i] = 4; break;
+                case "poison": types[i] = 5; break;
+                case "flying": types[i] = 6; break;
+                case "electric": types[i] = 7; break;
+                case "ground": types[i] = 8; break;
+                case "fairy": types[i] = 9; break;
+                case "fighting": types[i] = 10; break;
+                case "psychic": types[i] = 11; break;
+                case "rock": types[i] = 12; break;
+                case "steel": types[i] = 13; break;
+                case "ice": types[i] = 14; break;
+                case "ghost": types[i] = 15; break;
+                case "dragon": types[i] = 16; break;
+                case "dark": types[i] = 17; break;
+                default: types[i] = 18; break;
+            }
+        }
+        //var fs = require('fs');
+        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
+        for(var x = 0; x < allpokes.length; x++)
+        {
+            var covers = [0, 0, 0, 0, 0, 0]
+            var damage = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1]
+            switch(allpokes[x].split('/')[1])
+            {
+                //normal0, grass1, fire2, water3, bug4, poison5
+                //NM, GR, FR, W, B, PO
+                //flying6, electric7, ground8, fairy9, fighting10, psychic11
+                //FL, E, GD, FA, FI, PS
+                //rock12, steel13, ice14, ghost15, dragon16, dark17
+                //R, S, I, GH, DR, DK
+                case "NM": damage[10] *= 2; damage[15] *= 0; break;
+                case "GR": damage[1] /= 2; damage[2] *= 2; damage[3] /= 2; damage[4] *= 2; damage[5] *= 2; damage[6] *= 2; damage[7] /= 2; damage[8] /= 2; damage[14] *= 2; break;
+                case "FR": damage[1] /= 2; damage[2] /= 2; damage[3] *= 2; damage[4] /= 2; damage[8] *= 2; damage[9] /= 2; damage[12] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+                case "W": damage[1] *= 2; damage[2] /= 2; damage[3] /= 2; damage[7] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+                case "B": damage[1] /= 2; damage[2] *= 2; damage[6] *= 2; damage[8] /= 2; damage[10] /= 2; damage[12] *= 2; break;
+                case "PO": damage[1] /= 2; damage[4] /= 2; damage[5] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] /= 2; damage[11] *= 2; break;
+                case "FL": damage[1] /= 2; damage[4] /= 2; damage[7] *= 2; damage[8] *= 0; damage[10] /= 2; damage[12] *= 2; damage[14] *= 2; break;
+                case "E": damage[6] /= 2; damage[7] /= 2; damage[8] *= 2; damage[13] /= 2; break;
+                case "GD": damage[1] *= 2; damage[3] *= 2; damage[5] /= 2; damage[7] *= 0; damage[12] /= 2; damage[14] *= 2; break;
+                case "FA": damage[4] /= 2; damage[5] *= 2; damage[10] /= 2; damage[13] *= 2; damage[16] *= 0; damage[17] /= 2; break;
+                case "FI": damage[4] /= 2; damage[6] *= 2; damage[9] *= 2; damage[11] *= 2; damage[12] /= 2; damage[17] /= 2; break;
+                case "PS": damage[4] *= 2; damage[10] /= 2; damage[11] /= 2; damage[15] *= 2; damage[17] *= 2; break;
+                case "R": damage[0] /= 2; damage[1] *= 2; damage[2] /= 2; damage[3] *= 2; damage[5] /= 2; damage[6] /= 2; damage[8] *= 2; damage[10] *= 2; damage[13] *= 2; break;
+                case "S": damage[0] /= 2; damage[1] /= 2; damage[2] *= 2; damage[4] /= 2; damage[5] *= 0; damage[6] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] *= 2; damage[11] /= 2; damage[12] /= 2; damage[13] /= 2; damage[14] /= 2; damage[16] /= 2; break;
+                case "I": damage[2] *= 2; damage[10] *= 2; damage[12] *= 2; damage[13] *= 2; damage[14] /= 2; break;
+                case "GH": damage[0] *= 0; damage[4] /= 2; damage[5] /= 2; damage[10] *= 0; damage[15] *= 2; damage[17] *= 2; break;
+                case "DR": damage[1] /= 2; damage[2] /= 2; damage[3] /= 2; damage[7] /= 2; damage[9] *= 2; damage[14] *= 2; damage[16] *= 2; break;
+                case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
+            }
+            switch(allpokes[x].split('/')[2])
+            {
+                //same as first
+                case "NM": damage[10] *= 2; damage[15] *= 0; break;
+                case "GR": damage[1] /= 2; damage[2] *= 2; damage[3] /= 2; damage[4] *= 2; damage[5] *= 2; damage[6] *= 2; damage[7] /= 2; damage[8] /= 2; damage[14] *= 2; break;
+                case "FR": damage[1] /= 2; damage[2] /= 2; damage[3] *= 2; damage[4] /= 2; damage[8] *= 2; damage[9] /= 2; damage[12] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+                case "W": damage[1] *= 2; damage[2] /= 2; damage[3] /= 2; damage[7] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+                case "B": damage[1] /= 2; damage[2] *= 2; damage[6] *= 2; damage[8] /= 2; damage[10] /= 2; damage[12] *= 2; break;
+                case "PO": damage[1] /= 2; damage[4] /= 2; damage[5] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] /= 2; damage[11] *= 2; break;
+                case "FL": damage[1] /= 2; damage[4] /= 2; damage[7] *= 2; damage[8] *= 0; damage[10] /= 2; damage[12] *= 2; damage[14] *= 2; break;
+                case "E": damage[6] /= 2; damage[7] /= 2; damage[8] *= 2; damage[13] /= 2; break;
+                case "GD": damage[1] *= 2; damage[3] *= 2; damage[5] /= 2; damage[7] *= 0; damage[12] /= 2; damage[14] *= 2; break;
+                case "FA": damage[4] /= 2; damage[5] *= 2; damage[10] /= 2; damage[13] *= 2; damage[16] *= 0; damage[17] /= 2; break;
+                case "FI": damage[4] /= 2; damage[6] *= 2; damage[9] *= 2; damage[11] *= 2; damage[12] /= 2; damage[17] /= 2; break;
+                case "PS": damage[4] *= 2; damage[10] /= 2; damage[11] /= 2; damage[15] *= 2; damage[17] *= 2; break;
+                case "R": damage[0] /= 2; damage[1] *= 2; damage[2] /= 2; damage[3] *= 2; damage[5] /= 2; damage[6] /= 2; damage[8] *= 2; damage[10] *= 2; damage[13] *= 2; break;
+                case "S": damage[0] /= 2; damage[1] /= 2; damage[2] *= 2; damage[4] /= 2; damage[5] *= 0; damage[6] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] *= 2; damage[11] /= 2; damage[12] /= 2; damage[13] /= 2; damage[14] /= 2; damage[16] /= 2; break;
+                case "I": damage[2] *= 2; damage[10] *= 2; damage[12] *= 2; damage[13] *= 2; damage[14] /= 2; break;
+                case "GH": damage[0] *= 0; damage[4] /= 2; damage[5] /= 2; damage[10] *= 0; damage[15] *= 2; damage[17] *= 2; break;
+                case "DR": damage[1] /= 2; damage[2] /= 2; damage[3] /= 2; damage[7] /= 2; damage[9] *= 2; damage[14] *= 2; damage[16] *= 2; break;
+                case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
+            }
+            var effective = -1
+            for (var i = 1; i < types.length; i++) {
+                if (damage[types[i]] > effective) { effective = damage[types[i]]; }
+            }
+            switch (effective) {
+                case -1: message.channel.send("It seems that none of the types you entered were valid. Please format as `,coverage type1 type2 type3...` and be sure they're all spelled correctly.");
+                case 0: covers[0]++; break;
+                case 0.25: covers[1]++; break;
+                case 0.5: covers[2]++; break;
+                case 1: covers[3]++; break;
+                case 2: covers[4]++; break;
+                case 4: covers[5]++; break;
+            }
+        }
+        var coverMessage = "That spread will hit:";
+        if (covers[5] != 0) { coverMessage += "\n" + covers[5] + " Pokémon for quaruple damage"; }
+        if (covers[4] != 0) { coverMessage += "\n" + covers[4] + " Pokémon for double damage"; }
+        if (covers[3] != 0) { coverMessage += "\n" + covers[3] + " Pokémon for neutral damage"; }
+        if (covers[2] != 0) { coverMessage += "\n" + covers[2] + " Pokémon for half damage"; }
+        if (covers[1] != 0) { coverMessage += "\n" + covers[1] + " Pokémon for quarter damage"; }
+        if (covers[0] != 0) { coverMessage += "\n" + covers[0] + " Pokémon for no damage"; }
+        message.channel.send(coverMessage);
+    }
+}
+
 function beatUp(message) {
     if(lowmessage.indexOf(",beatup ") == 0)
     {
@@ -1278,7 +1385,7 @@ function help(message) {
             message.channel.send("Send `,avatar @PERSON` to get PERSON's avatar URL, `,avatar ID` to get the avatar URL of the person with ID (must be in this server), or just `,avatar` to get your own.");
         }
         else {
-            message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
+            message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
         }
     }
 }
@@ -1619,7 +1726,7 @@ async function judgeTest(message, messageAuthor) {
             VIEW_CHANNEL: true,
             MANAGE_ROLES: true
         })
-        if (message.mentions.users.length != 0) {
+        if (message.mentions.users.size != 0) {
             await testroom.overwritePermissions(message.mentions.users.first(), {
                 VIEW_CHANNEL: true
             })
@@ -1638,7 +1745,7 @@ async function refTest(message, messageAuthor) {
             VIEW_CHANNEL: true,
             MANAGE_ROLES: true
         })
-        if (message.mentions.users.length != 0) {
+        if (message.mentions.users.size != 0) {
             await testroom.overwritePermissions(message.mentions.users.first(), {
                 VIEW_CHANNEL: true
             })
@@ -1657,7 +1764,7 @@ async function rangerTest(message, messageAuthor) {
             VIEW_CHANNEL: true,
             MANAGE_ROLES: true
         })
-        if (message.mentions.users.length != 0) {
+        if (message.mentions.users.size != 0) {
             await testroom.overwritePermissions(message.mentions.users.first(), {
                 VIEW_CHANNEL: true
             })
