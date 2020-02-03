@@ -408,7 +408,7 @@ function rank(message) {
                     break
                 }
                 if (rankpoke.indexOf("legendary") != -1) {
-                    message.channel.send("Tier 2:\n" + pokemonlists[8] + "\n\nTier 1:" + pokemonlists[9])
+                    message.channel.send("Tier 2:\n" + pokemonlists[8] + "\n\nTier 1:\n" + pokemonlists[9])
                     found = true
                     break
                 }
@@ -1897,16 +1897,16 @@ function wrongBot(message) {
 
 async function substituteBot(channel) {
     kauri = await bot.fetchUser("574745413773426688");
-    if ((kauri.presence.status == "offline" || channel.guild == null || channel.guild.id != urpgServer) && lowmessage.indexOf("!d ")) {
+    if ((kauri.presence.status == "offline" || channel.guild == null || channel.guild.id != urpgServer) && lowmessage.indexOf("!d ") == 0) {
         var dieToRoll = lowmessage.split(" ");
         var results = "<@574745413773426688> seems to be offline.  As your substitute dice roller, I decree you have rolled ";
         for (var x = 1; x < dieToRoll.length; x++) {
             dieToRoll[x] = dieToRoll[x].replace(/, /g, " ").replace(/,/g, "d");
-            if (!isNaN(dieToRoll[x])) {
+            if (!isNaN(dieToRoll[x]) && dieToRoll[x] > 1) {
                 var roll = Math.floor(Math.random() * dieToRoll[x]);
                 results += "a " + roll + " on a d" + dieToRoll[x];
             }
-            else if (!isNaN(dieToRoll[x].split("d")[0]) && !isNaN(dieToRoll[x].split("d")[1])) {
+            else if (dieToRoll[x].indexOf("d") != -1 && !isNaN(dieToRoll[x].split("d")[0]) && !isNaN(dieToRoll[x].split("d")[1])) {
                 for (var y = 0; y < dieToRoll[x].split("d")[0]; y++) {
                     var roll = Math.floor(Math.random() * dieToRoll[x].split("d")[1]);
                     results += roll
