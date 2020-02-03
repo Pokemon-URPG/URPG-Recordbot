@@ -1905,7 +1905,7 @@ function substituteBot(channel) {
             dieToRoll[x] = dieToRoll[x].replace(/, /g, " ").replace(/,/g, "d");
             if (!isNaN(dieToRoll[x])) {
                 var roll = Math.floor(Math.random() * dieToRoll[x]);
-                results += "a " roll + " on a d" + dieToRoll[x];
+                results += "a " + roll + " on a d" + dieToRoll[x];
             }
             else if (!isNaN(dieToRoll[x].split("d")[0]) && !isNaN(dieToRoll[x].split("d")[1]))
                 results += 
