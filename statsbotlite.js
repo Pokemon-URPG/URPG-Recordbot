@@ -37,7 +37,6 @@ var chiefJudgeRole = "358435669372305408";
 var eliteRangerRole = "419636474825277450";
 var deathEaterRole = "561688333609074730";
 var anonymousReportChannel = "545737721612730368";
-var kauri;
 var payDayLog;
 
 bot.on("ready", async function() {
@@ -61,7 +60,6 @@ bot.on("ready", async function() {
     lowmessage = ",fixorder";
     await fixOrder(null, memberMe);
     statusMessage();
-    kauri = bot.fetchUser("574745413773426688");
 })
 
 function statusMessage() {
@@ -1897,7 +1895,8 @@ function wrongBot(message) {
     }
 }
 
-function substituteBot(channel) {
+async function substituteBot(channel) {
+    kauri = await bot.fetchUser("574745413773426688");
     if ((kauri.presence.status == "offline" || channel.guild == null || channel.guild.id != urpgServer) && lowmessage.indexOf("!d ")) {
         var dieToRoll = lowmessage.split(" ");
         var results = "<@574745413773426688> seems to be offline.  As your substitute dice roller, I decree you have rolled ";
