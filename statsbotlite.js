@@ -37,6 +37,7 @@ var chiefJudgeRole = "358435669372305408";
 var eliteRangerRole = "419636474825277450";
 var deathEaterRole = "561688333609074730";
 var anonymousReportChannel = "545737721612730368";
+var kauri;
 var payDayLog;
 
 bot.on("ready", async function() {
@@ -60,6 +61,7 @@ bot.on("ready", async function() {
     lowmessage = ",fixorder";
     await fixOrder(null, memberMe);
     statusMessage();
+    kauri = bot.fetchUser("574745413773426688");
 })
 
 function statusMessage() {
@@ -370,32 +372,32 @@ function rank(message) {
                     break
                 }
                 if (rankpoke.indexOf("easiest") != -1) {
-                    message.channel.send(pokemonlists[0] + "\nItalicized Pokémon are also available in the Pokémart!")
+                    message.channel.send(pokemonlists[0] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("simple") != -1) {
-                    message.channel.send(pokemonlists[1] + "\nItalicized Pokémon are also available in the Pokémart!")
+                    message.channel.send(pokemonlists[1] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("medium") != -1) {
-                    message.channel.send(pokemonlists[2] + "\nItalicized Pokémon are also available in the Pokémart!")
+                    message.channel.send(pokemonlists[2] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("hard") != -1) {
-                    message.channel.send(pokemonlists[3] + "\nItalicized Pokémon are also available in the Pokémart!")
+                    message.channel.send(pokemonlists[3] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("complex") != -1) {
-                    message.channel.send(pokemonlists[4] + "\nItalicized Pokémon are also available in the Pokémart!")
+                    message.channel.send(pokemonlists[4] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("demanding") != -1) {
-                    message.channel.send(pokemonlists[5])
+                    message.channel.send(pokemonlists[5] + "\nUnderlined Pokémon are also available in the Berry Store!")
                     found = true
                     break
                 }
@@ -408,8 +410,16 @@ function rank(message) {
                     break
                 }
                 if (rankpoke.indexOf("legendary") != -1) {
-                    message.channel.send(pokemonlists[8])
+                    message.channel.send("Tier 2:\n" + pokemonlists[8] + "\n\nTier 1:" + pokemonlists[9])
                     found = true
+                    break
+                }
+                if (rankpoke.indexOf("tier1") != -1 || rankpoke.indexOf("t1") != -1) {
+                    message.channel.send(pokemonlists[9])
+                    break
+                }
+                if (rankpoke.indexOf("tier2") != -1 || rankpoke.indexOf("t2") != -1) {
+                    message.channel.send(pokemonlists[8])
                     break
                 }
                 if (pokemonlists[x].toLowerCase().indexOf(rankpoke) != -1) {
@@ -421,8 +431,8 @@ function rank(message) {
                     if (x == 5) themessage = "That's a Demanding! You'll need to write 40,000-55,000 characters or have your art pass at Demanding rank!"
                     if (x == 6) themessage = "That's a Merciless! You'll need to write 55,000-65,000 characters or have your art pass at Merciless rank!"
                     if (x == 7) themessage = "That's a Stupefying! You'll need to write 65,000-75,000 characters or have your art pass at Stupefying rank!"
-                    if (x == 8) themessage = "That's a Legendary! You'll need to earn the equivalent of $500,000 through your stories or art!"
-                    if (x == 9) themessage = "That's mine!"
+                    if (x == 8) themessage = "That's a Tier 2 Legendary! You'll need to earn the equivalent of $250,000 through your stories or art!"
+                    if (x == 9) themessage = "That's a Tier 1 Legendary! You'll need to earn the equivalent of $500,000 through your stories or art!"
                     found = true
                     try { pokemonlist = fs.readFileSync("mart.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my mart file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
@@ -463,8 +473,8 @@ function ruleset(message) {
         if(lowmessage.indexOf("ld") == 0) message.channel.send("4 VS. 4+\nSM Private Full or Preview\nItems Optional\nSleep, Freeze, OHKO, Accuracy, Evasion, Imprison, and Legend Clauses On\nMega, Z, Dyanamax, Item and Species Clauses Optional\nStarting Weather and Terrain Optional");
         if(lowmessage.indexOf("ashrandoms") == 0) message.channel.send("6v6\nSM Public Box (Roll your 6 and use that as your Box)\nOHKO ACC EVA SLP FRZ Imprison Dynamax Mega Clauses On\nHelds On\nRandom Weather and Terrain\nRoll for first send\n\nAny changes?");
         if(lowmessage.indexOf("fortree") == 0) message.channel.send("6v6\nSM Public Open\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First");
-        if(lowmessage.indexOf("ashmockfire") == 0) message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Cinderace, Delphox, Flareon, Houndoom, Marowak (Alola), Numel, Salamence, Talonflame, Torkoal, Turtonator, Volcarona.  Yours may be whatever you wish.");
-        if(lowmessage.indexOf("ashmockdragon") == 0) message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
+        if(lowmessage.indexOf("ashmockfire") == 0) message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\n~~No Legendary Pokémon~~ \nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Cinderace, Delphox, Flareon, Houndoom, Marowak (Alola), Numel, Salamence, Talonflame, Torkoal, Turtonator, Volcarona.  Yours may be whatever you wish.");
+        if(lowmessage.indexOf("ashmockdragon") == 0) message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\n~~No Legendary Pokémon~~\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
         if(lowmessage.indexOf("maylee") == 0) message.channel.send("6v6 SM Private Full\nSleep/Freeze/OHKO/Evasion/Accuracy/Legends clauses active\nHelds on, building terrain, no starting weather\n\nIf both battlers agree, the following rules may be changed: Mega/Z/Item/Species, Helds off instead of on, Preview instead of Full");
         if(lowmessage.indexOf("ffa") == 0) message.channel.send("SM Private Full\nNo Holds\nNo Sleep Moves (Barring Rest)\nEVA/ACC/OHKO/Imprison/Dyanamax Clauses\nPerish Song Fails\nPerish Body banned\nHit All - Hit One\nEncore Fails\nAttract Fails\nRage Powder/Follow Me/Spotlight Fails\nRedirects On\nIllusion Pokémon disguises as a random Pokémon from the National Pokédex\nImposter, Download, and Intimidate select a random participating Pokémon\nNot sending or forfeiting results in KO at the beginning of the turn");
         if(lowmessage.indexOf("randomize") == 0) {
@@ -628,7 +638,7 @@ function ruleset(message) {
                 }
             }
             if (mzmax != 4) {rules += "Dynamax Clause\n"}
-            if (leg == 0) {rules += "Legends Clause\n";}
+            //if (leg == 0) {rules += "Legends Clause\n";}
             switch(weather) {
                 case 0: rules += "No Starting Weather\n"; break;
                 case 1: rules += "Sun\n"; break;
@@ -659,6 +669,9 @@ function ruleset(message) {
 function randWeather(message) {
     if (lowmessage.indexOf(",weather") == 0) {
         let weather = Math.floor(Math.random() * 6);
+        if (lowmessage.indexOf("-fog") != -1 && lowmessage.indexOf("-no") != -1) {weather = Math.floor(Math.random() * 4 + 1);}
+        else if (lowmessage.indexOf("-fog") != -1) {weather = Math.floor(Math.random() * 5);}
+        else if (lowmessage.indexOf("-no") != -1) {weather = Math.floor(Math.random() * 5 + 1);}
         switch(weather) {
             case 0: message.channel.send("No Starting Weather"); break;
             case 1: message.channel.send("Sun"); break;
@@ -1355,7 +1368,7 @@ function help(message) {
             message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\n`,pxrarchive`: Link to the archives of the PXR URPG section.\n`,refund`: Link to the Refund Thread.\n`,gen8` or `,galar`: Link to the Generation 8 Public Changelog.\n`,nukem`, `,refpedia`, `,gym`: Links to respective Infohub topics.\n`,updategym`: Link to Apply for or Update a Gym thread.\nIf you have any suggestions for other links I should have, please @ Ash K.");
         }
         else if (lowmessage.indexOf("random") != -1 || lowmessage.indexOf("weather") != -1 || lowmessage.indexOf("terrain") != -1) {
-            message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -open, open, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively.");
+            message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -open, open, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively. For `,weather`, you may add `-fog` and/or `-no` to exclude Fog and/or No Starting Weather, respectively.");
         }
         else if (lowmessage.indexOf("rule") != -1) {
             message.channel.send("Use `,rules RULESET` to bring up a specific ruleset:\ncasual: Typical ruleset for casual battles\nppr: Similar but Public Preview (for randoms)\nhidden: Similar but Private Preview\ncompetitive: More serious battle rules\ne4: Official rules for any Elite Four or Champion battle\nld: Official rules for any Legend Defender battle\nashrandoms: Ash's preferred ruleset for randoms\nfortree: Fortree Gym default rules\nashmockfire: Ash's rules for a mock Fire gym (treated as a normal battle for pay and such)\nashmockdragon: Same as above but for Dragon\nmaylee: Rules for the Maylee battle event\nffa: Typical FFA ruleset\nrandomize: Randomized rule set among legal rulesets. See `,help randomize` for more information on how to fix certain conditions.");
@@ -1884,6 +1897,31 @@ function wrongBot(message) {
     }
 }
 
+function substituteBot(channel) {
+    if ((kauri.presence.status == "offline" || channel.guild == null || channel.guild.id != urpgServer) && lowmessage.indexOf("!d ")) {
+        var dieToRoll = lowmessage.split(" ");
+        var results = "<@574745413773426688> seems to be offline.  As your substitute dice roller, I decree you have rolled ";
+        for (var x = 1; x < dieToRoll.length; x++) {
+            dieToRoll[x] = dieToRoll[x].replace(/, /g, " ").replace(/,/g, "d");
+            if (!isNaN(dieToRoll[x])) {
+                var roll = Math.floor(Math.random() * dieToRoll[x]);
+                results += "a " roll + " on a d" + dieToRoll[x];
+            }
+            else if (!isNaN(dieToRoll[x].split("d")[0]) && !isNaN(dieToRoll[x].split("d")[1]))
+                results += 
+                for (var y = 0; y < dieToRoll[x].split("d")[0]; y++) {
+                    var roll = Math.floor(Math.random() * dieToRoll[x].split("d")[1]);
+                    results += roll
+                    if (y < dieToRoll[x].split("d")[0] -1) {results += ", ";}
+                }
+                results += " on " + dieToRoll[x].split("d")[0] + "d" + dieToRoll[x].split("d")[1];
+            }
+            if (x < dieToRoll.length - 1) {results += " and ";}
+        }
+        channel.send(results);
+    }
+}
+
 async function pinMessage(message, messageAuthor) {
     if ((lowmessage.indexOf(",pin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentID == "358430499146039299" && messageAuthor.roles.has(refRole)) || (message.channel.parentID == "358433546492444675" && messageAuthor.roles.has(judgeRole)))) {
         theMessage = await message.channel.fetchMessage(lowmessage.split(" ")[1]);
@@ -2046,6 +2084,8 @@ bot.on("message", async function(message) {
     await wrongBot(message);
 
     await avatar(message);
+
+    await substituteBot(message.channel);
 
     if (message.guild === null) {
     	
