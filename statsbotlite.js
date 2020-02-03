@@ -414,10 +414,12 @@ function rank(message) {
                 }
                 if (rankpoke.indexOf("tier1") != -1 || rankpoke.indexOf("t1") != -1) {
                     message.channel.send(pokemonlists[9])
+                    found = true
                     break
                 }
                 if (rankpoke.indexOf("tier2") != -1 || rankpoke.indexOf("t2") != -1) {
                     message.channel.send(pokemonlists[8])
+                    found = true
                     break
                 }
                 if (pokemonlists[x].toLowerCase().indexOf(rankpoke) != -1) {
@@ -1004,12 +1006,10 @@ function effectiveness(message) {
         var pokemon = lowmessage.split(",effective ")[1];
         //var fs = require('fs');
         var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
-        message.channel.send("Pokémon is " + pokemon);
         for(var x = 0; x < allpokes.length; x++)
         {
             if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
             {
-                message.channel.send("Found at x=" + x + ": " + allpokes[x]);
                 var damage = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
                 switch(allpokes[x].split('/')[1])
                 {
@@ -1088,7 +1088,7 @@ function effectiveness(message) {
     }
 }
 
-function effectiveness(message) {
+function coverage(message) {
     if(lowmessage.indexOf(",coverage ") == 0)
     {
         var types = lowmessage.split(" ");
@@ -2058,6 +2058,8 @@ bot.on("message", async function(message) {
     await stealthRock(message);
 
     await effectiveness(message);
+
+    await coverage(message);
 
     await beatUp(message);
 
