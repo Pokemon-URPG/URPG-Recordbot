@@ -1004,10 +1004,12 @@ function effectiveness(message) {
         var pokemon = lowmessage.split(",effective ")[1];
         //var fs = require('fs');
         var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
+        message.channel.send("Pokémon is " + pokemon);
         for(var x = 0; x < allpokes.length; x++)
         {
             if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
             {
+                message.channel.send("Found at x=" + x + ": " + allpokes[x]);
                 var damage = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
                 switch(allpokes[x].split('/')[1])
                 {
@@ -1173,7 +1175,7 @@ function effectiveness(message) {
                 if (damage[types[i]] > effective) { effective = damage[types[i]]; }
             }
             switch (effective) {
-                case -1: message.channel.send("It seems that none of the types you entered were valid. Please format as `,coverage type1 type2 type3...` and be sure they're all spelled correctly.");
+                case -1: message.channel.send("It seems that none of the types you entered were valid. Please format as `,coverage type1 type2 type3...` and be sure they're all spelled correctly."); return;
                 case 0: covers[0]++; break;
                 case 0.25: covers[1]++; break;
                 case 0.5: covers[2]++; break;
