@@ -147,7 +147,7 @@ async function payDay(message, messageAuthor) {
                 await message.channel.send("<@" + key + "> has already received a Pay Day bonus this week.");
             }
             else {
-                var newLog += await " <@" + key + ">";
+                newLog += await " <@" + key + ">";
                 await message.channel.send("<@" + key + "> receives a Pay Day bonus for this.");
             }
         });
