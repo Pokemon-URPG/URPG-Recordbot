@@ -143,12 +143,12 @@ async function payDay(message, messageAuthor) {
         let payments = message.mentions.users;
         payments.forEach(async function(value, key) {
             if (payDayLog.content.indexOf("<@" + key + ">") != -1) {
-                message.channel.send("<@" + key + "> has already received a Pay Day bonus this week.");
+                await message.channel.send("<@" + key + "> has already received a Pay Day bonus this week.");
             }
             else {
-                var newLog = payDayLog.content + " <@" + key + ">";
+                var newLog = await payDayLog.content + " <@" + key + ">";
                 await payDayLog.edit(newLog);
-                message.channel.send("<@" + key + "> receives a Pay Day bonus for this.");
+                await message.channel.send("<@" + key + "> receives a Pay Day bonus for this.");
             }
         });
     }
