@@ -144,7 +144,7 @@ async function payDay(message, messageAuthor) {
         var newLog = await payDayLog.content
         payments.forEach(async function(value, key) {
             payDaySingle(key)
-        }
+        })
     }
 }
 
