@@ -141,16 +141,17 @@ function statusMessage() {
 async function payDay(message, messageAuthor) {
     if (lowmessage.indexOf(",payday") == 0 && (messageAuthor.roles.has(refRole) || messageAuthor.roles.has(judgeRole))) {
         let payments = message.mentions.users;
+        var newLog = await payDayLog.content
         payments.forEach(async function(value, key) {
             if (payDayLog.content.indexOf("<@" + key + ">") != -1) {
                 await message.channel.send("<@" + key + "> has already received a Pay Day bonus this week.");
             }
             else {
-                var newLog = await payDayLog.content + " <@" + key + ">";
-                await payDayLog.edit(newLog);
+                var newLog += await " <@" + key + ">";
                 await message.channel.send("<@" + key + "> receives a Pay Day bonus for this.");
             }
         });
+        await payDayLog.edit(newLog);
     }
 }
 
