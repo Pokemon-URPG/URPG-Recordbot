@@ -141,21 +141,16 @@ function statusMessage() {
 async function payDay(message, messageAuthor) {
     if (lowmessage.indexOf(",payday") == 0 && (messageAuthor.roles.has(refRole) || messageAuthor.roles.has(judgeRole))) {
         let payments = message.mentions.users;
-        var newLog = await payDayLog.content
-        payments.forEach(async function(value, key) {
-            payDaySingle(key)
-        })
-    }
-}
-
-async function payDaySingle(id) {
-    if (payDayLog.content.indexOf("<@" + id + ">") != -1) {
-        await message.channel.send("<@" + id + "> has already received a Pay Day bonus this week.");
-    }
-    else {
-        var newLog = await payDayLog.content + " <@" + key + ">";
-        await payDayLog.edit(newLog);
-        await message.channel.send("<@" + id + "> receives a Pay Day bonus for this.");
+        for(const [key, value] of payments) { //for...of will be synchronous, reduces API queuing
+            if (payDayLog.mentions.users.has(key)) { // Can utilise message.mentions for this check too
+                await message.channel.send(`${value} has already received a Pay Day bonus this week.`); //Template literals
+            }
+            else {
+                var newLog = `${payDayLog.content} ${value}`; // Template literals
+                await payDayLog.edit(newLog);
+                await message.channel.send(`${value} receives a Pay Day bonus for this.`); //Template literals
+            }
+        }
     }
 }
 
