@@ -2045,7 +2045,7 @@ async function sleepTalk(message) {
         }
         var roll = Math.floor(Math.random() * (x - 1));
         await message.channel.send(numberedList);
-        await message.channel.send("There is your numbered list, and if you would like a roll I rolled a " + roll + " on a d" + (x - 1) + ", which by my count is " + initialList.split("🙉")[roll] "!");
+        await message.channel.send("There is your numbered list, and if you would like a roll I rolled a " + roll + " on a d" + (x - 1) + ", which by my count is " + initialList.split("🙉")[roll] + "!");
     }
 }
 
