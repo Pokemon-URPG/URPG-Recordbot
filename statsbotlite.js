@@ -2040,7 +2040,7 @@ async function sleepTalk(message) {
         var numberedList = initialList;
         var x = 1;
         while (numberedList.indexOf("🙉") != -1) {
-            numberedList.replace("🙉", x + ". ");
+            numberedList = numberedList.replace("🙉", x + ". ");
             x++;
             if (message.guild.id != urpgServer) {await message.channel.send(numberedList);}
         }
