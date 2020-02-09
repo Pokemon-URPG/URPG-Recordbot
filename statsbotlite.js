@@ -2042,6 +2042,7 @@ async function sleepTalk(message) {
         while (numberedList.indexOf("🙉") != -1) {
             numberedList.replace(/🙉/, x + ". ");
             x++;
+            if (message.guild.id != urpgServer) {await message.channel.send(numberedList);}
         }
         var roll = Math.floor(Math.random() * (x - 1));
         await message.channel.send(numberedList);
