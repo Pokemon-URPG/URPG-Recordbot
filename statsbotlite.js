@@ -2040,7 +2040,7 @@ async function sleepTalk(message) {
         var numberedList = initialList;
         var x = 1;
         while (numberedList.indexOf("🙉") != -1) {
-            numbererList.replace(/🙉/, x + ". ");
+            numberedList.replace(/🙉/, x + ". ");
             x++;
         }
         var roll = Math.floor(Math.random() * (x - 1));
