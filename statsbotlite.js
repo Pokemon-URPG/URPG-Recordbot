@@ -2036,11 +2036,11 @@ async function avatar(message) {
 
 async function sleepTalk(message) {
     if (lowmessage.indexOf(",sleeptalk ") == 0) {
-        var initialList = "🙉" + message.cleanContent.substring(11).replace(/\n/g, "🙉").replace(/\r/g, "🙉").replace(/, /g, "🙉").replace(/,/g, "🙉").replace(/TMs: /g, "🙉").replace(/HMs: /g, "🙉").replace(/BMs: /g, "🙉").replace(/MTs: /g, "🙉").replace(/SMs: /g, "🙉").replace(/Normal Moves: /g, "");
+        var initialList = "🙉" + message.cleanContent.substring(11).replace(/\n/g, "").replace(/\r/g, "").replace(/, /g, "🙉").replace(/,/g, "🙉").replace(/TMs: /gi, "🙉").replace(/HMs: /gi, "🙉").replace(/BMs: /gi, "🙉").replace(/MTs: /gi, "🙉").replace(/SMs: /gi, "🙉").replace(/Normal Moves: /gi, "");
         var numberedList = initialList;
         var x = 1;
         while (numberedList.indexOf("🙉") != -1) {
-            numberedList.replace(/🙉/, x + ". ");
+            numberedList.replace("🙉", x + ". ");
             x++;
             if (message.guild.id != urpgServer) {await message.channel.send(numberedList);}
         }
