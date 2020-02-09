@@ -287,6 +287,8 @@ function stats(message) {
         if (oldmessage.indexOf("rocco") != -1) { message.channel.send("Rocco's stats: https://forum.pokemonurpg.com/showthread.php?tid=10583") }
         if ((oldmessage.indexOf("volcan") != -1) || (oldmessage.indexOf(" vf ") != -1)) { message.channel.send("VolcanFlame's stats: https://forum.pokemonurpg.com/showthread.php?tid=10586&pid=134054#pid134054") }
         if ((oldmessage.indexOf("frozenchaos") != -1) || (oldmessage.indexOf(" fc ") != -1)) { message.channel.send("FrozenChaos' stats: https://forum.pokemonurpg.com/showthread.php?tid=10584") }
+        if (oldmessage.indexOf("ravioli") != -1) { message.channel.send("raviolikid's stats: https://forum.pokemonurpg.com/showthread.php?tid=10604") }
+        if (oldmessage.indexOf("josiez") != -1) { message.channel.send("josiez's stats: https://forum.pokemonurpg.com/showthread.php?tid=10603") }
     }
 }
 
@@ -1392,7 +1394,7 @@ function help(message) {
             message.channel.send("Send `,converthp BASEHP` to convert BASEHP to URPG HP.\nSend `,convertother BASESTAT` to convert BASESTAT to the URPG non-HP equivalent.\nSend `,convert BASEHP/BASEATT/BASEDEF/BASESPATT/BASESPDEF/BASESPEED` to convert the full stat spread to URPG stats.  Must use `/` or `.` between each number. Do not include anything after the listed commands.");
         }
         else if (lowmessage.indexOf("magic") != -1 || lowmessage.indexOf("mtg") != -1) {
-            message.channel.send("In <#401543302710689793> or via DM, I will attempt to parse cards.  [[CARDNAME|SETCODE]] will give an image of CARDNAME from SETCODE and [[CARDNAME|SETCODE|NUMBER]] will give an embed with CARDNAME #NUMBER in SETCODE.  For both of these, the parameters must be exact (though the latter isn't case sensitive).  Multiple cards in the same message should all be parsed.")
+            message.channel.send("In <#401543302710689793>, via DM, or in any message starting with `,mtg`, I will attempt to parse cards.  [[CARDNAME|SETCODE]] will give an image of CARDNAME from SETCODE and [[CARDNAME|SETCODE|NUMBER]] will give an embed with CARDNAME #NUMBER in SETCODE.  For both of these, the parameters must be exact (though the latter isn't case sensitive).  Multiple cards in the same message should all be parsed.")
         }
         else if (lowmessage.indexOf("avatar") != -1) {
             message.channel.send("Send `,avatar @PERSON` to get PERSON's avatar URL, `,avatar ID` to get the avatar URL of the person with ID (must be in this server), or just `,avatar` to get your own.");
@@ -1481,7 +1483,7 @@ async function memberRole(message, messageAuthor) {
 }
 
 function magicCardFetcher(message) {
-    if ((message.channel.id == "401543302710689793" || message.guild === null) && (lowmessage.indexOf("🦌🦌") != lowmessage.lastIndexOf("🦌🦌") || (lowmessage.indexOf("[[") != -1 && lowmessage.lastIndexOf("]]") != -1 && lowmessage.indexOf("|") != -1))) {
+    if ((message.channel.id == "401543302710689793" || message.guild === null || lowmessage.indexOf(",mtg") == 0) && (lowmessage.indexOf("[[") != -1 && lowmessage.lastIndexOf("]]") != -1 && lowmessage.indexOf("|") != -1)) {
         magicCardPoster(message.cleanContent, message.channel);
     }
 }
@@ -2032,6 +2034,21 @@ async function avatar(message) {
     }
 }
 
+async function sleepTalk(message) {
+    if (lowmessage.indexOf(",sleeptalk ") == 0) {
+        var initialList = "🙉" + message.cleanContent.substring(11).replace(/\n/g, "🙉").replace(/\r/g, "🙉").replace(/, /g, "🙉").replace(/,/g, "🙉").replace(/TMs: /g, "🙉").replace(/HMs: /g, "🙉").replace(/BMs: /g, "🙉").replace(/MTs: /g, "🙉").replace(/SMs: /g, "🙉").replace(/Normal Moves: /g, "");
+        var numberedList = initialList;
+        var x = 1;
+        while (numberedList.indexOf("🙉") != -1) {
+            numbererList.replace(/🙉/, x + ". ");
+            x++;
+        }
+        var roll = Math.floor(Math.random() * (x - 1));
+        await message.channel.send(numberedList);
+        await message.channel.send("There is your numbered list, and if you would like a roll I rolled a " + roll + " on a d" + (x - 1) + ", which by my count is " + initialList.split("🙉")[roll] "!");
+    }
+}
+
 bot.on('error', console.error);
 
 bot.on("message", async function(message) {
@@ -2088,6 +2105,8 @@ bot.on("message", async function(message) {
     await avatar(message);
 
     await substituteBot(message.channel);
+
+    await sleepTalk(message);
 
     if (message.guild === null) {
     	
