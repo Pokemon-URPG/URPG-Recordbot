@@ -1910,12 +1910,12 @@ async function substituteBot(channel) {
         for (var x = 1; x < dieToRoll.length; x++) {
             dieToRoll[x] = dieToRoll[x].replace(/, /g, " ").replace(/,/g, "d");
             if (!isNaN(dieToRoll[x]) && dieToRoll[x] > 1) {
-                var roll = Math.floor(Math.random() * dieToRoll[x]);
+                var roll = Math.floor(Math.random() * dieToRoll[x]) + 1;
                 results += "a " + roll + " on a d" + dieToRoll[x];
             }
             else if (dieToRoll[x].indexOf("d") != -1 && !isNaN(dieToRoll[x].split("d")[0]) && !isNaN(dieToRoll[x].split("d")[1])) {
                 for (var y = 0; y < dieToRoll[x].split("d")[0]; y++) {
-                    var roll = Math.floor(Math.random() * dieToRoll[x].split("d")[1]);
+                    var roll = Math.floor(Math.random() * dieToRoll[x].split("d")[1]) + 1;
                     results += roll
                     if (y < dieToRoll[x].split("d")[0] -1) {results += ", ";}
                 }
@@ -2046,7 +2046,7 @@ async function sleepTalk(message) {
             numberedList = numberedList.replace("🙉", "\n" + x + ". ");
             x++;
         }
-        var roll = Math.floor(Math.random() * (x - 1));
+        var roll = Math.floor(Math.random() * (x - 1)) + 1;
         await message.channel.send(numberedList);
         await message.channel.send("There is your numbered list, and if you would like a roll I rolled a " + roll + " on a d" + (x - 1) + ", which by my count is " + initialList.split("🙉")[roll] + "!");
     }
