@@ -180,7 +180,7 @@ function badWordsReporter(message, messageMember, isEdit) {
     var badWordsLog = "";
     var reporting = false;
     for (let i = 0; i < badWords.length; i++) {
-        if ((lowmessage.indexOf(badWords[i]) != -1) {
+        if (lowmessage.indexOf(badWords[i]) != -1) {
             reporting = true;
             break;
         }
