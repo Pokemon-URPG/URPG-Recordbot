@@ -2066,7 +2066,7 @@ async function sleepTalk(message) {
             await message.channel.send("There is your numbered list, and if you would like a roll I rolled a " + roll + " on a d" + (x - 1) + ", which by my count is " + initialList.split("🙉")[roll] + "!");
         }
         else {
-            await message.channel.send("I'm afraid your list is too long to fit in Discord at " + numberedList.length + " characters after formatting, but I counted " + (x - 1) " moves and rolled a " + roll + ", which by my count is " + initialList.split("🙉")[roll] + "!");
+            await message.channel.send("I'm afraid your list is too long to fit in Discord at " + numberedList.length + " characters after formatting, but I counted " + (x - 1) + " moves and rolled a " + roll + ", which by my count is " + initialList.split("🙉")[roll] + "!");
         }
     }
 }
