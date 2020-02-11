@@ -1574,79 +1574,91 @@ function statConverter(message) {
 
 async function mention(message, messageMember) {
     if ((lowmessage.indexOf(",mentionrefs") == 0 || lowmessage.indexOf(",mention refs") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(seniorRefRole))) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
+        var messageContent = "";
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(13); }
+        else { messageContent = message.content.substring(12); }
         await bot.guilds.get(urpgServer).roles.get(refRole).setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get(refRole)}${message.content.substring(12)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get(refRole)}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get(refRole).setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionjudges") == 0 || lowmessage.indexOf(",mention judges") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(chiefJudgeRole))) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
+        var messageContent = "";
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(15); }
+        else { messageContent = message.content.substring(14); }
         await bot.guilds.get(urpgServer).roles.get(judgeRole).setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get(judgeRole)}${message.content.substring(14)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get(judgeRole)}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get(judgeRole).setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentioncurators") == 0 || lowmessage.indexOf(",mention curators") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has("419775555488186369"))) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
+        var messageContent = "";
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(17); }
+        else { messageContent = message.content.substring(16); }
         await bot.guilds.get(urpgServer).roles.get("312119111750647809").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("312119111750647809")}${message.content.substring(16)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("312119111750647809")}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get("312119111750647809").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentiongraders") == 0 || lowmessage.indexOf(",mention graders") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has("419636334982987777"))) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
+        var messageContent = "";
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(16); }
+        else { messageContent = message.content.substring(15); }
         await bot.guilds.get(urpgServer).roles.get("312118803616235523").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("312118803616235523")}${message.content.substring(15)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("312118803616235523")}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get("312118803616235523").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionrangers") == 0 || lowmessage.indexOf(",mention rangers") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(eliteRangerRole))) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
+        var messageContent = "";
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(16); }
+        else { messageContent = message.content.substring(15); }
         await bot.guilds.get(urpgServer).roles.get("312119050484449280").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("312119050484449280")}${message.content.substring(15)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("312119050484449280")}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get("312119050484449280").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionarbiters") == 0 || lowmessage.indexOf(",mention arbiters") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has("533356631455694849"))) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
+        var messageContent = "";
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(17); }
+        else { messageContent = message.content.substring(16); }
         await bot.guilds.get(urpgServer).roles.get("533356018005180416").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("533356018005180416")}${message.content.substring(16)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("533356018005180416")}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get("533356018005180416").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionforumffa") == 0 || lowmessage.indexOf(",mention forumffa") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has("507342993028808707"))) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
+        var messageContent = "";
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(17); }
+        else { messageContent = message.content.substring(16); }
         await bot.guilds.get(urpgServer).roles.get("507342482988859402").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("507342482988859402")}${message.content.substring(16)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("507342482988859402")}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get("507342482988859402").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionmembers") == 0 || lowmessage.indexOf(",mention members") == 0) && messageMember.hasPermission("MENTION_EVERYONE")) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
+        var messageContent = "";
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(16); }
+        else { messageContent = message.content.substring(15); }
         await bot.guilds.get(urpgServer).roles.get("456993685679243286").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("456993685679243286")}${message.content.substring(15)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("456993685679243286")}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get("456993685679243286").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentioncoordinators") == 0 || lowmessage.indexOf(",mention coordinators") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(judgeRole))) {
-        await message.channel.send(lowmessage);
         var messageContent = "";
-        if (lowmessage.indexOf(",mention ") == 0) {
-            messageContent = message.content.substring(21);
-            await message.channel.send(messageContent);
-        }
-        else {
-            messageContent = message.content.substring(20);
-            await message.channel.send(messageContent);
-        }
-        message.channel.send("I'm almost there...");
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(21); }
+        else { messageContent = message.content.substring(20); }
         await bot.guilds.get(urpgServer).roles.get("552232839861633046").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("552232839861633046")}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get("552232839861633046").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionleaders") == 0 || lowmessage.indexOf(",mention leaders") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(seniorRefRole))) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
+        var messageContent = "";
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(16); }
+        else { messageContent = message.content.substring(15); }
         await bot.guilds.get(urpgServer).roles.get("444947885893746698").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("444947885893746698")}${message.content.substring(15)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("444947885893746698")}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get("444947885893746698").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionelites") == 0 || lowmessage.indexOf(",mention elites") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(seniorRefRole))) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
+        var messageContent = "";
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(15); }
+        else { messageContent = message.content.substring(14); }
         await bot.guilds.get(urpgServer).roles.get("444947868835381263").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("444947868835381263")}${message.content.substring(14)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("444947868835381263")}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get("444947868835381263").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionffa") == 0 || lowmessage.indexOf("!ffa -p") == 0 || lowmessage.indexOf(",mention ffa") == 0) && (message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065" || message.channel.id == "653328600170364953") && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(refRole))) {
@@ -1659,44 +1671,95 @@ async function mention(message, messageMember) {
         await bot.guilds.get(urpgServer).roles.get("575087931824275466").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionstaff") == 0 || lowmessage.indexOf(",mention staff") == 0) && messageMember.roles.has("456993685679243286")) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
+        var messageContent = "";
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(14); }
+        else { messageContent = message.content.substring(13); }
         await bot.guilds.get(urpgServer).roles.get("135868852092403713").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("135868852092403713")}${message.content.substring(13)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("135868852092403713")}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get("135868852092403713").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentioncontentupkeep") == 0 || lowmessage.indexOf(",mention contentupkeep") == 0 || lowmessage.indexOf(",mention content upkeep") == 0 || lowmessage.indexOf(",mention content-upkeeper") == 0) && messageMember.roles.has("456993685679243286")) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
-        if (lowmessage.indexOf(",mentioncontent upkeep") != -1) { lowmessage.replace(/,mentioncontent upkeep/, ",mentioncontentupkeep"); }
-        if (lowmessage.indexOf(",mentioncontent-upkeep") != -1) { lowmessage.replace(/,mentioncontent-upkeep/, ",mentioncontentupkeep"); }
-        if (lowmessage.indexOf(",mentioncontentupkeeper") != -1) { lowmessage.replace(/,mentioncontentupkeeper/, ",mentioncontentupkeep"); }
+        var commandLength = 21;
+        if (lowmessage.indexOf(",mention ") == 0) {
+            lowmessage = lowmessage.replace(",mention ", ",mention");
+            commandLength += 1;
+        }
+        if (lowmessage.indexOf(",mentioncontent upkeep") != -1) {
+            lowmessage.replace(",mentioncontent upkeep", ",mentioncontentupkeep");
+            commandLength += 1;
+        }
+        if (lowmessage.indexOf(",mentioncontent-upkeep") != -1) {
+            lowmessage.replace(",mentioncontent-upkeep", ",mentioncontentupkeep");
+            commandLength += 1;
+    }
+        if (lowmessage.indexOf(",mentioncontentupkeeper") != -1) {
+            lowmessage.replace(",mentioncontentupkeeper", ",mentioncontentupkeep");
+            commandLength += 2;
+        }
         await bot.guilds.get(urpgServer).roles.get("584764993044611075").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("584764993044611075")}${message.content.substring(21)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("584764993044611075")}${message.content.substring(commandLength)}`);
         await bot.guilds.get(urpgServer).roles.get("584764993044611075").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentiongamedesign") == 0 || lowmessage.indexOf(",mention gamedesign") == 0 || lowmessage.indexOf(",mention game design") == 0 || lowmessage.indexOf(",mention game-design") == 0) && messageMember.roles.has("456993685679243286")) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
-        if (lowmessage.indexOf(",mentiongame design") != -1) { lowmessage.replace(/,mentiongame design/, ",mentiongamedesign"); }
-        if (lowmessage.indexOf(",mentiongame-design") != -1) { lowmessage.replace(/,mentiongame-design/, ",mentiongamedesign"); }
-        if (lowmessage.indexOf(",mentiongamedesigner") != -1) { lowmessage.replace(/,mentiongamedesigner/, ",mentiongamedesign"); }
+        var commandLength = 18
+        if (lowmessage.indexOf(",mention ") == 0) {
+            lowmessage = lowmessage.replace(",mention ", ",mention");
+            commandLength += 1;
+        }
+        if (lowmessage.indexOf(",mentiongame design") != -1) {
+            lowmessage.replace(",mentiongame design", ",mentiongamedesign");
+            commandLength += 1;
+        }
+        if (lowmessage.indexOf(",mentiongame-design") != -1) {
+            lowmessage.replace(",mentiongame-design", ",mentiongamedesign");
+            commandLength += 1;
+        }
+        if (lowmessage.indexOf(",mentiongamedesigner") != -1) {
+            lowmessage.replace(",mentiongamedesigner", ",mentiongamedesign");
+            commandLength += 2;
+        }
         await bot.guilds.get(urpgServer).roles.get("584765105414078464").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("584765105414078464")}${message.content.substring(18)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("584765105414078464")}${message.content.substring(commandLength)}`);
         await bot.guilds.get(urpgServer).roles.get("584765105414078464").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionevent") == 0 || lowmessage.indexOf(",mention event") == 0) && messageMember.roles.has("456993685679243286")) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
-        if (lowmessage.indexOf(",mentionevent coordinator") != -1) { lowmessage.replace(/,mentionevent coordinator/, ",mentionevent"); }
-        if (lowmessage.indexOf(",mentionevent-coordinator") != -1) { lowmessage.replace(/,mentionevent-coordinator/, ",mentionevent"); }
-        if (lowmessage.indexOf(",mentionevents") != -1) { lowmessage.replace(/,mentionevents/, ",mentionevent"); }
+        var commandLength = 14;
+        if (lowmessage.indexOf(",mention ") == 0) {
+            lowmessage = lowmessage.replace(",mention ", ",mention");
+            commandLength += 1;
+        }
+        if (lowmessage.indexOf(",mentionevents") != -1) {
+            lowmessage.replace(",mentionevents", ",mentionevent");
+            commandLength += 1;
+        }
+        if (lowmessage.indexOf(",mentionevent coordinator") != -1) {
+            lowmessage.replace(",mentionevent coordinator", ",mentionevent");
+            commandLength += 12;
+        }
+        if (lowmessage.indexOf(",mentionevent-coordinator") != -1) {
+            lowmessage.replace(",mentionevent-coordinator", ",mentionevent");
+            commandLength += 12;
+        }
         await bot.guilds.get(urpgServer).roles.get("584764766921293825").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("584764766921293825")}${message.content.substring(14)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("584764766921293825")}${message.content.substring(commandLength)}`);
         await bot.guilds.get(urpgServer).roles.get("584764766921293825").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentiontechnicalteam") == 0 || lowmessage.indexOf(",mention technicalteam") == 0 || lowmessage.indexOf(",mention technical team") == 0 || lowmessage.indexOf(",mention technical-team") == 0) && messageMember.roles.has("456993685679243286")) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
-        if (lowmessage.indexOf(",mentiontechnical team") != -1) { lowmessage.replace(/,mentiontechnical team/, ",mentiontechnicalteam"); }
-        if (lowmessage.indexOf(",mentiontechnical-team") != -1) { lowmessage.replace(/,mentiontechnical-team/, ",mentiontechnicalteam"); }
+        var commandLength = 21;
+        if (lowmessage.indexOf(",mention ") == 0) {
+            lowmessage = lowmessage.replace(",mention ", ",mention");
+            commandLength += 1;
+        }
+        if (lowmessage.indexOf(",mentiontechnical team") != -1) {
+            lowmessage.replace(",mentiontechnical team", ",mentiontechnicalteam");
+            commandLength += 1;
+        }
+        if (lowmessage.indexOf(",mentiontechnical-team") != -1) {
+            lowmessage.replace(",mentiontechnical-team", ",mentiontechnicalteam");
+            commandLength += 1;
+        }
         await bot.guilds.get(urpgServer).roles.get("584764766921293825").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("584764766921293825")}${message.content.substring(21)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("584764766921293825")}${message.content.substring(commandLength)}`);
         await bot.guilds.get(urpgServer).roles.get("584764766921293825").setMentionable(false);
     }
 }
@@ -2151,8 +2214,6 @@ bot.on("message", async function(message) {
 
     let messageMember = await message.guild.fetchMember(message.author);
 
-    await badWordsReporter(message, messageMember, false);
-
     await tempChannelReporter(message, messageMember);
 
     await mention(message, messageMember);
@@ -2186,6 +2247,8 @@ bot.on("message", async function(message) {
     await unpinMessage(message, messageMember);
 
     await linkCleaner(message, messageMember);
+
+    await badWordsReporter(message, messageMember, false);
 })
 
 bot.on("messageDelete", async function(message) {
