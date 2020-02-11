@@ -1622,9 +1622,11 @@ async function mention(message, messageMember) {
         await bot.guilds.get(urpgServer).roles.get("456993685679243286").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentioncoordinators") == 0 || lowmessage.indexOf(",mention coordinators") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(judgeRole))) {
-        if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
+        var messageContent = "";
+        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(21); }
+        else { messageContent = message.content.substring(20); }
         await bot.guilds.get(urpgServer).roles.get("552232839861633046").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("552232839861633046")}${message.content.substring(20)}`);
+        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("552232839861633046")}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get("552232839861633046").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionleaders") == 0 || lowmessage.indexOf(",mention leaders") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(seniorRefRole))) {
