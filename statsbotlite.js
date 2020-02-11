@@ -276,7 +276,7 @@ function stats(message) {
         if (oldmessage.indexOf("fortree ") != -1) { message.channel.send("\nAsh K.'s Fortree Gym stats: http://ashkstatsurpg.proboards.com/thread/65/fortree-city-gym-2015") }
         if (oldmessage.indexOf(" after ") != -1) { message.channel.send("\nAfter's stats: https://forum.pokemonurpg.com/showthread.php?tid=10215") }
         if ((oldmessage.indexOf("pokeviper ") != -1) || (oldmessage.indexOf(" pv ") != -1) || (oldmessage.indexOf("pokéviper") != -1)) { message.channel.send("\nPokeViper's stats: http://pokeviperbadass.proboards.com/") }
-        if ((oldmessage.indexOf("shock") != -1) || (oldmessage.indexOf("3600") != -1)) { message.channel.send("\nShock3600's stats: https://forum.pokemonurpg.com/showthread.php?tid=10434") }
+        if ((oldmessage.indexOf("shock") != -1) || (oldmessage.indexOf("3600") != -1)) { message.channel.send("\nShock3600's stats: https://shock3600stats.weebly.com/") }
         if (oldmessage.indexOf("best ") != -1) { message.channel.send("\nTheVeryBest's stats: https://forum.pokemonurpg.com/showthread.php?tid=10447&pid=130885#pid130885") }
         if (oldmessage.indexOf("louise") != -1) { message.channel.send("\nlouise's stats: https://forum.pokemonurpg.com/showthread.php?tid=10448&pid=130898#pid130898") }
         if ((oldmessage.indexOf("luck") != -1) || (oldmessage.indexOf(" lg ") != -1)) { message.channel.send("\nLuckgandor's stats: https://forum.pokemonurpg.com/showthread.php?tid=9250") }
@@ -297,7 +297,7 @@ function stats(message) {
         if ((oldmessage.indexOf(" atf") != -1) || (oldmessage.indexOf("americantreef") != -1)) { message.channel.send("AmericanTreeFrog's stats: https://forum.pokemonurpg.com/showthread.php?tid=9689") }
         if ((oldmessage.indexOf(" la ") != -1) || (oldmessage.indexOf("loyal") != -1) || (oldmessage.indexOf("arcanine") != -1) || (oldmessage.indexOf("mikey94028") != -1) || (oldmessage.indexOf("mikey ") != -1)) { message.channel.send("Loyal Arcanine's stats: https://forum.pokemonurpg.com/showthread.php?tid=9265") }
         if ((oldmessage.indexOf("jr") != -1) || (oldmessage.indexOf("junior") != -1) || (oldmessage.indexOf("pieandchips") != -1)) { message.channel.send("The Jr Trainer's stats: https://forum.pokemonurpg.com/showthread.php?tid=9255") }
-        if (oldmessage.indexOf("mt. chimney") != -1) { message.channel.send("Shock3600's Mt. Chimney Gym stats: http://rebrand.ly/shock3600gym") }
+        if (oldmessage.indexOf("mt. chimney") != -1) { message.channel.send("Shock3600's Mt. Chimney Gym stats: https://shock3600stats.weebly.com/mt-chimney-gym.html") }
         if (oldmessage.indexOf("rocco") != -1) { message.channel.send("Rocco's stats: https://forum.pokemonurpg.com/showthread.php?tid=10583") }
         if ((oldmessage.indexOf("volcan") != -1) || (oldmessage.indexOf(" vf ") != -1)) { message.channel.send("VolcanFlame's stats: https://forum.pokemonurpg.com/showthread.php?tid=10586&pid=134054#pid134054") }
         if ((oldmessage.indexOf("frozenchaos") != -1) || (oldmessage.indexOf(" fc ") != -1)) { message.channel.send("FrozenChaos' stats: https://forum.pokemonurpg.com/showthread.php?tid=10584") }
