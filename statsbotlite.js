@@ -185,7 +185,7 @@ function badWordsReporter(message, messageMember, isEdit) {
             break;
         }
     }
-    if (badWordsLog != "") {
+    if (reporting) {
         badWordsLog += messageMember.displayName;
         badWordsLog += " said the following here <";
         badWordsLog += message.url;
@@ -287,7 +287,7 @@ function stats(message) {
         if ((oldmessage.indexOf("rokaido") != -1) || (oldmessage.indexOf("speedy") != -1)) { message.channel.send("\nRokaido's stats: https://forum.pokemonurpg.com/showthread.php?tid=10518&pid=132268#pid132268") }
         if ((oldmessage.indexOf("reaper") != -1) || (oldmessage.indexOf("exar kun") != -1)) { message.channel.send("\nExar Kun's stats: http://reaperofthesouls.proboards.com/board/1/general-board") }
         if (oldmessage.indexOf("woobum") != -1) { message.channel.send("\nWoobums' stats: https://forum.pokemonurpg.com/showthread.php?tid=10551") }
-        if (oldmessage.indexOf("james") != -1) { message.channel.send("\nJamesbwa's stats: https://forum.pokemonurpg.com/showthread.php?tid=10570") }
+        if (oldmessage.indexOf("jamesbwa") != -1) { message.channel.send("\nJamesbwa's stats: https://forum.pokemonurpg.com/showthread.php?tid=10570") }
         if (oldmessage.indexOf("camper") != -1) { message.channel.send("\nImTheRealCamper's stats: https://forum.pokemonurpg.com/showthread.php?tid=10552") }
         if (oldmessage.indexOf("quig") != -1) { message.channel.send("\nQuigzerz's stats: https://forum.pokemonurpg.com/showthread.php?tid=10511") }
         if (oldmessage.indexOf("namielle") != -1) { message.channel.send("\nNamielle's stats: https://forum.pokemonurpg.com/showthread.php?tid=10478") }
@@ -303,6 +303,7 @@ function stats(message) {
         if ((oldmessage.indexOf("frozenchaos") != -1) || (oldmessage.indexOf(" fc ") != -1)) { message.channel.send("FrozenChaos' stats: https://forum.pokemonurpg.com/showthread.php?tid=10584") }
         if (oldmessage.indexOf("ravioli") != -1) { message.channel.send("raviolikid's stats: https://forum.pokemonurpg.com/showthread.php?tid=10604") }
         if (oldmessage.indexOf("josiez") != -1) { message.channel.send("josiez's stats: https://forum.pokemonurpg.com/showthread.php?tid=10603") }
+        if ((oldmessage.indexOf("james ") != -1 || oldmessage.indexOf("rinage") != -1)) { message.channel.send("AiJames' stats: https://forum.pokemonurpg.com/showthread.php?tid=10611&pid=134755#pid134755") }
     }
 }
 
@@ -467,7 +468,7 @@ function rank(message) {
                 }
             }
             if (!found) {
-                message.channel.send("I'm sorry, I was unable to find " + message.cleanContent.split(" ")[1] + ". If you were searching a Pokémon, please ensure it is unevolved and that you spelled it right.  If you were searching a rank, the categories are Easiest, Simple, Medium, Hard, Complex, Demanding, and Legendary.")
+                message.channel.send("I'm sorry, I was unable to find " + message.cleanContent.split(" ")[1] + ". If you were searching a Pokémon, please ensure it is unevolved and that you spelled it right.  If you were searching a rank, the categories are Easiest, Simple, Medium, Hard, Complex, Demanding, Legendary, tier1 or t1, and tier2 or t2.")
             }
         }
     }
@@ -1414,7 +1415,7 @@ function help(message) {
             message.channel.send("In <#401543302710689793>, via DM, or in any message starting with `,mtg`, I will attempt to parse cards.  [[CARDNAME|SETCODE]] will give an image of CARDNAME from SETCODE and [[CARDNAME|SETCODE|NUMBER]] will give an embed with CARDNAME #NUMBER in SETCODE.  For both of these, the parameters must be exact (though the latter isn't case sensitive).  Multiple cards in the same message should all be parsed.");
         }
         else if (lowmessage.indexOf("avatar") != -1) {
-            message.channel.send("Send `,avatar @PERSON` to get PERSON's avatar URL, `,avatar ID` to get the avatar URL of the person with ID (must be in this server), or just `,avatar` to get your own.");
+            message.channel.send("Send `,avatar @PERSON` to get PERSON's avatar URL, `,avatar ID` to get the avatar URL of the person with ID, or just `,avatar` to get your own.");
         }
         else {
             message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
@@ -2329,6 +2330,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
 bot.on("guildMemberRemove", async function(member) {
     var leaveLog = "Member ";
     leaveLog += member.displayName;
+    if (member.roles.size > 1) { leaveLog += " with roles " + member.roles.array(); }
     const entry = await member.guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first())
     const entry2 = await member.guild.fetchAuditLogs({type: 'MEMBER_KICK'}).then(audit => audit.entries.first())
     if (entry != null && (entry.target.id === member.id) && (entry.createdTimestamp > (Date.now() - 5000))) {
