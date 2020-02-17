@@ -220,7 +220,7 @@ function stats(message) {
         if (oldmessage.indexOf("roulette ") != -1) { message.channel.send("\nRoulette's stats: http://rdstatsfasho.proboards.com/post/3/thread") }
         if (oldmessage.indexOf("elamite ") != -1) { message.channel.send("\nElamite's stats: http://krummhorn.boards.net/thread/1?page=1") }
         if (oldmessage.indexOf("commba ") != -1) { message.channel.send("\nCommBA's stats: http://w11.zetaboards.com/CommBAURPG/topic/7546474/1/") }
-        if (oldmessage.indexOf("axion ") != -1) { message.channel.send("\nAxion's stats: http://forum.pokemonurpg.com/showthread.php?tid=3987") }
+        if (oldmessage.indexOf("axion ") != -1) { message.channel.send("\nAxion's stats: https://sites.google.com/view/urpgaxion/trainer-stats") }
         if (oldmessage.indexOf("izuru ") != -1) { message.channel.send("\nIzuru's stats: http://www.pokemoncrossroads.com/forum/showthread.php?18030-Izuru-s-Stats&p=279688&viewfull=1#post279688") }
         if (oldmessage.indexOf("fenris ") != -1) { message.channel.send("\nFenris's stats: https://fenris-urpg.freeforums.net/thread/138/pokemon-stats") }
         if ((oldmessage.indexOf("reneescarted ") != -1) || (oldmessage.indexOf("renee ") != -1) || (oldmessage.indexOf("renée ") != -1)) { message.channel.send("\nRenéeScarted's stats: https://forum.pokemonurpg.com/showthread.php?tid=10261&pid=127856#pid127856") }
@@ -1526,25 +1526,36 @@ function magicCardPoster(input, channel) {
 }
 
 function tempChannelReporter(message, messageMember) {
+    var attaches = message.attachments.array();
+    var attachnames = "";
+    var attachmessage = "";
+    for (i = 0; i < attaches.length; i++) {
+        if (i == attaches.length -1 && i != 0) {attachnames += "and ";}
+        attachnames += attaches[i].proxyURL
+        if (i != attaches.length -1 && attaches.length != 2) {attachnames += ", ";}
+        if (i != attaches.length -1 && attaches.length == 2) {attachnames += " ";}
+    }
+    if (attaches.length > 1) {attachmessage = " with attachments " + attachnames;}
+    if (attaches.length == 1) {attachmessage = " with an attachment " + attachnames;}
     if (message.channel.parentID == contestBossCategory && message.channel.id != contestBossChannel && message.channel.id != warRoomChannel) {
         if (message.channel.name.indexOf("war") != -1) {
-            bot.channels.get(warRoomChannel).send(messageMember.displayName + ": " + message.cleanContent);
+            bot.channels.get(warRoomChannel).send(messageMember.displayName + ": " + message.cleanContent + attachmessage);
         }
         if (message.channel.name.indexOf("boss") != -1) {
-            bot.channels.get(contestBossChannel).send(messageMember.displayName + ": " + message.cleanContent);
+            bot.channels.get(contestBossChannel).send(messageMember.displayName + ": " + message.cleanContent + attachmessage);
         }
         if (message.content.indexOf(",end") == 0 && messageMember.roles.has(deathEaterRole)) {message.channel.delete();}
     }
     if (message.channel.name == "judge-test") {
-        bot.channels.get(judgeTestChannel).send(messageMember.displayName + ": " + message.cleanContent);
+        bot.channels.get(judgeTestChannel).send(messageMember.displayName + ": " + message.cleanContent + attachmessage);
         if (message.content.indexOf(",end") == 0 && messageMember.roles.has(chiefJudgeRole)) {message.channel.delete();}
     }
     if (message.channel.name == "ref-test") {
-        bot.channels.get(refTestChannel).send(messageMember.displayName + ": " + message.cleanContent);
+        bot.channels.get(refTestChannel).send(messageMember.displayName + ": " + message.cleanContent + attachmessage);
         if (message.content.indexOf(",end") == 0 && messageMember.roles.has(seniorRefRole)) {message.channel.delete();}
     }
     if (message.channel.name == "ranger-test") {
-        bot.channels.get(rangerTestChannel).send(messageMember.displayName + ": " + message.cleanContent);
+        bot.channels.get(rangerTestChannel).send(messageMember.displayName + ": " + message.cleanContent + attachmessage);
         if (message.content.indexOf(",end") == 0 && messageMember.roles.has(eliteRangerRole)) {message.channel.delete();}
     }
 }
@@ -2126,8 +2137,19 @@ async function avatar(message) {
 }
 
 async function sleepTalk(message) {
-    if (lowmessage.indexOf(",sleeptalk ") == 0) {
-        var initialList = "🙉" + message.cleanContent.substring(11).replace(/\n/g, "").replace(/\r/g, "").replace(/, /g, "🙉").replace(/,/g, "🙉").replace(/TMs: /gi, "🙉").replace(/HMs: /gi, "🙉").replace(/BMs: /gi, "🙉").replace(/MTs: /gi, "🙉").replace(/SMs: /gi, "🙉").replace(/Normal Moves: /gi, "");
+    if (lowmessage.indexOf(",sleeptalk") == 0) {
+        var list = true;
+        var roll = true;
+        var commandLength = 11;
+        if (lowmessage.indexOf(",sleeptalkroll") == 0) {
+            list = false;
+            commandLength += 4;
+        }
+        if (lowmessage.indexOf(",sleeptalklist") == 0) {
+            roll = false;
+            commandLength += 4;
+        }
+        var initialList = "🙉" + message.cleanContent.substring(commandLength).replace(/\n/g, "").replace(/\r/g, "").replace(/, /g, "🙉").replace(/,/g, "🙉").replace(/TMs: /gi, "🙉").replace(/HMs: /gi, "🙉").replace(/BMs: /gi, "🙉").replace(/MTs: /gi, "🙉").replace(/SMs: /gi, "🙉").replace(/Normal Moves: /gi, "").replace(/Taught Moves: /gi, "🙉").replace(/Level-Up Moves: /gi, "").replace(/Levelup Moves: /gi, "").replace(/Level Up Moves: /gi, "").replace(/EMs: /gi, "🙉").replace(/EM(s): /gi, "🙉").replace(/Extra Moves: /gi, "🙉").replace(/Extra Move(s): /gi, "🙉").replace();
         var numberedList = initialList;
         var x = 1;
         while (numberedList.indexOf("🙉") != -1) {
@@ -2136,8 +2158,8 @@ async function sleepTalk(message) {
         }
         var roll = Math.floor(Math.random() * (x - 1)) + 1;
         if (numberedList.length <= 2000) {
-            await message.channel.send(numberedList);
-            await message.channel.send("There is your numbered list, and if you would like a roll I rolled a " + roll + " on a d" + (x - 1) + ", which by my count is " + initialList.split("🙉")[roll] + "!");
+            if (list) {await message.channel.send(numberedList);}
+            if (roll) {await message.channel.send("There is your numbered list, and if you would like a roll I rolled a " + roll + " on a d" + (x - 1) + ", which by my count is " + initialList.split("🙉")[roll] + "!");}
         }
         else {
             await message.channel.send("I'm afraid your list is too long to fit in Discord at " + numberedList.length + " characters after formatting, but I counted " + (x - 1) + " moves and rolled a " + roll + ", which by my count is " + initialList.split("🙉")[roll] + "!");
