@@ -2352,7 +2352,12 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
 bot.on("guildMemberRemove", async function(member) {
     var leaveLog = "Member ";
     leaveLog += member.displayName;
-    if (member.roles.size > 1) { leaveLog += " with roles " + member.roles.array(); }
+    if (member.roles.size > 1) {
+        leaveLog += " with roles "
+        member.roles.forEach(function(value, key) {
+            leaveLog += value.name + " ";
+        });
+    }
     const entry = await member.guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first())
     const entry2 = await member.guild.fetchAuditLogs({type: 'MEMBER_KICK'}).then(audit => audit.entries.first())
     if (entry != null && (entry.target.id === member.id) && (entry.createdTimestamp > (Date.now() - 5000))) {
