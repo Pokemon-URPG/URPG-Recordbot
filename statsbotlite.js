@@ -196,11 +196,18 @@ function badWordsReporter(message, messageMember, isEdit) {
     }
 }
 
-function linkCleaner(message, messageMember) {
+async function linkCleaner(message, messageMember) {
     if (!messageMember.roles.has("456993685679243286") && lowmessage.indexOf("http") != -1 && lowmessage.indexOf("urpg") == -1 && !message.author.bot) {
         message.delete();
-        message.channel.send("<@" + messageMember.id + "> please become a member before posting links here.  To become a member, start by requesting a starter here https://forum.pokemonurpg.com/showthread.php?tid=1722. Your starter can be any nonlegendary Pokémon that evolves, including Type: Null.");
+        var cleaningMessage = await message.channel.send("<@" + messageMember.id + "> please become a member before posting links here.  To become a member, start by requesting a starter here https://forum.pokemonurpg.com/showthread.php?tid=1722. Your starter can be any nonlegendary Pokémon that evolves, including Type: Null.");
+        setTimeout(function() {
+            selfCleaner(cleaningMessage);
+        }, 30000);
     }
+}
+
+function selfCleaner(message) {
+    message.delete();
 }
 
 function stats(message) {
@@ -1370,7 +1377,7 @@ function help(message) {
             message.channel.send("Send `,oras MOVE` and I'll tell you what `MOVE` does in ORAS Contests!");
         }
         else if (lowmessage.indexOf("mention") != -1) {
-            message.channel.send("`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `,mentionarbiters`: Pings the applicable role.  Required role: Applicable section senior.\n`,mentionforumffa`: Pings Forum FFA role.  Required role: Forum FFA Host.\n`,mentionffa` or `!ffa -p`: Pings everyone who wants to be notified about FFAs. Required role: Referee. Required channel: <#136222872371855360>, <#269634154101080065>, or <#653328600170364953>\n`,mentioncoordinators`: Pings everyone who wishes to be notified about contests happening. Required role: Judge.\n`,mentionmembers`: Pings member role with a message.  Required role: No role allows this.\n`,mentionstaff`: Pings staff if something needs addressing quickly.  Required role: Member.\n`,mentioncontentupkeeper`, `,mentiongamedesign`, `,mentionevents`, `,mentiontechnicalteam`: Pings the respective team if something of theirs needs addressing.  Required role: Member.\n\n**Notes about all mention functions:**\nMention everyone permission allows use of a ping without the mentioned role.\nYou may put a message after the ping command and it will be copied after the ping, so that looking at mentions will directly show that information.");
+            message.channel.send("`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `,mentionarbiters`: Pings the applicable role.  Required role: Applicable section senior.\n`,mentionforumffa`: Pings Forum FFA role.  Required role: Forum FFA Host.\n`,mentionffa` or `!ffa -p`: Pings everyone who wants to be notified about FFAs. Required role: Referee. Required channel: <#136222872371855360>, <#269634154101080065>, or <#653328600170364953>\n`,mentioncoordinators`: Pings everyone who wishes to be notified about contests happening. Required role: Judge.\n`,mentionstaff`: Pings staff if something needs addressing quickly.  Required role: Member.\n`,mentioncontentupkeeper`, `,mentiongamedesign`, `,mentionevents`, `,mentiontechnicalteam`: Pings the respective team if something of theirs needs addressing.  Required role: Member.\n\n**Notes about all mention functions:**\nMention everyone permission allows use of a ping without the mentioned role.\nYou may put a message after the ping command and it will be copied after the ping, so that looking at mentions will directly show that information.");
         }
         else if (lowmessage.indexOf("profession") != -1 || lowmessage.indexOf("ref") != -1 || lowmessage.indexOf("judge") != -1) {
             message.channel.send("`,payday @MEMBER1 @MEMBER2...`: Lets you know which of the mentioned members has received Pay Day this week, and adds all others to the log of who has. Required role: Referee or Judge.\n`,pin MESSAGEID`, `,unpin MESSAGEID`: Pins/unpins message with ID MESSAGEID in this channel. Required role/channel: Referee in battle chat or Judge in contest chat.")
@@ -1640,14 +1647,6 @@ async function mention(message, messageMember) {
         await bot.guilds.get(urpgServer).roles.get("507342482988859402").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("507342482988859402")}${messageContent}`);
         await bot.guilds.get(urpgServer).roles.get("507342482988859402").setMentionable(false);
-    }
-    if ((lowmessage.indexOf(",mentionmembers") == 0 || lowmessage.indexOf(",mention members") == 0) && messageMember.hasPermission("MENTION_EVERYONE")) {
-        var messageContent = "";
-        if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(16); }
-        else { messageContent = message.content.substring(15); }
-        await bot.guilds.get(urpgServer).roles.get("456993685679243286").setMentionable(true);
-        await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("456993685679243286")}${messageContent}`);
-        await bot.guilds.get(urpgServer).roles.get("456993685679243286").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentioncoordinators") == 0 || lowmessage.indexOf(",mention coordinators") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(judgeRole))) {
         var messageContent = "";
