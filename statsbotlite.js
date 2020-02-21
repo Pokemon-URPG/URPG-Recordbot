@@ -2155,13 +2155,13 @@ async function sleepTalk(message) {
             numberedList = numberedList.replace("🙉", "\n" + x + ". ");
             x++;
         }
-        var roll = Math.floor(Math.random() * (x - 1)) + 1;
+        var rollNum = Math.floor(Math.random() * (x - 1)) + 1;
         if (numberedList.length <= 2000) {
             if (list) {await message.channel.send(numberedList);}
-            if (roll) {await message.channel.send("There is your numbered list, and if you would like a roll I rolled a " + roll + " on a d" + (x - 1) + ", which by my count is " + initialList.split("🙉")[roll] + "!");}
+            if (roll) {await message.channel.send("There is your numbered list, and if you would like a roll I rolled a " + rollNum + " on a d" + (x - 1) + ", which by my count is " + initialList.split("🙉")[rollNum] + "!");}
         }
         else {
-            await message.channel.send("I'm afraid your list is too long to fit in Discord at " + numberedList.length + " characters after formatting, but I counted " + (x - 1) + " moves and rolled a " + roll + ", which by my count is " + initialList.split("🙉")[roll] + "!");
+            await message.channel.send("I'm afraid your list is too long to fit in Discord at " + numberedList.length + " characters after formatting, but I counted " + (x - 1) + " moves and rolled a " + rollNum + ", which by my count is " + initialList.split("🙉")[rollNum] + "!");
         }
     }
 }
