@@ -49,7 +49,7 @@ bot.on("ready", async function() {
     bumpTime = setTimeout(function() {
         bumpServer();
     }, timer);
-    payDayLog = await bot.channels.get(botCommands).messages.fetch("658883162000195607");
+    payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
     setTimeout(function () {
         payDayReset();
     }, ((864000000) - (d.getTime() % 604800000)) % 604800000);
@@ -2085,14 +2085,14 @@ async function substituteBot(channel) {
 
 async function pinMessage(message, messageMember) {
     if ((lowmessage.indexOf(",pin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentID == "358430499146039299" && messageMember.roles.has(refRole)) || (message.channel.parentID == "358433546492444675" && messageMember.roles.has(judgeRole)))) {
-        theMessage = await message.channel.messages.fetch(lowmessage.split(" ")[1]);
+        theMessage = await message.channel.fetchMessage(lowmessage.split(" ")[1]);
         await theMessage.pin();
     }
 }
 
 async function unpinMessage(message, messageMember) {
     if ((lowmessage.indexOf(",unpin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentID == "358430499146039299" && messageMember.roles.has(refRole)) || (message.channel.parentID == "358433546492444675" && messageMember.roles.has(judgeRole)))) {
-        theMessage = await message.channel.messages.fetch(lowmessage.split(" ")[1]);
+        theMessage = await message.channel.fetchMessage(lowmessage.split(" ")[1]);
         await theMessage.unpin();
     }
 }
