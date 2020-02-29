@@ -13,6 +13,7 @@ logger.level = "debug"
 // Initialize Discord Bot
 var bot = new Discord.Client({ disableEveryone: true })
 var badWords = [" fag", "fag ", "retard", "cuck", "slut", "kys", "trigger"];
+var fossils = ["kabuto", "omanyte", "lileep", "anorith", "cranidos", "shieldon", "archen", "tirtouga", "tyrunt", "amaura", "dracozolt", "dracovish", "arctozolt", "arctovish"];
 var bumpTime;
 var disBumpTime = null;
 var lowmessage;
@@ -48,7 +49,7 @@ bot.on("ready", async function() {
     bumpTime = setTimeout(function() {
         bumpServer();
     }, timer);
-    payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
+    payDayLog = await bot.channels.get(botCommands).messages.fetch("658883162000195607");
     setTimeout(function () {
         payDayReset();
     }, ((864000000) - (d.getTime() % 604800000)) % 604800000);
@@ -365,9 +366,28 @@ function oras(message) {
     }
 }
 
+function rankList(pokemonList, channel) {
+    pokemonList += ", ";
+    while (pokemonList.indexOf("*") != -1) {
+        pokemonList = pokemonList.replace("*" + pokemonList.split("*")[1] + "*, ", "");
+    }
+    while (pokemonList.indexOf("__") != -1) {
+        pokemonList = pokemonList.replace("__" + pokemonList.split("__")[1] + "__, ", "");
+    }
+    var initialList = "🙉" + pokemonList.replace(/, /g, "🙉");
+    var numberedList = initialList;
+    var x = 1;
+    while (numberedList.indexOf("🙉") != numberedList.lastIndexOf("🙉")) {
+        numberedList = numberedList.replace("🙉", "\n" + x + ". ");
+        x++;
+    }
+    numberedList.replace("🙉", "");
+    channel.send(numberedList);
+}
+
 function rank(message) {
-    if (lowmessage.indexOf(",rank ") == 0) {
-        if (lowmessage.split(" ")[1]) {
+    if (lowmessage.indexOf(",rank ") == 0 || lowmessage.indexOf(",ranklist") == 0) {
+        if (lowmessage.split(" ")[1].replace("flabebe", "flabébé")) {
             var found = false;
             const rankpoke = lowmessage.split(" ")[1]
             let pokemonlist = ""
@@ -378,7 +398,7 @@ function rank(message) {
             let themessage = ""
             for (let x = 0; x < pokemonlists.length; x++) {
                 if (rankpoke.indexOf("nidoran") != -1) {
-                    themessage = "Female Nidoran is a Simple! You'll need to write 5,000-10,000 characters or have your art pass at a Simple rank!\nFemale Nidoran can also be be found in the Pokemart!\nMale Nidoran is a Medium! You'll need to write 10,000-20,000 characters or have your art pass at Medium rank!"
+                    themessage = "Female Nidoran is a Simple! You'll need to have your story or art pass at a Simple rank!\nFemale Nidoran can also be be found in the Pokemart for $9,000!\nMale Nidoran is a Medium! You'll need to have your story or art pass at Medium rank!\nTrade value: $7,500"
                     message.channel.send(themessage)
                     found = true
                     return
@@ -394,31 +414,55 @@ function rank(message) {
                     break
                 }
                 if (rankpoke.indexOf("easiest") != -1) {
+                    if (lowmessage.indexOf(",ranklist") == 0) {
+                        rankList(pokemonlists[0], message.channel);
+                        return;
+                    }
                     message.channel.send(pokemonlists[0] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("simple") != -1) {
+                    if (lowmessage.indexOf(",ranklist") == 0) {
+                        rankList(pokemonlists[1], message.channel);
+                        return;
+                    }
                     message.channel.send(pokemonlists[1] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("medium") != -1) {
+                    if (lowmessage.indexOf(",ranklist") == 0) {
+                        rankList(pokemonlists[2], message.channel);
+                        return;
+                    }
                     message.channel.send(pokemonlists[2] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("hard") != -1) {
+                    if (lowmessage.indexOf(",ranklist") == 0) {
+                        rankList(pokemonlists[3], message.channel);
+                        return;
+                    }
                     message.channel.send(pokemonlists[3] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("complex") != -1) {
+                    if (lowmessage.indexOf(",ranklist") == 0) {
+                        rankList(pokemonlists[4], message.channel);
+                        return;
+                    }
                     message.channel.send(pokemonlists[4] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                     found = true
                     break
                 }
                 if (rankpoke.indexOf("demanding") != -1) {
+                    if (lowmessage.indexOf(",ranklist") == 0) {
+                        rankList(pokemonlists[5], message.channel);
+                        return;
+                    }
                     message.channel.send(pokemonlists[5] + "\nUnderlined Pokémon are also available in the Berry Store!")
                     found = true
                     break
@@ -726,6 +770,20 @@ function randTerrain(message) {
         }
     }
 }
+
+function randAttribute(message) {
+    if (lowmessage.indexOf(",attribute") == 0) {
+        let weather = Math.floor(Math.random() * 5);
+        switch(weather) {
+            case 0: message.channel.send("Cool"); break;
+            case 1: message.channel.send("Beauty"); break;
+            case 2: message.channel.send("Cute"); break;
+            case 3: message.channel.send("Smart"); break;
+            case 4: message.channel.send("Tough"); break;
+        }
+    }
+}
+
 
 function contestLog(message) {
     if((lowmessage.indexOf(",") == 0) && (lowmessage.indexOf("contestlog") != -1)) {
@@ -2027,14 +2085,14 @@ async function substituteBot(channel) {
 
 async function pinMessage(message, messageMember) {
     if ((lowmessage.indexOf(",pin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentID == "358430499146039299" && messageMember.roles.has(refRole)) || (message.channel.parentID == "358433546492444675" && messageMember.roles.has(judgeRole)))) {
-        theMessage = await message.channel.fetchMessage(lowmessage.split(" ")[1]);
+        theMessage = await message.channel.messages.fetch(lowmessage.split(" ")[1]);
         await theMessage.pin();
     }
 }
 
 async function unpinMessage(message, messageMember) {
     if ((lowmessage.indexOf(",unpin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentID == "358430499146039299" && messageMember.roles.has(refRole)) || (message.channel.parentID == "358433546492444675" && messageMember.roles.has(judgeRole)))) {
-        theMessage = await message.channel.fetchMessage(lowmessage.split(" ")[1]);
+        theMessage = await message.channel.messages.fetch(lowmessage.split(" ")[1]);
         await theMessage.unpin();
     }
 }
@@ -2216,6 +2274,8 @@ bot.on("message", async function(message) {
     await randWeather(message);
 
     await randTerrain(message);
+
+    await randAttribute(message);
 
     await wrongBot(message);
 
