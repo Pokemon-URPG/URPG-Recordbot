@@ -374,6 +374,9 @@ function rankList(pokemonList, channel) {
     while (pokemonList.indexOf("__") != -1) {
         pokemonList = pokemonList.replace("__" + pokemonList.split("__")[1] + "__, ", "");
     }
+    for (var x = 0; x < 10; x++) {
+        pokemonList = pokemonList.replace(fossils[x] + ", ", "");
+    }
     var initialList = "🙉" + pokemonList.replace(/, /g, "🙉");
     var numberedList = initialList;
     var x = 1;
