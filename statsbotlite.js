@@ -381,7 +381,7 @@ function rankList(pokemonList, channel) {
         numberedList = numberedList.replace("🙉", "\n" + x + ". ");
         x++;
     }
-    numberedList == numberedList.replace("🙉", "");
+    numberedList == numberedList.replace(/🙉/g, "");
     channel.send(numberedList);
 }
 
@@ -2224,6 +2224,16 @@ async function sleepTalk(message) {
     }
 }
 
+function raidBan(message, messageMember) {
+    if (messageMember.roles.size == 1 && message.mentions.users.size > 5) {
+        messageMember.ban({
+            days: 1,
+            reason: "Mention spam"
+        });
+        bot.channels.get(logsChannel).send(messageMember.displayName + " (id " + messageMember.id + ") banned for spamming mentions.  Message: ```" + message.cleanContent + "```");
+    }
+}
+
 bot.on('error', console.error);
 
 bot.on("message", async function(message) {
@@ -2295,6 +2305,8 @@ bot.on("message", async function(message) {
     if (message.guild.id != urpgServer) {return;}
 
     let messageMember = await message.guild.fetchMember(message.author);
+
+    await raidBan(message, messageMember);
 
     await tempChannelReporter(message, messageMember);
 
