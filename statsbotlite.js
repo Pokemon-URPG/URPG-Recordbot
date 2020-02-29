@@ -381,7 +381,7 @@ function rankList(pokemonList, channel) {
         numberedList = numberedList.replace("🙉", "\n" + x + ". ");
         x++;
     }
-    numberedList.replace("🙉", "");
+    numberedList == numberedList.replace("🙉", "");
     channel.send(numberedList);
 }
 
@@ -389,7 +389,7 @@ function rank(message) {
     if (lowmessage.indexOf(",rank ") == 0 || lowmessage.indexOf(",ranklist") == 0) {
         if (lowmessage.split(" ")[1].replace("flabebe", "flabébé")) {
             var found = false;
-            const rankpoke = lowmessage.split(" ")[1]
+            const rankpoke = lowmessage.split(" ")[1].replace("flabebe", "flabébé")
             let pokemonlist = ""
             try { pokemonlist = fs.readFileSync("ranks.txt", "utf8") } catch (err) {
                 if (err.code === "ENOENT") { message.channel.send("Sorry, my rank file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
@@ -2079,7 +2079,7 @@ async function substituteBot(channel) {
             }
             if (x < dieToRoll.length - 1) {results += " and ";}
         }
-        channel.send(results);
+        if (results != "<@574745413773426688> seems to be offline.  As your substitute dice roller, I decree you have rolled ") { channel.send(results); }
     }
 }
 
