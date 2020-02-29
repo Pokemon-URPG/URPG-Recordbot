@@ -381,7 +381,7 @@ function rankList(pokemonList, channel) {
         numberedList = numberedList.replace("🙉", "\n" + x + ". ");
         x++;
     }
-    numberedList == numberedList.replace(/🙉/g, "");
+    numberedList = numberedList.replace("🙉", "");
     channel.send(numberedList);
 }
 
@@ -2225,13 +2225,18 @@ async function sleepTalk(message) {
 }
 
 function raidBan(message, messageMember) {
-    if (messageMember.roles.size == 1 && message.mentions.users.size > 5) {
+    if (messageMember.roles.size > 1) { return; }
+    if (message.mentions.users.size > 5) {
         messageMember.ban({
             days: 1,
-            reason: "Mention spam"
+            reason: "Mention spam from non-member"
         });
-        bot.channels.get(logsChannel).send(messageMember.displayName + " (id " + messageMember.id + ") banned for spamming mentions.  Message: ```" + message.cleanContent + "```");
     }
+    const count = message.channel.messages.filter(m => m.author.id === message.author.id && m.createdTimestamp > Date.now() - 2000).size;
+    if(count > 5) messageMember.ban({
+        days: 1,
+        reason: "Message spam from non-member"
+    });
 }
 
 bot.on('error', console.error);
