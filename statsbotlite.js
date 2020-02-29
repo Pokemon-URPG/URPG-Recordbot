@@ -13,7 +13,8 @@ logger.level = "debug"
 // Initialize Discord Bot
 var bot = new Discord.Client({ disableEveryone: true })
 var badWords = [" fag", "fag ", "retard", "cuck", "slut", "kys", "trigger"];
-var fossils = ["kabuto", "omanyte", "lileep", "anorith", "cranidos", "shieldon", "archen", "tirtouga", "tyrunt", "amaura", "dracozolt", "dracovish", "arctozolt", "arctovish"];
+var hardFossils = ["Kabuto", "Omanyte", "Lileep", "Anorith", "Cranidos", "Shieldon", "Archen", "Tirtouga", "Tyrunt", "Amaura"]
+var otherFossils = ["Dracozolt", "Dracovish", "Arctozolt", "Arctovish", "Spiritomb", "Aerodactyl"];
 var bumpTime;
 var disBumpTime = null;
 var lowmessage;
@@ -374,8 +375,8 @@ function rankList(pokemonList, channel) {
     while (pokemonList.indexOf("__") != -1) {
         pokemonList = pokemonList.replace("__" + pokemonList.split("__")[1] + "__, ", "");
     }
-    for (var x = 0; x < 10; x++) {
-        pokemonList = pokemonList.replace(fossils[x] + ", ", "");
+    for (var x = 0; x < hardFossils.length; x++) {
+        pokemonList = pokemonList.replace(hardFossils[x] + ", ", "");
     }
     var initialList = "🙉" + pokemonList.replace(/, /g, "🙉");
     var numberedList = initialList;
@@ -513,6 +514,9 @@ function rank(message) {
                         let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0];
                         themessage += " for " + price + "!";
                     }
+                    if (hardFossils.toLowerCase().indexOf(rankpoke) != -1 || otherFossils.toLowerCase().indexOf(rankpoke) != -1) {
+                        themessage += "\nYou can also find it in the Underground!";
+                    } 
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
                     }
