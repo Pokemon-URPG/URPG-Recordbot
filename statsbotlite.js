@@ -2232,7 +2232,7 @@ async function sleepTalk(message) {
     }
 }
 
-function raidBan(message, messageMember) {
+async function raidBan(message, messageMember) {
     kauri = await bot.fetchUser("574745413773426688");
     if (kauri.presence.status != "offline") { return; }
     if (messageMember.roles.size > 1) { return; }
