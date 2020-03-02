@@ -54,10 +54,11 @@ bot.on("ready", async function() {
     setTimeout(function () {
         payDayReset();
     }, ((864000000) - (d.getTime() % 604800000)) % 604800000);
-    bot.channels.get(botCommands).send("I have arisen!  Please help me set my DISBOARD bump notification timer with a `!d bump`.");
-    disBumpTime = setTimeout(function() {
+    //bot.channels.get(botCommands).send("I have arisen!  Please help me set my DISBOARD bump notification timer with a `!d bump`.");
+    bot.channels.get("531433553225842700").send("I have arisen!");
+    /*disBumpTime = setTimeout(function() {
         bumpNotification();
-    }, 7200000);
+    }, 7200000);*/
     var memberMe = await bot.guilds.get(urpgServer).fetchMember(bot.user);
     lowmessage = ",fixorder";
     await fixOrder(null, memberMe);
@@ -407,16 +408,16 @@ function rank(message) {
                     found = true
                     return
                 }
-                if (rankpoke == "muk") {
+                /*if (rankpoke == "muk") {
                     message.channel.send("That's a Complex! You'll need to write 30,000-40,000 characters or have your art pass at Complex rank!")
                     found = true
                     break
                 }
                 if (rankpoke == "abra") {
-                    message.channel.send("That's a Complex! You'll need to write 30,000-40,000 characters or have your art pass at Complex rank!")
+                    message.channel.send("That's a Demanding! You'll need to write 40,000-55,000 characters or have your art pass at Demanding rank!")
                     found = true
                     break
-                }
+                }*/
                 if (rankpoke.indexOf("easiest") != -1) {
                     if (lowmessage.indexOf(",ranklist") == 0) {
                         rankList(pokemonlists[0], message.channel);
@@ -548,8 +549,8 @@ function ruleset(message) {
         if(lowmessage.indexOf("ld") == 0) message.channel.send("4 VS. 4+\nSM Private Full or Preview\nItems Optional\nSleep, Freeze, OHKO, Accuracy, Evasion, Imprison, and Legend Clauses On\nMega, Z, Dyanamax, Item and Species Clauses Optional\nStarting Weather and Terrain Optional");
         if(lowmessage.indexOf("ashrandoms") == 0) message.channel.send("6v6\nSM Public Box (Roll your 6 and use that as your Box)\nOHKO ACC EVA SLP FRZ Imprison Dynamax Mega Clauses On\nHelds On\nRandom Weather and Terrain\nRoll for first send\n\nAny changes?");
         if(lowmessage.indexOf("fortree") == 0) message.channel.send("6v6\nSM Public Open\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First");
-        if(lowmessage.indexOf("ashmockfire") == 0) message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\n~~No Legendary Pokémon~~ \nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Cinderace, Delphox, Flareon, Houndoom, Marowak (Alola), Numel, Salamence, Talonflame, Torkoal, Turtonator, Volcarona.  Yours may be whatever you wish.");
-        if(lowmessage.indexOf("ashmockdragon") == 0) message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\n~~No Legendary Pokémon~~\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
+        if(lowmessage.indexOf("ashmockfire") == 0) message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Cinderace, Delphox, Flareon, Houndoom, Marowak (Alola), Numel, Salamence, Talonflame, Torkoal, Turtonator, Volcarona.  Yours may be whatever you wish.");
+        if(lowmessage.indexOf("ashmockdragon") == 0) message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
         if(lowmessage.indexOf("maylee") == 0) message.channel.send("6v6 SM Private Full\nSleep/Freeze/OHKO/Evasion/Accuracy/Legends clauses active\nHelds on, building terrain, no starting weather\n\nIf both battlers agree, the following rules may be changed: Mega/Z/Item/Species, Helds off instead of on, Preview instead of Full");
         if(lowmessage.indexOf("ffa") == 0) message.channel.send("SM Private Full\nNo Holds\nNo Sleep Moves (Barring Rest)\nEVA/ACC/OHKO/Imprison/Dyanamax Clauses\nPerish Song Fails\nPerish Body banned\nHit All - Hit One\nEncore Fails\nAttract Fails\nRage Powder/Follow Me/Spotlight Fails\nRedirects On\nIllusion Pokémon disguises as a random Pokémon from the National Pokédex\nImposter, Download, and Intimidate select a random participating Pokémon\nNot sending or forfeiting results in KO at the beginning of the turn");
         if(lowmessage.indexOf("randomize") == 0) {
@@ -713,7 +714,7 @@ function ruleset(message) {
                 }
             }
             if (mzmax != 4) {rules += "Dynamax Clause\n"}
-            //if (leg == 0) {rules += "Legends Clause\n";}
+            if (leg == 0) {rules += "Legends Clause\n";}
             switch(weather) {
                 case 0: rules += "No Starting Weather\n"; break;
                 case 1: rules += "Sun\n"; break;
@@ -840,8 +841,8 @@ function contestLog(message) {
         if(mode == "rse") contestlog += ("Contest #\n\nRSE " + rank + " " + attribute + " Contest\nOP Combo Clause On\nNervous Clause On\n\nDESCRIPTION\n\n[b] and () get ");
         if(mode == "oras") contestlog += ("Contest #\n\nORAS " + rank + " " + attribute + " Contest\nEndure -> Pain Split does not combo\nNervous Clause On\n\nDESCRIPTION\n\n[b] and () get ");
         if(mode == "dppt") contestlog += ("Contest #\n\nDPPt " + rank + " " + attribute + " Contest\n\nDESCRIPTION\n\n[b] and () get ");
-        if((rank == "Master")||(rank == "Hyper")) contestlog += ("$2,500 + 2,500 CC + " + rank + " " + attribute + " Ribbon [/b][img]" + ribbon + "[/img]\n\n and () get $2,000 + 2,000 CC\n\n and () get $1,500 + 1,500 CC\n\n and () get $1,000 + 1,000 CC\n\n");
-        if((rank == "Super")||(rank == "Normal")) contestlog += ("$2,000 + 2,000 CC + " + rank + " " + attribute + " Ribbon [/b][img]" + ribbon + "[/img]\n\n and () get $1,500 + 1,500 CC\n\n and () get $1,000 + 1,000 CC\n\n and () get $500 + 500 CC\n\n");
+        if((rank == "Master")||(rank == "Hyper")) contestlog += ("$5,000 + " + rank + " " + attribute + " Ribbon [/b][img]" + ribbon + "[/img]\n\n and () get $4,000\n\n and () get $3,000\n\n and () get $2,000\n\n");
+        if((rank == "Super")||(rank == "Normal")) contestlog += ("$4,000 + " + rank + " " + attribute + " Ribbon [/b][img]" + ribbon + "[/img]\n\n and () get $3,000\n\n and () get $2,000\n\n and () get $1,000\n\n");
         message.channel.send(contestlog);
     }
 }
@@ -2232,6 +2233,8 @@ async function sleepTalk(message) {
 }
 
 function raidBan(message, messageMember) {
+    kauri = await bot.fetchUser("574745413773426688");
+    if (kauri.presence.status != "offline") { return; }
     if (messageMember.roles.size > 1) { return; }
     if (message.mentions.users.size > 5) {
         messageMember.ban({
@@ -2250,8 +2253,6 @@ bot.on('error', console.error);
 
 bot.on("message", async function(message) {
     lowmessage = message.content.toLowerCase();
-
-    await disboardTimer(message);
 
     await stats(message);
 
@@ -2317,8 +2318,6 @@ bot.on("message", async function(message) {
     if (message.guild.id != urpgServer) {return;}
 
     let messageMember = await message.guild.fetchMember(message.author);
-
-    await raidBan(message, messageMember);
 
     await tempChannelReporter(message, messageMember);
 
