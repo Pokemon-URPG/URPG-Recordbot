@@ -413,12 +413,12 @@ function rank(message) {
                     message.channel.send("That's a Complex! You'll need to write 30,000-40,000 characters or have your art pass at Complex rank!")
                     found = true
                     break
-                }
-                if (rankpoke == "abra") {
-                    message.channel.send("That's a Demanding! You'll need to write 40,000-55,000 characters or have your art pass at Demanding rank!")
-                    found = true
-                    break
                 }*/
+                if (rankpoke == "abra") {
+                    message.channel.send("That's a Demanding! You'll need to have your story or art pass at Demanding rank!\nYou can also find it in the Berry Store!\nTrade value: $47,500");
+                    found = true
+                    return
+                }
                 if (rankpoke.indexOf("easiest") != -1) {
                     if (lowmessage.indexOf(",ranklist") == 0) {
                         rankList(pokemonlists[0], message.channel);
@@ -499,27 +499,27 @@ function rank(message) {
                 if (pokemonlists[x].toLowerCase().indexOf(rankpoke) != -1) {
                     var value = 0
                     if (x == 0) {
-                        themessage = "That's an Easiest! You'll need to write 3,000-5,000 characters or have your art pass at Easiest rank!";
+                        themessage = "That's an Easiest! You'll need to have your story or art pass at Easiest rank!";
                         value = 4000;
                     }
                     if (x == 1) {
-                        themessage = "That's a Simple! You'll need to write 5,000-10,000 characters or have your art pass at Simple rank!";
+                        themessage = "That's a Simple! You'll need to have your story or art pass at Simple rank!";
                         value = 7500;
                     }
                     if (x == 2) {
-                        themessage = "That's a Medium! You'll need to write 10,000-20,000 characters or have your art pass at Medium rank!";
+                        themessage = "That's a Medium! You'll need to have your story or art pass at Medium rank!";
                         value = 15000;
                     }
                     if (x == 3) {
-                        themessage = "That's a Hard! You'll need to write 20,000-30,000 characters or have your art pass at Hard rank!";
+                        themessage = "That's a Hard! You'll need to have your story or art pass at Hard rank!";
                         value = 25000;
                     }
                     if (x == 4) {
-                        themessage = "That's a Complex! You'll need to write 30,000-40,000 characters or have your art pass at Complex rank!";
+                        themessage = "That's a Complex! You'll need to have your story or art pass at Complex rank!";
                         value = 35000;
                     }
                     if (x == 5) {
-                        themessage = "That's a Demanding! You'll need to write 40,000-55,000 characters or have your art pass at Demanding rank!";
+                        themessage = "That's a Demanding! You'll need to have your story or art pass at Demanding rank!";
                         value = 47500;
                     }
                     if (x == 6) themessage = "That's a Merciless! You'll need to write 55,000-65,000 characters or have your art pass at Merciless rank!"
