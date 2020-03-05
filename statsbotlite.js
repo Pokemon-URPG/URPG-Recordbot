@@ -145,13 +145,14 @@ async function payDay(message, messageMember) {
     if (lowmessage.indexOf(",payday") == 0 && (messageMember.roles.has(refRole) || messageMember.roles.has(judgeRole))) {
         let payments = message.mentions.users;
         for(const [key, value] of payments) { //for...of will be synchronous, reduces API queuing
+            var payMember = await message.guild.fetchMember(key);
             if (payDayLog.mentions.users.has(key)) { // Can utilise message.mentions for this check too
-                await message.channel.send(`${value} has already received a Pay Day bonus this week.`); //Template literals
+                await message.channel.send(`${payMember.displayName} has already received a Pay Day bonus this week.`); //Template literals
             }
             else {
                 var newLog = `${payDayLog.content} ${value}`; // Template literals
                 await payDayLog.edit(newLog);
-                await message.channel.send(`${value} receives a Pay Day bonus for this.`); //Template literals
+                await message.channel.send(`${payMember.displayName} receives a Pay Day bonus for this **(+$500)**.`); //Template literals
             }
         }
     }
@@ -496,12 +497,31 @@ function rank(message) {
                     break
                 }
                 if (pokemonlists[x].toLowerCase().indexOf(rankpoke) != -1) {
-                    if (x == 0) themessage = "That's an Easiest! You'll need to write 3,000-5,000 characters or have your art pass at Easiest rank!"
-                    if (x == 1) themessage = "That's a Simple! You'll need to write 5,000-10,000 characters or have your art pass at Simple rank!"
-                    if (x == 2) themessage = "That's a Medium! You'll need to write 10,000-20,000 characters or have your art pass at Medium rank!"
-                    if (x == 3) themessage = "That's a Hard! You'll need to write 20,000-30,000 characters or have your art pass at Hard rank!"
-                    if (x == 4) themessage = "That's a Complex! You'll need to write 30,000-40,000 characters or have your art pass at Complex rank!"
-                    if (x == 5) themessage = "That's a Demanding! You'll need to write 40,000-55,000 characters or have your art pass at Demanding rank!"
+                    var value = 0
+                    if (x == 0) {
+                        themessage = "That's an Easiest! You'll need to write 3,000-5,000 characters or have your art pass at Easiest rank!";
+                        value = 4000;
+                    }
+                    if (x == 1) {
+                        themessage = "That's a Simple! You'll need to write 5,000-10,000 characters or have your art pass at Simple rank!";
+                        value = 7500;
+                    }
+                    if (x == 2) {
+                        themessage = "That's a Medium! You'll need to write 10,000-20,000 characters or have your art pass at Medium rank!";
+                        value = 15000;
+                    }
+                    if (x == 3) {
+                        themessage = "That's a Hard! You'll need to write 20,000-30,000 characters or have your art pass at Hard rank!";
+                        value = 25000;
+                    }
+                    if (x == 4) {
+                        themessage = "That's a Complex! You'll need to write 30,000-40,000 characters or have your art pass at Complex rank!";
+                        value = 35000;
+                    }
+                    if (x == 5) {
+                        themessage = "That's a Demanding! You'll need to write 40,000-55,000 characters or have your art pass at Demanding rank!";
+                        value = 47500;
+                    }
                     if (x == 6) themessage = "That's a Merciless! You'll need to write 55,000-65,000 characters or have your art pass at Merciless rank!"
                     if (x == 7) themessage = "That's a Stupefying! You'll need to write 65,000-75,000 characters or have your art pass at Stupefying rank!"
                     if (x == 8) themessage = "That's a Tier 2 Legendary! You'll need to earn the equivalent of $250,000 through your stories or art!"
@@ -514,14 +534,17 @@ function rank(message) {
                         themessage += "\nYou can also find it in the Pokemart";
                         let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0];
                         themessage += " for " + price + "!";
+                        value = 0;
                     }
                     if (hardFossils.some(element => element.toLowerCase() === rankpoke.toLowerCase()) || otherFossils.some(element => element.toLowerCase() === rankpoke.toLowerCase())) {
                         themessage += "\nYou can also find it in the Underground!";
-                    } 
+                        value -= 15000;
+                    }
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
                     }
                     if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) { themessage += "\nYou can also find it in the Berry Store!" }
+                    if (value > 0) { themessage += "\nTrade value: $" + value.toLocaleString(); }
                     message.channel.send(themessage)
                     break
                 }
