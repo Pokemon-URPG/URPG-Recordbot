@@ -515,7 +515,7 @@ function rank(message) {
                         let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0];
                         themessage += " for " + price + "!";
                     }
-                    if (hardFossils.toLowerCase().indexOf(rankpoke) != -1 || otherFossils.toLowerCase().indexOf(rankpoke) != -1) {
+                    if (hardFossils.some(element => element.toLowerCase() === rankpoke.toLowerCase()) || otherFossils.some(element => element.toLowerCase() === rankpoke.toLowerCase())) {
                         themessage += "\nYou can also find it in the Underground!";
                     } 
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
