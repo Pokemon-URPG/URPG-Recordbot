@@ -2096,19 +2096,23 @@ async function substituteBot(channel) {
         var results = "<@574745413773426688> seems to be offline.  As your substitute dice roller, I decree you have rolled ";
         for (var x = 1; x < dieToRoll.length; x++) {
             dieToRoll[x] = dieToRoll[x].replace(/, /g, " ").replace(/,/g, "d");
+            var rollResults = "";
             if (!isNaN(dieToRoll[x]) && dieToRoll[x] > 1) {
                 var roll = Math.floor(Math.random() * dieToRoll[x]) + 1;
-                results += "a " + roll + " on a d" + dieToRoll[x];
+                rollResults += "a " + roll + " on a d" + dieToRoll[x];
             }
             else if (dieToRoll[x].indexOf("d") != -1 && !isNaN(dieToRoll[x].split("d")[0]) && !isNaN(dieToRoll[x].split("d")[1])) {
                 for (var y = 0; y < dieToRoll[x].split("d")[0]; y++) {
                     var roll = Math.floor(Math.random() * dieToRoll[x].split("d")[1]) + 1;
-                    results += roll
+                    rollResults += roll
                     if (y < dieToRoll[x].split("d")[0] -1) {results += ", ";}
                 }
-                results += " on " + dieToRoll[x].split("d")[0] + "d" + dieToRoll[x].split("d")[1];
+                rollResults += " on " + dieToRoll[x].split("d")[0] + "d" + dieToRoll[x].split("d")[1];
             }
-            if (x < dieToRoll.length - 1) {results += " and ";}
+            if (rollResults != "") {
+                if (results.length > 101) {results += " and ";}
+                results += rollResults;
+            }
         }
         if (results != "<@574745413773426688> seems to be offline.  As your substitute dice roller, I decree you have rolled ") { channel.send(results); }
     }
