@@ -165,7 +165,8 @@ function payDayReset() {
 }
 
 function bumpServer() {
-    bot.channels.get("590150047279087617").send("dc!bump");
+    var discordCenter = bot.fetchUser("509430136442191873");
+    if (discordCenter.presence.status != "offline") { bot.channels.get("590150047279087617").send("dc!bump"); }
     bumpTime = setTimeout(function() {
         bumpServer();
     }, 7205000);
