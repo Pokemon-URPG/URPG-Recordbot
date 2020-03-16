@@ -164,8 +164,8 @@ function payDayReset() {
     payDayLog.edit("Those who have gotten Pay Day this week:\n");
 }
 
-function bumpServer() {
-    var discordCenter = bot.fetchUser("509430136442191873");
+async function bumpServer() {
+    var discordCenter = await bot.fetchUser("509430136442191873");
     if (discordCenter.presence.status != "offline") { bot.channels.get("590150047279087617").send("dc!bump"); }
     bumpTime = setTimeout(function() {
         bumpServer();
@@ -394,7 +394,7 @@ function rankList(pokemonList, channel) {
 
 function rank(message) {
     if (lowmessage.indexOf(",rank ") == 0 || lowmessage.indexOf(",ranklist") == 0) {
-        if (lowmessage.split(" ")[1].replace("flabebe", "flabébé")) {
+        if (lowmessage.split(" ")[1]) {
             var found = false;
             const rankpoke = lowmessage.split(" ")[1].replace("flabebe", "flabébé")
             let pokemonlist = ""
@@ -2035,8 +2035,6 @@ async function fixOrder(channel, messageMember) {
         await bot.channels.get(eliteRangersChannel).setPosition(1);//eliterangers
         await bot.channels.get("136694015285264384").setPosition(1);//rangers
         await bot.channels.get(refTestChannel).setPosition(1);//reftest
-        await bot.channels.get("652208449555267591").setPosition(1);//SwSh
-        await bot.channels.get("652207797848637453").setPosition(1);//dynamax
         await bot.channels.get(seniorRefChannel).setPosition(1);//seniorref
         await bot.channels.get("322151372453838848").setPosition(1);//refs
         await bot.channels.get("406933479062765571").setPosition(1);//techteam

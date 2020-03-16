@@ -1,4 +1,4 @@
-﻿Absorb | Smart | +1 |
+Absorb | Smart | +1 |
 If the previous Pokémon caused a Judge’s Voltage to rise and the user would also cause the Voltage to rise (even if the Judge is different), earn +3 more.
 
 Acid | Smart | +3 |
@@ -1695,7 +1695,7 @@ Prevents Voltage on any Judges from being increased (includes current use of mov
 Transform | Smart | +1 |
 At the end of a turn (after points from Judges’ impressions are added), if User’s score is the lowest of all scores in the turn, earn +3 more (even if multiple Pokémon are tied for lowest).
 
-Tri-Attack | Beauty | +3 |
+Tri Attack | Beauty | +3 |
 No additional effect.
 
 Trick | Smart | n/a |
@@ -1738,7 +1738,7 @@ Prevents Voltage on any Judges from being decreased (includes current use of mov
 Venoshock | Smart | +2 |
 If chosen Judge's Voltage goes up, earn +2 more.
 
-Vicegrip | Tough | +3 |
+Vice Grip | Tough | +3 |
 No additional effect.
 
 Vine Whip | Cool | +3 |
