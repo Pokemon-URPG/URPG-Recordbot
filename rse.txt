@@ -1322,7 +1322,7 @@ Spotlight | Cute | +3 | 0 |
 The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
 Steam Eruption | Tough | +4 | 0 |
 No additional effect.
-Stomping Tantrum  | Tough | +1 | -3 |
+Stomping Tantrum | Tough | +1 | -3 |
 Startles all Pokemon that appealed before the user.
 Strength Sap | Smart | +1 | 0 |
 Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
@@ -1342,3 +1342,75 @@ Trop Kick  | Tough | +1 | -3 |
 Startles all Pokemon that appealed before the user.
 Zing Zap | Cool | +4 | 0 |
 No additional effect.
+Double Iron Bash |
+Repeatable category, Tough
+Dynamax Cannon |
+Risky, Smart
+Snipe Shot |
+Startle Type, Beauty
+Jaw Lock |
+Lock, Tough
+Stuff Cheeks |
+Condition, Cute
+No Retreat |
+Condition, Tough
+Tar Shot |
+Startle All 3, Beauty
+Magic Powder |
+Decondition, Cute
+Dragon Darts |
+Repeatable category, Cool
+Teatime |
+Nervous, Beauty
+Octolock |
+Lock move, Cool
+Bolt Beak |
+First Move, Tough
+Fishious Rend |
+First move, Tough
+Court Change |
+Nervous Cool
+Clangorous Soul |
+Condition, Tough
+Body Press |
+Match Last, Beauty
+Decorate |
+Condition, Cute
+Drum Beating |
+Startle All 3, Smart
+Snap Trap |
+Lock, Tough
+Pyro Ball |
+Risky, Beauty
+Behemoth Blade |
+Risky, Tough
+Behemoth Bash |
+Risky, Tough
+Aura Wheel |
+First, Beauty
+Breaking Swipe |
+Startle All 3, Cool
+Branch Poke |
+Standard, Cool
+Overdrive |
+Startle All 3, Cool
+Apple Acid |
+Startle all 2, Tough
+Grav Apple |
+Startle all 2, Cute
+Spirit Break |
+Startle All 3, Cute
+Strange Steam |
+Startle Target 4, Smart
+Life Dew |
+Random, Cute
+Obstruct |
+Avoid All, Cool
+False Surrender |
+First, Tough
+Meteor Assault |
+Double, Tough
+Eternabeam |
+Double, Smart
+Steel Beam |
+Risky, Beauty
