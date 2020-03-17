@@ -796,7 +796,7 @@ Ice Punch | Beauty | +2 |
 If performed first, earn +2 more.
 
 Ice Shard | Beauty | +2 |
-User Pokémon performs last next round.
+User Pokémon performs first next round.
 
 Icicle Crash | Beauty | +3 |
 No additional effect.
