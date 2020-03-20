@@ -1384,6 +1384,9 @@ function links(message) {
     if (lowmessage.indexOf(",refpedia") == 0) { message.channel.send("https://pokemonurpg.com/info/battles/reffing-encyclopedia/"); }
     if (lowmessage.indexOf(",gym") == 0) { message.channel.send("https://pokemonurpg.com/info/battles/champion-elite-four-gym-leaders/"); }
     if (lowmessage.indexOf(",updategym") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=4417"); }
+    if (lowmessage.indexOf(",chartrse") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1ImPbiw8B_hhC6bmQD8BJarJR9SIoq7rTUWCrWc2iKWo/edit#gid=38422135"); }
+    if (lowmessage.indexOf(",chartoras") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1fFEREf42ZNBkesU0GbNPH9veIFGp0xDxxgIdqVufz7Q/edit#gid=38422135"); }
+    if (lowmessage.indexOf(",chartdppt") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/19n2yGw38xVqak0GTVjB4dN4M1k_Ix7WEnUsufT9uRes/edit?usp=sharing"); }
 }
 
 function wildcards(message) {
@@ -2146,12 +2149,12 @@ async function deleteReporter(message) {
     if (!message.guild.available) {return;}
     if (message.guild.id != urpgServer) {return;}
     if (message.author.id == "461133571034316810") {return;}
-    if (message.channel.id == "690427377012047902") {channelToNotify = "690427377012047902";}
     var channelToNotify = logsChannel;
     if (message.channel.id == logsChannel && message.author.id == "531429270451519490") {
         await message.channel.send("One of my logs was deleted from here.");
         return;
     }
+    if (message.channel.id == "690427377012047902") {channelToNotify = judgeTestChannel;}
     if (message.channel.id == refTestChannel) {channelToNotify = seniorRefChannel;}
     if (message.channel.id == judgeTestChannel) {channelToNotify = judgingChiefsChannel;}
     if (message.channel.id == rangerTestChannel) {channelToNotify = eliteRangersChannel;}
@@ -2455,7 +2458,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
             if (oldMessage.channel.id == seniorRefChannel) {channelToNotify = seniorRefChannel;}
             if (oldMessage.channel.id == judgingChiefsChannel) {channelToNotify = judgingChiefsChannel;}
             if (oldMessage.channel.id == eliteRangersChannel) {channelToNotify = eliteRangersChannel;}
-            if (oldMessage.channel.id == "690427377012047902") {channelToNotify = "690427377012047902";}
+            if (oldMessage.channel.id == "690427377012047902") {channelToNotify = judgeTestChannel;}
     		var deleteLog = ""
             if (temp) {
                 deleteLog += await message.guild.fetchMember(message.author).displayName + "'s message saying \"" + newMessage.cleanContent + "\"";
