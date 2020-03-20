@@ -217,7 +217,7 @@ function selfCleaner(message) {
 
 function stats(message) {
     if (lowmessage.indexOf(",stats") == 0 || lowmessage.indexOf("'s statsbot") != -1) {
-        let oldmessage = " " + lowmessage.replace(/'s statsbot/g, " ") + " ";
+        let oldmessage = " " + lowmessage.replace(/'s statsbot/g, " ").replace(/’/g, "'") + " ";
         if ((oldmessage.indexOf("gray ") != -1) || (oldmessage.indexOf("gray nine ") != -1) || (oldmessage.indexOf("gray 9 ") != -1) || (oldmessage.indexOf(" gn ") != -1) || (oldmessage.indexOf("g9 ") != -1) || (oldmessage.indexOf("gmg ") != -1) || (oldmessage.indexOf(" gm ") != -1)) { message.channel.send("\nGray Nine's stats: http://forum.pokemonurpg.com/showthread.php?tid=9849&pid=122945#pid122945") }
         if ((oldmessage.indexOf("jacen ") != -1) || (oldmessage.indexOf("jacenboy ") != -1) || (oldmessage.indexOf("jacen boy ") != -1)) { message.channel.send("\nJacenBoy's stats: http://urpg.jacenboy.com/pokes.php") }
         if (oldmessage.indexOf("rick ") != -1) { message.channel.send("\nRick's stats: https://urpg-rick.weebly.com/") }
@@ -2146,6 +2146,7 @@ async function deleteReporter(message) {
     if (!message.guild.available) {return;}
     if (message.guild.id != urpgServer) {return;}
     if (message.author.id == "461133571034316810") {return;}
+    if (message.channel.id == "690427377012047902") {channelToNotify = "690427377012047902";}
     var channelToNotify = logsChannel;
     if (message.channel.id == logsChannel && message.author.id == "531429270451519490") {
         await message.channel.send("One of my logs was deleted from here.");
@@ -2403,6 +2404,7 @@ bot.on("messageDeleteBulk", async function(messages) {
 })
 
 bot.on("messageUpdate", async function(oldMessage, newMessage) {
+    ffaGG(newMessage);
     var channelToNotify = logsChannel;
     const diff = ss.compareTwoStrings(oldMessage.content, newMessage.content);
     if (oldMessage.guild === null && (oldMessage.content.toLowerCase().indexOf("noreply:") == 0 || oldMessage.content.toLowerCase().indexOf("no reply:") == 0 || newMessage.content.toLowerCase().indexOf("noreply:") == 0 || newMessage.content.toLowerCase().indexOf("no reply:") == 0 || oldMessage.content.toLowerCase().indexOf("reply:") == 0 || newMessage.content.toLowerCase().indexOf("reply:") == 0)) {
@@ -2453,6 +2455,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
             if (oldMessage.channel.id == seniorRefChannel) {channelToNotify = seniorRefChannel;}
             if (oldMessage.channel.id == judgingChiefsChannel) {channelToNotify = judgingChiefsChannel;}
             if (oldMessage.channel.id == eliteRangersChannel) {channelToNotify = eliteRangersChannel;}
+            if (oldMessage.channel.id == "690427377012047902") {channelToNotify = "690427377012047902";}
     		var deleteLog = ""
             if (temp) {
                 deleteLog += await message.guild.fetchMember(message.author).displayName + "'s message saying \"" + newMessage.cleanContent + "\"";
