@@ -241,7 +241,7 @@ function stats(message) {
         if (oldmessage.indexOf("zolar ") != -1) { message.channel.send("\nZolar's stats: http://evilgeniusclub.proboards.com/thread/70/pokemon-numbered-list") }
         if (oldmessage.indexOf("pidge ") != -1) { message.channel.send("\nPidge's stats: https://www.tapatalk.com/groups/pidge/pidge-f3/") }
         if ((oldmessage.indexOf("k'sa") != -1) || (oldmessage.indexOf("ksariya ") != -1)) { message.channel.send("\nK'sariya's stats: https://ksariya.urpgstats.com/") }
-        if ((oldmessage.indexOf("saur ") != -1) || (oldmessage.indexOf("eric ") != -1)) { message.channel.send("\nSaur's stats: https://forum.pokemonurpg.com/showthread.php?tid=10333") }
+        if ((oldmessage.indexOf("saur ") != -1)) { message.channel.send("\nSaur's stats: https://forum.pokemonurpg.com/showthread.php?tid=10333") }
         if ((oldmessage.indexOf("dekrueger ") != -1) || (oldmessage.indexOf(" dk ") != -1)) { message.channel.send("\nDeKrueger's stats: http://forum.pokemonurpg.com/showthread.php?tid=9235&pid=116946#pid116946") }
         if ((oldmessage.indexOf("darkness ruler ") != -1) || (oldmessage.indexOf(" dr ") != -1) || (oldmessage.indexOf("darknessruler ") != -1)) { message.channel.send("\nDarknessRuler's stats: http://w11.zetaboards.com/DarknessRuler/topic/9170207/1/") }
         if ((oldmessage.indexOf("mako ") != -1) || (oldmessage.indexOf("morru ") != -1) || (oldmessage.indexOf("magnum ") != -1)) { message.channel.send("\nMako's stats: http://morrumagnumurpg.proboards.com/thread/2/pok-mon") }
@@ -316,6 +316,7 @@ function stats(message) {
         if (oldmessage.indexOf("ravioli") != -1) { message.channel.send("raviolikid's stats: https://forum.pokemonurpg.com/showthread.php?tid=10604") }
         if (oldmessage.indexOf("josiez") != -1) { message.channel.send("josiez's stats: https://forum.pokemonurpg.com/showthread.php?tid=10603") }
         if ((oldmessage.indexOf("james ") != -1 || oldmessage.indexOf("rinage") != -1)) { message.channel.send("AiJames' stats: https://forum.pokemonurpg.com/showthread.php?tid=10611&pid=134755#pid134755") }
+        if (oldmessage.indexOf("plum") != -1) { message.channel.send("Plum's stats: https://forum.pokemonurpg.com/showthread.php?tid=10663"); }
     }
 }
 
