@@ -155,6 +155,7 @@ async function payDay(message, messageMember) {
                 await message.channel.send(`${payMember.displayName} receives a Pay Day bonus for this **(+$500)**.`); //Template literals
             }
         }
+        payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
     }
 }
 
@@ -234,7 +235,7 @@ function stats(message) {
         if (oldmessage.indexOf("commba ") != -1) { message.channel.send("\nCommBA's stats: http://w11.zetaboards.com/CommBAURPG/topic/7546474/1/") }
         if (oldmessage.indexOf("axion ") != -1) { message.channel.send("\nAxion's stats: https://sites.google.com/view/urpgaxion/trainer-stats") }
         if (oldmessage.indexOf("izuru ") != -1) { message.channel.send("\nIzuru's stats: http://www.pokemoncrossroads.com/forum/showthread.php?18030-Izuru-s-Stats&p=279688&viewfull=1#post279688") }
-        if (oldmessage.indexOf("fenris ") != -1) { message.channel.send("\nFenris's stats: https://fenris-urpg.freeforums.net/thread/138/pokemon-stats") }
+        if (oldmessage.indexOf("fenris ") != -1) { message.channel.send("\nFenris's stats: https://forum.pokemonurpg.com/showthread.php?tid=9983") }
         if ((oldmessage.indexOf("reneescarted ") != -1) || (oldmessage.indexOf("renee ") != -1) || (oldmessage.indexOf("renée ") != -1)) { message.channel.send("\nRenéeScarted's stats: https://forum.pokemonurpg.com/showthread.php?tid=10261&pid=127856#pid127856") }
         if (oldmessage.indexOf("lychee ") != -1) { message.channel.send("\nLychee's stats: http://forum.pokemonurpg.com/showthread.php?tid=8369") }
         if ((oldmessage.indexOf("swift") != -1) || (oldmessage.indexOf("gallade ") != -1)) { message.channel.send("\nSwiftGallade46's stats: http://swiftgallade.freeforums.net/thread/2/pokemon-especially-gallade") }
@@ -397,7 +398,7 @@ function rank(message) {
     if (lowmessage.indexOf(",rank ") == 0 || lowmessage.indexOf(",ranklist") == 0) {
         if (lowmessage.split(" ")[1]) {
             var found = false;
-            const rankpoke = lowmessage.split(" ")[1].replace("flabebe", "flabébé")
+            const rankpoke = lowmessage.split(" ")[1].replace("flabebe", "flabébé").replace("mime", "mime jr.")
             let pokemonlist = ""
             try { pokemonlist = fs.readFileSync("ranks.txt", "utf8") } catch (err) {
                 if (err.code === "ENOENT") { message.channel.send("Sorry, my rank file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
@@ -545,7 +546,7 @@ function rank(message) {
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
                     }
-                    if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) { themessage += "\nYou can also find it in the Berry Store!" }
+                    if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) { themessage += "\nYou can also find it in the Berry Store for $" + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0];}
                     if (value > 0) { themessage += "\nTrade value: $" + value.toLocaleString(); }
                     message.channel.send(themessage)
                     break
@@ -1519,7 +1520,9 @@ function help(message) {
             message.channel.send("Send `,avatar @PERSON` to get PERSON's avatar URL, `,avatar ID` to get the avatar URL of the person with ID, or just `,avatar` to get your own.");
         }
         else {
-            message.channel.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
+            var toSend = message.author;
+            if (message.channel.id == botCommands) { toSend = botCommands; }
+            toSend.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
         }
     }
 }
@@ -2097,7 +2100,7 @@ async function disboardTimer(message) {
 }
 
 function wrongBot(message) {
-    if (lowmessage.indexOf(",dex ") == 0 || lowmessage.indexOf(",d ") == 0 || lowmessage.indexOf(",move ") == 0 || lowmessage.indexOf(",item ") == 0 || lowmessage.indexOf(",role ") == 0 || lowmessage.indexOf(",ability ") == 0 || lowmessage.indexOf(",metronome") == 0 || lowmessage.indexOf(",eot") == 0 || lowmessage.indexOf(",veto") == 0 || lowmessage.indexOf(",speed") == 0 || lowmessage.indexOf(",ladder") == 0 || lowmessage.indexOf(",elo") == 0 || lowmessage.indexOf(",weight ") == 0) {
+    if (lowmessage.indexOf(",dex ") == 0 || lowmessage.indexOf(",d ") == 0 || lowmessage.indexOf(",move ") == 0 || lowmessage.indexOf(",item ") == 0 || lowmessage.indexOf(",role ") == 0 || lowmessage.indexOf(",ability ") == 0 || lowmessage.indexOf(",metronome") == 0 || lowmessage.indexOf(",eot") == 0 || lowmessage.indexOf(",veto") == 0 || lowmessage.indexOf(",speed") == 0 || lowmessage.indexOf(",ladder") == 0 || lowmessage.indexOf(",elo") == 0 || lowmessage.indexOf(",weight ") == 0 || lowmessage.indexOf(",learnset") == 0) {
         message.channel.send("This command is handled by my colleague, <@574745413773426688>, who is more responsive to `!` than `,`.  See `!help` or `!help COMMAND` for more info.");
     }
 }
