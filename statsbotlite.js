@@ -12,7 +12,7 @@ logger.add(logger.transports.Console, {
 logger.level = "debug"
 // Initialize Discord Bot
 var bot = new Discord.Client({ disableEveryone: true })
-var badWords = [" fag", "fag ", "retard", "cuck", "slut", "kys", "trigger"];
+var badWords = ["fag", "retard", "cuck", "slut", "kys", "trigger"];
 var hardFossils = ["Kabuto", "Omanyte", "Lileep", "Anorith", "Cranidos", "Shieldon", "Archen", "Tirtouga", "Tyrunt", "Amaura"]
 var otherFossils = ["Dracozolt", "Dracovish", "Arctozolt", "Arctovish", "Spiritomb", "Aerodactyl"];
 var bumpTime;
@@ -53,7 +53,10 @@ bot.on("ready", async function() {
     payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
     setTimeout(function () {
         payDayReset();
-    }, ((864000000) - (d.getTime() % 604800000)) % 604800000);
+    }, ((867600000) - (d.getTime() % 604800000)) % 604800000);
+    setTimeout(function () {
+        weirrrrrReminder();
+    }, ((698400000) - (d.getTime() % 604800000)) % 604800000);
     //bot.channels.get(botCommands).send("I have arisen!  Please help me set my DISBOARD bump notification timer with a `!d bump`.");
     bot.channels.get("531433553225842700").send("I have arisen!");
     /*disBumpTime = setTimeout(function() {
@@ -119,7 +122,7 @@ function statusMessage() {
         case 43: activity = " fighting Team Skull"; break;
         case 44: activity = " fighting Team Yell"; break;
         case 45: activity = " fighting Team Snagem"; break;
-        case 46: activity = " fighting Team Cipher"; break;
+        case 46: activity = " fighting Cipher"; break;
         case 47: activity = " in a dancing competition"; break;
         case 48: activity = " befriending " + allpokes[Math.floor(Math.random() * allpokes.length)].split("/")[0]; break;
         case 49: activity = " battling " + allpokes[Math.floor(Math.random() * allpokes.length)].split("/")[0]; break;
@@ -165,6 +168,10 @@ function payDayReset() {
     payDayLog.edit("Those who have gotten Pay Day this week:\n");
 }
 
+function weirrrrrReminder() {
+    bot.channels.get(logsChannel).send("WEIRRRRR Roll the JOBSSSSSS <@140308490609623041>");
+}
+
 async function bumpServer() {
     var discordCenter = await bot.fetchUser("509430136442191873");
     if (discordCenter.presence.status != "offline") { bot.channels.get("590150047279087617").send("dc!bump"); }
@@ -182,7 +189,7 @@ function bumpNotification() {
 
 function badWordsReporter(message, messageMember, isEdit) {
     if (message.author.bot || message.channel.id == "690427377012047902") {return;}
-    lowmessage = " " + lowmessage + " ";
+    lowmessage = lowmessage.replace(/cofag/g, "");
     var badWordsLog = "";
     var reporting = false;
     for (let i = 0; i < badWords.length; i++) {
@@ -427,7 +434,7 @@ function rank(message) {
                         rankList(pokemonlists[0], message.channel);
                         return;
                     }
-                    message.channel.send(pokemonlists[0] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
+                    message.channel.send(pokemonlists[0] + "\nItalicized Pokémon are also available in the Pokémart!")
                     found = true
                     break
                 }
@@ -546,7 +553,7 @@ function rank(message) {
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
                     }
-                    if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) { themessage += "\nYou can also find it in the Berry Store for $" + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0];}
+                    if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) { themessage += "\nYou can also find it in the Berry Store for $" + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0].split("\n")[0] + "!";}
                     if (value > 0) { themessage += "\nTrade value: $" + value.toLocaleString(); }
                     message.channel.send(themessage)
                     break
@@ -2159,13 +2166,10 @@ async function deleteReporter(message) {
         return;
     }
     if (message.channel.id == "690427377012047902") {channelToNotify = judgeTestChannel;}
-    if (message.channel.id == refTestChannel) {channelToNotify = seniorRefChannel;}
-    if (message.channel.id == judgeTestChannel) {channelToNotify = judgingChiefsChannel;}
-    if (message.channel.id == rangerTestChannel) {channelToNotify = eliteRangersChannel;}
     if (message.channel.id == botsChannel) {channelToNotify = botsChannel;}
-    if (message.channel.id == seniorRefChannel) {channelToNotify = seniorRefChannel;}
-    if (message.channel.id == judgingChiefsChannel) {channelToNotify = judgingChiefsChannel;}
-    if (message.channel.id == eliteRangersChannel) {channelToNotify = eliteRangersChannel;}
+    if (message.channel.id == seniorRefChannel) {channelToNotify = refTestChannel;}
+    if (message.channel.id == judgingChiefsChannel) {channelToNotify = judgeTestChannel;}
+    if (message.channel.id == eliteRangersChannel) {channelToNotify = rangerTestChannel;}
     if (message.channel.id == botCommands && message.cleanContent.indexOf("p!") == 0) {return;}
     if (message.channel.name == "judge-test") {channelToNotify = judgeTestChannel;}
     if (message.channel.name == "ref-test") {channelToNotify = refTestChannel;}
@@ -2455,13 +2459,10 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     }
     if (diff <= .8 || temp) {
     	if (newMessage.content.length > 5 || oldMessage.content.length > 5 || temp) {
-    		if (oldMessage.channel.id == refTestChannel) {channelToNotify = seniorRefChannel;}
-    		if (oldMessage.channel.id == judgeTestChannel) {channelToNotify = judgingChiefsChannel;}
-    		if (oldMessage.channel.id == rangerTestChannel) {channelToNotify = eliteRangersChannel;}
+    		if (oldMessage.channel.id == seniorRefChannel) {channelToNotify = refTestChannel;}
+    		if (oldMessage.channel.id == judgingChiefsChannel) {channelToNotify = judgeTestChannel;}
+    		if (oldMessage.channel.id == eliteRangersChannel) {channelToNotify = rangerTestChannel;}
     		if (oldMessage.channel.id == botsChannel) {channelToNotify = botsChannel;}
-            if (oldMessage.channel.id == seniorRefChannel) {channelToNotify = seniorRefChannel;}
-            if (oldMessage.channel.id == judgingChiefsChannel) {channelToNotify = judgingChiefsChannel;}
-            if (oldMessage.channel.id == eliteRangersChannel) {channelToNotify = eliteRangersChannel;}
             if (oldMessage.channel.id == "690427377012047902") {channelToNotify = judgeTestChannel;}
     		var deleteLog = ""
             if (temp) {
