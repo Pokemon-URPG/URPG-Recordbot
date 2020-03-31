@@ -325,7 +325,7 @@ function stats(message) {
         if (oldmessage.indexOf("josiez") != -1) { message.channel.send("josiez's stats: https://forum.pokemonurpg.com/showthread.php?tid=10603") }
         if ((oldmessage.indexOf("james ") != -1 || oldmessage.indexOf("rinage") != -1)) { message.channel.send("AiJames' stats: https://forum.pokemonurpg.com/showthread.php?tid=10611&pid=134755#pid134755") }
         if (oldmessage.indexOf("plum") != -1) { message.channel.send("Plum's stats: https://forum.pokemonurpg.com/showthread.php?tid=10663"); }
-        if ((oldmessage.indexOf(" ml ") != -1 || oldmessage.indexOf("mlouden"))) { message.channel.send("mlouden03's stats: https://gaiusvibritannia.proboards.com/thread/6/urpg-stats"); }
+        if ((oldmessage.indexOf(" ml ") != -1 || oldmessage.indexOf("mlouden") != -1)) { message.channel.send("mlouden03's stats: https://gaiusvibritannia.proboards.com/thread/6/urpg-stats"); }
     }
 }
 
