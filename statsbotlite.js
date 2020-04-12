@@ -773,10 +773,10 @@ function ruleset(message) {
                 case 11: rules += "Space Terrain"; break;
             }
             message.channel.send(rules);
-            if (message.channel.name.toLowerCase().includes("sun")) { message.channel.send("Reminder that this channel should be using Sunny weather."); }
-            if (message.channel.name.toLowerCase().includes("pour")) { message.channel.send("Reminder that this channel should be using Rainy weather."); }
-            if (message.channel.name.toLowerCase().includes("sand")) { message.channel.send("Reminder that this channel should be using Sandy weather."); }
-            if (message.channel.name.toLowerCase().includes("ice")) { message.channel.send("Reminder that this channel should be using Hail weather."); }
+            if (message.channel.id == "135914249456320513") { message.channel.send("Reminder that this channel should be using Sunny weather."); }
+            if (message.channel.id == "135869907349929985") { message.channel.send("Reminder that this channel should be using Rainy weather."); }
+            if (message.channel.id == "136219179899420672") { message.channel.send("Reminder that this channel should be using Sandy weather."); }
+            if (message.channel.id == "136247121203560450") { message.channel.send("Reminder that this channel should be using Hail weather."); }
         }
     }
 }
