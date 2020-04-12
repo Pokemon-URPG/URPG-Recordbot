@@ -53,7 +53,7 @@ bot.on("ready", async function() {
     payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
     setTimeout(function () {
         payDayReset();
-    }, ((867600000) - (d.getTime() % 604800000)) % 604800000);
+    }, ((860400000) - (d.getTime() % 604800000)) % 604800000);
     setTimeout(function () {
         weirrrrrReminder();
     }, ((698400000) - (d.getTime() % 604800000)) % 604800000);
@@ -280,7 +280,7 @@ function stats(message) {
         if ((oldmessage.indexOf("volt ") != -1) || (oldmessage.indexOf("voltaire ") != -1) || (oldmessage.indexOf("voltaire magneton ") != -1) || (oldmessage.indexOf("voltchen magneton ") != -1) || (oldmessage.indexOf(" vm ") != -1)) { message.channel.send("\nVoltaire Magneton's stats: https://forum.pokemonurpg.com/showthread.php?tid=10310") }
         if ((oldmessage.indexOf(" qe ") != -1) || (oldmessage.indexOf(" se ") != -1) || (oldmessage.indexOf(" sinnoheevee ") != -1) || (oldmessage.indexOf(" sinnoh eevee ") != -1) || (oldmessage.indexOf(" queen eevee ") != -1)) { message.channel.send("\nSinnoh Eevee's stats: https://www.tapatalk.com/groups/sinnoheevee/current-pokemon-t1.html#p1") }
         if ((oldmessage.indexOf("princess crow ") != -1) || (oldmessage.indexOf(" pc ") != -1) || (oldmessage.indexOf("hannah ") != -1)) { message.channel.send("\nPrincess Crow's stats: http://princesscrow.proboards.com/thread/2/pokemon-list-1") }
-        if ((oldmessage.indexOf(" pv ") != -1) || (oldmessage.indexOf("vultan ") != -1) || (oldmessage.indexOf("artist ") != -1)) { message.channel.send("\nPrinceVultan's stats: http://s13.zetaboards.com/Prince_Vultan/topic/9093369/1/") }
+        if ((oldmessage.indexOf(" pv ") != -1) || (oldmessage.indexOf("vultan ") != -1) || (oldmessage.indexOf("artist ") != -1)) { message.channel.send("\nPrinceVultan's stats: https://princevultan.wixsite.com/urpg") }
         if ((oldmessage.indexOf("julio ") != -1) || (oldmessage.indexOf("juliorain ") != -1)) { message.channel.send("\njuliorain's stats: https://juliorain.wordpress.com/") }
         if ((oldmessage.indexOf("maxichel kigahen ") != -1) || (oldmessage.indexOf("mikey ") != -1) || (oldmessage.indexOf("mikey57 ") != -1)) { message.channel.send("\nMikey57's stats: https://mikey57urpg.wordpress.com/") }
         if ((oldmessage.indexOf("elrond ") != -1)) { message.channel.send("\nElrond's stats: https://pokemonurpg.com/stats/Elrond") }
@@ -326,6 +326,7 @@ function stats(message) {
         if ((oldmessage.indexOf("james ") != -1 || oldmessage.indexOf("rinage") != -1)) { message.channel.send("AiJames' stats: https://forum.pokemonurpg.com/showthread.php?tid=10611&pid=134755#pid134755") }
         if (oldmessage.indexOf("plum") != -1) { message.channel.send("Plum's stats: https://forum.pokemonurpg.com/showthread.php?tid=10663"); }
         if ((oldmessage.indexOf(" ml ") != -1 || oldmessage.indexOf("mlouden") != -1)) { message.channel.send("mlouden03's stats: https://gaiusvibritannia.proboards.com/thread/6/urpg-stats"); }
+        if (oldmessage.indexOf("lavender") != -1) { message.channel.send("juliorain's Lavender Town Gym stats: https://juliorain.wordpress.com/lavender-town-gym/"); }
     }
 }
 
@@ -772,6 +773,10 @@ function ruleset(message) {
                 case 11: rules += "Space Terrain"; break;
             }
             message.channel.send(rules);
+            if (message.channel.name.includes("sun")) { message.channel.send("Reminder that this channel should be using Sunny weather."); }
+            if (message.channel.name.includes("pour")) { message.channel.send("Reminder that this channel should be using Rainy weather."); }
+            if (message.channel.name.includes("sand")) { message.channel.send("Reminder that this channel should be using Sandy weather."); }
+            if (message.channel.name.includes("ice")) { message.channel.send("Reminder that this channel should be using Hail weather."); }
         }
     }
 }
