@@ -2527,7 +2527,7 @@ bot.on("channelCreate", function(channel) {
 })
 
 bot.on("channelUpdate", function(oldChannel, newChannel) {
-    if (oldChannel.type == "text" && oldChannel.guild.id == urpgServer && !newChannel.permissionOverwrites.has("409821978887979019") && newChannel.permissionOverwrites.get(newChannel.guild.id).deny % 2048 < 512) {
+    if (oldChannel.type == "text" && oldChannel.guild.id == urpgServer && !newChannel.permissionOverwrites.has("409821978887979019") && newChannel.permissionOverwrites.has(newChannel.guild.id) && newChannel.permissionOverwrites.get(newChannel.guild.id).deny % 2048 < 512) {
         channelHandle(newChannel);
     }
 })
