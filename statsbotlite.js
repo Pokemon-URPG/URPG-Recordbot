@@ -2311,6 +2311,7 @@ async function raidBan(message, messageMember) {
 }*/
 
 function channelHandle(channel) {
+    if (channel.id == botCommands) {return;}
     channel.overwritePermissions("409821978887979019", {
         VIEW_CHANNEL: false
     })
