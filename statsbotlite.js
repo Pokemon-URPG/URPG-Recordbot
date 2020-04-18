@@ -45,6 +45,9 @@ bot.on("ready", async function() {
     logger.info("Connected")
     logger.info("Logged in as: ")
     logger.info(bot.user.username + " - (" + bot.user.id + ")")
+})
+
+bot.once("ready", async function () {
     var d = new Date();
     var timer = 7210000 - (d.getTime() % 7210000);
     bumpTime = setTimeout(function() {
@@ -2303,6 +2306,16 @@ async function raidBan(message, messageMember) {
     });
 }
 
+/*function fixingThings(message) {
+    if ()
+}*/
+
+function channelHandle(channel) {
+    channel.overwritePermissions("409821978887979019", {
+        VIEW_CHANNEL: false
+    })
+}
+
 bot.on('error', console.error);
 
 bot.on("message", async function(message) {
@@ -2505,6 +2518,18 @@ bot.on("guildMemberRemove", async function(member) {
     }
     else {leaveLog += " has left."}
     bot.channels.get(logsChannel).send(leaveLog);
+})
+
+bot.on("channelCreate", function(channel) {
+    if (channel.type == "text" && channel.guild.id == urpgServer) {
+        channelHandle(channel);
+    }
+})
+
+bot.on("channelUpdate", function(oldChannel, newChannel) {
+    if (oldChannel.type == "text" && oldChannel.guild.id == urpgServer && !newChannel.permissionOverwrites.has("409821978887979019") && newChannel.permissionOverwrites.get(newChannel.guild.id).deny % 2048 < 512) {
+        channelHandle(newChannel);
+    }
 })
 
 bot.login(process.env.token)
