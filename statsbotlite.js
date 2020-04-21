@@ -367,7 +367,7 @@ function dppt(message) {
 
         const moves = movelist.split("\n\n")
         const desiredmove = lowmessage.substring(6)
-        fvar bestGuess = 0;
+        var bestGuess = 0;
         var diff = -1;
         for (let x = 0; x < moves.length; x += 2) {
             if (ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove) > diff) {
