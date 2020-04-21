@@ -72,8 +72,8 @@ bot.once("ready", async function () {
 })
 
 function statusMessage() {
-    var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
-    var movelist = fs.readFileSync("rse.txt", "utf8").split("\r\n");
+    var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
+    var movelist = fs.readFileSync("rse.txt", "utf8").split("\n");
     var pokemon = allpokes[Math.floor(Math.random() * allpokes.length)].split("/")[0];
     var activityNum = Math.floor(Math.random() * 60);
     let duration = Math.floor(Math.random() * 600000)
@@ -342,7 +342,7 @@ function rse(message) {
             else { throw err }
         }
 
-        const moves = movelist.split("\r\n")
+        const moves = movelist.split("\n")
         const desiredmove = lowmessage.substring(5)
         for (let x = 0; x < moves.length; x += 2) {
             if (moves[x].split(" | ")[0].toLowerCase() == desiredmove) message.channel.send(moves[x] + "\n" + moves[x + 1])
@@ -359,7 +359,7 @@ function dppt(message) {
             else { throw err }
         }
 
-        const moves = movelist.split("\r\n\r\n")
+        const moves = movelist.split("\n\n")
         const desiredmove = lowmessage.substring(6)
         for (let x = 0; x < moves.length; x++) {
             if (moves[x].split(" | ")[0].toLowerCase() == desiredmove) message.channel.send(moves[x])
@@ -376,7 +376,7 @@ function oras(message) {
             else { throw err }
         }
 
-        const moves = movelist.split("\r\n")
+        const moves = movelist.split("\n")
         const desiredmove = lowmessage.substring(6)
         for (let x = 0; x < moves.length; x += 2) {
             if (moves[x].split(" | ")[0].toLowerCase() == desiredmove) message.channel.send(moves[x] + "\n" + moves[x + 1])
@@ -413,9 +413,9 @@ function rank(message) {
             const rankpoke = lowmessage.split(" ")[1].replace("flabebe", "flabébé").replace("mime", "mime jr.")
             let pokemonlist = ""
             try { pokemonlist = fs.readFileSync("ranks.txt", "utf8") } catch (err) {
-                if (err.code === "ENOENT") { message.channel.send("Sorry, my rank file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
+                if (err.code === "ENOENT") { message.channel.send("Sorry, my rank file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
             }
-            const pokemonlists = pokemonlist.split("\r\n")
+            const pokemonlists = pokemonlist.split("\n")
             let themessage = ""
             for (let x = 0; x < pokemonlists.length; x++) {
                 if (rankpoke.indexOf("nidoran") != -1) {
@@ -543,11 +543,11 @@ function rank(message) {
                     if (x == 9) themessage = "That's a Tier 1 Legendary! You'll need to earn the equivalent of $500,000 through your stories or art!"
                     found = true
                     try { pokemonlist = fs.readFileSync("mart.txt", "utf8") } catch (err) {
-                        if (err.code === "ENOENT") { message.channel.send("Sorry, my mart file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
+                        if (err.code === "ENOENT") { message.channel.send("Sorry, my mart file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
                     }
                     if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) {
                         themessage += "\nYou can also find it in the Pokemart";
-                        let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0];
+                        let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\n")[0];
                         themessage += " for " + price + "!";
                         value = 0;
                     }
@@ -556,9 +556,9 @@ function rank(message) {
                         value -= 15000;
                     }
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
-                        if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" } else { throw err }
+                        if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
                     }
-                    if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) { themessage += "\nYou can also find it in the Berry Store for $" + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\r\n")[0].split("\n")[0] + "!";}
+                    if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) { themessage += "\nYou can also find it in the Berry Store for $" + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\n")[0].split("\n")[0] + "!";}
                     if (value > 0) { themessage += "\nTrade value: $" + value.toLocaleString(); }
                     message.channel.send(themessage)
                     break
@@ -1092,7 +1092,7 @@ function stealthRock(message) {
     if(lowmessage.indexOf(",sr ") == 0)
     {
         var pokemon = lowmessage.split(",sr ")[1];
-        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
+        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
         for(var x = 0; x < allpokes.length; x++)
         {
             if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
@@ -1137,7 +1137,7 @@ function effectiveness(message) {
     {
         var pokemon = lowmessage.split(",effective ")[1];
         //var fs = require('fs');
-        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
+        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
         for(var x = 0; x < allpokes.length; x++)
         {
             if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
@@ -1248,7 +1248,7 @@ function coverage(message) {
             }
         }
         //var fs = require('fs');
-        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
+        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
         var covers = [0, 0, 0, 0, 0, 0]
         for(var x = 0; x < allpokes.length; x++)
         {
@@ -1337,7 +1337,7 @@ function beatUp(message) {
             return;
         }
         //var fs = require('fs');
-        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\r\n');
+        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
         for(var x = 0; x < allpokes.length; x++)
         {
             if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
