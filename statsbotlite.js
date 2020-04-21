@@ -367,9 +367,15 @@ function dppt(message) {
 
         const moves = movelist.split("\n\n")
         const desiredmove = lowmessage.substring(6)
-        for (let x = 0; x < moves.length; x++) {
-            if (moves[x].split(" | ")[0].toLowerCase() == desiredmove) message.channel.send(moves[x])
+        fvar bestGuess = 0;
+        var diff = -1;
+        for (let x = 0; x < moves.length; x += 2) {
+            if (ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove) > diff) {
+                bestGuess = x;
+                diff = ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove);
+            }
         }
+        message.channel.send(moves[bestGuess] + "\n" + moves[bestGuess + 1])
     }
 }
 
@@ -384,9 +390,15 @@ function oras(message) {
 
         const moves = movelist.split("\n")
         const desiredmove = lowmessage.substring(6)
+        var bestGuess = 0;
+        var diff = -1;
         for (let x = 0; x < moves.length; x += 2) {
-            if (moves[x].split(" | ")[0].toLowerCase() == desiredmove) message.channel.send(moves[x] + "\n" + moves[x + 1])
+            if (ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove) > diff) {
+                bestGuess = x;
+                diff = ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove);
+            }
         }
+        message.channel.send(moves[bestGuess] + "\n" + moves[bestGuess + 1])
     }
 }
 
@@ -595,7 +607,8 @@ function ruleset(message) {
         if(lowmessage.indexOf("fortree") == 0) message.channel.send("6v6\nSM Public Open\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First");
         if(lowmessage.indexOf("ashmockfire") == 0) message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Cinderace, Delphox, Flareon, Houndoom, Marowak (Alola), Numel, Salamence, Talonflame, Torkoal, Turtonator, Volcarona.  Yours may be whatever you wish.");
         if(lowmessage.indexOf("ashmockdragon") == 0) message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
-        if(lowmessage.indexOf("mt. chimney") == 0) message.channel.send("4v4-6v6\nSM Public Open\nTall Grass Terrain\nSun\nHelds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Legend/Dynamax Clauses\nZ/Mega Clause Challenger Dependant\nChallenger Sends First")
+        if(lowmessage.indexOf("mt. chimney") == 0) message.channel.send("4v4-6v6\nSM Public Open\nTall Grass Terrain\nSun\nHelds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Legend/Dynamax Clauses\nZ/Mega Clause Challenger Dependant\nChallenger Sends First");
+        if(lowmessage.indexOf("canalave") == 0) message.channel.send("Canalave City Gym.\nTM 128 – Gyro Ball.\n4v4 or 6v6\nSM Public Open\nOHKO / ACC / EVA / FRZ / SLP / Imprison / Dynamax / Legend Clauses\nZ / Item / Mega Clauses may be toggled depending on the challenger\nHelds On\nSandstorm Weather, Building Terrain\nChallenger Sends First");
         if(lowmessage.indexOf("maylee") == 0) message.channel.send("6v6 SM Private Full\nSleep/Freeze/OHKO/Evasion/Accuracy/Legends clauses active\nHelds on, building terrain, no starting weather\n\nIf both battlers agree, the following rules may be changed: Mega/Z/Item/Species, Helds off instead of on, Preview instead of Full");
         if(lowmessage.indexOf("ffa") == 0) message.channel.send("SM Private Full\nNo Holds\nNo Sleep Moves (Barring Rest)\nEVA/ACC/OHKO/Imprison/Dyanamax Clauses\nPerish Song Fails\nPerish Body banned\nHit All - Hit One\nEncore Fails\nAttract Fails\nRage Powder/Follow Me/Spotlight Fails\nRedirects On\nIllusion Pokémon disguises as a random Pokémon from the National Pokédex\nImposter, Download, and Intimidate select a random participating Pokémon\nNot sending or forfeiting results in KO at the beginning of the turn");
         if(lowmessage.indexOf("randomize") == 0) {
