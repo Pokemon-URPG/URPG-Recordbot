@@ -40,6 +40,7 @@ var eliteRangerRole = "419636474825277450";
 var deathEaterRole = "561688333609074730";
 var anonymousReportChannel = "545737721612730368";
 var payDayLog;
+var pickUpLog;
 
 bot.on("ready", async function() {
     logger.info("Connected")
@@ -54,8 +55,10 @@ bot.once("ready", async function () {
         bumpServer();
     }, timer);
     payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
+    pickUpLog = await bot.channels.get(botCommands).fetchMessage("658884961603944478");
     setTimeout(function () {
         payDayReset();
+        pickUpReset();
     }, ((860400000) - (d.getTime() % 604800000)) % 604800000);
     setTimeout(function () {
         weirrrrrReminder();
@@ -69,6 +72,7 @@ bot.once("ready", async function () {
     lowmessage = ",fixorder";
     await fixOrder(null, memberMe);
     statusMessage();
+    if (pickUpLog.content.toLowerCase().indexOf("pickup") == -1) { pickUpReset(); }
 })
 
 function statusMessage() {
@@ -150,17 +154,21 @@ function statusMessage() {
 async function payDay(message, messageMember) {
     if (lowmessage.indexOf(",payday") == 0 && (messageMember.roles.has(refRole) || messageMember.roles.has(judgeRole))) {
         let payments = message.mentions.users;
+        var output = "";
         for(const [key, value] of payments) { //for...of will be synchronous, reduces API queuing
             var payMember = await message.guild.fetchMember(key);
             if (payDayLog.mentions.users.has(key)) { // Can utilise message.mentions for this check too
-                await message.channel.send(`${payMember.displayName} has already received a Pay Day bonus this week.`); //Template literals
+                output += `${payMember.displayName} has already received a Pay Day bonus this week.`; //Template literals
             }
             else {
                 var newLog = `${payDayLog.content} ${value}`; // Template literals
+                await bot.channels.get("531433553225842700").send("```" + payDayLog.content + "```");
                 await payDayLog.edit(newLog);
-                await message.channel.send(`${payMember.displayName} receives a Pay Day bonus for this **(+$500)**.`); //Template literals
+                output += `${payMember.displayName} receives a Pay Day bonus for this **(+$500)**.`; //Template literals
             }
+            output += "\n";
         }
+        message.channel.send(output);
         payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
     }
 }
@@ -169,6 +177,33 @@ function payDayReset() {
     let oldPayDay = payDayLog.cleanContent;
     bot.channels.get(logsChannel).send("Pay Day reset.  Previously:\n\n" + oldPayDay);
     payDayLog.edit("Those who have gotten Pay Day this week:\n");
+}
+
+async function pickUp(message, messageMember) {
+    if (lowmessage.indexOf(",pickup") == 0 && (messageMember.roles.has(refRole) || messageMember.roles.has(judgeRole))) {
+        let payments = message.mentions.users;
+        var output = "";
+        for(const [key, value] of payments) { //for...of will be synchronous, reduces API queuing
+            var payMember = await message.guild.fetchMember(key);
+            if (pickUpLog.mentions.users.has(key)) { // Can utilise message.mentions for this check too
+                output += `${payMember.displayName} has already received a Pickup bonus this week.`; //Template literals
+            }
+            else {
+                var newLog = `${pickUpLog.content} ${value}`; // Template literals
+                await bot.channels.get("531433553225842700").send("```" + pickUpLog.content + "```");
+                await pickUpLog.edit(newLog);
+                output += `${payMember.displayName} receives a Pickup bonus for this **(+Item)**.`; //Template literals
+            }
+            output += "\n";
+        }
+        pickUpLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
+    }
+}
+
+function pickUpReset() {
+    let oldPickUp = pickUpLog.cleanContent;
+    bot.channels.get(logsChannel).send("Pickup reset.  Previously:\n\n" + oldPickUp);
+    pickUpLog.edit("Those who have gotten Pickup this week:\n");
 }
 
 function weirrrrrReminder() {
@@ -330,6 +365,10 @@ function stats(message) {
         if (oldmessage.indexOf("plum") != -1) { message.channel.send("Plum's stats: https://forum.pokemonurpg.com/showthread.php?tid=10663"); }
         if ((oldmessage.indexOf(" ml ") != -1 || oldmessage.indexOf("mlouden") != -1)) { message.channel.send("mlouden03's stats: https://gaiusvibritannia.proboards.com/thread/6/urpg-stats"); }
         if (oldmessage.indexOf("lavender") != -1) { message.channel.send("juliorain's Lavender Town Gym stats: https://juliorain.wordpress.com/lavender-town-gym/"); }
+        if ((oldmessage.indexOf("beemo") != -1 || oldmessage.indexOf("crimson rose") != -1 || oldmessage.indexOf("cress albane") != -1)) { message.channel.send("ExestentialBeemo's stats: https://forum.pokemonurpg.com/showthread.php?tid=10750"); }
+        if ((oldmessage.indexOf("eternus") != -1 || oldmessage.indexOf(" situs ") != -1 || oldmessage.indexOf("kanga") != -1)) { message.channel.send("Eternus Situs' stats: https://forum.pokemonurpg.com/showthread.php?tid=10726"); }
+        if ((oldmessage.indexOf(" bdra ") != -1 || oldmessage.indexOf("bdra97") != -1)) { message.channel.send("BDra97's stats: https://forum.pokemonurpg.com/showthread.php?tid=10707"); }
+        if (oldmessage.indexOf(" asha ") != -1) { message.channel.send("Asha_Kaideem's stats: https://forum.pokemonurpg.com/showthread.php?tid=10699"); }
     }
 }
 
@@ -609,6 +648,7 @@ function ruleset(message) {
         if(lowmessage.indexOf("ashmockdragon") == 0) message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
         if(lowmessage.indexOf("mt. chimney") == 0) message.channel.send("4v4-6v6\nSM Public Open\nTall Grass Terrain\nSun\nHelds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Legend/Dynamax Clauses\nZ/Mega Clause Challenger Dependant\nChallenger Sends First");
         if(lowmessage.indexOf("canalave") == 0) message.channel.send("Canalave City Gym.\nTM 128 – Gyro Ball.\n4v4 or 6v6\nSM Public Open\nOHKO / ACC / EVA / FRZ / SLP / Imprison / Dynamax / Legend Clauses\nZ / Item / Mega Clauses may be toggled depending on the challenger\nHelds On\nSandstorm Weather, Building Terrain\nChallenger Sends First");
+        if(lowmessage.indexOf("battle dome") == 0) message.channel.send("6v6\nS/M Private Doubles\nHelds On\nNo Starting Weather\nDefault Terrain\nSleep/Freeze/OHKO/Accuracy/Evasion/Imprison\nDefender’s Choice: Item/Species Clause, Preview vs Full, Mega/Z-Move/Dynamax Clauses (at least one must be on, Dynamax cannot be off with others off)\nGold: Dome Brains make a pool of 8 Pokemon, and can send as if the battle were Private Open with those Pokemon (their items and abilities must still be sent at the start).");
         if(lowmessage.indexOf("maylee") == 0) message.channel.send("6v6 SM Private Full\nSleep/Freeze/OHKO/Evasion/Accuracy/Legends clauses active\nHelds on, building terrain, no starting weather\n\nIf both battlers agree, the following rules may be changed: Mega/Z/Item/Species, Helds off instead of on, Preview instead of Full");
         if(lowmessage.indexOf("ffa") == 0) message.channel.send("SM Private Full\nNo Holds\nNo Sleep Moves (Barring Rest)\nEVA/ACC/OHKO/Imprison/Dyanamax Clauses\nPerish Song Fails\nPerish Body banned\nHit All - Hit One\nEncore Fails\nAttract Fails\nRage Powder/Follow Me/Spotlight Fails\nRedirects On\nIllusion Pokémon disguises as a random Pokémon from the National Pokédex\nImposter, Download, and Intimidate select a random participating Pokémon\nNot sending or forfeiting results in KO at the beginning of the turn");
         if(lowmessage.indexOf("randomize") == 0) {
@@ -1511,10 +1551,10 @@ function help(message) {
             message.channel.send("`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `,mentionarbiters`: Pings the applicable role.  Required role: Applicable section senior.\n`,mentionforumffa`: Pings Forum FFA role.  Required role: Forum FFA Host.\n`,mentionffa` or `!ffa -p`: Pings everyone who wants to be notified about FFAs. Required role: Referee. Required channel: <#136222872371855360>, <#269634154101080065>, or <#653328600170364953>\n`,mentioncoordinators`: Pings everyone who wishes to be notified about contests happening. Required role: Judge.\n`,mentionroyales`: Pings everyone who wishes to be notified about Battle Royales happening. Required role: Referee.\n`,mentionstaff`: Pings staff if something needs addressing quickly.  Required role: Member.\n`,mentioncontentupkeeper`, `,mentiongamedesign`, `,mentionevents`, `,mentiontechnicalteam`: Pings the respective team if something of theirs needs addressing.  Required role: Member.\n\n**Notes about all mention functions:**\nMention everyone permission allows use of a ping without the mentioned role.\nYou may put a message after the ping command and it will be copied after the ping, so that looking at mentions will directly show that information.");
         }
         else if (lowmessage.indexOf("profession") != -1 || lowmessage.indexOf("ref") != -1 || lowmessage.indexOf("judge") != -1) {
-            message.channel.send("`,payday @MEMBER1 @MEMBER2...`: Lets you know which of the mentioned members has received Pay Day this week, and adds all others to the log of who has. Required role: Referee or Judge.\n`,pin MESSAGEID`, `,unpin MESSAGEID`: Pins/unpins message with ID MESSAGEID in this channel. Required role/channel: Referee in battle chat or Judge in contest chat.")
+            message.channel.send("`,payday @MEMBER1 @MEMBER2...`: Lets you know which of the mentioned members has received Pay Day this week, and adds all others to the log of who has. Required role: Referee or Judge.\n`,pickup @MEMBER1 @MEMBER2...`: Exactly the same as `,payday` but for Pickup.\n`,pin MESSAGEID`, `,unpin MESSAGEID`: Pins/unpins message with ID MESSAGEID in this channel. Required role/channel: Referee in battle chat or Judge in contest chat.")
         }
         else if (lowmessage.indexOf("staff") != -1 || lowmessage.indexOf("mod") != -1 || lowmessage.indexOf("auth") != -1 || lowmessage.indexOf("restrict") != -1) {
-            message.channel.send("**Restricted Commands:**\nAll `,mention` functions: See `,help mention` for more info.\nRef or Judge specific commands: See `,help profession`.\n`,anonreply # message`: Sends a reply to the `reply:` anonymous report with the given number. Required channel: staff or any in Teams & Projects.\n`,archive`: Archives the channel, putting it in the archive category and removes access to all non-staff. Use `,archive public` or `,publicarchive` for public channels and `,archive`, `,archive private`, or `,privatearchive` for private channels. Required role: content-upkeeper\n`,contestboss`: Creates the temporary rooms for a contest boss. Required role: Death Eater.\n`,reftest`, `,judgetest`, or `,rangertest`: Creates a temporary test channel. If the command contains a mention, also adds that member to the channel. Required role: Appropriate section senior.\n`,end`: Deletes a temporary channel. Only works in a temporary channel and requires the same role required to create that channel.\n`,fixorder`: Resets profession chat order. Required role: content-upkeeperor Manage Channels permission. I will automatically run this on startup as well.\n`,pkmnspoilerseason THING-TO-SPOIL`: changes the name of <#440004235635982336> to #spoilers-THING-TO-SPOIL and removes pkmnspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,otherspoilerseason THING-TO-SPOIL`: changes the name of <#597314223483387905> to #spoilers-THING-TO-SPOIL and removes otherspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,newdiscussion CHANNEL-NAME`: Creates a new staff discussion channel with the given name. Required channel: staff.\n`,newproject CHANNEL-NAME`: Creates a new project discussion channel with the given name. Required channel: Any in the Teams & Projects category.");
+            message.channel.send("**Restricted Commands:**\nAll `,mention` functions: See `,help mention` for more info.\nRef or Judge specific commands: See `,help profession`.\n`,anonreply # message`: Sends a reply to the `reply:` anonymous report with the given number. Required channel: staff or any in Teams & Projects.\n`,archive`: Archives the channel, putting it in the archive category and removes access to all non-staff. Use `,archive public` or `,publicarchive` for public channels and `,archive`, `,archive private`, or `,privatearchive` for private channels. Required role: content-upkeeper\n`,contestboss`: Creates the temporary rooms for a contest boss. Required role: Death Eater.\n`,reftest`, `,judgetest`, or `,rangertest`: Creates a temporary test channel. If the command contains a mention, also adds that member to the channel. Required role: Appropriate section senior.\n`,end`: Deletes a temporary channel. Only works in a temporary channel and requires the same role required to create that channel.\n`,fixorder`: Resets profession chat order. Required role: content-upkeeper Manage Channels permission. I will automatically run this on startup as well.\n`,pkmnspoilerseason THING-TO-SPOIL`: changes the name of <#440004235635982336> to #spoilers-THING-TO-SPOIL and removes pkmnspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,otherspoilerseason THING-TO-SPOIL`: changes the name of <#597314223483387905> to #spoilers-THING-TO-SPOIL and removes otherspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,newdiscussion CHANNEL-NAME`: Creates a new staff discussion channel with the given name. Required channel: staff.\n`,newproject CHANNEL-NAME`: Creates a new project discussion channel with the given name. Required channel: Any in the Teams & Projects category.");
         }
         else if (lowmessage.indexOf("role") != -1) {
             message.channel.send("Command moved to Kauri. See `!help role` for more info."); //message.channel.send("**Self-assignable roles:**\npkmnspoilers: Access to <#440004235635982336>.\notherspoilers: Access to <#597314223483387905>.\nffa: Pings for Discord FFAs.\nforumffa: Pings for Forum FFAs and Forum FFA turns.\ncoordinator: Pings for contests.\n\nSend `,role ROLE` (i.e. `,role ffa`) to add or remove yourself from any of these roles. Spoiler role will automatically be reset when it changes to spoilers for a different thing.");
