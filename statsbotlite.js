@@ -620,7 +620,7 @@ function rank(message) {
                 }*/
                 //if (pokemonlists[x].toLowerCase().indexOf(rankpoke) != -1) {
             //var x = rankpoke[1];
-            var themessage = "Pokémon " + rankpoke[0] + " is rank " + ranks[rankpoke[1]] + "!";
+            var themessage = rankpoke[0] + " is rank " + ranks[rankpoke[1]] + "!";
             var value = pokeVal(rankpoke[0]);
                     /*if (x == 0) {
                         themessage += "That's an Easiest! You'll need to have your story or art pass at Easiest rank!";
@@ -654,7 +654,7 @@ function rank(message) {
                     try { pokemonlist = fs.readFileSync("mart.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my mart file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
                     }
-                    if (pokemonlist.toLowerCase().indexOf(rankpoke[0]) != -1) {
+                    if (pokemonlist.toLowerCase().indexOf(rankpoke[0].toLowerCase()) != -1) {
                         themessage += "\nYou can also find it in the Pokemart";
                         let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke[0]) + rankpoke[0].length + 3).split("\n")[0];
                         themessage += " for " + price + "!";
@@ -667,7 +667,7 @@ function rank(message) {
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
                     }
-                    if (pokemonlist.toLowerCase().indexOf(rankpoke[0]) != -1) { themessage += "\nYou can also find it in the Berry Store for $" + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke[0]) + rankpoke[0].length + 3).split("\n")[0].split("\n")[0] + "!";}
+                    if (pokemonlist.toLowerCase().indexOf(rankpoke[0].toLowerCase()) != -1) { themessage += "\nYou can also find it in the Berry Store for $" + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke[0].toLowerCase()) + rankpoke[0].length + 3).split("\n")[0].split("\n")[0] + "!";}
                     if (value > 0) { themessage += "\nTrade value: $" + value.toLocaleString(); }
                     message.channel.send(themessage)
                 /*}
@@ -1605,7 +1605,7 @@ function help(message) {
             message.channel.send("`,payday @MEMBER1 @MEMBER2...`: Lets you know which of the mentioned members has received Pay Day this week, and adds all others to the log of who has. Required role: Referee or Judge.\n`,pickup @MEMBER1 @MEMBER2...`: Exactly the same as `,payday` but for Pickup.\n`,pin MESSAGEID`, `,unpin MESSAGEID`: Pins/unpins message with ID MESSAGEID in this channel. Required role/channel: Referee in battle chat or Judge in contest chat.")
         }
         else if (lowmessage.indexOf("staff") != -1 || lowmessage.indexOf("mod") != -1 || lowmessage.indexOf("auth") != -1 || lowmessage.indexOf("restrict") != -1) {
-            message.channel.send("**Restricted Commands:**\nAll `,mention` functions: See `,help mention` for more info.\nRef or Judge specific commands: See `,help profession`.\n`,anonreply # message`: Sends a reply to the `reply:` anonymous report with the given number. Required channel: staff or any in Teams & Projects.\n`,archive`: Archives the channel, putting it in the archive category and removes access to all non-staff. Use `,archive public` or `,publicarchive` for public channels and `,archive`, `,archive private`, or `,privatearchive` for private channels. Required role: content-upkeeper\n`,contestboss`: Creates the temporary rooms for a contest boss. Required role: Death Eater.\n`,reftest`, `,judgetest`, or `,rangertest`: Creates a temporary test channel. If the command contains a mention, also adds that member to the channel. Required role: Appropriate section senior.\n`,end`: Deletes a temporary channel. Only works in a temporary channel and requires the same role required to create that channel.\n`,fixorder`: Resets profession chat order. Required role: content-upkeeper Manage Channels permission. I will automatically run this on startup as well.\n`,pkmnspoilerseason THING-TO-SPOIL`: changes the name of <#440004235635982336> to #spoilers-THING-TO-SPOIL and removes pkmnspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,otherspoilerseason THING-TO-SPOIL`: changes the name of <#597314223483387905> to #spoilers-THING-TO-SPOIL and removes otherspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,newdiscussion CHANNEL-NAME`: Creates a new staff discussion channel with the given name. Required channel: staff.\n`,newproject CHANNEL-NAME`: Creates a new project discussion channel with the given name. Required channel: Any in the Teams & Projects category.");
+            message.channel.send("**Restricted Commands:**\nAll `,mention` functions: See `,help mention` for more info.\nRef or Judge specific commands: See `,help profession`.\n`,anonreply # message`: Sends a reply to the `reply:` anonymous report with the given number. Required channel: staff or any in Teams & Projects.\n`,publicarchive` `,privatearchive`: Archives the channel, putting it in the archive category and removes access to all non-staff. Use `,archive public` or `,publicarchive` for public channels and `,archive private`, or `,privatearchive` for private channels. Required role: content-upkeeper\n`,contestboss`: Creates the temporary rooms for a contest boss. Required role: Death Eater.\n`,reftest`, `,judgetest`, or `,rangertest`: Creates a temporary test channel. If the command contains a mention, also adds that member to the channel. Required role: Appropriate section senior.\n`,end`: Deletes a temporary channel. Only works in a temporary channel and requires the same role required to create that channel.\n`,fixorder`: Resets profession chat order. Required role: content-upkeeper Manage Channels permission. I will automatically run this on startup as well.\n`,pkmnspoilerseason THING-TO-SPOIL`: changes the name of <#440004235635982336> to #spoilers-THING-TO-SPOIL and removes pkmnspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,otherspoilerseason THING-TO-SPOIL`: changes the name of <#597314223483387905> to #spoilers-THING-TO-SPOIL and removes otherspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,newdiscussion CHANNEL-NAME`: Creates a new staff discussion channel with the given name. Required channel: staff.\n`,newproject CHANNEL-NAME`: Creates a new project discussion channel with the given name. Required channel: Any in the Teams & Projects category.");
         }
         else if (lowmessage.indexOf("role") != -1) {
             message.channel.send("Command moved to Kauri. See `!help role` for more info."); //message.channel.send("**Self-assignable roles:**\npkmnspoilers: Access to <#440004235635982336>.\notherspoilers: Access to <#597314223483387905>.\nffa: Pings for Discord FFAs.\nforumffa: Pings for Forum FFAs and Forum FFA turns.\ncoordinator: Pings for contests.\n\nSend `,role ROLE` (i.e. `,role ffa`) to add or remove yourself from any of these roles. Spoiler role will automatically be reset when it changes to spoilers for a different thing.");
@@ -2229,6 +2229,9 @@ async function disboardTimer(message) {
 function wrongBot(message) {
     if (lowmessage.indexOf(",dex ") == 0 || lowmessage.indexOf(",d ") == 0 || lowmessage.indexOf(",move ") == 0 || lowmessage.indexOf(",item ") == 0 || lowmessage.indexOf(",role ") == 0 || lowmessage.indexOf(",ability ") == 0 || lowmessage.indexOf(",metronome") == 0 || lowmessage.indexOf(",eot") == 0 || lowmessage.indexOf(",veto") == 0 || lowmessage.indexOf(",speed") == 0 || lowmessage.indexOf(",ladder") == 0 || lowmessage.indexOf(",elo") == 0 || lowmessage.indexOf(",weight ") == 0 || lowmessage.indexOf(",learnset") == 0) {
         message.channel.send("This command is handled by my colleague, <@574745413773426688>, who is more responsive to `!` than `,`.  See `!help` or `!help COMMAND` for more info.");
+    }
+    if (lowmessage == ",archive") {
+        message.channel.send("To put this channel in the public archive, please use `,publicarchive`.  To put this channel in the private archive, please use `,privatearchive`.  To see the old forum archives, please use `,bmgarchive` or `,pxrarchive`.");
     }
 }
 
