@@ -656,7 +656,7 @@ function rank(message) {
                     }
                     if (pokemonlist.toLowerCase().indexOf(rankpoke[0].toLowerCase()) != -1) {
                         themessage += "\nYou can also find it in the Pokemart";
-                        let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke[0]) + rankpoke[0].length + 3).split("\n")[0];
+                        let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke[0].toLowerCase()) + rankpoke[0].length + 3).split("\n")[0];
                         themessage += " for " + price + "!";
                         //value = 0;
                     }
