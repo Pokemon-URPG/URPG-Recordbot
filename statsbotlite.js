@@ -512,6 +512,7 @@ function rank(message) {
     if (lowmessage.indexOf(",rank ") == 0 || lowmessage.indexOf(",ranklist") == 0) {
         if (lowmessage.split(" ")[1]) {
             var found = false;
+            var rankpoke = lowmessage.split(" ")[1];
             if (rankpoke.indexOf("easiest") != -1) {
                 if (lowmessage.indexOf(",ranklist") == 0) {
                     rankList(pokemonlists[0], message.channel);
@@ -593,7 +594,7 @@ function rank(message) {
                 message.channel.send("Rank not recognized.  Please use either Easiest, Simple, Medium, Hard, Complex, Demanding, Legendary, Tier1, T1, Tier2, or Tier2.")
                 return;
             }
-            const rankpoke = pokeRank(lowmessage.split(",rank ")[1]);
+            rankpoke = pokeRank(lowmessage.split(",rank ")[1]);
             /*let pokemonlist = ""
             try { pokemonlist = fs.readFileSync("ranks.txt", "utf8") } catch (err) {
                 if (err.code === "ENOENT") { message.channel.send("Sorry, my rank file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
