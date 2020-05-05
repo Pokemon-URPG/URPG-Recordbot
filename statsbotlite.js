@@ -654,20 +654,20 @@ function rank(message) {
                     try { pokemonlist = fs.readFileSync("mart.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my mart file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
                     }
-                    if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) {
+                    if (pokemonlist.toLowerCase().indexOf(rankpoke[0]) != -1) {
                         themessage += "\nYou can also find it in the Pokemart";
-                        let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\n")[0];
+                        let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke[0]) + rankpoke[0].length + 3).split("\n")[0];
                         themessage += " for " + price + "!";
                         //value = 0;
                     }
-                    if (hardFossils.some(element => element.toLowerCase() === rankpoke.toLowerCase()) || otherFossils.some(element => element.toLowerCase() === rankpoke.toLowerCase())) {
+                    if (hardFossils.some(element => element.toLowerCase() === rankpoke[0].toLowerCase()) || otherFossils.some(element => element.toLowerCase() === rankpoke[0].toLowerCase())) {
                         themessage += "\nYou can also find it in the Underground!";
                         //value -= 15000;
                     }
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
                     }
-                    if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) { themessage += "\nYou can also find it in the Berry Store for $" + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\n")[0].split("\n")[0] + "!";}
+                    if (pokemonlist.toLowerCase().indexOf(rankpoke[0]) != -1) { themessage += "\nYou can also find it in the Berry Store for $" + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke[0]) + rankpoke[0].length + 3).split("\n")[0].split("\n")[0] + "!";}
                     if (value > 0) { themessage += "\nTrade value: $" + value.toLocaleString(); }
                     message.channel.send(themessage)
                 /*}
