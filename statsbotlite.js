@@ -15,6 +15,8 @@ var bot = new Discord.Client({ disableEveryone: true })
 var badWords = ["fag", "retard", "cuck", "slut", "kys", "trigger"];
 var hardFossils = ["Kabuto", "Omanyte", "Lileep", "Anorith", "Cranidos", "Shieldon", "Archen", "Tirtouga", "Tyrunt", "Amaura"]
 var otherFossils = ["Dracozolt", "Dracovish", "Arctozolt", "Arctovish", "Spiritomb", "Aerodactyl"];
+var ranks = ["Easiest", "Simple", "Medium", "Hard", "Complex", "Demanding", "Merciless", "Stupefying", "Tier2", "Tier1"];
+var rankVal = [4000, 7500, 15000, 25000, 35000, 47500, 0, 0, 0, 0];
 var bumpTime;
 var disBumpTime = null;
 var lowmessage;
@@ -63,6 +65,9 @@ bot.once("ready", async function () {
     setTimeout(function () {
         weirrrrrReminder();
     }, ((698400000) - (d.getTime() % 604800000)) % 604800000);
+    setTimeout(function () {
+        randomRotations();
+    }, ((108000000) - (d.getTime() % 86400000)) % 86400000);
     //bot.channels.get(botCommands).send("I have arisen!  Please help me set my DISBOARD bump notification timer with a `!d bump`.");
     bot.channels.get("531433553225842700").send("I have arisen!");
     /*disBumpTime = setTimeout(function() {
@@ -208,6 +213,11 @@ function pickUpReset() {
 
 function weirrrrrReminder() {
     bot.channels.get(logsChannel).send("WEIRRRRR Roll the JOBSSSSSS <@140308490609623041>");
+}
+
+function randomRotations() {
+    var thisIsRich = new Discord.RichEmbed().setImage("http://orig00.deviantart.net/9efc/f/2016/094/1/8/urpg_comic_1__random_rotations_by_wintervines-d9xqnfz.png");
+    bot.channels.get("297384101760073729").send("<@135867398241648640> <@135999597947387904>", thisIsRich);
 }
 
 async function bumpServer() {
@@ -463,12 +473,128 @@ function rankList(pokemonList, channel) {
     channel.send(numberedList);
 }
 
+function pokeRank(pokemon) {
+    let pokemonlist = "";
+    try { pokemonlist = fs.readFileSync("ranks.txt", "utf8") } catch (err) {
+        if (err.code === "ENOENT") { message.channel.send("Sorry, my rank file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
+    }
+    pokemonArray = pokemonlist.replace(/\n/g, ",").replace(/\*/g, "").replace(/_/g, "").split(", ");
+    var bestGuess = 0;
+    var diff = -1;
+    for (var x = 0; x < pokemonArray.length; x++) {
+        if (ss.compareTwoStrings(pokemonArray[x], pokemon) > diff) {
+            bestGuess = x;
+            diff = ss.compareTwoStrings(pokemonArray[x], pokemon);
+        }
+    }
+    for (var i = 0; i < pokemonlist.split("\n").length; i++) {
+        if (pokemonlist.split("\n")[i].indexOf(pokemonArray[bestGuess]) != -1) {
+            var rankNum = i;
+        }
+    }
+    return [pokemonArray[bestGuess], rankNum];
+}
+
+function pokeVal(pokemon) {
+    var fullData = pokeRank(pokemon);
+    var value = rankVal[fullData[1]];
+    var martList = fs.readFileSync("mart.txt", "utf8");
+    if (martList.includes(fullData[0])) {
+        value = martList.substring(martList.indexOf(fullData[0])).split("$")[1].split("\n")[0].replace(",", "") - 1 + 1;
+    }
+    if (hardFossils.some(element => element.toLowerCase() === rankpoke.toLowerCase()) || otherFossils.some(element => element.toLowerCase() === rankpoke.toLowerCase())) {
+        value -= 15000;
+    }
+    return value;
+}
+
 function rank(message) {
     if (lowmessage.indexOf(",rank ") == 0 || lowmessage.indexOf(",ranklist") == 0) {
         if (lowmessage.split(" ")[1]) {
             var found = false;
-            const rankpoke = lowmessage.split(" ")[1].replace("flabebe", "flabébé").replace("mime", "mime jr.")
-            let pokemonlist = ""
+            if (rankpoke.indexOf("easiest") != -1) {
+                if (lowmessage.indexOf(",ranklist") == 0) {
+                    rankList(pokemonlists[0], message.channel);
+                    return;
+                }
+                message.channel.send(pokemonlists[0] + "\nItalicized Pokémon are also available in the Pokémart!")
+                found = true
+                break
+            }
+            if (rankpoke.indexOf("simple") != -1) {
+                if (lowmessage.indexOf(",ranklist") == 0) {
+                    rankList(pokemonlists[1], message.channel);
+                    return;
+                }
+                message.channel.send(pokemonlists[1] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
+                found = true
+                break
+            }
+            if (rankpoke.indexOf("medium") != -1) {
+                if (lowmessage.indexOf(",ranklist") == 0) {
+                    rankList(pokemonlists[2], message.channel);
+                    return;
+                }
+                message.channel.send(pokemonlists[2] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
+                found = true
+                break
+            }
+            if (rankpoke.indexOf("hard") != -1) {
+                if (lowmessage.indexOf(",ranklist") == 0) {
+                    rankList(pokemonlists[3], message.channel);
+                    return;
+                }
+                message.channel.send(pokemonlists[3] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
+                found = true
+                break
+            }
+            if (rankpoke.indexOf("complex") != -1) {
+                if (lowmessage.indexOf(",ranklist") == 0) {
+                    rankList(pokemonlists[4], message.channel);
+                    return;
+                }
+                message.channel.send(pokemonlists[4] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
+                found = true
+                break
+            }
+            if (rankpoke.indexOf("demanding") != -1) {
+                if (lowmessage.indexOf(",ranklist") == 0) {
+                    rankList(pokemonlists[5], message.channel);
+                    return;
+                }
+                message.channel.send(pokemonlists[5] + "\nUnderlined Pokémon are also available in the Berry Store!")
+                found = true
+                break
+            }
+            if (rankpoke.indexOf("merciless") != -1) {
+                message.channel.send(pokemonlists[6])
+                break
+            }
+            if (rankpoke.indexOf("stupefying") != -1) {
+                message.channel.send(pokemonlists[7])
+                break
+            }
+            if (rankpoke.indexOf("legendary") != -1) {
+                message.channel.send("Tier 2:\n" + pokemonlists[8] + "\n\nTier 1:\n" + pokemonlists[9])
+                found = true
+                break
+            }
+            if (rankpoke.indexOf("tier1") != -1 || rankpoke.indexOf("t1") != -1) {
+                message.channel.send(pokemonlists[9])
+                found = true
+                break
+            }
+            if (rankpoke.indexOf("tier2") != -1 || rankpoke.indexOf("t2") != -1) {
+                message.channel.send(pokemonlists[8])
+                found = true
+                break
+            }
+            if (lowmessage.indexOf(",ranklist") == 0) {
+                message.channel.send("Rank not recognized.  Please use either Easiest, Simple, Medium, Hard, Complex, Demanding, Legendary, Tier1, T1, Tier2, or Tier2.")
+                return;
+            }
+            const rankpoke = pokeRank(lowmessage.split(",rank ")[1]);
+            /*let pokemonlist = ""
             try { pokemonlist = fs.readFileSync("ranks.txt", "utf8") } catch (err) {
                 if (err.code === "ENOENT") { message.channel.send("Sorry, my rank file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
             }
@@ -485,119 +611,44 @@ function rank(message) {
                     message.channel.send("That's a Complex! You'll need to write 30,000-40,000 characters or have your art pass at Complex rank!")
                     found = true
                     break
-                }*/
+                }
                 if (rankpoke == "abra") {
                     message.channel.send("That's a Demanding! You'll need to have your story or art pass at Demanding rank!\nYou can also find it in the Berry Store!\nTrade value: $47,500");
                     found = true
                     return
-                }
-                if (rankpoke.indexOf("easiest") != -1) {
-                    if (lowmessage.indexOf(",ranklist") == 0) {
-                        rankList(pokemonlists[0], message.channel);
-                        return;
-                    }
-                    message.channel.send(pokemonlists[0] + "\nItalicized Pokémon are also available in the Pokémart!")
-                    found = true
-                    break
-                }
-                if (rankpoke.indexOf("simple") != -1) {
-                    if (lowmessage.indexOf(",ranklist") == 0) {
-                        rankList(pokemonlists[1], message.channel);
-                        return;
-                    }
-                    message.channel.send(pokemonlists[1] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
-                    found = true
-                    break
-                }
-                if (rankpoke.indexOf("medium") != -1) {
-                    if (lowmessage.indexOf(",ranklist") == 0) {
-                        rankList(pokemonlists[2], message.channel);
-                        return;
-                    }
-                    message.channel.send(pokemonlists[2] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
-                    found = true
-                    break
-                }
-                if (rankpoke.indexOf("hard") != -1) {
-                    if (lowmessage.indexOf(",ranklist") == 0) {
-                        rankList(pokemonlists[3], message.channel);
-                        return;
-                    }
-                    message.channel.send(pokemonlists[3] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
-                    found = true
-                    break
-                }
-                if (rankpoke.indexOf("complex") != -1) {
-                    if (lowmessage.indexOf(",ranklist") == 0) {
-                        rankList(pokemonlists[4], message.channel);
-                        return;
-                    }
-                    message.channel.send(pokemonlists[4] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
-                    found = true
-                    break
-                }
-                if (rankpoke.indexOf("demanding") != -1) {
-                    if (lowmessage.indexOf(",ranklist") == 0) {
-                        rankList(pokemonlists[5], message.channel);
-                        return;
-                    }
-                    message.channel.send(pokemonlists[5] + "\nUnderlined Pokémon are also available in the Berry Store!")
-                    found = true
-                    break
-                }
-                if (rankpoke.indexOf("merciless") != -1) {
-                    message.channel.send(pokemonlists[6])
-                    break
-                }
-                if (rankpoke.indexOf("stupefying") != -1) {
-                    message.channel.send(pokemonlists[7])
-                    break
-                }
-                if (rankpoke.indexOf("legendary") != -1) {
-                    message.channel.send("Tier 2:\n" + pokemonlists[8] + "\n\nTier 1:\n" + pokemonlists[9])
-                    found = true
-                    break
-                }
-                if (rankpoke.indexOf("tier1") != -1 || rankpoke.indexOf("t1") != -1) {
-                    message.channel.send(pokemonlists[9])
-                    found = true
-                    break
-                }
-                if (rankpoke.indexOf("tier2") != -1 || rankpoke.indexOf("t2") != -1) {
-                    message.channel.send(pokemonlists[8])
-                    found = true
-                    break
-                }
-                if (pokemonlists[x].toLowerCase().indexOf(rankpoke) != -1) {
-                    var value = 0
-                    if (x == 0) {
-                        themessage = "That's an Easiest! You'll need to have your story or art pass at Easiest rank!";
+                }*/
+                //if (pokemonlists[x].toLowerCase().indexOf(rankpoke) != -1) {
+            //var x = rankpoke[1];
+            var theMessage = "Pokémon " + rankpoke[0] + " is rank " + ranks[rankpoke[1]] + "!";
+            var value = pokeVal(rankpoke[0]);
+                    /*if (x == 0) {
+                        themessage += "That's an Easiest! You'll need to have your story or art pass at Easiest rank!";
                         value = 4000;
                     }
                     if (x == 1) {
-                        themessage = "That's a Simple! You'll need to have your story or art pass at Simple rank!";
+                        themessage += "That's a Simple! You'll need to have your story or art pass at Simple rank!";
                         value = 7500;
                     }
                     if (x == 2) {
-                        themessage = "That's a Medium! You'll need to have your story or art pass at Medium rank!";
+                        themessage += "That's a Medium! You'll need to have your story or art pass at Medium rank!";
                         value = 15000;
                     }
                     if (x == 3) {
-                        themessage = "That's a Hard! You'll need to have your story or art pass at Hard rank!";
+                        themessage += "That's a Hard! You'll need to have your story or art pass at Hard rank!";
                         value = 25000;
                     }
                     if (x == 4) {
-                        themessage = "That's a Complex! You'll need to have your story or art pass at Complex rank!";
+                        themessage += "That's a Complex! You'll need to have your story or art pass at Complex rank!";
                         value = 35000;
                     }
                     if (x == 5) {
-                        themessage = "That's a Demanding! You'll need to have your story or art pass at Demanding rank!";
+                        themessage += "That's a Demanding! You'll need to have your story or art pass at Demanding rank!";
                         value = 47500;
                     }
                     if (x == 6) themessage = "That's a Merciless! You'll need to write 55,000-65,000 characters or have your art pass at Merciless rank!"
                     if (x == 7) themessage = "That's a Stupefying! You'll need to write 65,000-75,000 characters or have your art pass at Stupefying rank!"
                     if (x == 8) themessage = "That's a Tier 2 Legendary! You'll need to earn the equivalent of $250,000 through your stories or art!"
-                    if (x == 9) themessage = "That's a Tier 1 Legendary! You'll need to earn the equivalent of $500,000 through your stories or art!"
+                    if (x == 9) themessage = "That's a Tier 1 Legendary! You'll need to earn the equivalent of $500,000 through your stories or art!"*/
                     found = true
                     try { pokemonlist = fs.readFileSync("mart.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my mart file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
@@ -606,11 +657,11 @@ function rank(message) {
                         themessage += "\nYou can also find it in the Pokemart";
                         let price = pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\n")[0];
                         themessage += " for " + price + "!";
-                        value = 0;
+                        //value = 0;
                     }
                     if (hardFossils.some(element => element.toLowerCase() === rankpoke.toLowerCase()) || otherFossils.some(element => element.toLowerCase() === rankpoke.toLowerCase())) {
                         themessage += "\nYou can also find it in the Underground!";
-                        value -= 15000;
+                        //value -= 15000;
                     }
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
@@ -619,11 +670,11 @@ function rank(message) {
                     if (value > 0) { themessage += "\nTrade value: $" + value.toLocaleString(); }
                     message.channel.send(themessage)
                     break
-                }
+                /*}
             }
             if (!found) {
                 message.channel.send("I'm sorry, I was unable to find " + message.cleanContent.split(" ")[1] + ". If you were searching a Pokémon, please ensure it is unevolved and that you spelled it right.  If you were searching a rank, the categories are Easiest, Simple, Medium, Hard, Complex, Demanding, Legendary, tier1 or t1, and tier2 or t2.")
-            }
+            }*/
         }
     }
 }
@@ -1959,7 +2010,7 @@ async function mention(message, messageMember) {
 }
 
 async function archiver(message, messageMember) {
-    if ((lowmessage == ",archive public" || lowmessage == ",publicarchive") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.has("584764993044611075"))) {
+    if ((lowmessage == ",archive public" || lowmessage == ",public archive" || lowmessage == ",publicarchive") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.get(urpgServer).channels.get("432291722492379136"));
         await message.channel.replacePermissionOverwrites({
             overwrites: [
@@ -1974,7 +2025,7 @@ async function archiver(message, messageMember) {
             ]
         })
     }
-    else if ((lowmessage == ",archive" || lowmessage == ",private archive" || lowmessage == ",archive private") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.has("584764993044611075"))) {
+    else if ((lowmessage == ",privatearchive" || lowmessage == ",private archive" || lowmessage == ",archive private") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.get(urpgServer).channels.get("432291722492379136"));
         await message.channel.replacePermissionOverwrites({
             overwrites: [
