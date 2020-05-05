@@ -502,7 +502,7 @@ function pokeVal(pokemon) {
     if (martList.includes(fullData[0])) {
         value = martList.substring(martList.indexOf(fullData[0])).split("$")[1].split("\n")[0].replace(",", "") - 1 + 1;
     }
-    if (hardFossils.some(element => element.toLowerCase() === rankpoke.toLowerCase()) || otherFossils.some(element => element.toLowerCase() === rankpoke.toLowerCase())) {
+    if (hardFossils.some(element => element.toLowerCase() === fullData[0].toLowerCase()) || otherFossils.some(element => element.toLowerCase() === fullData[0].toLowerCase())) {
         value -= 15000;
     }
     return value;
