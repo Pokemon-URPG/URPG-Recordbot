@@ -519,7 +519,7 @@ function rank(message) {
                 }
                 message.channel.send(pokemonlists[0] + "\nItalicized Pokémon are also available in the Pokémart!")
                 found = true
-                break
+                return;
             }
             if (rankpoke.indexOf("simple") != -1) {
                 if (lowmessage.indexOf(",ranklist") == 0) {
@@ -528,7 +528,7 @@ function rank(message) {
                 }
                 message.channel.send(pokemonlists[1] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                 found = true
-                break
+                return;
             }
             if (rankpoke.indexOf("medium") != -1) {
                 if (lowmessage.indexOf(",ranklist") == 0) {
@@ -537,7 +537,7 @@ function rank(message) {
                 }
                 message.channel.send(pokemonlists[2] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                 found = true
-                break
+                return;
             }
             if (rankpoke.indexOf("hard") != -1) {
                 if (lowmessage.indexOf(",ranklist") == 0) {
@@ -546,7 +546,7 @@ function rank(message) {
                 }
                 message.channel.send(pokemonlists[3] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                 found = true
-                break
+                return;
             }
             if (rankpoke.indexOf("complex") != -1) {
                 if (lowmessage.indexOf(",ranklist") == 0) {
@@ -555,7 +555,7 @@ function rank(message) {
                 }
                 message.channel.send(pokemonlists[4] + "\nItalicized Pokémon are also available in the Pokémart and underlined Pokémon are also availabe in the Berry Store!")
                 found = true
-                break
+                return;
             }
             if (rankpoke.indexOf("demanding") != -1) {
                 if (lowmessage.indexOf(",ranklist") == 0) {
@@ -564,30 +564,30 @@ function rank(message) {
                 }
                 message.channel.send(pokemonlists[5] + "\nUnderlined Pokémon are also available in the Berry Store!")
                 found = true
-                break
+                return;
             }
             if (rankpoke.indexOf("merciless") != -1) {
                 message.channel.send(pokemonlists[6])
-                break
+                return;
             }
             if (rankpoke.indexOf("stupefying") != -1) {
                 message.channel.send(pokemonlists[7])
-                break
+                return;
             }
             if (rankpoke.indexOf("legendary") != -1) {
                 message.channel.send("Tier 2:\n" + pokemonlists[8] + "\n\nTier 1:\n" + pokemonlists[9])
                 found = true
-                break
+                return;
             }
             if (rankpoke.indexOf("tier1") != -1 || rankpoke.indexOf("t1") != -1) {
                 message.channel.send(pokemonlists[9])
                 found = true
-                break
+                return;
             }
             if (rankpoke.indexOf("tier2") != -1 || rankpoke.indexOf("t2") != -1) {
                 message.channel.send(pokemonlists[8])
                 found = true
-                break
+                return;
             }
             if (lowmessage.indexOf(",ranklist") == 0) {
                 message.channel.send("Rank not recognized.  Please use either Easiest, Simple, Medium, Hard, Complex, Demanding, Legendary, Tier1, T1, Tier2, or Tier2.")
