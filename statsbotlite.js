@@ -669,7 +669,6 @@ function rank(message) {
                     if (pokemonlist.toLowerCase().indexOf(rankpoke) != -1) { themessage += "\nYou can also find it in the Berry Store for $" + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke) + rankpoke.length + 3).split("\n")[0].split("\n")[0] + "!";}
                     if (value > 0) { themessage += "\nTrade value: $" + value.toLocaleString(); }
                     message.channel.send(themessage)
-                    break
                 /*}
             }
             if (!found) {
