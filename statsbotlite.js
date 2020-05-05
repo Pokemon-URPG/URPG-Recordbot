@@ -620,7 +620,7 @@ function rank(message) {
                 }*/
                 //if (pokemonlists[x].toLowerCase().indexOf(rankpoke) != -1) {
             //var x = rankpoke[1];
-            var theMessage = "Pokémon " + rankpoke[0] + " is rank " + ranks[rankpoke[1]] + "!";
+            var themessage = "Pokémon " + rankpoke[0] + " is rank " + ranks[rankpoke[1]] + "!";
             var value = pokeVal(rankpoke[0]);
                     /*if (x == 0) {
                         themessage += "That's an Easiest! You'll need to have your story or art pass at Easiest rank!";
