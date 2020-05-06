@@ -512,6 +512,10 @@ function rank(message) {
     if (lowmessage.indexOf(",rank ") == 0 || lowmessage.indexOf(",ranklist") == 0) {
         if (lowmessage.split(" ")[1]) {
             var found = false;
+            let pokemonlist = "";
+            try { pokemonlist = fs.readFileSync("ranks.txt", "utf8") } catch (err) {
+                if (err.code === "ENOENT") { message.channel.send("Sorry, my rank file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
+            }
             var rankpoke = lowmessage.split(" ")[1];
             if (rankpoke.indexOf("easiest") != -1) {
                 if (lowmessage.indexOf(",ranklist") == 0) {
