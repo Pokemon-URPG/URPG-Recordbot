@@ -2534,6 +2534,8 @@ bot.on("message", async function(message) {
 
     await payDay(message, messageMember);
 
+    await pickUp(message, messageMember);
+
     await pinMessage(message, messageMember);
 
     await unpinMessage(message, messageMember);
