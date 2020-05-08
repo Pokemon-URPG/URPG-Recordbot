@@ -201,6 +201,7 @@ async function pickUp(message, messageMember) {
             }
             output += "\n";
         }
+        message.channel.send(output);
         pickUpLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
     }
 }
