@@ -699,7 +699,7 @@ function ruleset(message) {
         if(lowmessage.indexOf("competitive") == 0) message.channel.send("6v6\nSM Private Preview\nOHKO ACC EVA SLP FRZ Species Item Legend Dynamax Imprison Clauses On\nHelds On\nDefault Weather and Terrain");
         if(lowmessage.indexOf("e4") == 0 || lowmessage.indexOf("elite") != -1) message.channel.send("6 vs 6\nSM Private Full or SM Private Preview\nItems Allowed\nSleep Clause\nFreeze Clause\nOHKO Clause\nAccuracy Clause\nEvasion Clause\nImprison Clause\nNo Legendary Pokemon\nDefender’s Choice: Dyanamax Clause OR Mega & Z Clauses, Species Clause, Item Clause, Weather, Terrain");
         if(lowmessage.indexOf("ld") == 0) message.channel.send("4 VS. 4+\nSM Private Full or Preview\nItems Optional\nSleep, Freeze, OHKO, Accuracy, Evasion, Imprison, and Legend Clauses On\nMega, Z, Dyanamax, Item and Species Clauses Optional\nStarting Weather and Terrain Optional");
-        if(lowmessage.indexOf("ashrandoms") == 0) message.channel.send("6v6\nSM Public Box (Roll your 6 and use that as your Box)\nOHKO ACC EVA SLP FRZ Imprison Dynamax Mega Clauses On\nHelds On\nRandom Weather and Terrain\nRoll for first send\n\nAny changes?");
+        if(lowmessage.indexOf("ashrandoms") == 0) message.channel.send("6v6\nSM Public Box (Roll your 6 and use that as your Box)\nOHKO ACC EVA SLP FRZ Imprison Dynamax Z-Move Clauses On\nHelds On\nRandom Weather and Terrain\nMega Clause on unless *both* trainers roll a Mega they can use\nRoll for first send\n\nAny changes?");
         if(lowmessage.indexOf("fortree") == 0) message.channel.send("6v6\nSM Public Open\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First");
         if(lowmessage.indexOf("ashmockfire") == 0) message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Cinderace, Delphox, Flareon, Houndoom, Marowak (Alola), Numel, Salamence, Talonflame, Torkoal, Turtonator, Volcarona.  Yours may be whatever you wish.");
         if(lowmessage.indexOf("ashmockdragon") == 0) message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
@@ -893,10 +893,10 @@ function ruleset(message) {
                 case 11: rules += "Space Terrain"; break;
             }
             message.channel.send(rules);
-            if (message.channel.id == "135914249456320513") { message.channel.send("Reminder that this channel should be using Sunny weather."); }
+            /*if (message.channel.id == "135914249456320513") { message.channel.send("Reminder that this channel should be using Sunny weather."); }
             if (message.channel.id == "135869907349929985") { message.channel.send("Reminder that this channel should be using Rainy weather."); }
             if (message.channel.id == "136219179899420672") { message.channel.send("Reminder that this channel should be using Sandy weather."); }
-            if (message.channel.id == "136247121203560450") { message.channel.send("Reminder that this channel should be using Hail weather."); }
+            if (message.channel.id == "136247121203560450") { message.channel.send("Reminder that this channel should be using Hail weather."); }*/
         }
     }
 }
@@ -948,6 +948,21 @@ function randAttribute(message) {
             case 3: message.channel.send("Smart"); break;
             case 4: message.channel.send("Tough"); break;
         }
+    }
+}
+
+function randomizeList(message) {
+    if (lowmessage.indexOf(",reorder") == 0 && lowmessage.indexOf("\n") != lowmessage.lastIndexOf("\n")) {
+        var theList = message.content.split("\n");
+        theList.shift();
+        var theMessage = "";
+        while (theList.length > 0) {
+            var i = Math.floor(Math.random() * theList.length);
+            theMessage += theList[i];
+            theList.splice(i, 1);
+            if (theList.length > 0) { theMessage += "\n"; }
+        }
+        message.channel.send(theMessage);
     }
 }
 
@@ -1522,6 +1537,7 @@ function links(message) {
     if (lowmessage.indexOf(",chartrse") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1ImPbiw8B_hhC6bmQD8BJarJR9SIoq7rTUWCrWc2iKWo/edit#gid=38422135"); }
     if (lowmessage.indexOf(",chartoras") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1fFEREf42ZNBkesU0GbNPH9veIFGp0xDxxgIdqVufz7Q/edit#gid=38422135"); }
     if (lowmessage.indexOf(",chartdppt") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/19n2yGw38xVqak0GTVjB4dN4M1k_Ix7WEnUsufT9uRes/edit?usp=sharing"); }
+    if (lowmessage.indexOf(",job") == 0) { message.channel.send("https://forum.pokemonurpg.com/forumdisplay.php?fid=122"); }
 }
 
 function wildcards(message) {
@@ -1541,17 +1557,17 @@ function wildcards(message) {
             case "flying": wclist = "Volcarona, Sirfetch'd, Decidueye"; break;
             case "psychic": wclist = "Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Noctowl"; break;
             case "bug": wclist = "Kabutops, Flygon, Falinks"; break;
-            case "rock": wclist = "Sableye, Torterra, Steelix"; break;
+            case "rock": wclist = "Sableye, Torterra, Galar Fossils, Steelix"; break;
             case "dragon": wclist = "Charizard, Gyarados, Ampharos, Sceptile"; break;
             case "ghost": wclist = "Rotom, Houndoom, Kecleon"; break;
             case "steel": wclist = "Blastoise, Vikavolt, Dhelmise"; break;
             case "dark": wclist = "Gengar, Gyarados, Gothitelle"; break;
             case "fairy": wclist = "Delphox, Altaria, Blissey Line"; break;
-            default: wclist = "Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Salamence, Leafeon, Darmanitan-Galar (Zen Mode only), Solrock\nWater: Dragalge, Beartic, Hoenn Fossils\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowpoke Line, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Noctowl\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom, Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line";
+            default: wclist = "Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Salamence, Leafeon, Darmanitan-Galar (Zen Mode only), Solrock\nWater: Dragalge, Beartic, Hoenn Fossils\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowpoke Line, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Noctowl\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils, Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom, Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line";
         }
         message.channel.send(wclist);
     }
-    else if (lowmessage.indexOf(",wildcard") == 0) { message.channel.send("Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Salamence, Leafeon, Darmanitan-Galar (Zen Mode only), Solrock\nWater: Dragalge, Beartic, Hoenn Fossils\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowpoke Line, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Kanto-Ninetales, Darmanitan (Zen Mode only), Mienshao, Noctowl\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom, Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line"); }
+    else if (lowmessage.indexOf(",wildcard") == 0) { message.channel.send("Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Salamence, Leafeon, Darmanitan-Galar (Zen Mode only), Solrock\nWater: Dragalge, Beartic, Hoenn Fossils\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowpoke Line, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Kanto-Ninetales, Darmanitan (Zen Mode only), Mienshao, Noctowl\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils, Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom, Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line"); }
 }
 
 function fairyGIF(message) {
@@ -1623,7 +1639,7 @@ function help(message) {
             message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -open, open, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively. For `,weather`, you may add `-fog` and/or `-no` to exclude Fog and/or No Starting Weather, respectively.");
         }
         else if (lowmessage.indexOf("rule") != -1) {
-            message.channel.send("Use `,rules RULESET` to bring up a specific ruleset:\ncasual: Typical ruleset for casual battles\nppr: Similar but Public Preview (for randoms)\nhidden: Similar but Private Preview\ncompetitive: More serious battle rules\ne4: Official rules for any Elite Four or Champion battle\nld: Official rules for any Legend Defender battle\nashrandoms: Ash's preferred ruleset for randoms\nfortree: Fortree Gym default rules\nashmockfire: Ash's rules for a mock Fire gym (treated as a normal battle for pay and such)\nashmockdragon: Same as above but for Dragon\nmaylee: Rules for the Maylee battle event\nffa: Typical FFA ruleset\nrandomize: Randomized rule set among legal rulesets. See `,help randomize` for more information on how to fix certain conditions.");
+            message.channel.send("Use `,rules RULESET` to bring up a specific ruleset:\ncasual: Typical ruleset for casual battles\nppr: Similar but Public Preview (for randoms)\nhidden: Similar but Private Preview\ncompetitive: More serious battle rules\ne4: Official rules for any Elite Four or Champion battle\nld: Official rules for any Legend Defender battle\nashrandoms: Ash's preferred ruleset for randoms\nfortree: Fortree Gym default rules\nashmockfire: Ash's rules for a mock Fire gym (treated as a normal battle for pay and such)\nashmockdragon: Same as above but for Dragon\nmt. chimney, canalave, battle dome: Other leaders' gym rules.  To get yours added, please message Ash with your rules formatted like this ```javascript\nif(lowmessage.indexOf(\"fortree\") == 0) message.channel.send(\"6v6\\nSM Public Open\\nVolcano Terrain\\nSun\\nHolds On\\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\\nNo Legendary Pokémon\\nNo Z-Moves\\nChallenger Sends First\");```\nmaylee: Rules for the Maylee battle event\nffa: Typical FFA ruleset\nrandomize: Randomized rule set among legal rulesets. See `,help randomize` for more information on how to fix certain conditions.");
         }
         else if (lowmessage.indexOf("effective") != -1) {
             message.channel.send("Send `,effective POKÉMON` and I'll list the effectiveness of each type against POKÉMON!");
@@ -1652,10 +1668,13 @@ function help(message) {
         else if (lowmessage.indexOf("avatar") != -1) {
             message.channel.send("Send `,avatar @PERSON` to get PERSON's avatar URL, `,avatar ID` to get the avatar URL of the person with ID, or just `,avatar` to get your own.");
         }
+        else if (lowmessage.indexOf("reorder") != -1) {
+            message.channel.send("If you start with `,reorder`, each line after will be reordered randomly.");
+        }
         else {
             var toSend = message.author;
             if (message.channel.id == botCommands) { toSend = botCommands; }
-            toSend.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
+            toSend.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`; `,help reorder`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
         }
     }
 }
@@ -1826,65 +1845,65 @@ async function mention(message, messageMember) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(13); }
         else { messageContent = message.content.substring(12); }
-        await bot.guilds.get(urpgServer).roles.get(refRole).setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get(refRole).setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get(refRole)}${messageContent}`);
-        await bot.guilds.get(urpgServer).roles.get(refRole).setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get(refRole).setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionjudges") == 0 || lowmessage.indexOf(",mention judges") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(chiefJudgeRole))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(15); }
         else { messageContent = message.content.substring(14); }
-        await bot.guilds.get(urpgServer).roles.get(judgeRole).setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get(judgeRole).setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get(judgeRole)}${messageContent}`);
-        await bot.guilds.get(urpgServer).roles.get(judgeRole).setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get(judgeRole).setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentioncurators") == 0 || lowmessage.indexOf(",mention curators") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has("419775555488186369"))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(17); }
         else { messageContent = message.content.substring(16); }
-        await bot.guilds.get(urpgServer).roles.get("312119111750647809").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("312119111750647809").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("312119111750647809")}${messageContent}`);
-        await bot.guilds.get(urpgServer).roles.get("312119111750647809").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("312119111750647809").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentiongraders") == 0 || lowmessage.indexOf(",mention graders") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has("419636334982987777"))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(16); }
         else { messageContent = message.content.substring(15); }
-        await bot.guilds.get(urpgServer).roles.get("312118803616235523").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("312118803616235523").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("312118803616235523")}${messageContent}`);
-        await bot.guilds.get(urpgServer).roles.get("312118803616235523").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("312118803616235523").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionrangers") == 0 || lowmessage.indexOf(",mention rangers") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(eliteRangerRole))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(16); }
         else { messageContent = message.content.substring(15); }
-        await bot.guilds.get(urpgServer).roles.get("312119050484449280").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("312119050484449280").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("312119050484449280")}${messageContent}`);
-        await bot.guilds.get(urpgServer).roles.get("312119050484449280").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("312119050484449280").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionarbiters") == 0 || lowmessage.indexOf(",mention arbiters") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has("533356631455694849"))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(17); }
         else { messageContent = message.content.substring(16); }
-        await bot.guilds.get(urpgServer).roles.get("533356018005180416").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("533356018005180416").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("533356018005180416")}${messageContent}`);
-        await bot.guilds.get(urpgServer).roles.get("533356018005180416").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("533356018005180416").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionforumffa") == 0 || lowmessage.indexOf(",mention forumffa") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has("507342993028808707"))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(17); }
         else { messageContent = message.content.substring(16); }
-        await bot.guilds.get(urpgServer).roles.get("507342482988859402").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("507342482988859402").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("507342482988859402")}${messageContent}`);
-        await bot.guilds.get(urpgServer).roles.get("507342482988859402").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("507342482988859402").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentioncoordinator") == 0 || lowmessage.indexOf(",mention coordinator") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(judgeRole))) {
         var commandLength = 19;
         if (lowmessage.indexOf(",mention ") == 0) { commandLength += 1; }
         if (lowmessage.indexOf("coordinators") < commandLength) { commandLength += 1; }
-        await bot.guilds.get(urpgServer).roles.get("552232839861633046").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("552232839861633046").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("552232839861633046")}${message.content.substring(commandLength)}`);
-        await bot.guilds.get(urpgServer).roles.get("552232839861633046").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("552232839861633046").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionroyale") == 0 || lowmessage.indexOf(",mention royale") == 0 || lowmessage.indexOf(",mentionbattleroyale") == 0 || lowmessage.indexOf(",mention battleroyale") == 0 || lowmessage.indexOf(",mention battle royale") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(refRole))) {
         var commandLength = 14;
@@ -1892,42 +1911,42 @@ async function mention(message, messageMember) {
         if (lowmessage.indexOf("battle") < commandLength) { commandLength += 6; }
         if (lowmessage.indexOf("battle ") < commandLength) { commandLength += 1; }
         if (lowmessage.indexOf("royales") < commandLength) { commandLength += 1; }
-        await bot.guilds.get(urpgServer).roles.get("686613182902435891").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("686613182902435891").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("686613182902435891")}${message.content.substring(commandLength)}`);
-        await bot.guilds.get(urpgServer).roles.get("686613182902435891").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("686613182902435891").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionleaders") == 0 || lowmessage.indexOf(",mention leaders") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(seniorRefRole))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(16); }
         else { messageContent = message.content.substring(15); }
-        await bot.guilds.get(urpgServer).roles.get("444947885893746698").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("444947885893746698").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("444947885893746698")}${messageContent}`);
-        await bot.guilds.get(urpgServer).roles.get("444947885893746698").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("444947885893746698").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionelites") == 0 || lowmessage.indexOf(",mention elites") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(seniorRefRole))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(15); }
         else { messageContent = message.content.substring(14); }
-        await bot.guilds.get(urpgServer).roles.get("444947868835381263").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("444947868835381263").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("444947868835381263")}${messageContent}`);
-        await bot.guilds.get(urpgServer).roles.get("444947868835381263").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("444947868835381263").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionffa") == 0 || lowmessage.indexOf("!ffa -p") == 0 || lowmessage.indexOf(",mention ffa") == 0) && (message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065" || message.channel.id == "653328600170364953") && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.has(refRole))) {
         var theMessage = "";
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
         if (lowmessage.indexOf(",mentionffa") == 0) { theMessage = message.content.substring(11); }
         else { theMessage = message.content.substring(7); }
-        await bot.guilds.get(urpgServer).roles.get("575087931824275466").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("575087931824275466").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("575087931824275466")}${theMessage}`);
-        await bot.guilds.get(urpgServer).roles.get("575087931824275466").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("575087931824275466").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionstaff") == 0 || lowmessage.indexOf(",mention staff") == 0) && messageMember.roles.has("456993685679243286")) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(14); }
         else { messageContent = message.content.substring(13); }
-        await bot.guilds.get(urpgServer).roles.get("135868852092403713").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("135868852092403713").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("135868852092403713")}${messageContent}`);
-        await bot.guilds.get(urpgServer).roles.get("135868852092403713").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("135868852092403713").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentioncontentupkeep") == 0 || lowmessage.indexOf(",mention contentupkeep") == 0 || lowmessage.indexOf(",mention content upkeep") == 0 || lowmessage.indexOf(",mention content-upkeeper") == 0) && messageMember.roles.has("456993685679243286")) {
         var commandLength = 21;
@@ -1942,14 +1961,14 @@ async function mention(message, messageMember) {
         if (lowmessage.indexOf(",mentioncontent-upkeep") != -1) {
             lowmessage.replace(",mentioncontent-upkeep", ",mentioncontentupkeep");
             commandLength += 1;
-    }
+        }
         if (lowmessage.indexOf(",mentioncontentupkeeper") != -1) {
             lowmessage.replace(",mentioncontentupkeeper", ",mentioncontentupkeep");
             commandLength += 2;
         }
-        await bot.guilds.get(urpgServer).roles.get("584764993044611075").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("584764993044611075").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("584764993044611075")}${message.content.substring(commandLength)}`);
-        await bot.guilds.get(urpgServer).roles.get("584764993044611075").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("584764993044611075").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentiongamedesign") == 0 || lowmessage.indexOf(",mention gamedesign") == 0 || lowmessage.indexOf(",mention game design") == 0 || lowmessage.indexOf(",mention game-design") == 0) && messageMember.roles.has("456993685679243286")) {
         var commandLength = 18
@@ -1969,9 +1988,9 @@ async function mention(message, messageMember) {
             lowmessage.replace(",mentiongamedesigner", ",mentiongamedesign");
             commandLength += 2;
         }
-        await bot.guilds.get(urpgServer).roles.get("584765105414078464").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("584765105414078464").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("584765105414078464")}${message.content.substring(commandLength)}`);
-        await bot.guilds.get(urpgServer).roles.get("584765105414078464").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("584765105414078464").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentionevent") == 0 || lowmessage.indexOf(",mention event") == 0) && messageMember.roles.has("456993685679243286")) {
         var commandLength = 14;
@@ -1991,9 +2010,9 @@ async function mention(message, messageMember) {
             lowmessage.replace(",mentionevent-coordinator", ",mentionevent");
             commandLength += 12;
         }
-        await bot.guilds.get(urpgServer).roles.get("584764766921293825").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("584764766921293825").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("584764766921293825")}${message.content.substring(commandLength)}`);
-        await bot.guilds.get(urpgServer).roles.get("584764766921293825").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("584764766921293825").setMentionable(false);
     }
     if ((lowmessage.indexOf(",mentiontechnicalteam") == 0 || lowmessage.indexOf(",mention technicalteam") == 0 || lowmessage.indexOf(",mention technical team") == 0 || lowmessage.indexOf(",mention technical-team") == 0) && messageMember.roles.has("456993685679243286")) {
         var commandLength = 21;
@@ -2009,9 +2028,9 @@ async function mention(message, messageMember) {
             lowmessage.replace(",mentiontechnical-team", ",mentiontechnicalteam");
             commandLength += 1;
         }
-        await bot.guilds.get(urpgServer).roles.get("584764766921293825").setMentionable(true);
+        //await bot.guilds.get(urpgServer).roles.get("584764766921293825").setMentionable(true);
         await message.channel.send(`${bot.guilds.get(urpgServer).roles.get("584764766921293825")}${message.content.substring(commandLength)}`);
-        await bot.guilds.get(urpgServer).roles.get("584764766921293825").setMentionable(false);
+        //await bot.guilds.get(urpgServer).roles.get("584764766921293825").setMentionable(false);
     }
 }
 
@@ -2495,6 +2514,8 @@ bot.on("message", async function(message) {
     await substituteBot(message.channel);
 
     await sleepTalk(message);
+
+    await randomizeList(message);
 
     if (message.guild === null) {
     	
