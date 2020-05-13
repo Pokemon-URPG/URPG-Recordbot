@@ -1611,7 +1611,10 @@ function anonymousReport(message) {
 
 function help(message) {
     if (lowmessage.indexOf(",help") == 0) {
-        if (lowmessage.indexOf("stat") != -1) {
+        if (lowmessage.indexOf("addstat") != -1) {
+            message.channel.send("Use `,addstat NAME LINK` to have `,stats NAME` pull up `NAME's stats: LINK`.");
+        }
+        else if (lowmessage.indexOf("stat") != -1) {
             message.channel.send("Send either `,stats` and then any number of usernames or recognized nicknames and I will link you to each of their stats! If you know of stats or nicknames that I don't, please @ Ash K. with the username and/or nickname and link and they will be added.");
         }
         else if (lowmessage.indexOf("rank") != -1) {
@@ -1676,9 +1679,6 @@ function help(message) {
         }
         else if (lowmessage.indexOf("reorder") != -1) {
             message.channel.send("If you start with `,reorder`, each line after will be reordered randomly.");
-        }
-        else if (lowmessage.indexOf("addstat") != -1) {
-            message.channel.send("Use `,addstat NAME LINK` to have `,stats NAME` pull up `NAME's stats: LINK`.");
         }
         else {
             var toSend = message.author;
@@ -2481,9 +2481,10 @@ function formatStats(message) {
     }
 }
 
-function updateStats(message) {
+async function updateStats(message) {
     if (lowmessage.indexOf(",addstat") == 0 && message.content.split(" ").length == 3) {
-        tempStats.edit(tempStats.content + "\n" + message.content.split(" ")[1] + " " + message.content.split(" ")[2]);
+        await tempStats.edit(tempStats.content + "\n" + message.content.split(" ")[1] + " " + message.content.split(" ")[2]);
+        tempStats = await bot.channels.get("531433553225842700").fetchMessage("709808598443884655");
     }
 }
 
