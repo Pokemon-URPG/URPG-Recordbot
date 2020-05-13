@@ -43,6 +43,7 @@ var deathEaterRole = "561688333609074730";
 var anonymousReportChannel = "545737721612730368";
 var payDayLog;
 var pickUpLog;
+var tempStats;
 
 bot.on("ready", async function() {
     logger.info("Connected")
@@ -58,6 +59,7 @@ bot.once("ready", async function () {
     }, timer);
     payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
     pickUpLog = await bot.channels.get(botCommands).fetchMessage("658884961603944478");
+    tempStats = await bot.channels.get("531433553225842700").fetchMessage("709808598443884655");
     setTimeout(function () {
         payDayReset();
         pickUpReset();
@@ -380,6 +382,10 @@ function stats(message) {
         if ((oldmessage.indexOf("eternus") != -1 || oldmessage.indexOf(" situs ") != -1 || oldmessage.indexOf("kanga") != -1)) { message.channel.send("Eternus Situs' stats: https://forum.pokemonurpg.com/showthread.php?tid=10726"); }
         if ((oldmessage.indexOf(" bdra ") != -1 || oldmessage.indexOf("bdra97") != -1)) { message.channel.send("BDra97's stats: https://forum.pokemonurpg.com/showthread.php?tid=10707"); }
         if (oldmessage.indexOf(" asha ") != -1) { message.channel.send("Asha_Kaideem's stats: https://forum.pokemonurpg.com/showthread.php?tid=10699"); }
+        if (oldmessage.indexOf("sambi") != -1) { message.channel.send("Sambipom's stats: https://forum.pokemonurpg.com/showthread.php?tid=10819"); }
+        for (var x = 1; x < tempStats.split("\n").length; x++) {
+            if (oldmessage.indexOf(tempStats.split("\n")[x].split(" ")[0].toLowerCase()) != -1) { message.channel.send(tempStats.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.split("\n")[x].split(" ")[1]); }
+        }
     }
 }
 
@@ -1671,10 +1677,13 @@ function help(message) {
         else if (lowmessage.indexOf("reorder") != -1) {
             message.channel.send("If you start with `,reorder`, each line after will be reordered randomly.");
         }
+        else if (lowmessage.indexOf("addstat") != -1) {
+            message.channel.send("Use `,addstat NAME LINK` to have `,stats NAME` pull up `NAME's stats: LINK`.");
+        }
         else {
             var toSend = message.author;
             if (message.channel.id == botCommands) { toSend = botCommands; }
-            toSend.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`; `,help reorder`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
+            toSend.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`; `,help reorder`; `,help addstat`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
         }
     }
 }
@@ -2456,6 +2465,28 @@ function channelHandle(channel) {
     })
 }
 
+function resetStats(message) {
+    if (message.author.id == "135999597947387904" && lowmessage == ",resetstats") {
+        tempStats.edit("Trainers who need to be added properly:");
+    }
+}
+
+function formatStats(message) {
+    if (message.author.id == "135999597947387904" && lowmessage == ",formatstats") {
+        var theMessage = "";
+        for (var x = 1; x < tempStats.split("\n").length; x++) {
+            theMessage += "if (oldmessage.indexOf(" + tempStats.split("\n")[x].split(" ")[0].toLowerCase() + ") != -1) { message.channel.send(" + tempStats.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.split("\n")[x].split(" ")[1] + "); }\n";
+        }
+        message.channel.send(theMessage);
+    }
+}
+
+function updateStats(message) {
+    if (lowmessage.indexOf(",addstat") == 0 && message.content.split(" ").length == 3) {
+        tempStats.edit(tempStats.content + "\n" + message.content.split(" ")[1] + " " + message.content.split(" ")[2]);
+    }
+}
+
 bot.on('error', console.error);
 
 bot.on("message", async function(message) {
@@ -2517,6 +2548,8 @@ bot.on("message", async function(message) {
 
     await randomizeList(message);
 
+    await resetStats(message);
+
     if (message.guild === null) {
     	
         await anonymousReport(message);
@@ -2561,6 +2594,8 @@ bot.on("message", async function(message) {
     await pinMessage(message, messageMember);
 
     await unpinMessage(message, messageMember);
+
+    await updateStats(message, messageMember);
 
     await linkCleaner(message, messageMember);
 
