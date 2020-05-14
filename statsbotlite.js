@@ -383,8 +383,8 @@ function stats(message) {
         if ((oldmessage.indexOf(" bdra ") != -1 || oldmessage.indexOf("bdra97") != -1)) { message.channel.send("BDra97's stats: https://forum.pokemonurpg.com/showthread.php?tid=10707"); }
         if (oldmessage.indexOf(" asha ") != -1) { message.channel.send("Asha_Kaideem's stats: https://forum.pokemonurpg.com/showthread.php?tid=10699"); }
         if (oldmessage.indexOf("sambi") != -1) { message.channel.send("Sambipom's stats: https://forum.pokemonurpg.com/showthread.php?tid=10819"); }
-        for (var x = 1; x < tempStats.split("\n").length; x++) {
-            if (oldmessage.indexOf(tempStats.split("\n")[x].split(" ")[0].toLowerCase()) != -1) { message.channel.send(tempStats.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.split("\n")[x].split(" ")[1]); }
+        for (var x = 1; x < tempStats.content.split("\n").length; x++) {
+            if (oldmessage.indexOf(tempStats.content.split("\n")[x].split(" ")[0].toLowerCase()) != -1) { message.channel.send(tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.split("\n")[x].split(" ")[1]); }
         }
     }
 }
