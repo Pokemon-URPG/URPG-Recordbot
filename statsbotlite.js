@@ -166,7 +166,7 @@ function statusMessage() {
 async function remindTimer(channelID, messageID) {
     var theMessage = await bot.channels.get(channelID).fetchMessage(messageID);
     var d = new Date();
-    var timeToRemind = theMessage.createdTimestamp + (60000 * theMessage.split(" ")[1]) - d;
+    var timeToRemind = theMessage.createdTimestamp + (60000 * theMessage.content.split(" ")[1]) - d;
     if (timeToRemind < 1) { timeToRemind = 1; }
     setTimeout(function() {
         reminder(channelID, messageID);
