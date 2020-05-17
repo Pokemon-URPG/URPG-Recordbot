@@ -73,7 +73,7 @@ bot.once("ready", async function () {
     setTimeout(function () {
         randomRotations();
     }, ((108000000) - (d.getTime() % 86400000)) % 86400000);
-    for (var x = 0; x < remindLog.content.split("\n").length; x++) {
+    for (var x = 1; x < remindLog.content.split("\n").length; x++) {
         remindTimer(remindLog.content.split("\n")[x].split(" ")[0], remindLog.content.split("\n")[x].split(" ")[0]);
     }
     //bot.channels.get(botCommands).send("I have arisen!  Please help me set my DISBOARD bump notification timer with a `!d bump`.");
@@ -194,7 +194,7 @@ function remindInput(message) {
 async function reminder(channelID, messageID) {
     var theMessage = await bot.channels.get(channelID).fetchMessage(messageID);
     var commandLength = theMessage.content.split(" ")[0].length + theMessage.content.split(" ")[1].length + 2;
-    bot.channels.get(channelID).send(theMessage.content.substring(commandLength));
+    bot.channels.get(channelID).send("<@" + theMessage.author.id + "> " + theMessage.content.substring(commandLength));
     var newLog = remindLog.content.split("\n")[0];
     for (var x = 1; x < remindLog.content.split("\n").length; x++) {
         if (remindLog.content.split("\n")[x].indexOf(messageID) == -1) { newLog += "\n" + remindLog.content.split("\n")[x]; }
