@@ -44,6 +44,7 @@ var anonymousReportChannel = "545737721612730368";
 var payDayLog;
 var pickUpLog;
 var tempStats;
+var remindLog;
 
 bot.on("ready", async function() {
     logger.info("Connected")
@@ -60,16 +61,21 @@ bot.once("ready", async function () {
     payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
     pickUpLog = await bot.channels.get(botCommands).fetchMessage("658884961603944478");
     tempStats = await bot.channels.get("531433553225842700").fetchMessage("709808598443884655");
+    remindLog = await bot.channels.get("531433553225842700").fetchMessage("711453291892047892");
+    if (remindLog.content.indexOf("Reminders:") == -1) { remindLog.edit("Reminders:"); }
     setTimeout(function () {
         payDayReset();
         pickUpReset();
     }, ((860400000) - (d.getTime() % 604800000)) % 604800000);
     setTimeout(function () {
         weirrrrrReminder();
-    }, ((698400000) - (d.getTime() % 604800000)) % 604800000);
+    }, ((784800000) - (d.getTime() % 604800000)) % 604800000);
     setTimeout(function () {
         randomRotations();
     }, ((108000000) - (d.getTime() % 86400000)) % 86400000);
+    for (var x = 0; x < remindLog.content.split("\n").length; x++) {
+        remindTimer(remindLog.content.split("\n")[x].split(" ")[0], remindLog.content.split("\n")[x].split(" ")[0]);
+    }
     //bot.channels.get(botCommands).send("I have arisen!  Please help me set my DISBOARD bump notification timer with a `!d bump`.");
     bot.channels.get("531433553225842700").send("I have arisen!");
     /*disBumpTime = setTimeout(function() {
@@ -79,7 +85,6 @@ bot.once("ready", async function () {
     lowmessage = ",fixorder";
     await fixOrder(null, memberMe);
     statusMessage();
-    if (pickUpLog.content.toLowerCase().indexOf("pickup") == -1) { pickUpReset(); }
 })
 
 function statusMessage() {
@@ -156,6 +161,43 @@ function statusMessage() {
     setTimeout(function() {
         statusMessage();
     }, duration)
+}
+
+async function remindTimer(channelID, messageID) {
+    var theMessage = await bot.channels.get(channelID).fetchMessage(messageID);
+    var timeToRemind = theMessage.createdTimestamp + (60000 * theMessage.split(" ")[1]);
+    setTimeout(function() {
+        reminder(channelID, messageID);
+    }, timeToRemind)
+}
+
+function remindInput(message) {
+    if (lowmessage.indexOf(",remindme") == 0 && !isNaN(lowmessage.split(" ")[1]) && lowmessage.split(" ")[1].length > 0) {
+        if (lowmessage.split(" ")[1] > 10080) {
+            message.channel.send("Since I can only accept so many reminders at a time, I will not take such a long reminder.  Perhaps you should just put it in your phone's calendar instead.");
+            return;
+        }
+        var newRemindLog = remindLog.content + "\n" + message.channel.id + " " + message.id;
+        if (newRemindLog.length > 2000) {
+            message.channel.send("I'm sorry, my log of reminders is full.  I will attempt to remind you but it is possible I will forget by then.");
+        }
+        else {
+            remindLog.edit(newRemindLog);
+            message.react("👍");
+        }
+        remindTimer(message.channel.id, message.id);
+    }
+}
+
+async function reminder(channelID, messageID) {
+    var theMessage = await bot.channels.get(channelID).fetchMessage(messageID);
+    var commandLength = theMessage.content.split(" ")[0].length + theMessage.content.split(" ")[1].length + 2;
+    bot.channels.get(channelID).send(theMessage.content.substring(commandLength));
+    var newLog = remindLog.content.split("\n")[0];
+    for (var x = 1; x < remindLog.content.split("\n").length; x++) {
+        if (remindLog.content.split("\n")[x].indexOf(messageID) == -1) { newLog += "\n" + remindLog.content.split("\n")[x]; }
+    }
+    remindLog.edit(newRemindLog);
 }
 
 async function payDay(message, messageMember) {
@@ -1680,10 +1722,13 @@ function help(message) {
         else if (lowmessage.indexOf("reorder") != -1) {
             message.channel.send("If you start with `,reorder`, each line after will be reordered randomly.");
         }
+        else if (lowmessage.indexOf("remind") != -1) {
+            message.channel.send("Say `,remindme NUMBER MESSAGE` and I will tell you MESSAGE in NUMBER minutes in the same channel.  Note that I can only store a limited number of reminders at a time and anything above that will only work if it's short enough.  If your reminder is successfully stored, I will react with 👍.  If it's not, I will tell you.  Any reminders over a week will be rejected to be curteous to storage.")
+        }
         else {
             var toSend = message.author;
             if (message.channel.id == botCommands) { toSend = botCommands; }
-            toSend.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`; `,help reorder`; `,help addstat`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
+            toSend.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`; `,help reorder`; `,help addstat`; `,help remind`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
         }
     }
 }
@@ -2550,6 +2595,8 @@ bot.on("message", async function(message) {
     await randomizeList(message);
 
     await resetStats(message);
+
+    await remindInput(message);
 
     if (message.guild === null) {
     	
