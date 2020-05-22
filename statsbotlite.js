@@ -63,8 +63,9 @@ bot.once("ready", async function () {
     pickUpLog = await bot.channels.get(botCommands).fetchMessage("658884961603944478");
     tempStats = await bot.channels.get("531433553225842700").fetchMessage("709808598443884655");
     remindLog = await bot.channels.get("531433553225842700").fetchMessage("711453291892047892");
-    codeLog = await bot.channels.get("531433553225842700").fetchMessage("711650691415932979");
-    if (codeLog.content.indexOf("To Do:") == -1) { remindLog.edit("To Do:"); }
+    codeLog = await bot.channels.get("531433553225842700").fetchMessage("711651825291624518");
+    if (remindLog.content.indexOf("Reminders:") == -1) { remindLog.edit("Reminders:"); }
+    if (codeLog.content.indexOf("To Do:") == -1) { codeLog.edit("To Do:"); }
     setTimeout(function () {
         payDayReset();
         pickUpReset();
@@ -204,7 +205,7 @@ async function reminder(channelID, messageID) {
     for (var x = 1; x < remindLog.content.split("\n").length; x++) {
         if (remindLog.content.split("\n")[x].indexOf(messageID) == -1) { newLog += "\n" + remindLog.content.split("\n")[x]; }
     }
-    remindLog.edit(newRemindLog);
+    remindLog.edit(newLog);
 }
 
 function codeRemind() {
