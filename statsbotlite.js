@@ -45,6 +45,7 @@ var payDayLog;
 var pickUpLog;
 var tempStats;
 var remindLog;
+var codeLog;
 
 bot.on("ready", async function() {
     logger.info("Connected")
@@ -62,7 +63,8 @@ bot.once("ready", async function () {
     pickUpLog = await bot.channels.get(botCommands).fetchMessage("658884961603944478");
     tempStats = await bot.channels.get("531433553225842700").fetchMessage("709808598443884655");
     remindLog = await bot.channels.get("531433553225842700").fetchMessage("711453291892047892");
-    if (remindLog.content.indexOf("Reminders:") == -1) { remindLog.edit("Reminders:"); }
+    codeLog = await bot.channels.get("531433553225842700").fetchMessage("711650691415932979");
+    if (codeLog.content.indexOf("To Do:") == -1) { remindLog.edit("To Do:"); }
     setTimeout(function () {
         payDayReset();
         pickUpReset();
@@ -70,6 +72,9 @@ bot.once("ready", async function () {
     setTimeout(function () {
         weirrrrrReminder();
     }, ((784800000) - (d.getTime() % 604800000)) % 604800000);
+    setTimeout(function () {
+        codeRemind();
+    }, ((100800000) - (d.getTime() % 86400000)) % 86400000);
     setTimeout(function () {
         randomRotations();
     }, ((108000000) - (d.getTime() % 86400000)) % 86400000);
@@ -200,6 +205,30 @@ async function reminder(channelID, messageID) {
         if (remindLog.content.split("\n")[x].indexOf(messageID) == -1) { newLog += "\n" + remindLog.content.split("\n")[x]; }
     }
     remindLog.edit(newRemindLog);
+}
+
+function codeRemind() {
+    bot.channels.get("531433553225842700").send("<@135999597947387904>\n" + codeLog.content);
+}
+
+function codeEdit(message) {
+    if (message.author.id == "135999597947387904" && lowmessage.indexOf(",code") == 0) {
+        if (lowmessage.indexOf(",codeadd ") == 0) {
+            codeLog.edit(codeLog.content + "\n" + lowmessage.split(",codeadd ")[1]);
+        }
+        if (lowmessage.indexOf(",coderemove ") == 0 && !isNaN(lowmessage.split(" ")[1])) {
+            newCodeLog = codeLog.content.split("\n")[0];
+            for (var x = 1; x < codeLog.content.split("\n").length; x++) {
+                if (x != lowmessage.split(" ")[1]) {
+                    newCodeLog += codeLog.content.split("\n")[x];
+                }
+                else {
+                    message.channel.send(codeLog.content.split("\n")[x] + " removed from reminders!");
+                }
+            }
+            codeLog.edit(newCodeLog);
+        }
+    }
 }
 
 async function payDay(message, messageMember) {
@@ -2599,6 +2628,8 @@ bot.on("message", async function(message) {
     await resetStats(message);
 
     await remindInput(message);
+
+    await codeEdit(message);
 
     if (message.guild === null) {
     	
