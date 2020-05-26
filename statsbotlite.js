@@ -65,7 +65,10 @@ bot.once("ready", async function () {
     remindLog = await bot.channels.get("531433553225842700").fetchMessage("711453291892047892");
     codeLog = await bot.channels.get("531433553225842700").fetchMessage("711651825291624518");
     if (remindLog.content.indexOf("Reminders:") == -1) { remindLog.edit("Reminders:"); }
-    if (codeLog.content.indexOf("To Do:") == -1) { codeLog.edit("To Do:"); }
+    if (codeLog.content.indexOf("To Do:\n") == -1) {
+        bot.channels.get("531433553225842700").send(codeLog.content);
+        codeLog.edit("To Do:");
+    }
     setTimeout(function () {
         payDayReset();
         pickUpReset();
@@ -220,8 +223,8 @@ function codeEdit(message) {
         if (lowmessage.indexOf(",coderemove ") == 0 && !isNaN(lowmessage.split(" ")[1])) {
             newCodeLog = codeLog.content.split("\n")[0];
             for (var x = 1; x < codeLog.content.split("\n").length; x++) {
-                if (x != lowmessage.split(" ")[1]) {
-                    newCodeLog += codeLog.content.split("\n")[x];
+                if (x != message.content.split(" ")[1]) {
+                    newCodeLog +="\n" + codeLog.content.split("\n")[x];
                 }
                 else {
                     message.channel.send(codeLog.content.split("\n")[x] + " removed from reminders!");
@@ -294,7 +297,7 @@ function weirrrrrReminder() {
 
 function randomRotations() {
     var thisIsRich = new Discord.RichEmbed().setImage("http://orig00.deviantart.net/9efc/f/2016/094/1/8/urpg_comic_1__random_rotations_by_wintervines-d9xqnfz.png");
-    bot.channels.get("297384101760073729").send("<@135867398241648640> <@135999597947387904>", thisIsRich);
+    bot.channels.get("531433553225842700").send("<@135867398241648640> <@135999597947387904>", thisIsRich);
 }
 
 async function bumpServer() {
@@ -592,6 +595,12 @@ function pokeVal(pokemon) {
 function rank(message) {
     if (lowmessage.indexOf(",rank ") == 0 || lowmessage.indexOf(",ranklist") == 0) {
         if (lowmessage.split(" ")[1]) {
+            if (lowmessage.indexOf("nidoran") != -1 && lowmessage.indexOf("nidoran-") == -1 && lowmessage.indexOf("male") == -1) {
+                themessage = "Female Nidoran is a Simple! You'll need to have your story or art pass at a Simple rank!\nFemale Nidoran can also be be found in the Pokemart for $9,000!\nMale Nidoran is a Medium! You'll need to have your story or art pass at Medium rank!\nTrade value: $7,500"
+                message.channel.send(themessage)
+                found = true
+                return
+            }
             var found = false;
             let pokemonlist = "";
             try { pokemonlist = fs.readFileSync("ranks.txt", "utf8") } catch (err) {
