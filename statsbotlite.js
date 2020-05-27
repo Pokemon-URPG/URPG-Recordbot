@@ -12,7 +12,7 @@ logger.add(logger.transports.Console, {
 logger.level = "debug"
 // Initialize Discord Bot
 var bot = new Discord.Client({ disableEveryone: true })
-var badWords = ["fag", "retard", "cuck", "slut", "kys", "trigger"];
+var badWords = ["fag", "retard", "cuck", "slut", "kys"];
 var hardFossils = ["Kabuto", "Omanyte", "Lileep", "Anorith", "Cranidos", "Shieldon", "Archen", "Tirtouga", "Tyrunt", "Amaura"]
 var otherFossils = ["Dracozolt", "Dracovish", "Arctozolt", "Arctovish", "Spiritomb", "Aerodactyl"];
 var ranks = ["Easiest", "Simple", "Medium", "Hard", "Complex", "Demanding", "Merciless", "Stupefying", "Tier2", "Tier1"];
@@ -596,7 +596,7 @@ function rank(message) {
     if (lowmessage.indexOf(",rank ") == 0 || lowmessage.indexOf(",ranklist") == 0) {
         if (lowmessage.split(" ")[1]) {
             if (lowmessage.indexOf("nidoran") != -1 && lowmessage.indexOf("nidoran-") == -1 && lowmessage.indexOf("male") == -1) {
-                themessage = "Female Nidoran is a Simple! You'll need to have your story or art pass at a Simple rank!\nFemale Nidoran can also be be found in the Pokemart for $9,000!\nMale Nidoran is a Medium! You'll need to have your story or art pass at Medium rank!\nTrade value: $7,500"
+                themessage = "Female Nidoran is a Simple! You'll need to have your story or art pass at a Simple rank!\nFemale Nidoran can also be be found in the Pokemart for $9,000!\nMale Nidoran is a Medium! You'll need to have your story or art pass at Medium rank!\nTrade value: $15,000"
                 message.channel.send(themessage)
                 found = true
                 return
@@ -2474,6 +2474,8 @@ async function deleteReporter(message) {
         deleteLog += message.cleanContent.replace(/```/g, "​`​`​`​");
         deleteLog += "```";
     }
+    messageMember = await message.guild.fetchMember(message.author);
+    if (attaches.length == 0) { deleteLog = new Discord.RichEmbed().setThumbnail(messageMember.displayAvatarURL).setTitle("Deletion: " + messageMember.displayName + " (" + message.author.id + ")").addField("Deleted by " + messageMember.displayName, message.channel + ": " + message.content); }
     bot.channels.get(channelToNotify).send(deleteLog);
 }
 
