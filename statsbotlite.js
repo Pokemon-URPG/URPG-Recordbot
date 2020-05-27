@@ -173,7 +173,7 @@ function statusMessage() {
 }
 
 async function remindTimer(channelID, messageID) {
-    bot.channel.get("531433553225842700").send("RemindTimer ChannelID: `" + channelID + "`, MessageID: `" + messageID + "`.");
+    bot.channels.get("531433553225842700").send("RemindTimer ChannelID: `" + channelID + "`, MessageID: `" + messageID + "`.");
     var theMessage = await bot.channels.get(channelID).fetchMessage(messageID);
     var d = new Date();
     var timeToRemind = theMessage.createdTimestamp + (60000 * theMessage.content.split(" ")[1]) - d;
