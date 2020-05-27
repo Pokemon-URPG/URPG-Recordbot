@@ -173,6 +173,7 @@ function statusMessage() {
 }
 
 async function remindTimer(channelID, messageID) {
+    bot.channel.get("531433553225842700").send("RemindTimer ChannelID: `" + channelID + "`, MessageID: `" + messageID + "`.");
     var theMessage = await bot.channels.get(channelID).fetchMessage(messageID);
     var d = new Date();
     var timeToRemind = theMessage.createdTimestamp + (60000 * theMessage.content.split(" ")[1]) - d;
@@ -218,7 +219,7 @@ function codeRemind() {
 function codeEdit(message) {
     if (message.author.id == "135999597947387904" && lowmessage.indexOf(",code") == 0) {
         if (lowmessage.indexOf(",codeadd ") == 0) {
-            codeLog.edit(codeLog.content + "\n" + lowmessage.split(",codeadd ")[1]);
+            codeLog.edit(codeLog.content + "\n" + message.content.split(",codeadd ")[1]);
         }
         if (lowmessage.indexOf(",coderemove ") == 0 && !isNaN(lowmessage.split(" ")[1])) {
             newCodeLog = codeLog.content.split("\n")[0];
@@ -2762,6 +2763,8 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
             else { deleteLog += newMessage.url; }
     		if (oldMessage.cleanContent != "") {
                 deleteLog += await " used to say: ```" + oldMessage.cleanContent.replace(/```/g, "​`​`​`​") + "```";
+                messageMember = await oldMessage.guild.fetchMember(oldMessage.author);
+                deleteLog = new Discord.RichEmbed().setThumbnail(messageMember.displayAvatarURL).setTitle("Edited message in " + oldMessage.channel + " from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content);
             }
             else { deleteLog += await " was previously textless."; }
     		await bot.channels.get(channelToNotify).send(deleteLog);
