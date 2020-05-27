@@ -83,7 +83,7 @@ bot.once("ready", async function () {
         randomRotations();
     }, ((108000000) - (d.getTime() % 86400000)) % 86400000);
     for (var x = 1; x < remindLog.content.split("\n").length; x++) {
-        remindTimer(remindLog.content.split("\n")[x].split(" ")[0], remindLog.content.split("\n")[x].split(" ")[0]);
+        remindTimer(remindLog.content.split("\n")[x].split(" ")[0], remindLog.content.split("\n")[x].split(" ")[1]);
     }
     //bot.channels.get(botCommands).send("I have arisen!  Please help me set my DISBOARD bump notification timer with a `!d bump`.");
     bot.channels.get("531433553225842700").send("I have arisen!");
@@ -173,7 +173,6 @@ function statusMessage() {
 }
 
 async function remindTimer(channelID, messageID) {
-    bot.channels.get("531433553225842700").send("RemindTimer ChannelID: `" + channelID + "`, MessageID: `" + messageID + "`.");
     var theMessage = await bot.channels.get(channelID).fetchMessage(messageID);
     var d = new Date();
     var timeToRemind = theMessage.createdTimestamp + (60000 * theMessage.content.split(" ")[1]) - d;
@@ -334,6 +333,7 @@ function badWordsReporter(message, messageMember, isEdit) {
         badWordsLog += ">: ```";
         badWordsLog += message.cleanContent;
         badWordsLog += "```";
+        badWordsLog = new Discord.RichEmbed().setThumbnail(messageMember.displayAvatarURL).setTitle("Questionable Content:").addField(messageMember.displayName + " (" + message.author.id + ")", message.channel + ": " + message.content).setColor('RED');
         bot.channels.get(logsChannel).send(badWordsLog);
     }
 }
@@ -2764,7 +2764,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     		if (oldMessage.cleanContent != "") {
                 deleteLog += await " used to say: ```" + oldMessage.cleanContent.replace(/```/g, "​`​`​`​") + "```";
                 messageMember = await oldMessage.guild.fetchMember(oldMessage.author);
-                deleteLog = new Discord.RichEmbed().setThumbnail(messageMember.displayAvatarURL).setTitle("Edited message in " + oldMessage.channel + " from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content);
+                deleteLog = new Discord.RichEmbed().setThumbnail(messageMember.displayAvatarURL).setTitle("Edited message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE');
             }
             else { deleteLog += await " was previously textless."; }
     		await bot.channels.get(channelToNotify).send(deleteLog);
