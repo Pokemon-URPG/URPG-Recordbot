@@ -333,7 +333,7 @@ function badWordsReporter(message, messageMember, isEdit) {
         badWordsLog += ">: ```";
         badWordsLog += message.cleanContent;
         badWordsLog += "```";
-        badWordsLog = new Discord.RichEmbed().setThumbnail(messageMember.displayAvatarURL).setTitle("Questionable Content:").addField(messageMember.displayName + " (" + message.author.id + ")", message.channel + ": " + message.content).setColor('RED');
+        badWordsLog = new Discord.RichEmbed().setThumbnail(messageMember.user.displayAvatarURL).setTitle("Questionable Content:").addField(messageMember.displayName + " (" + message.author.id + ")", message.channel + ": " + message.content).setColor('RED');
         bot.channels.get(logsChannel).send(badWordsLog);
     }
 }
@@ -2485,7 +2485,13 @@ async function deleteReporter(message) {
     }
     messageMember = await message.guild.fetchMember(message.author);
     var deleteMember = await message.guild.fetchMember(user);
-    if (attaches.length == 0) { deleteLog = new Discord.RichEmbed().setThumbnail(messageMember.displayAvatarURL).setTitle("Deletion: " + messageMember.displayName + "'s message deleted by " + deleteMember).addField("Author ID: " + messageMember.id + "\nDeleter ID: " + user.id, message.channel + ": " + message.content); }
+    if (attaches.length == 0) {
+        if (messageMember.id == deleteMember.id) { Discord.RichEmbed().setThumbnail(messageMember.user.displayAvatarURL).setTitle("Deletion: " + messageMember.displayName + "'s message").addField("Author ID: " + messageMember.id, message.channel + ": " + message.content); }
+        else { deleteLog = new Discord.RichEmbed().setThumbnail(messageMember.user.displayAvatarURL).setTitle("Deletion: " + messageMember.displayName + "'s message deleted by " + deleteMember.displayName).addField("Author ID: " + messageMember.id + "\nDeleter ID: " + user.id, message.channel + ": " + message.content); }
+    }
+    /*if (message.embeds.length > 0) {
+        bot.channels.get(channelToNotify).send
+    }*/
     bot.channels.get(channelToNotify).send(deleteLog);
 }
 
@@ -2579,10 +2585,16 @@ function formatStats(message) {
     }
 }
 
-async function updateStats(message) {
+async function updateStats(message, messageMember) {
     if (lowmessage.indexOf(",addstat") == 0 && message.content.split(" ").length == 3) {
         await tempStats.edit(tempStats.content + "\n" + message.content.split(" ")[1] + " " + message.content.split(" ")[2]);
         tempStats = await bot.channels.get("531433553225842700").fetchMessage("709808598443884655");
+    }
+}
+
+async function codeTester(message) {
+    if (message.author.id == "135999597947387904" && message.content.indexOf(",eval ") == 0) {
+        message.channel.send("```javascript\n" + eval(message.content.split(",eval ")[1]) + "```");
     }
 }
 
@@ -2649,9 +2661,13 @@ bot.on("message", async function(message) {
 
     await resetStats(message);
 
+    await formatStats(message);
+
     await remindInput(message);
 
     await codeEdit(message);
+
+    await codeTester(message);
 
     if (message.guild === null) {
     	
@@ -2773,7 +2789,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     		if (oldMessage.cleanContent != "") {
                 deleteLog += await " used to say: ```" + oldMessage.cleanContent.replace(/```/g, "​`​`​`​") + "```";
                 messageMember = await oldMessage.guild.fetchMember(oldMessage.author);
-                deleteLog = new Discord.RichEmbed().setThumbnail(messageMember.displayAvatarURL).setTitle("Edited message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE');
+                deleteLog = new Discord.RichEmbed().setThumbnail(messageMember.user.displayAvatarURL).setTitle("Edited message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE');
             }
             else { deleteLog += await " was previously textless."; }
     		await bot.channels.get(channelToNotify).send(deleteLog);
