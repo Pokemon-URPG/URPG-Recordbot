@@ -456,7 +456,7 @@ function stats(message) {
         if (oldmessage.indexOf("plum") != -1) { message.channel.send("Plum's stats: https://forum.pokemonurpg.com/showthread.php?tid=10663"); }
         if ((oldmessage.indexOf(" ml ") != -1 || oldmessage.indexOf("mlouden") != -1)) { message.channel.send("mlouden03's stats: https://gaiusvibritannia.proboards.com/thread/6/urpg-stats"); }
         if (oldmessage.indexOf("lavender") != -1) { message.channel.send("juliorain's Lavender Town Gym stats: https://juliorain.wordpress.com/lavender-town-gym/"); }
-        if ((oldmessage.indexOf("beemo") != -1 || oldmessage.indexOf("crimson rose") != -1 || oldmessage.indexOf("cress albane") != -1)) { message.channel.send("ExestentialBeemo's stats: https://forum.pokemonurpg.com/showthread.php?tid=10750"); }
+        if ((oldmessage.indexOf("beemo") != -1 || oldmessage.indexOf("crimson rose") != -1 || oldmessage.indexOf("cress") != -1)) { message.channel.send("ExistentialBeemo's stats: https://existentialbeemo.proboards.com/"); }
         if ((oldmessage.indexOf("eternus") != -1 || oldmessage.indexOf(" situs ") != -1 || oldmessage.indexOf("kanga") != -1)) { message.channel.send("Eternus Situs' stats: https://forum.pokemonurpg.com/showthread.php?tid=10726"); }
         if ((oldmessage.indexOf(" bdra ") != -1 || oldmessage.indexOf("bdra97") != -1)) { message.channel.send("BDra97's stats: https://forum.pokemonurpg.com/showthread.php?tid=10707"); }
         if (oldmessage.indexOf(" asha ") != -1) { message.channel.send("Asha_Kaideem's stats: https://forum.pokemonurpg.com/showthread.php?tid=10699"); }
@@ -820,8 +820,8 @@ function ruleset(message) {
             //var zmo = Math.floor(Math.random() * 2);
             //var dyna = Math.floor(Math.random() * 2);
             var mzmax = Math.floor(Math.random() * 5);
-            var weather = Math.floor(Math.random() * 6);
-            var terrain = Math.floor(Math.random() * 12);
+            var weather = Math.floor(Math.random() * 5);
+            var terrain = Math.floor(Math.random() * 16);
             if (lowmessage.indexOf("-dynamax") != -1) {
                 if (lowmessage.indexOf("-mega") != -1) {
                     if (lowmessage.indexOf("-z") != -1) {mzmax = 3;}
@@ -909,7 +909,7 @@ function ruleset(message) {
             else if (lowmessage.indexOf("sandstorm") != -1) {weather = 3;}
             else if (lowmessage.indexOf("hail") != -1) {weather = 4;}
             else if (lowmessage.indexOf("fog") != -1) {weather = 5;}
-            else if (lowmessage.indexOf("weather") != -1 && weather == 0) {weather = Math.floor(Math.random() * 5) + 1;}
+            else if (lowmessage.indexOf("weather") != -1 && weather == 0) {weather = Math.floor(Math.random() * 4) + 1;}
             if (lowmessage.indexOf("-terrain") != -1) {terrain = 0;}
             else if (lowmessage.indexOf("space") != -1) {terrain = 11;}
             var rules = numPok + "v" + numPok + "\n";
@@ -981,6 +981,10 @@ function ruleset(message) {
                 case 9: rules += "Burial Grounds Terrain"; break;
                 case 10: rules += "Soaring Terrain"; break;
                 case 11: rules += "Space Terrain"; break;
+                case 12: rules += "Grassy Terrain"; break;
+                case 13: rules += "Misty Terrain"; break;
+                case 14: rules += "Electric Terrain"; break;
+                case 15: rules += "Psychic Terrain"; break;
             }
             message.channel.send(rules);
             /*if (message.channel.id == "135914249456320513") { message.channel.send("Reminder that this channel should be using Sunny weather."); }
@@ -993,7 +997,7 @@ function ruleset(message) {
 
 function randWeather(message) {
     if (lowmessage.indexOf(",weather") == 0) {
-        let weather = Math.floor(Math.random() * 6);
+        let weather = Math.floor(Math.random() * 5);
         if (lowmessage.indexOf("-fog") != -1 && lowmessage.indexOf("-no") != -1) {weather = Math.floor(Math.random() * 4 + 1);}
         else if (lowmessage.indexOf("-fog") != -1) {weather = Math.floor(Math.random() * 5);}
         else if (lowmessage.indexOf("-no") != -1) {weather = Math.floor(Math.random() * 5 + 1);}
@@ -1010,7 +1014,7 @@ function randWeather(message) {
 
 function randTerrain(message) {
     if (lowmessage.indexOf(",terrain") == 0) {
-        let terrain = Math.floor(Math.random() * 12);
+        let terrain = Math.floor(Math.random() * 16);
         switch(terrain) {
             case 0: message.channel.send("Building Terrain"); break;
             case 1: message.channel.send("Cave Terrain"); break;
@@ -1024,6 +1028,10 @@ function randTerrain(message) {
             case 9: message.channel.send("Burial Grounds Terrain"); break;
             case 10: message.channel.send("Soaring Terrain"); break;
             case 11: message.channel.send("Space Terrain"); break;
+            case 12: message.channel.send("Grassy Terrain"); break;
+            case 13: message.channel.send("Misty Terrain"); break;
+            case 14: message.channel.send("Electric Terrain"); break;
+            case 15: message.channel.send("Psychic Terrain"); break;
         }
     }
 }
@@ -2433,10 +2441,10 @@ async function deleteReporter(message) {
       && (entry.target.id === message.author.id)
       && (entry.createdTimestamp > (Date.now() - 5000))
       && (entry.extra.count >= 1)) {
-        user = entry.executor.username;
+        user = entry.executor;
     } else {
         if (message.channel.id == "552715426979905547") {return;}
-        user = message.author.username;
+        user = message.author;
         botDeleterNotFound = true;
     }
     var deleteLog = ""
@@ -2468,7 +2476,7 @@ async function deleteReporter(message) {
         deleteLog += ">"
     } else {
         deleteLog += "> by ";
-        deleteLog += user;
+        deleteLog += user.username;
     }
     if (message.cleanContent != "") {
         deleteLog += ": ```";
@@ -2476,7 +2484,8 @@ async function deleteReporter(message) {
         deleteLog += "```";
     }
     messageMember = await message.guild.fetchMember(message.author);
-    if (attaches.length == 0) { deleteLog = new Discord.RichEmbed().setThumbnail(messageMember.displayAvatarURL).setTitle("Deletion: " + messageMember.displayName + " (" + message.author.id + ")").addField("Deleted by " + messageMember.displayName, message.channel + ": " + message.content); }
+    var deleteMember = await message.guild.fetchMember(user);
+    if (attaches.length == 0) { deleteLog = new Discord.RichEmbed().setThumbnail(messageMember.displayAvatarURL).setTitle("Deletion: " + messageMember.displayName + "'s message deleted by " + deleteMember).addField("Author ID: " + messageMember.id + "\nDeleter ID: " + user.id, message.channel + ": " + message.content); }
     bot.channels.get(channelToNotify).send(deleteLog);
 }
 
