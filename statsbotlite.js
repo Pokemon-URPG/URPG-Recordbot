@@ -2525,8 +2525,8 @@ async function deleteReporter(message) {
     messageMember = await message.guild.fetchMember(message.author);
     var deleteMember = await message.guild.fetchMember(user);
     if (attaches.length == 0) {
-        if (messageMember.id == deleteMember.id) { deleteLog = new Discord.RichEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL).addField("Deletion", message.channel + ": " + message.content)); }
-        else { deleteLog = new Discord.RichEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL).setFooter("Deleted by " + deleteMember.displayName + " (" + deleteMember.id + ")", deleteMember.user.displayAvatarURL).addField("Deletion", message.channel + ": " + message.content)); }
+        if (messageMember.id == deleteMember.id) { deleteLog = new Discord.RichEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL).addField("Deletion", message.channel + ": " + message.content); }
+        else { deleteLog = new Discord.RichEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL).setFooter("Deleted by " + deleteMember.displayName + " (" + deleteMember.id + ")", deleteMember.user.displayAvatarURL).addField("Deletion", message.channel + ": " + message.content); }
     }
     /*if (message.embeds.length > 0) {
         bot.channels.get(channelToNotify).send
