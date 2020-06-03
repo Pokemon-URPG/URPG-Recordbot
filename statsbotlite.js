@@ -15,6 +15,7 @@ var bot = new Discord.Client({ disableEveryone: true })
 var badWords = ["fag", "retard", "cuck", "slut", "kys"];
 var hardFossils = ["Kabuto", "Omanyte", "Lileep", "Anorith", "Cranidos", "Shieldon", "Archen", "Tirtouga", "Tyrunt", "Amaura"]
 var otherFossils = ["Dracozolt", "Dracovish", "Arctozolt", "Arctovish", "Spiritomb", "Aerodactyl"];
+var allFossils = hardFossils.concat(otherFossils);
 var ranks = ["Easiest", "Simple", "Medium", "Hard", "Complex", "Demanding", "Merciless", "Stupefying", "Tier2", "Tier1"];
 var rankVal = [4000, 7500, 15000, 25000, 35000, 47500, 0, 0, 0, 0];
 var bumpTime;
@@ -100,7 +101,7 @@ function statusMessage() {
     var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
     var movelist = fs.readFileSync("rse.txt", "utf8").split("\n");
     var pokemon = allpokes[Math.floor(Math.random() * allpokes.length)].split("/")[0];
-    var activityNum = Math.floor(Math.random() * 60);
+    var activityNum = Math.floor(Math.random() * 98);
     let duration = Math.floor(Math.random() * 600000)
     //if you're reading this, don't spoil the surprise of the weird ones please.  But feel free to suggest additional options!
     switch (activityNum) {
@@ -164,6 +165,44 @@ function statusMessage() {
         case 57: activity = " studying"; break;
         case 58: activity = " in a raid"; break;
         case 59: activity = " ignoring me"; break;
+        case 60: activity = " planeswalking"; break;
+        case 61: activity = " performing in a musical"; break;
+        case 62: activity = " dynamaxing"; break;
+        case 63: activity = " mixing Pokéblocks"; break;
+        case 64: activity = " making curry"; break;
+        case 65: activity = " shopping at Celadon Department Store"; break;
+        case 66: activity = " shopping at Goldenrod Department Store"; break;
+        case 67: activity = " shopping at Lilycove Department Store"; break;
+        case 68: activity = " shopping at Veilstone Department Store"; break;
+        case 69: activity = " shopping at Shopping Mall Nine"; break;
+        case 70: activity = " cycling"; break;
+        case 71: activity = " modeling"; break;
+        case 72: activity = " reviving a " + allFossils[Math.floor(Math.random() * allFossils.length)]; break;
+        case 73: activity = " digging in the Underground"; break;
+        case 74: activity = " tagging with graffiti"; break;
+        case 75: activity = " relaxing in a hot spring"; break;
+        case 76: activity = " training in the daycare"; break;
+        case 77: activity = " eating in a cafe"; break;
+        case 78: activity = " at the hair salon"; break;
+        case 79: activity = " casting Brainstorm"; break;
+        case 80: activity = " riding Corviknight taxi"; break;
+        case 81: activity = " riding a Mamoswine"; break;
+        case 82: activity = " mining"; break;
+        case 83: activity = " miming"; break;
+        case 84: activity = " playing hide and seek"; break;
+        case 85: activity = " soaring on a Latios"; break;
+        case 86: activity = " soaring on a Latias"; break;
+        case 87: activity = " exploring a dark cave"; break;
+        case 88: activity = " solving an ice puzzle"; break;
+        case 89: activity = " examining the mural in Stow on Side"; break;
+        case 90: activity = " delving away for a Treasure Cruise"; break;
+        case 91: activity = " spelunking"; break;
+        case 92: activity = " tightrope walking"; break;
+        case 93: activity = " sounding an airhorn"; break;
+        case 94: activity = " looking for Mirage Island"; break;
+        case 95: activity = " ambushing Wimpod"; break;
+        case 96: activity = " trespassing"; break;
+        case 97: activity = " cackling evilly"; break;
     }
     bot.channels.get("669306624925499412").send("Watching " + pokemon + activity);
     bot.user.setActivity(pokemon + activity, { type: 'WATCHING'});
@@ -1777,7 +1816,7 @@ function help(message) {
         }
         else {
             var toSend = message.author;
-            if (message.channel.id == botCommands) { toSend = botCommands; }
+            if (message.channel.id == botCommands) { toSend = bot.channels.get(botCommands); }
             toSend.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`; `,help reorder`; `,help addstat`; `,help remind`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
         }
     }
@@ -2486,8 +2525,8 @@ async function deleteReporter(message) {
     messageMember = await message.guild.fetchMember(message.author);
     var deleteMember = await message.guild.fetchMember(user);
     if (attaches.length == 0) {
-        if (messageMember.id == deleteMember.id) { deleteLog = new Discord.RichEmbed().setThumbnail(messageMember.user.displayAvatarURL).setTitle("Deletion: " + messageMember.displayName + "'s message").addField("Author ID: " + messageMember.id, message.channel + ": " + message.content); }
-        else { deleteLog = new Discord.RichEmbed().setThumbnail(messageMember.user.displayAvatarURL).setTitle("Deletion: " + messageMember.displayName + "'s message deleted by " + deleteMember.displayName).addField("Author ID: " + messageMember.id + "\nDeleter ID: " + user.id, message.channel + ": " + message.content); }
+        if (messageMember.id == deleteMember.id) { deleteLog = new Discord.RichEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL).addField("Deletion", message.channel + ": " + message.content)); }
+        else { deleteLog = new Discord.RichEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL).setFooter("Deleted by " + deleteMember.displayName + " (" + deleteMember.id + ")", deleteMember.user.displayAvatarURL).addField("Deletion", message.channel + ": " + message.content)); }
     }
     /*if (message.embeds.length > 0) {
         bot.channels.get(channelToNotify).send
@@ -2578,7 +2617,7 @@ function resetStats(message) {
 function formatStats(message) {
     if (message.author.id == "135999597947387904" && lowmessage == ",formatstats") {
         var theMessage = "";
-        for (var x = 1; x < tempStats.split("\n").length; x++) {
+        for (var x = 1; x < tempStats.content.split("\n").length; x++) {
             theMessage += "if (oldmessage.indexOf(" + tempStats.split("\n")[x].split(" ")[0].toLowerCase() + ") != -1) { message.channel.send(" + tempStats.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.split("\n")[x].split(" ")[1] + "); }\n";
         }
         message.channel.send(theMessage);
