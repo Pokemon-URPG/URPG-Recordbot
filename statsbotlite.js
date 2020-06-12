@@ -836,7 +836,7 @@ function ruleset(message) {
                 theRules += "6v6";
             }
             theRules += "\nSM Public Box\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather"
-            if (message.channel.name.includes("terrain") {
+            if (message.channel.name.includes("terrain")) {
                 var terrain = Math.floor(Math.random() * 4);
                 theRules += "\nRandom Terrain (";
                 switch (terrain) {
