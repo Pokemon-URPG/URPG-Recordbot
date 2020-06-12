@@ -252,6 +252,9 @@ async function reminder(channelID, messageID) {
 
 function codeRemind() {
     bot.channels.get("531433553225842700").send("<@135999597947387904>\n" + codeLog.content);
+    setTimeout(function () {
+        codeRemind();
+    }, 86400000);
 }
 
 function codeEdit(message) {
@@ -337,6 +340,9 @@ function weirrrrrReminder() {
 function randomRotations() {
     var thisIsRich = new Discord.RichEmbed().setImage("http://orig00.deviantart.net/9efc/f/2016/094/1/8/urpg_comic_1__random_rotations_by_wintervines-d9xqnfz.png");
     bot.channels.get("531433553225842700").send("<@135867398241648640> <@135999597947387904>", thisIsRich);
+    setTimeout(function () {
+        randomRotations();
+    }, 86400000);
 }
 
 async function bumpServer() {
@@ -356,7 +362,7 @@ function bumpNotification() {
 
 function badWordsReporter(message, messageMember, isEdit) {
     if (message.author.bot || message.channel.id == "690427377012047902") {return;}
-    lowmessage = lowmessage.replace(/cofag/g, "");
+    lowmessage = lowmessage.replace(/cofag/g, "").replace(/leafage/g, "");
     var badWordsLog = "";
     var reporting = false;
     for (let i = 0; i < badWords.length; i++) {
@@ -372,7 +378,7 @@ function badWordsReporter(message, messageMember, isEdit) {
         badWordsLog += ">: ```";
         badWordsLog += message.cleanContent;
         badWordsLog += "```";
-        badWordsLog = new Discord.RichEmbed().setThumbnail(messageMember.user.displayAvatarURL).setTitle("Questionable Content:").addField(messageMember.displayName + " (" + message.author.id + ")", message.channel + ": " + message.content).setColor('RED');
+        badWordsLog = new Discord.RichEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL).setTitle("Questionable Content:").addField(messageMember.displayName + " (" + message.author.id + ")", message.channel + ": " + message.content).setColor('RED');
         bot.channels.get(logsChannel).send(badWordsLog);
     }
 }
@@ -500,6 +506,9 @@ function stats(message) {
         if ((oldmessage.indexOf(" bdra ") != -1 || oldmessage.indexOf("bdra97") != -1)) { message.channel.send("BDra97's stats: https://forum.pokemonurpg.com/showthread.php?tid=10707"); }
         if (oldmessage.indexOf(" asha ") != -1) { message.channel.send("Asha_Kaideem's stats: https://forum.pokemonurpg.com/showthread.php?tid=10699"); }
         if (oldmessage.indexOf("sambi") != -1) { message.channel.send("Sambipom's stats: https://forum.pokemonurpg.com/showthread.php?tid=10819"); }
+        if (oldmessage.indexOf("sakura") != -1) { message.channel.send("Sakura's stats: https://forum.pokemonurpg.com/showthread.php?tid=10859"); }
+        if (oldmessage.indexOf("bmk") != -1) { message.channel.send("bmkmb's stats: https://forum.pokemonurpg.com/showthread.php?tid=10379"); }
+        if (oldmessage.indexOf("yumpy") != -1) { message.channel.send("Yumpy's stats: https://forum.pokemonurpg.com/showthread.php?tid=10865"); }
         for (var x = 1; x < tempStats.content.split("\n").length; x++) {
             if (oldmessage.indexOf(tempStats.content.split("\n")[x].split(" ")[0].toLowerCase()) != -1) { message.channel.send(tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.content.split("\n")[x].split(" ")[1]); }
         }
@@ -542,13 +551,13 @@ function dppt(message) {
         const desiredmove = lowmessage.substring(6)
         var bestGuess = 0;
         var diff = -1;
-        for (let x = 0; x < moves.length; x += 2) {
+        for (let x = 0; x < moves.length; x ++) {
             if (ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove) > diff) {
                 bestGuess = x;
                 diff = ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove);
             }
         }
-        message.channel.send(moves[bestGuess] + "\n" + moves[bestGuess + 1])
+        message.channel.send(moves[bestGuess])
     }
 }
 
@@ -818,29 +827,50 @@ function ruleset(message) {
     if(lowmessage.indexOf(",rules ") == 0)
     {
         lowmessage = lowmessage.split(",rules ")[1];
-        if(lowmessage.indexOf("casual") != -1 && lowmessage.indexOf("2") != -1) message.channel.send("2v2\nSM Public Open\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
-        else if(lowmessage.indexOf("casual") != -1 && lowmessage.indexOf("3") != -1) message.channel.send("3v3\nSM Public Open\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
-        else if(lowmessage.indexOf("casual") != -1 && lowmessage.indexOf("4") != -1) message.channel.send("4v4\nSM Public Open\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
-        else if(lowmessage.indexOf("casual") != -1 && lowmessage.indexOf("5") != -1) message.channel.send("5v5\nSM Public Open\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
-        else if(lowmessage.indexOf("casual") == 0) message.channel.send("6v6\nSM Public Open\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
+        var theRules = "";
+        if(lowmessage.indexOf("casual") != -1) {
+            if (!isNaN(lowmessage.split(" ")[1]) && lowmessage.split(" ")[1].length > 0) {
+                theRules += lowmessage.split(" ")[1] + "v" + lowmessage.split(" ")[1];
+            }
+            else {
+                theRules += "6v6";
+            }
+            theRules += "\nSM Public Box\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather"
+            if (message.channel.name.includes("terrain") {
+                var terrain = Math.floor(Math.random() * 4);
+                theRules += "\nRandom Terrain (";
+                switch (terrain) {
+                    case 0: theRules += "Misty Terrain"; break;
+                    case 1: theRules += "Electric Terrain"; break;
+                    case 2: theRules += "Psychic Terrain"; break;
+                    case 3: theRules += "Grassy Terrain"; break;
+                }
+                theRules += ")";
+            }
+            else {
+                theRules += "and Terrain";
+            }
+            theRules += "\nRoll for first send\nUnless otherwise stated, trainers will be using their default boxes and not excluding anything.";
+            message.channel.send(theRules);
+        }
         if(lowmessage.indexOf("ppr") == 0) message.channel.send("6v6\nSM Public Preview\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
         if(lowmessage.indexOf("hidden") == 0) message.channel.send("6v6\nSM Private Preview\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather and Terrain");
         if(lowmessage.indexOf("competitive") == 0) message.channel.send("6v6\nSM Private Preview\nOHKO ACC EVA SLP FRZ Species Item Legend Dynamax Imprison Clauses On\nHelds On\nDefault Weather and Terrain");
         if(lowmessage.indexOf("e4") == 0 || lowmessage.indexOf("elite") != -1) message.channel.send("6 vs 6\nSM Private Full or SM Private Preview\nItems Allowed\nSleep Clause\nFreeze Clause\nOHKO Clause\nAccuracy Clause\nEvasion Clause\nImprison Clause\nNo Legendary Pokemon\nDefender’s Choice: Dyanamax Clause OR Mega & Z Clauses, Species Clause, Item Clause, Weather, Terrain");
         if(lowmessage.indexOf("ld") == 0) message.channel.send("4 VS. 4+\nSM Private Full or Preview\nItems Optional\nSleep, Freeze, OHKO, Accuracy, Evasion, Imprison, and Legend Clauses On\nMega, Z, Dyanamax, Item and Species Clauses Optional\nStarting Weather and Terrain Optional");
         if(lowmessage.indexOf("ashrandoms") == 0) message.channel.send("6v6\nSM Public Box (Roll your 6 and use that as your Box)\nOHKO ACC EVA SLP FRZ Imprison Dynamax Z-Move Clauses On\nHelds On\nRandom Weather and Terrain\nMega Clause on unless *both* trainers roll a Mega they can use\nRoll for first send\n\nAny changes?");
-        if(lowmessage.indexOf("fortree") == 0) message.channel.send("6v6\nSM Public Open\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First");
-        if(lowmessage.indexOf("ashmockfire") == 0) message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Cinderace, Delphox, Flareon, Houndoom, Marowak (Alola), Numel, Salamence, Talonflame, Torkoal, Turtonator, Volcarona.  Yours may be whatever you wish.");
-        if(lowmessage.indexOf("ashmockdragon") == 0) message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\nGym Leader's Box will be Altaria, Charizard, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
-        if(lowmessage.indexOf("mt. chimney") == 0) message.channel.send("4v4-6v6\nSM Public Open\nTall Grass Terrain\nSun\nHelds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Legend/Dynamax Clauses\nZ/Mega Clause Challenger Dependant\nChallenger Sends First");
-        if(lowmessage.indexOf("canalave") == 0) message.channel.send("Canalave City Gym.\nTM 128 – Gyro Ball.\n4v4 or 6v6\nSM Public Open\nOHKO / ACC / EVA / FRZ / SLP / Imprison / Dynamax / Legend Clauses\nZ / Item / Mega Clauses may be toggled depending on the challenger\nHelds On\nSandstorm Weather, Building Terrain\nChallenger Sends First");
+        if(lowmessage.indexOf("fortree") == 0) message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First");
+        if(lowmessage.indexOf("ashmockfire") == 0) message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\n"); //Gym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Cinderace, Delphox, Flareon, Houndoom, Marowak (Alola), Numel, Salamence, Talonflame, Torkoal, Turtonator, Volcarona.  Yours may be whatever you wish.");
+        if(lowmessage.indexOf("ashmockdragon") == 0) message.channel.send("6v6\nSM Public Box\nBadlands Terrain\nSun\nHolds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\nNo Legendary Pokémon\nNo Z-Moves\nChallenger Sends First\n\n"); //Gym Leader's Box will be Altaria, Charizard, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
+        if(lowmessage.indexOf("mt. chimney") == 0) message.channel.send("4v4-6v6\nSM Public Box\nTall Grass Terrain\nSun\nHelds On\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Legend/Dynamax Clauses\nZ/Mega Clause Challenger Dependant\nChallenger Sends First");
+        if(lowmessage.indexOf("canalave") == 0) message.channel.send("Canalave City Gym.\nTM 128 – Gyro Ball.\n4v4 or 6v6\nSM Public Box\nOHKO / ACC / EVA / FRZ / SLP / Imprison / Dynamax / Legend Clauses\nZ / Item / Mega Clauses may be toggled depending on the challenger\nHelds On\nSandstorm Weather, Building Terrain\nChallenger Sends First");
         if(lowmessage.indexOf("battle dome") == 0) message.channel.send("6v6\nS/M Private Doubles\nHelds On\nNo Starting Weather\nDefault Terrain\nSleep/Freeze/OHKO/Accuracy/Evasion/Imprison\nDefender’s Choice: Item/Species Clause, Preview vs Full, Mega/Z-Move/Dynamax Clauses (at least one must be on, Dynamax cannot be off with others off)\nGold: Dome Brains make a pool of 8 Pokemon, and can send as if the battle were Private Open with those Pokemon (their items and abilities must still be sent at the start).");
         if(lowmessage.indexOf("maylee") == 0) message.channel.send("6v6 SM Private Full\nSleep/Freeze/OHKO/Evasion/Accuracy/Legends clauses active\nHelds on, building terrain, no starting weather\n\nIf both battlers agree, the following rules may be changed: Mega/Z/Item/Species, Helds off instead of on, Preview instead of Full");
         if(lowmessage.indexOf("ffa") == 0) message.channel.send("SM Private Full\nNo Holds\nNo Sleep Moves (Barring Rest)\nEVA/ACC/OHKO/Imprison/Dyanamax Clauses\nPerish Song Fails\nPerish Body banned\nHit All - Hit One\nEncore Fails\nAttract Fails\nRage Powder/Follow Me/Spotlight Fails\nRedirects On\nIllusion Pokémon disguises as a random Pokémon from the National Pokédex\nImposter, Download, and Intimidate select a random participating Pokémon\nNot sending or forfeiting results in KO at the beginning of the turn");
         if(lowmessage.indexOf("randomize") == 0) {
             var numPok = Math.floor(Math.random() * 5) + 2;
             var gen = Math.floor(Math.random() * 3);
-            var format = Math.floor(Math.random() * 4);
+            var format = Math.floor(Math.random() * 3);
             var mode = Math.floor(Math.random() * 5);
             var launcher = Math.floor(Math.random() * 2);
             var sky = Math.floor(Math.random() * 2);
@@ -905,11 +935,10 @@ function ruleset(message) {
             if (lowmessage.indexOf("rse") != -1) {gen = 1;}
             if (lowmessage.indexOf("-sm") != -1) {gen = Math.floor(Math.random() * 2);}
             else if (lowmessage.indexOf("sm") != -1) {gen = 2;}
-            if (lowmessage.indexOf("-open") != -1) {format = Math.floor(Math.random() * 3) + 1;}
-            else if (lowmessage.indexOf("open") != -1) {format = 0;}
-            else if (lowmessage.indexOf("box") != -1) {format = 1;}
-            else if (lowmessage.indexOf("full") != -1) {format = 2;}
-            else if (lowmessage.indexOf("preview") != -1) {format = 3;}
+            if (lowmessage.indexOf("-box") != -1) {format = Math.floor(Math.random() * 2) + 1;}
+            else if (lowmessage.indexOf("box") != -1) {format = 0;}
+            else if (lowmessage.indexOf("full") != -1) {format = 1;}
+            else if (lowmessage.indexOf("preview") != -1) {format = 2;}
             if (lowmessage.indexOf("public") != -1) {mode = 0;}
             if (lowmessage.indexOf("private") != -1) {mode = Math.floor(Math.random() * 4) + 1;}
             if (lowmessage.indexOf("-launcher") != -1) {launcher = 1;}
@@ -964,10 +993,9 @@ function ruleset(message) {
                 rules += "Public ";
             }
             switch(format) {
-                case 0: rules += "Open\n"; break;
-                case 1: rules += "Box\n"; break;
-                case 2: rules += "Full\n"; break;
-                case 3: rules += "Preview\n"; break;
+                case 0: rules += "Box\n"; break;
+                case 1: rules += "Full\n"; break;
+                case 2: rules += "Preview\n"; break;
             }
             switch(mode) {
                 case 0: rules += "Single Battle\n"; break;
@@ -1631,7 +1659,7 @@ function clauses(message) {
         if (lowmessage.indexOf("sm") != -1) { message.channel.send("SM: All mechanics function as per the latest game."); }
         if (lowmessage.indexOf("full") != -1) { message.channel.send("Full: A complete team of Pokemon, with abilities and held items, is sent to the referee prior to the battle. Leads are selected after the team is sent."); }
         if (lowmessage.indexOf("preview") != -1) { message.channel.send("Preview: A complete team of Pokemon, with abilities and held items, is sent to the referee prior to the battle. The referee will reveal both teams before leads are selected."); }
-        if (lowmessage.indexOf("open") != -1) { message.channel.send("Open: Pokemon are sent during the battle – teams are not predetermined."); }
+        if (lowmessage.indexOf("open") != -1) { message.channel.send("Open: Pokemon are sent during the battle – teams are not predetermined. **NOW DEFUNCT: See `,clause box` for the current version.**"); }
         if (lowmessage.indexOf("box") != -1) { message.channel.send("Box: Trainers send their full stats or a subset (of any size) of their Pokémon to use to the ref (i.e. “all”, “not Meowth”, “Bulbasaur, Charmander, Squirtle, Pikachu”). The ref will then announce those selections and the trainers battle as if those were the Pokémon they own, choosing which of those Pokémon as they go and sending gender, item, and ability when the Pokémon is first sent out."); }
         if (lowmessage.indexOf("double") != -1) { message.channel.send("Double Battle: In a Double Battle, each trainer has two Pokemon out at the same time. When Pokemon are knocked out, if the battler has more Pokemon available in his/her party, he/she must send Pokemon to replace them at the end of the turn.\nEach Pokemon is able to target any other Pokemon on the field, including its own ally. However, there are moves that affect multiple Pokemon at once. These moves can be found by clicking here. When a move hits more than one Pokemon at once, its base power is reduced to 75% of its original value. Furthermore, each instance of the move hitting a Pokemon requires its own accuracy roll, if the move is less than 100% accurate. Likewise, the secondary effects of moves that target multiple Pokemon require an individual roll for each target that is hit.\nWhen Reflect, Light Screen, and Aurora Veil are used in a Double Battle, they benefit both Pokemon on the side it is used. However, instead of halving damage like in Single Battles, the damage is reduced by 1/3 instead.\nThis rule is only compatible with battle modes in which you must send your Pokemon and moves privately to the ref."); }
         if (lowmessage.indexOf("multi") != -1) { message.channel.send("Multi Battle: This is a Double Battle, but you are teamed with another battler. Each battler only controls one Pokemon at a time. Each battler must send the same amount of Pokemon. This rule is only compatible with battle modes in which you must send your Pokemon and moves privately to the ref."); }
@@ -1684,27 +1712,27 @@ function wildcards(message) {
         switch (lowmessage.split(" ") [1]){
             case "normal": wclist = "Clefable, Azumarill, Granbull"; break;
             case "grass": wclist = "Crustle, Comfey, Sudowoodo"; break;
-            case "fire": wclist = "Salamence, Leafeon, Darmanitan-Galar (Zen Mode only), Solrock"; break;
+            case "fire": wclist = "Salamence, Leafeon, Solrock"; break;
             case "water": wclist = "Dragalge, Beartic, Hoenn Fossils"; break;
             case "electric": wclist = "Porygon Line, Golurk, Probopass"; break;
-            case "ice": wclist = "Quagsire, Slowpoke Line, Kingdra, Empoleon"; break;
+            case "ice": wclist = "Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon"; break;
             case "fighting": wclist = "Metagross, Electivire, Incineroar"; break;
             case "poison": wclist = "Gliscor, Accelgor, Breloom"; break;
             case "ground": wclist = "Duraludon, Tyranitar, Cacturne"; break;
             case "flying": wclist = "Volcarona, Sirfetch'd, Decidueye"; break;
             case "psychic": wclist = "Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Noctowl"; break;
             case "bug": wclist = "Kabutops, Flygon, Falinks"; break;
-            case "rock": wclist = "Sableye, Torterra, Galar Fossils, Steelix"; break;
-            case "dragon": wclist = "Charizard, Gyarados, Ampharos, Sceptile"; break;
-            case "ghost": wclist = "Rotom, Houndoom, Kecleon"; break;
+            case "rock": wclist = "Sableye, Torterra, Galar Fossils (only two at a time), Steelix"; break;
+            case "dragon": wclist = "Charizard, Ampharos, Sceptile"; break;
+            case "ghost": wclist = "Rotom (only two at a time), Houndoom, Kecleon"; break;
             case "steel": wclist = "Blastoise, Vikavolt, Dhelmise"; break;
             case "dark": wclist = "Gengar, Gyarados, Gothitelle"; break;
             case "fairy": wclist = "Delphox, Altaria, Blissey Line"; break;
-            default: wclist = "Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Salamence, Leafeon, Darmanitan-Galar (Zen Mode only), Solrock\nWater: Dragalge, Beartic, Hoenn Fossils\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowpoke Line, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Noctowl\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils, Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom, Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line";
+            default: wclist = "Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Salamence, Leafeon, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Noctowl\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line";
         }
         message.channel.send(wclist);
     }
-    else if (lowmessage.indexOf(",wildcard") == 0) { message.channel.send("Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Salamence, Leafeon, Darmanitan-Galar (Zen Mode only), Solrock\nWater: Dragalge, Beartic, Hoenn Fossils\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowpoke Line, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Kanto-Ninetales, Darmanitan (Zen Mode only), Mienshao, Noctowl\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils, Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom, Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line"); }
+    else if (lowmessage.indexOf(",wildcard") == 0) { message.channel.send("Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Salamence, Leafeon, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Noctowl\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line"); }
 }
 
 function fairyGIF(message) {
@@ -1776,7 +1804,7 @@ function help(message) {
             message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,chartrse`, `,chartdppt`, `,chartoras`: Link to the Google Sheets for the respective contest type\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\n`,pxrarchive`: Link to the archives of the PXR URPG section.\n`,refund`: Link to the Refund Thread.\n`,gen8` or `,galar`: Link to the Generation 8 Public Changelog.\n`,nukem`, `,refpedia`, `,gym`: Links to respective Infohub topics.\n`,updategym`: Link to Apply for or Update a Gym thread.\nIf you have any suggestions for other links I should have, please @ Ash K.");
         }
         else if (lowmessage.indexOf("random") != -1 || lowmessage.indexOf("weather") != -1 || lowmessage.indexOf("terrain") != -1) {
-            message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -open, open, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively. For `,weather`, you may add `-fog` and/or `-no` to exclude Fog and/or No Starting Weather, respectively.");
+            message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -box, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively. For `,weather`, you may add `-fog` and/or `-no` to exclude Fog and/or No Starting Weather, respectively.");
         }
         else if (lowmessage.indexOf("rule") != -1) {
             message.channel.send("Use `,rules RULESET` to bring up a specific ruleset:\ncasual: Typical ruleset for casual battles\nppr: Similar but Public Preview (for randoms)\nhidden: Similar but Private Preview\ncompetitive: More serious battle rules\ne4: Official rules for any Elite Four or Champion battle\nld: Official rules for any Legend Defender battle\nashrandoms: Ash's preferred ruleset for randoms\nfortree: Fortree Gym default rules\nashmockfire: Ash's rules for a mock Fire gym (treated as a normal battle for pay and such)\nashmockdragon: Same as above but for Dragon\nmt. chimney, canalave, battle dome: Other leaders' gym rules.  To get yours added, please message Ash with your rules formatted like this ```javascript\nif(lowmessage.indexOf(\"fortree\") == 0) message.channel.send(\"6v6\\nSM Public Open\\nVolcano Terrain\\nSun\\nHolds On\\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\\nNo Legendary Pokémon\\nNo Z-Moves\\nChallenger Sends First\");```\nmaylee: Rules for the Maylee battle event\nffa: Typical FFA ruleset\nrandomize: Randomized rule set among legal rulesets. See `,help randomize` for more information on how to fix certain conditions.");
@@ -1920,7 +1948,7 @@ function magicCardPoster(input, channel) {
     }
     if (cardName == "Mine, Mine, Mine" || cardName == "Incoming" || cardName == "Kill! Destroy") {cardName += "!";}
     cardName = cardName.replace(/ /g, "%2B").replace(/,/g, "%252C").replace(/\./, "%252E").replace(/û/g, "u").replace(/\'/g, "%2527").replace(/`/g, "%2527").replace(/®/g, "%25C2%25AE").replace(/:registered:/g, "%25C2%25AE").replace(/&/g, "%2526").replace(/"/g, "%2522").replace(/!/g, "%2521").replace(/\?/g, "%253F");
-    if (!fetched) { channel.send("https://cdn1.mtggoldfish.com/images/gf/" + cardName + "%2B%255B" + cardSet.toUpperCase() + "%255D.jpg"); }
+    if (!fetched) {channel.send("https://cdn1.mtggoldfish.com/images/gf/" + cardName + "%2B%255B" + cardSet.toUpperCase().replace(/INV/, "IN") + "%255D.jpg"); }
     if (input.indexOf("]]") != input.lastIndexOf("]]")) { magicCardPoster(input.substring(input.indexOf("]]") + 2), channel); } 
 }
 
@@ -2618,7 +2646,7 @@ function formatStats(message) {
     if (message.author.id == "135999597947387904" && lowmessage == ",formatstats") {
         var theMessage = "";
         for (var x = 1; x < tempStats.content.split("\n").length; x++) {
-            theMessage += "if (oldmessage.indexOf(" + tempStats.split("\n")[x].split(" ")[0].toLowerCase() + ") != -1) { message.channel.send(" + tempStats.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.split("\n")[x].split(" ")[1] + "); }\n";
+            theMessage += "if (oldmessage.indexOf(\"" + tempStats.content.split("\n")[x].split(" ")[0].toLowerCase() + "\") != -1) { message.channel.send(\"" + tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.content.split("\n")[x].split(" ")[1] + "\"); }\n";
         }
         message.channel.send(theMessage);
     }
