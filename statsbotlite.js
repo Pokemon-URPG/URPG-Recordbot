@@ -848,7 +848,7 @@ function ruleset(message) {
                 theRules += ")";
             }
             else {
-                theRules += "and Terrain";
+                theRules += " and Terrain";
             }
             theRules += "\nRoll for first send\nUnless otherwise stated, trainers will be using their default boxes and not excluding anything.";
             message.channel.send(theRules);
