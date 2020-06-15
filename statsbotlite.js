@@ -458,12 +458,12 @@ function stats(message) {
         if ((oldmessage.indexOf("julio ") != -1) || (oldmessage.indexOf("juliorain ") != -1)) { message.channel.send("\njuliorain's stats: https://juliorain.wordpress.com/") }
         if ((oldmessage.indexOf("maxichel kigahen ") != -1) || (oldmessage.indexOf("mikey ") != -1) || (oldmessage.indexOf("mikey57 ") != -1)) { message.channel.send("\nMikey57's stats: https://mikey57urpg.wordpress.com/") }
         if ((oldmessage.indexOf("elrond ") != -1)) { message.channel.send("\nElrond's stats: https://pokemonurpg.com/stats/Elrond") }
-        if ((oldmessage.indexOf(" soul ") != -1) || (oldmessage.indexOf("soulmaster ") != -1) || (oldmessage.indexOf(" sm ") != -1)) { message.channel.send("\nSoulMaster's stats: http://soulmasterurpgf.proboards.com/thread/2/pokemon-own") }
+        if ((oldmessage.indexOf(" soul ") != -1) || (oldmessage.indexOf("soulmaster ") != -1) || (oldmessage.indexOf(" sm ") != -1)) { message.channel.send("\nSoulmaster's stats: http://soulmasterurpgf.proboards.com/thread/2/pokemon-own") }
         if ((oldmessage.indexOf("winter ") != -1) || (oldmessage.indexOf(" wv ") != -1) || (oldmessage.indexOf("wintervines ") != -1)) { message.channel.send("\nWinterVines's stats: http://frozenchains.proboards.com/thread/5") }
         if ((oldmessage.indexOf("siles ") != -1) || (oldmessage.indexOf("siless ") != -1)) { message.channel.send("\nSiless's stats: http://silessurpg.proboards.com/thread/1/silesss-stats") }
         if ((oldmessage.indexOf("w32 ") != -1) || (oldmessage.indexOf("coravint ") != -1)) { message.channel.send("\nW32Coraviant's stats: https://w32coravint-urpg.neocities.org/") }
         if (oldmessage.indexOf(" sou ") != -1) { message.channel.send("\nSou's stats: http://soucleife.proboards.com/thread/2/pokemon-stats") }
-        if (oldmessage.indexOf("trainer17 ") != -1) { message.channel.send("\nTrainer17's stats: http://kingofcybertron.proboards.com/thread/35/pokemon-team?page=1") }
+        if (oldmessage.indexOf("trainer17 ") != -1 || oldmessage.includes("t17")) { message.channel.send("\nTrainer17's stats: http://kingofwakanda.proboards.com") }
         if ((oldmessage.indexOf("captaindude ") != -1) || (oldmessage.indexOf(" cd ") != -1)) { message.channel.send("\nCaptainDude's stats: http://captaindudeurpg.proboards.com/board/1") }
         if ((oldmessage.indexOf("mandl27 ") != -1) || (oldmessage.indexOf("mandl ") != -1) || (oldmessage.indexOf(" mand ") != -1) || (oldmessage.indexOf(" ml ") != -1)) { message.channel.send("\nMandL27's stats: https://forum.pokemonurpg.com/showthread.php?tid=10294") }
         if (oldmessage.indexOf("sapahn ") != -1) { message.channel.send("\nSapahn's stats: https://sapahnurpg.wordpress.com/") }
@@ -2881,7 +2881,7 @@ bot.on("guildMemberRemove", async function(member) {
     }
     else if (entry2 != null && (entry2.target.id === member.id) && (entry2.createdTimestamp > (Date.now() - 5000))) {
         leaveLog += " was kicked by ";
-        leaveLog += entry.executor.username;
+        leaveLog += entry2.executor.username;
     }
     else {leaveLog += " has left."}
     bot.channels.get(logsChannel).send(leaveLog);
