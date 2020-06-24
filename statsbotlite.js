@@ -1999,7 +1999,7 @@ function tempChannelReporter(message, messageMember) {
     }
 }
 
-function tempChannelWebhook(message, messageMember) {
+async function tempChannelWebhook(message, messageMember) {
     var whid = null;
     if (message.channel.name == "ref-test") {
         whid = "725292904326889472";
