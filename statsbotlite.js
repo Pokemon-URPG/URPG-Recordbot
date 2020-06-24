@@ -509,6 +509,8 @@ function stats(message) {
         if (oldmessage.indexOf("sakura") != -1) { message.channel.send("Sakura's stats: https://forum.pokemonurpg.com/showthread.php?tid=10859"); }
         if (oldmessage.indexOf("bmk") != -1) { message.channel.send("bmkmb's stats: https://forum.pokemonurpg.com/showthread.php?tid=10379"); }
         if (oldmessage.indexOf("yumpy") != -1) { message.channel.send("Yumpy's stats: https://forum.pokemonurpg.com/showthread.php?tid=10865"); }
+        if (oldmessage.indexOf("praetor") != -1) { message.channel.send("Praetor's stats: https://forum.pokemonurpg.com/showthread.php?tid=10905"); }
+        if (oldmessage.indexOf("kumo") != -1) { message.channel.send("Kumo's stats: https://forum.pokemonurpg.com/showthread.php?tid=10907"); }
         for (var x = 1; x < tempStats.content.split("\n").length; x++) {
             if (oldmessage.indexOf(tempStats.content.split("\n")[x].split(" ")[0].toLowerCase()) != -1) { message.channel.send(tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.content.split("\n")[x].split(" ")[1]); }
         }
@@ -1080,8 +1082,9 @@ function randWeather(message) {
 }
 
 function randTerrain(message) {
-    if (lowmessage.indexOf(",terrain") == 0) {
+    if (lowmessage.indexOf(",terrain") == 0 || (lowmessage.indexOf(",active") == 0 && lowmessage.includes("terrain"))) {
         let terrain = Math.floor(Math.random() * 16);
+        if (lowmessage.includes("active")) { terrain = 12 + Math.floor(Math.random() * 4); }
         switch(terrain) {
             case 0: message.channel.send("Building Terrain"); break;
             case 1: message.channel.send("Cave Terrain"); break;
@@ -1627,24 +1630,29 @@ function coverage(message) {
 function beatUp(message) {
     if(lowmessage.indexOf(",beatup ") == 0)
     {
-        var pokemon = lowmessage.split(",beatup ")[1];
-        if (!isNaN(pokemon)) {
-            var beatUpBP = Math.floor(((pokemon - 99) / 2) / 10) + 5;
-            message.channel.send("A Pokémon with a base URPG Attack stat of " + pokemon + " would have a base " + beatUpBP + " power Beat Up!");
-            return;
-        }
-        //var fs = require('fs');
-        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
-        for(var x = 0; x < allpokes.length; x++)
-        {
-            if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
-            {
-                var beatUpBP = Math.floor(((allpokes[x].split('/')[4] - 99) / 2) / 10) + 5;
-                message.channel.send(allpokes[x].split('/')[0] + " would have a base " + beatUpBP + " power Beat Up!");
-                return;
+        var pokemonList = lowmessage.split(",beatup ")[1];
+        var pokemon = pokemonList.split(", ");
+        for (var x = 0; x < pokemon.length; x++) {
+            if (!isNaN(pokemon[x])) {
+                var beatUpBP = Math.floor(((pokemon[x] - 99) / 2) / 10) + 5;
+                message.channel.send("A Pokémon with a base URPG Attack stat of " + pokemon[x] + " would have a base " + beatUpBP + " power Beat Up!");
+            }
+            else {
+                var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
+                var found = false;
+                for(var x = 0; x < allpokes.length; x++)
+                {
+                    if(pokemon[x].toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
+                    {
+                        var beatUpBP = Math.floor(((allpokes[x].split('/')[4] - 99) / 2) / 10) + 5;
+                        message.channel.send(allpokes[x].split('/')[0] + " would have a base " + beatUpBP + " power Beat Up!");
+                        found = true;
+                        break;
+                    }
+                }
+                message.channel.send("I'm afraid " + pokemon[x] + " is not in my base stats database.  Make sure you spelled it right and remember that my research in the Galar region isn't yet complete, but I can give you the base power from its URPG attack stat with `,beatup 299` or similar.");
             }
         }
-        message.channel.send("I'm afraid " + pokemon + " is not in my base stats database.  My research in the Galar region isn't yet complete, but I can give you the base power from its URPG attack stat with `,beatup 299` or similar.");
     }
 }
 
@@ -1845,7 +1853,8 @@ function help(message) {
         else {
             var toSend = message.author;
             if (message.channel.id == botCommands) { toSend = bot.channels.get(botCommands); }
-            toSend.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`; `,help reorder`; `,help addstat`; `,help remind`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
+            toSend.send(new Discord.RichEmbed().setTitle("Functions").setColor('GREEN').addField("Informational Commands:", "`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN1, STAT1, STAT2, PKMN2...`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat! Multiple entries need to be separated by `, `.\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.").addField("Additional Commands", "Quick access to various InfoHub and forum pages, see `,help link` for a list.\n`,weather`, `,terrain`, or `,attribute`: Generate a random rule of that type. `,active terrain` or `,terrain active` will only pick from the four active Terrains.\nI convert base stats to their URPG equivalents, see `,help convert` for syntax.\nFor the requirements and syntax to mention a role, see `,help mention`\nFor other commands that require being a referee or judge, see `,help profession`\nFor commands that require any other role, see `,help restricted`\nI have very basic <:magic:570848392633122817> card fetching ability, see `,help magic` for syntax.\nSend `,avatar @PERSON` to get PERSON's avatar URL, `,avatar ID` to get the avatar URL of the person with ID, or just `,avatar` to get your own.\nI can number and/or roll a Sleep Talk list, see `,help sleeptalk` for the details.\nIf you start with `,reorder`, each line after will be reordered randomly.\nUse `,addstat NAME LINK` to have `,stats NAME` pull up `NAME's stats: LINK`.\nFor information about setting reminders, see `,help remind`.").addField("Other functions:", "Send me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>."));
+            //toSend.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`; `,help reorder`; `,help addstat`; `,help remind`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
         }
     }
 }
@@ -1964,25 +1973,29 @@ function tempChannelReporter(message, messageMember) {
     }
     if (attaches.length > 1) {attachmessage = " with attachments " + attachnames;}
     if (attaches.length == 1) {attachmessage = " with an attachment " + attachnames;}
+    var theMessage = messageMember.displayName + ": " + message.cleanContent + attachmessage;
+    if (message.embeds.length > 0 && message.content.length == 0) {
+        theMessage = message.embeds[0];
+    }
     if (message.channel.parentID == contestBossCategory && message.channel.id != contestBossChannel && message.channel.id != warRoomChannel) {
         if (message.channel.name.indexOf("war") != -1) {
-            bot.channels.get(warRoomChannel).send(messageMember.displayName + ": " + message.cleanContent + attachmessage);
+            bot.channels.get(warRoomChannel).send(theMessage);
         }
         if (message.channel.name.indexOf("boss") != -1) {
-            bot.channels.get(contestBossChannel).send(messageMember.displayName + ": " + message.cleanContent + attachmessage);
+            bot.channels.get(contestBossChannel).send(theMessage);
         }
         if (message.content.indexOf(",end") == 0 && messageMember.roles.has(deathEaterRole)) {message.channel.delete();}
     }
     if (message.channel.name == "judge-test") {
-        bot.channels.get(judgeTestChannel).send(messageMember.displayName + ": " + message.cleanContent + attachmessage);
+        bot.channels.get(judgeTestChannel).send(theMessage);
         if (message.content.indexOf(",end") == 0 && messageMember.roles.has(chiefJudgeRole)) {message.channel.delete();}
     }
     if (message.channel.name == "ref-test") {
-        bot.channels.get(refTestChannel).send(messageMember.displayName + ": " + message.cleanContent + attachmessage);
+        bot.channels.get(refTestChannel).send(theMessage);
         if (message.content.indexOf(",end") == 0 && messageMember.roles.has(seniorRefRole)) {message.channel.delete();}
     }
     if (message.channel.name == "ranger-test") {
-        bot.channels.get(rangerTestChannel).send(messageMember.displayName + ": " + message.cleanContent + attachmessage);
+        bot.channels.get(rangerTestChannel).send(theMessage);
         if (message.content.indexOf(",end") == 0 && messageMember.roles.has(eliteRangerRole)) {message.channel.delete();}
     }
 }
@@ -2646,7 +2659,7 @@ function formatStats(message) {
     if (message.author.id == "135999597947387904" && lowmessage == ",formatstats") {
         var theMessage = "";
         for (var x = 1; x < tempStats.content.split("\n").length; x++) {
-            theMessage += "if (oldmessage.indexOf(\"" + tempStats.content.split("\n")[x].split(" ")[0].toLowerCase() + "\") != -1) { message.channel.send(\"" + tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.content.split("\n")[x].split(" ")[1] + "\"); }\n";
+            theMessage += "if (oldmessage.indexOf(\"" + tempStats.content.split("\n")[x].split(" ")[0].toLowerCase() + "\") != -1) { message.channel.send(\"" + tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: <" + tempStats.content.split("\n")[x].split(" ")[1] + ">\"); }\n";
         }
         message.channel.send(theMessage);
     }
