@@ -1632,24 +1632,23 @@ function beatUp(message) {
     {
         var pokemonList = lowmessage.split(",beatup ")[1];
         var pokemon = pokemonList.split(", ");
-        for (var x = 0; x < pokemon.length; x++) {
-            if (!isNaN(pokemon[x])) {
-                var beatUpBP = Math.floor(((pokemon[x] - 99) / 2) / 10) + 5;
-                message.channel.send("A Pokémon with a base URPG Attack stat of " + pokemon[x] + " would have a base " + beatUpBP + " power Beat Up!");
+        for (var i = 0; i < pokemon.length; i++) {
+            if (!isNaN(pokemon[i])) {
+                var beatUpBP = Math.floor(((pokemon[i] - 99) / 2) / 10) + 5;
+                message.channel.send("A Pokémon with a base URPG Attack stat of " + pokemon[i] + " would have a base " + beatUpBP + " power Beat Up!");
             }
             else {
                 var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
                 var found = false;
-                for(var x = 0; x < allpokes.length; x++)
-                {
-                    if(pokemon[x].toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
-                    {
+                for(var x = 0; x < allpokes.length; x++) {
+                    if(pokemon[i].toLowerCase() == allpokes[x].split('/')[0].toLowerCase()) {
                         var beatUpBP = Math.floor(((allpokes[x].split('/')[4] - 99) / 2) / 10) + 5;
                         message.channel.send(allpokes[x].split('/')[0] + " would have a base " + beatUpBP + " power Beat Up!");
                         found = true;
+                        break;
                     }
                 }
-                if (!found) { message.channel.send("I'm afraid " + pokemon[x] + " is not in my base stats database.  Make sure you spelled it right and remember that my research in the Galar region isn't yet complete, but I can give you the base power from its URPG attack stat with `,beatup 299` or similar."); }
+                if (!found) { message.channel.send("I'm afraid " + pokemon[i] + " is not in my base stats database.  Make sure you spelled it right and remember that my research in the Galar region isn't yet complete, but I can give you the base power from its URPG attack stat with `,beatup 299` or similar."); }
             }
         }
     }
