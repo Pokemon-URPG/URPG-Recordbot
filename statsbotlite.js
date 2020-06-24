@@ -1647,10 +1647,9 @@ function beatUp(message) {
                         var beatUpBP = Math.floor(((allpokes[x].split('/')[4] - 99) / 2) / 10) + 5;
                         message.channel.send(allpokes[x].split('/')[0] + " would have a base " + beatUpBP + " power Beat Up!");
                         found = true;
-                        break;
                     }
                 }
-                message.channel.send("I'm afraid " + pokemon[x] + " is not in my base stats database.  Make sure you spelled it right and remember that my research in the Galar region isn't yet complete, but I can give you the base power from its URPG attack stat with `,beatup 299` or similar.");
+                if (!found) { message.channel.send("I'm afraid " + pokemon[x] + " is not in my base stats database.  Make sure you spelled it right and remember that my research in the Galar region isn't yet complete, but I can give you the base power from its URPG attack stat with `,beatup 299` or similar."); }
             }
         }
     }
@@ -1998,6 +1997,35 @@ function tempChannelReporter(message, messageMember) {
         bot.channels.get(rangerTestChannel).send(theMessage);
         if (message.content.indexOf(",end") == 0 && messageMember.roles.has(eliteRangerRole)) {message.channel.delete();}
     }
+}
+
+function tempChannelWebhook(message, messageMember) {
+    var whid = null;
+    if (message.channel.name == "ref-test") {
+        whid = "725292904326889472";
+        if (message.content.indexOf(",end") == 0 && messageMember.roles.has(seniorRefRole)) {message.channel.delete();}
+    }
+    if (message.channel.name == "judge-test") {
+        whid = "725293681107533904";
+        if (message.content.indexOf(",end") == 0 && messageMember.roles.has(chiefJudgeRole)) {message.channel.delete();}
+    }
+    if (message.channel.name == "ranger-test") {
+        whid = "725294189146800169";
+        if (message.content.indexOf(",end") == 0 && messageMember.roles.has(eliteRangerRole)) {message.channel.delete();}
+    }
+    if (message.channel.parentID == contestBossCategory && message.channel.id != contestBossChannel && message.channel.id != warRoomChannel) {
+        if (message.channel.name.includes("war")) {
+            whid = "725302999441997834";
+        }
+        if (message.channel.name.includes("boss")) {
+            whid = "725302276817813514";
+        }
+        if (message.content.indexOf(",end") == 0 && messageMember.roles.has(deathEaterRole)) {message.channel.delete();}
+    }
+    if (whid == null) { return; }
+    var whl = await message.guild.fetchWebhooks();
+    var wh = await whl.get(whid);
+    await wh.send(message.content, { username: message.member.displayName, avatarURL: message.author.displayAvatarURL, embeds: message.embeds || [] });
 }
 
 function statConverter(message) {
@@ -2760,7 +2788,7 @@ bot.on("message", async function(message) {
 
     let messageMember = await message.guild.fetchMember(message.author);
 
-    await tempChannelReporter(message, messageMember);
+    await tempChannelWebhook(message, messageMember);
 
     await mention(message, messageMember);
 
