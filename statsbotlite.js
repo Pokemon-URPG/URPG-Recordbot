@@ -466,7 +466,7 @@ function stats(message) {
         if (oldmessage.indexOf("trainer17 ") != -1 || oldmessage.includes("t17")) { message.channel.send("\nTrainer17's stats: http://kingofwakanda.proboards.com") }
         if ((oldmessage.indexOf("captaindude ") != -1) || (oldmessage.indexOf(" cd ") != -1)) { message.channel.send("\nCaptainDude's stats: http://captaindudeurpg.proboards.com/board/1") }
         if ((oldmessage.indexOf("mandl27 ") != -1) || (oldmessage.indexOf("mandl ") != -1) || (oldmessage.indexOf(" mand ") != -1) || (oldmessage.indexOf(" ml ") != -1)) { message.channel.send("\nMandL27's stats: https://forum.pokemonurpg.com/showthread.php?tid=10294") }
-        if (oldmessage.indexOf("sapahn ") != -1) { message.channel.send("\nSapahn's stats: https://sapahnurpg.wordpress.com/") }
+        if (oldmessage.indexOf("sapahn") != -1 || oldmessage.includes(" sap ") || lowmessage.includes(" sapa ")) { message.channel.send("\nSapahn's stats: https://sapahnurpg.wordpress.com/") }
         if (oldmessage.indexOf("fortree ") != -1) { message.channel.send("\nAsh K.'s Fortree Gym stats: http://ashkstatsurpg.proboards.com/thread/65/fortree-city-gym-2015") }
         if (oldmessage.indexOf(" after ") != -1) { message.channel.send("\nAfter's stats: https://forum.pokemonurpg.com/showthread.php?tid=10215") }
         if ((oldmessage.indexOf("pokeviper ") != -1) || (oldmessage.indexOf(" pv ") != -1) || (oldmessage.indexOf("pokéviper") != -1)) { message.channel.send("\nPokeViper's stats: http://pokeviperbadass.proboards.com/") }
@@ -511,6 +511,9 @@ function stats(message) {
         if (oldmessage.indexOf("yumpy") != -1) { message.channel.send("Yumpy's stats: https://forum.pokemonurpg.com/showthread.php?tid=10865"); }
         if (oldmessage.indexOf("praetor") != -1) { message.channel.send("Praetor's stats: https://forum.pokemonurpg.com/showthread.php?tid=10905"); }
         if (oldmessage.indexOf("kumo") != -1) { message.channel.send("Kumo's stats: https://forum.pokemonurpg.com/showthread.php?tid=10907"); }
+        if (oldmessage.indexOf("marshmallow") != -1) { message.channel.send("Marshmallow's stats: https://forum.pokemonurpg.com/showthread.php?tid=10912"); }
+        if (oldmessage.indexOf("lycanwarrior91") != -1 || oldmessage.includes(" lycan ")) { message.channel.send("Lycanwarrior91's stats: https://forum.pokemonurpg.com/showthread.php?tid=10911"); }
+        if (oldmessage.indexOf("petuh") != -1) { message.channel.send("Petuh's stats: https://sites.google.com/view/petuuuhhh/home"); }
         for (var x = 1; x < tempStats.content.split("\n").length; x++) {
             if (oldmessage.indexOf(tempStats.content.split("\n")[x].split(" ")[0].toLowerCase()) != -1) { message.channel.send(tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.content.split("\n")[x].split(" ")[1]); }
         }
@@ -2246,8 +2249,23 @@ async function mention(message, messageMember) {
 }
 
 async function archiver(message, messageMember) {
-    if ((lowmessage == ",archive public" || lowmessage == ",public archive" || lowmessage == ",publicarchive") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.has("584764993044611075"))) {
-        await message.channel.setParent(bot.guilds.get(urpgServer).channels.get("432291722492379136"));
+    /*if (lowmessage.includes(",") && lowmessage.includes("archive") && message.channel.name.includes("app")) && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.has("584764993044611075"))) {
+        await message.channel.setParent(bot.guilds.get(urpgServer).channels.get("592609023661178890"));
+        await message.channel.replacePermissionOverwrites({
+            overwrites: [
+                {
+                    id: message.guild.id,
+                    denied: ['VIEW_CHANNEL']
+                },
+                {
+                    id: "135868852092403713",
+                    allowed: ['VIEW_CHANNEL']    
+                }
+            ]
+        })
+    }
+    else*/ if ((lowmessage == ",archive public" || lowmessage == ",public archive" || lowmessage == ",publicarchive") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.has("584764993044611075"))) {
+        await message.channel.setParent(bot.guilds.get(urpgServer).channels.get("592609023661178890"));
         await message.channel.replacePermissionOverwrites({
             overwrites: [
                 {
@@ -2416,7 +2434,7 @@ async function pkmnSpoilerSeason(message, messageMember) {
     if ((lowmessage.indexOf(",pkmnspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonpkmn ") == 0) && (messageMember.roles.has("584764993044611075") || messageMember.hasPermission("MANAGE_CHANNELS"))) {
         await message.guild.fetchMembers();
         var spoilers = await bot.guilds.get(urpgServer).roles.get("440004078219558912").members.array();
-        for (i = 0; i < spoilers.size; i++) {
+        for (i = 0; i < spoilers.length; i++) {
             await spoilers[i].removeRole(message.guild.roles.get("440004078219558912"));
         }
         await bot.channels.get("440004235635982336").setName("spoilers-" + message.cleanContent.split(" ")[1]);
@@ -2428,7 +2446,7 @@ async function otherSpoilerSeason(message, messageMember) {
     if ((lowmessage.indexOf(",otherspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonother ") == 0) && (messageMember.roles.has("584764993044611075") || messageMember.hasPermission("MANAGE_CHANNELS"))) {
         await message.guild.fetchMembers();
         var spoilers = await bot.guilds.get(urpgServer).roles.get("597313962798874626").members.array();
-        for (i = 0; i < spoilers.size; i++) {
+        for (i = 0; i < spoilers.length; i++) {
             await spoilers[i].removeRole(message.guild.roles.get("597313962798874626"));
         }
         await bot.channels.get("597314223483387905").setName("spoilers-" + message.cleanContent.split(" ")[1]);
@@ -2686,7 +2704,7 @@ function formatStats(message) {
     if (message.author.id == "135999597947387904" && lowmessage == ",formatstats") {
         var theMessage = "";
         for (var x = 1; x < tempStats.content.split("\n").length; x++) {
-            theMessage += "if (oldmessage.indexOf(\"" + tempStats.content.split("\n")[x].split(" ")[0].toLowerCase() + "\") != -1) { message.channel.send(\"" + tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: <" + tempStats.content.split("\n")[x].split(" ")[1] + ">\"); }\n";
+            theMessage += "if (oldmessage.includes(\"" + tempStats.content.split("\n")[x].split(" ")[0].toLowerCase() + "\")) { message.channel.send(\"" + tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: <" + tempStats.content.split("\n")[x].split(" ")[1] + ">\"); }\n";
         }
         message.channel.send(theMessage);
     }
@@ -2701,7 +2719,7 @@ async function updateStats(message, messageMember) {
 
 async function codeTester(message) {
     if (message.author.id == "135999597947387904" && message.content.indexOf(",eval ") == 0) {
-        message.channel.send("```javascript\n" + eval(message.content.split(",eval ")[1]) + "```");
+        message.channel.send("```javascript\n" + eval(message.content.substring(6)) + "```");
     }
 }
 
