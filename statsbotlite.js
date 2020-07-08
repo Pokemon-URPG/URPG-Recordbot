@@ -1703,7 +1703,8 @@ function links(message) {
     if (lowmessage.indexOf(",bmgarchive") == 0) { message.channel.send("https://pokemonurpg.com/archive/urpg.html"); }
     if (lowmessage.indexOf(",pxrarchive") == 0) { message.channel.send("https://pokemonurpg.com/archive/pxr/\nNote: There is one known issue with the CSS, at least in Chrome (probably in other browsers as well) because PXR serves its CSS files over HTTP instead of HTTPS. You can make the pages appear correctly by clicking on the little shield on the right side of the URL bar and click \"Load unsafe scripts\""); }
     if (lowmessage.indexOf(",refund") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=7975"); }
-    if (lowmessage.indexOf(",gen8") == 0 || lowmessage.indexOf(",galar") == 0) { message.channel.send("https://docs.google.com/document/d/1hZFqQJa3i6YlqehIJFeQ0b5NqUAuISHW7PdLV3wNUF0/edit#"); }
+    if (lowmessage.indexOf(",gen8") == 0 || lowmessage.indexOf(",galar") == 0) { message.channel.send("Original: <https://docs.google.com/document/d/1hZFqQJa3i6YlqehIJFeQ0b5NqUAuISHW7PdLV3wNUF0/edit#>\nIoA: <https://docs.google.com/document/d/1z_stsUXEeimGa6kjdkQdcdCdxWkIFdvdaP8psxzt6k0/edit>"); }
+    if (lowmessage.indexOf(",ioa") == 0) { message.channel.send("https://docs.google.com/document/d/1z_stsUXEeimGa6kjdkQdcdCdxWkIFdvdaP8psxzt6k0/edit"); }
     if (lowmessage.indexOf(",nukem") == 0) { message.channel.send("https://pokemonurpg.com/info/general/project-nukem/"); }
     if (lowmessage.indexOf(",refpedia") == 0) { message.channel.send("https://pokemonurpg.com/info/battles/reffing-encyclopedia/"); }
     if (lowmessage.indexOf(",gym") == 0) { message.channel.send("https://pokemonurpg.com/info/battles/champion-elite-four-gym-leaders/"); }
