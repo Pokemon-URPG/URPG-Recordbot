@@ -78,6 +78,9 @@ bot.once("ready", async function () {
         weirrrrrReminder();
     }, ((784800000) - (d.getTime() % 604800000)) % 604800000);
     setTimeout(function () {
+        weirrrrrReminderJ();
+    }, ((871200000) - (d.getTime() % 604800000)) % 604800000);
+    setTimeout(function () {
         codeRemind();
     }, ((100800000) - (d.getTime() % 86400000)) % 86400000);
     setTimeout(function () {
@@ -335,6 +338,12 @@ function pickUpReset() {
 
 function weirrrrrReminder() {
     bot.channels.get(logsChannel).send("WEIRRRRR Roll the JOBSSSSSS <@140308490609623041>");
+}
+
+function weirrrrrReminderJ() {
+    var d = new Date();
+    if (d.getUTCDate() < 2 || d.getUTCDate() > 8) { return; }
+    bot.channels.get(logsChannel).send("WEIRRRRR Judge the WAGESSSSSS <@140308490609623041>");
 }
 
 function randomRotations() {
@@ -740,7 +749,7 @@ function rank(message) {
                 return;
             }
             if (lowmessage.indexOf(",ranklist") == 0) {
-                message.channel.send("Rank not recognized.  Please use either Easiest, Simple, Medium, Hard, Complex, Demanding, Legendary, Tier1, T1, Tier2, or Tier2.")
+                message.channel.send("Rank not recognized.  Please use either Easiest, Simple, Medium, Hard, Complex, Demanding, Legendary, Tier1, T1, Tier2, or T2.")
                 return;
             }
             rankpoke = pokeRank(lowmessage.split(",rank ")[1]);
@@ -1811,7 +1820,7 @@ function help(message) {
             message.channel.send("Command moved to Kauri. See `!help role` for more info."); //message.channel.send("**Self-assignable roles:**\npkmnspoilers: Access to <#440004235635982336>.\notherspoilers: Access to <#597314223483387905>.\nffa: Pings for Discord FFAs.\nforumffa: Pings for Forum FFAs and Forum FFA turns.\ncoordinator: Pings for contests.\n\nSend `,role ROLE` (i.e. `,role ffa`) to add or remove yourself from any of these roles. Spoiler role will automatically be reset when it changes to spoilers for a different thing.");
         }
         else if (lowmessage.indexOf("link") != -1) {
-            message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,chartrse`, `,chartdppt`, `,chartoras`: Link to the Google Sheets for the respective contest type\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\n`,pxrarchive`: Link to the archives of the PXR URPG section.\n`,refund`: Link to the Refund Thread.\n`,gen8` or `,galar`: Link to the Generation 8 Public Changelog.\n`,nukem`, `,refpedia`, `,gym`: Links to respective Infohub topics.\n`,updategym`: Link to Apply for or Update a Gym thread.\nIf you have any suggestions for other links I should have, please @ Ash K.");
+            message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,chartrse`, `,chartdppt`, `,chartoras`: Link to the Google Sheets for the respective contest type\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\n`,pxrarchive`: Link to the archives of the PXR URPG section.\n`,refund`: Link to the Refund Thread.\n`,gen8` or `,galar`: Link to each of the changelogs since gen 8 release.\n`,ioa`: Link to just the Isle of Armor changelog.\n`,nukem`, `,refpedia`, `,gym`: Links to respective Infohub topics.\n`,updategym`: Link to Apply for or Update a Gym thread.\nIf you have any suggestions for other links I should have, please @ Ash K.");
         }
         else if (lowmessage.indexOf("random") != -1 || lowmessage.indexOf("weather") != -1 || lowmessage.indexOf("terrain") != -1) {
             message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -box, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively. For `,weather`, you may add `-fog` and/or `-no` to exclude Fog and/or No Starting Weather, respectively.");
