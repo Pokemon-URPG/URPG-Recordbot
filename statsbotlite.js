@@ -45,6 +45,7 @@ var anonymousReportChannel = "545737721612730368";
 var payDayLog;
 var pickUpLog;
 var tempStats;
+var tempLinks;
 var remindLog;
 var codeLog;
 
@@ -63,6 +64,7 @@ bot.once("ready", async function () {
     payDayLog = await bot.channels.get(botCommands).fetchMessage("658883162000195607");
     pickUpLog = await bot.channels.get(botCommands).fetchMessage("658884961603944478");
     tempStats = await bot.channels.get("531433553225842700").fetchMessage("709808598443884655");
+    tempLinks = await bot.channels.get("531433553225842700").fetchMessage("737015754272014357");
     remindLog = await bot.channels.get("531433553225842700").fetchMessage("711453291892047892");
     codeLog = await bot.channels.get("531433553225842700").fetchMessage("711651825291624518");
     if (remindLog.content.indexOf("Reminders:") == -1) { remindLog.edit("Reminders:"); }
@@ -1708,7 +1710,8 @@ function links(message) {
     if (lowmessage.indexOf(",forum") == 0) { message.channel.send("https://forum.pokemonurpg.com/"); }
     if (lowmessage.indexOf(",mart") == 0) { message.channel.send("http://forum.pokemonurpg.com/showthread.php?tid=1682"); }
     if (lowmessage.indexOf(",berry") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1686"); }
-    if (lowmessage.indexOf(",start") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1722"); }
+    if (lowmessage.indexOf(",starterarchive") == 0 || lowmessage.indexOf(",startarchive") == 0 || lowmessage.indexOf(",starterlist") == 0 || lowmessage.indexOf(",startlist") == 0) { message.channel.send("https://web.archive.org/web/20171105045154/https://forums.bulbagarden.net/index.php?threads/list-of-chosen-starters.174783/"); } 
+    else if (lowmessage.indexOf(",start") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1722"); }
     if (lowmessage.indexOf(",bmgarchive") == 0) { message.channel.send("https://pokemonurpg.com/archive/urpg.html"); }
     if (lowmessage.indexOf(",pxrarchive") == 0) { message.channel.send("https://pokemonurpg.com/archive/pxr/\nNote: There is one known issue with the CSS, at least in Chrome (probably in other browsers as well) because PXR serves its CSS files over HTTP instead of HTTPS. You can make the pages appear correctly by clicking on the little shield on the right side of the URL bar and click \"Load unsafe scripts\""); }
     if (lowmessage.indexOf(",refund") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=7975"); }
@@ -1722,6 +1725,9 @@ function links(message) {
     if (lowmessage.indexOf(",chartoras") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1fFEREf42ZNBkesU0GbNPH9veIFGp0xDxxgIdqVufz7Q/edit#gid=38422135"); }
     if (lowmessage.indexOf(",chartdppt") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/19n2yGw38xVqak0GTVjB4dN4M1k_Ix7WEnUsufT9uRes/edit?usp=sharing"); }
     if (lowmessage.indexOf(",job") == 0) { message.channel.send("https://forum.pokemonurpg.com/forumdisplay.php?fid=122"); }
+    for (var x = 1; x < tempLinks.content.split("\n").length; x++) {
+        if (lowmessage.indexOf("," + tempLinks.content.split("\n")[x].split(" ")[0]) == 0) { message.channel.send(tempLinks.content.split("\n")[x].split(" ")[1]); }
+    }
 }
 
 function wildcards(message) {
@@ -1820,7 +1826,7 @@ function help(message) {
             message.channel.send("Command moved to Kauri. See `!help role` for more info."); //message.channel.send("**Self-assignable roles:**\npkmnspoilers: Access to <#440004235635982336>.\notherspoilers: Access to <#597314223483387905>.\nffa: Pings for Discord FFAs.\nforumffa: Pings for Forum FFAs and Forum FFA turns.\ncoordinator: Pings for contests.\n\nSend `,role ROLE` (i.e. `,role ffa`) to add or remove yourself from any of these roles. Spoiler role will automatically be reset when it changes to spoilers for a different thing.");
         }
         else if (lowmessage.indexOf("link") != -1) {
-            message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,chartrse`, `,chartdppt`, `,chartoras`: Link to the Google Sheets for the respective contest type\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\n`,pxrarchive`: Link to the archives of the PXR URPG section.\n`,refund`: Link to the Refund Thread.\n`,gen8` or `,galar`: Link to each of the changelogs since gen 8 release.\n`,ioa`: Link to just the Isle of Armor changelog.\n`,nukem`, `,refpedia`, `,gym`: Links to respective Infohub topics.\n`,updategym`: Link to Apply for or Update a Gym thread.\nIf you have any suggestions for other links I should have, please @ Ash K.");
+            message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,chartrse`, `,chartdppt`, `,chartoras`: Link to the Google Sheets for the respective contest type\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\n`,pxrarchive`: Link to the archives of the PXR URPG section.\n`,refund`: Link to the Refund Thread.\n`,gen8` or `,galar`: Link to each of the changelogs since gen 8 release.\n`,ioa`: Link to just the Isle of Armor changelog.\n`,nukem`, `,refpedia`, `,gym`: Links to respective Infohub topics.\n`,updategym`: Link to Apply for or Update a Gym thread.\n`,starterlist`: Link the Web Archive of the List of Chosen Starters.\nIf you have any suggestions for other links I should have, please @ Ash K. or use `,addlink ALIAS LINK` to add it yourself.");
         }
         else if (lowmessage.indexOf("random") != -1 || lowmessage.indexOf("weather") != -1 || lowmessage.indexOf("terrain") != -1) {
             message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -box, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively. For `,weather`, you may add `-fog` and/or `-no` to exclude Fog and/or No Starting Weather, respectively.");
@@ -2727,6 +2733,29 @@ async function updateStats(message, messageMember) {
     }
 }
 
+function resetLinks(message) {
+    if (message.author.id == "135999597947387904" && lowmessage == ",resetlinks") {
+        tempLinks.edit("Additional Links:");
+    }
+}
+
+function formatLinks(message) {
+    if (message.author.id == "135999597947387904" && lowmessage == ",formatlinks") {
+        var theMessage = "";
+        for (var x = 1; x < tempLinks.content.split("\n").length; x++) {
+            theMessage += "if (lowmessage.indexOf(\"," + tempLinks.content.split("\n")[x].split(" ")[0].toLowerCase() + "\") == 0) { message.channel.send(\"" + tempLinks.content.split("\n")[x].split(" ")[1] + "\"); }\n";
+        }
+        message.channel.send(theMessage);
+    }
+}
+
+async function updateLinks(message, messageMember) {
+    if (lowmessage.indexOf(",addlink") == 0 && message.content.split(" ").length == 3) {
+        await tempLinks.edit(tempLinks.content + "\n" + message.content.split(" ")[1] + " " + message.content.split(" ")[2]);
+        tempLinks = await bot.channels.get("531433553225842700").fetchMessage("737015754272014357");
+    }
+}
+
 async function codeTester(message) {
     if (message.author.id == "135999597947387904" && message.content.indexOf(",eval ") == 0) {
         message.channel.send("```javascript\n" + eval(message.content.substring(6)) + "```");
@@ -2798,6 +2827,10 @@ bot.on("message", async function(message) {
 
     await formatStats(message);
 
+    await resetLinks(message);
+
+    await formatLinks(message);
+
     await remindInput(message);
 
     await codeEdit(message);
@@ -2850,6 +2883,8 @@ bot.on("message", async function(message) {
     await unpinMessage(message, messageMember);
 
     await updateStats(message, messageMember);
+
+    await updateLinks(message, messageMember);
 
     await linkCleaner(message, messageMember);
 
