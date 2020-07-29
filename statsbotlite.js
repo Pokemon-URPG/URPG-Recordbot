@@ -1053,7 +1053,7 @@ function ruleset(message) {
                 case 5: rules += "Fog\n"; break;
             }
             switch(terrain) {
-                case 0: rules += "Building Terrain\n"); break;
+                case 0: rules += "Building Terrain\n"; break;
                 case 1: rules += "Cave Terrain\n"; break;
                 case 2: rules += "Snow Terrain\n"; break;
                 case 3: rules += "Sand Terrain\n"; break;
