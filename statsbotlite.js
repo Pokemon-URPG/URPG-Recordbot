@@ -510,7 +510,7 @@ function stats(message) {
         if (oldmessage.indexOf("josiez") != -1) { message.channel.send("josiez's stats: https://forum.pokemonurpg.com/showthread.php?tid=10603") }
         if ((oldmessage.indexOf("james ") != -1 || oldmessage.indexOf("rinage") != -1)) { message.channel.send("AiJames' stats: https://forum.pokemonurpg.com/showthread.php?tid=10611&pid=134755#pid134755") }
         if (oldmessage.indexOf("plum") != -1) { message.channel.send("Plum's stats: https://forum.pokemonurpg.com/showthread.php?tid=10663"); }
-        if ((oldmessage.indexOf(" ml ") != -1 || oldmessage.indexOf("mlouden") != -1)) { message.channel.send("mlouden03's stats: https://gaiusvibritannia.proboards.com/thread/6/urpg-stats"); }
+        if ((oldmessage.indexOf(" ml ") != -1 || oldmessage.indexOf("mlou") != -1)) { message.channel.send("mlouden03's stats: https://gaiusvibritannia.proboards.com/thread/6/urpg-stats"); }
         if (oldmessage.indexOf("lavender") != -1) { message.channel.send("juliorain's Lavender Town Gym stats: https://juliorain.wordpress.com/lavender-town-gym/"); }
         if ((oldmessage.indexOf("beemo") != -1 || oldmessage.indexOf("crimson rose") != -1 || oldmessage.indexOf("cress") != -1)) { message.channel.send("ExistentialBeemo's stats: https://existentialbeemo.proboards.com/"); }
         if ((oldmessage.indexOf("eternus") != -1 || oldmessage.indexOf(" situs ") != -1 || oldmessage.indexOf("kanga") != -1)) { message.channel.send("Eternus Situs' stats: https://forum.pokemonurpg.com/showthread.php?tid=10726"); }
@@ -525,6 +525,7 @@ function stats(message) {
         if (oldmessage.indexOf("marshmallow") != -1) { message.channel.send("Marshmallow's stats: https://forum.pokemonurpg.com/showthread.php?tid=10912"); }
         if (oldmessage.indexOf("lycanwarrior91") != -1 || oldmessage.includes(" lycan ")) { message.channel.send("Lycanwarrior91's stats: https://forum.pokemonurpg.com/showthread.php?tid=10911"); }
         if (oldmessage.indexOf("petuh") != -1) { message.channel.send("Petuh's stats: https://sites.google.com/view/petuuuhhh/home"); }
+        if (oldmessage.includes("subzero") || oldmessage.includes("songbirb")) { message.channel.send("Subzero Songbirb's stats: https://forum.pokemonurpg.com/showthread.php?tid=10954"); }
         for (var x = 1; x < tempStats.content.split("\n").length; x++) {
             if (oldmessage.indexOf(tempStats.content.split("\n")[x].split(" ")[0].toLowerCase()) != -1) { message.channel.send(tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.content.split("\n")[x].split(" ")[1]); }
         }
@@ -906,7 +907,7 @@ function ruleset(message) {
             //var dyna = Math.floor(Math.random() * 2);
             var mzmax = Math.floor(Math.random() * 5);
             var weather = Math.floor(Math.random() * 5);
-            var terrain = Math.floor(Math.random() * 16);
+            var terrain = Math.floor(Math.random() * 22);
             if (lowmessage.indexOf("-dynamax") != -1) {
                 if (lowmessage.indexOf("-mega") != -1) {
                     if (lowmessage.indexOf("-z") != -1) {mzmax = 3;}
@@ -995,7 +996,7 @@ function ruleset(message) {
             else if (lowmessage.indexOf("fog") != -1) {weather = 5;}
             else if (lowmessage.indexOf("weather") != -1 && weather == 0) {weather = Math.floor(Math.random() * 4) + 1;}
             if (lowmessage.indexOf("-terrain") != -1) {terrain = 0;}
-            else if (lowmessage.indexOf("space") != -1) {terrain = 11;}
+            else if (lowmessage.indexOf("distortion") != -1) {terrain = 15;}
             var rules = numPok + "v" + numPok + "\n";
             switch(gen) {
                 case 0: rules += "GSC "; break;
@@ -1052,22 +1053,28 @@ function ruleset(message) {
                 case 5: rules += "Fog\n"; break;
             }
             switch(terrain) {
-                case 0: rules += "Building Terrain"; break;
-                case 1: rules += "Cave Terrain"; break;
-                case 2: rules += "Ice Terrain"; break;
-                case 3: rules += "Puddles Terrain"; break;
-                case 4: rules += "Badlands Terrain"; break;
-                case 5: rules += "Snow Terrain"; break;
-                case 6: rules += "Tall Grass Terrain"; break;
-                case 7: rules += "Water Terrain"; break;
-                case 8: rules += "Volcano Terrain"; break;
-                case 9: rules += "Burial Grounds Terrain"; break;
-                case 10: rules += "Soaring Terrain"; break;
-                case 11: rules += "Space Terrain"; break;
-                case 12: rules += "Grassy Terrain"; break;
-                case 13: rules += "Misty Terrain"; break;
-                case 14: rules += "Electric Terrain"; break;
-                case 15: rules += "Psychic Terrain"; break;
+                case 0: rules += "Building Terrain\n"); break;
+                case 1: rules += "Cave Terrain\n"; break;
+                case 2: rules += "Snow Terrain\n"; break;
+                case 3: rules += "Sand Terrain\n"; break;
+                case 4: rules += "Tall Grass Terrain\n"; break;
+                case 5: rules += "Ocean Terrain\n"; break;
+                case 6: rules += "Volcano Terrain\n"; break;
+                case 7: rules += "Burial Grounds Terrain\n"; break;
+                case 8: rules += "Soaring Terrain\n"; break;
+                case 9: rules += "Space Terrain\n"; break;
+                case 10: rules += "Deep Forest Terrain\n"; break;
+                case 11: rules += "Swamp Terrain\n"; break;
+                case 12: rules += "Dojo Terrain\n"; break;
+                case 13: rules += "Factory Terrain\n"; break;
+                case 14: rules += "Power Plant Terrain\n"; break;
+                case 15: rules += "Distortion World Terrain\n"; break;
+                case 16: rules += "Prairie Terrain\n"; break;
+                case 17: rules += "Ultra Space Terrain\n"; break;
+                case 18: rules += "Grassy Terrain\n"; break;
+                case 19: rules += "Misty Terrain\n"; break;
+                case 20: rules += "Electric Terrain\n"; break;
+                case 21: rules += "Psychic Terrain\n"; break;
             }
             message.channel.send(rules);
             /*if (message.channel.id == "135914249456320513") { message.channel.send("Reminder that this channel should be using Sunny weather."); }
@@ -1097,25 +1104,32 @@ function randWeather(message) {
 
 function randTerrain(message) {
     if (lowmessage.indexOf(",terrain") == 0 || (lowmessage.indexOf(",active") == 0 && lowmessage.includes("terrain"))) {
-        let terrain = Math.floor(Math.random() * 16);
-        if (lowmessage.includes("active")) { terrain = 12 + Math.floor(Math.random() * 4); }
+        let terrain = Math.floor(Math.random() * 22);
+        if (lowmessage.includes("passive")) { terrain = Math.floor(Math.random() * 18)}
+        if (lowmessage.includes("active")) { terrain = 18 + Math.floor(Math.random() * 4); }
         switch(terrain) {
             case 0: message.channel.send("Building Terrain"); break;
             case 1: message.channel.send("Cave Terrain"); break;
-            case 2: message.channel.send("Ice Terrain"); break;
-            case 3: message.channel.send("Puddles Terrain"); break;
-            case 4: message.channel.send("Badlands Terrain"); break;
-            case 5: message.channel.send("Snow Terrain"); break;
-            case 6: message.channel.send("Tall Grass Terrain"); break;
-            case 7: message.channel.send("Water Terrain"); break;
-            case 8: message.channel.send("Volcano Terrain"); break;
-            case 9: message.channel.send("Burial Grounds Terrain"); break;
-            case 10: message.channel.send("Soaring Terrain"); break;
-            case 11: message.channel.send("Space Terrain"); break;
-            case 12: message.channel.send("Grassy Terrain"); break;
-            case 13: message.channel.send("Misty Terrain"); break;
-            case 14: message.channel.send("Electric Terrain"); break;
-            case 15: message.channel.send("Psychic Terrain"); break;
+            case 2: message.channel.send("Snow Terrain"); break;
+            case 3: message.channel.send("Sand Terrain"); break;
+            case 4: message.channel.send("Tall Grass Terrain"); break;
+            case 5: message.channel.send("Ocean Terrain"); break;
+            case 6: message.channel.send("Volcano Terrain"); break;
+            case 7: message.channel.send("Burial Grounds Terrain"); break;
+            case 8: message.channel.send("Soaring Terrain"); break;
+            case 9: message.channel.send("Space Terrain"); break;
+            case 10: message.channel.send("Deep Forest Terrain"); break;
+            case 11: message.channel.send("Swamp Terrain"); break;
+            case 12: message.channel.send("Dojo Terrain"); break;
+            case 13: message.channel.send("Factory Terrain"); break;
+            case 14: message.channel.send("Power Plant Terrain"); break;
+            case 15: message.channel.send("Distortion World Terrain"); break;
+            case 16: message.channel.send("Prairie Terrain"); break;
+            case 17: message.channel.send("Ultra Space Terrain"); break;
+            case 18: message.channel.send("Grassy Terrain"); break;
+            case 19: message.channel.send("Misty Terrain"); break;
+            case 20: message.channel.send("Electric Terrain"); break;
+            case 21: message.channel.send("Psychic Terrain"); break;
         }
     }
 }
@@ -1724,6 +1738,7 @@ function links(message) {
     if (lowmessage.indexOf(",chartrse") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1ImPbiw8B_hhC6bmQD8BJarJR9SIoq7rTUWCrWc2iKWo/edit#gid=38422135"); }
     if (lowmessage.indexOf(",chartoras") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1fFEREf42ZNBkesU0GbNPH9veIFGp0xDxxgIdqVufz7Q/edit#gid=38422135"); }
     if (lowmessage.indexOf(",chartdppt") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/19n2yGw38xVqak0GTVjB4dN4M1k_Ix7WEnUsufT9uRes/edit?usp=sharing"); }
+    if (lowmessage.indexOf(",chartterrain") == 0) { message.channel.send(new Discord.RichEmbed().setImage("https://media.discordapp.net/attachments/275674541915766796/737905447910113400/unknown.png")); }
     if (lowmessage.indexOf(",job") == 0) { message.channel.send("https://forum.pokemonurpg.com/forumdisplay.php?fid=122"); }
     for (var x = 1; x < tempLinks.content.split("\n").length; x++) {
         if (lowmessage.indexOf("," + tempLinks.content.split("\n")[x].split(" ")[0]) == 0) { message.channel.send(tempLinks.content.split("\n")[x].split(" ")[1]); }
@@ -1826,7 +1841,7 @@ function help(message) {
             message.channel.send("Command moved to Kauri. See `!help role` for more info."); //message.channel.send("**Self-assignable roles:**\npkmnspoilers: Access to <#440004235635982336>.\notherspoilers: Access to <#597314223483387905>.\nffa: Pings for Discord FFAs.\nforumffa: Pings for Forum FFAs and Forum FFA turns.\ncoordinator: Pings for contests.\n\nSend `,role ROLE` (i.e. `,role ffa`) to add or remove yourself from any of these roles. Spoiler role will automatically be reset when it changes to spoilers for a different thing.");
         }
         else if (lowmessage.indexOf("link") != -1) {
-            message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,chartrse`, `,chartdppt`, `,chartoras`: Link to the Google Sheets for the respective contest type\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\n`,pxrarchive`: Link to the archives of the PXR URPG section.\n`,refund`: Link to the Refund Thread.\n`,gen8` or `,galar`: Link to each of the changelogs since gen 8 release.\n`,ioa`: Link to just the Isle of Armor changelog.\n`,nukem`, `,refpedia`, `,gym`: Links to respective Infohub topics.\n`,updategym`: Link to Apply for or Update a Gym thread.\n`,starterlist`: Link the Web Archive of the List of Chosen Starters.\nIf you have any suggestions for other links I should have, please @ Ash K. or use `,addlink ALIAS LINK` to add it yourself.");
+            message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,chartrse`, `,chartdppt`, `,chartoras`: Link to the Google Sheets for the respective contest type\n`,chartterrain`: Image with the basic description of each terrain.\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\n`,pxrarchive`: Link to the archives of the PXR URPG section.\n`,refund`: Link to the Refund Thread.\n`,gen8` or `,galar`: Link to each of the changelogs since gen 8 release.\n`,ioa`: Link to just the Isle of Armor changelog.\n`,nukem`, `,refpedia`, `,gym`: Links to respective Infohub topics.\n`,updategym`: Link to Apply for or Update a Gym thread.\n`,starterlist`: Link the Web Archive of the List of Chosen Starters.\nIf you have any suggestions for other links I should have, please @ Ash K. or use `,addlink ALIAS LINK` to add it yourself.");
         }
         else if (lowmessage.indexOf("random") != -1 || lowmessage.indexOf("weather") != -1 || lowmessage.indexOf("terrain") != -1) {
             message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -box, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively. For `,weather`, you may add `-fog` and/or `-no` to exclude Fog and/or No Starting Weather, respectively.");
