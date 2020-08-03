@@ -628,8 +628,8 @@ function pokeRank(pokemon) {
     try { pokemonlist = fs.readFileSync("ranks.txt", "utf8") } catch (err) {
         if (err.code === "ENOENT") { message.channel.send("Sorry, my rank file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
     }
-    pokemonArray = pokemonlist.toLowerCase().replace(/\n/g, ",").replace(/\*/g, "").replace(/_/g, "").split(", ");
-    var bestGuess = ss.findBestMatch(pokemon, pokemonArray).bestMatchIndex;
+    pokemonArray = pokemonlist.replace(/\n/g, ",").replace(/\*/g, "").replace(/_/g, "");
+    var bestGuess = ss.findBestMatch(pokemon, pokemonArray.toLowerCase().split(", ")).bestMatchIndex;
     /*var diff = -1;
     for (var x = 0; x < pokemonArray.length; x++) {
         if (ss.compareTwoStrings(pokemonArray[x], pokemon) > diff) {
@@ -638,11 +638,11 @@ function pokeRank(pokemon) {
         }
     }*/
     for (var i = 0; i < pokemonlist.split("\n").length; i++) {
-        if (pokemonlist.split("\n")[i].indexOf(pokemonArray[bestGuess]) != -1) {
+        if (pokemonlist.split("\n")[i].indexOf(pokemonArray.split(", ")[bestGuess]) != -1) {
             var rankNum = i;
         }
     }
-    return [pokemonArray[bestGuess], rankNum];
+    return [pokemonArray.split(", ")[bestGuess], rankNum];
 }
 
 function pokeVal(pokemon) {
@@ -1455,7 +1455,7 @@ function stealthRock(message) {
         srMessage += " would take ";
         srMessage += srdamage;
         srMessage += "% damage, which is ";
-        var damage = Math.floor(srdamage * allpokes[x].split('/')[3];
+        var damage = Math.floor(srdamage * allpokes[x].split('/')[3]);
         srMessage += damage + " HP damage!"
         message.channel.send(srMessage);
         return;
