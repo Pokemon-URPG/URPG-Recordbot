@@ -1420,8 +1420,9 @@ function stealthRock(message) {
     if(lowmessage.indexOf(",sr ") == 0)
     {
         var pokemon = lowmessage.split(",sr ")[1];
-        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
-        var theList = allpokes.toLowerCase();
+        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8');
+        var theList = allpokes.toLowerCase().split('\n');
+        allpokes = allpokes.split('\n');
         for (var i = 0; i < theList.length; i++) { theList[i] = theList[i].split("/")[0]; }
         var x = ss.findBestMatch(pokemon, theList).bestMatchIndex;
         /*for(var x = 0; x < allpokes.length; x++)
@@ -1470,8 +1471,9 @@ function effectiveness(message) {
     {
         var pokemon = lowmessage.split(",effective ")[1];
         //var fs = require('fs');
-        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
-        var theList = allpokes.toLowerCase();
+        var allpokes = fs.readFileSync('Pokemon.txt', 'utf8');
+        var theList = allpokes.toLowerCase().split('\n');
+        allpokes = allpokes.split('\n');
         for (var i = 0; i < theList.length; i++) { theList[i] = theList[i].split("/")[0]; }
         var x = ss.findBestMatch(pokemon, theList).bestMatchIndex;
         /*for(var x = 0; x < allpokes.length; x++)
@@ -1674,8 +1676,9 @@ function beatUp(message) {
                 message.channel.send("A Pokémon with a base URPG Attack stat of " + pokemon[i] + " would have a base " + beatUpBP + " power Beat Up!");
             }
             else {
-                var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
-                var theList = allpokes.toLowerCase();
+                var allpokes = fs.readFileSync('Pokemon.txt', 'utf8');
+                var theList = allpokes.toLowerCase().split('\n');
+                allpokes = allpokes.split('\n');
                 for (var i = 0; i < theList.length; i++) { theList[i] = theList[i].split("/")[0]; }
                 var x = ss.findBestMatch(pokemon, theList).bestMatchIndex;
                 /*var found = false;
