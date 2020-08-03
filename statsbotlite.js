@@ -628,15 +628,15 @@ function pokeRank(pokemon) {
     try { pokemonlist = fs.readFileSync("ranks.txt", "utf8") } catch (err) {
         if (err.code === "ENOENT") { message.channel.send("Sorry, my rank file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
     }
-    pokemonArray = pokemonlist.replace(/\n/g, ",").replace(/\*/g, "").replace(/_/g, "").split(", ");
-    var bestGuess = 0;
-    var diff = -1;
+    pokemonArray = pokemonlist.toLowerCase().replace(/\n/g, ",").replace(/\*/g, "").replace(/_/g, "").split(", ");
+    var bestGuess = ss.findBestMatch(pokemon, pokemonArray).bestMatchIndex;
+    /*var diff = -1;
     for (var x = 0; x < pokemonArray.length; x++) {
         if (ss.compareTwoStrings(pokemonArray[x], pokemon) > diff) {
             bestGuess = x;
             diff = ss.compareTwoStrings(pokemonArray[x], pokemon);
         }
-    }
+    }*/
     for (var i = 0; i < pokemonlist.split("\n").length; i++) {
         if (pokemonlist.split("\n")[i].indexOf(pokemonArray[bestGuess]) != -1) {
             var rankNum = i;
@@ -1421,42 +1421,47 @@ function stealthRock(message) {
     {
         var pokemon = lowmessage.split(",sr ")[1];
         var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
-        for(var x = 0; x < allpokes.length; x++)
+        var theList = allpokes.toLowerCase();
+        for (var i = 0; i < theList.length; i++) { theList[i] = theList[i].split("/")[0]; }
+        var x = ss.findBestMatch(pokemon, theList).bestMatchIndex;
+        /*for(var x = 0; x < allpokes.length; x++)
         {
             if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
-            {
-                var srdamage = 12.5;
-                switch(allpokes[x].split('/')[1])
-                {
-                    case "FR": srdamage *= 2; break;
-                    case "I": srdamage *= 2; break;
-                    case "FI": srdamage /= 2; break;
-                    case "GD": srdamage /= 2; break;
-                    case "FL": srdamage *= 2; break;
-                    case "B": srdamage *= 2; break;
-                    case "S": srdamage /= 2; break;
-                    
-                }
-                switch(allpokes[x].split('/')[2])
-                {
-                    case "FR": srdamage *= 2; break;
-                    case "I": srdamage *= 2; break;
-                    case "FI": srdamage /= 2; break;
-                    case "GD": srdamage /= 2; break;
-                    case "FL": srdamage *= 2; break;
-                    case "B": srdamage *= 2; break;
-                    case "S": srdamage /= 2; break;
-                    
-                }
-                var srMessage = allpokes[x].split('/')[0];
-                srMessage += " would take ";
-                srMessage += srdamage;
-                srMessage += "% damage!";
-                message.channel.send(srMessage);
-                return;
-            }
+            {*/
+        var srdamage = 12.5;
+        switch(allpokes[x].split('/')[1])
+        {
+            case "FR": srdamage *= 2; break;
+            case "I": srdamage *= 2; break;
+            case "FI": srdamage /= 2; break;
+            case "GD": srdamage /= 2; break;
+            case "FL": srdamage *= 2; break;
+            case "B": srdamage *= 2; break;
+            case "S": srdamage /= 2; break;
+            
         }
-        message.channel.send("I'm afraid " + pokemon + " is not in my types database.  Check that you spelled it correct, and remember my research in the Galar region isn't yet complete.");
+        switch(allpokes[x].split('/')[2])
+        {
+            case "FR": srdamage *= 2; break;
+            case "I": srdamage *= 2; break;
+            case "FI": srdamage /= 2; break;
+            case "GD": srdamage /= 2; break;
+            case "FL": srdamage *= 2; break;
+            case "B": srdamage *= 2; break;
+            case "S": srdamage /= 2; break;
+            
+        }
+        var srMessage = allpokes[x].split('/')[0];
+        srMessage += " would take ";
+        srMessage += srdamage;
+        srMessage += "% damage, which is ";
+        var damage = Math.floor(srdamage * allpokes[x].split('/')[3];
+        srMessage += damage + " HP damage!"
+        message.channel.send(srMessage);
+        return;
+            /*}
+        }
+        message.channel.send("I'm afraid " + pokemon + " is not in my types database.  Check that you spelled it correct, and remember my research in the Galar region isn't yet complete.");*/
     }
 }
 
@@ -1466,85 +1471,88 @@ function effectiveness(message) {
         var pokemon = lowmessage.split(",effective ")[1];
         //var fs = require('fs');
         var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
-        for(var x = 0; x < allpokes.length; x++)
+        var theList = allpokes.toLowerCase();
+        for (var i = 0; i < theList.length; i++) { theList[i] = theList[i].split("/")[0]; }
+        var x = ss.findBestMatch(pokemon, theList).bestMatchIndex;
+        /*for(var x = 0; x < allpokes.length; x++)
         {
             if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
-            {
-                var damage = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-                switch(allpokes[x].split('/')[1])
-                {
-                    //normal0, grass1, fire2, water3, bug4, poison5
-                    //NM, GR, FR, W, B, PO
-                    //flying6, electric7, ground8, fairy9, fighting10, psychic11
-                    //FL, E, GD, FA, FI, PS
-                    //rock12, steel13, ice14, ghost15, dragon16, dark17
-                    //R, S, I, GH, DR, DK
-                    case "NM": damage[10] *= 2; damage[15] *= 0; break;
-                    case "GR": damage[1] /= 2; damage[2] *= 2; damage[3] /= 2; damage[4] *= 2; damage[5] *= 2; damage[6] *= 2; damage[7] /= 2; damage[8] /= 2; damage[14] *= 2; break;
-                    case "FR": damage[1] /= 2; damage[2] /= 2; damage[3] *= 2; damage[4] /= 2; damage[8] *= 2; damage[9] /= 2; damage[12] *= 2; damage[13] /= 2; damage[14] /= 2; break;
-                    case "W": damage[1] *= 2; damage[2] /= 2; damage[3] /= 2; damage[7] *= 2; damage[13] /= 2; damage[14] /= 2; break;
-                    case "B": damage[1] /= 2; damage[2] *= 2; damage[6] *= 2; damage[8] /= 2; damage[10] /= 2; damage[12] *= 2; break;
-                    case "PO": damage[1] /= 2; damage[4] /= 2; damage[5] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] /= 2; damage[11] *= 2; break;
-                    case "FL": damage[1] /= 2; damage[4] /= 2; damage[7] *= 2; damage[8] *= 0; damage[10] /= 2; damage[12] *= 2; damage[14] *= 2; break;
-                    case "E": damage[6] /= 2; damage[7] /= 2; damage[8] *= 2; damage[13] /= 2; break;
-                    case "GD": damage[1] *= 2; damage[3] *= 2; damage[5] /= 2; damage[7] *= 0; damage[12] /= 2; damage[14] *= 2; break;
-                    case "FA": damage[4] /= 2; damage[5] *= 2; damage[10] /= 2; damage[13] *= 2; damage[16] *= 0; damage[17] /= 2; break;
-                    case "FI": damage[4] /= 2; damage[6] *= 2; damage[9] *= 2; damage[11] *= 2; damage[12] /= 2; damage[17] /= 2; break;
-                    case "PS": damage[4] *= 2; damage[10] /= 2; damage[11] /= 2; damage[15] *= 2; damage[17] *= 2; break;
-                    case "R": damage[0] /= 2; damage[1] *= 2; damage[2] /= 2; damage[3] *= 2; damage[5] /= 2; damage[6] /= 2; damage[8] *= 2; damage[10] *= 2; damage[13] *= 2; break;
-                    case "S": damage[0] /= 2; damage[1] /= 2; damage[2] *= 2; damage[4] /= 2; damage[5] *= 0; damage[6] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] *= 2; damage[11] /= 2; damage[12] /= 2; damage[13] /= 2; damage[14] /= 2; damage[16] /= 2; break;
-                    case "I": damage[2] *= 2; damage[10] *= 2; damage[12] *= 2; damage[13] *= 2; damage[14] /= 2; break;
-                    case "GH": damage[0] *= 0; damage[4] /= 2; damage[5] /= 2; damage[10] *= 0; damage[15] *= 2; damage[17] *= 2; break;
-                    case "DR": damage[1] /= 2; damage[2] /= 2; damage[3] /= 2; damage[7] /= 2; damage[9] *= 2; damage[14] *= 2; damage[16] *= 2; break;
-                    case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
-                }
-                switch(allpokes[x].split('/')[2])
-                {
-                    //same as first
-                    case "NM": damage[10] *= 2; damage[15] *= 0; break;
-                    case "GR": damage[1] /= 2; damage[2] *= 2; damage[3] /= 2; damage[4] *= 2; damage[5] *= 2; damage[6] *= 2; damage[7] /= 2; damage[8] /= 2; damage[14] *= 2; break;
-                    case "FR": damage[1] /= 2; damage[2] /= 2; damage[3] *= 2; damage[4] /= 2; damage[8] *= 2; damage[9] /= 2; damage[12] *= 2; damage[13] /= 2; damage[14] /= 2; break;
-                    case "W": damage[1] *= 2; damage[2] /= 2; damage[3] /= 2; damage[7] *= 2; damage[13] /= 2; damage[14] /= 2; break;
-                    case "B": damage[1] /= 2; damage[2] *= 2; damage[6] *= 2; damage[8] /= 2; damage[10] /= 2; damage[12] *= 2; break;
-                    case "PO": damage[1] /= 2; damage[4] /= 2; damage[5] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] /= 2; damage[11] *= 2; break;
-                    case "FL": damage[1] /= 2; damage[4] /= 2; damage[7] *= 2; damage[8] *= 0; damage[10] /= 2; damage[12] *= 2; damage[14] *= 2; break;
-                    case "E": damage[6] /= 2; damage[7] /= 2; damage[8] *= 2; damage[13] /= 2; break;
-                    case "GD": damage[1] *= 2; damage[3] *= 2; damage[5] /= 2; damage[7] *= 0; damage[12] /= 2; damage[14] *= 2; break;
-                    case "FA": damage[4] /= 2; damage[5] *= 2; damage[10] /= 2; damage[13] *= 2; damage[16] *= 0; damage[17] /= 2; break;
-                    case "FI": damage[4] /= 2; damage[6] *= 2; damage[9] *= 2; damage[11] *= 2; damage[12] /= 2; damage[17] /= 2; break;
-                    case "PS": damage[4] *= 2; damage[10] /= 2; damage[11] /= 2; damage[15] *= 2; damage[17] *= 2; break;
-                    case "R": damage[0] /= 2; damage[1] *= 2; damage[2] /= 2; damage[3] *= 2; damage[5] /= 2; damage[6] /= 2; damage[8] *= 2; damage[10] *= 2; damage[13] *= 2; break;
-                    case "S": damage[0] /= 2; damage[1] /= 2; damage[2] *= 2; damage[4] /= 2; damage[5] *= 0; damage[6] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] *= 2; damage[11] /= 2; damage[12] /= 2; damage[13] /= 2; damage[14] /= 2; damage[16] /= 2; break;
-                    case "I": damage[2] *= 2; damage[10] *= 2; damage[12] *= 2; damage[13] *= 2; damage[14] /= 2; break;
-                    case "GH": damage[0] *= 0; damage[4] /= 2; damage[5] /= 2; damage[10] *= 0; damage[15] *= 2; damage[17] *= 2; break;
-                    case "DR": damage[1] /= 2; damage[2] /= 2; damage[3] /= 2; damage[7] /= 2; damage[9] *= 2; damage[14] *= 2; damage[16] *= 2; break;
-                    case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
-                }
-                
-                var effectiveMessage = 'Before abilities, ' + allpokes[x].split('/')[0] + ' would take:\n'
-                + damage[0] + 'x Normal Damage\n'
-                + damage[1] + 'x Grass Damage\n'
-                + damage[2] + 'x Fire Damage\n'
-                + damage[3] + 'x Water Damage\n'
-                + damage[4] + 'x Bug Damage\n'
-                + damage[5] + 'x Poison Damage\n'
-                + damage[6] + 'x Flying Damage\n'
-                + damage[7] + 'x Electric Damage\n'
-                + damage[8] + 'x Ground Damage\n'
-                + damage[9] + 'x Fairy Damage\n'
-                + damage[10] + 'x Fighting Damage\n'
-                + damage[11] + 'x Psychic Damage\n'
-                + damage[12] + 'x Rock Damage\n'
-                + damage[13] + 'x Steel Damage\n'
-                + damage[14] + 'x Ice Damage\n'
-                + damage[15] + 'x Ghost Damage\n'
-                + damage[16] + 'x Dragon Damage\n'
-                + damage[17] + 'x Dark Damage';
-                message.channel.send(effectiveMessage);
-                return;
-            }
+            {*/
+        var damage = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        switch(allpokes[x].split('/')[1])
+        {
+            //normal0, grass1, fire2, water3, bug4, poison5
+            //NM, GR, FR, W, B, PO
+            //flying6, electric7, ground8, fairy9, fighting10, psychic11
+            //FL, E, GD, FA, FI, PS
+            //rock12, steel13, ice14, ghost15, dragon16, dark17
+            //R, S, I, GH, DR, DK
+            case "NM": damage[10] *= 2; damage[15] *= 0; break;
+            case "GR": damage[1] /= 2; damage[2] *= 2; damage[3] /= 2; damage[4] *= 2; damage[5] *= 2; damage[6] *= 2; damage[7] /= 2; damage[8] /= 2; damage[14] *= 2; break;
+            case "FR": damage[1] /= 2; damage[2] /= 2; damage[3] *= 2; damage[4] /= 2; damage[8] *= 2; damage[9] /= 2; damage[12] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+            case "W": damage[1] *= 2; damage[2] /= 2; damage[3] /= 2; damage[7] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+            case "B": damage[1] /= 2; damage[2] *= 2; damage[6] *= 2; damage[8] /= 2; damage[10] /= 2; damage[12] *= 2; break;
+            case "PO": damage[1] /= 2; damage[4] /= 2; damage[5] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] /= 2; damage[11] *= 2; break;
+            case "FL": damage[1] /= 2; damage[4] /= 2; damage[7] *= 2; damage[8] *= 0; damage[10] /= 2; damage[12] *= 2; damage[14] *= 2; break;
+            case "E": damage[6] /= 2; damage[7] /= 2; damage[8] *= 2; damage[13] /= 2; break;
+            case "GD": damage[1] *= 2; damage[3] *= 2; damage[5] /= 2; damage[7] *= 0; damage[12] /= 2; damage[14] *= 2; break;
+            case "FA": damage[4] /= 2; damage[5] *= 2; damage[10] /= 2; damage[13] *= 2; damage[16] *= 0; damage[17] /= 2; break;
+            case "FI": damage[4] /= 2; damage[6] *= 2; damage[9] *= 2; damage[11] *= 2; damage[12] /= 2; damage[17] /= 2; break;
+            case "PS": damage[4] *= 2; damage[10] /= 2; damage[11] /= 2; damage[15] *= 2; damage[17] *= 2; break;
+            case "R": damage[0] /= 2; damage[1] *= 2; damage[2] /= 2; damage[3] *= 2; damage[5] /= 2; damage[6] /= 2; damage[8] *= 2; damage[10] *= 2; damage[13] *= 2; break;
+            case "S": damage[0] /= 2; damage[1] /= 2; damage[2] *= 2; damage[4] /= 2; damage[5] *= 0; damage[6] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] *= 2; damage[11] /= 2; damage[12] /= 2; damage[13] /= 2; damage[14] /= 2; damage[16] /= 2; break;
+            case "I": damage[2] *= 2; damage[10] *= 2; damage[12] *= 2; damage[13] *= 2; damage[14] /= 2; break;
+            case "GH": damage[0] *= 0; damage[4] /= 2; damage[5] /= 2; damage[10] *= 0; damage[15] *= 2; damage[17] *= 2; break;
+            case "DR": damage[1] /= 2; damage[2] /= 2; damage[3] /= 2; damage[7] /= 2; damage[9] *= 2; damage[14] *= 2; damage[16] *= 2; break;
+            case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
         }
-        message.channel.send("I'm afraid " + pokemon + " is not in my types database.  Check that you spelled it correct, and remember my research in the Galar region isn't yet complete.");
+        switch(allpokes[x].split('/')[2])
+        {
+            //same as first
+            case "NM": damage[10] *= 2; damage[15] *= 0; break;
+            case "GR": damage[1] /= 2; damage[2] *= 2; damage[3] /= 2; damage[4] *= 2; damage[5] *= 2; damage[6] *= 2; damage[7] /= 2; damage[8] /= 2; damage[14] *= 2; break;
+            case "FR": damage[1] /= 2; damage[2] /= 2; damage[3] *= 2; damage[4] /= 2; damage[8] *= 2; damage[9] /= 2; damage[12] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+            case "W": damage[1] *= 2; damage[2] /= 2; damage[3] /= 2; damage[7] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+            case "B": damage[1] /= 2; damage[2] *= 2; damage[6] *= 2; damage[8] /= 2; damage[10] /= 2; damage[12] *= 2; break;
+            case "PO": damage[1] /= 2; damage[4] /= 2; damage[5] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] /= 2; damage[11] *= 2; break;
+            case "FL": damage[1] /= 2; damage[4] /= 2; damage[7] *= 2; damage[8] *= 0; damage[10] /= 2; damage[12] *= 2; damage[14] *= 2; break;
+            case "E": damage[6] /= 2; damage[7] /= 2; damage[8] *= 2; damage[13] /= 2; break;
+            case "GD": damage[1] *= 2; damage[3] *= 2; damage[5] /= 2; damage[7] *= 0; damage[12] /= 2; damage[14] *= 2; break;
+            case "FA": damage[4] /= 2; damage[5] *= 2; damage[10] /= 2; damage[13] *= 2; damage[16] *= 0; damage[17] /= 2; break;
+            case "FI": damage[4] /= 2; damage[6] *= 2; damage[9] *= 2; damage[11] *= 2; damage[12] /= 2; damage[17] /= 2; break;
+            case "PS": damage[4] *= 2; damage[10] /= 2; damage[11] /= 2; damage[15] *= 2; damage[17] *= 2; break;
+            case "R": damage[0] /= 2; damage[1] *= 2; damage[2] /= 2; damage[3] *= 2; damage[5] /= 2; damage[6] /= 2; damage[8] *= 2; damage[10] *= 2; damage[13] *= 2; break;
+            case "S": damage[0] /= 2; damage[1] /= 2; damage[2] *= 2; damage[4] /= 2; damage[5] *= 0; damage[6] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] *= 2; damage[11] /= 2; damage[12] /= 2; damage[13] /= 2; damage[14] /= 2; damage[16] /= 2; break;
+            case "I": damage[2] *= 2; damage[10] *= 2; damage[12] *= 2; damage[13] *= 2; damage[14] /= 2; break;
+            case "GH": damage[0] *= 0; damage[4] /= 2; damage[5] /= 2; damage[10] *= 0; damage[15] *= 2; damage[17] *= 2; break;
+            case "DR": damage[1] /= 2; damage[2] /= 2; damage[3] /= 2; damage[7] /= 2; damage[9] *= 2; damage[14] *= 2; damage[16] *= 2; break;
+            case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
+        }
+        
+        var effectiveMessage = 'Before abilities, ' + allpokes[x].split('/')[0] + ' would take:\n'
+        + damage[0] + 'x Normal Damage\n'
+        + damage[1] + 'x Grass Damage\n'
+        + damage[2] + 'x Fire Damage\n'
+        + damage[3] + 'x Water Damage\n'
+        + damage[4] + 'x Bug Damage\n'
+        + damage[5] + 'x Poison Damage\n'
+        + damage[6] + 'x Flying Damage\n'
+        + damage[7] + 'x Electric Damage\n'
+        + damage[8] + 'x Ground Damage\n'
+        + damage[9] + 'x Fairy Damage\n'
+        + damage[10] + 'x Fighting Damage\n'
+        + damage[11] + 'x Psychic Damage\n'
+        + damage[12] + 'x Rock Damage\n'
+        + damage[13] + 'x Steel Damage\n'
+        + damage[14] + 'x Ice Damage\n'
+        + damage[15] + 'x Ghost Damage\n'
+        + damage[16] + 'x Dragon Damage\n'
+        + damage[17] + 'x Dark Damage';
+        message.channel.send(effectiveMessage);
+        return;
+            /*}
+        }
+        message.channel.send("I'm afraid " + pokemon + " is not in my types database.  Check that you spelled it correct, and remember my research in the Galar region isn't yet complete.");*/
     }
 }
 
@@ -1667,16 +1675,19 @@ function beatUp(message) {
             }
             else {
                 var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
-                var found = false;
+                var theList = allpokes.toLowerCase();
+                for (var i = 0; i < theList.length; i++) { theList[i] = theList[i].split("/")[0]; }
+                var x = ss.findBestMatch(pokemon, theList).bestMatchIndex;
+                /*var found = false;
                 for(var x = 0; x < allpokes.length; x++) {
-                    if(pokemon[i].toLowerCase() == allpokes[x].split('/')[0].toLowerCase()) {
-                        var beatUpBP = Math.floor(((allpokes[x].split('/')[4] - 99) / 2) / 10) + 5;
-                        message.channel.send(allpokes[x].split('/')[0] + " would have a base " + beatUpBP + " power Beat Up!");
-                        found = true;
-                        break;
+                    if(pokemon[i].toLowerCase() == allpokes[x].split('/')[0].toLowerCase()) {*/
+                var beatUpBP = Math.floor(((allpokes[x].split('/')[4] - 99) / 2) / 10) + 5;
+                message.channel.send(allpokes[x].split('/')[0] + " would have a base " + beatUpBP + " power Beat Up!");
+                found = true;
+                        /*break;
                     }
                 }
-                if (!found) { message.channel.send("I'm afraid " + pokemon[i] + " is not in my base stats database.  Make sure you spelled it right and remember that my research in the Galar region isn't yet complete, but I can give you the base power from its URPG attack stat with `,beatup 299` or similar."); }
+                if (!found) { message.channel.send("I'm afraid " + pokemon[i] + " is not in my base stats database.  Make sure you spelled it right and remember that my research in the Galar region isn't yet complete, but I can give you the base power from its URPG attack stat with `,beatup 299` or similar."); }*/
             }
         }
     }
@@ -1844,10 +1855,10 @@ function help(message) {
             message.channel.send("`,forum`: Link to URPG's forums\n`,start`: Link to the starter request thread\n`,mart`: Link to the Pokémart thread\n`,berry`: Link to the Berry Store thread\n`,calc`: Link to the reffing calculator\n`,chartrse`, `,chartdppt`, `,chartoras`: Link to the Google Sheets for the respective contest type\n`,chartterrain`: Image with the basic description of each terrain.\n`,info`: Link to the Infohub\n`,bmgarchive`: Link to the archives of the BMG URPG section.\n`,pxrarchive`: Link to the archives of the PXR URPG section.\n`,refund`: Link to the Refund Thread.\n`,gen8` or `,galar`: Link to each of the changelogs since gen 8 release.\n`,ioa`: Link to just the Isle of Armor changelog.\n`,nukem`, `,refpedia`, `,gym`: Links to respective Infohub topics.\n`,updategym`: Link to Apply for or Update a Gym thread.\n`,starterlist`: Link the Web Archive of the List of Chosen Starters.\nIf you have any suggestions for other links I should have, please @ Ash K. or use `,addlink ALIAS LINK` to add it yourself.");
         }
         else if (lowmessage.indexOf("random") != -1 || lowmessage.indexOf("weather") != -1 || lowmessage.indexOf("terrain") != -1) {
-            message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -box, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, space\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively. For `,weather`, you may add `-fog` and/or `-no` to exclude Fog and/or No Starting Weather, respectively.");
+            message.channel.send("Send `,rules randomize` with any number of the following to fix certain conditions and randomize all other rules. Ones with a `-` specifically avoid that rule, while ones without specifically force that rule. For clauses, this means `-` turns the clause off.\nAccepted inputs: 2, 3, 4, 5, 6, -gsc, gsc, rse, -sm, sm, public, private, -box, full, box, preview, single, double, -triple, triple, -rotation, rotation, -items, items, -launcher, launcher, -sky, sky, -inverse, inverse, -slp, -sleep, slp, sleep, -frz, -freeze, frz, freeze, -ohko, ohko, -acc, acc, -eva, eva, -itemc, itemc, -species, species, -mega, mega, -z, zmove, -legend, legend, -weather, weather, sun, rain, sandstorm, hail, fog, -terrain, distortion\nSend `,weather` or `,terrain` and I will give you just a random weather or terrain, respectively. For `,weather`, you may add `-fog` and/or `-no` to exclude Fog and/or No Starting Weather, respectively.  For `,terrain`, you may add `active` or `passive` to get only the appropriate type.");
         }
         else if (lowmessage.indexOf("rule") != -1) {
-            message.channel.send("Use `,rules RULESET` to bring up a specific ruleset:\ncasual: Typical ruleset for casual battles\nppr: Similar but Public Preview (for randoms)\nhidden: Similar but Private Preview\ncompetitive: More serious battle rules\ne4: Official rules for any Elite Four or Champion battle\nld: Official rules for any Legend Defender battle\nashrandoms: Ash's preferred ruleset for randoms\nfortree: Fortree Gym default rules\nashmockfire: Ash's rules for a mock Fire gym (treated as a normal battle for pay and such)\nashmockdragon: Same as above but for Dragon\nmt. chimney, canalave, battle dome: Other leaders' gym rules.  To get yours added, please message Ash with your rules formatted like this ```javascript\nif(lowmessage.indexOf(\"fortree\") == 0) message.channel.send(\"6v6\\nSM Public Open\\nVolcano Terrain\\nSun\\nHolds On\\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\\nNo Legendary Pokémon\\nNo Z-Moves\\nChallenger Sends First\");```\nmaylee: Rules for the Maylee battle event\nffa: Typical FFA ruleset\nrandomize: Randomized rule set among legal rulesets. See `,help randomize` for more information on how to fix certain conditions.");
+            message.channel.send("Use `,rules RULESET` to bring up a specific ruleset:\ncasual: Typical ruleset for casual battles\nppr: Similar but Public Preview (for randoms)\nhidden: Similar but Private Preview\ncompetitive: More serious battle rules\ne4: Official rules for any Elite Four or Champion battle\nld: Official rules for any Legend Defender battle\nashrandoms: Ash's preferred ruleset for randoms\nfortree: Fortree Gym default rules\nashmockfire: Ash's rules for a mock Fire gym (treated as a normal battle for pay and such)\nashmockdragon: Same as above but for Dragon\nmt. chimney, canalave, battle dome: Other leaders' gym rules.  To get yours added, please message Ash with your rules formatted like this ```javascript\nif(lowmessage.indexOf(\"fortree\") == 0) message.channel.send(\"6v6\\nSM Public Box\\nVolcano Terrain\\nSun\\nHolds On\\nSleep/Freeze/OHKO/Accuracy/Evasion/Species/Imprison/Dynamax Clauses\\nNo Legendary Pokémon\\nNo Z-Moves\\nChallenger Sends First\");```\nmaylee: Rules for the Maylee battle event\nffa: Typical FFA ruleset\nrandomize: Randomized rule set among legal rulesets. See `,help randomize` for more information on how to fix certain conditions.");
         }
         else if (lowmessage.indexOf("effective") != -1) {
             message.channel.send("Send `,effective POKÉMON` and I'll list the effectiveness of each type against POKÉMON!");
