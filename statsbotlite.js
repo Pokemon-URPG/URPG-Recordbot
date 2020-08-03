@@ -1456,7 +1456,7 @@ function stealthRock(message) {
         srMessage += " would take ";
         srMessage += srdamage;
         srMessage += "% damage, which is ";
-        var damage = Math.floor(srdamage * allpokes[x].split('/')[3]);
+        var damage = Math.floor((srdamage * allpokes[x].split('/')[3]) / 100);
         srMessage += damage + " HP damage!"
         message.channel.send(srMessage);
         return;
