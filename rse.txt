@@ -81,7 +81,7 @@ The crowd meter/audience can't be altered (and thus ignored) for the rest of the
 Bite | Tough | +1 | -3 |
 Startles all Pokemon that appealed before the user.
 Blast Burn | Beauty | +4 | -4 |
-Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that next round.
 Blaze Kick | Beauty | +4 | 0 |
 No additional effect.
 Blizzard | Beauty | +4 | 0 |
@@ -393,7 +393,7 @@ If any Pokemon in front of the user used the same attribute move, they are start
 Freeze Shock | Beauty | +2 | -2 |
 Startles all Pokemon that appealed before the user.
 Frenzy Plant | Cool | +4 | -4 |
-Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that next round.
 Frost Breath | Beauty | +3 | 0 |
 If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
 Frustration | Cute | +1 | 0 |
@@ -419,7 +419,7 @@ Increases the user's condition by +1 Star (maximum 3).
 Giga Drain | Smart | +2 | -1 |
 Startles all Pokemon that appealed before the user. If any Pokemon in front is in Combo Standby, they are startled for -5 instead. Otherwise, they are startled for -1.
 Giga Impact | Beauty | +4 | -4 |
-Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that next round.
 Glaciate | Beauty | +2 | -2 |
 Startles all Pokemon that appealed before the user.
 Glare | Tough | +1 | -3 |
@@ -511,11 +511,11 @@ Increases the user's condition by +1 Star (maximum 3).
 Hurricane | Cool | +2 | -2 |
 Startles all Pokemon that appealed before the user.
 Hydro Cannon | Cool | +4 | -4 |
-Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that next round.
 Hydro Pump | Beauty | +4 | 0 |
 No additional effect.
 Hyper Beam | Cool | +4 | -4 |
-Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that next round.
 Hyper Fang | Cool | +1 | -4 |
 Startles the Pokemon that appealed directly before the user.
 Hyper Voice | Cool | +1 | -3 |
@@ -723,7 +723,7 @@ Increases the user's condition by +1 Star (maximum 3).
 Origin Pulse | Beauty | +2 | 0 |
 Appeal score is increased by +4 if user is in position 1.
 Outrage | Cool | +4 | -4 |
-Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that next round.
 Overheat | Beauty | +6 | 0 |
 If user Pokemon is startled this turn, it loses twice as many Appeal Points.
 Pain Split | Smart | +1 | -4 |
@@ -743,7 +743,7 @@ Startles each previous Pokemon an amount equal to half of that Pokemon's appeal,
 Petal Blizzard | Beauty | +3 | 0 |
 If the appeal of the Pokemon immediately preceding the user was less than 3 Hearts, the user's appeal score is increased by +3; if greater than 3 Hearts, the user's appeal score is reduced by -3; if equal to 3 Hearts or if the user appealed in position 1, the user's appeal effect is unchanged.
 Petal Dance | Beauty | +4 | -4 |
-Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that next round.
 Phantom Force | Smart | +2 | 0 |
 Can avoid being startled by others once till end of round.
 Pin Missile | Cool | +2 | -1 |
@@ -859,7 +859,7 @@ Appeal score is increased by +4 if user is in position 4.
 Roar | Cool | +3 | 0 |
 The appeal order for next turn is random (overrides previous effects that cause a Pokemon to appeal in a given position).
 Roar of Time | Cool | +4 | -4 |
-Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that next round.
 Rock Blast | Tough | +2 | 0 |
 Appeal score is increased by +4 if this move's type attribute is the same as that of the previous appealer's appeal.
 Rock Climb | Cool | +1 | 0 |
@@ -875,7 +875,7 @@ Appeal score is increased by +4 if this move's type attribute is the same as tha
 Rock Tomb | Smart | +3 | 0 |
 The crowd meter/audience can't be altered (and thus ignored) for the rest of the turn. (This effect cannot be reset.)
 Rock Wrecker | Tough | +4 | -4 |
-Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that next round.
 Role Play | Cute | +1 | 0 |
 Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
 Rolling Kick | Cool | +1 | -3 |
@@ -1097,7 +1097,7 @@ Makes all of the Pokemon who appeal after the user's turn nervous.
 Techno Blast | Cool | +1 | 0 |
 An appeal that excites the audience in any Contest.
 Teeter Dance | Cute | +4 | -4 |
-Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that next round.
 Telekinesis | Smart | +3 | 0 |
 If any Pokemon that appealed before the user is in Combo Standby, it is cancelled out.
 Teleport | Cool | +1 | 0 |
@@ -1105,7 +1105,7 @@ Can avoid being startled by others till end of round.
 Thief | Tough | +1 | 0 |
 Appeal score is increased by half of the combined appeal of previous appealers, rounded down (minimum 0).
 Thrash | Tough | +4 | -4 |
-Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that next round.
 Thunder | Cool | +2 | -2 |
 Startles all Pokemon that appealed before the user.
 Thunder Fang | Smart | +4 | 0 | -> Fire Fang, Ice Fang |
@@ -1289,7 +1289,7 @@ No additional effect.
 Power Trip | Tough | Varies | 0 |
 Appeal score is increased by: 1 Heart (position 1), 2 Heart (position 2), 4 Heart (position 3), or 6 Heart (position 4).
 Prismatic Laser | Smart | +4 | -4 |
-Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that round.
+Startles every Pokemon that appealed before the user. The user cannot participate next round and can't be startled during that next round.
 Psychic Fangs | Cute | +3 | 0 |
 Cancels any condition stars from any Pokemon that had appealed before the user.
 Psychic Terrain | Smart | Varies | 0 |

@@ -48,6 +48,7 @@ var tempStats;
 var tempLinks;
 var remindLog;
 var codeLog;
+var refLog;
 
 bot.on("ready", async function() {
     logger.info("Connected")
@@ -67,6 +68,7 @@ bot.once("ready", async function () {
     tempLinks = await bot.channels.get("531433553225842700").fetchMessage("737015754272014357");
     remindLog = await bot.channels.get("531433553225842700").fetchMessage("711453291892047892");
     codeLog = await bot.channels.get("531433553225842700").fetchMessage("711651825291624518");
+    refLog = await bot.channels.get(botCommands).fetchMessage("741525510886260787");
     if (remindLog.content.indexOf("Reminders:") == -1) { remindLog.edit("Reminders:"); }
     if (codeLog.content.indexOf("To Do:\n") == -1) {
         bot.channels.get("531433553225842700").send(codeLog.content);
@@ -279,6 +281,27 @@ function codeEdit(message) {
             }
             codeLog.edit(newCodeLog);
         }
+    }
+}
+
+function refEdit(message, messageMember) {
+    if (lowmessage.indexOf(",refadd ") == 0 && messageMember.roles.has(refRole)) {
+        refLog.edit(refLog.content + "\n" + refLog.split("\n").length + ". " + message.cleanContent.split(",refadd ")[1]);
+    }
+    if (lowmessage.indexOf(",refremove ") == 0 && !isNaN(lowmessage.split(" ")[1]) && (messageMember.roles.has(seniorRefRole) || messageMember.roles.has("584764993044611075"))) {
+        newRefLog = refLog.content.split("\n")[0];
+        for (var x = 1; x < refLog.content.split("\n").length; x++) {
+            if (x != message.content.split(" ")[1]) {
+                newRefLog +="\n" + refLog.content.split("\n")[x];
+            }
+            else {
+                message.channel.send(refLog.content.split("\n")[x] + " removed from reminders!");
+            }
+        }
+        refLog.edit(newRefLog);
+    }
+    if (lowmessage.indexOf(",reflist") == 0) {
+        message.channel.send(refLog.content)
     }
 }
 
@@ -1846,7 +1869,7 @@ function help(message) {
             message.channel.send("`,mentionrefs`, `,mentionjudges`, `,mentioncurators`, `,mentiongraders`, `,mentionrangers`, or `,mentionarbiters`: Pings the applicable role.  Required role: Applicable section senior.\n`,mentionforumffa`: Pings Forum FFA role.  Required role: Forum FFA Host.\n`,mentionffa` or `!ffa -p`: Pings everyone who wants to be notified about FFAs. Required role: Referee. Required channel: <#136222872371855360>, <#269634154101080065>, or <#653328600170364953>\n`,mentioncoordinators`: Pings everyone who wishes to be notified about contests happening. Required role: Judge.\n`,mentionroyales`: Pings everyone who wishes to be notified about Battle Royales happening. Required role: Referee.\n`,mentionstaff`: Pings staff if something needs addressing quickly.  Required role: Member.\n`,mentioncontentupkeeper`, `,mentiongamedesign`, `,mentionevents`, `,mentiontechnicalteam`: Pings the respective team if something of theirs needs addressing.  Required role: Member.\n\n**Notes about all mention functions:**\nMention everyone permission allows use of a ping without the mentioned role.\nYou may put a message after the ping command and it will be copied after the ping, so that looking at mentions will directly show that information.");
         }
         else if (lowmessage.indexOf("profession") != -1 || lowmessage.indexOf("ref") != -1 || lowmessage.indexOf("judge") != -1) {
-            message.channel.send("`,payday @MEMBER1 @MEMBER2...`: Lets you know which of the mentioned members has received Pay Day this week, and adds all others to the log of who has. Required role: Referee or Judge.\n`,pickup @MEMBER1 @MEMBER2...`: Exactly the same as `,payday` but for Pickup.\n`,pin MESSAGEID`, `,unpin MESSAGEID`: Pins/unpins message with ID MESSAGEID in this channel. Required role/channel: Referee in battle chat or Judge in contest chat.")
+            message.channel.send("`,payday @MEMBER1 @MEMBER2...`: Lets you know which of the mentioned members has received Pay Day this week, and adds all others to the log of who has. Required role: Referee or Judge.\n`,pickup @MEMBER1 @MEMBER2...`: Exactly the same as `,payday` but for Pickup.\n`,pin MESSAGEID`, `,unpin MESSAGEID`: Pins/unpins message with ID MESSAGEID in this channel. Required role/channel: Referee in battle chat or Judge in contest chat.\n`,refadd ISSUE`: report an issue such as Infohub description or calc error.  Required role: referee.\n`,refremove NUMBER`: Removes the NUMBERth issue from the ref issues.  Required role: Senior Referee or Content Upkeeper.")
         }
         else if (lowmessage.indexOf("staff") != -1 || lowmessage.indexOf("mod") != -1 || lowmessage.indexOf("auth") != -1 || lowmessage.indexOf("restrict") != -1) {
             message.channel.send("**Restricted Commands:**\nAll `,mention` functions: See `,help mention` for more info.\nRef or Judge specific commands: See `,help profession`.\n`,anonreply # message`: Sends a reply to the `reply:` anonymous report with the given number. Required channel: staff or any in Teams & Projects.\n`,publicarchive` `,privatearchive`: Archives the channel, putting it in the archive category and removes access to all non-staff. Use `,archive public` or `,publicarchive` for public channels and `,archive private`, or `,privatearchive` for private channels. Required role: content-upkeeper\n`,contestboss`: Creates the temporary rooms for a contest boss. Required role: Death Eater.\n`,reftest`, `,judgetest`, or `,rangertest`: Creates a temporary test channel. If the command contains a mention, also adds that member to the channel. Required role: Appropriate section senior.\n`,end`: Deletes a temporary channel. Only works in a temporary channel and requires the same role required to create that channel.\n`,fixorder`: Resets profession chat order. Required role: content-upkeeper Manage Channels permission. I will automatically run this on startup as well.\n`,pkmnspoilerseason THING-TO-SPOIL`: changes the name of <#440004235635982336> to #spoilers-THING-TO-SPOIL and removes pkmnspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,otherspoilerseason THING-TO-SPOIL`: changes the name of <#597314223483387905> to #spoilers-THING-TO-SPOIL and removes otherspoilers role from everyone. Required role: content-upkeeper or Manage Channels permission.\n`,newdiscussion CHANNEL-NAME`: Creates a new staff discussion channel with the given name. Required channel: staff.\n`,newproject CHANNEL-NAME`: Creates a new project discussion channel with the given name. Required channel: Any in the Teams & Projects category.");
@@ -2878,6 +2901,8 @@ bot.on("message", async function(message) {
     let messageMember = await message.guild.fetchMember(message.author);
 
     await tempChannelWebhook(message, messageMember);
+    
+    await refEdit(message, messageMember);
 
     await mention(message, messageMember);
 
