@@ -292,12 +292,18 @@ function refEdit(message, messageMember) {
     }
     if (lowmessage.indexOf(",refremove ") == 0 && !isNaN(lowmessage.split(" ")[1]) && (messageMember.roles.has(seniorRefRole) || messageMember.roles.has("584764993044611075"))) {
         newRefLog = refLog.content.split("\n")[0];
+        var found = false;
         for (var x = 1; x < refLog.content.split("\n").length; x++) {
             if (x != message.content.split(" ")[1]) {
-                newRefLog +="\n" + refLog.content.split("\n")[x];
+                if (!found) { newRefLog += "\n" + refLog.content.split("\n")[x]; }
+                else {
+                    newRefLog += "\n" 
+                    var newNum = refLog.content.split("\n")[x].split(". ")[0] - 1 + 2;
+                    newRefLog += newNum + refLog.content.split("\n")[x].substring(refLog.content.split("\n")[x].indexOf(". ")); }
             }
             else {
                 message.channel.send(refLog.content.split("\n")[x] + " removed from reminders!");
+                found = true;
             }
         }
         refLog.edit(newRefLog);
