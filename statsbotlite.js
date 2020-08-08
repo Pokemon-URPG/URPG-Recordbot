@@ -404,7 +404,7 @@ function bumpNotification() {
 
 function badWordsReporter(message, messageMember, isEdit) {
     if (message.author.bot || message.channel.id == "690427377012047902") {return;}
-    lowmessage = lowmessage.replace(/cofag/g, "").replace(/leafage/g, "");
+    lowmessage = lowmessage.replace(/cofag/g, "").replace(/leafage/g, "").replace(/skys/g, "");
     var badWordsLog = "";
     var reporting = false;
     for (let i = 0; i < badWords.length; i++) {
@@ -2605,6 +2605,7 @@ async function unpinMessage(message, messageMember) {
     if ((lowmessage.indexOf(",unpin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentID == "358430499146039299" && messageMember.roles.has(refRole)) || (message.channel.parentID == "358433546492444675" && messageMember.roles.has(judgeRole)))) {
         theMessage = await message.channel.fetchMessage(lowmessage.split(" ")[1]);
         await theMessage.unpin();
+        await message.react("👍");
     }
 }
 
@@ -2790,6 +2791,7 @@ async function updateStats(message, messageMember) {
     if (lowmessage.indexOf(",addstat") == 0 && message.content.split(" ").length == 3) {
         await tempStats.edit(tempStats.content + "\n" + message.content.split(" ")[1] + " " + message.content.split(" ")[2]);
         tempStats = await bot.channels.get("531433553225842700").fetchMessage("709808598443884655");
+        message.react("👍");
     }
 }
 
