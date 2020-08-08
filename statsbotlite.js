@@ -268,6 +268,7 @@ function codeEdit(message) {
     if (message.author.id == "135999597947387904" && lowmessage.indexOf(",code") == 0) {
         if (lowmessage.indexOf(",codeadd ") == 0) {
             codeLog.edit(codeLog.content + "\n" + message.content.split(",codeadd ")[1]);
+            message.react("👍");
         }
         if (lowmessage.indexOf(",coderemove ") == 0 && !isNaN(lowmessage.split(" ")[1])) {
             newCodeLog = codeLog.content.split("\n")[0];
@@ -286,7 +287,8 @@ function codeEdit(message) {
 
 function refEdit(message, messageMember) {
     if (lowmessage.indexOf(",refadd ") == 0 && messageMember.roles.has(refRole)) {
-        refLog.edit(refLog.content + "\n" + refLog.split("\n").length + ". " + message.cleanContent.split(",refadd ")[1]);
+        refLog.edit(refLog.content + "\n" + refLog.content.split("\n").length + ". " + message.cleanContent.split(",refadd ")[1]);
+        message.react("👍");
     }
     if (lowmessage.indexOf(",refremove ") == 0 && !isNaN(lowmessage.split(" ")[1]) && (messageMember.roles.has(seniorRefRole) || messageMember.roles.has("584764993044611075"))) {
         newRefLog = refLog.content.split("\n")[0];
@@ -2901,7 +2903,7 @@ bot.on("message", async function(message) {
     let messageMember = await message.guild.fetchMember(message.author);
 
     await tempChannelWebhook(message, messageMember);
-    
+
     await refEdit(message, messageMember);
 
     await mention(message, messageMember);
