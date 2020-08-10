@@ -298,7 +298,7 @@ function refEdit(message, messageMember) {
                 if (!found) { newRefLog += "\n" + refLog.content.split("\n")[x]; }
                 else {
                     newRefLog += "\n" 
-                    var newNum = refLog.content.split("\n")[x].split(". ")[0] - 1 + 2;
+                    var newNum = refLog.content.split("\n")[x].split(". ")[0] - 1;
                     newRefLog += newNum + refLog.content.split("\n")[x].substring(refLog.content.split("\n")[x].indexOf(". ")); }
             }
             else {
@@ -1710,8 +1710,8 @@ function beatUp(message) {
                 var allpokes = fs.readFileSync('Pokemon.txt', 'utf8');
                 var theList = allpokes.toLowerCase().split('\n');
                 allpokes = allpokes.split('\n');
-                for (var i = 0; i < theList.length; i++) { theList[i] = theList[i].split("/")[0]; }
-                var x = ss.findBestMatch(pokemon, theList).bestMatchIndex;
+                for (var j = 0; j < theList.length; j++) { theList[j] = theList[j].split("/")[0]; }
+                var x = ss.findBestMatch(pokemon[i], theList).bestMatchIndex;
                 /*var found = false;
                 for(var x = 0; x < allpokes.length; x++) {
                     if(pokemon[i].toLowerCase() == allpokes[x].split('/')[0].toLowerCase()) {*/
@@ -2567,9 +2567,22 @@ function wrongBot(message) {
 
 async function substituteBot(channel) {
     kauri = await bot.fetchUser("574745413773426688");
-    if ((kauri.presence.status == "offline" || channel.guild == null || channel.guild.id != urpgServer) && lowmessage.indexOf("!d ") == 0) {
-        var dieToRoll = lowmessage.split(" ");
-        var results = "<@574745413773426688> seems to be offline.  As your substitute dice roller, I decree you have rolled ";
+    if (((kauri.presence.status == "offline" || channel.guild == null || channel.guild.id != urpgServer) && lowmessage.indexOf("!d ") == 0) || (lowmessage.indexOf("//roll-dice") == 0 && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[0]) && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[1])) || (lowmessage.indexOf("//roll-dice") == 0 && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[0]) && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[1]))) {
+        var dieToRoll;
+        var results;
+        if (lowmessage.indexOf("!d") == 0) {
+            dieToRoll = lowmessage.split(" ");
+            results = "<@574745413773426688> seems to be offline.  As your substitute dice roller, I decree you have rolled ";
+        }
+        else {
+            if (lowmessage.indexOf("//roll-dice") == 0) {
+                dieToRoll = lowmessage.split("//roll-dice")[1].split("-sides")[0] + "d" + lowmessage.split("//roll-dice")[1].split("-sides")[1];
+            }
+            else {
+                dieToRoll = lowmessage.split("//roll-sides")[1].split("-dice")[1] + "d" + lowmessage.split("//roll-sides")[1].split("-dice")[0];
+            }
+            results = "Not many still cling to the ancient ways.  Those who do can always find a friend.  You have rolled "
+        }
         for (var x = 1; x < dieToRoll.length; x++) {
             dieToRoll[x] = dieToRoll[x].replace(/, /g, " ").replace(/,/g, "d");
             var rollResults = "";
