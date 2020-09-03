@@ -2836,7 +2836,7 @@ async function updateStats(message, messageMember) {
 async function updateSets(message) {
     if (lowmessage.indexOf(",addset") == 0 && message.content.split(" ").length == 3) {
         await setCodes.edit(setCodes.content + "\n" + message.content.split(" ")[1].toUpperCase() + " " + message.content.split(" ")[2].toUpperCase());
-        setCodes = await bot.channels.get("531433553225842700").fetchMessage("709808598443884655");
+        setCodes = await bot.channels.get("531433553225842700").fetchMessage("751124446701682708");
         message.react("👍");
     }
 }
