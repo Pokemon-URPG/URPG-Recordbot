@@ -1791,6 +1791,7 @@ function links(message) {
     if (lowmessage.indexOf(",chartterrain") == 0) { message.channel.send(new Discord.RichEmbed().setImage("https://media.discordapp.net/attachments/275674541915766796/737905447910113400/unknown.png")); }
     if (lowmessage.indexOf(",job") == 0) { message.channel.send("https://forum.pokemonurpg.com/forumdisplay.php?fid=122"); }
     if (lowmessage.indexOf(",nervous") == 0) { message.channel.send("https://docs.google.com/document/d/1CG-djhjuUixajoyGeVcbx7Tfsb3XS50LA1UBSYAljOI/edit?usp=sharing"); }
+    if (lowmessage.indexOf(",underground") == 0 || lowmessage.indexOf(",ug") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1720"); }
     for (var x = 1; x < tempLinks.content.split("\n").length; x++) {
         if (lowmessage.indexOf("," + tempLinks.content.split("\n")[x].split(" ")[0]) == 0) { message.channel.send(tempLinks.content.split("\n")[x].split(" ")[1]); }
     }
@@ -2041,7 +2042,7 @@ function magicCardPoster(input, channel) {
     if (cardName == "Mine, Mine, Mine" || cardName == "Incoming" || cardName == "Kill! Destroy") {cardName += "!";}
     cardSet = cardSet.toUpperCase();
     for (var x = 1; x < setCodes.content.split("\n").length; x++) {
-        cardSet = cardSet.replace(setCodes.content.split("\n")[0], setCodes.content.split("\n")[1]);
+        cardSet = cardSet.replace(setCodes.content.split("\n")[x].split(" ")[0], setCodes.content.split("\n")[x].split(" ")[1]);
     }
     cardName = cardName.replace(/ /g, "%2B").replace(/,/g, "%252C").replace(/\./, "%252E").replace(/û/g, "u").replace(/\'/g, "%2527").replace(/`/g, "%2527").replace(/®/g, "%25C2%25AE").replace(/:registered:/g, "%25C2%25AE").replace(/&/g, "%2526").replace(/"/g, "%2522").replace(/!/g, "%2521").replace(/\?/g, "%253F");
     if (!fetched) {channel.send("https://cdn1.mtggoldfish.com/images/gf/" + cardName + "%2B%255B" + cardSet + "%255D.jpg"); }
@@ -2832,7 +2833,7 @@ async function updateStats(message, messageMember) {
     }
 }
 
-async function updateSets(message, messageMember) {
+async function updateSets(message) {
     if (lowmessage.indexOf(",addset") == 0 && message.content.split(" ").length == 3) {
         await setCodes.edit(setCodes.content + "\n" + message.content.split(" ")[1].toUpperCase() + " " + message.content.split(" ")[2].toUpperCase());
         setCodes = await bot.channels.get("531433553225842700").fetchMessage("709808598443884655");
@@ -2850,7 +2851,7 @@ function formatLinks(message) {
     if (message.author.id == "135999597947387904" && lowmessage == ",formatlinks") {
         var theMessage = "";
         for (var x = 1; x < tempLinks.content.split("\n").length; x++) {
-            theMessage += "if (lowmessage.indexOf(\"," + tempLinks.content.split("\n")[x].split(" ")[0].toLowerCase() + "\") == 0) { message.channel.send(\"" + tempLinks.content.split("\n")[x].split(" ")[1] + "\"); }\n";
+            theMessage += "if (lowmessage.indexOf(\"," + tempLinks.content.split("\n")[x].split(" ")[0].toLowerCase() + "\") == 0) { message.channel.send(\"<" + tempLinks.content.split("\n")[x].split(" ")[1] + ">\"); }\n";
         }
         message.channel.send(theMessage);
     }
@@ -2944,6 +2945,8 @@ bot.on("message", async function(message) {
 
     await codeTester(message);
 
+    await updateSets(message);
+
     if (message.guild === null) {
     	
         await anonymousReport(message);
@@ -2992,8 +2995,6 @@ bot.on("message", async function(message) {
     await unpinMessage(message, messageMember);
 
     await updateStats(message, messageMember);
-
-    await updateSets(message, messageMember);
 
     await updateLinks(message, messageMember);
 
