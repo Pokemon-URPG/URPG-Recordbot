@@ -109,7 +109,7 @@ bot.once("ready", async function () {
 function statusMessage() {
     var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
     var movelist = fs.readFileSync("rse.txt", "utf8").split("\n");
-    var pokemon = allpokes[Math.floor(Math.random() * allpokes.length)].split("/")[0];
+    var pokemon = allpokes[1 + Math.floor(Math.random() * (allpokes.length - 1))].split("/")[0];
     var activityNum = Math.floor(Math.random() * 98);
     let duration = Math.floor(Math.random() * 600000)
     //if you're reading this, don't spoil the surprise of the weird ones please.  But feel free to suggest additional options!
@@ -2035,8 +2035,8 @@ function magicCardPoster(input, channel) {
     if (cardSet.length > 5 || cardSet.length < 2) {return;}
     if (request.split("🦌🦌")[3].length > 0 && !isNaN(request.split("🦌🦌")[3]) && request.split("🦌🦌")[3].indexOf(" ") == -1) {
         var cardNumber = request.split("🦌🦌")[3];
-        cardName = cardName.replace(/û/g, "%C3%BB").replace(/,/g, "").replace(/\./g, "").replace(/\'/g, "").replace(/`/g, "").replace(/®/g, "").replace(/:registered:/, "").replace(/"/g, "").replace(/\?/g, "%3F").replace(/!/g, "").replace(/ /g, "-");
-        channel.send("https://scryfall.com/card/" + cardSet.toLowerCase() +"/" + cardNumber + "/" + cardName.toLowerCase() + "?utm_source=discord");
+        cardName = cardName.toLowerCase().replace(/û/g, "%C3%BB").replace(/,/g, "").replace(/\./g, "").replace(/\'/g, "").replace(/`/g, "").replace(/®/g, "").replace(/:registered:/, "").replace(/"/g, "").replace(/\?/g, "%3F").replace(/!/g, "").replace(/ /g, "-");
+        channel.send("https://scryfall.com/card/" + cardSet.toLowerCase() +"/" + cardNumber + "/" + cardName + "?utm_source=discord");
         fetched = true;
     }
     if (cardName == "Mine, Mine, Mine" || cardName == "Incoming" || cardName == "Kill! Destroy") {cardName += "!";}
@@ -2836,7 +2836,7 @@ async function updateStats(message, messageMember) {
 async function updateSets(message) {
     if (lowmessage.indexOf(",addset") == 0 && message.content.split(" ").length == 3) {
         await setCodes.edit(setCodes.content + "\n" + message.content.split(" ")[1].toUpperCase() + " " + message.content.split(" ")[2].toUpperCase());
-        setCodes = await bot.channels.get("531433553225842700").fetchMessage("751124446701682708");
+        setCodes = await bot.channels.get("531433553225842700").fetchMessage("709808598443884655");
         message.react("👍");
     }
 }
@@ -2851,7 +2851,7 @@ function formatLinks(message) {
     if (message.author.id == "135999597947387904" && lowmessage == ",formatlinks") {
         var theMessage = "";
         for (var x = 1; x < tempLinks.content.split("\n").length; x++) {
-            theMessage += "if (lowmessage.indexOf(\"," + tempLinks.content.split("\n")[x].split(" ")[0].toLowerCase() + "\") == 0) { message.channel.send(\"<" + tempLinks.content.split("\n")[x].split(" ")[1] + ">\"); }\n";
+            theMessage += "if (lowmessage.indexOf(\"," + tempLinks.content.split("\n")[x].split(" ")[0].toLowerCase() + "\") == 0) { message.channel.send(\"<" + tempLinks.content.split("\n")[x].split(" ")[1] + "\"); }\n";
         }
         message.channel.send(theMessage);
     }
@@ -3063,6 +3063,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     		if (oldMessage.channel.id == eliteRangersChannel) {channelToNotify = rangerTestChannel;}
     		if (oldMessage.channel.id == botsChannel) {channelToNotify = botsChannel;}
             if (oldMessage.channel.id == "690427377012047902") {channelToNotify = judgeTestChannel;}
+            if (message.channel.id == "745806753312014454") {channelToNotify = "695205185181450281";}
     		var deleteLog = ""
             if (temp) {
                 deleteLog += await message.guild.fetchMember(message.author).displayName + "'s message saying \"" + newMessage.cleanContent + "\"";
