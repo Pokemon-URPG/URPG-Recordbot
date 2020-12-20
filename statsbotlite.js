@@ -562,7 +562,7 @@ function stats(message) {
         if (oldmessage.includes("zeit")) { message.channel.send("Zeitgeist's stats: https://forum.pokemonurpg.com/showthread.php?tid=10963&pid=143350#pid143350"); }
         if (oldmessage.includes("silas")) { message.channel.send("Silas's stats: https://forum.pokemonurpg.com/showthread.php?tid=10983"); }
         if (oldmessage.includes("beanie") || oldmessage.includes("pudge")) { message.channel.send("beaniepudge's stats: https://forum.pokemonurpg.com/showthread.php?tid=11024"); }
-        if (oldmessage.includes("mailmeharry")) { message.channel.send("mailmeharry's stats: https://forum.pokemonurpg.com/showthread.php?tid=11027");
+        if (oldmessage.includes("mailmeharry")) { message.channel.send("mailmeharry's stats: https://forum.pokemonurpg.com/showthread.php?tid=11027"); }
         for (var x = 1; x < tempStats.content.split("\n").length; x++) {
             if (oldmessage.indexOf(tempStats.content.split("\n")[x].split(" ")[0].toLowerCase()) != -1) { message.channel.send(tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.content.split("\n")[x].split(" ")[1]); }
         }
