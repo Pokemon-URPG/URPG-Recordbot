@@ -3148,7 +3148,7 @@ bot.on("guildMemberRemove", async function(member) {
 
 bot.on("messageReactionAdd", async function(messageReaction, user) {
     var reactMember = await message.guild.members.fetch(message.author);
-    if ((messageReaction.emoji.name == "📌" && ((messageReaction.message.channel.parentID == "358430499146039299" && ReactMember.roles.cache.has(refRole)) || (messageReaction.message.channel.parentID == "358433546492444675" && reactMember.roles.cache.has(judgeRole)))) {
+    if (messageReaction.emoji.name == "📌" && ((messageReaction.message.channel.parentID == "358430499146039299" && ReactMember.roles.cache.has(refRole)) || (messageReaction.message.channel.parentID == "358433546492444675" && reactMember.roles.cache.has(judgeRole)))) {
         pinMessage();
 }
 
