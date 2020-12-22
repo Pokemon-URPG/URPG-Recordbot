@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 const logger = require("winston")
 const fs = require("fs")
 const ss = require("string-similarity");
-const { Endpoints } = require("discord.js/src/util/Constants");
+const { Endpoints } = Discord.Constants;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
