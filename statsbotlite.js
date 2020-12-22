@@ -3116,16 +3116,16 @@ bot.on("guildMemberRemove", async function(member) {
     bot.channels.cache.get(logsChannel).send(leaveLog);
 })
 
-bot.on("channelCreate", function(channel) {
+/*bot.on("channelCreate", function(channel) {
     if (channel.type == "text" && channel.guild.id == urpgServer) {
         channelHandle(channel);
     }
 })
 
-bot.on("channelUpdate", function(oldChannel, newChannel) {
-    if (oldChannel.type == "text" && oldChannel.guild.id == urpgServer && !newChannel.permissionOverwrites.has("409821978887979019") && newChannel.permissionOverwrites.has(newChannel.guild.id) && newChannel.permissionOverwrites.cache.get(newChannel.guild.id).deny % 2048 < 512) {
+/*bot.on("channelUpdate", function(oldChannel, newChannel) {
+    if (oldChannel.type == "text" && oldChannel.guild.id == urpgServer && !newChannel.permissionOverwrites.has("409821978887979019") && newChannel.permissionOverwrites.has(newChannel.guild.id) && newChannel.permissionOverwrites.get(newChannel.guild.id).deny % 2048 < 512) {
         channelHandle(newChannel);
     }
-})
+})*/
 
 bot.login(process.env.token)
