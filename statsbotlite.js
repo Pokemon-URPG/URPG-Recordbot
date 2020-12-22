@@ -3151,7 +3151,7 @@ bot.on("messageReactionAdd", async function(messageReaction, user) {
     if (messageReaction.emoji.name == "📌" && ((messageReaction.message.channel.parentID == "358430499146039299" && ReactMember.roles.cache.has(refRole)) || (messageReaction.message.channel.parentID == "358433546492444675" && reactMember.roles.cache.has(judgeRole)))) {
         pinMessage();
     }
-}
+})
 
 /*bot.on("channelCreate", function(channel) {
     if (channel.type == "text" && channel.guild.id == urpgServer) {
