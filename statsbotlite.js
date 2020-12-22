@@ -2766,8 +2766,8 @@ async function deleteReporter(message) {
     messageMember = await message.guild.members.fetch(message.author);
     var deleteMember = await message.guild.members.fetch(user);
     if (attaches.length == 0) {
-        if (messageMember.id == deleteMember.id) { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()).addField("Deletion", message.channel + ": " + message.content); }
-        else { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()).setFooter("Deleted by " + deleteMember.displayName + " (" + deleteMember.id + ")", deleteMember.user.displayAvatarURL()).addField("Deletion", message.channel + ": " + message.content); }
+        if (messageMember.id == deleteMember.id) { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()).addField("Deletion", "<#" + message.channel + ">: " + message.content); }
+        else { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()).setFooter("Deleted by " + deleteMember.displayName + " (" + deleteMember.id + ")", deleteMember.user.displayAvatarURL()).addField("Deletion", "<#" + message.channel + ">: " + message.content); }
     }
     /*if (message.embeds.length > 0) {
         bot.channels.cache.get(channelToNotify).send()
@@ -3152,7 +3152,7 @@ bot.on("messageReactionAdd", async function(messageReaction, user) {
 		try {
 			await messageReaction.fetch();
 		} catch (error) {
-			console.error('Something went wrong when fetching the message: ', error);
+			logger.error('Something went wrong when fetching the message: ', error);
 			// Return as `reaction.message.author` may be undefined/null
 			return;
 		}
