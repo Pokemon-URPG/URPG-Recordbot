@@ -49,6 +49,7 @@ var tempLinks;
 var remindLog;
 var codeLog;
 var refLog;
+var contentLog;
 var setCodes;
 
 bot.on("ready", async function() {
@@ -70,6 +71,7 @@ bot.once("ready", async function () {
     remindLog = await bot.channels.cache.get("531433553225842700").messages.fetch("711453291892047892");
     codeLog = await bot.channels.cache.get("531433553225842700").messages.fetch("711651825291624518");
     refLog = await bot.channels.cache.get(botCommands).messages.fetch("741525510886260787");
+    contentLog = await bot.channels.cache.get(botCommands).messages.fetch("741525512014397440");
     setCodes = await bot.channels.cache.get("531433553225842700").messages.fetch("751124446701682708");
     if (remindLog.content.indexOf("Reminders:") == -1) { remindLog.edit("Reminders:"); }
     if (codeLog.content.indexOf("To Do:\n") == -1) {
@@ -312,6 +314,34 @@ function refEdit(message, messageMember) {
     }
     if (lowmessage.indexOf(",reflist") == 0) {
         message.channel.send(refLog.content)
+    }
+}
+
+function contentEdit(message, messageMember) {
+    if (lowmessage.indexOf(",contentadd ") == 0 && messageMember.roles.cache.has("584764993044611075")) {
+        contentLog.edit(contentLog.content + "\n" + contentLog.content.split("\n").length + ". " + message.cleanContent.split(",contentadd ")[1]);
+        message.react("👍");
+    }
+    if (lowmessage.indexOf(",contentremove ") == 0 && !isNaN(lowmessage.split(" ")[1]) && (messageMember.roles.cache.has("584764993044611075"))) {
+        newContentLog = contentLog.content.split("\n")[0];
+        var found = false;
+        for (var x = 1; x < contentLog.content.split("\n").length; x++) {
+            if (x != message.content.split(" ")[1]) {
+                if (!found) { newContentLog += "\n" + contentLog.content.split("\n")[x]; }
+                else {
+                    newContentLog += "\n" 
+                    var newNum = contentLog.content.split("\n")[x].split(". ")[0] - 1;
+                    newContentLog += newNum + contentLog.content.split("\n")[x].substring(contentLog.content.split("\n")[x].indexOf(". ")); }
+            }
+            else {
+                message.channel.send(contentLog.content.split("\n")[x] + " removed from reminders!");
+                found = true;
+            }
+        }
+        refLog.edit(newContentLog);
+    }
+    if (lowmessage.indexOf(",contentlist") == 0) {
+        message.channel.send(contentLog.content)
     }
 }
 
@@ -2643,10 +2673,10 @@ async function substituteBot(channel) {
 }
 
 async function pinMessage(message, messageMember) {
-    if ((lowmessage.indexOf(",pin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentID == "358430499146039299" && messageMember.roles.cache.has(refRole)) || (message.channel.parentID == "358433546492444675" && messageMember.roles.cache.has(judgeRole)))) {
-        theMessage = await message.channel.messages.fetch(lowmessage.split(" ")[1]);
-        await theMessage.pin();
-    }
+    //if ((lowmessage.indexOf(",pin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentID == "358430499146039299" && messageMember.roles.cache.has(refRole)) || (message.channel.parentID == "358433546492444675" && messageMember.roles.cache.has(judgeRole)))) {
+    theMessage = await message.channel.messages.fetch(lowmessage.split(" ")[1]);
+    await theMessage.pin();
+    //}
 }
 
 async function unpinMessage(message, messageMember) {
@@ -3000,7 +3030,7 @@ bot.on("message", async function(message) {
 
     await pickUp(message, messageMember);
 
-    await pinMessage(message, messageMember);
+    //await pinMessage(message, messageMember);
 
     await unpinMessage(message, messageMember);
 
@@ -3115,6 +3145,12 @@ bot.on("guildMemberRemove", async function(member) {
     else {leaveLog += " has left."}
     bot.channels.cache.get(logsChannel).send(leaveLog);
 })
+
+bot.on("messageReactionAdd", async function(messageReaction, user) {
+    var reactMember = await message.guild.members.fetch(message.author);
+    if ((messageReaction.emoji.name == "📌" && ((messageReaction.message.channel.parentID == "358430499146039299" && ReactMember.roles.cache.has(refRole)) || (messageReaction.message.channel.parentID == "358433546492444675" && reactMember.roles.cache.has(judgeRole)))) {
+        pinMessage();
+}
 
 /*bot.on("channelCreate", function(channel) {
     if (channel.type == "text" && channel.guild.id == urpgServer) {
