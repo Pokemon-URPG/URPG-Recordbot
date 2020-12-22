@@ -318,7 +318,7 @@ function refEdit(message, messageMember) {
 }
 
 function contentEdit(message, messageMember) {
-    if (lowmessage.indexOf(",contentadd ") == 0 && messageMember.roles.cache.has("584764993044611075")) {
+    if (lowmessage.indexOf(",contentadd ") == 0 && messageMember.roles.cache.has("456993685679243286")) {
         contentLog.edit(contentLog.content + "\n" + contentLog.content.split("\n").length + ". " + message.cleanContent.split(",contentadd ")[1]);
         message.react("👍");
     }
@@ -3147,7 +3147,17 @@ bot.on("guildMemberRemove", async function(member) {
 })
 
 bot.on("messageReactionAdd", async function(messageReaction, user) {
-    var reactMember = await message.guild.members.fetch(message.author);
+    if (messageReaction.partial) {
+		// If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
+		try {
+			await messageReaction.fetch();
+		} catch (error) {
+			console.error('Something went wrong when fetching the message: ', error);
+			// Return as `reaction.message.author` may be undefined/null
+			return;
+		}
+	}
+    var reactMember = await messageReaction.message.guild.members.fetch(user);
     if (messageReaction.emoji.name == "📌" && ((messageReaction.message.channel.parentID == "358430499146039299" && ReactMember.roles.cache.has(refRole)) || (messageReaction.message.channel.parentID == "358433546492444675" && reactMember.roles.cache.has(judgeRole)))) {
         pinMessage();
     }
