@@ -358,6 +358,7 @@ async function payDay(message, messageMember) {
                 var newLog = `${payDayLog.content} ${value}`; // Template literals
                 await bot.channels.cache.get("531433553225842700").send("```" + payDayLog.content + "```");
                 await payDayLog.edit(newLog);
+		payDayLog = await bot.channels.cache.get(botCommands).messages.fetch("658883162000195607");
                 output += `${payMember.displayName} receives a Pay Day bonus for this **(+$500)**.`; //Template literals
             }
             output += "\n";
@@ -386,6 +387,7 @@ async function pickUp(message, messageMember) {
                 var newLog = `${pickUpLog.content} ${value}`; // Template literals
                 await bot.channels.cache.get("531433553225842700").send("```" + pickUpLog.content + "```");
                 await pickUpLog.edit(newLog);
+		pickUpLog = await bot.channels.cache.get(botCommands).messages.fetch("658884961603944478");
                 output += `${payMember.displayName} receives a Pickup bonus for this **(+Item)**.`; //Template literals
             }
             output += "\n";
