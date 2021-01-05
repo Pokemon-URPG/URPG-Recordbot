@@ -2635,7 +2635,7 @@ function wrongBot(message) {
 
 async function substituteBot(channel) {
     kauri = await bot.users.fetch("574745413773426688");
-    if (((kauri.presence.status == "offline" || channel.guild == null || channel.guild.id != urpgServer) && lowmessage.indexOf("!d ") == 0) || (lowmessage.indexOf("//roll-dice") == 0 && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[0]) && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[1])) || (lowmessage.indexOf("//roll-dice") == 0 && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[0]) && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[1]))) {
+    if (((kauri.presence.status == "offline" || channel.guild == null || channel.guild.id != urpgServer) && lowmessage.indexOf("!d ") == 0) || (lowmessage.indexOf("//roll-sides") == 0 && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[0]) && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[1])) || (lowmessage.indexOf("//roll-dice") == 0 && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[0]) && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[1]))) {
         var dieToRoll;
         var results;
         if (lowmessage.indexOf("!d") == 0) {
@@ -3109,7 +3109,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     		if (oldMessage.channel.id == eliteRangersChannel) {channelToNotify = rangerTestChannel;}
     		if (oldMessage.channel.id == botsChannel) {channelToNotify = botsChannel;}
             if (oldMessage.channel.id == "690427377012047902") {channelToNotify = judgeTestChannel;}
-            if (message.channel.id == "745806753312014454") {channelToNotify = "695205185181450281";}
+            if (oldMessage.channel.id == "745806753312014454") {channelToNotify = "695205185181450281";}
     		var deleteLog = ""
             if (temp) {
                 deleteLog += await message.guild.members.fetch(message.author).displayName + "'s message saying \"" + newMessage.cleanContent + "\"";
