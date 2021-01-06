@@ -2555,6 +2555,25 @@ async function newProject(message) {
     }
 }
 
+async function newGame(message) {
+    if (message.channel.parentID == "" && lowmessage.indexOf(",newgame") == 0) {
+        var newChannel = await message.guild.createChannel(message.content.split(" ")[1], { type: 'text', permissionOverwrites: [{
+            id: message.guild.id,
+            deny: ['VIEW_CHANNEL']
+        }]});
+        await newChannel.setParent("358436351194038272");
+        await newChannel.createOverwrite(message.author.id, {
+            VIEW_CHANNEL: true,
+            MANAGE_ROLES: true
+        })
+        await newChannel.createOverwrite("135868852092403713", {
+            VIEW_CHANNEL: true
+        })
+        await message.channel.send("Channel <#" + newChannel.id + "> successfully created!");
+    }
+}
+
+
 async function fixOrder(channel, messageMember) {
     if (lowmessage.indexOf(",fixorder") == 0 && (messageMember.roles.cache.has("584764993044611075") || messageMember.hasPermission("MANAGE_CHANNELS"))) {
         await bot.channels.cache.get(judgeTestChannel).setPosition(1);//judgingtest
@@ -3004,6 +3023,8 @@ bot.on("message", async function(message) {
     await tempChannelWebhook(message, messageMember);
 
     await refEdit(message, messageMember);
+	
+    await contentEdit(message, messageMember);
 
     await mention(message, messageMember);
 
