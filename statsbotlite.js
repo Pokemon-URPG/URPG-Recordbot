@@ -755,7 +755,7 @@ function rank(message) {
                     rankList(pokemonlists[0], message.channel);
                     return;
                 }
-                message.channel.send(pokemonlists[0] + "\nItalicized Pokémon are also available in the Pokémart!")
+                message.channel.send(pokemonlists[0])
                 found = true
                 return;
             }
