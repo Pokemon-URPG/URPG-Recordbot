@@ -338,7 +338,7 @@ function contentEdit(message, messageMember) {
                 found = true;
             }
         }
-        refLog.edit(newContentLog);
+        contentLog.edit(newContentLog);
     }
     if (lowmessage.indexOf(",contentlist") == 0) {
         message.channel.send(contentLog.content)
