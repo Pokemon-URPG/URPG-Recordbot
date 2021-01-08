@@ -731,7 +731,7 @@ function rank(message) {
     if (lowmessage.indexOf(",rank ") == 0 || lowmessage.indexOf(",ranklist") == 0) {
         if (lowmessage.split(" ")[1]) {
             if (lowmessage.indexOf("nidoran") != -1 && lowmessage.indexOf("nidoran-") == -1 && lowmessage.indexOf("male") == -1) {
-                themessage = "Female Nidoran rank Simple!\nFemale Nidoran can also be be found in the Pokemart for $9,000!\nTrade value: $9,000\nMale Nidoran is rank Medium!\nTrade value: $15,000"
+                themessage = "Female Nidoran rank Simple!\nFemale Nidoran can also be be found in the Pokemart for $7,500!\nTrade value: $7,500\nMale Nidoran is rank Medium!\nTrade value: $15,000"
                 message.channel.send(themessage)
                 return
             }
