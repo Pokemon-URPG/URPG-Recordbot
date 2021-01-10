@@ -2465,10 +2465,16 @@ async function contestBoss(message, messageMember) {
 
 async function judgeTest(message, messageMember) {
     if (lowmessage.indexOf(",judgetest") == 0 && messageMember.roles.cache.has(chiefJudgeRole)) {
-        var testroom = await message.guild.createChannel("judge-test", { type: 'text', permissionOverwrites: [{
-            id: message.guild.id,
-            deny: ['VIEW_CHANNEL']
-        }]})
+        var testroom = await message.guild.channels.create("judge-test", { 
+	type: 'text',
+	parent: "376809774282571779",
+	permissionOverwrites: [
+	    {
+            	id: message.guild.id,
+            	deny: ['VIEW_CHANNEL']
+            },
+	],
+	})
         await testroom.setParent("376809774282571779");
         await testroom.createOverwrite(chiefJudgeRole, {
             VIEW_CHANNEL: true,
@@ -2484,10 +2490,16 @@ async function judgeTest(message, messageMember) {
 
 async function refTest(message, messageMember) {
     if (lowmessage.indexOf(",reftest") == 0 && messageMember.roles.cache.has(seniorRefRole)) {
-        var testroom = await message.guild.createChannel("ref-test", { type: 'text', permissionOverwrites: [{
-            id: message.guild.id,
-            deny: ['VIEW_CHANNEL']
-        }]})
+        var testroom = await message.guild.channels.create("ref-test", { 
+	type: 'text',
+	parent: "376809774282571779",
+	permissionOverwrites: [
+	    {
+            	id: message.guild.id,
+            	deny: ['VIEW_CHANNEL']
+            },
+	],
+	})
         await testroom.setParent("376809774282571779");
         await testroom.createOverwrite(seniorRefRole, {
             VIEW_CHANNEL: true,
