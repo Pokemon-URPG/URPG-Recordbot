@@ -385,8 +385,7 @@ async function pickUp(message, messageMember) {
                 output += `${payMember.displayName} has already received a Pickup bonus this week.`; //Template literals
             }
             else {
-                var newLog += `${value}`; // Template literals
-		pickUpLog = await bot.channels.cache.get(botCommands).messages.fetch("658884961603944478");
+                newLog += `${value}`; // Template literals
                 output += `${payMember.displayName} receives a Pickup bonus for this **(+Item)**.`; //Template literals
             }
             output += "\n";
