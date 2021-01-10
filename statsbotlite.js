@@ -85,9 +85,9 @@ bot.once("ready", async function () {
     setTimeout(function () {
         weirrrrrReminder();
     }, ((784800000) - (d.getTime() % 604800000)) % 604800000);
-    setTimeout(function () {
+    /*setTimeout(function () {
         weirrrrrReminderJ();
-    }, ((871200000) - (d.getTime() % 604800000)) % 604800000);
+    }, ((871200000) - (d.getTime() % 604800000)) % 604800000);*/
     setTimeout(function () {
         codeRemind();
     }, ((100800000) - (d.getTime() % 86400000)) % 86400000);
@@ -349,22 +349,22 @@ async function payDay(message, messageMember) {
     if (lowmessage.indexOf(",payday") == 0 && (messageMember.roles.cache.has(refRole) || messageMember.roles.cache.has(judgeRole))) {
         let payments = message.mentions.users;
         var output = "";
+	var newLog = `${payDayLog.content}`;
         for(const [key, value] of payments) { //for...of will be synchronous, reduces API queuing
             var payMember = await message.guild.members.fetch(key);
             if (payDayLog.mentions.users.has(key)) { // Can utilise message.mentions for this check too
                 output += `${payMember.displayName} has already received a Pay Day bonus this week.`; //Template literals
             }
             else {
-                var newLog = `${payDayLog.content} ${value}`; // Template literals
-                await bot.channels.cache.get("531433553225842700").send("```" + payDayLog.content + "```");
-                await payDayLog.edit(newLog);
-		payDayLog = await bot.channels.cache.get(botCommands).messages.fetch("658883162000195607");
+                newLog += `${value}`; // Template literals
                 output += `${payMember.displayName} receives a Pay Day bonus for this **(+$500)**.`; //Template literals
             }
             output += "\n";
         }
         message.channel.send(output);
-        payDayLog = await bot.channels.cache.get(botCommands).messages.fetch("658883162000195607");
+        await bot.channels.cache.get("531433553225842700").send("```" + payDayLog.content + "```");
+        await payDayLog.edit(newLog);
+	payDayLog = await bot.channels.cache.get(botCommands).messages.fetch("658883162000195607");
     }
 }
 
@@ -378,21 +378,22 @@ async function pickUp(message, messageMember) {
     if (lowmessage.indexOf(",pickup") == 0 && (messageMember.roles.cache.has(refRole) || messageMember.roles.cache.has(judgeRole))) {
         let payments = message.mentions.users;
         var output = "";
+	var newLog = `${pickUpLog.content}`;
         for(const [key, value] of payments) { //for...of will be synchronous, reduces API queuing
             var payMember = await message.guild.members.fetch(key);
             if (pickUpLog.mentions.users.has(key)) { // Can utilise message.mentions for this check too
                 output += `${payMember.displayName} has already received a Pickup bonus this week.`; //Template literals
             }
             else {
-                var newLog = `${pickUpLog.content} ${value}`; // Template literals
-                await bot.channels.cache.get("531433553225842700").send("```" + pickUpLog.content + "```");
-                await pickUpLog.edit(newLog);
+                var newLog += `${value}`; // Template literals
 		pickUpLog = await bot.channels.cache.get(botCommands).messages.fetch("658884961603944478");
                 output += `${payMember.displayName} receives a Pickup bonus for this **(+Item)**.`; //Template literals
             }
             output += "\n";
         }
         message.channel.send(output);
+        await bot.channels.cache.get("531433553225842700").send("```" + pickUpLog.content + "```");
+	await pickUpLog.edit(newLog);
         pickUpLog = await bot.channels.cache.get(botCommands).messages.fetch("658883162000195607");
     }
 }
@@ -404,7 +405,7 @@ function pickUpReset() {
 }
 
 function weirrrrrReminder() {
-    bot.channels.cache.get(logsChannel).send("WEIRRRRR Roll the JOBSSSSSS <@140308490609623041>");
+    bot.channels.cache.get(logsChannel).send("WEIRRRRR Roll the JOBSSSSSS <@140308490609623041> <@406543085464584202>");
 }
 
 function weirrrrrReminderJ() {
@@ -2588,7 +2589,7 @@ async function newGame(message) {
 
 async function fixOrder(channel, messageMember) {
     if (lowmessage.indexOf(",fixorder") == 0 && (messageMember.roles.cache.has("584764993044611075") || messageMember.hasPermission("MANAGE_CHANNELS"))) {
-        await bot.channels.cache.get(judgeTestChannel).setPosition(1);//judgingtest
+        /*await bot.channels.cache.get(judgeTestChannel).setPosition(1);//judgingtest
         await bot.channels.cache.get(judgingChiefsChannel).setPosition(1);//judgingchiefs
         await bot.channels.cache.get("293899148112035840").setPosition(1);//judgingyou
         await bot.channels.cache.get("533356212377354260").setPosition(1);//arbiters
@@ -2600,9 +2601,24 @@ async function fixOrder(channel, messageMember) {
         await bot.channels.cache.get(refTestChannel).setPosition(1);//reftest
         await bot.channels.cache.get(seniorRefChannel).setPosition(1);//seniorref
         await bot.channels.cache.get("322151372453838848").setPosition(1);//refs
-        await bot.channels.cache.get("406933479062765571").setPosition(1);//techteam
+        await bot.channels.cache.get("406933479062765571").setPosition(1);//techteam*/
+	var theList = bot.channels.cache.get("531433553225842700").messages.fetch("797678460314451978");
+	var channels = [];
+	for (var x = 1; x < theList.content.split("\n").length; x++) {
+		channels.push(theList.content.split("\n")[x]);
+	}
+	await fixOrderChannel(channels);
         if (channel != null) { await channel.send("Reordering complete!"); }
     }
+}
+
+async fixOrderChannel(channels) {
+	await bot.channels.cache.get(channels.shift()).setPosition(1);
+	if (channels.length > 0) {
+		setTimeout(function () {
+			fixOrderChannel(channels);
+		}, 2000);
+	}
 }
 
 async function pkmnSpoilerSeason(message, messageMember) {
@@ -2632,8 +2648,9 @@ async function otherSpoilerSeason(message, messageMember) {
 async function anonymousReply(message) {
     if ((message.channel.id == staffChannel || message.channel.parentID == "443857882937819146") && message.content.indexOf(",anonreply") == 0) {
         const anonToReplyTo = message.content.split(" ");
-        const dm = await message.client.rest.makeRequest("get", Endpoints.Channel(anonToReplyTo[1]), true);
-        const dmChannel = await message.client.rest.methods.createDM(dm.recipients[0]);
+        //const dm = await message.client.rest.makeRequest("get", Endpoints.Channel(anonToReplyTo[1]), true);
+        //const dmChannel = await message.client.rest.methods.createDM(dm.recipients[0]);
+	const dmChannel = await bot.channels.fetch(anonToReplyTo[1]);
         dmChannel.send(message.content.split(",anonreply " + anonToReplyTo[1] + " ")[1]);
         message.channel.send("Your reply has been sent!");
     }
