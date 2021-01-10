@@ -2611,7 +2611,7 @@ async function fixOrder(channel, messageMember) {
     }
 }
 
-async fixOrderChannel(channels) {
+async function fixOrderChannel(channels) {
 	await bot.channels.cache.get(channels.shift()).setPosition(1);
 	if (channels.length > 0) {
 		setTimeout(function () {
