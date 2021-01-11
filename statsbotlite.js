@@ -289,9 +289,10 @@ function codeEdit(message) {
     }
 }
 
-function refEdit(message, messageMember) {
+async function refEdit(message, messageMember) {
     if (lowmessage.indexOf(",refadd ") == 0 && messageMember.roles.cache.has(refRole)) {
-        refLog.edit(refLog.content + "\n" + refLog.content.split("\n").length + ". " + message.cleanContent.split(",refadd ")[1]);
+        await refLog.edit(refLog.content + "\n" + refLog.content.split("\n").length + ". " + message.cleanContent.split(",refadd ")[1]);
+	refLog = await bot.channels.cache.get(botCommands).messages.fetch("741525510886260787");
         message.react("👍");
     }
     if (lowmessage.indexOf(",refremove ") == 0 && !isNaN(lowmessage.split(" ")[1]) && (messageMember.roles.cache.has(seniorRefRole) || messageMember.roles.cache.has("584764993044611075"))) {
@@ -310,16 +311,18 @@ function refEdit(message, messageMember) {
                 found = true;
             }
         }
-        refLog.edit(newRefLog);
+        await refLog.edit(newRefLog);
+	refLog = await bot.channels.cache.get(botCommands).messages.fetch("741525510886260787");
     }
     if (lowmessage.indexOf(",reflist") == 0) {
         message.channel.send(refLog.content)
     }
 }
 
-function contentEdit(message, messageMember) {
+async function contentEdit(message, messageMember) {
     if (lowmessage.indexOf(",contentadd ") == 0 && messageMember.roles.cache.has("456993685679243286")) {
-        contentLog.edit(contentLog.content + "\n" + contentLog.content.split("\n").length + ". " + message.cleanContent.split(",contentadd ")[1]);
+        await contentLog.edit(contentLog.content + "\n" + contentLog.content.split("\n").length + ". " + message.cleanContent.split(",contentadd ")[1]);
+	contentLog = await bot.channels.cache.get(botCommands).messages.fetch("741525512014397440");
         message.react("👍");
     }
     if (lowmessage.indexOf(",contentremove ") == 0 && !isNaN(lowmessage.split(" ")[1]) && (messageMember.roles.cache.has("584764993044611075"))) {
@@ -338,7 +341,8 @@ function contentEdit(message, messageMember) {
                 found = true;
             }
         }
-        contentLog.edit(newContentLog);
+        await contentLog.edit(newContentLog);
+	contentLog = await bot.channels.cache.get(botCommands).messages.fetch("741525512014397440");
     }
     if (lowmessage.indexOf(",contentlist") == 0) {
         message.channel.send(contentLog.content)
