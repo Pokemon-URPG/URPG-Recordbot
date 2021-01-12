@@ -2605,7 +2605,7 @@ async function fixOrder(channel, messageMember) {
         await bot.channels.cache.get(seniorRefChannel).setPosition(1);//seniorref
         await bot.channels.cache.get("322151372453838848").setPosition(1);//refs
         await bot.channels.cache.get("406933479062765571").setPosition(1);//techteam*/
-	var theList = bot.channels.cache.get("531433553225842700").messages.fetch("797678460314451978");
+	var theList = await bot.channels.cache.get("531433553225842700").messages.fetch("797678460314451978");
 	var channels = [];
 	for (var x = 1; x < theList.content.split("\n").length; x++) {
 		channels.push(theList.content.split("\n")[x]);
