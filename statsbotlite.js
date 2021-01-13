@@ -742,7 +742,7 @@ function hpType(message) {
             }
         }
         var theMessage = "I'd give " + pokes[bestGuess].split("/")[0] + " Hidden Power " + pokes[bestGuess].split("/")[1] + "!";
-        if (pokes[bestGuess].split("/")[2] == "No") {
+        if (pokes[bestGuess].split("/")[2].includes("No")) {
             theMessage += "\nI wouldn't use Hidden Power on it very often though...";
         }
         if (pokes[bestGuess].split("/")[0] == "Greninja") {
@@ -3107,6 +3107,8 @@ bot.on("message", async function(message) {
     }
 
     if (message.guild.id != urpgServer) {return;}
+
+    if (message.system) {return;}
 
     let messageMember = await message.guild.members.fetch(message.author);
 
