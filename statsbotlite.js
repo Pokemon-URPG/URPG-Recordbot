@@ -726,8 +726,8 @@ function hpType(message) {
     if (lowmessage.indexOf(",hp ") == 0) {
         let pokelist = ""
 
-        try { pokelist = fs.readFileSync("hiddenpower.txt", "utf8") } catch (err) {
-            if (err.code === "ENOENT") message.channel.send("hiddenpower.txt not found!")
+        try { pokelist = fs.readFileSync("HiddenPower.txt", "utf8") } catch (err) {
+            if (err.code === "ENOENT") message.channel.send("HiddenPower.txt not found!")
             else { throw err }
         }
 
