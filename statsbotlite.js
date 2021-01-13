@@ -731,14 +731,14 @@ function hpType(message) {
             else { throw err }
         }
 
-        const pokes = movelist.split("\n")
+        const pokes = pokelist.split("\n")
         const desiredpoke = lowmessage.substring(4)
         var bestGuess = 0;
         var diff = -1;
         for (let x = 0; x < moves.length; x ++) {
             if (ss.compareTwoStrings(pokes[x].split("/")[0].toLowerCase(), desiredpoke) > diff) {
                 bestGuess = x;
-                diff = ss.compareTwoStrings(pokes[x].split("/")[0].toLowerCase(), desiredmove);
+                diff = ss.compareTwoStrings(pokes[x].split("/")[0].toLowerCase(), desiredpoke);
             }
         }
         var theMessage = "I'd give " + pokes[bestGuess].split("/")[0] + " Hidden Power " + pokes[bestGuess].split("/")[1] + "!";
