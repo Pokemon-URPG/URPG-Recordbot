@@ -182,6 +182,7 @@ Shiftry/Ground/Yes
 Swellow/Ground/Yes
 Pelipper/Ground/Yes
 Gardevoir/Ground/Yes
+Gallade/Steel/No
 Masquerain/Fire/Yes
 Breloom/Ice/Yes
 Slaking/Grass/Yes
