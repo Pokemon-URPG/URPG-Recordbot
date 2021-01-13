@@ -496,7 +496,7 @@ function stats(message) {
         if (oldmessage.indexOf("commba ") != -1) { message.channel.send("\nCommBA's stats: http://w11.zetaboards.com/CommBAURPG/topic/7546474/1/") }
         if (oldmessage.indexOf("axion ") != -1) { message.channel.send("\nAxion's stats: https://sites.google.com/view/urpgaxion/trainer-stats") }
         if (oldmessage.indexOf("izuru ") != -1) { message.channel.send("\nIzuru's stats: http://www.pokemoncrossroads.com/forum/showthread.php?18030-Izuru-s-Stats&p=279688&viewfull=1#post279688") }
-        if (oldmessage.indexOf("fenris ") != -1) { message.channel.send("\nFenris's stats: https://forum.pokemonurpg.com/showthread.php?tid=9983") }
+        if (oldmessage.indexOf("fenris ") != -1 || oldmessage.includes("raikaris")) { message.channel.send("\nRaikaris' stats: https://forum.pokemonurpg.com/showthread.php?tid=9983") }
         if ((oldmessage.indexOf("reneescarted ") != -1) || (oldmessage.indexOf("renee ") != -1) || (oldmessage.indexOf("renée ") != -1)) { message.channel.send("\nRenéeScarted's stats: https://forum.pokemonurpg.com/showthread.php?tid=10261&pid=127856#pid127856") }
         if (oldmessage.indexOf("lychee ") != -1) { message.channel.send("\nLychee's stats: http://forum.pokemonurpg.com/showthread.php?tid=8369") }
         if ((oldmessage.indexOf("swift") != -1) || (oldmessage.indexOf("gallade ") != -1)) { message.channel.send("\nSwiftGallade46's stats: http://swiftgallade.freeforums.net/thread/2/pokemon-especially-gallade") }
@@ -599,6 +599,10 @@ function stats(message) {
         if (oldmessage.includes("silas")) { message.channel.send("Silas's stats: https://forum.pokemonurpg.com/showthread.php?tid=10983"); }
         if (oldmessage.includes("beanie") || oldmessage.includes("pudge")) { message.channel.send("beaniepudge's stats: https://forum.pokemonurpg.com/showthread.php?tid=11024"); }
         if (oldmessage.includes("mailmeharry")) { message.channel.send("mailmeharry's stats: https://forum.pokemonurpg.com/showthread.php?tid=11027"); }
+        if (oldmessage.includes("taither")) { message.channel.send("Taither's stats: https://web.archive.org/web/20180711194626/http://w11.zetaboards.com/Taither/topic/7969379/1/"); }
+        if (oldmessage.includes("haze")) { message.channel.send("Hazeduse's stats: https://forum.pokemonurpg.com/showthread.php?tid=10807"); }
+        if (oldmessage.includes("sally")) { message.channel.send("Sally_stitches55's stats: https://forum.pokemonurpg.com/showthread.php?tid=11066"); }
+        if (oldmessage.includes("fuzzy")) { message.channel.send("FuzzyDwarf's stats: https://forum.pokemonurpg.com/showthread.php?tid=11058"); }
         for (var x = 1; x < tempStats.content.split("\n").length; x++) {
             if (oldmessage.indexOf(tempStats.content.split("\n")[x].split(" ")[0].toLowerCase()) != -1) { message.channel.send(tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.content.split("\n")[x].split(" ")[1]); }
         }
@@ -718,15 +722,58 @@ function pokeRank(pokemon) {
     return [pokemonArray.split(", ")[bestGuess], rankNum];
 }
 
+function hpType(message) {
+    if (lowmessage.indexOf(",hp ") == 0) {
+        let pokelist = ""
+
+        try { pokelist = fs.readFileSync("hiddenpower.txt", "utf8") } catch (err) {
+            if (err.code === "ENOENT") message.channel.send("hiddenpower.txt not found!")
+            else { throw err }
+        }
+
+        const pokes = movelist.split("\n")
+        const desiredpoke = lowmessage.substring(4)
+        var bestGuess = 0;
+        var diff = -1;
+        for (let x = 0; x < moves.length; x ++) {
+            if (ss.compareTwoStrings(pokes[x].split("/")[0].toLowerCase(), desiredpoke) > diff) {
+                bestGuess = x;
+                diff = ss.compareTwoStrings(pokes[x].split("/")[0].toLowerCase(), desiredmove);
+            }
+        }
+        var theMessage = "I'd give " + pokes[bestGuess].split("/")[0] + " Hidden Power " + pokes[bestGuess].split("/")[1] + "!";
+        if (pokes[bestGuess].split("/")[2] == "No") {
+            theMessage += "\nI wouldn't use Hidden Power on it very often though...";
+        }
+        if (pokes[bestGuess].split("/")[0] == "Greninja") {
+            theMessage += "\nhttps://forum.pokemonurpg.com/showthread.php?tid=10219";
+        }
+        message.channel.send(theMessage);
+    }
+}
+
 function pokeVal(pokemon) {
     var fullData = pokeRank(pokemon);
     var value = rankVal[fullData[1]];
     var martList = fs.readFileSync("mart.txt", "utf8");
+    var berryList = fs.readFileSync("berry.txt", "utf8");
     if (martList.includes(fullData[0])) {
         value = martList.substring(martList.indexOf(fullData[0])).split("$")[1].split("\n")[0].replace(",", "") - 1 + 1;
     }
     if (hardFossils.some(element => element.toLowerCase() === fullData[0].toLowerCase()) || otherFossils.some(element => element.toLowerCase() === fullData[0].toLowerCase())) {
         value -= 15000;
+    }
+    if (berryList.includes(fullData[0] + " -")) {
+        for (var x = 0; x < berryList.split("\n").length; x++) {
+            if (berryList.split("\n")[x].includes(fullData[0] + " -")) {
+                value = berryList.split("\n")[x].split("- ")[1].split(" (")[0].replace(",", "") - 0;
+                switch(berryList.split("\n")[x].split(" (")[1].split(" ")[0]) {
+                    case "Normal": value += 2500; break;
+                    case "Super": value += 5000; break;
+                    case "Hyper": value += 10000; break;
+                }
+            }
+        }
     }
     return value;
 }
@@ -932,7 +979,7 @@ function ruleset(message) {
             else {
                 theRules += "6v6";
             }
-            theRules += "\nSM Public Box\nOHKO ACC EVA SLP FRZ Dynamax Imprison Clauses On\nHelds Off\nDefault Weather"
+            theRules += "\nSM Public Box\nStandard Clauses\nHelds Off"
             if (message.channel.name.includes("terrain")) {
                 var terrain = Math.floor(Math.random() * 4);
                 theRules += "\nRandom Terrain (";
@@ -944,9 +991,9 @@ function ruleset(message) {
                 }
                 theRules += ")";
             }
-            else {
+            /*else {
                 theRules += " and Terrain";
-            }
+            }*/
             theRules += "\nRoll for first send\nUnless otherwise stated, trainers will be using their default boxes and not excluding anything.";
             message.channel.send(theRules);
         }
@@ -1840,6 +1887,16 @@ function links(message) {
     if (lowmessage.indexOf(",job") == 0) { message.channel.send("https://forum.pokemonurpg.com/forumdisplay.php?fid=122"); }
     if (lowmessage.indexOf(",nervous") == 0) { message.channel.send("https://docs.google.com/document/d/1CG-djhjuUixajoyGeVcbx7Tfsb3XS50LA1UBSYAljOI/edit?usp=sharing"); }
     if (lowmessage.indexOf(",underground") == 0 || lowmessage.indexOf(",ug") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1720"); }
+    if (lowmessage.indexOf(",judgepedia") == 0) { message.channel.send("https://pokemonurpg.com/info/contests/judging-encyclopedia/"); }
+    if (lowmessage.indexOf(",recruit") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=9944"); }
+    if (lowmessage.indexOf(",mentor") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=9898"); }
+    if (lowmessage.indexOf(",legendlog") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=7034"); }
+    if (lowmessage.indexOf(",legendlist") == 0) { message.channel.send("https://pokemonurpg.com/info/general/legendary-list/"); }
+    if (lowmessage.indexOf(",fensketchfetch") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=9796"); }
+    if (lowmessage.indexOf(",trade") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1717"); }
+    if (lowmessage.indexOf(",parkshop") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1701"); }
+    else if (lowmessage.indexOf(",park") == 0) { message.channel.send("https://forum.pokemonurpg.com/forumdisplay.php?fid=73"); }
+    if (lowmessage.indexOf(",tierlist") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/19oUWIgeaXLa6u1Rrumrb6-5rT3hAf3Scg5DWBwllNzQ/edit#gid=0"); }
     for (var x = 1; x < tempLinks.content.split("\n").length; x++) {
         if (lowmessage.indexOf("," + tempLinks.content.split("\n")[x].split(" ")[0]) == 0) { message.channel.send(tempLinks.content.split("\n")[x].split(" ")[1]); }
     }
@@ -2984,7 +3041,7 @@ bot.on("message", async function(message) {
 
     await contestLog(message);
 
-    await hiddenPower(message);
+    await hpType(message);
 
     await stealthRock(message);
 

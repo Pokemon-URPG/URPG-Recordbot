@@ -1,0 +1,518 @@
+Venusaur/Ice/Yes
+Charizard/Ice/Yes
+Blastoise/Grass/Yes
+Butterfree/Ground/Yes
+Beedrill/Fire/No
+Pidgeot/Ground/Yes
+Raticate/Fighting/No
+Raticate-Alolan/Fire/No
+Fearow/Ice/No
+Arbok/Fighting/No
+Pikachu/Ice/Yes
+Pikachu-Belle/Fire/Yes
+Raichu/Ice/Yes
+Raichu-Alolan/Ice/Yes
+Sandslash/Ice/No
+Sandslash-Alolan/Fire/No
+Nidoqueen/Grass/Yes
+Nidoking/Grass/Yes
+Clefable/Ground/Yes
+Ninetales/Ice/Yes
+Ninetales-Alolan/Fire/Yes
+Wigglytuff/Ground/Yes
+Crobat/Ground/Yes
+Vileplume/Fire/Yes
+Bellossom/Fire/Yes
+Parasect/Rock/No
+Venomoth/Fire/Yes
+Dugtrio/Ice/No
+Dugtrio-Alolan/Ice/No
+Meowth/Ground/Yes
+Meowth-Alolan/Ground/Yes
+Persian/Ground/Yes
+Persian-Alolan/Ground/Yes
+Golduck/Grass/Yes
+Primeape/Psychic/No
+Arcanine/Ice/Yes
+Poliwrath/Grass/Yes
+Politoed/Grass/Yes
+Alakazam/Fire/Yes
+Machamp/Grass/No
+Victreebel/Ice/Yes
+Tentacruel/Ground/Yes
+Golem/Grass/No
+Golem-Alolan/Ice/No
+Rapidash/Ice/Yes
+Slowbro/Electric/Yes
+Slowking/Electric/Yes
+Magnezone/Ice/Yes
+Farfetch'd/Ground/No
+Dodrio/Fire/No
+Dewgong/Grass/Yes
+Muk/Grass/No
+Muk-Alolan/Grass/No
+Cloyster/Grass/Yes
+Gengar/Fire/Yes
+Onix/Fire/No
+Steelix/Grass/No
+Hypno/Rock or Ground/Yes
+Kingler/Grass/No
+Electrode/Ice/Yes
+Exeggutor/Fire/Yes
+Exeggutor-Alolan/Ice or Electric/Yes
+Marowak/Grass/No
+Marowak-Alolan/Grass/Yes
+Hitmonlee/Ice/No
+Hitmonchan/Grass/No
+Hitmontop/Fire/Yes
+Lickitung/Bug/No
+Lickilicky/Bug/Yes
+Weezing/Grass or Ice/Yes
+Weezing-Galar/Grass or Ice/Yes
+Rhydon/Grass/No
+Rhyperior/Grass/No
+Chansey/Ground/Yes
+Blissey/Ground/Yes
+Tangrowth/Fire/Yes
+Kangaskhan/Grass/No
+Kingdra/Electric/Yes
+Seaking/Grass/Yes
+Starmie/Fire/Yes
+Mr. Mime/Ground/Yes
+Mr. Mime-Galar/Fire/Yes
+Mr. Rime/Fire/Yes
+Scyther/Ground or Fire/Yes
+Scizor/Ground or Fire/Yes
+Jynx/Fire/Yes
+Electabuzz/Grass/Yes
+Electivire/Grass/Yes
+Magmar/Grass or Ice/Yes
+Magmortar/Ice/Yes
+Pinsir/Ice/No
+Tauros/Grass/No
+Magikarp/Flying/No
+Gyarados/Bug/No
+Lapras/Fire/Yes
+Ditto/Normal/No
+Eevee/Ground/Yes
+Vaporeon/Grass/Yes
+Jolteon/Ice or Grass/Yes
+Flareon/Ice or Grass/Yes
+Espeon/Fire or Fighting/Yes
+Umbreon/Grass or Fire/No
+Leafeon/Rock/Yes
+Glaceon/Ground or Fighting/Yes
+Sylveon/Ground/Yes
+Porygon2/Fire or Fighting/Yes
+Porygon-Z/Fire or Fighting/Yes
+Omastar/Grass/Yes
+Kabutops/Fire/No
+Aerodactyl/Grass/No
+Snorlax/Flying/No
+Articuno/Ground/Yes
+Zapdos/Ice/Yes
+Moltres/Ice/Yes
+Dragonite/Grass/Yes
+Mewtwo/Poison/Yes
+Mew/Flying/Yes
+Meganium/Fire/Yes
+Typhlosion/Ice/Yes
+Feraligatr/Grass/Yes
+Furret/Ground/No
+Noctowl/Ground/Yes
+Ledian/Ground/Yes
+Ariados/Fire/No
+Lanturn/Grass/Yes
+Togekiss/Ground/Yes
+Xatu/Fighting or Ground/Yes
+Ampharos/Ice/Yes
+Azumarill/Fire/No
+Sudowoodo/Water/No
+Jumpluff/Fire/Yes
+Ambipom/Ground/Yes
+Sunflora/Fire/Yes
+Yanmega/Ground/Yes
+Wooper/Fire/Yes
+Quagsire/Fire/Yes
+Murkrow/Fighting or Grass/Yes
+Honchkrow/Grass/Yes
+Mismagius/Fighting/Yes
+Unown/Psychic/Yes
+Wobbuffet/Shadow/Yes
+Girafarig/Fire/Yes
+Forretress/Ice/No
+Dunsparce/Grass/Yes
+Gligar/Grass/No
+Gliscor/Grass/No
+Granbull/Grass/No
+Qwilfish/Fire/No
+Shuckle/Fire/Yes
+Heracross/Ice/No
+Weavile/Fire/No
+Teddiursa/Grass/No
+Ursaring/Grass/No
+Magcargo/Ice/Yes
+Mamoswine/Fire/No
+Corsola/Grass/Yes
+Octillery/Fighting/Yes
+Delibird/Fire/Yes
+Mantine/Fire/Yes
+Skarmory/Ground/No
+Houndoom/Ice/Yes
+Donphan/Flying/No
+Stantler/Fire/Yes
+Smeargle/Shadow/Yes
+Miltank/Grass/No
+Raikou/Ice/Yes
+Entei/Ice/Yes
+Suicune/Grass/Yes
+Tyranitar/Grass/Yes
+Lugia/Fire/Yes
+Ho-oh/Ice/Yes
+Celebi/Fire/Yes
+Sceptile/Fire/Yes
+Blaziken/Ice/Yes
+Swampert/Fire/Yes
+Mightyena/Grass/No
+Linoone/Fire/No
+Beautifly/Fire/Yes
+Dustox/Fire/Yes
+Ludicolo/Rock/Yes
+Shiftry/Ground/Yes
+Swellow/Ground/Yes
+Pelipper/Ground/Yes
+Gardevoir/Ground/Yes
+Masquerain/Fire/Yes
+Breloom/Ice/Yes
+Slaking/Grass/Yes
+Ninjask/Fire or Ground/No
+Shedinja/Fighting/No
+Exploud/Grass/Yes
+Hariyama/Grass/No
+Probopass/Grass/Yes
+Delcatty/Fire (Dark if Normalize)/Yes
+Sableye/Ground/Yes
+Mawile/Ground/No
+Aggron/Grass/No
+Medicham/Water/No
+Manectric/Ice/Yes
+Plusle/Ice/Yes
+Minun/Ice/Yes
+Volbeat/Ground/Yes
+Illumise/Ground/Yes
+Roserade/Fire/Yes
+Swalot/Rock/Yes
+Sharpedo/Grass/Yes
+Wailord/Grass/Yes
+Numel/Ice or Grass/Yes
+Camerupt/Ice/Yes
+Torkoal/Ice/Yes
+Grumpig/Fire/Yes
+Spinda/Grass/Yes
+Flygon/Ice/Yes
+Cacturne/Fire/Yes
+Altaria/Grass/Yes
+Zangoose/Ground/No
+Seviper/Ice/Yes
+Lunatone/Fire/Yes
+Solrock/Ice/No
+Whiscash/Fire/Yes
+Crawdaunt/Grass/Yes
+Claydol/Fire/Yes
+Cradily/Fire/Yes
+Armaldo/Fire or Grass/No
+Milotic/Grass/Yes
+Castform/Ground/Yes
+Kecleon/Ground/Yes
+Banette/Fighting/Yes
+Dusclops/Grass or Fighting/Yes
+Dusknoir/Grass/Yes
+Tropius/Fire/Yes
+Chimecho/Fire/Yes
+Absol/Grass/Yes
+Glalie/Fire/Yes
+Froslass/Fire or Grass/Yes
+Walrein/Grass/Yes
+Huntail/Grass/Yes
+Gorebyss/Grass/Yes
+Relicanth/Grass/No
+Luvdisc/Grass/Yes
+Salamence/Grass/Yes
+Metagross/Fire/Yes
+Regirock/Grass/No
+Regice/Fire/Yes
+Registeel/Fire or Grass/Yes
+Latias/Rock/Yes
+Latios/Rock/Yes
+Kyogre/Grass/Yes
+Groudon/Ice/Yes
+Rayquaza/Bug or Flying/Yes
+Jirachi/Ground/Yes
+Deoxys/Ground or Rock or Fire/Yes
+Torterra/Fire/Yes
+Infernape/Ice/Yes
+Empoleon/Fire/Yes
+Staraptor/Ground/No
+Bibarel/Fire/Yes
+Kricketune/Fire/No
+Luxray/Ground/Yes
+Rampardos/Grass/No
+Bastiodon/Grass/No
+Wormadam-Plant/Rock/Yes
+Wormadam-Sandy/Ice or Fire/Yes
+Wormadam-Trash/Ground or Fire/Yes
+Mothim/Fire/Yes
+Vespiquen/Ground/Yes
+Pachirisu/Ice/Yes
+Floatzel/Grass/Yes
+Cherrim/Ice/Yes
+Gastrodon/Fire/Yes
+Drifblim/Fighting/Yes
+Lopunny/Ground/No
+Purugly/Fire/No
+Skuntank/Grass/Yes
+Bronzong/Fire/Yes
+Chatot/Fighting or Ground/Yes
+Spiritomb/Fighting/Yes
+Garchomp/Grass/Yes
+Lucario/Grass/Yes
+Hippowdon/Grass/No
+Drapion/Grass/No
+Toxicroak/Grass/Yes
+Carnivine/Fire/Yes
+Lumineon/Grass/Yes
+Abomasnow/Fire/Yes
+Rotom-Normal/Fighting/Yes
+Rotom-Heat/Ice/Yes
+Rotom-Wash/Ice/Yes
+Rotom-Frost/Fire/Yes
+Rotom-Fan/Ground or Fire/Yes
+Rotom-Mow/Ice/Yes
+Uxie/Ground/Yes
+Mesprit/Ground/Yes
+Azelf/Ground/Yes
+Dialga/Grass/Yes
+Palkia/Grass/Yes
+Heatran/Ice/Yes
+Regigigas/Grass/Yes
+Giratina/Fire/Yes
+Cresselia/Fire/Yes
+Phione/Fire or Ground/Yes
+Manaphy/Fire or Ground/Yes
+Darkrai/Fire/Yes
+Shaymin/Ice/Yes
+Arceus/Flying/Yes
+Victini/Steel/Yes
+Serperior/Rock or Fire or Ice/Yes
+Emboar/Ice/Yes
+Samurott/Fire/Yes
+Watchog/Ground/No
+Stoutland/Grass/No
+Liepard/Ice/Yes
+Simisage/Fire/Yes
+Simisear/Ice/Yes
+Simipour/Fire/Yes
+Musharna/Fire/Yes
+Unfezant/Ground/No
+Zebstrika/Ice/Yes
+Gigalith/Fire/No
+Swoobat/Fighting or Ground/Yes
+Excadrill/Grass or Ice/No
+Audino/Ground/Yes
+Conkeldurr/Flying/No
+Seismitoad/Fire/Yes
+Throh/Flying/No
+Sawk/Flying/No
+Leavanny/Rock/Yes
+Scolipede/Ice/No
+Whimsicott/Ground/Yes
+Lilligant/Fire/Yes
+Basculin/Grass/Yes
+Krookodile/Ice/No
+Darmanitan-Unova/Ice/Yes
+Maractus/Ice or Ground/Yes
+Crustle/Ice or Grass/Yes
+Scrafty/Ground/No
+Sigilyph/Fighting or Ground/Yes
+Cofagrigus/Fire/Yes
+Carracosta/Grass/Yes
+Archeops/Grass/Yes
+Garbodor/Ice or Fire/No
+Zoroark/Ice/Yes
+Cinccino/Fire or Ground/Yes
+Gothitelle/Fire/Yes
+Reuniclus/Fire/Yes
+Swanna/Grass or Fire/Yes
+Vanilluxe/Ground/Yes
+Sawsbuck/Fire/No
+Emolga/Ice/Yes
+Escavalier/Fire/No
+Amoongus/Fire or Ice/Yes
+Jellicent/Fire/Yes
+Alomomola/Grass/No
+Galvantula/Ice/Yes
+Ferrothorn/Rock/No
+Klinklang/Fire/Yes
+Eelektross/Ice/Yes
+Beheeyem/Fire/Yes
+Chandelure/Ice/Yes
+Haxorus/Ice/No
+Cubchoo/Ground/Yes
+Beartic/Fire/No
+Cryogonal/Fire/Yes
+Accelgor/Ice/Yes
+Stunfisk/Ice/Yes
+Mienshao/Ice/Yes
+Druddigon/Grass/No
+Golurk/Water/No
+Bisharp/Ice/No
+Bouffalant/Fire/No
+Braviary/Ground/No
+Mandibuzz/Fighting/Yes
+Heatmor/Ice/Yes
+Durant/Fire/No
+Hydreigon/Grass/Yes
+Volcarona/Ice/Yes
+Cobalion/Grass or Ice/Yes
+Terrakion/Ice/Yes
+Virizion/Ice/Yes
+Tornadus/Ground/Yes
+Thundurus/Ice/Yes
+Reshiram/Grass/Yes
+Zekrom/Grass or Ice/Yes
+Landorus/Ice/Yes
+Kyurem-Base/Fire/Yes
+Kyurem-White/Fighting/Yes
+Kyurem-Black/Fire/Yes
+Keldeo/Grass/Yes
+Meloetta/Ground/Yes
+Genesect/Ground/Yes
+Chesnaught/Ice/No
+Delphox/Ice/Yes
+Greninja/Fire/Yes
+Diggersby/Bug/No
+Talonflame/Ice/Yes
+Vivillon/Fire/Yes
+Pyroar/Ice/Yes
+Florges/Ground/Yes
+Gogoat/Ice/Yes
+Pangoro/Literally whatever you want/No
+Furfrou/Ground/Yes
+Meowstic/Fire/Yes
+Aegislash/Grass/Yes
+Aromatisse/Ground/Yes
+Slurpuff/Ground/Yes
+Malamar/Ice/Yes
+Barbaracle/Fire/Yes
+Dragalge/Fire/Yes
+Clawitzer/Grass/Yes
+Heliolisk/Ice/Yes
+Tyrantrum/Grass/No
+Aurorus/Fire/Yes
+Hawlucha/Ice/Yes
+Dedenne/Ice/Yes
+Carbink/Fire/Yes
+Goodra/Rock/Yes
+Klefki/Ground/Yes
+Trevenant/Ice/Yes
+Gourgeist/Ice/Yes
+Avalugg/Fire/No
+Noivern/Grass/Yes
+Xerneas/Ground/Yes
+Yveltal/Poison/Yes
+Zygarde/Fire/Yes
+Diancie/Grass/Yes
+Hoopa/Ground/Yes
+Volcanion/Grass or Ice/Yes
+Decidueye/Ice/Yes
+Incineroar/Ice/Yes
+Primarina/Ground/Yes
+Toucannon/Ground/No
+Gumshoos/Grass/No
+Vikavolt/Ice/Yes
+Crabominable/Fire/No
+Oricorio-Baile/Ice/Yes
+Oricorio-PomPom/Ice/Yes
+Oricorio-Pa'u/Fire/Yes
+Oricorio-Sensu/Fighting/Yes
+Ribombee/Ground/Yes
+Lycanroc/Grass on all forms/No
+Wishiwashi/Grass/Yes
+Toxapex/Fire or Grass/Yes
+Mudsdale/Ice/No
+Araquanid/Ground/No
+Lurantis/Rock or Fire or Ice/Yes
+Shiinotic/Ground/Yes
+Salazzle/Ice/Yes
+Bewear/Grass/No
+Tsareena/Fire/No
+Comfey/Ground/Yes
+Oranguru/Fire/Yes
+Passimian/Ice/No
+Golisopod/Grass/No
+Palossand/Ice/Yes
+Silvally/Fighting or Ground/Yes
+Minior/Fire or Fighting/Yes
+Komala/Fire or Ice/Yes
+Turtonator/Grass/Yes
+Togedemaru/Ice/No
+Mimikyu/Ground/No
+Bruxish/Grass/No
+Drampa/Ground or Fighting/Yes
+Dhelmise/Ice/Yes
+Kommo-o/Grass/Yes
+Tapu Koko/Ice/Yes
+Tapu Lele/Fire/Yes
+Tapu Bulu/Fire/Yes
+Tapu Fini/Fire/Yes
+Solgaleo/Grass/Yes
+Lunala/Ground/Yes
+Nihilego/Ice/Yes
+Buzzwole/Fire/No
+Pheromosa/Grass or Fire/Yes
+Xurkitree/Ice/Yes
+Celesteela/Ice/Yes
+Kartana/Rock/No
+Guzzlord/Grass/Yes
+Necrozma/Grass/Yes
+Necrozma-Dusk/Grass/Yes
+Necrozma-Dawn/Fighting/Yes
+Magearna/Fire/Yes
+Marshadow/Ground/Yes
+Naganadel/Grass/Yes
+Stakataka/Grass/No
+Blacephalon/Ice/Yes
+Zeraora/Ice/Yes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
