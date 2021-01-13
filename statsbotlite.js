@@ -735,7 +735,7 @@ function hpType(message) {
         const desiredpoke = lowmessage.substring(4)
         var bestGuess = 0;
         var diff = -1;
-        for (let x = 0; x < moves.length; x ++) {
+        for (let x = 0; x < pokes.length; x ++) {
             if (ss.compareTwoStrings(pokes[x].split("/")[0].toLowerCase(), desiredpoke) > diff) {
                 bestGuess = x;
                 diff = ss.compareTwoStrings(pokes[x].split("/")[0].toLowerCase(), desiredpoke);
