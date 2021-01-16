@@ -1012,6 +1012,7 @@ function ruleset(message) {
         if(lowmessage.indexOf("battle dome") == 0) message.channel.send("6v6\nS/M Private Doubles\nHelds On\nNo Starting Weather\nDefault Terrain\nStandard Clauses\nNo Legendary Pokémon\nDefender’s Choice: Item/Species Clause, Preview vs Full, Mega/Z-Move/Dynamax Clauses (at least one must be on, Dynamax cannot be off with others off)\nGold: Dome Brains make a pool of 8 Pokemon, and can send as if the battle were Private Open with those Pokemon (their items and abilities must still be sent at the start).");
         if(lowmessage.indexOf("maylee") == 0) message.channel.send("6v6 SM Private Full\nStandard Clauses\nNo Legendary Pokémon\nHelds on\n\nIf both battlers agree, the following rules may be changed: Mega/Z/Item/Species, Helds off instead of on, Preview instead of Full");
         if(lowmessage.indexOf("lavender") == 0) message.channel.send("6v6\nSM Public Box\nSingles or Doubles\nHolds On\nStandard/Item/Species Clauses\nNo Legendary Pokémon\nMegas Allowed\nZ-Moves Allowed\nChallenger Sends First");
+	if(lowmessage.indexOf("monsu ") == 0) message.channel.send("Monsu Island Gym\nNight Badge\n6v6 SM Public Box\nStandard Clauses\n-Megas Allowed\nHolds On\nItems/Species Clause\nLegends Not Allowed\nChallenger Sends First\nTM83: Thief. Gym Pokémon know Thief if they're able to learn it via TM");
         if(lowmessage.indexOf("ffa") == 0) message.channel.send("SM Private Full\nNo Holds\nNo Sleep Moves (Barring Rest)\nEVA/ACC/OHKO/Imprison/Dyanamax Clauses\nPerish Song Fails\nPerish Body banned\nHit All - Hit One\nEncore Fails\nAttract Fails\nRage Powder/Follow Me/Spotlight Fails\nRedirects On\nIllusion Pokémon disguises as a random Pokémon from the National Pokédex\nImposter, Download, and Intimidate select a random participating Pokémon\nNot sending or forfeiting results in KO at the beginning of the turn");
         if(lowmessage.indexOf("randomize") == 0) {
             var numPok = Math.floor(Math.random() * 5) + 2;
@@ -2218,7 +2219,7 @@ async function tempChannelWebhook(message, messageMember) {
     }
     if (whid == null) { return; }
     var whl = await message.guild.fetchWebhooks();
-    var wh = await whl.cache.get(whid);
+    var wh = await whl.get(whid);
     await wh.send(message.content, { username: message.member.displayName, avatarURL: message.author.displayAvatarURL(), embeds: message.embeds || [] });
 }
 
@@ -2669,7 +2670,6 @@ async function fixOrder(channel, messageMember) {
 		channels.push(theList.content.split("\n")[x]);
 	}
 	await fixOrderChannel(channels);
-        if (channel != null) { await channel.send("Reordering complete!"); }
     }
 }
 
@@ -2679,6 +2679,9 @@ async function fixOrderChannel(channels) {
 		setTimeout(function () {
 			fixOrderChannel(channels);
 		}, 2000);
+	}
+	else {
+		if (channel != null) { await channel.send("Reordering complete!"); }
 	}
 }
 
