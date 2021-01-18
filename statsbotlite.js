@@ -733,6 +733,7 @@ function hpType(message) {
 
         const pokes = pokelist.split("\n")
         const desiredpoke = lowmessage.substring(4)
+	desiredpoke = desiredpoke.replace("-a", "-alola").replace("-g", "-galar");
         var bestGuess = 0;
         var diff = -1;
         for (let x = 0; x < pokes.length; x ++) {
@@ -746,7 +747,7 @@ function hpType(message) {
             theMessage += "\nI wouldn't use Hidden Power on it very often though...";
         }
         if (pokes[bestGuess].split("/")[0] == "Greninja") {
-            theMessage += "\nhttps://forum.pokemonurpg.com/showthread.php?tid=10219";
+            theMessage += "\nI would send it here <https://forum.pokemonurpg.com/showthread.php?tid=10219>!";
         }
         message.channel.send(theMessage);
     }
@@ -1005,7 +1006,7 @@ function ruleset(message) {
         if(lowmessage.indexOf("ashrandoms") == 0) message.channel.send("6v6\nSM Public Box (Roll your 6 and use that as your Box)\nStandard Clauses\nHelds On\nRandom Weather and Terrain\nMegas allowed if *both* trainers roll a Mega they can use\nRoll for first send\n\nAny changes?");
         if(lowmessage.indexOf("fortree") == 0) message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nStandard/Species Clauses\nNo Legendary Pokémon\nMegas Allowed\nChallenger Sends First");
         if(lowmessage.indexOf("ashmockfire") == 0) message.channel.send("6v6\nSM Public Box\nSnow Terrain\nSun\nHolds On\nStandard/Species Clauses\nNo Legendary Pokémon\nMegas Allowed\nChallenger Sends First\n\n**__Owned Legal Pokémon:__**\nFires: Arcanine, Blaziken, Centiskorch, Chandelure, Charizard, Cinderace, Coalossal, Delphox, Flareon, Houndoom, Marowak-Alola Ninetales-Kanto, Numel, Pignite, Talonflame, Torkoal, Turtonator, Volcarona\nWC: Leafeon, Salamence, Solrock"); //Gym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Cinderace, Delphox, Flareon, Houndoom, Marowak (Alola), Numel, Salamence, Talonflame, Torkoal, Turtonator, Volcarona.  Yours may be whatever you wish.");
-        if(lowmessage.indexOf("ashmockdragon") == 0) message.channel.send("6v6\nSM Public Box\nPower Plant Terrain\nRain\nHolds On\nStandard/Species Clauses\nNo Legendary Pokémon\nMegas Allowed\nChallenger Sends First\n\n**__Owned Legal Pokémon:__**\nDragons: Altaria, Appletun, Dracovish, Dracozolt, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Duraludon, Exeggutor-A, Flapple, Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Salamence, Turtonator, Tyrantrum\nWC: Ampharos, Charizard, Sceptile"); //Gym Leader's Box will be Altaria, Charizard, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
+        if(lowmessage.indexOf("ashmockdragon") == 0) message.channel.send("6v6\nSM Public Box\nPower Plant Terrain\nRain\nHolds On\nStandard/Species Clauses\nNo Legendary Pokémon\nMegas Allowed\nChallenger Sends First\n\n**__Owned Legal Pokémon:__**\nDragons: Altaria, Appletun, Dracovish, Dracozolt, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Duraludon, Exeggutor-A, Flapple, Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Salamence, Turtonator, Tyrantrum, Zygarde-10%\nWC: Ampharos, Charizard, Sceptile"); //Gym Leader's Box will be Altaria, Charizard, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
         if(lowmessage.indexOf("ashmockpsychic") == 0) message.channel.send("6v6\nSM Public Box\nDojo Terrain\nSun\nHolds On\nStandard/Species Clauses\nNo Legendary Pokémon\nMegas Allowed\nChallenger Sends First\n\n**__Owned Legal Pokémon:__**\nAlakazam, Delphox, Espeon, Gallade, Gardevoir, Indeedee-Female, Lunatone, Medicham, Metagross, Mr. Mime-Kanto, Orbeetle, Sigilyph, Slowking, Solrock, Starmie, Xatu\nWC: Mienshao, Ninetales-Kanto");
         if(lowmessage.indexOf("mt. chimney") == 0) message.channel.send("4v4-6v6\nSM Public Box\nTall Grass Terrain\nSun\nHelds On\nStandard/Species Clauses\nZ/Mega/Item Clause Challenger Dependant\nChallenger Sends First");
         if(lowmessage.indexOf("canalave") == 0) message.channel.send("Canalave City Gym.\nTM 128 – Gyro Ball.\n4v4 or 6v6\nSM Public Box\nStandard Clauses\nNo Legendary Pokémon\nZ / Item / Mega Clauses may be toggled depending on the challenger\nHelds On\nSandstorm Weather\nChallenger Sends First");
@@ -2486,8 +2487,53 @@ async function archiver(message, messageMember) {
             ]
         })
     }
-    else if ((lowmessage == ",privatearchive" || lowmessage == ",private archive" || lowmessage == ",archive private") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.cache.has("584764993044611075"))) {
+    else if ((lowmessage == ",disciplinaryarchive" || lowmessage == ",disciplinary archive" || lowmessage == ",archive disciplin") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.cache.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("432291722492379136"));
+        await message.channel.replacePermissionOverwrites({
+            overwrites: [
+                {
+                    id: message.guild.id,
+                    denied: ['VIEW_CHANNEL']
+                },
+                {
+                    id: "135868852092403713",
+                    allowed: ['VIEW_CHANNEL']    
+                }
+            ]
+        })
+    }
+    else if ((lowmessage == ",sectionalarchive" || lowmessage == ",sectionarchive" || lowmessage == ",archive section") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.cache.has("584764993044611075"))) {
+        await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("729845430736650352"));
+        await message.channel.replacePermissionOverwrites({
+            overwrites: [
+                {
+                    id: message.guild.id,
+                    denied: ['VIEW_CHANNEL']
+                },
+                {
+                    id: "135868852092403713",
+                    allowed: ['VIEW_CHANNEL']    
+                }
+            ]
+        })
+    }
+    else if ((lowmessage == ",applicationsarchive" || lowmessage == ",appsarchive" || lowmessage == ",archive app") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.cache.has("584764993044611075"))) {
+        await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("729843009226670080"));
+        await message.channel.replacePermissionOverwrites({
+            overwrites: [
+                {
+                    id: message.guild.id,
+                    denied: ['VIEW_CHANNEL']
+                },
+                {
+                    id: "135868852092403713",
+                    allowed: ['VIEW_CHANNEL']    
+                }
+            ]
+        })
+    }
+    else if ((lowmessage == ",teamsarchive" || lowmessage == ",teamarchive" || lowmessage == ",archive team") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.cache.has("584764993044611075"))) {
+        await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("729845561951387708"));
         await message.channel.replacePermissionOverwrites({
             overwrites: [
                 {
