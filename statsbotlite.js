@@ -732,8 +732,7 @@ function hpType(message) {
         }
 
         const pokes = pokelist.split("\n")
-        const desiredpoke = lowmessage.substring(4)
-	desiredpoke = desiredpoke.replace("-a", "-alola").replace("-g", "-galar");
+        const desiredpoke = lowmessage.substring(4).replace("-a", "-alola").replace("-g", "-galar");
         var bestGuess = 0;
         var diff = -1;
         for (let x = 0; x < pokes.length; x ++) {
