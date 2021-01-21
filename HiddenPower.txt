@@ -49,8 +49,8 @@ Magnezone/Ice/Yes
 Farfetch'd/Ground/No
 Dodrio/Fire/No
 Dewgong/Grass/Yes
-Muk/Grass/No
-Muk-Alolan/Grass/No
+Muk/Ground/No
+Muk-Alolan/Ground/No
 Cloyster/Grass/Yes
 Gengar/Fire/Yes
 Onix/Fire/No
@@ -114,7 +114,7 @@ Zapdos/Ice/Yes
 Moltres/Ice/Yes
 Dragonite/Grass/Yes
 Mewtwo/Poison/Yes
-Mew/Flying/Yes
+Mew/Flying/No
 Meganium/Fire/Yes
 Typhlosion/Ice/Yes
 Feraligatr/Grass/Yes
@@ -300,7 +300,7 @@ Giratina/Fire/Yes
 Cresselia/Fire/Yes
 Phione/Fire or Ground/Yes
 Manaphy/Fire or Ground/Yes
-Darkrai/Fire/Yes
+Darkrai/Grass/Yes
 Shaymin/Ice/Yes
 Arceus/Flying/Yes
 Victini/Steel/Yes
