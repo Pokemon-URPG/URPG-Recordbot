@@ -1885,6 +1885,7 @@ function links(message) {
     if (lowmessage.indexOf(",chartoras") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1fFEREf42ZNBkesU0GbNPH9veIFGp0xDxxgIdqVufz7Q/edit#gid=38422135"); }
     if (lowmessage.indexOf(",chartdppt") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/19n2yGw38xVqak0GTVjB4dN4M1k_Ix7WEnUsufT9uRes/edit?usp=sharing"); }
     if (lowmessage.indexOf(",chartterrain") == 0) { message.channel.send(new Discord.MessageEmbed().setImage("https://media.discordapp.net/attachments/275674541915766796/737905447910113400/unknown.png")); }
+    if (lowmessage.indexOf(",priority") == 0) { message.channel.send(new Discord.MessageEmbed().setImage("https://media.discordapp.net/attachments/362761745275551744/802346860408864808/unknown.png")); }
     if (lowmessage.indexOf(",job") == 0) { message.channel.send("https://forum.pokemonurpg.com/forumdisplay.php?fid=122"); }
     if (lowmessage.indexOf(",nervous") == 0) { message.channel.send("https://docs.google.com/document/d/1CG-djhjuUixajoyGeVcbx7Tfsb3XS50LA1UBSYAljOI/edit?usp=sharing"); }
     if (lowmessage.indexOf(",underground") == 0 || lowmessage.indexOf(",ug") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1720"); }
