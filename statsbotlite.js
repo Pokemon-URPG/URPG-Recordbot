@@ -85,9 +85,10 @@ bot.once("ready", async function () {
     setTimeout(function () {
         weirrrrrReminder();
     }, ((784800000) - (d.getTime() % 604800000)) % 604800000);
-    /*setTimeout(function () {
+    setTimeout(function () {
         weirrrrrReminderJ();
-    }, ((871200000) - (d.getTime() % 604800000)) % 604800000);*/
+    }, ((99200000) - (d.getTime() % 43200000)) % 43200000);
+    //}, ((871200000) - (d.getTime() % 604800000)) % 604800000);
     setTimeout(function () {
         codeRemind();
     }, ((100800000) - (d.getTime() % 86400000)) % 86400000);
@@ -412,9 +413,10 @@ function weirrrrrReminder() {
 }
 
 function weirrrrrReminderJ() {
-    var d = new Date();
+    bot.channels.cache.get(logsChannel).send("Work on the thing 😉 <@140308490609623041>");
+    /*var d = new Date();
     if (d.getUTCDate() < 2 || d.getUTCDate() > 8) { return; }
-    bot.channels.cache.get(logsChannel).send("WEIRRRRR Judge the WAGESSSSSS (do judge wages) <@140308490609623041>");
+    bot.channels.cache.get(logsChannel).send("WEIRRRRR Judge the WAGESSSSSS (do judge wages) <@140308490609623041>");*/
 }
 
 function randomRotations() {
@@ -955,7 +957,7 @@ function rank(message) {
                     try { pokemonlist = fs.readFileSync("berry.txt", "utf8") } catch (err) {
                         if (err.code === "ENOENT") { message.channel.send("Sorry, my berry store file seems to be missing!"); pokemonlist = "\n\n\n\n\n\n\n\n\n\n" } else { throw err }
                     }
-                    if (pokemonlist.toLowerCase().indexOf(rankpoke[0].toLowerCase()) != -1) { themessage += "\nYou can also find it in the Berry Store for $" + pokemonlist.substring(pokemonlist.toLowerCase().indexOf(rankpoke[0].toLowerCase()) + rankpoke[0].length + 3).split("\n")[0].split("\n")[0] + "!";}
+                    if (pokemonlist.toLowerCase().indexOf(rankpoke[0].toLowerCase()) != -1) { themessage += "\nYou can also find it in the Berry Store for $" + pokemonlist.substring(pokemonlist.toLowerCase().lastIndexOf(rankpoke[0].toLowerCase()) + rankpoke[0].length + 3).split("\n")[0].split("\n")[0] + "!";}
                     if (value > 0) { themessage += "\nTrade value: $" + value.toLocaleString(); }
                     message.channel.send(themessage)
                 /*}
