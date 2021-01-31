@@ -373,10 +373,10 @@ async function payDay(message, messageMember) {
     }
 }
 
-function payDayReset() {
+async function payDayReset() {
     let oldPayDay = payDayLog.cleanContent;
     bot.channels.cache.get(logsChannel).send("Pay Day reset.  Previously:\n\n" + oldPayDay);
-    payDayLog.edit("Those who have gotten Pay Day this week:\n");
+    await payDayLog.edit("Those who have gotten Pay Day this week:\n");
     payDayLog = await bot.channels.cache.get(botCommands).messages.fetch("658883162000195607");
 }
 
@@ -403,10 +403,10 @@ async function pickUp(message, messageMember) {
     }
 }
 
-function pickUpReset() {
+async function pickUpReset() {
     let oldPickUp = pickUpLog.cleanContent;
     bot.channels.cache.get(logsChannel).send("Pickup reset.  Previously:\n\n" + oldPickUp);
-    pickUpLog.edit("Those who have gotten Pickup this week:\n");
+    await pickUpLog.edit("Those who have gotten Pickup this week:\n");
     pickUpLog = await bot.channels.cache.get(botCommands).messages.fetch("658884961603944478");
 }
 
