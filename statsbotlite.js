@@ -377,6 +377,7 @@ function payDayReset() {
     let oldPayDay = payDayLog.cleanContent;
     bot.channels.cache.get(logsChannel).send("Pay Day reset.  Previously:\n\n" + oldPayDay);
     payDayLog.edit("Those who have gotten Pay Day this week:\n");
+    payDayLog = await bot.channels.cache.get(botCommands).messages.fetch("658883162000195607");
 }
 
 async function pickUp(message, messageMember) {
@@ -398,7 +399,7 @@ async function pickUp(message, messageMember) {
         message.channel.send(output);
         await bot.channels.cache.get("531433553225842700").send("```" + pickUpLog.content + "```");
 	await pickUpLog.edit(newLog);
-        pickUpLog = await bot.channels.cache.get(botCommands).messages.fetch("658883162000195607");
+    	pickUpLog = await bot.channels.cache.get(botCommands).messages.fetch("658884961603944478");
     }
 }
 
@@ -406,6 +407,7 @@ function pickUpReset() {
     let oldPickUp = pickUpLog.cleanContent;
     bot.channels.cache.get(logsChannel).send("Pickup reset.  Previously:\n\n" + oldPickUp);
     pickUpLog.edit("Those who have gotten Pickup this week:\n");
+    pickUpLog = await bot.channels.cache.get(botCommands).messages.fetch("658884961603944478");
 }
 
 function weirrrrrReminder() {
@@ -2741,7 +2743,7 @@ async function pkmnSpoilerSeason(message, messageMember) {
         for (i = 0; i < spoilers.length; i++) {
             await spoilers[i].roles.remove(message.guild.roles.cache.get("440004078219558912"));
         }
-        await bot.channels.cache.get("440004235635982336").setName("spoilers-" + message.cleanContent.split(" ")[1]);
+        await bot.channels.cache.get("440004235635982336").setName("💭spoilers-" + message.cleanContent.split(" ")[1]);
         await message.channel.send("Pokémon spoiler season now set to <#440004235635982336>.");
     }
 }
@@ -2753,7 +2755,7 @@ async function otherSpoilerSeason(message, messageMember) {
         for (i = 0; i < spoilers.length; i++) {
             await spoilers[i].roles.remove(message.guild.roles.cache.get("597313962798874626"));
         }
-        await bot.channels.cache.get("597314223483387905").setName("spoilers-" + message.cleanContent.split(" ")[1]);
+        await bot.channels.cache.get("597314223483387905").setName("💭spoilers-" + message.cleanContent.split(" ")[1]);
         await message.channel.send("Other spoiler season now set to <#597314223483387905>.");
     }
 }
