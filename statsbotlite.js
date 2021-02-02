@@ -2321,6 +2321,16 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("552232839861633046")}${message.content.substring(commandLength)}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("552232839861633046").setMentionable(false);
     }
+    if ((lowmessage.indexOf(",mentionadv") == 0 || lowmessage.indexOf(",mention adv") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has(judgeRole))) {
+        var commandLength = 11;
+        if (lowmessage.indexOf(",mention ") == 0) { commandLength += 1; }
+        if (lowmessage.indexOf("advanced") < commandLength) { commandLength += 5; }
+        if (lowmessage.indexOf("coordinators") < commandLength) { commandLength += 12; }
+        else if (lowmessage.indexOf("coordinator") < commandLength) { commandLength += 11; }
+        //await bot.guilds.cache.get(urpgServer).roles.cache.get("552232839861633046").setMentionable(true);
+        await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("806290347479007304")}${message.content.substring(commandLength)}`);
+        //await bot.guilds.cache.get(urpgServer).roles.cache.get("552232839861633046").setMentionable(false);
+    }
     if ((lowmessage.indexOf(",mentionroyale") == 0 || lowmessage.indexOf(",mention royale") == 0 || lowmessage.indexOf(",mentionbattleroyale") == 0 || lowmessage.indexOf(",mention battleroyale") == 0 || lowmessage.indexOf(",mention battle royale") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has(refRole))) {
         var commandLength = 14;
         if (lowmessage.indexOf(",mention ") == 0) { commandLength += 1; }
