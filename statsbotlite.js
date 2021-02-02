@@ -1004,7 +1004,7 @@ function ruleset(message) {
         if(lowmessage.indexOf("ppr") == 0) message.channel.send("6v6\nSM Public Preview\nStandard Clauses\nHelds Off\nDefault Weather and Terrain\nRoll for first send");
         if(lowmessage.indexOf("hidden") == 0) message.channel.send("6v6\nSM Private Preview\nStandard Clauses\nHelds Off\nDefault Weather and Terrain");
         if(lowmessage.indexOf("competitive") == 0) message.channel.send("6v6\nSM Private Preview\nStandard Clauses\nNo Legendary Pokémon\nHelds On\nDefault Weather and Terrain");
-        if(lowmessage.indexOf("e4") == 0 || lowmessage.indexOf("elite") != -1) message.channel.send("6 vs 6\nSM Private Full or SM Private Preview\nItems Allowed\nStandard Clauses\nNo Legendary Pokemon\nDefender’s Choice: Dyanamax Allowed OR Mega & Z Allowed, Species Clause, Item Clause, Weather, Terrain");
+        if(lowmessage.indexOf("e4") == 0 || lowmessage.indexOf("elite") != -1) message.channel.send("6 vs 6\nSM Private Full or SM Private Preview\nItems Allowed\nStandard Clauses\nNo Legendary Pokemon\nDefender’s Choice: Dynamax Allowed OR Mega & Z Allowed, Species Clause, Item Clause, Weather, Terrain");
         if(lowmessage.indexOf("ld") == 0) message.channel.send("4 VS. 4+\nSM Private Full or Preview\nItems Optional\nStandard Clauses\nNo Legendary Pokémon\nMega, Z, Dyanamax, Item and Species Clauses Optional\nStarting Weather and Terrain Optional");
         if(lowmessage.indexOf("ashrandoms") == 0) message.channel.send("6v6\nSM Public Box (Roll your 6 and use that as your Box)\nStandard Clauses\nHelds On\nRandom Weather and Terrain\nMegas allowed if *both* trainers roll a Mega they can use\nRoll for first send\n\nAny changes?");
         if(lowmessage.indexOf("fortree") == 0) message.channel.send("6v6\nSM Public Box\nVolcano Terrain\nSun\nHolds On\nStandard/Species Clauses\nNo Legendary Pokémon\nMegas Allowed\nChallenger Sends First");
@@ -1015,6 +1015,7 @@ function ruleset(message) {
         if(lowmessage.indexOf("canalave") == 0) message.channel.send("Canalave City Gym.\nTM 128 – Gyro Ball.\n4v4 or 6v6\nSM Public Box\nStandard Clauses\nNo Legendary Pokémon\nItem and Mega Clauses may be toggled depending on the challenger\nHelds On\nSandstorm Weather\nChallenger Sends First");
         if(lowmessage.indexOf("battle dome") == 0) message.channel.send("6v6\nS/M Private Doubles\nHelds On\nNo Starting Weather\nDefault Terrain\nStandard Clauses\nNo Legendary Pokémon\nDefender’s Choice: Item/Species Clause, Preview vs Full, Mega/Z-Move/Dynamax Clauses (at least one must be on, Dynamax cannot be off with others off)\nGold: Dome Brains make a pool of 8 Pokemon, and can send as if the battle were Private Open with those Pokemon (their items and abilities must still be sent at the start).");
         if(lowmessage.indexOf("maylee") == 0) message.channel.send("6v6 SM Private Full\nStandard Clauses\nNo Legendary Pokémon\nHelds on\n\nIf both battlers agree, the following rules may be changed: Mega/Z/Item/Species, Helds off instead of on, Preview instead of Full");
+	if(lowmessage.indexOf("battle tag") == 0) message.channel.send("6v6\nSM Public Box\nStandard Clauses\nHelds/Item Clause On, Mega/Z Clause Off\nRoll for first send\nUnless otherwise stated, trainers will be using their default boxes and not excluding anything.\n\nThe two participants may agree to use any of the following rules instead.\n\nPrivate\nPreview/Full\nHelds Off, Species Clause, Mega Clause, Z Clause On, Legend Clause Off");
         if(lowmessage.indexOf("lavender") == 0) message.channel.send("6v6\nSM Public Box\nSingles or Doubles\nHolds On\nStandard/Item/Species Clauses\nNo Legendary Pokémon\nMegas Allowed\nZ-Moves Allowed\nChallenger Sends First");
 	if(lowmessage.indexOf("monsu") == 0) message.channel.send("Monsu Island Gym\nNight Badge\n6v6 SM Public Box\nStandard Clauses\n-Megas Allowed\nHolds On\nItems/Species Clause\nLegends Not Allowed\nChallenger Sends First\nTM83: Thief. Gym Pokémon know Thief if they're able to learn it via TM");
 	if(lowmessage.indexOf("shock") == 0) message.channel.send("6v6\nSM Public Box\nStandard Clauses\nHelds On, Mega Clause Off\nRoll for first send\nUnless otherwise stated, trainers will be using their default boxes and not excluding anything.");
@@ -1043,6 +1044,7 @@ function ruleset(message) {
             var mzmax = Math.floor(Math.random() * 5);
             var weather = Math.floor(Math.random() * 5);
             var terrain = Math.floor(Math.random() * 22);
+	    var pc = Math.floor(Math.random() * 2);
             if (lowmessage.indexOf("-dynamax") != -1) {
                 if (lowmessage.indexOf("-mega") != -1) {
                     if (lowmessage.indexOf("-z") != -1) {mzmax = 3;}
@@ -1169,16 +1171,17 @@ function ruleset(message) {
             if (itemc == 0 && items == 0) {rules += "Item Clause\n";}
             if (spc == 0) {rules += "Species Clause\n";}
             if (imp == 0) {rules += "Imprison Clause\n";}
+	    if (pc == 0) {rules += "Power Construct Disallowed\n";}
             if (items == 0) {
                 switch(mzmax) {
-                    case 0: rules += "Z-Moves Clause\n"; break;
-                    case 2: rules += "Mega Clause\n"; break;
-                    case 3: rules += "Mega Clause\nZ-Moves Clause\n"; break;
-                    case 4: rules += "Mega Clause\nZ-Moves Clause\n"; break;
+                    case 0: rules += "Megas Allowed\n"; break;
+                    case 2: rules += "Z-Moves Allowed\n"; break;
+                    case 3: rules += "Megas, Z-Moves, Dynamax Disallowed\n"; break;
+                    case 4: rules += "Dynamax Allowed\n"; break;
                 }
             }
-            if (mzmax != 4) {rules += "Dynamax Clause\n"}
-            if (leg == 0) {rules += "Legends Clause\n";}
+            //if (mzmax != 4) {rules += "Dynamax Clause\n"}
+            if (leg == 0) {rules += "No Legendary Pokémon\n";}
             switch(weather) {
                 case 0: rules += "No Starting Weather\n"; break;
                 case 1: rules += "Sun\n"; break;
