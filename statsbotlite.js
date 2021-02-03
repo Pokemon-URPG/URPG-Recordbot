@@ -112,7 +112,7 @@ bot.once("ready", async function () {
 function statusMessage() {
     var allpokes = fs.readFileSync('Pokemon.txt', 'utf8').split('\n');
     var movelist = fs.readFileSync("rse.txt", "utf8").split("\n");
-    var pokemon = allpokes[1 + Math.floor(Math.random() * (allpokes.length - 1))].split("/")[0];
+    var pokemon = allpokes[1 + Math.floor(Math.random() * (allpokes.length - 1))].split(",")[0];
     var activityNum = Math.floor(Math.random() * 98);
     let duration = Math.floor(Math.random() * 600000)
     //if you're reading this, don't spoil the surprise of the weird ones please.  But feel free to suggest additional options!
@@ -165,8 +165,8 @@ function statusMessage() {
         case 45: activity = " fighting Team Snagem"; break;
         case 46: activity = " fighting Cipher"; break;
         case 47: activity = " in a dancing competition"; break;
-        case 48: activity = " befriending " + allpokes[Math.floor(Math.random() * allpokes.length)].split("/")[0]; break;
-        case 49: activity = " battling " + allpokes[Math.floor(Math.random() * allpokes.length)].split("/")[0]; break;
+        case 48: activity = " befriending " + allpokes[Math.floor(Math.random() * allpokes.length)].split(",")[0]; break;
+        case 49: activity = " battling " + allpokes[Math.floor(Math.random() * allpokes.length)].split(",")[0]; break;
         case 50: activity = " using " + movelist[Math.floor(Math.random() * (movelist.length / 2)) * 2].split(" | ")[0]; break;
         case 51: activity = " learning " + movelist[Math.floor(Math.random() * (movelist.length / 2)) * 2].split(" | ")[0]; break;
         case 52: activity = " examining a type chart"; break;
@@ -1561,14 +1561,14 @@ function stealthRock(message) {
         var allpokes = fs.readFileSync('Pokemon.txt', 'utf8');
         var theList = allpokes.toLowerCase().split('\n');
         allpokes = allpokes.split('\n');
-        for (var i = 0; i < theList.length; i++) { theList[i] = theList[i].split("/")[0]; }
+        for (var i = 0; i < theList.length; i++) { theList[i] = theList[i].split(",")[0]; }
         var x = ss.findBestMatch(pokemon, theList).bestMatchIndex;
         /*for(var x = 0; x < allpokes.length; x++)
         {
             if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
             {*/
         var srdamage = 12.5;
-        switch(allpokes[x].split('/')[1])
+        switch(allpokes[x].split(',')[1])
         {
             case "FR": srdamage *= 2; break;
             case "I": srdamage *= 2; break;
@@ -1579,7 +1579,7 @@ function stealthRock(message) {
             case "S": srdamage /= 2; break;
             
         }
-        switch(allpokes[x].split('/')[2])
+        switch(allpokes[x].split(',')[2])
         {
             case "FR": srdamage *= 2; break;
             case "I": srdamage *= 2; break;
@@ -1590,11 +1590,11 @@ function stealthRock(message) {
             case "S": srdamage /= 2; break;
             
         }
-        var srMessage = allpokes[x].split('/')[0];
+        var srMessage = allpokes[x].split(',')[0];
         srMessage += " would take ";
         srMessage += srdamage;
         srMessage += "% damage, which is ";
-        var damage = Math.floor((srdamage * allpokes[x].split('/')[3]) / 100);
+        var damage = Math.floor((srdamage * allpokes[x].split(',')[3]) / 100);
         srMessage += damage + " HP damage!"
         message.channel.send(srMessage);
         return;
@@ -1612,14 +1612,14 @@ function effectiveness(message) {
         var allpokes = fs.readFileSync('Pokemon.txt', 'utf8');
         var theList = allpokes.toLowerCase().split('\n');
         allpokes = allpokes.split('\n');
-        for (var i = 0; i < theList.length; i++) { theList[i] = theList[i].split("/")[0]; }
+        for (var i = 0; i < theList.length; i++) { theList[i] = theList[i].split(",")[0]; }
         var x = ss.findBestMatch(pokemon, theList).bestMatchIndex;
         /*for(var x = 0; x < allpokes.length; x++)
         {
             if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
             {*/
         var damage = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-        switch(allpokes[x].split('/')[1])
+        switch(allpokes[x].split(',')[1])
         {
             //normal0, grass1, fire2, water3, bug4, poison5
             //NM, GR, FR, W, B, PO
@@ -1646,7 +1646,7 @@ function effectiveness(message) {
             case "DR": damage[1] /= 2; damage[2] /= 2; damage[3] /= 2; damage[7] /= 2; damage[9] *= 2; damage[14] *= 2; damage[16] *= 2; break;
             case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
         }
-        switch(allpokes[x].split('/')[2])
+        switch(allpokes[x].split(',')[2])
         {
             //same as first
             case "NM": damage[10] *= 2; damage[15] *= 0; break;
@@ -1669,7 +1669,7 @@ function effectiveness(message) {
             case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
         }
         
-        var effectiveMessage = 'Before abilities, ' + allpokes[x].split('/')[0] + ' would take:\n'
+        var effectiveMessage = 'Before abilities, ' + allpokes[x].split(',')[0] + ' would take:\n'
         + damage[0] + 'x Normal Damage\n'
         + damage[1] + 'x Grass Damage\n'
         + damage[2] + 'x Fire Damage\n'
@@ -1729,7 +1729,7 @@ function coverage(message) {
         for(var x = 0; x < allpokes.length; x++)
         {
             var damage = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1]
-            switch(allpokes[x].split('/')[1])
+            switch(allpokes[x].split(',')[1])
             {
                 //normal0, grass1, fire2, water3, bug4, poison5
                 //NM, GR, FR, W, B, PO
@@ -1756,7 +1756,7 @@ function coverage(message) {
                 case "DR": damage[1] /= 2; damage[2] /= 2; damage[3] /= 2; damage[7] /= 2; damage[9] *= 2; damage[14] *= 2; damage[16] *= 2; break;
                 case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
             }
-            switch(allpokes[x].split('/')[2])
+            switch(allpokes[x].split(',')[2])
             {
                 //same as first
                 case "NM": damage[10] *= 2; damage[15] *= 0; break;
@@ -1822,8 +1822,8 @@ function beatUp(message) {
                 /*var found = false;
                 for(var x = 0; x < allpokes.length; x++) {
                     if(pokemon[i].toLowerCase() == allpokes[x].split('/')[0].toLowerCase()) {*/
-                var beatUpBP = Math.floor(((allpokes[x].split('/')[4] - 99) / 2) / 10) + 5;
-                message.channel.send(allpokes[x].split('/')[0] + " would have a base " + beatUpBP + " power Beat Up!");
+                var beatUpBP = Math.floor(((allpokes[x].split(',')[4] - 99) / 2) / 10) + 5;
+                message.channel.send(allpokes[x].split(',')[0] + " would have a base " + beatUpBP + " power Beat Up!");
                 found = true;
                         /*break;
                     }
