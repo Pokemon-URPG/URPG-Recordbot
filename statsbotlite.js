@@ -82,12 +82,12 @@ bot.once("ready", async function () {
         payDayReset();
         pickUpReset();
     }, ((860400000) - (d.getTime() % 604800000)) % 604800000);
-    setTimeout(function () {
+    /*setTimeout(function () {
         weirrrrrReminder();
     }, ((784800000) - (d.getTime() % 604800000)) % 604800000);
     setTimeout(function () {
         weirrrrrReminderJ();
-    }, ((99200000) - (d.getTime() % 43200000)) % 43200000);
+    }, ((99200000) - (d.getTime() % 43200000)) % 43200000);*/
     //}, ((871200000) - (d.getTime() % 604800000)) % 604800000);
     setTimeout(function () {
         codeRemind();
@@ -530,11 +530,11 @@ function stats(message) {
         if ((oldmessage.indexOf("monbrey ") != -1) || (oldmessage.indexOf(" mon ") != -1) || (oldmessage.indexOf("monbray") != -1)) { message.channel.send("\nMonbrey's stats: https://urpg.monbrey.com.au/") }
         if ((oldmessage.indexOf("caite ") != -1) || (oldmessage.indexOf("caite-chan ") != -1) || (oldmessage.indexOf("caite chan ") != -1)) { message.channel.send("\nCaite Chan's stats: http://caitechan.proboards.com/thread/2") }
         if ((oldmessage.indexOf("gun ") != -1) || (oldmessage.indexOf("gun6 ") != -1) || (oldmessage.indexOf("gun 6 ") != -1)) { message.channel.send("\ngun6's stats: http://www.pokemoncrossroads.com/forum/showthread.php?16180-Gun6-s-Stats") }
-        if (oldmessage.indexOf("ataro ") != -1) { message.channel.send("\nAtaro's stats: http://s4.zetaboards.com/rustyrefbotataro/topic/8274811/1/") }
+        if (oldmessage.indexOf("ataro ") != -1) { message.channel.send("\nAtaro's stats (ARCHIVE): https://web.archive.org/web/20180712151054/http://s4.zetaboards.com/rustyrefbotataro/topic/8274811/1") }
         if ((oldmessage.indexOf("magik ") != -1) || (oldmessage.indexOf("magikchicken ") != -1) || (oldmessage.indexOf("magik chicken ") != -1)) { message.channel.send("\nMagikchicken's stats: http://forum.pokemonurpg.com/showthread.php?tid=9237") }
         if ((oldmessage.indexOf("neon ") != -1) || (oldmessage.indexOf("neonsands ") != -1) || (oldmessage.indexOf("neonsand ") != -1)) { message.channel.send("\nNeonsands's stats: https://pokemonurpg.com/archive/general.394/trainers-stats.401/the-stats-of-neonsands.60099.html") }
         if ((oldmessage.indexOf("felly ") != -1) || (oldmessage.indexOf("mistral ") != -1)) { message.channel.send("\nFelly's stats: https://mistralurpg.wordpress.com/pokemon/") }
-        if ((oldmessage.indexOf("haily ") != -1) || (oldmessage.indexOf("hailly ") != -1) || (oldmessage.indexOf("haillys ") != -1)) { message.channel.send("\nHaillys's stats: http://www.pokemoncrossroads.com/forum/showthread.php?16320-Haillys-s-Stats") }
+        if ((oldmessage.indexOf("haily ") != -1) || (oldmessage.indexOf("hailly ") != -1) || (oldmessage.indexOf("haillys ") != -1)) { message.channel.send("\nHaillys's stats (ARCHIVE): https://pokemonurpg.com/archive/pxr/105-General/108-Trainers-Stats/16320-Haillys-s-Stats/") }
         if ((oldmessage.indexOf("volt ") != -1) || (oldmessage.indexOf("voltaire ") != -1) || (oldmessage.indexOf("voltaire magneton ") != -1) || (oldmessage.indexOf("voltchen magneton ") != -1) || (oldmessage.indexOf(" vm ") != -1)) { message.channel.send("\nVoltaire Magneton's stats: https://forum.pokemonurpg.com/showthread.php?tid=10310") }
         if ((oldmessage.indexOf(" qe ") != -1) || (oldmessage.indexOf(" se ") != -1) || (oldmessage.indexOf(" sinnoheevee ") != -1) || (oldmessage.indexOf(" sinnoh eevee ") != -1) || (oldmessage.indexOf(" queen eevee ") != -1)) { message.channel.send("\nSinnoh Eevee's stats: https://www.tapatalk.com/groups/sinnoheevee/current-pokemon-t1.html#p1") }
         if ((oldmessage.indexOf("princess crow ") != -1) || (oldmessage.indexOf(" pc ") != -1) || (oldmessage.indexOf("hannah ") != -1)) { message.channel.send("\nPrincess Crow's stats: http://princesscrow.proboards.com/thread/2/pokemon-list-1") }
@@ -553,7 +553,7 @@ function stats(message) {
         if (oldmessage.indexOf("sapahn") != -1 || oldmessage.includes(" sap ") || lowmessage.includes(" sapa ")) { message.channel.send("\nSapahn's stats: https://sapahnurpg.wordpress.com/") }
         if (oldmessage.indexOf("fortree ") != -1) { message.channel.send("\nAsh K.'s Fortree Gym stats: http://ashkstatsurpg.proboards.com/thread/65/fortree-city-gym-2015") }
         if (oldmessage.indexOf(" after ") != -1) { message.channel.send("\nAfter's stats: https://forum.pokemonurpg.com/showthread.php?tid=10215") }
-        if ((oldmessage.indexOf("pokeviper ") != -1) || (oldmessage.indexOf(" pv ") != -1) || (oldmessage.indexOf("pokéviper") != -1)) { message.channel.send("\nPokeViper's stats: http://pokeviperbadass.proboards.com/") }
+        if ((oldmessage.indexOf("viper ") != -1) || (oldmessage.indexOf(" pv ") != -1) || (oldmessage.indexOf("pokéviper") != -1)) { message.channel.send("\nPokeViper's stats: http://pokeviperbadass.proboards.com/") }
         if ((oldmessage.indexOf("shock") != -1) || (oldmessage.indexOf("3600") != -1)) { message.channel.send("\nShock3600's stats: https://shock3600stats.weebly.com/") }
         if (oldmessage.indexOf("best ") != -1) { message.channel.send("\nTheVeryBest's stats: https://forum.pokemonurpg.com/showthread.php?tid=10447&pid=130885#pid130885") }
         if (oldmessage.indexOf("louise") != -1) { message.channel.send("\nlouise's stats: https://forum.pokemonurpg.com/showthread.php?tid=10448&pid=130898#pid130898") }
@@ -583,7 +583,7 @@ function stats(message) {
         if (oldmessage.indexOf("josiez") != -1) { message.channel.send("josiez's stats: https://forum.pokemonurpg.com/showthread.php?tid=10603") }
         if ((oldmessage.indexOf("james ") != -1 || oldmessage.indexOf("rinage") != -1)) { message.channel.send("AiJames' stats: https://forum.pokemonurpg.com/showthread.php?tid=10611&pid=134755#pid134755") }
         if (oldmessage.indexOf("plum") != -1) { message.channel.send("Plum's stats: https://forum.pokemonurpg.com/showthread.php?tid=10663"); }
-        if ((oldmessage.indexOf(" ml ") != -1 || oldmessage.indexOf("mlou") != -1)) { message.channel.send("mlouden03's stats: https://gaiusvibritannia.proboards.com/thread/6/urpg-stats"); }
+        if ((oldmessage.indexOf(" ml ") != -1 || oldmessage.indexOf("mlou") != -1) || oldmessage.includes("gaius")) { message.channel.send("mlouden03's stats: https://gaiusvibritannia.proboards.com/thread/6/urpg-stats"); }
         if (oldmessage.indexOf("lavender") != -1) { message.channel.send("juliorain's Lavender Town Gym stats: https://juliorain.wordpress.com/lavender-town-gym/"); }
         if ((oldmessage.indexOf("beemo") != -1 || oldmessage.indexOf("crimson rose") != -1 || oldmessage.indexOf("cress") != -1)) { message.channel.send("ExistentialBeemo's stats: https://existentialbeemo.proboards.com/"); }
         if ((oldmessage.indexOf("eternus") != -1 || oldmessage.indexOf(" situs ") != -1 || oldmessage.indexOf("kanga") != -1)) { message.channel.send("Eternus Situs' stats: https://forum.pokemonurpg.com/showthread.php?tid=10726"); }
@@ -603,10 +603,16 @@ function stats(message) {
         if (oldmessage.includes("silas")) { message.channel.send("Silas's stats: https://forum.pokemonurpg.com/showthread.php?tid=10983"); }
         if (oldmessage.includes("beanie") || oldmessage.includes("pudge")) { message.channel.send("beaniepudge's stats: https://forum.pokemonurpg.com/showthread.php?tid=11024"); }
         if (oldmessage.includes("mailmeharry")) { message.channel.send("mailmeharry's stats: https://forum.pokemonurpg.com/showthread.php?tid=11027"); }
-        if (oldmessage.includes("taither")) { message.channel.send("Taither's stats: https://web.archive.org/web/20180711194626/http://w11.zetaboards.com/Taither/topic/7969379/1/"); }
+        if (oldmessage.includes("taither")) { message.channel.send("Taither's stats (ARCHIVE): https://web.archive.org/web/20180711194626/http://w11.zetaboards.com/Taither/topic/7969379/1/"); }
         if (oldmessage.includes("haze")) { message.channel.send("Hazeduse's stats: https://forum.pokemonurpg.com/showthread.php?tid=10807"); }
         if (oldmessage.includes("sally")) { message.channel.send("Sally_stitches55's stats: https://forum.pokemonurpg.com/showthread.php?tid=11066"); }
         if (oldmessage.includes("fuzzy")) { message.channel.send("FuzzyDwarf's stats: https://forum.pokemonurpg.com/showthread.php?tid=11058"); }
+	if (oldmessage.includes("foxes")) { message.channel.send("FoxesAndSlumber's stats: https://forum.pokemonurpg.com/showthread.php?tid=11102"); }
+	if (oldmessage.includes("hikaruizumi")) { message.channel.send("HikaruIzumi's stats: https://hikaruizumistats.proboards.com/"); }
+	if (oldmessage.includes("darkhorse")) { message.channel.send("darkhorseborhous's stats: https://forum.pokemonurpg.com/showthread.php?tid=11100"); }
+	if (oldmessage.includes("evanescent")) { message.channel.send("Evanescent's stats: https://forum.pokemonurpg.com/showthread.php?tid=11108"); }
+	if (oldmessage.includes("proto")) { message.channel.send("TheProtobabe's stats (ARCHIVE): https://web.archive.org/web/20180711130731/http://w11.zetaboards.com/The_RP_Junk_Drawer/topic/8669039/1/"); }
+	if (oldmessage.includes("feng")) { message.channel.send("Feng's stats (ARCHIVE): https://pokemonurpg.com/archive/general.394/trainers-stats.401/_.61772.html"); }
         for (var x = 1; x < tempStats.content.split("\n").length; x++) {
             if (oldmessage.indexOf(tempStats.content.split("\n")[x].split(" ")[0].toLowerCase()) != -1) { message.channel.send(tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.content.split("\n")[x].split(" ")[1]); }
         }
@@ -1015,7 +1021,7 @@ function ruleset(message) {
         if(lowmessage.indexOf("canalave") == 0) message.channel.send("Canalave City Gym.\nTM 128 – Gyro Ball.\n4v4 or 6v6\nSM Public Box\nStandard Clauses\nNo Legendary Pokémon\nItem and Mega Clauses may be toggled depending on the challenger\nHelds On\nSandstorm Weather\nChallenger Sends First");
         if(lowmessage.indexOf("battle dome") == 0) message.channel.send("6v6\nS/M Private Doubles\nHelds On\nNo Starting Weather\nDefault Terrain\nStandard Clauses\nNo Legendary Pokémon\nDefender’s Choice: Item/Species Clause, Preview vs Full, Mega/Z-Move/Dynamax Clauses (at least one must be on, Dynamax cannot be off with others off)\nGold: Dome Brains make a pool of 8 Pokemon, and can send as if the battle were Private Open with those Pokemon (their items and abilities must still be sent at the start).");
         if(lowmessage.indexOf("maylee") == 0) message.channel.send("6v6 SM Private Full\nStandard Clauses\nNo Legendary Pokémon\nHelds on\n\nIf both battlers agree, the following rules may be changed: Mega/Z/Item/Species, Helds off instead of on, Preview instead of Full");
-	if(lowmessage.indexOf("battle tag") == 0) message.channel.send("6v6\nSM Public Box\nStandard Clauses\nHelds/Item Clause On, Mega/Z Clause Off\nRoll for first send\nUnless otherwise stated, trainers will be using their default boxes and not excluding anything.\n\nThe two participants may agree to use any of the following rules instead.\n\nPrivate\nPreview/Full\nHelds Off, Species Clause, Mega Clause, Z Clause On, Legend Clause Off");
+	if(lowmessage.indexOf("battle tag") == 0) message.channel.send("6v6\nSM Public Box\nStandard Clauses\nHelds/Item Clause On, Mega/Z Clause Off\nRoll for first send\nUnless otherwise stated, trainers will be using their default boxes and not excluding anything.\n\nBattlers automatically rent the following items (but must specify Mega Stone and Z Crystal beforehand to use them): Life Orb, Leftovers, Expert Belt, Weakness Policy, Lum Berry, Focus Sash, Sitrus Berry, Choice Scarf, Red Card, a Mega Stone, a Z Crystal, Mega/Z/Dynamax Bracelet.\n\nThe two participants may agree to use any of the following rules instead.\n\nPrivate\nPreview/Full\nHelds Off, Species Clause, Mega Clause, Z Clause On, Legend Clause Off");
         if(lowmessage.indexOf("lavender") == 0) message.channel.send("6v6\nSM Public Box\nSingles or Doubles\nHolds On\nStandard/Item/Species Clauses\nNo Legendary Pokémon\nMegas Allowed\nZ-Moves Allowed\nChallenger Sends First");
 	if(lowmessage.indexOf("monsu") == 0) message.channel.send("Monsu Island Gym\nNight Badge\n6v6 SM Public Box\nStandard Clauses\n-Megas Allowed\nHolds On\nItems/Species Clause\nLegends Not Allowed\nChallenger Sends First\nTM83: Thief. Gym Pokémon know Thief if they're able to learn it via TM");
 	if(lowmessage.indexOf("shock") == 0) message.channel.send("6v6\nSM Public Box\nStandard Clauses\nHelds On, Mega Clause Off\nRoll for first send\nUnless otherwise stated, trainers will be using their default boxes and not excluding anything.");
@@ -1898,7 +1904,7 @@ function links(message) {
     if (lowmessage.indexOf(",nervous") == 0) { message.channel.send("https://docs.google.com/document/d/1CG-djhjuUixajoyGeVcbx7Tfsb3XS50LA1UBSYAljOI/edit?usp=sharing"); }
     if (lowmessage.indexOf(",underground") == 0 || lowmessage.indexOf(",ug") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1720"); }
     if (lowmessage.indexOf(",judgepedia") == 0) { message.channel.send("https://pokemonurpg.com/info/contests/judging-encyclopedia/"); }
-    if (lowmessage.indexOf(",recruit") == 0) { message.channel.send(/*"https://forum.pokemonurpg.com/showthread.php?tid=9944"*/ "https://forum.pokemonurpg.com/showthread.php?tid=11075"); }
+    if (lowmessage.indexOf(",recruit") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=9944" /*"https://forum.pokemonurpg.com/showthread.php?tid=11075"*/); }
     if (lowmessage.indexOf(",mentor") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=9898"); }
     if (lowmessage.indexOf(",legendlog") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=7034"); }
     if (lowmessage.indexOf(",legendlist") == 0) { message.channel.send("https://pokemonurpg.com/info/general/legendary-list/"); }
@@ -1907,6 +1913,10 @@ function links(message) {
     if (lowmessage.indexOf(",parkshop") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1701"); }
     else if (lowmessage.indexOf(",park") == 0) { message.channel.send("https://forum.pokemonurpg.com/forumdisplay.php?fid=73"); }
     if (lowmessage.indexOf(",tierlist") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/19oUWIgeaXLa6u1Rrumrb6-5rT3hAf3Scg5DWBwllNzQ/edit#gid=0"); }
+    if (lowmessage.indexOf(",goldstudy") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=11095"); }
+    if (lowmessage.indexOf(",chartadv") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1iyB5DucEpkFCtdo41A0s3Cw0dTgYXJfH35zt6F-QDZQ/edit?usp=sharing"); }
+    if (lowmessage.indexOf(",hiddenpower") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=10218"); }
+    if (lowmessage.indexOf(",value") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1qiv1avIUXhtLB-z9-Pd6dl0Ub4mc58KDhPHprgbDaHI/edit"); }
     for (var x = 1; x < tempLinks.content.split("\n").length; x++) {
         if (lowmessage.indexOf("," + tempLinks.content.split("\n")[x].split(" ")[0]) == 0) { message.channel.send(tempLinks.content.split("\n")[x].split(" ")[1]); }
     }
@@ -2159,7 +2169,7 @@ function magicCardPoster(input, channel) {
     for (var x = 1; x < setCodes.content.split("\n").length; x++) {
         cardSet = cardSet.replace(setCodes.content.split("\n")[x].split(" ")[0], setCodes.content.split("\n")[x].split(" ")[1]);
     }
-    cardName = cardName.replace(/ /g, "%2B").replace(/,/g, "%252C").replace(/\./, "%252E").replace(/û/g, "u").replace(/\'/g, "%2527").replace(/`/g, "%2527").replace(/®/g, "%25C2%25AE").replace(/:registered:/g, "%25C2%25AE").replace(/&/g, "%2526").replace(/"/g, "%2522").replace(/!/g, "%2521").replace(/\?/g, "%253F");
+    cardName = cardName.replace(/ /g, "%2B").replace(/,/g, "%252C").replace(/\./, "%252E").replace(/û/g, "u").replace(/\'/g, "%2527").replace(/`/g, "%2527").replace(/®/g, "%25C2%25AE").replace(/:registered:/g, "%25C2%25AE").replace(/&/g, "%2526").replace(/"/g, "%2522").replace(/!/g, "%2521").replace(/\?/g, "%253F").replace(/<showcase>/gi, "%253Cshowcase%253E").replace(/\[showcase]/gi, "%253Cshowcase%253E").replace(/\(showcase\)/gi, "%253Cshowcase%253E").replace(/ showcase/gi, " %253Cshowcase%253E").replace(/<borderless>/gi, "%253Cborderless%253E").replace(/\[borderless]/gi, "%253Cborderless%253E").replace(/\(borderless\)/gi, "%253Cborderless%253E").replace(/ borderless/gi, " %253Cborderless%253E").replace(/</g, "%253C").replace(/>/g, "%253E");
     if (!fetched) {channel.send("https://cdn1.mtggoldfish.com/images/gf/" + cardName + "%2B%255B" + cardSet + "%255D.jpg"); }
     if (input.indexOf("]]") != input.lastIndexOf("]]")) { magicCardPoster(input.substring(input.indexOf("]]") + 2), channel); } 
 }
