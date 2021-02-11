@@ -792,13 +792,13 @@ function tradeVal(message) {
     if (message.content.toLowerCase().indexOf(",value " == 0)) {
         var theList = message.content.substring(7).split(", ");
         var tms = fs.readFileSync("TMs.txt", "utf8").split("\n");
-        var value = pokeVal(theList[0].toLowerCase());
+        var value = pokeVal(theList[0].toLowerCase()) - 0;
         var fulldoc = theList[0] + " $" + value;
         var doc = [];
         var found = false;
         if (!isNaN(theList[1])) {
             value += (theList[1] * 500);
-            fulldoc += theList[1] + " evolution items: $" + (theList[1] * 500);
+            fulldoc += "\n" + theList[1] + " evolution item(s): $" + (theList[1] * 500);
         }
         else {
             for (var y = 0; y < tms.length; y++) {
@@ -835,9 +835,9 @@ function tradeVal(message) {
         if (fulldoc.length > 0) {
             doc.push(fulldoc);
         }
-        var theMessage = new Discord.MessageEmbed().setTitle(theList[0] + " total: $" + value);
+        var theMessage = new Discord.MessageEmbed().setTitle(theList[0] + " total: $" + value).setColor('GREEN');
         for (var i = 0; i < doc.length; i++) {
-            theMessage.addField(doc[i]);
+            theMessage.addField("Full Calculation (" + i + "/" + doc.length + ")", doc[i]);
         }
         message.channel.send(theMessage);
     }
