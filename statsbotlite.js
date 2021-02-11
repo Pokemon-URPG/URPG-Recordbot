@@ -793,43 +793,45 @@ function tradeVal(message) {
         var theList = message.content.substring(7).split(", ");
         var tms = fs.readFileSync("TMs.txt", "utf8").split("\n");
         var value = pokeVal(theList[0].toLowerCase()) - 0;
-        var fulldoc = theList[0] + " $" + value;
+        var fulldoc = pokeRank(theList[0].toLowerCase())[0] + " $" + value;
         var doc = [];
         var found = false;
-        if (!isNaN(theList[1])) {
-            value += (theList[1] * 500);
-            fulldoc += "\n" + theList[1] + " evolution item(s): $" + (theList[1] * 500);
-        }
-        else {
-            for (var y = 0; y < tms.length; y++) {
-                if (tms[y].split("/")[1].toLowerCase() == theList[1].toLowerCase()) {
-                    value += (tms[y].split("/")[2].replace(/\$/, "").replace(/,/, "") - 0);
-                    fulldoc += "\n" + tms[y].split("/")[0] + " " + tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
-                    found = true;
+        if (theList.length > 0) {
+            if (!isNaN(theList[1])) {
+                value += (theList[1] * 500);
+                fulldoc += "\n" + theList[1] + " evolution item(s): $" + (theList[1] * 500);
+            }
+            else {
+                for (var y = 0; y < tms.length; y++) {
+                    if (tms[y].split("/")[1].toLowerCase() == theList[1].toLowerCase()) {
+                        value += (tms[y].split("/")[2].replace(/\$/, "").replace(/,/, "") - 0);
+                        fulldoc += "\n" + tms[y].split("/")[0] + " " + tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
+                        found = true;
+                    }
                 }
-            }
-            if (!found) {
-                value += 4000;
-                fulldoc += "\n" + theList[x] + " – $4,000";
-            }
-            found = false;
-        }
-        for (var x = 2; x < theList.length; x++) {
-            for (var y = 0; y < tms.length; y++) {
-                if (tms[y].split("/")[1].toLowerCase() == theList[x].toLowerCase()) {
-                    value += (tms[y].split("/")[2].replace(/\$/, "").replace(/,/, "") - 0);
-                    fulldoc += "\n" + tms[y].split("/")[0] + " " + tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
-                    found = true;
+                if (!found) {
+                    value += 4000;
+                    fulldoc += "\n" + theList[x] + " – $4,000";
                 }
+                found = false;
             }
-            if (!found) {
-                value += 4000;
-                fulldoc += "\n" + theList[x] + " – $4,000";
-            }
-            found = false;
-            if (fulldoc.length >= 1000) {
-                doc.push(fulldoc);
-                fulldoc = "";
+            for (var x = 2; x < theList.length; x++) {
+                for (var y = 0; y < tms.length; y++) {
+                    if (tms[y].split("/")[1].toLowerCase() == theList[x].toLowerCase()) {
+                        value += (tms[y].split("/")[2].replace(/\$/, "").replace(/,/, "") - 0);
+                        fulldoc += "\n" + tms[y].split("/")[0] + " " + tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    value += 4000;
+                    fulldoc += "\n" + theList[x] + " – $4,000";
+                }
+                found = false;
+                if (fulldoc.length >= 1000) {
+                    doc.push(fulldoc);
+                    fulldoc = "";
+                }
             }
         }
         if (fulldoc.length > 0) {
@@ -837,7 +839,7 @@ function tradeVal(message) {
         }
         var max = Math.ceil((value * 1.2 + 2000) / 500) * 500;
         var min = Math.floor(((value - 2000) / 1.2) / 500) * 500;
-        var theMessage = new Discord.MessageEmbed().setTitle("Average: $" + value + ". Legal trade range: $" + min + "-$" + max).setColor('GREEN');
+        var theMessage = new Discord.MessageEmbed().setTitle("Value: $" + value + ". Legal trade range: $" + min + "-$" + max).setColor('GREEN');
         for (var i = 0; i < doc.length; i++) {
             theMessage.addField("Full Calculation (" + (i-1+2) + "/" + doc.length + ")", doc[i]);
         }
