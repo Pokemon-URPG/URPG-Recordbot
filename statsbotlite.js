@@ -3327,7 +3327,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     if (oldMessage.guild.id != urpgServer) {return;}
     if (oldMessage.author.bot) {
         if (oldMessage.author.id == bot.user.id) {
-            bot.channels.cache.get("695205182971052103").send(new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE');
+            bot.channels.cache.get("695205182971052103").send(new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE'));
         }
         return;
     }
