@@ -835,7 +835,9 @@ function tradeVal(message) {
         if (fulldoc.length > 0) {
             doc.push(fulldoc);
         }
-        var theMessage = new Discord.MessageEmbed().setTitle(theList[0] + " total: $" + value).setColor('GREEN');
+        var max = Math.ceil((value * 1.2 + 2000) / 500) * 500;
+        var min = Math.floor(((value - 2000) / 1.2) / 500) * 500;
+        var theMessage = new Discord.MessageEmbed().setTitle("Average: $" + value + ". Legal trade range: $" + min + "-$" + max).setColor('GREEN');
         for (var i = 0; i < doc.length; i++) {
             theMessage.addField("Full Calculation (" + (i-1+2) + "/" + doc.length + ")", doc[i]);
         }
@@ -1971,7 +1973,7 @@ function links(message) {
     if (lowmessage.indexOf(",goldstudy") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=11095"); }
     if (lowmessage.indexOf(",chartadv") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1iyB5DucEpkFCtdo41A0s3Cw0dTgYXJfH35zt6F-QDZQ/edit?usp=sharing"); }
     if (lowmessage.indexOf(",hiddenpower") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=10218"); }
-    if (lowmessage.indexOf(",value") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1qiv1avIUXhtLB-z9-Pd6dl0Ub4mc58KDhPHprgbDaHI/edit"); }
+    if (lowmessage.indexOf(",chartvalue") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1qiv1avIUXhtLB-z9-Pd6dl0Ub4mc58KDhPHprgbDaHI/edit"); }
     for (var x = 1; x < tempLinks.content.split("\n").length; x++) {
         if (lowmessage.indexOf("," + tempLinks.content.split("\n")[x].split(" ")[0]) == 0) { message.channel.send(tempLinks.content.split("\n")[x].split(" ")[1]); }
     }
@@ -2042,7 +2044,10 @@ function anonymousReport(message) {
 
 function help(message) {
     if (lowmessage.indexOf(",help") == 0) {
-        if (lowmessage.indexOf("addstat") != -1) {
+        if (lowmessage.includes("value")) {
+            message.channel.send("Calculate trade values!  Syntax: begin with `,value ` then the name of the unevolved form.  If it needs evo items, follow that with the number of evo items.  Then list each EM and HA it has (**excluding** HMs), with exact formatting for TMs, in any order.  Separate terms with `, `.  Example: `,value Riolu, 1, Ice Punch, BM High Jump Kick, Bulk Up, HA Justified, Blaze Kick`");
+        }
+        else if (lowmessage.indexOf("addstat") != -1) {
             message.channel.send("Use `,addstat NAME LINK` to have `,stats NAME` pull up `NAME's stats: LINK`.");
         }
         else if (lowmessage.indexOf("stat") != -1) {
@@ -2796,17 +2801,17 @@ async function fixOrder(channel, messageMember) {
 	var theList = await bot.channels.cache.get("531433553225842700").messages.fetch("797678460314451978");
 	var channels = [];
 	for (var x = 1; x < theList.content.split("\n").length; x++) {
-		channels.push(theList.content.split("\n")[x]);
+		await channels.push(theList.content.split("\n")[x]);
 	}
 	await fixOrderChannel(channels);
     }
 }
 
-async function fixOrderChannel(channels) {
+async function fixOrderChannel(channels, channel) {
 	await bot.channels.cache.get(channels.shift()).setPosition(1);
 	if (channels.length > 0) {
 		setTimeout(function () {
-			fixOrderChannel(channels);
+			fixOrderChannel(channels, channel);
 		}, 2000);
 	}
 	else {
