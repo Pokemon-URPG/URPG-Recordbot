@@ -802,7 +802,7 @@ function tradeVal(message) {
         }
         else {
             for (var y = 0; y < tms.length; y++) {
-                if (tms[y].split("/")[1].toLowerCase() == theList[x].toLowerCase()) {
+                if (tms[y].split("/")[1].toLowerCase() == theList[1].toLowerCase()) {
                     value += (tms[y].split("/")[2].replace(/\$/, "").replace(/,/, "") - 0);
                     fulldoc += "\n" + tms[y].split("/")[0] + " " + tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
                     found = true;
@@ -2045,7 +2045,7 @@ function anonymousReport(message) {
 function help(message) {
     if (lowmessage.indexOf(",help") == 0) {
         if (lowmessage.includes("value")) {
-            message.channel.send("Calculate trade values!  Syntax: begin with `,value ` then the name of the unevolved form.  If it needs evo items, follow that with the number of evo items.  Then list each EM and HA it has (**excluding** HMs), with exact formatting for TMs, in any order.  Separate terms with `, `.  Example: `,value Riolu, 1, Ice Punch, BM High Jump Kick, Bulk Up, HA Justified, Blaze Kick`");
+            message.channel.send("Calculate trade values!  Syntax: begin with `,value ` then the name of the unevolved form.  If it needs evo items, follow that with the number of evo items.  Then list each EM and HA it has (**excluding** HMs), with exact formatting for TMs, in any order.  Separate terms with `, `.  Example: `,value Riolu, 1, Ice Punch, BM High Jump Kick, Bulk Up, HA Justified, Blaze Kick`.  If a move does not show up with TM## before it and is supposed to be a TM on that Pokémon, double check formatting.  Anything that's not formatted **exactly** correct (case insensitive) will be treated as a daycare move.");
         }
         else if (lowmessage.indexOf("addstat") != -1) {
             message.channel.send("Use `,addstat NAME LINK` to have `,stats NAME` pull up `NAME's stats: LINK`.");
