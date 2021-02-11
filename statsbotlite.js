@@ -789,7 +789,7 @@ function pokeVal(pokemon) {
 }
 
 function tradeVal(message) {
-    if (message.content.toLowerCase().indexOf(",value " == 0) {
+    if (message.content.toLowerCase().indexOf(",value " == 0)) {
         var theList = message.content.substring(7).split(", ");
         var tms = fs.readFileSync("TMs.txt", "utf8").split("\n");
         var value = pokeVal(theList[0].toLowerCase());
@@ -3325,7 +3325,12 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     if (oldMessage.guild === null) {return;}
     if (!oldMessage.guild.available) {return;}
     if (oldMessage.guild.id != urpgServer) {return;}
-    if (oldMessage.author.bot) {return;}
+    if (oldMessage.author.bot) {
+        if (oldMessage.author.id == bot.user.id) {
+            bot.channels.cache.get("695205182971052103").send(new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE');
+        }
+        return;
+    }
     var temp = false;
     if (oldMessage.channel.name == "judge-test") {
         channelToNotify = judgeTestChannel;
