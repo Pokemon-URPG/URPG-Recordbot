@@ -811,7 +811,7 @@ function tradeVal(message) {
                 }
                 if (!found) {
                     value += 4000;
-                    fulldoc += "\n" + theList[x] + " – $4,000";
+                    fulldoc += "\n" + theList[1] + " – $4,000";
                 }
                 found = false;
             }
