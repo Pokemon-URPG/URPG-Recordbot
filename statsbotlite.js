@@ -2923,14 +2923,14 @@ async function substituteBot(channel) {
     }
 }
 
-async function pinMessage(message, messageMember) {
+async function pinMessage(message) {
     //if ((lowmessage.indexOf(",pin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentID == "358430499146039299" && messageMember.roles.cache.has(refRole)) || (message.channel.parentID == "358433546492444675" && messageMember.roles.cache.has(judgeRole)))) {
     theMessage = await message.channel.messages.fetch(lowmessage.split(" ")[1]);
     await theMessage.pin();
     //}
 }
 
-async function unpinMessage(message, messageMember) {
+async function unpinMessage(message) {
     if ((lowmessage.indexOf(",unpin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentID == "358430499146039299" && messageMember.roles.cache.has(refRole)) || (message.channel.parentID == "358433546492444675" && messageMember.roles.cache.has(judgeRole)))) {
         theMessage = await message.channel.messages.fetch(lowmessage.split(" ")[1]);
         await theMessage.unpin();
@@ -3334,7 +3334,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     if (oldMessage.guild.id != urpgServer) {return;}
     if (oldMessage.author.bot) {
         if (oldMessage.author.id == bot.user.id) {
-            bot.channels.cache.get("695205182971052103").send(new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE'));
+            bot.channels.cache.get("695205182971052103").send(new Discord.MessageEmbed().setThumbnail(bot.user.displayAvatarURL()).setTitle("Edited message from " + bot.user.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE'));
         }
         return;
     }
@@ -3421,7 +3421,7 @@ bot.on("messageReactionAdd", async function(messageReaction, user) {
 	}
     var reactMember = await messageReaction.message.guild.members.fetch(user);
     if (messageReaction.emoji.name == "📌" && ((messageReaction.message.channel.parentID == "358430499146039299" && ReactMember.roles.cache.has(refRole)) || (messageReaction.message.channel.parentID == "358433546492444675" && reactMember.roles.cache.has(judgeRole)))) {
-        pinMessage();
+        pinMessage(messageReaction.message);
     }
 })
 
