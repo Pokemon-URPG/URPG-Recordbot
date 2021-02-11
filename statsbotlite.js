@@ -40,7 +40,7 @@ var staffChannel = "135870064573284352";
 var seniorRefRole = "358431855743336448";
 var chiefJudgeRole = "358435669372305408";
 var eliteRangerRole = "419636474825277450";
-var deathEaterRole = "561688333609074730";
+var spellbinderRole = "561688333609074730";
 var anonymousReportChannel = "545737721612730368";
 var payDayLog;
 var pickUpLog;
@@ -786,6 +786,61 @@ function pokeVal(pokemon) {
         }
     }
     return value;
+}
+
+function tradeVal(message) {
+    if (message.content.toLowerCase().indexOf(",value " == 0) {
+        var theList = message.content.substring(7).split(", ");
+        var tms = fs.readFileSync("TMs.txt", "utf8").split("\n");
+        var value = pokeVal(theList[0].toLowerCase());
+        var fulldoc = theList[0] + " $" + value;
+        var doc = [];
+        var found = false;
+        if (!isNaN(theList[1])) {
+            value += (theList[1] * 500);
+            fulldoc += theList[1] + " evolution items: $" + (theList[1] * 500);
+        }
+        else {
+            for (var y = 0; y < tms.length; y++) {
+                if (tms[y].split("/")[1].toLowerCase() == theList[x].toLowerCase()) {
+                    value += (tms[y].split("/")[2].replace(/$/, "").replace(/,/, "") - 0);
+                    fulldoc += "\n" + tms[y].split("/")[0] + " " tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
+                    found = true;
+                }
+            }
+            if (!found) {
+                value += 4000;
+                fulldoc += "\n" + theList[x] + " – $4,000";
+            }
+            found = false;
+        }
+        for (var x = 2; x < theList.length; x++) {
+            for (var y = 0; y < tms.length; y++) {
+                if (tms[y].split("/")[1].toLowerCase() == theList[x].toLowerCase()) {
+                    value += (tms[y].split("/")[2].replace(/$/, "").replace(/,/, "") - 0);
+                    fulldoc += "\n" + tms[y].split("/")[0] + " " tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
+                    found = true;
+                }
+            }
+            if (!found) {
+                value += 4000;
+                fulldoc += "\n" + theList[x] + " – $4,000";
+            }
+            found = false;
+            if (fulldoc.length >= 1000) {
+                doc.push(fulldoc);
+                fulldoc = "";
+            }
+        }
+        if (fulldoc.length > 0) {
+            doc.push(fulldoc);
+        }
+        var theMessage = new Discord.MessageEmbed().setTitle(theList[0] + " total: $" + value);
+        for (var i = 0; i < doc.length; i++) {
+            theMessage.addField(doc[i]);
+        }
+        message.channel.send(theMessage);
+    }
 }
 
 function rank(message) {
@@ -1929,27 +1984,27 @@ function wildcards(message) {
         switch (lowmessage.split(" ") [1]){
             case "normal": wclist = "Clefable, Azumarill, Granbull"; break;
             case "grass": wclist = "Crustle, Comfey, Sudowoodo"; break;
-            case "fire": wclist = "Salamence, Leafeon, Solrock"; break;
-            case "water": wclist = "Dragalge, Beartic, Hoenn Fossils"; break;
+            case "fire": wclist = "Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock"; break;
+            case "water": wclist = "Dragalge, Beartic, Hoenn Fossils, Masquerain"; break;
             case "electric": wclist = "Porygon Line, Golurk, Probopass"; break;
             case "ice": wclist = "Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon"; break;
             case "fighting": wclist = "Metagross, Electivire, Incineroar"; break;
             case "poison": wclist = "Gliscor, Accelgor, Breloom"; break;
             case "ground": wclist = "Duraludon, Tyranitar, Cacturne"; break;
             case "flying": wclist = "Volcarona, Sirfetch'd, Decidueye"; break;
-            case "psychic": wclist = "Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Noctowl"; break;
+            case "psychic": wclist = "Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck"; break;
             case "bug": wclist = "Kabutops, Flygon, Falinks"; break;
             case "rock": wclist = "Sableye, Torterra, Galar Fossils (only two at a time), Steelix"; break;
-            case "dragon": wclist = "Charizard, Ampharos, Sceptile"; break;
+            case "dragon": wclist = "Charizard, Gyarados, Ampharos, Sceptile"; break;
             case "ghost": wclist = "Rotom (only two at a time), Houndoom, Kecleon"; break;
             case "steel": wclist = "Blastoise, Vikavolt, Dhelmise"; break;
             case "dark": wclist = "Gengar, Gyarados, Gothitelle"; break;
             case "fairy": wclist = "Delphox, Altaria, Blissey Line"; break;
-            default: wclist = "Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Salamence, Leafeon, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Noctowl\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line";
+            default: wclist = "Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils, Masquerain\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line";
         }
         message.channel.send(wclist);
     }
-    else if (lowmessage.indexOf(",wildcard") == 0) { message.channel.send("Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Salamence, Leafeon, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Noctowl\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line"); }
+    else if (lowmessage.indexOf(",wildcard") == 0) { message.channel.send("Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils, Masquerain\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line"); }
 }
 
 function fairyGIF(message) {
@@ -2197,7 +2252,7 @@ function tempChannelReporter(message, messageMember) {
         if (message.channel.name.indexOf("boss") != -1) {
             bot.channels.cache.get(contestBossChannel).send(theMessage);
         }
-        if (message.content.indexOf(",end") == 0 && messageMember.roles.cache.has(deathEaterRole)) {message.channel.delete();}
+        if (message.content.indexOf(",end") == 0 && messageMember.roles.cache.has(spellbinderRole)) {message.channel.delete();}
     }
     if (message.channel.name == "judge-test") {
         bot.channels.cache.get(judgeTestChannel).send(theMessage);
@@ -2234,7 +2289,7 @@ async function tempChannelWebhook(message, messageMember) {
         if (message.channel.name.includes("boss")) {
             whid = "725302276817813514";
         }
-        if (message.content.indexOf(",end") == 0 && messageMember.roles.cache.has(deathEaterRole)) {message.channel.delete();}
+        if (message.content.indexOf(",end") == 0 && messageMember.roles.cache.has(spellbinderRole)) {message.channel.delete();}
     }
     if (whid == null) { return; }
     var whl = await message.guild.fetchWebhooks();
@@ -2578,13 +2633,13 @@ async function archiver(message, messageMember) {
 }
 
 async function contestBoss(message, messageMember) {
-    if (lowmessage.indexOf(",contestboss") == 0 && messageMember.roles.cache.has(deathEaterRole)) {
+    if (lowmessage.indexOf(",contestboss") == 0 && messageMember.roles.cache.has(spellbinderRole)) {
         var bossroom = await message.guild.createChannel("contest-boss", { type: 'text', permissionOverwrites: [{
             id: message.guild.id,
             deny: ['VIEW_CHANNEL']
         }]})
         await bossroom.setParent(contestBossCategory);
-        await bossroom.createOverwrite(deathEaterRole, {
+        await bossroom.createOverwrite(spellbinderRole, {
             VIEW_CHANNEL: true,
             MANAGE_ROLES: true
         })
@@ -2593,7 +2648,7 @@ async function contestBoss(message, messageMember) {
             deny: ['VIEW_CHANNEL']
         }]})
         await warroom.setParent(contestBossCategory);
-        await warroom.createOverwrite(deathEaterRole, {
+        await warroom.createOverwrite(spellbinderRole, {
             VIEW_CHANNEL: true,
             MANAGE_ROLES: true
         })
@@ -3175,6 +3230,8 @@ bot.on("message", async function(message) {
     await codeTester(message);
 
     await updateSets(message);
+
+    await tradeVal(message);
 
     if (message.guild === null) {
     	

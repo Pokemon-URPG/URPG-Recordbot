@@ -1,272 +1,254 @@
-Mega Punch	$1,500
-Razor Wind	$2,500
-Swords Dance	$2,500
-Whirlwind	$2,500
-Mega Kick	$2,500
-Toxic	$3,000
-Horn Drill	$4,000
-Body Slam	$3,000
-Take Down	$1,500
-Double-Edge	$3,500
-Bubble Beam	$3,000
-Water Gun	$1,500
-Ice Beam	$3,500
-Blizzard	$4,000
-Hyper Beam	$4,000
-Pay Day	$1,500
-Submission	$2,500
-Counter	$3,000
-Seismic Toss	$3,000
-Rage	$1,500
-Mega Drain	$1,500
-Solar Beam	$4,000
-Dragon Rage	$1,500
-Thunderbolt	$3,500
-Thunder	$4,000
-Earthquake	$4,000
-Fissure	$4,000
-Dig	$2,500
-Psychic	$3,500
-Teleport	$1,500
-Mimic	$2,000
-Double Team	$2,500
-Reflect	$2,500
-Bide	$2,000
-Metronome	$2,500
-Self-Destruct	$3,000
-Egg Bomb	$1,500
-Fire Blast	$4,000
-Swift	$3,000
-Skull Bash	$2,500
-Soft-Boiled	$3,500
-Dream Eater	$3,500
-Sky Attack	$3,000
-Rest	$3,000
-Thunder Wave	$2,500
-Psywave	$2,500
-Explosion	$3,500
-Rock Slide	$3,500
-Tri Attack	$3,500
-Substitute	$4,500
-	
-Dynamic Punch	$3,500
-Headbutt	$2,500
-Curse	$3,000
-Rollout	$2,000
-Roar	$2,500
-Zap Cannon	$3,500
-Psych Up	$2,500
-Hidden Power	$4,000
-Sunny Day	$3,500
-Sweet Scent	$1,500
-Snore	$2,000
-Icy Wind	$3,000
-Protect	$5,000
-Rain Dance	$3,500
-Giga Drain	$3,500
-Endure	$3,000
-Frustration	$3,000
-Iron Tail	$3,000
-Dragon Breath	$3,000
-Return	$3,000
-Shadow Ball	$3,500
-Mud-Slap	$2,500
-Ice Punch	$3,500
-Swagger	$2,500
-Sleep Talk	$2,500
-Sludge Bomb	$3,500
-Sandstorm	$3,500
-Defense Curl	$1,500
-Thunder Punch	$3,500
-Detect	$5,000
-Attract	$2,500
-Thief	$2,000
-Steel Wing	$2,500
-Fire Punch	$3,500
-Fury Cutter	$3,000
-Nightmare	$2,500	
-Focus Punch	$3,500
-Dragon Claw	$3,500
-Water Pulse	$2,500
-Calm Mind	$2,500
-Hail	$3,500
-Bulk Up	$2,500
-Bullet Seed	$2,500
-Taunt	$2,500
-Light Screen	$2,500
-Safeguard	$2,500
-Brick Break	$3,500
-Shock Wave	$3,000
-Flamethrower	$3,500
-Rock Tomb	$3,000
-Aerial Ace	$3,000
-Torment	$2,500
-Facade	$3,000
-Secret Power	$3,000
-Skill Swap	$2,500
-Snatch	$2,500
-Overheat	$3,500	
-Roost	$3,500
-Focus Blast	$4,000
-Energy Ball	$3,500
-False Swipe	$2,500
-Brine	$3,500
-Fling	$2,500
-Charge Beam	$3,000
-Dragon Pulse	$3,500
-Drain Punch	$3,500
-Will-O-Wisp	$2,500
-Silver Wind	$3,500
-Embargo	$2,000
-Shadow Claw	$3,500
-Payback	$3,000
-Recycle	$2,500
-Giga Impact	$4,000
-Rock Polish	$2,500
-Stone Edge	$3,500
-Avalanche	$3,000
-Gyro Ball	$3,500
-Stealth Rock	$2,500
-Captivate	$2,500
-Dark Pulse	$3,500
-X-Scissor	$3,500
-Natural Gift	$2,500
-Poison Jab	$3,500
-Grass Knot	$2,500
-Pluck	$3,000
-U-turn	$3,500
-Flash Cannon	$3,500
-Trick Room	$3,500	
-Hone Claws	$2,500
-Psyshock	$3,500
-Venoshock	$3,500
-Telekinesis	$2,000
-Smack Down	$2,500
-Sludge Wave	$3,500
-Flame Charge	$3,000
-Low Sweep	$3,000
-Round	$2,500
-Echoed Voice	$2,500
-Ally Switch	$2,000
-Scald	$3,500
-Sky Drop	$3,000
-Incinerate	$2,500
-Quash	$2,500
-Acrobatics	$3,500
-Retaliate	$3,000
-Volt Switch	$3,500
-Struggle Bug	$2,500
-Bulldoze	$3,000
-Frost Breath	$3,500
-Dragon Tail	$3,500
-Work Up	$2,500
-Wild Charge	$3,500
-Snarl	$3,000	
-Infestation	$2,500
-Power-Up Punch	$3,500
-Dazzling Gleam	$3,500
-Confide	$1,500
-Nature Power	$2,500	
-Leech Life	$3,500
-Smart Strike	$3,000
-Brutal Swing	$2,500
-Aurora Veil	$3,500	
-Pin Missile	$3,500
-Magical Leaf	$3,500
-Solar Blade	$4,000
-Fire Spin	$2,500
-Screech	$2,500
-Scary Face	$2,500
-Charm	$2,500
-Beat Up	$3,000
-Helping Hand	$2,500
-Revenge	$3,000
-Imprison	$2,500
-Weather Ball	$3,500
-Fake Tears	$2,500
-Sand Tomb	$2,500
-Icicle Spear	$3,500
-Bounce	$3,500
-Mud Shot	$3,000
-Rock Blast	$3,500
-Assurance	$3,000
-Power Swap	$2,500
-Guard Swap	$2,500
-Speed Swap	$2,500
-Thunder Fang	$3,500
-Ice Fang	$3,500
-Fire Fang	$3,500
-Psycho Cut	$3,500
-Wonder Room	$2,500
-Magic Room	$2,500
-Cross Poison	$3,500
-Hex	$3,500
-Electroweb	$3,000
-Razor Shell	$3,500
-Tail Slap	$3,500
-Phantom Force	$3,500
-Draining Kiss	$3,500
-Grassy Terrain	$3,500
-Misty Terrain	$3,500
-Electric Terrain	$3,500
-Psychic Terrain	$3,500
-Mystical Fire	$3,500
-Eerie Impulse	$2,500
-Air Slash	$3,500
-Stomping Tantrum	$3,500
-Breaking Swipe	$3,500
-Hydro Pump	$4,000
-Low Kick	$3,500
-Agility	$2,500
-Focus Energy	$2,500
-Amnesia	$2,500
-Reversal	$3,000
-Spikes	$2,500
-Outrage	$3,500
-Megahorn	$4,000
-Baton Pass	$2,500
-Encore	$4,000
-Crunch	$3,500
-Future Sight	$3,000
-Uproar	$3,000
-Heat Wave	$3,500
-Trick	$2,500
-Superpower	$3,500
-Blaze Kick	$3,500
-Hyper Voice	$3,500
-Cosmic Power	$2,500
-Muddy Water	$3,500
-Iron Defense	$2,500
-Leaf Blade	$3,500
-Dragon Dance	$2,500
-Close Combat	$3,500
-Toxic Spikes	$2,500
-Flare Blitz	$3,500
-Aura Sphere	$3,500
-Seed Bomb	$3,500
-Bug Buzz	$3,500
-Power Gem	$3,500
-Brave Bird	$3,500
-Earth Power	$3,500
-Nasty Plot	$2,500
-Zen Headbutt	$3,500
-Leaf Storm	$3,500
-Power Whip	$4,000
-Gunk Shot	$4,000
-Iron Head	$3,500
-Heavy Slam	$3,000
-Electro Ball	$3,000
-Foul Play	$3,500
-Stored Power	$3,500
-Drill Run	$3,500
-Heat Crash	$3,500
-Hurricane	$4,000
-Play Rough	$3,500
-Venom Drench	$2,500
-Darkest Lariat	$3,500
-High Horsepower	$3,500
-Throat Chop	$3,500
-Pollen Puff	$3,500
-Psychic Fangs	$3,500
-Liquidation	$3,500
-Body Press	$3,500
+TM01/Mega Punch/$1,500
+TM02/Razor Wind/$2,500
+TM03/Swords Dance/$2,500
+TM04/Whirlwind/$2,500
+TM05/Mega Kick/$2,500
+TM06/Horn Drill/$4,000
+TM07/Body Slam/$3,000
+TM08/Take Down/$1,500
+TM09/Double-Edge/$3,500
+TM10/Bubble Beam/$3,000
+TM11/Water Gun/$1,500
+TM12/Ice Beam/$3,500
+TM13/Blizzard/$4,000
+TM14/Hyper Beam/$4,000
+TM15/Pay Day/$1,500
+TM16/Submission/$2,500
+TM17/Counter/$3,000
+TM18/Seismic Toss/$3,000
+TM19/Rage/$1,500
+TM20/Mega Drain/$1,500
+TM21/Solar Beam/$4,000
+TM22/Dragon Rage/$1,500
+TM23/Thunderbolt/$3,500
+TM24/Thunder/$4,000
+TM25/Earthquake/$4,000
+TM26/Fissure/$4,000
+TM27/Dig/$2,500
+TM28/Psychic/$3,500
+TM29/Teleport/$1,500
+TM30/Mimic/$2,000
+TM31/Reflect/$2,500
+TM32/Bide/$2,000
+TM33/Metronome/$2,500
+TM34/Self-Destruct/$3,000
+TM35/Egg Bomb/$1,500
+TM36/Fire Blast/$4,000
+TM37/Swift/$3,000
+TM38/Skull Bash/$2,500
+TM39/Soft-Boiled/$3,500
+TM40/Dream Eater/$3,500
+TM41/Sky Attack/$3,000
+TM42/Thunder Wave/$2,500
+TM43/Psywave/$2,500
+TM44/Explosion/$3,500
+TM45/Rock Slide/$3,500
+TM46/Tri Attack/$3,500
+TM47/Dynamic Punch/$3,500
+TM48/Headbutt/$2,500
+TM49/Curse/$3,000
+TM50/Rollout/$2,000
+TM51/Roar/$2,500
+TM52/Zap Cannon/$3,500
+TM53/Psych Up/$2,500
+TM54/Sunny Day/$3,500
+TM55/Sweet Scent/$1,500
+TM56/Icy Wind/$3,000
+TM57/Rain Dance/$3,500
+TM58/Giga Drain/$3,500
+TM59/Iron Tail/$3,000
+TM60/Dragon Breath/$3,000
+TM61/Shadow Ball/$3,500
+TM62/Mud-Slap/$2,500
+TM63/Ice Punch/$3,500
+TM64/Sludge Bomb/$3,500
+TM65/Sandstorm/$3,500
+TM66/Defense Curl/$1,500
+TM67/Thunder Punch/$3,500
+TM68/Detect/$5,000
+TM69/Thief/$2,000
+TM70/Steel Wing/$2,500
+TM71/Fire Punch/$3,500
+TM72/Fury Cutter/$3,000
+TM73/Nightmare/$2,500
+TM74/Focus Punch/$3,500
+TM75/Dragon Claw/$3,500
+TM76/Water Pulse/$2,500
+TM77/Calm Mind/$2,500
+TM78/Hail/$3,500
+TM79/Bulk Up/$2,500
+TM80/Bullet Seed/$2,500
+TM81/Taunt/$2,500
+TM82/Light Screen/$2,500
+TM83/Safeguard/$2,500
+TM84/Brick Break/$3,500
+TM85/Shock Wave/$3,000
+TM86/Flamethrower/$3,500
+TM87/Rock Tomb/$3,000
+TM88/Aerial Ace/$3,000
+TM89/Torment/$2,500
+TM90/Skill Swap/$2,500
+TM91/Snatch/$2,500
+TM92/Overheat/$3,500
+TM93/Roost/$3,500
+TM94/Focus Blast/$4,000
+TM95/Energy Ball/$3,500
+TM96/False Swipe/$2,500
+TM97/Brine/$3,500
+TM98/Fling/$2,500
+TM99/Charge Beam/$3,000
+TM100/Dragon Pulse/$3,500
+TM101/Drain Punch/$3,500
+TM102/Will-O-Wisp/$2,500
+TM103/Silver Wind/$3,500
+TM104/Embargo/$2,000
+TM105/Shadow Claw/$3,500
+TM106/Payback/$3,000
+TM107/Recycle/$2,500
+TM108/Giga Impact/$4,000
+TM109/Rock Polish/$2,500
+TM110/Stone Edge/$3,500
+TM111/Avalanche/$3,000
+TM112/Gyro Ball/$3,000
+TM113/Stealth Rock/$2,500
+TM114/Captivate/$2,500
+TM115/Dark Pulse/$3,500
+TM116/X-Scissor/$3,500
+TM117/Natural Gift/$2,500
+TM118/Poison Jab/$3,500
+TM119/Grass Knot/$2,500
+TM120/Pluck/$3,000
+TM121/U-turn/$3,500
+TM122/Flash Cannon/$3,500
+TM123/Trick Room/$3,500
+TM124/Hone Claws/$2,500
+TM125/Psyshock/$3,500
+TM126/Venoshock/$3,500
+TM127/Telekinesis/$2,000
+TM128/Smack Down/$2,500
+TM129/Sludge Wave/$3,500
+TM130/Flame Charge/$3,000
+TM131/Low Sweep/$3,000
+TM132/Echoed Voice/$2,500
+TM133/Ally Switch/$2,000
+TM134/Scald/$3,500
+TM135/Sky Drop/$3,000
+TM136/Incinerate/$2,500
+TM137/Quash/$2,500
+TM138/Acrobatics/$3,500
+TM139/Retaliate/$3,000
+TM140/Volt Switch/$3,500
+TM141/Struggle Bug/$2,500
+TM142/Bulldoze/$3,000
+TM143/Frost Breath/$3,500
+TM144/Dragon Tail/$3,500
+TM145/Work Up/$2,500
+TM146/Wild Charge/$3,500
+TM147/Snarl/$3,000
+TM148/Infestation/$2,500
+TM149/Power-Up Punch/$3,500
+TM150/Dazzling Gleam/$3,500
+TM151/Nature Power/$2,500
+TM152/Leech Life/$3,500
+TM153/Smart Strike/$3,000
+TM154/Brutal Swing/$2,500
+TM155/Aurora Veil/$3,500
+TM156/Pin Missile/$3,500
+TM157/Magical Leaf/$3,500
+TM158/Solar Blade/$4,000
+TM159/Fire Spin/$2,500
+TM160/Screech/$2,500
+TM161/Scary Face/$2,500
+TM162/Charm/$2,500
+TM163/Beat Up/$3,000
+TM164/Helping Hand/$2,500
+TM165/Revenge/$3,000
+TM166/Imprison/$2,500
+TM167/Weather Ball/$3,500
+TM168/Fake Tears/$2,500
+TM169/Sand Tomb/$2,500
+TM170/Icicle Spear/$3,500
+TM171/Bounce/$3,500
+TM172/Mud Shot/$3,000
+TM173/Rock Blast/$3,500
+TM174/Assurance/$3,000
+TM175/Power Swap/$2,500
+TM176/Guard Swap/$2,500
+TM177/Speed Swap/$2,500
+TM178/Thunder Fang/$3,500
+TM179/Ice Fang/$3,500
+TM180/Fire Fang/$3,500
+TM181/Psycho Cut/$3,500
+TM182/Wonder Room/$2,500
+TM183/Magic Room/$2,500
+TM184/Cross Poison/$3,500
+TM185/Hex/$3,500
+TM186/Electroweb/$3,000
+TM187/Razor Shell/$3,500
+TM188/Tail Slap/$3,500
+TM189/Phantom Force/$3,500
+TM190/Draining Kiss/$3,500
+TM191/Grassy Terrain/$3,500
+TM192/Misty Terrain/$3,500
+TM193/Electric Terrain/$3,500
+TM194/Psychic Terrain/$3,500
+TM195/Mystical Fire/$3,500
+TM196/Eerie Impulse/$2,500
+TM197/Air Slash/$3,500
+TM198/Stomping Tantrum/$3,500
+TM199/Breaking Swipe/$3,000
+TM200/Hydro Pump/$4,000
+TM201/Low Kick/$3,500
+TM202/Agility/$2,500
+TM203/Focus Energy/$2,500
+TM204/Amnesia/$2,500
+TM205/Reversal/$3,000
+TM206/Spikes/$2,500
+TM207/Outrage/$3,500
+TM208/Megahorn/$4,000
+TM209/Baton Pass/$2,500
+TM210/Encore/$4,000
+TM211/Crunch/$3,500
+TM212/Future Sight/$3,000
+TM213/Uproar/$3,000
+TM214/Heat Wave/$3,500
+TM215/Trick/$2,500
+TM216/Superpower/$3,500
+TM217/Blaze Kick/$3,500
+TM218/Hyper Voice/$3,500
+TM219/Cosmic Power/$2,500
+TM220/Muddy Water/$3,500
+TM221/Iron Defense/$2,500
+TM222/Leaf Blade/$3,500
+TM223/Dragon Dance/$2,500
+TM224/Close Combat/$3,500
+TM225/Toxic Spikes/$2,500
+TM226/Flare Blitz/$3,500
+TM227/Aura Sphere/$3,500
+TM228/Seed Bomb/$3,500
+TM229/Bug Buzz/$3,500
+TM230/Power Gem/$3,500
+TM231/Brave Bird/$3,500
+TM232/Earth Power/$3,500
+TM233/Nasty Plot/$2,500
+TM234/Zen Headbutt/$3,500
+TM235/Leaf Storm/$3,500
+TM236/Power Whip/$4,000
+TM237/Gunk Shot/$4,000
+TM238/Iron Head/$3,500
+TM239/Heavy Slam/$3,000
+TM240/Electro Ball/$3,000
+TM241/Foul Play/$3,500
+TM242/Stored Power/$3,500
+TM243/Drill Run/$3,500
+TM244/Heat Crash/$3,000
+TM245/Hurricane/$4,000
+TM246/Play Rough/$3,500
+TM247/Venom Drench/$2,500
+TM248/Darkest Lariat/$3,500
+TM249/High Horsepower/$3,500
+TM250/Throat Chop/$3,500
+TM251/Pollen Puff/$3,500
+TM252/Psychic Fangs/$3,500
+TM253/Liquidation/$3,500
+TM254/Body Press/$3,500
