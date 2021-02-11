@@ -2810,7 +2810,7 @@ async function fixOrder(channel, messageMember) {
 }
 
 async function fixOrderChannel(channels, channel) {
-	await bot.channels.cache.get(channels.shift()).setPosition(1);
+	await bot.channels.cache.get(channels.shift()).setPosition(0);
 	if (channels.length > 0) {
 		setTimeout(function () {
 			fixOrderChannel(channels, channel);
