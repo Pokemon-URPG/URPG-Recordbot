@@ -789,7 +789,7 @@ function pokeVal(pokemon) {
 }
 
 function tradeVal(message) {
-    if (message.content.toLowerCase().indexOf(",value " == 0)) {
+    if (message.content.toLowerCase().indexOf(",value ") == 0) {
         var theList = message.content.substring(7).split(", ");
         var tms = fs.readFileSync("TMs.txt", "utf8").split("\n");
         var value = pokeVal(theList[0].toLowerCase()) - 0;
