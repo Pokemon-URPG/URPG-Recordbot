@@ -803,7 +803,7 @@ function tradeVal(message) {
         else {
             for (var y = 0; y < tms.length; y++) {
                 if (tms[y].split("/")[1].toLowerCase() == theList[x].toLowerCase()) {
-                    value += (tms[y].split("/")[2].replace(/$/, "").replace(/,/, "") - 0);
+                    value += (tms[y].split("/")[2].replace(/\$/, "").replace(/,/, "") - 0);
                     fulldoc += "\n" + tms[y].split("/")[0] + " " + tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
                     found = true;
                 }
@@ -817,7 +817,7 @@ function tradeVal(message) {
         for (var x = 2; x < theList.length; x++) {
             for (var y = 0; y < tms.length; y++) {
                 if (tms[y].split("/")[1].toLowerCase() == theList[x].toLowerCase()) {
-                    value += (tms[y].split("/")[2].replace(/$/, "").replace(/,/, "") - 0);
+                    value += (tms[y].split("/")[2].replace(/\$/, "").replace(/,/, "") - 0);
                     fulldoc += "\n" + tms[y].split("/")[0] + " " + tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
                     found = true;
                 }
@@ -837,7 +837,7 @@ function tradeVal(message) {
         }
         var theMessage = new Discord.MessageEmbed().setTitle(theList[0] + " total: $" + value).setColor('GREEN');
         for (var i = 0; i < doc.length; i++) {
-            theMessage.addField("Full Calculation (" + i + "/" + doc.length + ")", doc[i]);
+            theMessage.addField("Full Calculation (" + (i-1+2) + "/" + doc.length + ")", doc[i]);
         }
         message.channel.send(theMessage);
     }
