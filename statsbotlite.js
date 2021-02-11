@@ -804,7 +804,7 @@ function tradeVal(message) {
             for (var y = 0; y < tms.length; y++) {
                 if (tms[y].split("/")[1].toLowerCase() == theList[x].toLowerCase()) {
                     value += (tms[y].split("/")[2].replace(/$/, "").replace(/,/, "") - 0);
-                    fulldoc += "\n" + tms[y].split("/")[0] + " " tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
+                    fulldoc += "\n" + tms[y].split("/")[0] + " " + tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
                     found = true;
                 }
             }
