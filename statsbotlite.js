@@ -796,7 +796,7 @@ function tradeVal(message) {
         var fulldoc = pokeRank(theList[0].toLowerCase())[0] + " $" + value;
         var doc = [];
         var found = false;
-        if (theList.length > 0) {
+        if (theList.length > 1) {
             if (!isNaN(theList[1])) {
                 value += (theList[1] * 500);
                 fulldoc += "\n" + theList[1] + " evolution item(s): $" + (theList[1] * 500);
@@ -3333,7 +3333,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     if (!oldMessage.guild.available) {return;}
     if (oldMessage.guild.id != urpgServer) {return;}
     if (oldMessage.author.bot) {
-        if (oldMessage.author.id == bot.user.id) {
+        if (oldMessage.author.id == bot.user.id && oldMessage != newMessage) {
             bot.channels.cache.get("695205182971052103").send(new Discord.MessageEmbed().setThumbnail(bot.user.displayAvatarURL()).setTitle("Edited message from " + bot.user.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE'));
         }
         return;
