@@ -7,7 +7,7 @@ TM06/Horn Drill/$4,000
 TM07/Body Slam/$3,000
 TM08/Take Down/$1,500
 TM09/Double-Edge/$3,500
-TM10/Bubble Beam/$3,000
+TM10/Bubble Beam/$2,000
 TM11/Water Gun/$1,500
 TM12/Ice Beam/$3,500
 TM13/Blizzard/$4,000
@@ -65,7 +65,7 @@ TM64/Sludge Bomb/$3,500
 TM65/Sandstorm/$3,500
 TM66/Defense Curl/$1,500
 TM67/Thunder Punch/$3,500
-TM68/Detect/$5,000
+TM68/Detect/$4,000
 TM69/Thief/$2,000
 TM70/Steel Wing/$2,500
 TM71/Fire Punch/$3,500
@@ -154,7 +154,7 @@ TM153/Smart Strike/$3,000
 TM154/Brutal Swing/$2,500
 TM155/Aurora Veil/$3,500
 TM156/Pin Missile/$3,500
-TM157/Magical Leaf/$3,500
+TM157/Magical Leaf/$3,000
 TM158/Solar Blade/$4,000
 TM159/Fire Spin/$2,500
 TM160/Screech/$2,500
