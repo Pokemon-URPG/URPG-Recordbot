@@ -1976,7 +1976,7 @@ function links(message) {
     if (lowmessage.indexOf(",chartadv") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1iyB5DucEpkFCtdo41A0s3Cw0dTgYXJfH35zt6F-QDZQ/edit?usp=sharing"); }
     if (lowmessage.indexOf(",hiddenpower") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=10218"); }
     if (lowmessage.indexOf(",chartvalue") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1qiv1avIUXhtLB-z9-Pd6dl0Ub4mc58KDhPHprgbDaHI/edit"); }
-    if (lowmessage.indexOf(",gmt") == 0) { message.channel.send(new Date()); }
+    if (lowmessage.indexOf(",gmt") == 0) { message.channel.send(new Date().toString()); }
     for (var x = 1; x < tempLinks.content.split("\n").length; x++) {
         if (lowmessage.indexOf("," + tempLinks.content.split("\n")[x].split(" ")[0]) == 0) { message.channel.send(tempLinks.content.split("\n")[x].split(" ")[1]); }
     }
