@@ -81,7 +81,7 @@ bot.once("ready", async function () {
     setTimeout(function () {
         payDayReset();
         pickUpReset();
-    }, ((864000000) - (d.getTime() % 604800000)) % 604800000);
+    }, ((979200000) - (d.getTime() % 604800000)) % 604800000);
     /*setTimeout(function () {
         weirrrrrReminder();
     }, ((784800000) - (d.getTime() % 604800000)) % 604800000);
@@ -235,7 +235,7 @@ async function remindTimer(channelID, messageID) {
 
 function remindInput(message) {
     if (lowmessage.indexOf(",remindme") == 0 && !isNaN(lowmessage.split(" ")[1]) && lowmessage.split(" ")[1].length > 0) {
-        if (lowmessage.split(" ")[1] > 10080) {
+        if (lowmessage.split(" ")[1] > 10080 && message.author.id != "135999597947387904") {
             message.channel.send("Since I can only accept so many reminders at a time, I will not take such a long reminder.  Perhaps you should just put it in your phone's calendar instead.");
             return;
         }
@@ -803,7 +803,7 @@ function tradeVal(message) {
             }
             else {
                 for (var y = 0; y < tms.length; y++) {
-                    if (tms[y].split("/")[1].toLowerCase() == theList[1].toLowerCase()) {
+                    if (tms[y].includes("/") && tms[y].split("/")[1].toLowerCase() == theList[1].toLowerCase()) {
                         value += (tms[y].split("/")[2].replace(/\$/, "").replace(/,/, "") - 0);
                         fulldoc += "\n" + tms[y].split("/")[0] + " " + tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
                         found = true;
@@ -817,7 +817,7 @@ function tradeVal(message) {
             }
             for (var x = 2; x < theList.length; x++) {
                 for (var y = 0; y < tms.length; y++) {
-                    if (tms[y].split("/")[1].toLowerCase() == theList[x].toLowerCase()) {
+                    if (tms[y].includes("/") && tms[y].split("/")[1].toLowerCase() == theList[x].toLowerCase()) {
                         value += (tms[y].split("/")[2].replace(/\$/, "").replace(/,/, "") - 0);
                         fulldoc += "\n" + tms[y].split("/")[0] + " " + tms[y].split("/")[1] + " – " + tms[y].split("/")[2];
                         found = true;
