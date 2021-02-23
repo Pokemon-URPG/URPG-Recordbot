@@ -361,7 +361,7 @@ async function payDay(message, messageMember) {
                 output += `${payMember.displayName} has already received a Pay Day bonus this week.`; //Template literals
             }
             else {
-                newLog += `${value}`; // Template literals
+                newLog += ` ${value}`; // Template literals
                 output += `${payMember.displayName} receives a Pay Day bonus for this **(+$500)**.`; //Template literals
             }
             output += "\n";
@@ -391,7 +391,7 @@ async function pickUp(message, messageMember) {
                 output += `${payMember.displayName} has already received a Pickup bonus this week.`; //Template literals
             }
             else {
-                newLog += `${value}`; // Template literals
+                newLog += ` ${value}`; // Template literals
                 output += `${payMember.displayName} receives a Pickup bonus for this **(+Item)**.`; //Template literals
             }
             output += "\n";
