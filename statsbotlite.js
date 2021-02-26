@@ -367,7 +367,7 @@ async function payDay(message, messageMember) {
             output += "\n";
         }
         message.channel.send(output);
-        await bot.channels.cache.get("531433553225842700").send("```" + payDayLog.content + "```");
+        //await bot.channels.cache.get("531433553225842700").send("```" + payDayLog.content + "```");
         await payDayLog.edit(newLog);
 	payDayLog = await bot.channels.cache.get(botCommands).messages.fetch("658883162000195607");
     }
@@ -397,7 +397,7 @@ async function pickUp(message, messageMember) {
             output += "\n";
         }
         message.channel.send(output);
-        await bot.channels.cache.get("531433553225842700").send("```" + pickUpLog.content + "```");
+        //await bot.channels.cache.get("531433553225842700").send("```" + pickUpLog.content + "```");
 	await pickUpLog.edit(newLog);
     	pickUpLog = await bot.channels.cache.get(botCommands).messages.fetch("658884961603944478");
     }
@@ -446,7 +446,7 @@ function bumpNotification() {
 
 function badWordsReporter(message, messageMember, isEdit) {
     if (message.author.bot || message.channel.id == "690427377012047902") {return;}
-    lowmessage = lowmessage.replace(/cofag/g, "").replace(/leafage/g, "").replace(/skys/g, "");
+    lowmessage = lowmessage.replace(/cofag/g, "").replace(/leafage/g, "").replace(/skys/g, "").replace(/reffag/g, "").replace(/refage/g, "");
     var badWordsLog = "";
     var reporting = false;
     for (let i = 0; i < badWords.length; i++) {
