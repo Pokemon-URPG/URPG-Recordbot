@@ -763,6 +763,9 @@ function hpType(message) {
 }
 
 function pokeVal(pokemon) {
+    if (pokemon.equalsIgnoreCase("Ninjask") || pokemon.equalsIgnoreCase("Shedinja")) {
+        return 4000;
+    }
     var fullData = pokeRank(pokemon);
     var value = rankVal[fullData[1]];
     var martList = fs.readFileSync("mart.txt", "utf8");
