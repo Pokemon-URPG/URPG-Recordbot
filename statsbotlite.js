@@ -519,7 +519,7 @@ function stats(message) {
         if ((oldmessage.indexOf("evan ") != -1) || (oldmessage.indexOf("evanfardreamer ") != -1)) { message.channel.send("\nEvanfardreamer's stats: http://forum.pokemonurpg.com/showthread.php?tid=9387") }
         if (oldmessage.indexOf("dash ") != -1) { message.channel.send("\nDash's stats: http://dashurpgstats.proboards.com/thread/1/pokemon") }
         if (oldmessage.indexOf(" ash ") != -1) { message.channel.send("\nAsh K.'s stats: http://ashkstatsurpg.proboards.com/thread/23/pok-mon-index") }
-        if ((oldmessage.indexOf(" fd ") != -1) || (oldmessage.indexOf("fierce deity ") != -1) || (oldmessage.indexOf("fierce diety ") != -1)) { message.channel.send("\nFierce Deity's stats: http://fd-stats.proboards.com/thread/4/slaves?page=1") }
+        if ((oldmessage.indexOf(" fd ") != -1) || (oldmessage.indexOf("fierce deity ") != -1) || (oldmessage.indexOf("fierce diety ") != -1)) { message.channel.send("\nFierce Deity's stats: <http://fd-stats.proboards.com/thread/4/slaves?page=1>") }
         if ((oldmessage.indexOf("xali ") != -1) || (oldmessage.indexOf("xalipeno ") != -1) || (oldmessage.indexOf("xalipeño ") != -1)) { message.channel.send("\nXali's stats: http://jalapenowarrior.proboards.com/thread/17?page=1") }
         if (oldmessage.indexOf("seppe ") != -1) { message.channel.send("\nSeppe's stats: http://seppeurpg.proboards.com/thread/2/owned") }
         if ((oldmessage.indexOf("ori ") != -1) || (oldmessage.indexOf("oribhel ") != -1) || (oldmessage.indexOf("heltear ") != -1)) { message.channel.send("\nHeltear's stats: http://forum.pokemonurpg.com/showthread.php?tid=9869") }
@@ -763,7 +763,7 @@ function hpType(message) {
 }
 
 function pokeVal(pokemon) {
-    if (pokemon.equalsIgnoreCase("Ninjask") || pokemon.equalsIgnoreCase("Shedinja")) {
+    if (pokemon.toLowerCase() == "Ninjask" || pokemon.toLowerCase() == "Shedinja") {
         return 4000;
     }
     var fullData = pokeRank(pokemon);
@@ -866,6 +866,15 @@ function rank(message) {
                 message.channel.send("Zygarde-10% is rank Complex!\nTrade value: $35,000\nZygarde-50% is rank Tier2!");
                 return;
             }
+	
+	    if (lowmessage.includes("Ninjask")) {
+		message.channel.send("Ninjask's value is $4,000.  See `,rank Nincada` for how to obtain.");
+		return;
+	    }
+	    if (lowmessage.includes("Shedinja")) {
+		message.channel.send("Shedinja's value is $4,000.  See `,rank Nincada` for how to obtain.");
+		return;
+	    }
             var found = false;
             let pokemonlist = "";
             try { pokemonlist = fs.readFileSync("ranks.txt", "utf8") } catch (err) {
