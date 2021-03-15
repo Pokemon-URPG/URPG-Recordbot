@@ -3168,6 +3168,12 @@ async function updateLinks(message, messageMember) {
     }
 }
 
+async function multiply(message) {
+    if (message.content.toLowerCase().indexOf(",mult") == 0 && !isNaN(message.content.split(" ")[1]) && !isNaN(message.content.split(" ")[2])) {
+        message.channel.send(message.content.split(" ")[1] + " * " + message.content.split(" ")[2] + " = " + (message.content.split(" ")[1] * message.content.split(" ")[2]));
+    }
+}
+
 async function codeTester(message) {
     if (message.author.id == "135999597947387904" && message.content.indexOf(",eval ") == 0) {
         message.channel.send("```javascript\n" + eval(message.content.substring(6)) + "```");
@@ -3252,6 +3258,8 @@ bot.on("message", async function(message) {
     await updateSets(message);
 
     await tradeVal(message);
+
+    await multiply(message);
 
     if (message.guild === null) {
     	
