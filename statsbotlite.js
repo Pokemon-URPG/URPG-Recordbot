@@ -3190,7 +3190,7 @@ async function checker(message) {
                 useLog.channel.send("Error: " + num + ": message.url");
             }
             else {
-                sleep(num * 1000));
+                sleep(num * 1000);
                 var newUseLog = useLog.content.replace(message.author.id + " " + num, message.author.id + " " + (num - 0 + 1));
                 await useLog.edit(newUseLog);
                 useLog = await bot.channels.cache.get("531433553225842700").messages.fetch("694759255689134101");
