@@ -3185,7 +3185,7 @@ async function checker(message) {
     var d = new Date();
     if (message.content.indexOf(",") == 0 && d.getDate() == 1 && d.getMonth() == 3) {
         if (useLog.content.includes(message.author.id)) {
-            var num = useLog.split(message.author.id + " ")[1].split("\n")[0];
+            var num = useLog.content.split(message.author.id + " ")[1].split("\n")[0];
             if (isNaN(num)) {
                 useLog.channel.send("Error: " + num + ": message.url");
             }
