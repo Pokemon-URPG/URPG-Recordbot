@@ -3049,10 +3049,10 @@ async function avatar(message) {
         }
         else if (!isNaN(lowmessage.split(" ")[1])) { 
             var target = await bot.users.fetch(lowmessage.split(" ")[1]);
-            await message.channel.send(target.displayAvatarURL());
+            await message.channel.send(target.displayAvatarURL({size: 1024, dynamic: true}));
         }
         else {
-            message.channel.send(message.author.displayAvatarURL());
+            message.channel.send(message.author.displayAvatarURL({size: 1024, dynamic: true}));
         }
     }
 }
