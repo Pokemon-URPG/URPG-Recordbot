@@ -3045,7 +3045,7 @@ async function deleteReporter(message) {
 async function avatar(message) {
     if (lowmessage.indexOf(",avatar") == 0) {
         if (message.mentions.users.size != 0) {
-            message.channel.send(message.mentions.users.first().displayAvatarURL());
+            message.channel.send(message.mentions.users.first().displayAvatarURL({size: 1024, dynamic: true}));
         }
         else if (!isNaN(lowmessage.split(" ")[1])) { 
             var target = await bot.users.fetch(lowmessage.split(" ")[1]);
