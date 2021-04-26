@@ -1948,6 +1948,7 @@ function clauses(message) {
         if (lowmessage.indexOf("zm") != -1 || lowmessage.indexOf("z-m") != -1) { theMessage.addField("Z-Moves Clause: Battles may not use Z-Moves. Z-Crystals are still permitted as held items."); }
         if (lowmessage.indexOf("imprison") != -1) { theMessage.addField("Imprison Clause: Fully prevents Imprison from being used. Referees must prompt battlers to choose a new move if Imprison is selected. Imprison may not be selected by Sleep Talk/Metronome/Assist, and will cause a reroll if rolled. Imprison Clause is automatically turned on for any Gym, Battle Frontier, or Elite Four/Champion matches. This may not be removed. Imprison Clause may be turned off for Casual Battles, as well as Street League Gyms."); }
         if (lowmessage.indexOf("dynamax") != -1) { theMessage.addField("Dynamax Clause: Disallows Dynamaxing. Dynamax is a mechanic where a Pokemon grows in size for 3 turns, doubling its max HP, and all moves change into Max Moves. Max moves are stronger moves than their regular counterparts, and provide a boost or weather/terrain effect. Gigantimax has been rolled into Dynamax for URPG; a Gigantimax Pokemon may use either Dynamaxed moves, or their Gigantimax move, at any time for the 3 turn duration. Dynamax may not be used in the same battle as either Mega or Z-Moves."); }
+	message.channel.send(theMessage);
     }
 }
 
