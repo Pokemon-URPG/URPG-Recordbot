@@ -53,6 +53,7 @@ var contentLog;
 var setCodes;
 var useLog;
 var theHours;
+var theHoursE;
 
 bot.on("ready", async function() {
     logger.info("Connected")
@@ -76,7 +77,8 @@ bot.once("ready", async function () {
     contentLog = await bot.channels.cache.get(botCommands).messages.fetch("741525512014397440");
     setCodes = await bot.channels.cache.get("531433553225842700").messages.fetch("751124446701682708");
     useLog = await bot.channels.cache.get("531433553225842700").messages.fetch("694759255689134101");
-    theHours =  await bot.cache.channels.get("531433553225842700").messages.fetch("853348686603223051");
+    theHours = await bot.cache.channels.get("531433553225842700").messages.fetch("853348686603223051");
+    theHoursE = await bot.cache.channels.get("531433553225842700").messages.fetch("853349147032813578");
     if (remindLog.content.indexOf("Reminders:") == -1) { remindLog.edit("Reminders:"); }
     if (codeLog.content.indexOf("To Do:\n") == -1) {
         bot.channels.cache.get("531433553225842700").send(codeLog.content);
@@ -1957,7 +1959,7 @@ function clauses(message) {
         if (lowmessage.indexOf("item clause") != -1 || lowmessage.indexOf("itemc") != -1) { theMessage.addField("Item Clause:", "Each battler may not equip more than one of a single type of item, defined by its name."); }
         if (lowmessage.indexOf("mega") != -1) { theMessage.addField("Megas Clause:", "Battlers may not Mega Evolve their Pokemon. Mega Stones are still permitted as held items."); }
         if (lowmessage.indexOf("legend") != -1) { theMessage.addField("Legends Clause:", "Battlers may not use Legendary Pokemon."); }
-        if (lowmessage.indexOf("zm")x != -1 || lowmessage.indexOf("z-m") != -1) { theMessage.addField("Z-Moves Clause:", "Battles may not use Z-Moves. Z-Crystals are still permitted as held items."); }
+        if (lowmessage.indexOf("zm") != -1 || lowmessage.indexOf("z-m") != -1) { theMessage.addField("Z-Moves Clause:", "Battles may not use Z-Moves. Z-Crystals are still permitted as held items."); }
         if (lowmessage.indexOf("imprison") != -1) { theMessage.addField("Imprison Clause:", "Fully prevents Imprison from being used. Referees must prompt battlers to choose a new move if Imprison is selected. Imprison may not be selected by Sleep Talk/Metronome/Assist, and will cause a reroll if rolled. Imprison Clause is automatically turned on for any Gym, Battle Frontier, or Elite Four/Champion matches. This may not be removed. Imprison Clause may be turned off for Casual Battles, as well as Street League Gyms."); }
         if (lowmessage.indexOf("dynamax") != -1) { theMessage.addField("Dynamax Clause:", "Disallows Dynamaxing. Dynamax is a mechanic where a Pokemon grows in size for 3 turns, doubling its max HP, and all moves change into Max Moves. Max moves are stronger moves than their regular counterparts, and provide a boost or weather/terrain effect. Gigantimax has been rolled into Dynamax for URPG; a Gigantimax Pokemon may use either Dynamaxed moves, or their Gigantimax move, at any time for the 3 turn duration. Dynamax may not be used in the same battle as either Mega or Z-Moves."); }
 	message.channel.send(theMessage);
@@ -3218,15 +3220,23 @@ async function checker(message) {
 }
 
 async function setHours(message) {
-    if (message.author.id == "214573974208643083" && message.content.toLowerCase().indexOf(",sethours") == 0 && !isNaN(message.content.split(" ")[1]) && !isNaN(message.content.split(" ")[2]) {
+    if (message.author.id == "214573974208643083" && message.content.toLowerCase().indexOf(",sethours ") == 0 && !isNaN(message.content.split(" ")[1]) && !isNaN(message.content.split(" ")[2]) {
         await theHours.edit (theHours.content.split("\n")[0] + "\n" + message.content.split(" ")[1] + "\n" + message.content.split(" ")[2]);
         theHours =  await bot.cache.channels.get("531433553225842700").messages.fetch("853348686603223051");
+    }
+    if (message.author.id == "214573974208643083" && message.content.toLowerCase().indexOf(",sethoursend ") == 0 && !isNaN(message.content.split(" ")[1]) && !isNaN(message.content.split(" ")[2]) {
+        await theHoursE.edit (theHoursE.content.split("\n")[0] + "\n" + message.content.split(" ")[1] + "\n" + message.content.split(" ")[2]);
+        theHoursE =  await bot.cache.channels.get("531433553225842700").messages.fetch("853349147032813578");
     }
 }
 
 function goToBed(message) {
     if (message.author.id == "214573974208643083") {
+	var n = new Date();
         var hours = theHours.content.split("\n");
+	if (n = 0 || n = 6) {
+	    hours = theHoursE.content.split("\n");
+	}
         var d = new Date().getHours();
         if (d >= hours[1] && d < hours[2]) {
             message.author.send("Get some sleep! Being awake is fun, but you'll have a better day tomorrow if you're rested.");
