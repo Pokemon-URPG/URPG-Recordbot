@@ -3220,11 +3220,11 @@ async function checker(message) {
 }
 
 async function setHours(message) {
-    if (message.author.id == "214573974208643083" && message.content.toLowerCase().indexOf(",sethours ") == 0 && !isNaN(message.content.split(" ")[1]) && !isNaN(message.content.split(" ")[2]) {
+    if (message.author.id == "214573974208643083" && message.content.toLowerCase().indexOf(",sethours ") == 0 && !isNaN(message.content.split(" ")[1]) && !isNaN(message.content.split(" ")[2])) {
         await theHours.edit (theHours.content.split("\n")[0] + "\n" + message.content.split(" ")[1] + "\n" + message.content.split(" ")[2]);
         theHours =  await bot.cache.channels.get("531433553225842700").messages.fetch("853348686603223051");
     }
-    if (message.author.id == "214573974208643083" && message.content.toLowerCase().indexOf(",sethoursend ") == 0 && !isNaN(message.content.split(" ")[1]) && !isNaN(message.content.split(" ")[2]) {
+    if (message.author.id == "214573974208643083" && message.content.toLowerCase().indexOf(",sethoursend ") == 0 && !isNaN(message.content.split(" ")[1]) && !isNaN(message.content.split(" ")[2])) {
         await theHoursE.edit (theHoursE.content.split("\n")[0] + "\n" + message.content.split(" ")[1] + "\n" + message.content.split(" ")[2]);
         theHoursE =  await bot.cache.channels.get("531433553225842700").messages.fetch("853349147032813578");
     }
