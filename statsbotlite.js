@@ -52,6 +52,7 @@ var refLog;
 var contentLog;
 var setCodes;
 var useLog;
+var theHours;
 
 bot.on("ready", async function() {
     logger.info("Connected")
@@ -75,6 +76,7 @@ bot.once("ready", async function () {
     contentLog = await bot.channels.cache.get(botCommands).messages.fetch("741525512014397440");
     setCodes = await bot.channels.cache.get("531433553225842700").messages.fetch("751124446701682708");
     useLog = await bot.channels.cache.get("531433553225842700").messages.fetch("694759255689134101");
+    theHours =  await bot.cache.channels.get("531433553225842700").messages.fetch("853348686603223051");
     if (remindLog.content.indexOf("Reminders:") == -1) { remindLog.edit("Reminders:"); }
     if (codeLog.content.indexOf("To Do:\n") == -1) {
         bot.channels.cache.get("531433553225842700").send(codeLog.content);
@@ -97,6 +99,9 @@ bot.once("ready", async function () {
     setTimeout(function () {
         randomRotations();
     }, ((108000000) - (d.getTime() % 86400000)) % 86400000);
+    setTimeout(function () {
+        dailyQ();
+    }, ((147600000) - (d.getTime() % 86400000)) % 86400000);
     for (var x = 1; x < remindLog.content.split("\n").length; x++) {
         remindTimer(remindLog.content.split("\n")[x].split(" ")[0], remindLog.content.split("\n")[x].split(" ")[1]);
     }
@@ -428,6 +433,13 @@ function randomRotations() {
     bot.channels.cache.get("531433553225842700").send("<@135867398241648640> <@135999597947387904>", thisIsRich);
     setTimeout(function () {
         randomRotations();
+    }, 86400000);
+}
+
+function dailyQ() {
+    bot.channels.cache.get("596371445311995927").send("Post the Daily Question, nerd <@140308490609623041>");
+    setTimeout(function () {
+        dailyQ();
     }, 86400000);
 }
 
@@ -1919,7 +1931,7 @@ function clauses(message) {
         //for (var i = 0; i < clauses.length; i++) {
         var theMessage = new Discord.MessageEmbed().setTitle("Battle Types and Rules:");
     	if (lowmessage.includes("standard")) { theMessage.addField("Standard Clauses:", "Shorthand for Sleep, Freeze, OHKO, Accuracy, Evasion, Imprison Clauses as well as Dynamax, Z-Moves, Megas, and Power Construct disallowed and default weather and terrain.  For more information on any of theses, see the appropriate `,clause` help (and you can include multiple in the same command)."); }
-        if (lowmessage.indexOf("public") != -1) { theMessage.addField("Public:", "All Pokemon and moves are sent in the public chat. A dice is rolled to determine who sends first unless specified otherwise.\nIt is important to note that in battle modes in which you select your moves in the chat or thread, you must alternate sending your Pokemon and moves first. The battlers can agree on who sends his/her Pokemon first, or the ref can roll to see who gets to decide. Gym leaders are allowed to force the challenger to send first. After a battler sends his/her Pokemon out first, the other battler sends his/her Pokemon and move. Afterwards, the person who sent his/her Pokemon first sends their move second. Then battlers take turns alternating sending first. If a single Pokemon is knocked out in a turn, the battler replaces that Pokemon, but this does not count as sending first or second, so the alternation of sending first continues normally. If both Pokemon are knocked out in a single turn, then the battlers select their Pokemon as though they are continuing alternating. Sending implied moves, such as continuing Outrage, recharging for Hyper Beam, and a battler sending his/her last remaining Pokemon still count for alternating sending first or second."); }
+        if (lowmessage.indexOf("public") != -1) { theMessage.addField("Public:", "All Pokemon and moves are sent in the public chat. A dice is rolled to determine who sends first unless the battlers agree on one trainer to send first. A gym leader can choose who sends first.\nIt is important to note that in battle modes in which you select your moves in the chat or thread, you must alternate sending your Pokemon and moves first. After a battler sends their Pokemon out first, the other battler sends their Pokemon and move. Afterwards, the person who sent their Pokemon first sends their move second. Then battlers take turns alternating sending first. If a single Pokemon is knocked out in a turn, replacing that Pokemon does not count as sending first or second, so the alternation of sending first continues normally. If both Pokemon are knocked out in a single turn, then the battlers select their Pokemon as though they are continuing alternating. Sending implied moves, such as continuing Outrage, recharging for Hyper Beam, and a battler sending their last remaining Pokemon still count for alternating sending first or second."); }
         if (lowmessage.indexOf("private")!= -1) { theMessage.addField("Private:", "All Pokemon and moves are sent privately to the referee."); }
         if (lowmessage.indexOf("gsc") != -1) { theMessage.addField("GSC:", "AAll Pokemon have no abilities (excluding Truant/Defeatist/Slow Start on Slakoth/Slaking/Archen/Archeops/Regigigas respectively). Whether a move is physical or special is determined by its type."); }
         if (lowmessage.indexOf(" rse") != -1) { theMessage.addField("RSE:", "Pokemon have abilities. Whether a move is physical or special is determined by its type."); }
@@ -1931,23 +1943,23 @@ function clauses(message) {
         if (lowmessage.indexOf("double") != -1) { theMessage.addField("Double Battle:", "In a Double Battle, each trainer has two Pokemon out at the same time. Not compatible with Public. When Pokemon are knocked out, if the battler has more Pokemon available in their party, they must send Pokemon to replace them at the end of the turn.\nEach Pokemon is able to target any other Pokemon on the field, including its own ally. However, there are moves that affect multiple Pokemon at once. These moves can be found by clicking here. When a move hits more than one Pokemon at once, its base power is reduced to 75% of its original value. Furthermore, each instance of the move hitting a Pokemon requires its own accuracy roll, if the move is less than 100% accurate. Likewise, the secondary effects of moves that target multiple Pokemon require an individual roll for each target that is hit.\nWhen Reflect, Light Screen, and Aurora Veil are used in a Double Battle, they benefit both Pokemon on the side it is used. However, instead of halving damage like in Single Battles, the damage is reduced by 1/3 instead."); }
         if (lowmessage.indexOf("multi") != -1) { theMessage.addField("Multi Battle:", "This is a Double Battle, but you are teamed with another battler. Each battler only controls one Pokemon at a time. Each battler must send the same amount of Pokemon. This rule is only compatible with battle modes in which you must send your Pokemon and moves privately to the ref."); }
         if (lowmessage.indexOf("triple") != -1) { theMessage.addField("Triple Battle:", "Three Pokemon are used at the same time by both sides. This rule is only compatible with battle modes in which you must send your Pokemon and moves privately to the ref."); }
-        if (lowmessage.indexOf("rotation") != -1) { theMessage.addField("Rotation Battle:", "Three Pokemon are sent at the same time by both sides, but one Pokemon must be sent as the front Pokemon, while the other two are on standby. Only the front Pokemon can attack, and it is also the target of all attacks. However, a player may rotate any of his/her standby Pokemon to the front and attack with it the same turn. This rule is only compatible with battle modes in which you must send your Pokemon and moves privately to the ref."); }
-        if (lowmessage.indexOf("wonder") != -1 || lowmessage.indexOf("launcher") != -1) { theMessage.addField("Wonder Launcher:", "When the Wonder Launcher is enabled, battlers are able to use special points to purchase items during the battle to use on his/her Pokemon. Each battler starts with 0 points, and each battler gains 1 point at the end of each turn. If a battler has 14 unused points, he/she will gain no additional points until he/she uses some. The list of purchasable items can be found by clicking here. When an item is purchased, it must be used immediately. Battlers cannot buy items and store them for later use. When an item is purchased and used, the battler forgoes his/her move that turn to use the item, and the opponent is aware of the use of the item. Items that increase a Pokemon’s stat stages or critical hit stages and ‘Urge Items’ can only be used on a controlled active Pokemon. Revive and Max Revive can only be used on fainted Pokemon. The rest of the items can be used on any Pokemon in the battler’s party. If a battler purchases an item that is unable to do anything for the battler’s current party, the item will do nothing, and points will still be lost. In-depth information of the effects of items can be found here: https://bulbapedia.bulbagarden.net/wiki/Wonder_Launcher for prices."); }
+        if (lowmessage.indexOf("rotation") != -1) { theMessage.addField("Rotation Battle:", "Three Pokemon are sent at the same time by both sides, but one Pokemon must be sent as the front Pokemon, while the other two are on standby. Only the front Pokemon can attack, and it is also the target of all attacks. However, a player may rotate any of their standby Pokemon to the front and attack with it the same turn. This rule is only compatible with battle modes in which you must send your Pokemon and moves privately to the ref."); }
+        if (lowmessage.indexOf("wonder") != -1 || lowmessage.indexOf("launcher") != -1) { theMessage.addField("Wonder Launcher:", "Battlers are able to use special points to purchase items during the battle to use on their Pokemon. Each battler starts with 0 points, and each battler gains 1 point at the end of each turn. If a battler has 14 unused points, they will gain no additional points until they uses some. When an item is purchased, it must be used immediately. When an item is purchased and used, the battler forgoes their move that turn to use the item, and the opponent is aware of the use of the item. Items that increase a Pokemon’s stat stages or critical hit stages and ‘Urge Items’ can only be used on a controlled active Pokemon. Revive and Max Revive can only be used on fainted Pokemon. The rest of the items can be used on any Pokemon in the battler’s party. If a battler purchases an item that is unable to do anything for the battler’s current party, the item will do nothing, and points will still be lost. Effects and prices of items can be found here: https://bulbapedia.bulbagarden.net/wiki/Wonder_Launcher"); }
         if (lowmessage.indexOf("gameboy") != -1) { theMessage.addField("Gameboy:", "Each battler selects up to four moves for each of their Pokemon for the battle before it begins. This rule is only compatible with battle modes in which you must send your Pokemon and moves privately to the ref."); }
         if (lowmessage.indexOf("sky") != -1) { theMessage.addField("Sky Battle:", "Each battler may only use Pokemon that qualify for Sky Battles, generally Flying and Levitating Pokemon, though not all. A complete list of Gen 1-8 mechanics/eligibility can be found here: https://docs.google.com/document/d/1SbviFnTGezheNfPHtdAtNcSaRjxuNeP3Yk4ywD7HPXU/edit?usp=sharing\n*Not a valid rule for gym battles.*"); }
         if (lowmessage.indexOf("inverse") != -1) { theMessage.addField("Inverse Battle:", "Type effectiveness is reversed for the battle. 4x becomes 1/4x, 2x becomes 1/2x and vice versa. Immunities are treated as 2x super effective (the other type still applies, if there is one).\n*Not a valid rule for gym battles.*"); }
         if (lowmessage.indexOf("sleep") != -1 || lowmessage.indexOf("slp") != -1) { theMessage.addField("Sleep Clause:", "Only one Pokemon per side may be put to sleep at a time by the opponent. Any additional attempts will fail. Rest does not count towards Sleep Clause."); }
         if (lowmessage.indexOf("freeze") != -1 || lowmessage.indexOf("frz") != -1) { theMessage.addField("Freeze Clause:", "Only one Pokemon per side may be frozen. Any additional freeze chances will fail."); }
         if (lowmessage.indexOf("ohko") != -1) { theMessage.addField("No OHKO Moves:", "Fissure, Guillotine, Horn Drill, and Sheer Cold may not be selected."); }
-        if (lowmessage.indexOf("acc") != -1) { theMessage.addField("Accuracy Clause: Moves that have a 100% chance of lowering accuracy will not lower accuracy. Other effects like damage from Mud-Slap will still occur. If a Z-Effect would lower an opponent’s Accuracy, this effect is not applied, however the move is still considered a Z-Move for all other purposes."); }
-        if (lowmessage.indexOf("eva") != -1) { theMessage.addField("Evasion Clause: Moves that increase evasion directly, Double Team and Minimize, will fail. If a Z-Effect would raise the user’s Evasion, this effect is not applied, however the move is still considered a Z-Move for all other purposes."); }
-        if (lowmessage.indexOf("species") != -1) { theMessage.addField("Species Clause: Each battler may not send more than one of a single species of Pokemon, defined by Pokedex number."); }
-        if (lowmessage.indexOf("item clause") != -1 || lowmessage.indexOf("itemc") != -1) { theMessage.addField("Item Clause: Each battler may not equip more than one of a single type of item, defined by its name."); }
-        if (lowmessage.indexOf("mega") != -1) { theMessage.addField("Megas Clause: Battlers may not Mega Evolve their Pokemon. Mega Stones are still permitted as held items."); }
-        if (lowmessage.indexOf("legend") != -1) { theMessage.addField("Legends Clause: Battlers may not use Legendary Pokemon."); }
-        if (lowmessage.indexOf("zm") != -1 || lowmessage.indexOf("z-m") != -1) { theMessage.addField("Z-Moves Clause: Battles may not use Z-Moves. Z-Crystals are still permitted as held items."); }
-        if (lowmessage.indexOf("imprison") != -1) { theMessage.addField("Imprison Clause: Fully prevents Imprison from being used. Referees must prompt battlers to choose a new move if Imprison is selected. Imprison may not be selected by Sleep Talk/Metronome/Assist, and will cause a reroll if rolled. Imprison Clause is automatically turned on for any Gym, Battle Frontier, or Elite Four/Champion matches. This may not be removed. Imprison Clause may be turned off for Casual Battles, as well as Street League Gyms."); }
-        if (lowmessage.indexOf("dynamax") != -1) { theMessage.addField("Dynamax Clause: Disallows Dynamaxing. Dynamax is a mechanic where a Pokemon grows in size for 3 turns, doubling its max HP, and all moves change into Max Moves. Max moves are stronger moves than their regular counterparts, and provide a boost or weather/terrain effect. Gigantimax has been rolled into Dynamax for URPG; a Gigantimax Pokemon may use either Dynamaxed moves, or their Gigantimax move, at any time for the 3 turn duration. Dynamax may not be used in the same battle as either Mega or Z-Moves."); }
+        if (lowmessage.indexOf("acc") != -1) { theMessage.addField("Accuracy Clause:", "Moves that have a 100% chance of lowering accuracy will not lower accuracy. Other effects like damage from Mud-Slap will still occur. If a Z-Effect would lower an opponent’s Accuracy, this effect is not applied, however the move is still considered a Z-Move for all other purposes."); }
+        if (lowmessage.indexOf("eva") != -1) { theMessage.addField("Evasion Clause:", "Moves that increase evasion directly, Double Team and Minimize, will fail. If a Z-Effect would raise the user’s Evasion, this effect is not applied, however the move is still considered a Z-Move for all other purposes."); }
+        if (lowmessage.indexOf("species") != -1) { theMessage.addField("Species Clause:", "Each battler may not send more than one of a single species of Pokemon, defined by Pokedex number."); }
+        if (lowmessage.indexOf("item clause") != -1 || lowmessage.indexOf("itemc") != -1) { theMessage.addField("Item Clause:", "Each battler may not equip more than one of a single type of item, defined by its name."); }
+        if (lowmessage.indexOf("mega") != -1) { theMessage.addField("Megas Clause:", "Battlers may not Mega Evolve their Pokemon. Mega Stones are still permitted as held items."); }
+        if (lowmessage.indexOf("legend") != -1) { theMessage.addField("Legends Clause:", "Battlers may not use Legendary Pokemon."); }
+        if (lowmessage.indexOf("zm")x != -1 || lowmessage.indexOf("z-m") != -1) { theMessage.addField("Z-Moves Clause:", "Battles may not use Z-Moves. Z-Crystals are still permitted as held items."); }
+        if (lowmessage.indexOf("imprison") != -1) { theMessage.addField("Imprison Clause:", "Fully prevents Imprison from being used. Referees must prompt battlers to choose a new move if Imprison is selected. Imprison may not be selected by Sleep Talk/Metronome/Assist, and will cause a reroll if rolled. Imprison Clause is automatically turned on for any Gym, Battle Frontier, or Elite Four/Champion matches. This may not be removed. Imprison Clause may be turned off for Casual Battles, as well as Street League Gyms."); }
+        if (lowmessage.indexOf("dynamax") != -1) { theMessage.addField("Dynamax Clause:", "Disallows Dynamaxing. Dynamax is a mechanic where a Pokemon grows in size for 3 turns, doubling its max HP, and all moves change into Max Moves. Max moves are stronger moves than their regular counterparts, and provide a boost or weather/terrain effect. Gigantimax has been rolled into Dynamax for URPG; a Gigantimax Pokemon may use either Dynamaxed moves, or their Gigantimax move, at any time for the 3 turn duration. Dynamax may not be used in the same battle as either Mega or Z-Moves."); }
 	message.channel.send(theMessage);
     }
 }
@@ -3205,6 +3217,23 @@ async function checker(message) {
     }
 }
 
+async function setHours(message) {
+    if (message.author.id == "214573974208643083" && message.content.toLowerCase().indexOf(",sethours") == 0 && !isNaN(message.content.split(" ")[1]) && !isNaN(message.content.split(" ")[2]) {
+        await theHours.edit (theHours.content.split("\n")[0] + "\n" + message.content.split(" ")[1] + "\n" + message.content.split(" ")[2]);
+        theHours =  await bot.cache.channels.get("531433553225842700").messages.fetch("853348686603223051");
+    }
+}
+
+function goToBed(message) {
+    if (message.author.id == "214573974208643083") {
+        var hours = theHours.content.split("\n");
+        var d = new Date().getHours();
+        if (d >= hours[1] && d < hours[2]) {
+            message.author.send("Get some sleep! Being awake is fun, but you'll have a better day tomorrow if you're rested.");
+        }
+    }
+}
+
 async function codeTester(message) {
     if (message.author.id == "135999597947387904" && message.content.indexOf(",eval ") == 0) {
         message.channel.send("```javascript\n" + eval(message.content.substring(6)) + "```");
@@ -3293,6 +3322,10 @@ bot.on("message", async function(message) {
     await tradeVal(message);
 
     await multiply(message);
+
+    await setHours(message);
+
+    await goToBed(message);
 
     if (message.guild === null) {
     	
