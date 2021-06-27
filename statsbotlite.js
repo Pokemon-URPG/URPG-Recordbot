@@ -77,8 +77,8 @@ bot.once("ready", async function () {
     contentLog = await bot.channels.cache.get(botCommands).messages.fetch("741525512014397440");
     setCodes = await bot.channels.cache.get("531433553225842700").messages.fetch("751124446701682708");
     useLog = await bot.channels.cache.get("531433553225842700").messages.fetch("694759255689134101");
-    theHours = await bot.cache.channels.get("531433553225842700").messages.fetch("853348686603223051");
-    theHoursE = await bot.cache.channels.get("531433553225842700").messages.fetch("853349147032813578");
+    theHours = await bot.channels.cache.get("531433553225842700").messages.fetch("853348686603223051");
+    theHoursE = await bot.channels.cache.get("531433553225842700").messages.fetch("853349147032813578");
     if (remindLog.content.indexOf("Reminders:") == -1) { remindLog.edit("Reminders:"); }
     if (codeLog.content.indexOf("To Do:\n") == -1) {
         bot.channels.cache.get("531433553225842700").send(codeLog.content);
