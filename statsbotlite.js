@@ -3483,6 +3483,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
 })
 
 bot.on("guildMemberRemove", async function(member) {
+    if (member.guild.id != urpgServer) {return;}
     var leaveLog = "Member ";
     leaveLog += member.displayName;
     if (member.roles.cache.size > 1) {
@@ -3506,6 +3507,7 @@ bot.on("guildMemberRemove", async function(member) {
 })
 
 bot.on("messageReactionAdd", async function(messageReaction, user) {
+    if (messageReaction.message.guild.id != urpgServer) {return;}
     if (messageReaction.partial) {
 		// If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
 		try {
