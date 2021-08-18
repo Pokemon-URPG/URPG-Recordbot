@@ -234,7 +234,7 @@ function statusMessage() {
 }
 
 async function remindTimer(channelId, messageId) {
-    if (bot.channels.cache.has(channelID)) {
+    if (bot.channels.cache.has(channelId)) {
         var theMessage = await bot.channels.cache.get(channelId).messages.fetch(messageId);
         var d = new Date();
         var timeToRemind = theMessage.createdTimestamp + (60000 * theMessage.content.split(" ")[1]) - d;
@@ -246,7 +246,7 @@ async function remindTimer(channelId, messageId) {
     else {
         let newRemindLog = remindLog.content.split("\n");
         for (let x = 1; x < remindLog.content.length; x++) {
-            if (remindLog.content.split("\n")[x].split(" ")[0] != channelID) {
+            if (remindLog.content.split("\n")[x].split(" ")[0] != channelId) {
                 remindLog += "\n" + remindLog.content.split("\n")[x];
             }
         }
