@@ -1,4 +1,4 @@
-const Discord, { Intents } = require("discord.js")
+const { Client, Intents } = require("discord.js")
 const logger = require("winston")
 const fs = require("fs")
 const ss = require("string-similarity");
