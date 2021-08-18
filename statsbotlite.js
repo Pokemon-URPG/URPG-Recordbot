@@ -234,13 +234,25 @@ function statusMessage() {
 }
 
 async function remindTimer(channelId, messageId) {
-    var theMessage = await bot.channels.cache.get(channelId).messages.fetch(messageId);
-    var d = new Date();
-    var timeToRemind = theMessage.createdTimestamp + (60000 * theMessage.content.split(" ")[1]) - d;
-    if (timeToRemind < 1) { timeToRemind = 1; }
-    setTimeout(function() {
-        reminder(channelId, messageId);
-    }, timeToRemind)
+    if (bot.channels.cache.has(channelID)) {
+        var theMessage = await bot.channels.cache.get(channelId).messages.fetch(messageId);
+        var d = new Date();
+        var timeToRemind = theMessage.createdTimestamp + (60000 * theMessage.content.split(" ")[1]) - d;
+        if (timeToRemind < 1) { timeToRemind = 1; }
+        setTimeout(function() {
+            reminder(channelId, messageId);
+        }, timeToRemind)
+    }
+    else {
+        let newRemindLog = remindLog.content.split("\n");
+        for (let x = 1; x < remindLog.content.length; x++) {
+            if (remindLog.content.split("\n")[x].split(" ")[0] != channelID) {
+                remindLog += "\n" + remindLog.content.split("\n")[x];
+            }
+        }
+        await remindLog.edit(newRemindLog);
+        remindLog = await bot.channels.cache.get("531433553225842700").messages.fetch("711453291892047892");
+    }
 }
 
 function remindInput(message) {
