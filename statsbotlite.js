@@ -3314,8 +3314,6 @@ bot.on("messageCreate", async function(message) {
 
     await wildcards(message);
 
-    await fairyGIF(message);
-
     await help(message);
 
     await ffaGG(message);
