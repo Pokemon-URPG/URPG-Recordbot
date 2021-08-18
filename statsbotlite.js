@@ -11,7 +11,7 @@ logger.add(logger.transports.Console, {
 })
 logger.level = "debug"
 // Initialize Discord Bot
-var bot = new Discord.Client({ disableMentions: 'everyone' })
+var bot = new Discord.Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGES], partials: ['MESSAGE', 'CHANNEL', 'REACTION'], allowedMentions: { parse: ['users', 'roles'], repliedUser: true } });
 var badWords = ["fag", "retard", "cuck", "slut", "kys"];
 var hardFossils = ["Kabuto", "Omanyte", "Lileep", "Anorith", "Cranidos", "Shieldon", "Archen", "Tirtouga", "Tyrunt", "Amaura"]
 var otherFossils = ["Dracozolt", "Dracovish", "Arctozolt", "Arctovish", "Spiritomb", "Aerodactyl"];
@@ -232,13 +232,13 @@ function statusMessage() {
     }, duration)
 }
 
-async function remindTimer(channelID, messageID) {
-    var theMessage = await bot.channels.cache.get(channelID).messages.fetch(messageID);
+async function remindTimer(channelId, messageId) {
+    var theMessage = await bot.channels.cache.get(channelId).messages.fetch(messageId);
     var d = new Date();
     var timeToRemind = theMessage.createdTimestamp + (60000 * theMessage.content.split(" ")[1]) - d;
     if (timeToRemind < 1) { timeToRemind = 1; }
     setTimeout(function() {
-        reminder(channelID, messageID);
+        reminder(channelId, messageId);
     }, timeToRemind)
 }
 
@@ -260,13 +260,13 @@ function remindInput(message) {
     }
 }
 
-async function reminder(channelID, messageID) {
-    var theMessage = await bot.channels.cache.get(channelID).messages.fetch(messageID);
+async function reminder(channelId, messageId) {
+    var theMessage = await bot.channels.cache.get(channelId).messages.fetch(messageId);
     var commandLength = theMessage.content.split(" ")[0].length + theMessage.content.split(" ")[1].length + 2;
-    bot.channels.cache.get(channelID).send("<@" + theMessage.author.id + "> " + theMessage.content.substring(commandLength));
+    bot.channels.cache.get(channelId).send("<@" + theMessage.author.id + "> " + theMessage.content.substring(commandLength));
     var newLog = remindLog.content.split("\n")[0];
     for (var x = 1; x < remindLog.content.split("\n").length; x++) {
-        if (remindLog.content.split("\n")[x].indexOf(messageID) == -1) { newLog += "\n" + remindLog.content.split("\n")[x]; }
+        if (remindLog.content.split("\n")[x].indexOf(messageId) == -1) { newLog += "\n" + remindLog.content.split("\n")[x]; }
     }
     remindLog.edit(newLog);
 }
@@ -365,7 +365,7 @@ async function payDay(message, messageMember) {
         var output = "";
 	var newLog = `${payDayLog.content}`;
         for(const [key, value] of payments) { //for...of will be synchronous, reduces API queuing
-            var payMember = await message.guild.members.fetch(key);
+            var payMember = await message.channel.guild.members.fetch(key);
             if (payDayLog.mentions.users.has(key)) { // Can utilise message.mentions for this check too
                 output += `${payMember.displayName} has already received a Pay Day bonus this week.`; //Template literals
             }
@@ -395,7 +395,7 @@ async function pickUp(message, messageMember) {
         var output = "";
 	var newLog = `${pickUpLog.content}`;
         for(const [key, value] of payments) { //for...of will be synchronous, reduces API queuing
-            var payMember = await message.guild.members.fetch(key);
+            var payMember = await message.channel.guild.members.fetch(key);
             if (pickUpLog.mentions.users.has(key)) { // Can utilise message.mentions for this check too
                 output += `${payMember.displayName} has already received a Pickup bonus this week.`; //Template literals
             }
@@ -432,7 +432,7 @@ function weirrrrrReminderJ() {
 
 function randomRotations() {
     var thisIsRich = new Discord.MessageEmbed().setImage("http://orig00.deviantart.net/9efc/f/2016/094/1/8/urpg_comic_1__random_rotations_by_wintervines-d9xqnfz.png");
-    bot.channels.cache.get("531433553225842700").send("<@135867398241648640> <@135999597947387904>", thisIsRich);
+    bot.channels.cache.get("531433553225842700").send({ content: "<@135867398241648640> <@135999597947387904>", embeds: [thisIsRich] });
     setTimeout(function () {
         randomRotations();
     }, 86400000);
@@ -447,7 +447,7 @@ function dailyQ() {
 
 async function bumpServer() {
     var discordCenter = await bot.users.fetch("509430136442191873");
-    if (discordCenter.presence.status != "offline") { bot.channels.cache.get("590150047279087617").send("dc!bump"); }
+    if (discordCenter.presence != null && discordCenter.presence.status != "offline") { bot.channels.cache.get("590150047279087617").send("dc!bump"); }
     bumpTime = setTimeout(function() {
         bumpServer();
     }, 7205000);
@@ -479,7 +479,7 @@ function badWordsReporter(message, messageMember, isEdit) {
         badWordsLog += message.cleanContent;
         badWordsLog += "```";
         badWordsLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()).setTitle("Questionable Content:").addField(messageMember.displayName + " (" + message.author.id + ")", message.channel + ": " + message.content).setColor('RED');
-        bot.channels.cache.get(logsChannel).send(badWordsLog);
+        bot.channels.cache.get(logsChannel).send({ embeds: [badWordsLog] });
     }
 }
 
@@ -862,7 +862,7 @@ function tradeVal(message) {
         for (var i = 0; i < doc.length; i++) {
             theMessage.addField("Full Calculation (" + (i-1+2) + "/" + doc.length + ")", doc[i]);
         }
-        message.channel.send(theMessage);
+        message.channel.send({ embeds: [theMessage] });
     }
 }
 
@@ -1962,7 +1962,7 @@ function clauses(message) {
         if (lowmessage.indexOf("zm") != -1 || lowmessage.indexOf("z-m") != -1) { theMessage.addField("Z-Moves Clause:", "Battles may not use Z-Moves. Z-Crystals are still permitted as held items."); }
         if (lowmessage.indexOf("imprison") != -1) { theMessage.addField("Imprison Clause:", "Fully prevents Imprison from being used. Referees must prompt battlers to choose a new move if Imprison is selected. Imprison may not be selected by Sleep Talk/Metronome/Assist, and will cause a reroll if rolled. Imprison Clause is automatically turned on for any Gym, Battle Frontier, or Elite Four/Champion matches. This may not be removed. Imprison Clause may be turned off for Casual Battles, as well as Street League Gyms."); }
         if (lowmessage.indexOf("dynamax") != -1) { theMessage.addField("Dynamax Clause:", "Disallows Dynamaxing. Dynamax is a mechanic where a Pokemon grows in size for 3 turns, doubling its max HP, and all moves change into Max Moves. Max moves are stronger moves than their regular counterparts, and provide a boost or weather/terrain effect. Gigantimax has been rolled into Dynamax for URPG; a Gigantimax Pokemon may use either Dynamaxed moves, or their Gigantimax move, at any time for the 3 turn duration. Dynamax may not be used in the same battle as either Mega or Z-Moves."); }
-	message.channel.send(theMessage);
+	message.channel.send({ embeds: [theMessage] });
     }
 }
 
@@ -1987,8 +1987,8 @@ function links(message) {
     if (lowmessage.indexOf(",chartrse") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1ImPbiw8B_hhC6bmQD8BJarJR9SIoq7rTUWCrWc2iKWo/edit#gid=38422135"); }
     if (lowmessage.indexOf(",chartoras") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/1fFEREf42ZNBkesU0GbNPH9veIFGp0xDxxgIdqVufz7Q/edit#gid=38422135"); }
     if (lowmessage.indexOf(",chartdppt") == 0) { message.channel.send("https://docs.google.com/spreadsheets/d/19n2yGw38xVqak0GTVjB4dN4M1k_Ix7WEnUsufT9uRes/edit?usp=sharing"); }
-    if (lowmessage.indexOf(",chartterrain") == 0) { message.channel.send(new Discord.MessageEmbed().setImage("https://media.discordapp.net/attachments/275674541915766796/737905447910113400/unknown.png")); }
-    if (lowmessage.indexOf(",priority") == 0) { message.channel.send(new Discord.MessageEmbed().setImage("https://media.discordapp.net/attachments/362761745275551744/802346860408864808/unknown.png")); }
+    if (lowmessage.indexOf(",chartterrain") == 0) { message.channel.send({ embeds: [new Discord.MessageEmbed().setImage("https://media.discordapp.net/attachments/275674541915766796/737905447910113400/unknown.png")] }); }
+    if (lowmessage.indexOf(",priority") == 0) { message.channel.send({ embeds: [new Discord.MessageEmbed().setImage("https://media.discordapp.net/attachments/362761745275551744/802346860408864808/unknown.png")] }); }
     if (lowmessage.indexOf(",job") == 0) { message.channel.send("https://forum.pokemonurpg.com/forumdisplay.php?fid=122"); }
     if (lowmessage.indexOf(",nervous") == 0) { message.channel.send("https://docs.google.com/document/d/1CG-djhjuUixajoyGeVcbx7Tfsb3XS50LA1UBSYAljOI/edit?usp=sharing"); }
     if (lowmessage.indexOf(",underground") == 0 || lowmessage.indexOf(",ug") == 0) { message.channel.send("https://forum.pokemonurpg.com/showthread.php?tid=1720"); }
@@ -2042,9 +2042,9 @@ function wildcards(message) {
     else if (lowmessage.indexOf(",wildcard") == 0) { message.channel.send("Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils, Masquerain\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line"); }
 }
 
-function fairyGIF(message) {
+/*function fairyGIF(message) {
     if (lowmessage.indexOf(",") == 0 && lowmessage.indexOf("fairy") != -1 && message.channel.id == botCommands && !message.author.bot) {
-        message.channel.send("", {
+        message.channel.send({
             embed: {
                 thumbnail: {
                     url: 'https://cdn.discordapp.com/attachments/135864828240592896/559960120398839809/Fairy_Pokemon.gif'
@@ -2052,7 +2052,7 @@ function fairyGIF(message) {
             }
         })
     }
-}
+}*/
 
 function anonymousReport(message) {
     if (lowmessage.indexOf("noreply:") == 0 || lowmessage.indexOf("no reply:") == 0) {
@@ -2155,7 +2155,7 @@ function help(message) {
         else {
             var toSend = message.author;
             if (message.channel.id == botCommands) { toSend = bot.channels.cache.get(botCommands); }
-            toSend.send(new Discord.MessageEmbed().setTitle("Functions").setColor('GREEN').addField("Informational Commands:", "`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN1, STAT1, STAT2, PKMN2...`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat! Multiple entries need to be separated by `, `.\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon (as of gen 7).\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\n`,weather`, `,terrain`, or `,attribute`: Generate a random rule of that type.\n`,terrain active` will only pick from the four active Terrains.").setFooter("See `,help COMMAND` for more detailed information on any specific COMMAND.").addField("Additional Commands", "To pull up specific battle rules, see `,help rule` for available options.\nQuick access to various InfoHub and forum pages, see `,help link` for a list.\nI convert base stats to their URPG equivalents, see `,help convert` for syntax.\nFor the requirements and syntax to mention a role, see `,help mention`\nFor other commands that require being a referee or judge, see `,help profession`\nFor commands that require any other role, see `,help restricted`\nI have very basic <:magic:570848392633122817> card fetching ability, see `,help magic` for syntax.\nSend `,avatar @PERSON` to get PERSON's avatar URL, `,avatar ID` to get the avatar URL of the person with ID, or just `,avatar` to get your own.\nI can number and/or roll a Sleep Talk list, see `,help sleeptalk` for the details.\nIf you start with `,reorder`, each line after will be reordered randomly.\nUse `,addstat NAME LINK` to have `,stats NAME` pull up `NAME's stats: LINK`.\nFor information about setting reminders, see `,help remind`.").addField("Other functions:", "Send me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please <@135999597947387904>. If you're curious, you can see my full code pinned in <#420675341036814337>."));
+            toSend.send({ embeds: [new Discord.MessageEmbed().setTitle("Functions").setColor('GREEN').addField("Informational Commands:", "`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN1, STAT1, STAT2, PKMN2...`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat! Multiple entries need to be separated by `, `.\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon (as of gen 7).\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\n`,weather`, `,terrain`, or `,attribute`: Generate a random rule of that type.\n`,terrain active` will only pick from the four active Terrains.").setFooter("See `,help COMMAND` for more detailed information on any specific COMMAND.").addField("Additional Commands", "To pull up specific battle rules, see `,help rule` for available options.\nQuick access to various InfoHub and forum pages, see `,help link` for a list.\nI convert base stats to their URPG equivalents, see `,help convert` for syntax.\nFor the requirements and syntax to mention a role, see `,help mention`\nFor other commands that require being a referee or judge, see `,help profession`\nFor commands that require any other role, see `,help restricted`\nI have very basic <:magic:570848392633122817> card fetching ability, see `,help magic` for syntax.\nSend `,avatar @PERSON` to get PERSON's avatar URL, `,avatar ID` to get the avatar URL of the person with ID, or just `,avatar` to get your own.\nI can number and/or roll a Sleep Talk list, see `,help sleeptalk` for the details.\nIf you start with `,reorder`, each line after will be reordered randomly.\nUse `,addstat NAME LINK` to have `,stats NAME` pull up `NAME's stats: LINK`.\nFor information about setting reminders, see `,help remind`.").addField("Other functions:", "Send me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please <@135999597947387904>. If you're curious, you can see my full code pinned in <#420675341036814337>.")] });
             //toSend.send("**Informational commands:**\n`,stats`: Stats links for any number of URPG members.\n`,rank`: How to acquire Pokémon in URPG.\n`,rse`, `,dppt`, and `,oras`: Contest information for moves.\n`,clause`: Info on a particular battle rule.\n`,effective`: Effectiveness of each type against a given gen 1-7 Pokémon.\n`,coverage type1 type2...`: Number of recognized Pokémon/forms hit at each effecitveness by the given types.\n`,beatup PKMN` or `,beatup STAT`: I will tell you the BP of a Beat Up from a gen 1-7 Pokémon or by its URPG Attack stat!\n`,sr`: Damage from Stealth Rock to a given Pokémon (not rounded).\n`,contestlog`: Outputs a template for a judge log of the given type, rank, and attribute.\n`,hp`: Recommended Hidden Power type for a given Pokémon.\n`,wildcard`: List of all allowed wildcards, or `,wildcard TYPE` for only TYPE's wildcards.\nSee `,help COMMAND` for more detailed information on any specific COMMAND.\n\n**For other commands, please see the following:**\n`,help link`; `,help convert`; `,help mention`; `,help profession`; `,help restricted`; `,help magic`; `,help avatar`; `,help sleeptalk`; `,help reorder`; `,help addstat`; `,help remind`\n\n**Other functions:**\nSend me a direct message beginning with `noreply:` and I'll relay your feedback anonymously to staff.\nSend me a direct message beginning with `reply:` and I'll send your feedback to staff along with a way for them to respond (but no way to find who sent the message directly).\nI keep records of members leaving the server, majorly edited messages, deleted messages, and messages with potential offensive content.\nI add <:ffa_gg:246070314163896320> to applicable messages in FFA chats!\nI bump our server with Discord Center and remind you to bump it with DISBOARD!\nIf you have any suggestions for new or improved fucntions, please @ Ash K. If you're curious, you can see my full code pinned in <#420675341036814337>.");
         }
     }
@@ -2163,7 +2163,7 @@ function help(message) {
 
 function ffaGG(message) {
     if ((message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065") && lowmessage.indexOf("and") != -1 && lowmessage.substring(lowmessage.indexOf("and")).indexOf("out") != -1) {
-        message.react(message.guild.emojis.cache.get("246070314163896320"));
+        message.react(message.channel.guild.emojis.cache.get("246070314163896320"));
     }
 }
 
@@ -2171,21 +2171,21 @@ function role(message, messageMember) {
     if (lowmessage.indexOf(",role") == 0 || lowmessage.indexOf(",spoiler") == 0 || lowmessage == ",ffa" || lowmessage.indexOf(",s ") == 0 || lowmessage.indexOf(",otherspoiler") == 0) {
         if ((lowmessage.indexOf(",s ") == 0 || lowmessage.indexOf("spoiler") != -1) && (lowmessage.indexOf("pkmn") != -1 || lowmessage.indexOf("pokemon") != -1 || lowmessage.indexOf("pokémon") != -1)) {
             if (messageMember.roles.cache.has("440004078219558912")) {
-                messageMember.roles.remove(message.guild.roles.cache.get("440004078219558912"));
+                messageMember.roles.remove(message.channel.guild.roles.cache.get("440004078219558912"));
                 message.channel.send("Pokémon spoilers role removed!")
             }
             else {
-                messageMember.roles.add(message.guild.roles.cache.get("440004078219558912"));
+                messageMember.roles.add(message.channel.guild.roles.cache.get("440004078219558912"));
                 message.channel.send("Pokémon spoilers role added!")
             }
         }
         else if ((lowmessage.indexOf(",s ") == 0 || lowmessage.indexOf("spoiler") != -1) && lowmessage.indexOf("other") != -1) {
             if (messageMember.roles.cache.has("597313962798874626")) {
-                messageMember.roles.remove(message.guild.roles.cache.get("597313962798874626"));
+                messageMember.roles.remove(message.channel.guild.roles.cache.get("597313962798874626"));
                 message.channel.send("Other spoilers role removed!")
             }
             else {
-                messageMember.roles.add(message.guild.roles.cache.get("597313962798874626"));
+                messageMember.roles.add(message.channel.guild.roles.cache.get("597313962798874626"));
                 message.channel.send("Other spoilers role added!")
             }
         }
@@ -2194,31 +2194,31 @@ function role(message, messageMember) {
         }
         else if (lowmessage.indexOf(",role coordinator") == 0) {
             if (messageMember.roles.cache.has("552232839861633046")) {
-                messageMember.roles.remove(message.guild.roles.cache.get("552232839861633046"));
+                messageMember.roles.remove(message.channel.guild.roles.cache.get("552232839861633046"));
                 message.channel.send("Coordinator role removed!");
             }
             else {
-                messageMember.roles.add(message.guild.roles.cache.get("552232839861633046"));
+                messageMember.roles.add(message.channel.guild.roles.cache.get("552232839861633046"));
                 message.channel.send("Coordinator role added!");
             }
         }
         else if (lowmessage.indexOf(",role forumffa") == 0) {
             if (messageMember.roles.cache.has("507342482988859402")) {
-                messageMember.roles.remove(message.guild.roles.cache.get("507342482988859402"));
+                messageMember.roles.remove(message.channel.guild.roles.cache.get("507342482988859402"));
                 message.channel.send("Forum FFA role removed!");
             }
             else {
-                messageMember.roles.add(message.guild.roles.cache.get("507342482988859402"));
+                messageMember.roles.add(message.channel.guild.roles.cache.get("507342482988859402"));
                 message.channel.send("Forum FFA role added!");
             }
         }
         else if (lowmessage.indexOf(",role ffa") == 0 || lowmessage == ",ffa") {
             if (messageMember.roles.cache.has("575087931824275466")) {
-                messageMember.roles.remove(message.guild.roles.cache.get("575087931824275466"));
+                messageMember.roles.remove(message.channel.guild.roles.cache.get("575087931824275466"));
                 message.channel.send("FFA role removed!");
             }
             else {
-                messageMember.roles.add(message.guild.roles.cache.get("575087931824275466"));
+                messageMember.roles.add(message.channel.guild.roles.cache.get("575087931824275466"));
                 message.channel.send("FFA role added!");
             }
         }
@@ -2230,8 +2230,8 @@ function role(message, messageMember) {
 async function memberRole(message, messageMember) {
     if (lowmessage.indexOf(",member") == 0 && (messageMember.roles.cache.has("135868852092403713") || messageMember.roles.cache.has("244600394733322242") || messageMember.roles.cache.has("457003662217052163"))) {
         if (message.mentions.users.size != 0) {
-            let newMember = await message.guild.members.fetch(message.mentions.users.first().id)
-            await newMember.roles.add(message.guild.roles.cache.get("456993685679243286"));
+            let newMember = await message.channel.guild.members.fetch(message.mentions.users.first().id)
+            await newMember.roles.add(message.channel.guild.roles.cache.get("456993685679243286"));
             await message.channel.send("Member role applied!");
         }
         else { message.channel.send("Please include a mention for the person you would like to give the member role to.")}
@@ -2239,7 +2239,7 @@ async function memberRole(message, messageMember) {
 }
 
 function magicCardFetcher(message) {
-    if ((message.channel.id == "401543302710689793" || message.guild === null || lowmessage.indexOf(",mtg") == 0) && (lowmessage.indexOf("[[") != -1 && lowmessage.lastIndexOf("]]") != -1 && lowmessage.indexOf("|") != -1)) {
+    if ((message.channel.id == "401543302710689793" || message.channel.guild === null || lowmessage.indexOf(",mtg") == 0) && (lowmessage.indexOf("[[") != -1 && lowmessage.lastIndexOf("]]") != -1 && lowmessage.indexOf("|") != -1)) {
         magicCardPoster(message.cleanContent, message.channel);
     }
 }
@@ -2283,7 +2283,7 @@ function tempChannelReporter(message, messageMember) {
     if (message.embeds.length > 0 && message.content.length == 0) {
         theMessage = message.embeds[0];
     }
-    if (message.channel.parentID == contestBossCategory && message.channel.id != contestBossChannel && message.channel.id != warRoomChannel) {
+    if (message.channel.parentId == contestBossCategory && message.channel.id != contestBossChannel && message.channel.id != warRoomChannel) {
         if (message.channel.name.indexOf("war") != -1) {
             bot.channels.cache.get(warRoomChannel).send(theMessage);
         }
@@ -2320,7 +2320,7 @@ async function tempChannelWebhook(message, messageMember) {
         whid = "725294189146800169";
         if (message.content.indexOf(",end") == 0 && messageMember.roles.cache.has(eliteRangerRole)) {message.channel.delete();}
     }
-    if (message.channel.parentID == contestBossCategory && message.channel.id != contestBossChannel && message.channel.id != warRoomChannel) {
+    if (message.channel.parentId == contestBossCategory && message.channel.id != contestBossChannel && message.channel.id != warRoomChannel) {
         if (message.channel.name.includes("war")) {
             whid = "725302999441997834";
         }
@@ -2330,9 +2330,9 @@ async function tempChannelWebhook(message, messageMember) {
         if (message.content.indexOf(",end") == 0 && messageMember.roles.cache.has(spellbinderRole)) {message.channel.delete();}
     }
     if (whid == null) { return; }
-    var whl = await message.guild.fetchWebhooks();
+    var whl = await message.channel.guild.fetchWebhooks();
     var wh = await whl.get(whid);
-    await wh.send(message.content, { username: message.member.displayName, avatarURL: message.author.displayAvatarURL(), embeds: message.embeds || [] });
+    await wh.send({ content: message.content, username: message.member.displayName, avatarURL: message.author.displayAvatarURL(), embeds: message.embeds || [] });
 }
 
 function statConverter(message) {
@@ -2360,7 +2360,7 @@ function statConverter(message) {
 }
 
 async function mention(message, messageMember) {
-    if ((lowmessage.indexOf(",mentionrefs") == 0 || lowmessage.indexOf(",mention refs") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has(seniorRefRole))) {
+    if ((lowmessage.indexOf(",mentionrefs") == 0 || lowmessage.indexOf(",mention refs") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has(seniorRefRole))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(13); }
         else { messageContent = message.content.substring(12); }
@@ -2368,7 +2368,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get(refRole)}${messageContent}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get(refRole).setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentionjudges") == 0 || lowmessage.indexOf(",mention judges") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has(chiefJudgeRole))) {
+    if ((lowmessage.indexOf(",mentionjudges") == 0 || lowmessage.indexOf(",mention judges") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has(chiefJudgeRole))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(15); }
         else { messageContent = message.content.substring(14); }
@@ -2376,7 +2376,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get(judgeRole)}${messageContent}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get(judgeRole).setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentioncurators") == 0 || lowmessage.indexOf(",mention curators") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has("419775555488186369"))) {
+    if ((lowmessage.indexOf(",mentioncurators") == 0 || lowmessage.indexOf(",mention curators") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has("419775555488186369"))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(17); }
         else { messageContent = message.content.substring(16); }
@@ -2384,7 +2384,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("312119111750647809")}${messageContent}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("312119111750647809").setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentiongraders") == 0 || lowmessage.indexOf(",mention graders") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has("419636334982987777"))) {
+    if ((lowmessage.indexOf(",mentiongraders") == 0 || lowmessage.indexOf(",mention graders") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has("419636334982987777"))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(16); }
         else { messageContent = message.content.substring(15); }
@@ -2392,7 +2392,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("312118803616235523")}${messageContent}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("312118803616235523").setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentionrangers") == 0 || lowmessage.indexOf(",mention rangers") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has(eliteRangerRole))) {
+    if ((lowmessage.indexOf(",mentionrangers") == 0 || lowmessage.indexOf(",mention rangers") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has(eliteRangerRole))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(16); }
         else { messageContent = message.content.substring(15); }
@@ -2400,7 +2400,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("312119050484449280")}${messageContent}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("312119050484449280").setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentionarbiters") == 0 || lowmessage.indexOf(",mention arbiters") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has("533356631455694849"))) {
+    if ((lowmessage.indexOf(",mentionarbiters") == 0 || lowmessage.indexOf(",mention arbiters") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has("533356631455694849"))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(17); }
         else { messageContent = message.content.substring(16); }
@@ -2408,7 +2408,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("533356018005180416")}${messageContent}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("533356018005180416").setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentionforumffa") == 0 || lowmessage.indexOf(",mention forumffa") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has("507342993028808707"))) {
+    if ((lowmessage.indexOf(",mentionforumffa") == 0 || lowmessage.indexOf(",mention forumffa") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has("507342993028808707"))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(17); }
         else { messageContent = message.content.substring(16); }
@@ -2416,7 +2416,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("507342482988859402")}${messageContent}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("507342482988859402").setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentioncoordinator") == 0 || lowmessage.indexOf(",mention coordinator") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has(judgeRole))) {
+    if ((lowmessage.indexOf(",mentioncoordinator") == 0 || lowmessage.indexOf(",mention coordinator") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has(judgeRole))) {
         var commandLength = 19;
         if (lowmessage.indexOf(",mention ") == 0) { commandLength += 1; }
         if (lowmessage.indexOf("coordinators") < commandLength) { commandLength += 1; }
@@ -2424,7 +2424,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("552232839861633046")}${message.content.substring(commandLength)}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("552232839861633046").setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentionadv") == 0 || lowmessage.indexOf(",mention adv") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has(judgeRole))) {
+    if ((lowmessage.indexOf(",mentionadv") == 0 || lowmessage.indexOf(",mention adv") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has(judgeRole))) {
         var commandLength = 11;
         if (lowmessage.indexOf(",mention ") == 0) { commandLength += 1; }
         if (lowmessage.indexOf("advanced") < commandLength) { commandLength += 5; }
@@ -2434,7 +2434,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("806290347479007304")}${message.content.substring(commandLength)}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("552232839861633046").setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentionroyale") == 0 || lowmessage.indexOf(",mention royale") == 0 || lowmessage.indexOf(",mentionbattleroyale") == 0 || lowmessage.indexOf(",mention battleroyale") == 0 || lowmessage.indexOf(",mention battle royale") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has(refRole))) {
+    if ((lowmessage.indexOf(",mentionroyale") == 0 || lowmessage.indexOf(",mention royale") == 0 || lowmessage.indexOf(",mentionbattleroyale") == 0 || lowmessage.indexOf(",mention battleroyale") == 0 || lowmessage.indexOf(",mention battle royale") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has(refRole))) {
         var commandLength = 14;
         if (lowmessage.indexOf(",mention ") == 0) { commandLength += 1; }
         if (lowmessage.indexOf("battle") < commandLength) { commandLength += 6; }
@@ -2444,7 +2444,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("686613182902435891")}${message.content.substring(commandLength)}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("686613182902435891").setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentionleaders") == 0 || lowmessage.indexOf(",mention leaders") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has(seniorRefRole))) {
+    if ((lowmessage.indexOf(",mentionleaders") == 0 || lowmessage.indexOf(",mention leaders") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has(seniorRefRole))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(16); }
         else { messageContent = message.content.substring(15); }
@@ -2452,7 +2452,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("444947885893746698")}${messageContent}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("444947885893746698").setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentionelites") == 0 || lowmessage.indexOf(",mention elites") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has(seniorRefRole))) {
+    if ((lowmessage.indexOf(",mentionelites") == 0 || lowmessage.indexOf(",mention elites") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has(seniorRefRole))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(15); }
         else { messageContent = message.content.substring(14); }
@@ -2460,7 +2460,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("444947868835381263")}${messageContent}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("444947868835381263").setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentionffa") == 0 || lowmessage.indexOf("!ffa -p") == 0 || lowmessage.indexOf(",mention ffa") == 0) && (message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065" || message.channel.id == "653328600170364953") && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has(refRole))) {
+    if ((lowmessage.indexOf(",mentionffa") == 0 || lowmessage.indexOf("!ffa -p") == 0 || lowmessage.indexOf(",mention ffa") == 0) && (message.channel.id == "136222872371855360" || message.channel.id == "269634154101080065" || message.channel.id == "653328600170364953") && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has(refRole))) {
         var theMessage = "";
         if (lowmessage.indexOf(",mention ") == 0) { lowmessage = lowmessage.replace(",mention ", ",mention"); }
         if (lowmessage.indexOf(",mentionffa") == 0) { theMessage = message.content.substring(11); }
@@ -2543,7 +2543,7 @@ async function mention(message, messageMember) {
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("584764766921293825")}${message.content.substring(commandLength)}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("584764766921293825").setMentionable(false);
     }
-    if ((lowmessage.indexOf(",mentionjob") == 0 || lowmessage.indexOf(",mention job") == 0) && (messageMember.hasPermission("MENTION_EVERYONE") || messageMember.roles.cache.has("584764993044611075"))) {
+    if ((lowmessage.indexOf(",mentionjob") == 0 || lowmessage.indexOf(",mention job") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has("584764993044611075"))) {
         var commandLength = 12;
         if (lowmessage.indexOf(",mention ") == 0) {
             lowmessage = lowmessage.replace(",mention ", ",mention");
@@ -2578,12 +2578,12 @@ async function mention(message, messageMember) {
 }
 
 async function archiver(message, messageMember) {
-    /*if (lowmessage.includes(",") && lowmessage.includes("archive") && message.channel.name.includes("app")) && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.cache.has("584764993044611075"))) {
+    /*if (lowmessage.includes(",") && lowmessage.includes("archive") && message.channel.name.includes("app")) && (messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS) || messageMember.roles.cache.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("592609023661178890"));
-        await message.channel.replacePermissionOverwrites({
+        await message.channel.permissionOverwrites.set({
             overwrites: [
                 {
-                    id: message.guild.id,
+                    id: message.channel.guild.id,
                     denied: ['VIEW_CHANNEL']
                 },
                 {
@@ -2593,12 +2593,12 @@ async function archiver(message, messageMember) {
             ]
         })
     }
-    else*/ if ((lowmessage == ",archive public" || lowmessage == ",public archive" || lowmessage == ",publicarchive") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.cache.has("584764993044611075"))) {
+    else*/ if ((lowmessage == ",archive public" || lowmessage == ",public archive" || lowmessage == ",publicarchive") && (messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS) || messageMember.roles.cache.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("592609023661178890"));
-        await message.channel.replacePermissionOverwrites({
+        await message.channel.permissionOverwrites.set({
             overwrites: [
                 {
-                    id: message.guild.id,
+                    id: message.channel.guild.id,
                     denied: ['VIEW_CHANNEL']
                 },
                 {
@@ -2608,12 +2608,12 @@ async function archiver(message, messageMember) {
             ]
         })
     }
-    else if ((lowmessage == ",disciplinaryarchive" || lowmessage == ",disciplinary archive" || lowmessage == ",archive disciplin") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.cache.has("584764993044611075"))) {
+    else if ((lowmessage == ",disciplinaryarchive" || lowmessage == ",disciplinary archive" || lowmessage == ",archive disciplin") && (messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS) || messageMember.roles.cache.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("432291722492379136"));
-        await message.channel.replacePermissionOverwrites({
+        await message.channel.permissionOverwrites.set({
             overwrites: [
                 {
-                    id: message.guild.id,
+                    id: message.channel.guild.id,
                     denied: ['VIEW_CHANNEL']
                 },
                 {
@@ -2623,12 +2623,12 @@ async function archiver(message, messageMember) {
             ]
         })
     }
-    else if ((lowmessage == ",sectionalarchive" || lowmessage == ",sectionarchive" || lowmessage == ",archive section") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.cache.has("584764993044611075"))) {
+    else if ((lowmessage == ",sectionalarchive" || lowmessage == ",sectionarchive" || lowmessage == ",archive section") && (messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS) || messageMember.roles.cache.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("729845430736650352"));
-        await message.channel.replacePermissionOverwrites({
+        await message.channel.permissionOverwrites.set({
             overwrites: [
                 {
-                    id: message.guild.id,
+                    id: message.channel.guild.id,
                     denied: ['VIEW_CHANNEL']
                 },
                 {
@@ -2638,12 +2638,12 @@ async function archiver(message, messageMember) {
             ]
         })
     }
-    else if ((lowmessage == ",applicationsarchive" || lowmessage == ",appsarchive" || lowmessage == ",archive app") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.cache.has("584764993044611075"))) {
+    else if ((lowmessage == ",applicationsarchive" || lowmessage == ",appsarchive" || lowmessage == ",archive app") && (messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS) || messageMember.roles.cache.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("729843009226670080"));
-        await message.channel.replacePermissionOverwrites({
+        await message.channel.permissionOverwrites.set({
             overwrites: [
                 {
-                    id: message.guild.id,
+                    id: message.channel.guild.id,
                     denied: ['VIEW_CHANNEL']
                 },
                 {
@@ -2653,12 +2653,12 @@ async function archiver(message, messageMember) {
             ]
         })
     }
-    else if ((lowmessage == ",teamsarchive" || lowmessage == ",teamarchive" || lowmessage == ",archive team") && (messageMember.hasPermission("MANAGE_CHANNELS") || messageMember.roles.cache.has("584764993044611075"))) {
+    else if ((lowmessage == ",teamsarchive" || lowmessage == ",teamarchive" || lowmessage == ",archive team") && (messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS) || messageMember.roles.cache.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("729845561951387708"));
-        await message.channel.replacePermissionOverwrites({
+        await message.channel.permissionOverwrites.set({
             overwrites: [
                 {
-                    id: message.guild.id,
+                    id: message.channel.guild.id,
                     denied: ['VIEW_CHANNEL']
                 },
                 {
@@ -2672,8 +2672,8 @@ async function archiver(message, messageMember) {
 
 async function contestBoss(message, messageMember) {
     if (lowmessage.indexOf(",contestboss") == 0 && messageMember.roles.cache.has(spellbinderRole)) {
-        var bossroom = await message.guild.createChannel("contest-boss", { type: 'text', permissionOverwrites: [{
-            id: message.guild.id,
+        var bossroom = await message.channel.guild.createChannel("contest-boss", { type: 'text', permissionOverwrites: [{
+            id: message.channel.guild.id,
             deny: ['VIEW_CHANNEL']
         }]})
         await bossroom.setParent(contestBossCategory);
@@ -2681,8 +2681,8 @@ async function contestBoss(message, messageMember) {
             VIEW_CHANNEL: true,
             MANAGE_ROLES: true
         })
-        var warroom = await message.guild.createChannel("war-room", { type: 'text', permissionOverwrites: [{
-            id: message.guild.id,
+        var warroom = await message.channel.guild.createChannel("war-room", { type: 'text', permissionOverwrites: [{
+            id: message.channel.guild.id,
             deny: ['VIEW_CHANNEL']
         }]})
         await warroom.setParent(contestBossCategory);
@@ -2695,12 +2695,12 @@ async function contestBoss(message, messageMember) {
 
 async function judgeTest(message, messageMember) {
     if (lowmessage.indexOf(",judgetest") == 0 && messageMember.roles.cache.has(chiefJudgeRole)) {
-        var testroom = await message.guild.channels.create("judge-test", { 
+        var testroom = await message.channel.guild.channels.create("judge-test", { 
 	type: 'text',
 	parent: "376809774282571779",
 	permissionOverwrites: [
 	    {
-            	id: message.guild.id,
+            	id: message.channel.guild.id,
             	deny: ['VIEW_CHANNEL']
             },
 	],
@@ -2720,12 +2720,12 @@ async function judgeTest(message, messageMember) {
 
 async function refTest(message, messageMember) {
     if (lowmessage.indexOf(",reftest") == 0 && messageMember.roles.cache.has(seniorRefRole)) {
-        var testroom = await message.guild.channels.create("ref-test", { 
+        var testroom = await message.channel.guild.channels.create("ref-test", { 
 	type: 'text',
 	parent: "376809774282571779",
 	permissionOverwrites: [
 	    {
-            	id: message.guild.id,
+            	id: message.channel.guild.id,
             	deny: ['VIEW_CHANNEL']
             },
 	],
@@ -2745,8 +2745,8 @@ async function refTest(message, messageMember) {
 
 async function rangerTest(message, messageMember) {
     if (lowmessage.indexOf(",rangertest") == 0 && messageMember.roles.cache.has(eliteRangerRole)) {
-        var testroom = await message.guild.createChannel("ranger-test", { type: 'text', permissionOverwrites: [{
-            id: message.guild.id,
+        var testroom = await message.channel.guild.createChannel("ranger-test", { type: 'text', permissionOverwrites: [{
+            id: message.channel.guild.id,
             deny: ['VIEW_CHANNEL']
         }]})
         await testroom.setParent("376809774282571779");
@@ -2764,8 +2764,8 @@ async function rangerTest(message, messageMember) {
 
 async function newDiscussion(message) {
     if (message.channel.id == staffChannel && lowmessage.indexOf(",newdiscussion") == 0) {
-        var newChannel = await message.guild.createChannel(message.content.split(" ")[1], { type: 'text', permissionOverwrites: [{
-            id: message.guild.id,
+        var newChannel = await message.channel.guild.createChannel(message.content.split(" ")[1], { type: 'text', permissionOverwrites: [{
+            id: message.channel.guild.id,
             deny: ['VIEW_CHANNEL']
         }]});
         await newChannel.setParent("553338242401959966");
@@ -2780,9 +2780,9 @@ async function newDiscussion(message) {
 }
 
 async function newProject(message) {
-    if (message.channel.parentID == "443857882937819146" && lowmessage.indexOf(",newproject") == 0) {
-        var newChannel = await message.guild.createChannel(message.content.split(" ")[1], { type: 'text', permissionOverwrites: [{
-            id: message.guild.id,
+    if (message.channel.parentId == "443857882937819146" && lowmessage.indexOf(",newproject") == 0) {
+        var newChannel = await message.channel.guild.createChannel(message.content.split(" ")[1], { type: 'text', permissionOverwrites: [{
+            id: message.channel.guild.id,
             deny: ['VIEW_CHANNEL']
         }]});
         await newChannel.setParent("443857882937819146");
@@ -2798,9 +2798,9 @@ async function newProject(message) {
 }
 
 async function newGame(message) {
-    if (message.channel.parentID == "" && lowmessage.indexOf(",newgame") == 0) {
-        var newChannel = await message.guild.createChannel(message.content.split(" ")[1], { type: 'text', permissionOverwrites: [{
-            id: message.guild.id,
+    if (message.channel.parentId == "" && lowmessage.indexOf(",newgame") == 0) {
+        var newChannel = await message.channel.guild.createChannel(message.content.split(" ")[1], { type: 'text', permissionOverwrites: [{
+            id: message.channel.guild.id,
             deny: ['VIEW_CHANNEL']
         }]});
         await newChannel.setParent("358436351194038272");
@@ -2817,7 +2817,7 @@ async function newGame(message) {
 
 
 async function fixOrder(channel, messageMember) {
-    if (lowmessage.indexOf(",fixorder") == 0 && (messageMember.roles.cache.has("584764993044611075") || messageMember.hasPermission("MANAGE_CHANNELS"))) {
+    if (lowmessage.indexOf(",fixorder") == 0 && (messageMember.roles.cache.has("584764993044611075") || messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS))) {
         /*await bot.channels.cache.get(judgeTestChannel).setPosition(1);//judgingtest
         await bot.channels.cache.get(judgingChiefsChannel).setPosition(1);//judgingchiefs
         await bot.channels.cache.get("293899148112035840").setPosition(1);//judgingyou
@@ -2853,11 +2853,11 @@ async function fixOrderChannel(channels, channel) {
 }
 
 async function pkmnSpoilerSeason(message, messageMember) {
-    if ((lowmessage.indexOf(",pkmnspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonpkmn ") == 0) && (messageMember.roles.cache.has("584764993044611075") || messageMember.hasPermission("MANAGE_CHANNELS"))) {
-        await message.guild.members.fetch();
+    if ((lowmessage.indexOf(",pkmnspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonpkmn ") == 0) && (messageMember.roles.cache.has("584764993044611075") || messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS))) {
+        await message.channel.guild.members.fetch();
         var spoilers = await bot.guilds.cache.get(urpgServer).roles.cache.get("440004078219558912").members.array();
         for (i = 0; i < spoilers.length; i++) {
-            await spoilers[i].roles.remove(message.guild.roles.cache.get("440004078219558912"));
+            await spoilers[i].roles.remove(message.channel.guild.roles.cache.get("440004078219558912"));
         }
         await bot.channels.cache.get("440004235635982336").setName("💭spoilers-" + message.cleanContent.split(" ")[1]);
         await message.channel.send("Pokémon spoiler season now set to <#440004235635982336>.");
@@ -2865,11 +2865,11 @@ async function pkmnSpoilerSeason(message, messageMember) {
 }
 
 async function otherSpoilerSeason(message, messageMember) {
-    if ((lowmessage.indexOf(",otherspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonother ") == 0) && (messageMember.roles.cache.has("584764993044611075") || messageMember.hasPermission("MANAGE_CHANNELS"))) {
-        await message.guild.members.fetch();
+    if ((lowmessage.indexOf(",otherspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonother ") == 0) && (messageMember.roles.cache.has("584764993044611075") || messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS))) {
+        await message.channel.guild.members.fetch();
         var spoilers = await bot.guilds.cache.get(urpgServer).roles.cache.get("597313962798874626").members.array();
         for (i = 0; i < spoilers.length; i++) {
-            await spoilers[i].roles.remove(message.guild.roles.cache.get("597313962798874626"));
+            await spoilers[i].roles.remove(message.channel.guild.roles.cache.get("597313962798874626"));
         }
         await bot.channels.cache.get("597314223483387905").setName("💭spoilers-" + message.cleanContent.split(" ")[1]);
         await message.channel.send("Other spoiler season now set to <#597314223483387905>.");
@@ -2877,7 +2877,7 @@ async function otherSpoilerSeason(message, messageMember) {
 }
 
 async function anonymousReply(message) {
-    if ((message.channel.id == staffChannel || message.channel.parentID == "443857882937819146") && message.content.indexOf(",anonreply") == 0) {
+    if ((message.channel.id == staffChannel || message.channel.parentId == "443857882937819146") && message.content.indexOf(",anonreply") == 0) {
         const anonToReplyTo = message.content.split(" ");
         //const dm = await message.client.rest.makeRequest("get", Endpoints.Channel(anonToReplyTo[1]), true);
         //const dmChannel = await message.client.rest.methods.createDM(dm.recipients[0]);
@@ -2914,7 +2914,7 @@ function wrongBot(message) {
 
 async function substituteBot(channel) {
     kauri = await bot.users.fetch("574745413773426688");
-    if (((kauri.presence.status == "offline" || channel.guild == null || channel.guild.id != urpgServer) && lowmessage.indexOf("!d ") == 0) || (lowmessage.indexOf("//roll-sides") == 0 && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[0]) && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[1])) || (lowmessage.indexOf("//roll-dice") == 0 && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[0]) && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[1]))) {
+    if ((((kauri.presence != null && kauri.presence.status == "offline") || channel.guild == null || channel.guild.id != urpgServer) && lowmessage.indexOf("!d ") == 0) || (lowmessage.indexOf("//roll-sides") == 0 && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[0]) && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[1])) || (lowmessage.indexOf("//roll-dice") == 0 && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[0]) && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[1]))) {
         var dieToRoll;
         var results;
         if (lowmessage.indexOf("!d") == 0) {
@@ -2955,14 +2955,14 @@ async function substituteBot(channel) {
 }
 
 async function pinMessage(message) {
-    //if ((lowmessage.indexOf(",pin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentID == "358430499146039299" && messageMember.roles.cache.has(refRole)) || (message.channel.parentID == "358433546492444675" && messageMember.roles.cache.has(judgeRole)))) {
+    //if ((lowmessage.indexOf(",pin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentId == "358430499146039299" && messageMember.roles.cache.has(refRole)) || (message.channel.parentId == "358433546492444675" && messageMember.roles.cache.has(judgeRole)))) {
     theMessage = await message.channel.messages.fetch(lowmessage.split(" ")[1]);
     await theMessage.pin();
     //}
 }
 
 async function unpinMessage(message) {
-    if ((lowmessage.indexOf(",unpin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentID == "358430499146039299" && messageMember.roles.cache.has(refRole)) || (message.channel.parentID == "358433546492444675" && messageMember.roles.cache.has(judgeRole)))) {
+    if ((lowmessage.indexOf(",unpin") == 0 && !isNaN(lowmessage.split(" ")[1])) && ((message.channel.parentId == "358430499146039299" && messageMember.roles.cache.has(refRole)) || (message.channel.parentId == "358433546492444675" && messageMember.roles.cache.has(judgeRole)))) {
         theMessage = await message.channel.messages.fetch(lowmessage.split(" ")[1]);
         await theMessage.unpin();
         await message.react("👍");
@@ -2970,9 +2970,12 @@ async function unpinMessage(message) {
 }
 
 async function deleteReporter(message) {
-    if (message.guild === null) {return;}
-    if (!message.guild.available) {return;}
-    if (message.guild.id != urpgServer) {return;}
+    if (message.partial) {
+        return;
+    }
+    if (message.channel.guild === null) {return;}
+    if (!message.channel.guild.available) {return;}
+    if (message.channel.guild.id != urpgServer) {return;}
     if (message.author.id == "461133571034316810") {return;}
     var channelToNotify = logsChannel;
     if (message.channel.id == logsChannel && message.author.id == "531429270451519490") {
@@ -2980,7 +2983,7 @@ async function deleteReporter(message) {
         return;
     }
     if (message.channel.id == "690427377012047902") {channelToNotify = judgeTestChannel;}
-    if (message.channel.id == botsChannel) {channelToNotify = botsChannel;}
+    if (message.channel.id == botsChannel) {return;}
     if (message.channel.id == seniorRefChannel) {channelToNotify = refTestChannel;}
     if (message.channel.id == judgingChiefsChannel) {channelToNotify = judgeTestChannel;}
     if (message.channel.id == eliteRangersChannel) {channelToNotify = rangerTestChannel;}
@@ -2988,7 +2991,7 @@ async function deleteReporter(message) {
     if (message.channel.name == "judge-test") {channelToNotify = judgeTestChannel;}
     if (message.channel.name == "ref-test") {channelToNotify = refTestChannel;}
     if (message.channel.name == "ranger-test") {channelToNotify = rangerTestChannel;}
-    if (message.channel.parentID == contestBossCategory && message.channel.id != contestBossChannel && message.channel.id != warRoomChannel) {
+    if (message.channel.parentId == contestBossCategory && message.channel.id != contestBossChannel && message.channel.id != warRoomChannel) {
         if (message.channel.name.indexOf("war") != -1) {
             channelToNotify = warRoomChannel;
         }
@@ -2996,7 +2999,7 @@ async function deleteReporter(message) {
             channelToNotify = contestBossChannel;
         }
     }
-    const entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
+    const entry = await message.channel.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
     let user = ""
     var botDeleterNotFound = false;
     if (entry.extra.channel.id === message.channel.id
@@ -3045,8 +3048,8 @@ async function deleteReporter(message) {
         deleteLog += message.cleanContent.replace(/```/g, "​`​`​`​");
         deleteLog += "```";
     }
-    messageMember = await message.guild.members.fetch(message.author);
-    var deleteMember = await message.guild.members.fetch(user);
+    messageMember = await message.channel.guild.members.fetch(message.author);
+    var deleteMember = await message.channel.guild.members.fetch(user);
     if (attaches.length == 0) {
         if (messageMember.id == deleteMember.id) { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()).addField("Deletion", "<#" + message.channel + ">: " + message.content); }
         else { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()).setFooter("Deleted by " + deleteMember.displayName + " (" + deleteMember.id + ")", deleteMember.user.displayAvatarURL()).addField("Deletion", "<#" + message.channel + ">: " + message.content); }
@@ -3054,7 +3057,7 @@ async function deleteReporter(message) {
     /*if (message.embeds.length > 0) {
         bot.channels.cache.get(channelToNotify).send()
     }*/
-    bot.channels.cache.get(channelToNotify).send(deleteLog);
+    bot.channels.cache.get(channelToNotify).send({ embeds: [deleteLog] });
 }
 
 async function avatar(message) {
@@ -3105,7 +3108,7 @@ async function sleepTalk(message) {
 
 async function raidBan(message, messageMember) {
     kauri = await bot.users.fetch("574745413773426688");
-    if (kauri.presence.status != "offline") { return; }
+    if (kauri.presence != null && kauri.presence.status != "offline") { return; }
     if (messageMember.roles.cache.size > 1) { return; }
     if (message.mentions.users.size > 5) {
         messageMember.guild.members.ban(message.author, {
@@ -3232,11 +3235,11 @@ async function setHours(message) {
 
 function goToBed(message) {
     if (message.author.id == "214573974208643083") {
-	var n = new Date();
+        var n = new Date();
         var hours = theHours.content.split("\n");
-	if (n == 0 || n == 6) {
-	    hours = theHoursE.content.split("\n");
-	}
+	    if (n == 0 || n == 6) {
+	        hours = theHoursE.content.split("\n");
+	    }
         var d = new Date().getHours();
         if (d >= hours[1] && d < hours[2]) {
             message.author.send("Get some sleep! Being awake is fun, but you'll have a better day tomorrow if you're rested.");
@@ -3252,7 +3255,17 @@ async function codeTester(message) {
 
 bot.on('error', console.error);
 
-bot.on("message", async function(message) {
+bot.on("messageCreate", async function(message) {
+    if (message.partial) {
+        // If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
+        try {
+            await message.fetch();
+        } catch (error) {
+            logger.error('Something went wrong when fetching the message: ', error);
+            // Return as `reaction.message.author` may be undefined/null
+            return;
+        }
+    }
     lowmessage = message.content.toLowerCase();
 
     await checker(message);
@@ -3337,18 +3350,18 @@ bot.on("message", async function(message) {
 
     await goToBed(message);
 
-    if (message.guild === null) {
+    if (message.channel.guild === null) {
     	
         await anonymousReport(message);
 
         return;
     }
 
-    if (message.guild.id != urpgServer) {return;}
+    if (message.channel.guild.id != urpgServer) {return;}
 
     if (message.system) {return;}
 
-    let messageMember = await message.guild.members.fetch(message.author);
+    let messageMember = await message.channel.guild.members.fetch(message.author);
 
     await tempChannelWebhook(message, messageMember);
 
@@ -3410,11 +3423,23 @@ bot.on("messageDeleteBulk", async function(messages) {
 })
 
 bot.on("messageUpdate", async function(oldMessage, newMessage) {
+    let diff = 0;
+    if (newMessage.partial) {
+        // If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
+        try {
+            await newMessage.fetch();
+            let diff = ss.compareTwoStrings(oldMessage.content, newMessage.content);
+        } catch (error) {
+            logger.error('Something went wrong when fetching the message: ', error);
+            // Return as `reaction.message.author` may be undefined/null
+            return;
+        }
+
+    }
     //if (oldMessage.partial) { return; }
     ffaGG(newMessage);
     var channelToNotify = logsChannel;
-    const diff = ss.compareTwoStrings(oldMessage.content, newMessage.content);
-    if (oldMessage.guild === null && (oldMessage.content.toLowerCase().indexOf("noreply:") == 0 || oldMessage.content.toLowerCase().indexOf("no reply:") == 0 || newMessage.content.toLowerCase().indexOf("noreply:") == 0 || newMessage.content.toLowerCase().indexOf("no reply:") == 0 || oldMessage.content.toLowerCase().indexOf("reply:") == 0 || newMessage.content.toLowerCase().indexOf("reply:") == 0)) {
+    if (newMessage.channel.guild === null && ((!oldMessage.partial && oldMessage.content.toLowerCase().indexOf("noreply:") == 0) || (!oldMessage.partial && oldMessage.content.toLowerCase().indexOf("no reply:") == 0) || newMessage.content.toLowerCase().indexOf("noreply:") == 0 || newMessage.content.toLowerCase().indexOf("no reply:") == 0 || (!oldMessage.partial && oldMessage.content.toLowerCase().indexOf("reply:") == 0) || newMessage.content.toLowerCase().indexOf("reply:") == 0)) {
         var editLog = "An anonymous report";
         if (newMessage.content.toLowerCase().indexOf("reply:") == 0) {
             editLog += " from "
@@ -3426,29 +3451,29 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
         bot.channels.cache.get(anonymousReportChannel).send(editLog);
         return;
     }
-    if (oldMessage.guild === null) {return;}
-    if (!oldMessage.guild.available) {return;}
-    if (oldMessage.guild.id != urpgServer) {return;}
-    if (oldMessage.author.bot) {
-        if (oldMessage.author.id == bot.user.id && oldMessage.content != newMessage.content) {
-            bot.channels.cache.get("695205182971052103").send(new Discord.MessageEmbed().setThumbnail(bot.user.displayAvatarURL()).setTitle("Edited message from " + bot.user.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE'));
+    if (newMessage.channel.guild === null) {return;}
+    if (!newMessage.channel.guild.available) {return;}
+    if (newMessage.channel.guild.id != urpgServer) {return;}
+    if (newMessage.author.bot && !oldMessage.partial) {
+        if (newMessage.author.id == bot.user.id && oldMessage.content != newMessage.content) {
+            bot.channels.cache.get("695205182971052103").send({ embeds: [new Discord.MessageEmbed().setThumbnail(bot.user.displayAvatarURL()).setTitle("Edited message from " + bot.user.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE')] });
         }
         return;
     }
     var temp = false;
-    if (oldMessage.channel.name == "judge-test") {
+    if (newMessage.channel.name == "judge-test") {
         channelToNotify = judgeTestChannel;
         temp = true;
     }
-    if (oldMessage.channel.name == "ref-test") {
+    if (newMessage.channel.name == "ref-test") {
         channelToNotify = refTestChannel;
         temp = true;
     }
-    if (oldMessage.channel.name == "ranger-test") {
+    if (newMessage.channel.name == "ranger-test") {
         channelToNotify = rangerTestChannel;
         temp = true;
     }
-    if (newMessage.channel.parentID == contestBossCategory && newMessage.channel.id != contestBossChannel && newMessage.channel.id != warRoomChannel) {
+    if (newMessage.channel.parentId == contestBossCategory && newMessage.channel.id != contestBossChannel && newMessage.channel.id != warRoomChannel) {
         if (newMessage.channel.name.indexOf("war") != -1) {
             channelToNotify = warRoomChannel;
             temp = true;
@@ -3460,24 +3485,28 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     }
     if (diff <= .8 || temp) {
     	if (newMessage.content.length > 5 || oldMessage.content.length > 5 || temp) {
-    		if (oldMessage.channel.id == seniorRefChannel) {channelToNotify = refTestChannel;}
-    		if (oldMessage.channel.id == judgingChiefsChannel) {channelToNotify = judgeTestChannel;}
-    		if (oldMessage.channel.id == eliteRangersChannel) {channelToNotify = rangerTestChannel;}
-    		if (oldMessage.channel.id == botsChannel) {channelToNotify = botsChannel;}
-            if (oldMessage.channel.id == "690427377012047902") {channelToNotify = judgeTestChannel;}
-            if (oldMessage.channel.id == "745806753312014454") {channelToNotify = "695205185181450281";}
+    		if (newMessage.channel.id == seniorRefChannel) {channelToNotify = refTestChannel;}
+    		if (newMessage.channel.id == judgingChiefsChannel) {channelToNotify = judgeTestChannel;}
+    		if (newMessage.channel.id == eliteRangersChannel) {channelToNotify = rangerTestChannel;}
+    		if (newMessage.channel.id == botsChannel) {return;}
+            if (newMessage.channel.id == "690427377012047902") {channelToNotify = judgeTestChannel;}
+            if (newMessage.channel.id == "745806753312014454") {channelToNotify = "695205185181450281";}
     		var deleteLog = ""
             if (temp) {
-                deleteLog += await message.guild.members.fetch(message.author).displayName + "'s message saying \"" + newMessage.cleanContent + "\"";
+                deleteLog += await message.channel.guild.members.fetch(message.author).displayName + "'s message saying \"" + newMessage.cleanContent + "\"";
             }
             else { deleteLog += newMessage.url; }
-    		if (oldMessage.cleanContent != "") {
+            if (oldMessage.partial) {
+                messageMember = await oldMessage.channel.guild.members.fetch(oldMessage.author);
+                deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Uncached edited message from " + messageMember.displayName + " (" + newMessage.author.id + ")").addField("Channel:", newMessage.channel).addField("New Message:", newMessage.content).setColor('BLUE');                
+            }
+    		else if (oldMessage.cleanContent != "") {
                 deleteLog += await " used to say: ```" + oldMessage.cleanContent.replace(/```/g, "​`​`​`​") + "```";
-                messageMember = await oldMessage.guild.members.fetch(oldMessage.author);
+                messageMember = await oldMessage.channel.guild.members.fetch(oldMessage.author);
                 deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE');
             }
-            else { deleteLog += await " was previously textless."; }
-    		await bot.channels.cache.get(channelToNotify).send(deleteLog);
+            else { deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited textless message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("New Message:", newMessage.content).setColor('BLUE'); }
+    		await bot.channels.cache.get(channelToNotify).send({ embeds: [deleteLog] });
     	}
     }
 })
@@ -3507,7 +3536,6 @@ bot.on("guildMemberRemove", async function(member) {
 })
 
 bot.on("messageReactionAdd", async function(messageReaction, user) {
-    if (messageReaction.message.guild.id != urpgServer) {return;}
     if (messageReaction.partial) {
 		// If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
 		try {
@@ -3518,20 +3546,21 @@ bot.on("messageReactionAdd", async function(messageReaction, user) {
 			return;
 		}
 	}
-    var reactMember = await messageReaction.message.guild.members.fetch(user);
-    if (messageReaction.emoji.name == "📌" && ((messageReaction.message.channel.parentID == "358430499146039299" && ReactMember.roles.cache.has(refRole)) || (messageReaction.message.channel.parentID == "358433546492444675" && reactMember.roles.cache.has(judgeRole)))) {
+    if (messageReaction.message.channel.guild.id != urpgServer) {return;}
+    var reactMember = await messageReaction.message.channel.guild.members.fetch(user);
+    if (messageReaction.emoji.name == "📌" && ((messageReaction.message.channel.parentId == "358430499146039299" && ReactMember.roles.cache.has(refRole)) || (messageReaction.message.channel.parentId == "358433546492444675" && reactMember.roles.cache.has(judgeRole)))) {
         pinMessage(messageReaction.message);
     }
 })
 
 /*bot.on("channelCreate", function(channel) {
-    if (channel.type == "text" && channel.guild.id == urpgServer) {
+    if (channel.type == "GUILD_TEXT" && channel.guild.id == urpgServer) {
         channelHandle(channel);
     }
 })
 
 /*bot.on("channelUpdate", function(oldChannel, newChannel) {
-    if (oldChannel.type == "text" && oldChannel.guild.id == urpgServer && !newChannel.permissionOverwrites.has("409821978887979019") && newChannel.permissionOverwrites.has(newChannel.guild.id) && newChannel.permissionOverwrites.get(newChannel.guild.id).deny % 2048 < 512) {
+    if (oldChannel.type == "GUILD_TEXT" && oldChannel.guild.id == urpgServer && !newChannel.permissionOverwrites.has("409821978887979019") && newChannel.permissionOverwrites.has(newChannel.guild.id) && newChannel.permissionOverwrites.get(newChannel.guild.id).deny % 2048 < 512) {
         channelHandle(newChannel);
     }
 })*/
