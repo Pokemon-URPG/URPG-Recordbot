@@ -1,5 +1,6 @@
 const Discord = require("discord.js")
 const Intents = Discord.Intents;
+const Permissions = Discord.Permissions;
 const logger = require("winston")
 const fs = require("fs")
 const ss = require("string-similarity");
