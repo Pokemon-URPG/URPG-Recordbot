@@ -244,8 +244,8 @@ async function remindTimer(channelId, messageId) {
         }, timeToRemind)
     }
     else {
-        let newRemindLog = remindLog.content.split("\n");
-        for (let x = 1; x < remindLog.content.length; x++) {
+        let newRemindLog = remindLog.content.split("\n")[0];
+        for (let x = 1; x < remindLog.content.split("\n").length; x++) {
             if (remindLog.content.split("\n")[x].split(" ")[0] != channelId) {
                 remindLog += "\n" + remindLog.content.split("\n")[x];
             }
