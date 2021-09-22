@@ -2282,7 +2282,7 @@ function magicCardPoster(input, channel) {
 }
 
 function tempChannelReporter(message, messageMember) {
-    var attaches = message.attachments.array();
+    var attaches = [...message.attachments.values()];
     var attachnames = "";
     var attachmessage = "";
     for (i = 0; i < attaches.length; i++) {
@@ -2869,7 +2869,7 @@ async function fixOrderChannel(channels, channel) {
 async function pkmnSpoilerSeason(message, messageMember) {
     if ((lowmessage.indexOf(",pkmnspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonpkmn ") == 0) && (messageMember.roles.cache.has("584764993044611075") || messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS))) {
         await message.channel.guild.members.fetch();
-        var spoilers = await bot.guilds.cache.get(urpgServer).roles.cache.get("440004078219558912").members.array();
+        var spoilers = await [...bot.guilds.cache.get(urpgServer).roles.cache.get("440004078219558912").members.values()];
         for (i = 0; i < spoilers.length; i++) {
             await spoilers[i].roles.remove(message.channel.guild.roles.cache.get("440004078219558912"));
         }
@@ -2881,7 +2881,7 @@ async function pkmnSpoilerSeason(message, messageMember) {
 async function otherSpoilerSeason(message, messageMember) {
     if ((lowmessage.indexOf(",otherspoilerseason ") == 0 || lowmessage.indexOf(",spoilerseasonother ") == 0) && (messageMember.roles.cache.has("584764993044611075") || messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS))) {
         await message.channel.guild.members.fetch();
-        var spoilers = await bot.guilds.cache.get(urpgServer).roles.cache.get("597313962798874626").members.array();
+        var spoilers = await [...bot.guilds.cache.get(urpgServer).roles.cache.get("597313962798874626").members.values()];
         for (i = 0; i < spoilers.length; i++) {
             await spoilers[i].roles.remove(message.channel.guild.roles.cache.get("597313962798874626"));
         }
@@ -3038,7 +3038,7 @@ async function deleteReporter(message) {
     deleteLog += message.author.id;
     deleteLog += ")";
     var attachmessage = "";
-    var attaches = message.attachments.array();
+    var attaches = [...message.attachments.values()];
     var attachnames = "";
     for (i = 0; i < attaches.length; i++) {
         if (i == attaches.length -1 && i != 0) {attachnames += "and ";}
