@@ -2253,7 +2253,7 @@ async function memberRole(message, messageMember) {
 }
 
 function magicCardFetcher(message) {
-    if ((message.channel.id == "401543302710689793" || message.channel.guild === null || lowmessage.indexOf(",mtg") == 0) && (lowmessage.indexOf("[[") != -1 && lowmessage.lastIndexOf("]]") != -1 && lowmessage.indexOf("|") != -1)) {
+    if ((message.channel.id == "401543302710689793" || !message.channel.guild || lowmessage.indexOf(",mtg") == 0) && (lowmessage.indexOf("[[") != -1 && lowmessage.lastIndexOf("]]") != -1 && lowmessage.indexOf("|") != -1)) {
         magicCardPoster(message.cleanContent, message.channel);
     }
 }
@@ -2343,7 +2343,7 @@ async function tempChannelWebhook(message, messageMember) {
         }
         if (message.content.indexOf(",end") == 0 && messageMember.roles.cache.has(spellbinderRole)) {message.channel.delete();}
     }
-    if (whid == null) { return; }
+    if (!whid) { return; }
     var whl = await message.channel.guild.fetchWebhooks();
     var wh = await whl.get(whid);
     await wh.send({ content: message.content, username: message.member.displayName, avatarURL: message.author.displayAvatarURL(), embeds: message.embeds || [] });
@@ -2928,7 +2928,7 @@ function wrongBot(message) {
 
 async function substituteBot(channel) {
     kauri = await bot.users.fetch("574745413773426688");
-    if ((((kauri.presence != null && kauri.presence.status == "offline") || channel.guild == null || channel.guild.id != urpgServer) && lowmessage.indexOf("!d ") == 0) || (lowmessage.indexOf("//roll-sides") == 0 && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[0]) && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[1])) || (lowmessage.indexOf("//roll-dice") == 0 && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[0]) && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[1]))) {
+    if ((((kauri.presence != null && kauri.presence.status == "offline") || !channel.guild || channel.guild.id != urpgServer) && lowmessage.indexOf("!d ") == 0) || (lowmessage.indexOf("//roll-sides") == 0 && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[0]) && !isNaN(lowmessage.split("//roll-sides")[1].split("-dice")[1])) || (lowmessage.indexOf("//roll-dice") == 0 && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[0]) && !isNaN(lowmessage.split("//roll-dice")[1].split("-sides")[1]))) {
         var dieToRoll;
         var results;
         if (lowmessage.indexOf("!d") == 0) {
@@ -2987,7 +2987,7 @@ async function deleteReporter(message) {
     if (message.partial) {
         return;
     }
-    if (message.channel.guild === null) {return;}
+    if (!message.channel.guild) {return;}
     if (!message.channel.guild.available) {return;}
     if (message.channel.guild.id != urpgServer) {return;}
     if (message.author.id == "461133571034316810") {return;}
@@ -3362,7 +3362,7 @@ bot.on("messageCreate", async function(message) {
 
     await goToBed(message);
 
-    if (message.channel.guild === null) {
+    if (!message.channel.guild) {
     	
         await anonymousReport(message);
 
@@ -3451,7 +3451,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     //if (oldMessage.partial) { return; }
     ffaGG(newMessage);
     var channelToNotify = logsChannel;
-    if (newMessage.channel.guild === null && ((!oldMessage.partial && oldMessage.content.toLowerCase().indexOf("noreply:") == 0) || (!oldMessage.partial && oldMessage.content.toLowerCase().indexOf("no reply:") == 0) || newMessage.content.toLowerCase().indexOf("noreply:") == 0 || newMessage.content.toLowerCase().indexOf("no reply:") == 0 || (!oldMessage.partial && oldMessage.content.toLowerCase().indexOf("reply:") == 0) || newMessage.content.toLowerCase().indexOf("reply:") == 0)) {
+    if (!newMessage.channel.guild && ((!oldMessage.partial && oldMessage.content.toLowerCase().indexOf("noreply:") == 0) || (!oldMessage.partial && oldMessage.content.toLowerCase().indexOf("no reply:") == 0) || newMessage.content.toLowerCase().indexOf("noreply:") == 0 || newMessage.content.toLowerCase().indexOf("no reply:") == 0 || (!oldMessage.partial && oldMessage.content.toLowerCase().indexOf("reply:") == 0) || newMessage.content.toLowerCase().indexOf("reply:") == 0)) {
         var editLog = "An anonymous report";
         if (newMessage.content.toLowerCase().indexOf("reply:") == 0) {
             editLog += " from "
@@ -3463,7 +3463,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
         bot.channels.cache.get(anonymousReportChannel).send(editLog);
         return;
     }
-    if (newMessage.channel.guild === null) {return;}
+    if (!newMessage.channel.guild) {return;}
     if (!newMessage.channel.guild.available) {return;}
     if (newMessage.channel.guild.id != urpgServer) {return;}
     if (newMessage.author.bot && !oldMessage.partial) {
