@@ -13,7 +13,7 @@ logger.add(logger.transports.Console, {
 })
 logger.level = "debug"
 // Initialize Discord Bot
-var bot = new Discord.Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGES], partials: ['MESSAGE', 'CHANNEL', 'REACTION'], allowedMentions: { parse: ['users', 'roles'], repliedUser: true } });
+var bot = new Discord.Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_PRECENSES], partials: ['MESSAGE', 'CHANNEL', 'REACTION'], allowedMentions: { parse: ['users', 'roles'], repliedUser: true } });
 var badWords = ["fag", "retard", "cuck", "slut", "kys"];
 var hardFossils = ["Kabuto", "Omanyte", "Lileep", "Anorith", "Cranidos", "Shieldon", "Archen", "Tirtouga", "Tyrunt", "Amaura"]
 var otherFossils = ["Dracozolt", "Dracovish", "Arctozolt", "Arctovish", "Spiritomb", "Aerodactyl"];
@@ -106,9 +106,7 @@ bot.once("ready", async function () {
     setTimeout(function () {
         dailyQ();
     }, ((147600000) - (d.getTime() % 86400000)) % 86400000);
-    for (var x = 1; x < remindLog.content.split("\n").length; x++) {
-        remindTimer(remindLog.content.split("\n")[x].split(" ")[0], remindLog.content.split("\n")[x].split(" ")[1]);
-    }
+    await remindStartup();
     //bot.channels.cache.get(botCommands).send("I have arisen!  Please help me set my DISBOARD bump notification timer with a `!d bump`.");
     bot.channels.cache.get("531433553225842700").send("I have arisen!");
     /*disBumpTime = setTimeout(function() {
@@ -234,6 +232,12 @@ function statusMessage() {
     }, duration)
 }
 
+function remindStartup() {
+    for (var x = 1; x < remindLog.content.split("\n").length; x++) {
+        remindTimer(remindLog.content.split("\n")[x].split(" ")[0], remindLog.content.split("\n")[x].split(" ")[1]);
+    }
+}
+
 async function remindTimer(channelId, messageId) {
     if (bot.channels.cache.has(channelId)) {
         var theMessage = await bot.channels.cache.get(channelId).messages.fetch(messageId);
@@ -277,7 +281,8 @@ function remindInput(message) {
 async function reminder(channelId, messageId) {
     var theMessage = await bot.channels.cache.get(channelId).messages.fetch(messageId);
     var commandLength = theMessage.content.split(" ")[0].length + theMessage.content.split(" ")[1].length + 2;
-    bot.channels.cache.get(channelId).send("<@" + theMessage.author.id + "> " + theMessage.content.substring(commandLength));
+    //bot.channels.cache.get(channelId).send("<@" + theMessage.author.id + "> " + theMessage.content.substring(commandLength));
+    theMessage.reply(theMessage.content.substring(commandLength))
     var newLog = remindLog.content.split("\n")[0];
     for (var x = 1; x < remindLog.content.split("\n").length; x++) {
         if (remindLog.content.split("\n")[x].indexOf(messageId) == -1) { newLog += "\n" + remindLog.content.split("\n")[x]; }
@@ -3576,5 +3581,13 @@ bot.on("messageReactionAdd", async function(messageReaction, user) {
         channelHandle(newChannel);
     }
 })*/
+
+bot.on("presenceUpdate", function(oldPresence, newPresence) {
+    if (newPresence.userId == "631014834057641994") {
+        if (newPresence.status == "offline") {
+            bot.channels.cache.get("531433553225842700").send("<@135999597947387904>, <@" + newPresence.userId + "> appears to be offline.");
+        }
+    }
+})
 
 bot.login(process.env.token)
