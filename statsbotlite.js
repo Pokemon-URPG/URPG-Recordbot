@@ -249,13 +249,14 @@ async function remindTimer(channelId, messageId) {
         }, timeToRemind)
     }
     else {
-        let newRemindLog = remindLog.content.split("\n")[0];
+        /*let newRemindLog = remindLog.content.split("\n")[0];
         for (let x = 1; x < remindLog.content.split("\n").length; x++) {
             if (remindLog.content.split("\n")[x].split(" ")[0] != channelId) {
                 remindLog += "\n" + remindLog.content.split("\n")[x];
             }
         }
-        await remindLog.edit(newRemindLog);
+        await remindLog.edit(newRemindLog);*/
+        await remindLog.edit("Reminders:");
         remindLog = await bot.channels.cache.get("531433553225842700").messages.fetch("711453291892047892");
     }
 }
@@ -264,6 +265,10 @@ function remindInput(message) {
     if (lowmessage.indexOf(",remindme") == 0 && !isNaN(lowmessage.split(" ")[1]) && lowmessage.split(" ")[1].length > 0) {
         if (lowmessage.split(" ")[1] > 10080 && message.author.id != "135999597947387904") {
             message.channel.send("Since I can only accept so many reminders at a time, I will not take such a long reminder.  Perhaps you should just put it in your phone's calendar instead.");
+            return;
+        }
+        if (!message.guild) {
+            message.channel.send("I'm afraid I am not currently able to accept DM reminders. Please try in a guild channel or set an alternate form of reminder.");
             return;
         }
         var newRemindLog = remindLog.content + "\n" + message.channel.id + " " + message.id;
