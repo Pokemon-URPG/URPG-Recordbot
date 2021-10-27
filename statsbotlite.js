@@ -3259,7 +3259,7 @@ async function setHours(message) {
 
 function goToBed(message) {
     if (message.author.id == "214573974208643083") {
-        var n = new Date();
+        var n = new Date().getDay();
         var hours = theHours.content.split("\n");
 	    if (n == 0 || n == 6) {
 	        hours = theHoursE.content.split("\n");
