@@ -249,13 +249,13 @@ async function remindTimer(channelId, messageId) {
         }, timeToRemind)
     }
     else {
-        /*let newRemindLog = remindLog.content.split("\n")[0];
+        let newRemindLog = remindLog.content.split("\n")[0];
         for (let x = 1; x < remindLog.content.split("\n").length; x++) {
             if (remindLog.content.split("\n")[x].split(" ")[0] != channelId) {
-                remindLog += "\n" + remindLog.content.split("\n")[x];
+                newRemindLog += "\n" + remindLog.content.split("\n")[x];
             }
         }
-        await remindLog.edit(newRemindLog);*/
+        await remindLog.edit(newRemindLog);
         await remindLog.edit("Reminders:");
         remindLog = await bot.channels.cache.get("531433553225842700").messages.fetch("711453291892047892");
     }
@@ -3026,7 +3026,7 @@ async function deleteReporter(message) {
     const entry = await message.channel.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
     let user = ""
     var botDeleterNotFound = false;
-    if (entry.extra.channel.id === message.channel.id
+    if (entry && entry.extra.channel.id === message.channel.id
       && (entry.target.id === message.author.id)
       && (entry.createdTimestamp > (Date.now() - 5000))
       && (entry.extra.count >= 1)) {
