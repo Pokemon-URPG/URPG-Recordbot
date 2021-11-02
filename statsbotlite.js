@@ -3522,10 +3522,10 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
                 messageMember = await oldMessage.channel.guild.members.fetch(oldMessage.author);
                 deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Uncached edited message from " + messageMember.displayName + " (" + newMessage.author.id + ")").addField("Channel:", newMessage.channel).addField("New Message:", newMessage.content).setColor('BLUE');                
             }
-    		else if (oldMessage.cleanContent != "") {
+    		else if (oldMessage.content && newMessage.content) {
                 deleteLog += await " used to say: ```" + oldMessage.cleanContent.replace(/```/g, "​`​`​`​") + "```";
                 messageMember = await oldMessage.channel.guild.members.fetch(oldMessage.author);
-                deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE');
+                deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", "<#" + oldMessage.channel.id + ">").addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE');
             }
             else { deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited textless message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("New Message:", newMessage.content).setColor('BLUE'); }
     		await bot.channels.cache.get(channelToNotify).send({ embeds: [deleteLog] });
