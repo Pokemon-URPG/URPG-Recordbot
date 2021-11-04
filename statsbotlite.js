@@ -3381,7 +3381,7 @@ bot.on("messageCreate", async function(message) {
 
     if (message.channel.guild.id != urpgServer) {return;}
 
-    if (message.system || !message.channel.guild.members.has(message.author)) {return;}
+    if (message.system || !message.channel.guild.members.cache.has(message.author)) {return;}
 
     let messageMember = await message.channel.guild.members.fetch(message.author);
 
