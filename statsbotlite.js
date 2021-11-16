@@ -463,7 +463,7 @@ function randomRotations() {
 }
 
 function dailyQ() {
-    bot.channels.cache.get("596371445311995927").send("Post the Daily Question, nerd <@140308490609623041>");
+    bot.channels.cache.get("596371445311995927").send("Post the Daily Question <@&910028587879526400>");
     setTimeout(function () {
         dailyQ();
     }, 86400000);
@@ -2383,7 +2383,7 @@ function statConverter(message) {
     }
 }
 
-async function mention(message, messageMember) {
+/*async function mention(message, messageMember) {
     if ((lowmessage.indexOf(",mentionrefs") == 0 || lowmessage.indexOf(",mention refs") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MENTION_EVERYONE) || messageMember.roles.cache.has(seniorRefRole))) {
         var messageContent = "";
         if (lowmessage.indexOf(",mention ") == 0) { messageContent = message.content.substring(13); }
@@ -2598,6 +2598,62 @@ async function mention(message, messageMember) {
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("584764766921293825").setMentionable(true);
         await message.channel.send(`${bot.guilds.cache.get(urpgServer).roles.cache.get("584764766921293825")}${message.content.substring(commandLength)}`);
         //await bot.guilds.cache.get(urpgServer).roles.cache.get("584764766921293825").setMentionable(false);
+    }
+}*/
+
+async function mention(interaction) {
+    const mentions = interaction.options.getRole('mentions');
+    let theMessage = "";
+    if (interaction.options.getString('message')) {
+        theMessage = " " + interaction.options.getString('message');
+    }
+    let hasPermission = false;
+    if (interaction.member.permissions.has("MENTION_EVERYONE")) {
+        hasPermission = true;
+    }
+    else if ((mentions.id == refRole.id || mentions.id == "444947885893746698" || mentions.id == "444947868835381263") && interaction.member.roles.cache.has(seniorRefRole)) {
+        hasPermission = true;
+    }
+    else if (mentions.id == judgeRole.id && interaction.member.roles.cache.has(chiefJudgeRole)) {
+        hasPermission = true;
+    }
+    else if (mentions.id == "312119111750647809" && interaction.member.roles.cache.has("419775555488186369")) {
+        hasPermission = true;
+    }
+    else if (mentions.id == "312118803616235523" && interaction.member.roles.cache.has("419636334982987777")) {
+        hasPermission = true;
+    }
+    else if (mentions.id == "312119050484449280" && interaction.member.roles.cache.has(eliteRangerRole)) {
+        hasPermission = true;
+    }
+    else if (mentions.id == "533356018005180416" && interaction.member.roles.cache.has("533356631455694849")) {
+        hasPermission = true;
+    }
+    else if (mentions.id == "507342482988859402" && interaction.member.roles.cache.has("507342993028808707")) {
+        hasPermission = true;
+    }
+    else if ((mentions.id == "552232839861633046" || mentions.id == "806290347479007304") && interaction.member.roles.cache.has(judgeRole)) {
+        hasPermission = true;
+    }
+    else if (mentions.id == "686613182902435891" && interaction.member.roles.cache.has(refRole)) {
+        hasPermission = true;
+    }
+    else if (mentions.id == "575087931824275466" && interaction.member.roles.cache.has(refRole) && interaction.channelId == "653328600170364953") {
+        hasPermission = true;
+    }
+    else if ((mentions.id == "135868852092403713" || mentions.id == "584764993044611075" || mentions.id == "584765105414078464" || mentions.id == "584764766921293825" || mentions.id == "584764766921293825") && interaction.member.roles.cache.has("456993685679243286")) {
+        hasPermission = true;
+    }
+    else if (mentions.id == "699364314427031612" && interaction.member.roles.cache.has("584764993044611075")) {
+        hasPermission = true;
+    }
+    if (!hasPermission) {
+        interaction.reply({ content: "You do not have permission to mention this role. If you believe this is in error, please report it to Ash K.", ephemeral: true});
+        return;
+    }
+    else {
+        interaction.reply({ content: "<@&" + mentions.id + ">" + theMessage });
+        return;
     }
 }
 
@@ -3391,7 +3447,7 @@ bot.on("messageCreate", async function(message) {
 	
     await contentEdit(message, messageMember);
 
-    await mention(message, messageMember);
+    //await mention(message, messageMember);
 
     await archiver(message, messageMember);
 
@@ -3430,6 +3486,18 @@ bot.on("messageCreate", async function(message) {
     await linkCleaner(message, messageMember);
 
     await badWordsReporter(message, messageMember, false);
+})
+
+bot.on('interactionCreate', async interaction => {
+    if (!interaction.isCommand()) return;
+
+    const { commandName } = interaction;
+
+    switch (commandName) {
+        case 'mention':
+        await mention(interaction);
+        break;
+    }
 })
 
 bot.on("messageDelete", async function(message) {
