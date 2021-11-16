@@ -2652,7 +2652,7 @@ async function mention(interaction) {
         return;
     }
     else {
-        interaction.reply({ content: "<@&" + mentions.id + ">" + theMessage });
+        interaction.reply({ content: "<@&" + mentions.id + ">" + theMessage, allowedMentions: [mentions.id] });
         return;
     }
 }
