@@ -2652,7 +2652,8 @@ async function mention(interaction) {
         return;
     }
     else {
-        interaction.reply({ content: "<@&" + mentions.id + ">" + theMessage, allowedMentions: { "roles": [mentions.id] } });
+        interaction.reply({ content: "Processing" });
+        interaction.channel.send({ content: "<@&" + mentions.id + ">" + theMessage, allowedMentions: { "roles": [mentions.id] } });
         return;
     }
 }
