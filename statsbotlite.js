@@ -1125,9 +1125,9 @@ function ruleset(message) {
         if(lowmessage.indexOf("ld") == 0) message.channel.send("4 VS. 4+\nPrivate Full or Preview\nItems Optional\nStandard Rules\nNo Legendary Pokémon\nMega, Z, Dyanamax Optional\nDuplicate Items and Species Optional\nStarting Weather and Terrain Optional");
         if(lowmessage.indexOf("ashrandoms") == 0) message.channel.send("6v6\nPublic Box (Roll your 6 and use that as your Box)\nStandard Rules\nHelds On\nRandom Weather and Terrain\nMegas allowed if *both* trainers roll a Mega they can use\nRoll for first send\n\nAny changes?");
         if(lowmessage.indexOf("fortree") == 0) message.channel.send("6v6\nPublic Box\nVolcano Terrain\nSun\nHolds On\nStandard Rules\nNo Duplicate Species\nNo Legendary Pokémon\nMegas Allowed\nChallenger Sends First");
-        if(lowmessage.indexOf("ashmockfire") == 0) message.channel.send("6v6\nPublic Box\nSnow Terrain\nSun\nHolds On\nStandard Rules\nNo Duplicate Species\nNo Legendary Pokémon\nMegas Allowed\nChallenger Sends First\n\n**__Owned Legal Pokémon:__**\nFires: Arcanine, Blaziken, Centiskorch, Chandelure, Charizard, Cinderace, Coalossal, Delphox, Flareon, Houndoom, Marowak-Alola, Ninetales-Kanto, Numel, Talonflame, Torkoal, Turtonator, Volcarona\nWC: Leafeon, Salamence, Solrock"); //Gym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Cinderace, Delphox, Flareon, Houndoom, Marowak (Alola), Numel, Salamence, Talonflame, Torkoal, Turtonator, Volcarona.  Yours may be whatever you wish.");
+        if(lowmessage.indexOf("ashmockfire") == 0) message.channel.send("6v6\nPublic Box\nSnow Terrain\nSun\nHolds On\nStandard Rules\nNo Duplicate Species\nNo Legendary Pokémon\nMegas Allowed\nChallenger Sends First\n\n**__Owned Legal Pokémon:__**\nFires: Arcanine, Blaziken, Camerupt, Centiskorch, Chandelure, Charizard, Cinderace, Coalossal, Delphox, Flareon, Houndoom, Magmortar, Marowak-Alola, Ninetales-Kanto, Numel, Talonflame, Torkoal, Turtonator, Volcarona\nWC: Leafeon, Salamence, Solrock"); //Gym Leader's Box will be Arcanine, Blaziken, Chandelure, Charizard, Cinderace, Delphox, Flareon, Houndoom, Marowak (Alola), Numel, Salamence, Talonflame, Torkoal, Turtonator, Volcarona.  Yours may be whatever you wish.");
         if(lowmessage.indexOf("ashmockdragon") == 0) message.channel.send("6v6\nPublic Box\nPower Plant Terrain\nRain\nHolds On\nStandard Rules\nNo Duplicate Species\nNo Legendary Pokémon\nMegas Allowed\nChallenger Sends First\n\n**__Owned Legal Pokémon:__**\nDragons: Altaria, Appletun, Dracovish, Dracozolt, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Duraludon, Exeggutor-A, Flapple, Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Salamence, Turtonator, Tyrantrum, Zygarde-10%\nWC: Ampharos, Charizard, Sceptile"); //Gym Leader's Box will be Altaria, Charizard, Dragalge, Dragapult, Dragonite, Drampa, Druddigon, Exeggutor (Alola), Flygon, Garchomp, Goodra, Haxorus, Hydreigon, Kingdra, Kommo-o, Noivern, Turtonator, Tyrantrum, Salamence.  Yours may be whatever you wish.");
-        if(lowmessage.indexOf("ashmockpsychic") == 0) message.channel.send("6v6\nPublic Box\nDojo Terrain\nSun\nHolds On\nStandard Rules\nNo Duplicate Species\nNo Legendary Pokémon\nMegas Allowed\nChallenger Sends First\n\n**__Owned Legal Pokémon:__**\nAlakazam, Delphox, Espeon, Gallade, Gardevoir, Indeedee-Female, Lunatone, Medicham, Metagross, Mr. Mime-Kanto, Orbeetle, Sigilyph, Slowking, Solrock, Starmie, Xatu\nWC: Mienshao, Ninetales-Kanto");
+        if(lowmessage.indexOf("ashmockpsychic") == 0) message.channel.send("6v6\nPublic Box\nDojo Terrain\nSun\nHolds On\nStandard Rules\nNo Duplicate Species\nNo Legendary Pokémon\nMegas Allowed\nChallenger Sends First\n\n**__Owned Legal Pokémon:__**\nAlakazam, Delphox, Espeon, Gallade, Gardevoir, Indeedee-Female, Lunatone, Medicham, Metagross, Mr. Mime-Kanto, Oranguru, Orbeetle, Sigilyph, Slowking, Solrock, Starmie, Swoobat, Xatu\nWC: Mienshao, Ninetales-Kanto");
         if(lowmessage.indexOf("mt. chimney") == 0) message.channel.send("4v4-6v6\nPublic Box\nSnow Terrain\nSun\nHelds On\nStandard Rules\nNo Duplicate Species\nZ/Mega/Duplicate Items Challenger Dependant\nChallenger Sends First");
         if(lowmessage.indexOf("canalave") == 0) message.channel.send("Canalave City Gym.\nTM 128 – Gyro Ball.\n4v4 or 6v6\nPublic Box\nStandard Rules\nNo Legendary Pokémon\nDuplicate Items and Mega Evolutions may be toggled depending on the challenger\nHelds On\nSandstorm Weather\nChallenger Sends First");
         if(lowmessage.indexOf("battle dome") == 0) message.channel.send("6v6\nPrivate Doubles\nHelds On\nNo Starting Weather\nDefault Terrain\nStandard Rules\nNo Legendary Pokémon\nDefender’s Choice: Duplicate Items/Species, Preview vs Full, Mega/Z-Move/Dynamax Allowed (at least one must be on, Dynamax cannot be off with others off)\nGold: Dome Brains make a pool of 8 Pokemon, and can send as if the battle were Private Open with those Pokemon (their items and abilities must still be sent at the start).");
@@ -2689,7 +2689,7 @@ async function archiver(message, messageMember) {
             ]
         })
     }
-    else if ((lowmessage == ",disciplinaryarchive" || lowmessage == ",disciplinary archive" || lowmessage == ",archive disciplin") && (messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS) || messageMember.roles.cache.has("584764993044611075"))) {
+    else if ((lowmessage == ",disciplinaryarchive" || lowmessage == ",disciplinary archive" || lowmessage.indexOf(",archive disciplin") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS) || messageMember.roles.cache.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("432291722492379136"));
         await message.channel.permissionOverwrites.set({
             overwrites: [
@@ -2719,7 +2719,7 @@ async function archiver(message, messageMember) {
             ]
         })
     }
-    else if ((lowmessage == ",applicationsarchive" || lowmessage == ",appsarchive" || lowmessage == ",archive app") && (messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS) || messageMember.roles.cache.has("584764993044611075"))) {
+    else if ((lowmessage == ",applicationsarchive" || lowmessage == ",appsarchive" || lowmessage.indexOf(",archive app") == 0) && (messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS) || messageMember.roles.cache.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("729843009226670080"));
         await message.channel.permissionOverwrites.set({
             overwrites: [
@@ -3056,6 +3056,7 @@ async function deleteReporter(message) {
     }
     if (!message.channel.guild) {return;}
     if (!message.channel.guild.available) {return;}
+    if (!message.author) {return;}
     if (message.channel.guild.id != urpgServer) {return;}
     if (message.author.id == "461133571034316810") {return;}
     var channelToNotify = logsChannel;
@@ -3132,9 +3133,11 @@ async function deleteReporter(message) {
     messageMember = await message.channel.guild.members.fetch(message.author);
     var deleteMember = await message.channel.guild.members.fetch(user);
     if (attaches.length == 0) {
-        if (messageMember.id == deleteMember.id) { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()).addField("Deletion", "<#" + message.channel + ">: " + message.content); }
-        else { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()).setFooter("Deleted by " + deleteMember.displayName + " (" + deleteMember.id + ")", deleteMember.user.displayAvatarURL()).addField("Deletion", "<#" + message.channel + ">: " + message.content); }
+        if (messageMember.id == deleteMember.id) { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()); }
+        else { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()).setFooter("Deleted by " + deleteMember.displayName + " (" + deleteMember.id + ")", deleteMember.user.displayAvatarURL()); }
     }
+    if (message.content.length < 1024) { deleteLog.addField("Deletion", "<#" + message.channel + ">: " + message.content) }
+    else { deleteLog.addField("Deletion", "<#" + message.channel + ">: " + message.content.substring(0, 1000)).addField("Deletion cont.", "<#" + message.channel + ">: " + message.content.substring(1000))}
     /*if (message.embeds.length > 0) {
         bot.channels.cache.get(channelToNotify).send()
     }*/
@@ -3154,6 +3157,14 @@ async function avatar(message) {
             message.channel.send(message.author.displayAvatarURL({size: 1024, dynamic: true}));
         }
     }
+}
+
+async function avatarCommand(interaction) {
+    let person = interaction.options.getUser('user')
+    if (!person) {
+        person = interaction.user;
+    }
+    interaction.reply(target.displayAvatarURL({size: 1024, dynamic: true}));
 }
 
 async function sleepTalk(message) {
@@ -3498,6 +3509,9 @@ bot.on('interactionCreate', async interaction => {
         case 'mention':
         await mention(interaction);
         break;
+        case 'avatar':
+        await avatarCommand(interaction);
+        break;
     }
 })
 
@@ -3518,14 +3532,16 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     if (newMessage.partial) {
         // If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
         try {
-            await newMessage.fetch();
-            let diff = ss.compareTwoStrings(oldMessage.content, newMessage.content);
+            newMessage = await newMessage.fetch();
+            //diff = ss.compareTwoStrings(oldMessage.content, newMessage.content);
         } catch (error) {
             logger.error('Something went wrong when fetching the message: ', error);
             // Return as `reaction.message.author` may be undefined/null
             return;
         }
-
+    }
+    else {
+        diff = ss.compareTwoStrings(oldMessage.content, newMessage.content);
     }
     //if (oldMessage.partial) { return; }
     ffaGG(newMessage);
@@ -3545,8 +3561,9 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
     if (!newMessage.channel.guild) {return;}
     if (!newMessage.channel.guild.available) {return;}
     if (newMessage.channel.guild.id != urpgServer) {return;}
-    if (newMessage.author.bot && !oldMessage.partial) {
-        if (newMessage.author.id == bot.user.id && oldMessage.content != newMessage.content) {
+    if (!newMessage.author) {return;}
+    if (newMessage.author.bot) {
+        if (!oldMessage.partial && newMessage.author.id == bot.user.id && oldMessage.content != newMessage.content) {
             bot.channels.cache.get("695205182971052103").send({ embeds: [new Discord.MessageEmbed().setThumbnail(bot.user.displayAvatarURL()).setTitle("Edited message from " + bot.user.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE')] });
         }
         return;
@@ -3588,15 +3605,25 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
             }
             else { deleteLog += newMessage.url; }
             if (oldMessage.partial) {
-                messageMember = await oldMessage.channel.guild.members.fetch(oldMessage.author);
-                deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Uncached edited message from " + messageMember.displayName + " (" + newMessage.author.id + ")").addField("Channel:", newMessage.channel).addField("New Message:", newMessage.content).setColor('BLUE');                
+                messageMember = await newMessage.channel.guild.members.fetch(newMessage.author);
+                deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Uncached edited message from " + messageMember.displayName + " (" + newMessage.author.id + ")").addField("Channel:", "<#" + newMessage.channel + ">").setColor('BLUE').setURL(newMessage.url);
+                if (newMessage.content.length < 1024) { deleteLog.addField("New Message:", newMessage.content) }
+                else { deleteLog.addField("New Message:", newMessage.content.substring(0, 1000)).addField("New Message cont.:", newMessage.content.substring(1000))}
             }
     		else if (oldMessage.content && newMessage.content) {
                 deleteLog += await " used to say: ```" + oldMessage.cleanContent.replace(/```/g, "​`​`​`​") + "```";
                 messageMember = await oldMessage.channel.guild.members.fetch(oldMessage.author);
-                deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", "<#" + oldMessage.channel.id + ">").addField("Original Message:", oldMessage.content).addField("New Message:", newMessage.content).setColor('BLUE');
+                deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", "<#" + oldMessage.channel.id + ">").setColor('BLUE').setURL(newMessage.url);
+                if (oldMessage.content.length < 1024) { deleteLog.addField("Original Message:", oldMessage.content) }
+                else { deleteLog.addField("Original Message:", oldMessage.content.substring(0, 1000)).addField("Original Message cont.:", oldMessage.content.substring(1000))}
+                if (newMessage.content.length < 1024) { deleteLog.addField("New Message:", newMessage.content) }
+                else { deleteLog.addField("New Message:", newMessage.content.substring(0, 1000)).addField("New Message cont.:", newMessage.content.substring(1000))}
             }
-            else { deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited textless message from " + messageMember.displayName + " (" + oldMessage.author.id + ")").addField("Channel:", oldMessage.channel).addField("New Message:", newMessage.content).setColor('BLUE'); }
+            else {
+                deleteLog = new Discord.MessageEmbed().setThumbnail(messageMember.user.displayAvatarURL()).setTitle("Edited textless message from " + messageMember.displayName + " (" + newMessage.author.id + ")").addField("Channel:", "<#" + newMessage.channel + ">").setColor('BLUE').setURL(newMessage.url);
+                if (newMessage.content.length < 1024) { deleteLog.addField("New Message:", newMessage.content) }
+                else { deleteLog.addField("New Message:", newMessage.content.substring(0, 1000)).addField("New Message cont.:", newMessage.content.substring(1000))}
+            }
     		await bot.channels.cache.get(channelToNotify).send({ embeds: [deleteLog] });
     	}
     }
