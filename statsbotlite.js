@@ -647,12 +647,12 @@ function stats(message) {
         if (oldmessage.includes("haze")) { message.channel.send("Hazeduse's stats: https://forum.pokemonurpg.com/showthread.php?tid=10807"); }
         if (oldmessage.includes("sally")) { message.channel.send("Sally_stitches55's stats: https://forum.pokemonurpg.com/showthread.php?tid=11066"); }
         if (oldmessage.includes("fuzzy")) { message.channel.send("FuzzyDwarf's stats: https://forum.pokemonurpg.com/showthread.php?tid=11058"); }
-	if (oldmessage.includes("foxes")) { message.channel.send("FoxesAndSlumber's stats: https://forum.pokemonurpg.com/showthread.php?tid=11102"); }
-	if (oldmessage.includes("hikaruizumi")) { message.channel.send("HikaruIzumi's stats: https://hikaruizumistats.proboards.com/"); }
-	if (oldmessage.includes("darkhorse")) { message.channel.send("darkhorseborhous's stats: https://forum.pokemonurpg.com/showthread.php?tid=11100"); }
-	if (oldmessage.includes("evanescent")) { message.channel.send("Evanescent's stats: https://forum.pokemonurpg.com/showthread.php?tid=11108"); }
-	if (oldmessage.includes("proto")) { message.channel.send("TheProtobabe's stats (ARCHIVE): https://web.archive.org/web/20180711130731/http://w11.zetaboards.com/The_RP_Junk_Drawer/topic/8669039/1/"); }
-	if (oldmessage.includes("feng")) { message.channel.send("Feng's stats (ARCHIVE): https://pokemonurpg.com/archive/general.394/trainers-stats.401/_.61772.html"); }
+    	if (oldmessage.includes("foxes")) { message.channel.send("FoxesAndSlumber's stats: https://forum.pokemonurpg.com/showthread.php?tid=11102"); }
+    	if (oldmessage.includes("hikaruizumi")) { message.channel.send("HikaruIzumi's stats: https://hikaruizumistats.proboards.com/"); }
+    	if (oldmessage.includes("darkhorse")) { message.channel.send("darkhorseborhous's stats: https://forum.pokemonurpg.com/showthread.php?tid=11100"); }
+    	if (oldmessage.includes("evanescent")) { message.channel.send("Evanescent's stats: https://forum.pokemonurpg.com/showthread.php?tid=11108"); }
+    	if (oldmessage.includes("proto")) { message.channel.send("TheProtobabe's stats (ARCHIVE): https://web.archive.org/web/20180711130731/http://w11.zetaboards.com/The_RP_Junk_Drawer/topic/8669039/1/"); }
+    	if (oldmessage.includes("feng")) { message.channel.send("Feng's stats (ARCHIVE): https://pokemonurpg.com/archive/general.394/trainers-stats.401/_.61772.html"); }
         for (var x = 1; x < tempStats.content.split("\n").length; x++) {
             if (oldmessage.indexOf(tempStats.content.split("\n")[x].split(" ")[0].toLowerCase()) != -1) { message.channel.send(tempStats.content.split("\n")[x].split(" ")[0] + "'s stats: " + tempStats.content.split("\n")[x].split(" ")[1]); }
         }
@@ -800,6 +800,34 @@ function hpType(message) {
         }
         message.channel.send(theMessage);
     }
+}
+
+function hpCommand(interaction) {
+    const desiredpoke = interaction.options.getString('pokemon').replace("-a", "-alola").replace("-g", "-galar");
+    let pokelist = ""
+
+    try { pokelist = fs.readFileSync("HiddenPower.txt", "utf8") } catch (err) {
+        if (err.code === "ENOENT") message.channel.send("HiddenPower.txt not found!")
+        else { throw err }
+    }
+
+    const pokes = pokelist.split("\n")
+    var bestGuess = 0;
+    var diff = -1;
+    for (let x = 0; x < pokes.length; x ++) {
+        if (ss.compareTwoStrings(pokes[x].split("/")[0].toLowerCase(), desiredpoke) > diff) {
+            bestGuess = x;
+            diff = ss.compareTwoStrings(pokes[x].split("/")[0].toLowerCase(), desiredpoke);
+        }
+    }
+    var theMessage = "I'd give " + pokes[bestGuess].split("/")[0] + " Hidden Power " + pokes[bestGuess].split("/")[1] + "!";
+    if (pokes[bestGuess].split("/")[2].includes("No")) {
+        theMessage += "\nI wouldn't use Hidden Power on it very often though...";
+    }
+    /*if (pokes[bestGuess].split("/")[0] == "Greninja") {
+        theMessage += "\nI would send it here <https://forum.pokemonurpg.com/showthread.php?tid=10219>!";
+    }*/
+    interaction.reply(theMessage);
 }
 
 function pokeVal(pokemon) {
@@ -1161,7 +1189,7 @@ function ruleset(message) {
             var mzmax = Math.floor(Math.random() * 5);
             var weather = Math.floor(Math.random() * 5);
             var terrain = Math.floor(Math.random() * 22);
-	    var pc = Math.floor(Math.random() * 2);
+    	    var pc = Math.floor(Math.random() * 2);
             if (lowmessage.indexOf("-dynamax") != -1) {
                 if (lowmessage.indexOf("-mega") != -1) {
                     if (lowmessage.indexOf("-z") != -1) {mzmax = 3;}
@@ -1288,7 +1316,7 @@ function ruleset(message) {
             if (itemc == 0 && items == 0) {rules += "Item Clause\n";}
             if (spc == 0) {rules += "Species Clause\n";}
             if (imp == 0) {rules += "Imprison Clause\n";}
-	    if (pc == 0) {rules += "Power Construct Disallowed\n";}
+    	    if (pc == 0) {rules += "Power Construct Disallowed\n";}
             if (items == 0) {
                 switch(mzmax) {
                     case 0: rules += "Megas Allowed\n"; break;
@@ -1813,6 +1841,96 @@ function effectiveness(message) {
     }
 }
 
+function effectivenessCommand(interaction) {
+    let pokemon = interaction.options.getString('pokemon');
+    //var fs = require('fs');
+    var allpokes = fs.readFileSync('Pokemon.txt', 'utf8');
+    var theList = allpokes.toLowerCase().split('\n');
+    allpokes = allpokes.split('\n');
+    for (var i = 0; i < theList.length; i++) { theList[i] = theList[i].split(",")[0]; }
+    var x = ss.findBestMatch(pokemon, theList).bestMatchIndex;
+    /*for(var x = 0; x < allpokes.length; x++)
+    {
+        if(pokemon.toLowerCase() == allpokes[x].split('/')[0].toLowerCase())
+        {*/
+    var damage = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    switch(allpokes[x].split(',')[1])
+    {
+        //normal0, grass1, fire2, water3, bug4, poison5
+        //NM, GR, FR, W, B, PO
+        //flying6, electric7, ground8, fairy9, fighting10, psychic11
+        //FL, E, GD, FA, FI, PS
+        //rock12, steel13, ice14, ghost15, dragon16, dark17
+        //R, S, I, GH, DR, DK
+        case "NM": damage[10] *= 2; damage[15] *= 0; break;
+        case "GR": damage[1] /= 2; damage[2] *= 2; damage[3] /= 2; damage[4] *= 2; damage[5] *= 2; damage[6] *= 2; damage[7] /= 2; damage[8] /= 2; damage[14] *= 2; break;
+        case "FR": damage[1] /= 2; damage[2] /= 2; damage[3] *= 2; damage[4] /= 2; damage[8] *= 2; damage[9] /= 2; damage[12] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+        case "W": damage[1] *= 2; damage[2] /= 2; damage[3] /= 2; damage[7] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+        case "B": damage[1] /= 2; damage[2] *= 2; damage[6] *= 2; damage[8] /= 2; damage[10] /= 2; damage[12] *= 2; break;
+        case "PO": damage[1] /= 2; damage[4] /= 2; damage[5] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] /= 2; damage[11] *= 2; break;
+        case "FL": damage[1] /= 2; damage[4] /= 2; damage[7] *= 2; damage[8] *= 0; damage[10] /= 2; damage[12] *= 2; damage[14] *= 2; break;
+        case "E": damage[6] /= 2; damage[7] /= 2; damage[8] *= 2; damage[13] /= 2; break;
+        case "GD": damage[1] *= 2; damage[3] *= 2; damage[5] /= 2; damage[7] *= 0; damage[12] /= 2; damage[14] *= 2; break;
+        case "FA": damage[4] /= 2; damage[5] *= 2; damage[10] /= 2; damage[13] *= 2; damage[16] *= 0; damage[17] /= 2; break;
+        case "FI": damage[4] /= 2; damage[6] *= 2; damage[9] *= 2; damage[11] *= 2; damage[12] /= 2; damage[17] /= 2; break;
+        case "PS": damage[4] *= 2; damage[10] /= 2; damage[11] /= 2; damage[15] *= 2; damage[17] *= 2; break;
+        case "R": damage[0] /= 2; damage[1] *= 2; damage[2] /= 2; damage[3] *= 2; damage[5] /= 2; damage[6] /= 2; damage[8] *= 2; damage[10] *= 2; damage[13] *= 2; break;
+        case "S": damage[0] /= 2; damage[1] /= 2; damage[2] *= 2; damage[4] /= 2; damage[5] *= 0; damage[6] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] *= 2; damage[11] /= 2; damage[12] /= 2; damage[13] /= 2; damage[14] /= 2; damage[16] /= 2; break;
+        case "I": damage[2] *= 2; damage[10] *= 2; damage[12] *= 2; damage[13] *= 2; damage[14] /= 2; break;
+        case "GH": damage[0] *= 0; damage[4] /= 2; damage[5] /= 2; damage[10] *= 0; damage[15] *= 2; damage[17] *= 2; break;
+        case "DR": damage[1] /= 2; damage[2] /= 2; damage[3] /= 2; damage[7] /= 2; damage[9] *= 2; damage[14] *= 2; damage[16] *= 2; break;
+        case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
+    }
+    switch(allpokes[x].split(',')[2])
+    {
+        //same as first
+        case "NM": damage[10] *= 2; damage[15] *= 0; break;
+        case "GR": damage[1] /= 2; damage[2] *= 2; damage[3] /= 2; damage[4] *= 2; damage[5] *= 2; damage[6] *= 2; damage[7] /= 2; damage[8] /= 2; damage[14] *= 2; break;
+        case "FR": damage[1] /= 2; damage[2] /= 2; damage[3] *= 2; damage[4] /= 2; damage[8] *= 2; damage[9] /= 2; damage[12] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+        case "W": damage[1] *= 2; damage[2] /= 2; damage[3] /= 2; damage[7] *= 2; damage[13] /= 2; damage[14] /= 2; break;
+        case "B": damage[1] /= 2; damage[2] *= 2; damage[6] *= 2; damage[8] /= 2; damage[10] /= 2; damage[12] *= 2; break;
+        case "PO": damage[1] /= 2; damage[4] /= 2; damage[5] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] /= 2; damage[11] *= 2; break;
+        case "FL": damage[1] /= 2; damage[4] /= 2; damage[7] *= 2; damage[8] *= 0; damage[10] /= 2; damage[12] *= 2; damage[14] *= 2; break;
+        case "E": damage[6] /= 2; damage[7] /= 2; damage[8] *= 2; damage[13] /= 2; break;
+        case "GD": damage[1] *= 2; damage[3] *= 2; damage[5] /= 2; damage[7] *= 0; damage[12] /= 2; damage[14] *= 2; break;
+        case "FA": damage[4] /= 2; damage[5] *= 2; damage[10] /= 2; damage[13] *= 2; damage[16] *= 0; damage[17] /= 2; break;
+        case "FI": damage[4] /= 2; damage[6] *= 2; damage[9] *= 2; damage[11] *= 2; damage[12] /= 2; damage[17] /= 2; break;
+        case "PS": damage[4] *= 2; damage[10] /= 2; damage[11] /= 2; damage[15] *= 2; damage[17] *= 2; break;
+        case "R": damage[0] /= 2; damage[1] *= 2; damage[2] /= 2; damage[3] *= 2; damage[5] /= 2; damage[6] /= 2; damage[8] *= 2; damage[10] *= 2; damage[13] *= 2; break;
+        case "S": damage[0] /= 2; damage[1] /= 2; damage[2] *= 2; damage[4] /= 2; damage[5] *= 0; damage[6] /= 2; damage[8] *= 2; damage[9] /= 2; damage[10] *= 2; damage[11] /= 2; damage[12] /= 2; damage[13] /= 2; damage[14] /= 2; damage[16] /= 2; break;
+        case "I": damage[2] *= 2; damage[10] *= 2; damage[12] *= 2; damage[13] *= 2; damage[14] /= 2; break;
+        case "GH": damage[0] *= 0; damage[4] /= 2; damage[5] /= 2; damage[10] *= 0; damage[15] *= 2; damage[17] *= 2; break;
+        case "DR": damage[1] /= 2; damage[2] /= 2; damage[3] /= 2; damage[7] /= 2; damage[9] *= 2; damage[14] *= 2; damage[16] *= 2; break;
+        case "DK": damage[4] *= 2; damage[9] *= 2; damage[10] *= 2; damage[11] *= 0; damage[15] /= 2; damage[17] /= 2; break;
+    }
+    
+    var effectiveMessage = 'Before abilities, ' + allpokes[x].split(',')[0] + ' would take:\n'
+    + damage[0] + 'x Normal Damage\n'
+    + damage[1] + 'x Grass Damage\n'
+    + damage[2] + 'x Fire Damage\n'
+    + damage[3] + 'x Water Damage\n'
+    + damage[4] + 'x Bug Damage\n'
+    + damage[5] + 'x Poison Damage\n'
+    + damage[6] + 'x Flying Damage\n'
+    + damage[7] + 'x Electric Damage\n'
+    + damage[8] + 'x Ground Damage\n'
+    + damage[9] + 'x Fairy Damage\n'
+    + damage[10] + 'x Fighting Damage\n'
+    + damage[11] + 'x Psychic Damage\n'
+    + damage[12] + 'x Rock Damage\n'
+    + damage[13] + 'x Steel Damage\n'
+    + damage[14] + 'x Ice Damage\n'
+    + damage[15] + 'x Ghost Damage\n'
+    + damage[16] + 'x Dragon Damage\n'
+    + damage[17] + 'x Dark Damage';
+    if (interaction.channelId == botCommands) { interaction.reply(effectiveMessage); }
+    else { interaction.reply({ content: effectiveMessage, ephemeral: true }); }
+    return;
+        /*}
+    }
+    message.channel.send("I'm afraid " + pokemon + " is not in my types database.  Check that you spelled it correct, and remember my research in the Galar region isn't yet complete.");*/
+}
+
 function coverage(message) {
     if(lowmessage.indexOf(",coverage ") == 0)
     {
@@ -2052,18 +2170,47 @@ function wildcards(message) {
             case "ground": wclist = "Duraludon, Tyranitar, Cacturne"; break;
             case "flying": wclist = "Volcarona, Sirfetch'd, Decidueye"; break;
             case "psychic": wclist = "Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck"; break;
-            case "bug": wclist = "Kabutops, Flygon, Falinks"; break;
+            case "bug": wclist = "Kabutops, Flygon, Drapion, Falinks"; break;
             case "rock": wclist = "Sableye, Torterra, Galar Fossils (only two at a time), Steelix"; break;
             case "dragon": wclist = "Charizard, Gyarados, Ampharos, Sceptile"; break;
             case "ghost": wclist = "Rotom (only two at a time), Houndoom, Kecleon"; break;
             case "steel": wclist = "Blastoise, Vikavolt, Dhelmise"; break;
             case "dark": wclist = "Gengar, Gyarados, Gothitelle"; break;
             case "fairy": wclist = "Delphox, Altaria, Blissey Line"; break;
-            default: wclist = "Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils, Masquerain\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line";
+            default: wclist = "Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils, Masquerain\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck\nBug: Kabutops, Flygon, Drapion, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line";
         }
         message.channel.send(wclist);
     }
-    else if (lowmessage.indexOf(",wildcard") == 0) { message.channel.send("Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils, Masquerain\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck\nBug: Kabutops, Flygon, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line"); }
+    else if (lowmessage.indexOf(",wildcard") == 0) { message.channel.send("Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils, Masquerain\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck\nBug: Kabutops, Flygon, Drapion, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line"); }
+}
+
+function wildcardsCommand(interaction) {
+    let type = interaction.options.getString('type');
+    let wclist = "";
+    switch (type){
+        case "Normal": wclist = "Clefable, Azumarill, Granbull"; break;
+        case "Grass": wclist = "Crustle, Comfey, Sudowoodo"; break;
+        case "Fire": wclist = "Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock"; break;
+        case "Water": wclist = "Dragalge, Beartic, Hoenn Fossils, Masquerain"; break;
+        case "Electric": wclist = "Porygon Line, Golurk, Probopass"; break;
+        case "Ice": wclist = "Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon"; break;
+        case "Fighting": wclist = "Metagross, Electivire, Incineroar"; break;
+        case "Poison": wclist = "Gliscor, Accelgor, Breloom"; break;
+        case "Ground": wclist = "Duraludon, Tyranitar, Cacturne"; break;
+        case "Flying": wclist = "Volcarona, Sirfetch'd, Decidueye"; break;
+        case "Psychic": wclist = "Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck"; break;
+        case "Bug": wclist = "Kabutops, Flygon, Drapion, Falinks"; break;
+        case "Rock": wclist = "Sableye, Torterra, Galar Fossils (only two at a time), Steelix"; break;
+        case "Dragon": wclist = "Charizard, Gyarados, Ampharos, Sceptile"; break;
+        case "Ghost": wclist = "Rotom (only two at a time), Houndoom, Kecleon"; break;
+        case "Steel": wclist = "Blastoise, Vikavolt, Dhelmise"; break;
+        case "Dark": wclist = "Gengar, Gyarados, Gothitelle"; break;
+        case "Fairy": wclist = "Delphox, Altaria, Blissey Line"; break;
+        case null: wclist = "Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils, Masquerain\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck\nBug: Kabutops, Flygon, Drapion, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line";
+    }
+    if (type || interaction.channelId == botCommands) { interaction.reply(wclist); }
+    else { interaction.reply({ content: wclist, ephemeral: true }); }
+    return;
 }
 
 /*function fairyGIF(message) {
@@ -3408,7 +3555,7 @@ bot.on("messageCreate", async function(message) {
 
     await wrongBot(message);
 
-    await avatar(message);
+    //await avatar(message);
 
     await substituteBot(message.channel);
 
@@ -3511,6 +3658,12 @@ bot.on('interactionCreate', async interaction => {
         break;
         case 'avatar':
         await avatarCommand(interaction);
+        break;
+        case 'hiddenpower':
+        await hpCommand(interaction);
+        break;
+        case 'wildcard':
+        await wildcardsCommand(interaction);
         break;
     }
 })
