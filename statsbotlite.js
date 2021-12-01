@@ -2188,24 +2188,24 @@ function wildcardsCommand(interaction) {
     let type = interaction.options.getString('type');
     let wclist = "";
     switch (type){
-        case "Normal": wclist = "Clefable, Azumarill, Granbull"; break;
-        case "Grass": wclist = "Crustle, Comfey, Sudowoodo"; break;
-        case "Fire": wclist = "Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock"; break;
-        case "Water": wclist = "Dragalge, Beartic, Hoenn Fossils, Masquerain"; break;
-        case "Electric": wclist = "Porygon Line, Golurk, Probopass"; break;
-        case "Ice": wclist = "Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon"; break;
-        case "Fighting": wclist = "Metagross, Electivire, Incineroar"; break;
-        case "Poison": wclist = "Gliscor, Accelgor, Breloom"; break;
-        case "Ground": wclist = "Duraludon, Tyranitar, Cacturne"; break;
-        case "Flying": wclist = "Volcarona, Sirfetch'd, Decidueye"; break;
-        case "Psychic": wclist = "Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck"; break;
-        case "Bug": wclist = "Kabutops, Flygon, Drapion, Falinks"; break;
-        case "Rock": wclist = "Sableye, Torterra, Galar Fossils (only two at a time), Steelix"; break;
-        case "Dragon": wclist = "Charizard, Gyarados, Ampharos, Sceptile"; break;
-        case "Ghost": wclist = "Rotom (only two at a time), Houndoom, Kecleon"; break;
-        case "Steel": wclist = "Blastoise, Vikavolt, Dhelmise"; break;
-        case "Dark": wclist = "Gengar, Gyarados, Gothitelle"; break;
-        case "Fairy": wclist = "Delphox, Altaria, Blissey Line"; break;
+        case "normal": wclist = "Clefable, Azumarill, Granbull"; break;
+        case "grass": wclist = "Crustle, Comfey, Sudowoodo"; break;
+        case "fire": wclist = "Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock"; break;
+        case "water": wclist = "Dragalge, Beartic, Hoenn Fossils, Masquerain"; break;
+        case "electric": wclist = "Porygon Line, Golurk, Probopass"; break;
+        case "ice": wclist = "Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon"; break;
+        case "fighting": wclist = "Metagross, Electivire, Incineroar"; break;
+        case "poison": wclist = "Gliscor, Accelgor, Breloom"; break;
+        case "ground": wclist = "Duraludon, Tyranitar, Cacturne"; break;
+        case "flying": wclist = "Volcarona, Sirfetch'd, Decidueye"; break;
+        case "psychic": wclist = "Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck"; break;
+        case "bug": wclist = "Kabutops, Flygon, Drapion, Falinks"; break;
+        case "rock": wclist = "Sableye, Torterra, Galar Fossils (only two at a time), Steelix"; break;
+        case "dragon": wclist = "Charizard, Gyarados, Ampharos, Sceptile"; break;
+        case "ghost": wclist = "Rotom (only two at a time), Houndoom, Kecleon"; break;
+        case "steel": wclist = "Blastoise, Vikavolt, Dhelmise"; break;
+        case "dark": wclist = "Gengar, Gyarados, Gothitelle"; break;
+        case "fairy": wclist = "Delphox, Altaria, Blissey Line"; break;
         case null: wclist = "Normal: Clefable, Azumarill, Granbull\nGrass: Crustle, Comfey, Sudowoodo\nFire: Leafeon, Darmanitan-Galar (Zen Mode only), Salamence, Solrock\nWater: Dragalge, Beartic, Hoenn Fossils, Masquerain\nElectric: Porygon Line, Golurk, Probopass\nIce: Quagsire, Slowbro-Kanto, Slowking-Kanto, Kingdra, Empoleon\nFighting: Metagross, Electivire, Incineroar\nPoison: Gliscor, Accelgor, Breloom\nGround: Duraludon, Tyranitar, Cacturne\nFlying: Volcarona, Sirfetch'd, Decidueye\nPsychic: Ninetales-Kanto, Darmanitan-Unova (Zen Mode only), Mienshao, Golduck\nBug: Kabutops, Flygon, Drapion, Falinks\nRock: Sableye, Torterra, Galar Fossils (only two at a time), Steelix\nDragon: Charizard, Gyarados, Ampharos, Sceptile\nGhost: Rotom (only two at a time), Houndoom, Kecleon\nSteel: Blastoise, Vikavolt, Dhelmise\nDark: Gengar, Gyarados, Gothitelle\nFairy: Delphox, Altaria, Blissey Line";
     }
     if (type || interaction.channelId == botCommands) { interaction.reply(wclist); }
