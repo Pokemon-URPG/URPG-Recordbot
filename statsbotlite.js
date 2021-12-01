@@ -3160,9 +3160,9 @@ async function avatar(message) {
 }
 
 async function avatarCommand(interaction) {
-    let person = interaction.options.getUser('user')
+    let target = interaction.options.getUser('user')
     if (!person) {
-        person = interaction.user;
+        target = interaction.user;
     }
     interaction.reply(target.displayAvatarURL({size: 1024, dynamic: true}));
 }
