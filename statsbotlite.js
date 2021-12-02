@@ -3665,6 +3665,9 @@ bot.on('interactionCreate', async interaction => {
         case 'wildcard':
         await wildcardsCommand(interaction);
         break;
+        case 'effectiveness':
+        await effectivenessCommand(interaction);
+        break;
     }
 })
 
