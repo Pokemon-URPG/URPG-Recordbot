@@ -728,6 +728,96 @@ function oras(message) {
     }
 }
 
+function contestCommand(interaction) {
+    const desiredmove = interaction.options.getString('move')
+    if (interaction.options.getString('mode') == 'rse') {
+        if (!desiredmove) {
+            interaction.reply("https://docs.google.com/spreadsheets/d/1ImPbiw8B_hhC6bmQD8BJarJR9SIoq7rTUWCrWc2iKWo/edit#gid=38422135");
+            return;
+        }
+        else {
+            let movelist = ""
+
+            try { movelist = fs.readFileSync("rse.txt", "utf8") } catch (err) {
+                if (err.code === "ENOENT") {
+                    interaction.reply({ content: "Move data not found.  Please try again later.", ephemeral: true })
+                    bot.channels.cache.get("531433553225842700").send("<@135999597947387904> File rse.txt not found!")
+                    return;
+                }
+                else { throw err }
+            }
+
+            const moves = movelist.split("\n")
+            var bestGuess = 0;
+            var diff = -1;
+            for (let x = 0; x < moves.length; x += 2) {
+                if (ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove) > diff) {
+                    bestGuess = x;
+                    diff = ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove);
+                }
+            }
+            interaction.reply(moves[bestGuess] + "\n" + moves[bestGuess + 1])
+        }
+    }
+    else if (interaction.options.getString('mode') == 'dppt') {
+        if (!desiredmove) {
+            interaction.reply("https://docs.google.com/spreadsheets/d/19n2yGw38xVqak0GTVjB4dN4M1k_Ix7WEnUsufT9uRes/edit?usp=sharing");
+            return;
+        }
+        else {
+            let movelist = ""
+
+            try { movelist = fs.readFileSync("dppt.txt", "utf8") } catch (err) {
+                if (err.code === "ENOENT") {
+                    interaction.reply({ content: "Move data not found.  Please try again later.", ephemeral: true })
+                    bot.channels.cache.get("531433553225842700").send("<@135999597947387904> File dppt.txt not found!")
+                    return;
+                else { throw err }
+            }
+
+            const moves = movelist.split("\n\n")
+            var bestGuess = 0;
+            var diff = -1;
+            for (let x = 0; x < moves.length; x ++) {
+                if (ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove) > diff) {
+                    bestGuess = x;
+                    diff = ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove);
+                }
+            }
+            interaction.reply(moves[bestGuess])
+        }
+    }
+    else if (interaction.options.getString('mode') == 'oras') {
+        if (!desiredmove) {
+            interaction.reply("https://docs.google.com/spreadsheets/d/1fFEREf42ZNBkesU0GbNPH9veIFGp0xDxxgIdqVufz7Q/edit#gid=38422135");
+            return;
+        }
+        else {
+            let movelist = ""
+
+            try { movelist = fs.readFileSync("oras.txt", "utf8") } catch (err) {
+                if (err.code === "ENOENT") {
+                    interaction.reply({ content: "Move data not found.  Please try again later.", ephemeral: true })
+                    bot.channels.cache.get("531433553225842700").send("<@135999597947387904> File oras.txt not found!")
+                    return;
+                }
+                else { throw err }
+            }
+
+            const moves = movelist.split("\n")
+            var bestGuess = 0;
+            var diff = -1;
+            for (let x = 0; x < moves.length; x += 2) {
+                if (ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove) > diff) {
+                    bestGuess = x;
+                    diff = ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove);
+                }
+            }
+            interaction.reply(moves[bestGuess] + "\n" + moves[bestGuess + 1])
+        }
+    }
+}
+
 function rankList(pokemonList, channel) {
     pokemonList += ", ";
     while (pokemonList.indexOf("*") != -1) {
@@ -3667,6 +3757,9 @@ bot.on('interactionCreate', async interaction => {
         break;
         case 'effectiveness':
         await effectivenessCommand(interaction);
+        break;
+        case 'contest':
+        await contestCommand(interaction);
         break;
     }
 })
