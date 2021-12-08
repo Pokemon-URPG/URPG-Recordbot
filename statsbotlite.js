@@ -772,6 +772,7 @@ function contestCommand(interaction) {
                     interaction.reply({ content: "Move data not found.  Please try again later.", ephemeral: true })
                     bot.channels.cache.get("531433553225842700").send("<@135999597947387904> File dppt.txt not found!")
                     return;
+                }
                 else { throw err }
             }
 
