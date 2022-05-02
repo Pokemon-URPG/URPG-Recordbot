@@ -103,9 +103,9 @@ bot.once("ready", async function () {
     setTimeout(function () {
         randomRotations();
     }, ((108000000) - (d.getTime() % 86400000)) % 86400000);
-    setTimeout(function () {
+    /*setTimeout(function () {
         dailyQ();
-    }, ((147600000) - (d.getTime() % 86400000)) % 86400000);
+    }, ((147600000) - (d.getTime() % 86400000)) % 86400000);*/
     await remindStartup();
     //bot.channels.cache.get(botCommands).send("I have arisen!  Please help me set my DISBOARD bump notification timer with a `!d bump`.");
     bot.channels.cache.get("531433553225842700").send("I have arisen!");
@@ -270,6 +270,14 @@ function remindInput(message) {
         if (!message.guild) {
             message.channel.send("I'm afraid I am not currently able to accept DM reminders. Please try in a guild channel or set an alternate form of reminder.");
             return;
+        }
+        else {
+            var botMember = message.guild.members.fetch(bot.id);
+            if(!botMember.permissions.has("READ_MESSAGE_HISTORY")) {
+                message.reply("I don't seem to have Read Message History permission in this channel.  I will attempt to remind you but it's possible I will forget by then.");
+                remindTimer(message.channel.id, message.id);
+                return;
+            }
         }
         var newRemindLog = remindLog.content + "\n" + message.channel.id + " " + message.id;
         if (newRemindLog.length > 2000) {
@@ -2515,7 +2523,7 @@ function magicCardPoster(input, channel) {
     if (cardSet.length > 5 || cardSet.length < 2) {return;}
     if (request.split("🦌🦌")[3].length > 0 && !isNaN(request.split("🦌🦌")[3]) && request.split("🦌🦌")[3].indexOf(" ") == -1) {
         var cardNumber = request.split("🦌🦌")[3];
-        cardName = cardName.toLowerCase().replace(/û/g, "%C3%BB").replace(/,/g, "").replace(/\./g, "").replace(/\'/g, "").replace(/`/g, "").replace(/®/g, "").replace(/:registered:/, "").replace(/"/g, "").replace(/\?/g, "%3F").replace(/!/g, "").replace(/ /g, "-");
+        cardName = cardName.toLowerCase().replace(/û/g, "%C3%BB").replace(/,/g, "").replace(/\./g, "").replace(/\'/g, "").replace(/`/g, "").replace(/®/g, "").replace(/:registered:/, "").replace(/"/g, "").replace(/\?/g, "%3F").replace(/!/g, "").replace(/ /g, "-").replace(/\+/g, "%2B").replace(/ö/g, "o");
         channel.send("https://scryfall.com/card/" + cardSet.toLowerCase() +"/" + cardNumber + "/" + cardName + "?utm_source=discord");
         fetched = true;
     }
