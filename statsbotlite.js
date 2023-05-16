@@ -4,6 +4,7 @@ const Permissions = Discord.Permissions;
 const logger = require("winston")
 const fs = require("fs")
 const ss = require("string-similarity");
+require('dotenv').config();
 //const { Endpoints } = Discord.Constants;
 
 // Configure logger settings
