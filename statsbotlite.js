@@ -3444,6 +3444,33 @@ async function sleepTalk(message) {
     }
 }
 
+async function showdown(message) {
+    if (lowmessage.indexOf(",showdown") == 0) {
+        var list = true;
+        var roll = true;
+        var commandLength = 10;
+        var initialList = "🙉" + message.cleanContent.substring(commandLength).replace(/\n/g, "").replace(/\r/g, "").replace(/, /g, "🙉").replace(/,/g, "🙉").replace(/TMs: /gi, "🙉").replace(/HMs: /gi, "🙉").replace(/BMs: /gi, "🙉").replace(/MTs: /gi, "🙉").replace(/SMs: /gi, "🙉").replace(/Normal Moves: /gi, "").replace(/Taught Moves: /gi, "🙉").replace(/Level-Up Moves: /gi, "").replace(/Levelup Moves: /gi, "").replace(/Level Up Moves: /gi, "").replace(/EMs: /gi, "🙉").replace(/EM(s): /gi, "🙉").replace(/Extra Moves: /gi, "🙉").replace(/Extra Move(s): /gi, "🙉").replace();
+        var numberedList = "EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe\n" + initialList;
+        var tooLong = false;
+        var numberedListExtra = "";
+        while (numberedList.indexOf("🙉") != -1) {
+            if (numberedList.indexOf("🙉") >= 1980) {
+                tooLong = true;
+                numberedListExtra = numberedList.substring(0, numberedList.indexOf("🙉"));
+                numberedList = numberedList.substring(numberedList.indexOf("🙉"));
+            }
+            numberedList = numberedList.replace("🙉", "\n- ");
+        }
+        if (tooLong) {
+            await message.channel.send(numberedListExtra);
+            await message.channel.send(numberedList);
+        }
+        else {
+            await message.channel.send(numberedList);
+        }
+    }
+}
+
 async function raidBan(message, messageMember) {
     kauri = await bot.users.fetch("574745413773426688");
     if (kauri.presence != null && kauri.presence.status != "offline") { return; }
