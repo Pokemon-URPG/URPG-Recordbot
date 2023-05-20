@@ -3688,6 +3688,8 @@ bot.on("messageCreate", async function(message) {
 
     await sleepTalk(message);
 
+    await showdown(message);
+
     await randomizeList(message);
 
     await resetStats(message);
