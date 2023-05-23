@@ -51,7 +51,16 @@ const commands = [
 		option.setName('ephemeral')
 			.setDescription("If true, will only display to yourself")
 			.setRequired(false)),
-	new SlashCommandBuilder().setName('dice').setDescription('Roll one or more dice').addNumber
+	new SlashCommandBuilder().setName('d').setDescription('Roll one or more dice').addIntegerOption(option =>
+		option.setName('sides')
+			.setDescription('Number of sides.  Defaults to 100 if blank.')
+			.setRequired(false)).addIntegerOption(option =>
+		option.setName('dice')
+			.setDescription('Number of dice to roll.  Defaults to 1 if blank.')
+			.setRequired(false)).addBooleanOption(option =>
+		option.setName('ephemeral')
+			.setDescription("If true, will only display to yourself.  There will be no record of the result so don't use this for something important.")
+			.setRequired(false))
 ]
 	.map(command => command.toJSON());
 /*const guildCommands = [

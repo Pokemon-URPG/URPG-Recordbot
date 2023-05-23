@@ -739,9 +739,10 @@ function oras(message) {
 
 function contestCommand(interaction) {
     const desiredmove = interaction.options.getString('move')
+    const secret = interaction.options.getBoolean('ephemeral') ?? false
     if (interaction.options.getString('mode') == 'rse') {
         if (!desiredmove) {
-            interaction.reply("https://docs.google.com/spreadsheets/d/1ImPbiw8B_hhC6bmQD8BJarJR9SIoq7rTUWCrWc2iKWo/edit#gid=38422135");
+            interaction.reply({ content: "https://docs.google.com/spreadsheets/d/1ImPbiw8B_hhC6bmQD8BJarJR9SIoq7rTUWCrWc2iKWo/edit#gid=38422135", ephemeral: secret });
             return;
         }
         else {
@@ -770,7 +771,7 @@ function contestCommand(interaction) {
     }
     else if (interaction.options.getString('mode') == 'dppt') {
         if (!desiredmove) {
-            interaction.reply("https://docs.google.com/spreadsheets/d/19n2yGw38xVqak0GTVjB4dN4M1k_Ix7WEnUsufT9uRes/edit?usp=sharing");
+            interaction.reply({ content: "https://docs.google.com/spreadsheets/d/19n2yGw38xVqak0GTVjB4dN4M1k_Ix7WEnUsufT9uRes/edit?usp=sharing", ephemeral: secret });
             return;
         }
         else {
@@ -794,12 +795,12 @@ function contestCommand(interaction) {
                     diff = ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove);
                 }
             }
-            interaction.reply(moves[bestGuess])
+            interaction.reply({ content: moves[bestGuess], ephemeral: secret })
         }
     }
     else if (interaction.options.getString('mode') == 'oras') {
         if (!desiredmove) {
-            interaction.reply("https://docs.google.com/spreadsheets/d/1fFEREf42ZNBkesU0GbNPH9veIFGp0xDxxgIdqVufz7Q/edit#gid=38422135");
+            interaction.reply({ content: "https://docs.google.com/spreadsheets/d/1fFEREf42ZNBkesU0GbNPH9veIFGp0xDxxgIdqVufz7Q/edit#gid=38422135", ephemeral: secret });
             return;
         }
         else {
@@ -823,7 +824,7 @@ function contestCommand(interaction) {
                     diff = ss.compareTwoStrings(moves[x].split(" | ")[0].toLowerCase(), desiredmove);
                 }
             }
-            interaction.reply(moves[bestGuess] + "\n" + moves[bestGuess + 1])
+            interaction.reply({ content: moves[bestGuess] + "\n" + moves[bestGuess + 1], ephemeral: secret })
         }
     }
 }
@@ -2313,6 +2314,22 @@ function wildcardsCommand(interaction) {
     return;
 }
 
+function rollCommand(interaction) {
+    const dice = interaction.options.getInteger('dice') ?? 100;
+    const sides = interaction.options.getInteger('sides') ?? 1;
+    const secret = interaction.options.getBoolean('ephemeral') ?? false;
+    let output = "You have rolled ";
+    for (let x = 0; x < dice; x++) {
+        if (x > 0) {
+            output += ", "
+        }
+        let result = Math.floor(Math.random() * sides) + 1;
+        output += result;
+    }
+    output += " on " + dice + "d" + sides + ".";
+    interaction.reply({ content: output, ephemeral: secret });
+}
+
 /*function fairyGIF(message) {
     if (lowmessage.indexOf(",") == 0 && lowmessage.indexOf("fairy") != -1 && message.channel.id == botCommands && !message.author.bot) {
         message.channel.send({
@@ -3800,6 +3817,9 @@ bot.on('interactionCreate', async interaction => {
         case 'contest':
         await contestCommand(interaction);
         break;
+        case 'd':
+        await rollCommand(interaction);
+        break; 
     }
 })
 
