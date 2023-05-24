@@ -47,7 +47,7 @@ const commands = [
 			.addChoice('DPPt', 'dppt')).addStringOption(option =>
 		option.setName('move')
 			.setDescription("Which move to check, full chart if blank")
-			.setRequired(false).addBooleanOption(option =>
+			.setRequired(false)).addBooleanOption(option =>
 		option.setName('ephemeral')
 			.setDescription("If true, will only display to yourself")
 			.setRequired(false)),
