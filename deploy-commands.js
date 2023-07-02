@@ -59,7 +59,7 @@ const commands = [
 			.setDescription('Number of dice to roll.  Defaults to 1 if blank.')
 			.setRequired(false)).addBooleanOption(option =>
 		option.setName('ephemeral')
-			.setDescription("If true, will only display to yourself.  There will be no record of the result so don't use this for something important.")
+			.setDescription("If true, will only display to yourself.  No record will exist, don't use for important things.")
 			.setRequired(false))
 ]
 	.map(command => command.toJSON());

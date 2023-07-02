@@ -2315,8 +2315,8 @@ function wildcardsCommand(interaction) {
 }
 
 function rollCommand(interaction) {
-    const dice = interaction.options.getInteger('dice') ?? 100;
-    const sides = interaction.options.getInteger('sides') ?? 1;
+    const dice = interaction.options.getInteger('dice') ?? 1;
+    const sides = interaction.options.getInteger('sides') ?? 100;
     const secret = interaction.options.getBoolean('ephemeral') ?? false;
     let output = "You have rolled ";
     for (let x = 0; x < dice; x++) {
@@ -3400,6 +3400,7 @@ async function deleteReporter(message) {
         if (messageMember.id == deleteMember.id) { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()); }
         else { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()).setFooter("Deleted by " + deleteMember.displayName + " (" + deleteMember.id + ")", deleteMember.user.displayAvatarURL()); }
     }
+    else { deleteLog = new Discord.MessageEmbed().setAuthor(messageMember.displayName + " (" + messageMember.id + ")", messageMember.user.displayAvatarURL()); }
     if (message.content.length < 1024) { deleteLog.addField("Deletion", "<#" + message.channel + ">: " + message.content) }
     else { deleteLog.addField("Deletion", "<#" + message.channel + ">: " + message.content.substring(0, 1000)).addField("Deletion cont.", "<#" + message.channel + ">: " + message.content.substring(1000))}
     /*if (message.embeds.length > 0) {
@@ -3849,7 +3850,7 @@ bot.on("messageUpdate", async function(oldMessage, newMessage) {
         }
     }
     else {
-        diff = ss.compareTwoStrings(oldMessage.content, newMessage.content);
+        diff = ss.compareTwoStrings(oldMessage.content ?? "", newMessage.content ?? "");
     }
     //if (oldMessage.partial) { return; }
     ffaGG(newMessage);
