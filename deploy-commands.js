@@ -63,15 +63,27 @@ const commands = [
 			.setRequired(false))
 ]
 	.map(command => command.toJSON());
-/*const guildCommands = [
-	new SlashCommandBuilder().setName('mention').setDescription('Mention a role and optinally pass a message').addRoleOption(option =>
+const guildCommands = [
+	/*new SlashCommandBuilder().setName('mention').setDescription('Mention a role and optinally pass a message').addRoleOption(option =>
 		option.setName('mentions')
 			.setDescription('What role to mention')
 			.setRequired(true)).addStringOption(option =>
 		option.setName('message')
 			.setDescription('Message to pass with the ping')
-			.setRequired(false))
-]*/
+			.setRequired(false))*/
+	new SlashCommandBuilder().setName('role').setDescription('Adds or removes roles').addStringOption(option =>
+		option.setName('action')
+			.setDescription('Whether to add or remove. Defaults to add.')
+			.setRequired(false)
+			.addChoice('Add', 'add')
+			.addChoice('Remove', 'remove')).addUserOption(option =>
+		option.setName('member')
+			.setDescription('Whose roles to edit. Defaults to self.')
+			.setRequired(false)).addRoleOption(option =>
+		option.setName('role')
+			.setDescription('What role')
+			.setRequired(true))
+]
 
 const rest = new REST({ version: '9' }).setToken(process.env.token);
 

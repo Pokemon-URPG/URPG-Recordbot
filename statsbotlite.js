@@ -21,14 +21,20 @@ var otherFossils = ["Dracozolt", "Dracovish", "Arctozolt", "Arctovish", "Spirito
 var allFossils = hardFossils.concat(otherFossils);
 var ranks = ["Easiest", "Simple", "Medium", "Hard", "Complex", "Demanding", "Merciless", "Stupefying", "Tier2", "Tier1"];
 var rankVal = [4000, 7500, 15000, 25000, 35000, 47500, 0, 0, 0, 0];
+var selfAssignable = ["575087931824275466", "719601349636915281", "872213460086308874", "440004078219558912", "719601266589958165", "669282056722710552", "552232839861633046", "719601386492526734", "597313962798874626", "699364314427031612", "806290347479007304"] //ffa,he/him,Archives,pkmnspoilers,she/her,auction,coordinator,they/them,otherspoilers,jobs,adv-coordinator
 var bumpTime;
 var disBumpTime = null;
 var lowmessage;
 var botCommands = "409818526313086976";
 var urpgServer = "135864828240592896";
 var logsChannel = "545384090044727296";
+var memberRole = "456993685679243286";
 var refRole = "243949285438259201";
 var judgeRole = "243950906683424768";
+var rangerRole = "312119050484449280";
+var graderRole = "312118803616235523";
+var curatorRole = "312119111750647809";
+var arbiterRole = "533356018005180416";
 var refTestChannel = "261370056246689792";
 var judgeTestChannel = "294334136355651584";
 var rangerTestChannel = "253364200955445248";
@@ -40,9 +46,13 @@ var contestBossCategory = "530600551763673088";
 var contestBossChannel = "386804780615335947";
 var warRoomChannel = "386808630709714954";
 var staffChannel = "135870064573284352";
+var approverRole = "457003662217052163";
 var seniorRefRole = "358431855743336448";
 var chiefJudgeRole = "358435669372305408";
 var eliteRangerRole = "419636474825277450";
+var leadGraderRole = "419636334982987777";
+var expertCuratorRole = "419775555488186369";
+var elderArbiterRole = "533356631455694849";
 var spellbinderRole = "561688333609074730";
 var anonymousReportChannel = "545737721612730368";
 var payDayLog;
@@ -2515,16 +2525,16 @@ function role(message, messageMember) {
     }
 }
 
-async function memberRole(message, messageMember) {
-    if (lowmessage.indexOf(",member") == 0 && (messageMember.roles.cache.has("135868852092403713") || messageMember.roles.cache.has("244600394733322242") || messageMember.roles.cache.has("457003662217052163"))) {
-        if (message.mentions.users.size != 0) {
-            let newMember = await message.channel.guild.members.fetch(message.mentions.users.first().id)
-            await newMember.roles.add(message.channel.guild.roles.cache.get("456993685679243286"));
-            await message.channel.send("Member role applied!");
-        }
-        else { message.channel.send("Please include a mention for the person you would like to give the member role to.")}
-    }
-}
+// async function memberRole(message, messageMember) {
+//     if (lowmessage.indexOf(",member") == 0 && (messageMember.roles.cache.has("135868852092403713") || messageMember.roles.cache.has("244600394733322242") || messageMember.roles.cache.has("457003662217052163"))) {
+//         if (message.mentions.users.size != 0) {
+//             let newMember = await message.channel.guild.members.fetch(message.mentions.users.first().id)
+//             await newMember.roles.add(message.channel.guild.roles.cache.get("456993685679243286"));
+//             await message.channel.send("Member role applied!");
+//         }
+//         else { message.channel.send("Please include a mention for the person you would like to give the member role to.")}
+//     }
+// }
 
 function magicCardFetcher(message) {
     if ((message.channel.id == "401543302710689793" || !message.channel.guild || lowmessage.indexOf(",mtg") == 0) && (lowmessage.indexOf("[[") != -1 && lowmessage.lastIndexOf("]]") != -1 && lowmessage.indexOf("|") != -1)) {
@@ -2922,6 +2932,49 @@ async function mention(interaction) {
     }
 }
 
+async function roleCommand(interaction) {
+    var member = interaction.guild.members.fetch(interaction.options.getUser('member') ?? interaction.user)
+    var self = member.id == interaction.user.id
+    var adding = interaction.options.getString('action') != "remove"
+    var role = interaction.options.getRole('role')
+    var permission = false
+    if (self && selfAssignable.contains(role.id)) { permission = true }
+    if (member.permissions.has("MANAGE_ROLES") && member.roles.highest.comparePositionTo(role) > 0) { permission = true }
+    if (member.roles.cache.has(seniorRefRole) && role.id == refRole) { permission = true }
+    if (member.roles.cache.has(chiefJudgeRole) && role.id == judgeRole) { permission = true }
+    if (member.roles.cache.has(eliteRangerRole) && role.id == rangerRole) { permission = true }
+    if (member.roles.cache.has(leadGraderRole) && role.id == graderRole) { permission = true }
+    if (member.roles.cache.has(expertCuratorRole) && role.id == curatorRole) { permission = true }
+    if (member.roles.cache.has(elderArbiterRole) && role.id == arbiterRole) { permission = true }
+    if (member.roles.cache.has(approverRole) && role.id == memberRole) { permission = true }
+    if (permission) {
+        if (interaction.guild.members.cache.get(bot.user.id).roles.highest.comparePositionTo(role) <= 0) {
+            interaction.reply("I'm afraid I can't help you with that.");
+            return;
+        }
+        if(adding) {
+            if(member.roles.cache.has(role.id)) {
+                interaction.reply(`${self ? "You" : member.displayName} already ${self ? "have" : "has"} that role.`);
+                return;
+            }
+            else { member.roles.add(role.id); }
+        }
+        else {
+            if(member.roles.cache.has(role.id)) {
+                member.roles.remove(role.id);
+            }
+            else {
+                interaction.reply(`${self ? "You don't" : member.displayName + " doesn't"} have that role.`);
+                return;
+            }
+        }
+        interaction.reply(`Role ${role.name} ${adding ? "added to" : "removed from"} ${self ? "you" : member.displayName}.`);
+    }
+    else {
+        interaction.reply("You don't have permission to do that.");
+    }
+}
+
 async function archiver(message, messageMember) {
     /*if (lowmessage.includes(",") && lowmessage.includes("archive") && message.channel.name.includes("app")) && (messageMember.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS) || messageMember.roles.cache.has("584764993044611075"))) {
         await message.channel.setParent(bot.guilds.cache.get(urpgServer).channels.cache.get("592609023661178890"));
@@ -3268,10 +3321,10 @@ async function substituteBot(channel) {
         }
         else {
             if (lowmessage.indexOf("//roll-dice") == 0) {
-                dieToRoll = lowmessage.split("//roll-dice")[1].split("-sides")[0] + "d" + lowmessage.split("//roll-dice")[1].split("-sides")[1];
+                dieToRoll = ["", lowmessage.split("//roll-dice")[1].split("-sides")[0] + "d" + lowmessage.split("//roll-dice")[1].split("-sides")[1]];
             }
             else {
-                dieToRoll = lowmessage.split("//roll-sides")[1].split("-dice")[1] + "d" + lowmessage.split("//roll-sides")[1].split("-dice")[0];
+                dieToRoll = ["", lowmessage.split("//roll-sides")[1].split("-dice")[1] + "d" + lowmessage.split("//roll-sides")[1].split("-dice")[0]];
             }
             results = "Not many still cling to the ancient ways.  Those who do can always find a friend.  You have rolled "
         }
@@ -3820,7 +3873,10 @@ bot.on('interactionCreate', async interaction => {
         break;
         case 'd':
         await rollCommand(interaction);
-        break; 
+        break;
+        case 'role':
+        await roleCommand(interaction);
+        break;
     }
 })
 
